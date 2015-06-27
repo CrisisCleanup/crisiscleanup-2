@@ -1,4 +1,4 @@
-Copyright 2012-2015 Andy Gimma, Chris Wood, Aaron Titus, Jeremy Pack, and other contributors
+Copyright 2012-2015 Andy Gimma, Chris Wood, Aaron Titus, Zachary Straub, Karissa Phelps, Dhruv Mehrotra, VisionLink Inc., Jeremy Pack, and other contributors
 https://www.crisiscleanup.org/about
 
 Licensed under the Apache License, Version 2.0 (the "License");
