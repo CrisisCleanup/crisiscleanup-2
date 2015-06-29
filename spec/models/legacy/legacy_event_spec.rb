@@ -6,6 +6,9 @@ require 'spec_helper'
 
 module Legacy
   describe LegacyEvent do
+    describe "associations" do
+      it { should have_many :legacy_organizations }
+    end
     describe "validations" do
       subject { Legacy::LegacyEvent.new }
       it { should have_valid(:name).when("Dinosaur in New York") }
