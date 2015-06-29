@@ -5,10 +5,10 @@ require 'spec_helper'
 # Maybe our validations should be loose, to make sure we recieve all data
 
 module Legacy
-  describe LegacyEvent do
+  describe LegacyOrganization do
     describe "validations" do
-      subject { Legacy::LegacyEvent.new }
-      it { should have_valid(:name).when("Dinosaur in New York") }
+      subject { Legacy::LegacyOrganization.new }
+      it { should have_valid(:city).when("New York") }
    
     end
     # this is where we describe model methods
