@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628171749) do
+ActiveRecord::Schema.define(version: 20150629202035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150628171749) do
     t.string   "counties",          default: [],              array: true
     t.string   "name",                           null: false
     t.string   "short_name",                     null: false
+    t.date     "created_date",                   null: false
     t.date     "start_date",                     null: false
     t.date     "end_date",                       null: false
     t.integer  "num_sites"
@@ -28,6 +29,52 @@ ActiveRecord::Schema.define(version: 20150628171749) do
     t.integer  "reminder_days"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+  end
+
+  create_table "legacy_organization_events", force: :cascade do |t|
+    t.integer "legacy_organization_id", null: false
+    t.integer "legacy_event_id",        null: false
+  end
+
+  create_table "legacy_organizations", force: :cascade do |t|
+    t.date     "activate_by",                                 null: false
+    t.date     "activated_at",                                null: false
+    t.string   "activation_code",                             null: false
+    t.string   "address",                                     null: false
+    t.string   "admin_notes"
+    t.string   "city",                                        null: false
+    t.boolean  "deprecated",                  default: false
+    t.boolean  "does_only_coordination",      default: false
+    t.boolean  "does_only_sit_aware",         default: false
+    t.boolean  "does_recovery",               default: false
+    t.boolean  "does_something_else",         default: false
+    t.string   "email",                                       null: false
+    t.string   "facebook"
+    t.boolean  "is_active",                                   null: false
+    t.boolean  "is_admin",                                    null: false
+    t.float    "latitude",                                    null: false
+    t.float    "longitude",                                   null: false
+    t.string   "name",                                        null: false
+    t.boolean  "not_an_org",                  default: false
+    t.boolean  "only_session_authentication", default: false
+    t.boolean  "org_verified",                default: false
+    t.string   "password",                                    null: false
+    t.string   "permissions",                                 null: false
+    t.string   "phone",                                       null: false
+    t.boolean  "physical_presence",                           null: false
+    t.boolean  "publish",                                     null: false
+    t.boolean  "reputable",                                   null: false
+    t.string   "state",                                       null: false
+    t.string   "terms_privacy"
+    t.datetime "timestamp_login"
+    t.datetime "timestamp_signup",                            null: false
+    t.string   "twitter"
+    t.string   "url"
+    t.text     "voad_referral"
+    t.string   "work_area",                                   null: false
+    t.string   "zip_code",                                    null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
 end
