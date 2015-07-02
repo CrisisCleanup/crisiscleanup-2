@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629202035) do
+ActiveRecord::Schema.define(version: 20150702164131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "legacy_contacts", force: :cascade do |t|
+    t.string  "email",                  null: false
+    t.string  "first_name",             null: false
+    t.string  "last_name",              null: false
+    t.integer "legacy_organization_id", null: false
+    t.boolean "is_primary"
+    t.string  "phone",                  null: false
+  end
 
   create_table "legacy_events", force: :cascade do |t|
     t.string   "case_label",                     null: false
