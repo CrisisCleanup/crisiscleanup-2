@@ -1,3 +1,174 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$black-bg: #242424;
+$yellow-heading: #ffcc44;
+$lite-blue: #41b7d8;
+$dark-blue: #1b84ce;
+$orange: #dda100;
+$lite-gray: #f0f0f0;
+body {}
+
+header {
+    height: 125px;
+}
+
+.name img {
+    width: 175px;
+    margin-top: 10px;
+    height: auto;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+nav.top-bar {
+    //needs separate declaration away from nest
+    height: 125px;
+    background: $black-bg;
+}
+
+nav {
+    .top-bar-section {
+        margin-right: 20px;
+    }
+    .top-bar-section li:not(.has-form) a:not(.button) {
+        background: $black-bg;
+        color: $yellow-heading;
+        font-size: 16px;
+    }
+    .top-bar-section ul li {
+        background: $black-bg;
+        
+    }
+    ul.top-bar.expanded, ul.title-area {
+        height: 125px;
+    }
+}
+
+.breadcrumbs {
+    li:nth-child(1) {
+        margin-left: 20px;
+    }
+}
+
+.subheader {
+    text-align: center;
+    & h2 {
+        color: $dark-blue;
+    }
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    h1, h2, h3, h4, h5, h6 {
+        color: $dark-blue;
+        font-weight: bold;
+    }
+    h3, h4, p {
+        width: 95%;
+        margin-left: 2.5%;
+        height: 100%;
+    }
+}
+
+.sidebar {
+    background: $black-bg;
+    /* height: 100%; */
+    & h4, p {
+        color: #fff;
+    }
+}
+
+.yellow {
+    background-color: $yellow-heading;
+    border: 1px dashed #fff;
+    color: $black-bg;
+    border-radius: 5px 5px;
+    &:hover {
+        background-color: $orange;
+    }
+}
+
+footer {
+    background: $black-bg;
+    color: #fff;
+        & h4 {
+            color: #fff;
+            margin-top: 10px;
+        }
+    clear:both;
+    height: auto;
+    width: 100%;
+        & .columns {
+        }
+            & #footer {
+                max-width: 100rem;
+            }
+}
+
+#copyright {
+    background: $black-bg;
+    color: #fff;
+    max-width: 100rem;
+    text-align: center;
+    border-top: 1px dashed #fff;
+    padding: 5px 0 5px 0;
+    & .columns p {
+        margin: 0;
+    }
+        & ul {
+            padding: 0;
+            margin: 0;
+        }
+            & ul li {
+                list-style-type: none;
+                display: inline;
+            }
+                & a:link, a:visited {
+                    color: $yellow-heading;
+                }
+}
+
+// Home Page
+iframe.home {
+    width: 95%;
+    margin-left: 2.5%;
+    height: 400px;
+}
+
+// Media Queries
+@media only screen and (min-width: 40.0625em) { // Foundatin default width
+    nav .top-bar-section li.active:not(.has-form) a:not(.button) {
+        border-radius: 5px 5px;
+        border: 1px dashed #fff;
+        padding: 5px 0 5px 0;
+        margin-left: 5px;
+    }
+    nav .top-bar-section li:not(.has-form) a:not(.button) {
+        width: 80px;
+        text-align: center;
+        padding: 5px 0 5px 0;
+        margin-left: 5px;
+        transition: all 0.5s ease;
+        &:hover {
+            background: #008CBA;
+            color: #fff;
+            border-radius: 10px 10px;        
+            border: 1px dashed #fff;
+        }    
+    }        
+    nav .top-bar-section ul li {
+        margin-top: 2.5em;
+    }
+}
+
+@media only screen and (max-width: 40.0624em) {
+    nav .top-bar-section li:not(.has-form) a:not(.button):hover {
+        background: #008CBA;
+        color: #fff;
+    }
+}
