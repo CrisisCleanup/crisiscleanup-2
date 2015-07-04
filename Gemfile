@@ -19,6 +19,8 @@ gem 'rails_12factor', group: :production
 
 gem 'foundation-rails'
 
+gem "httpclient"
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
