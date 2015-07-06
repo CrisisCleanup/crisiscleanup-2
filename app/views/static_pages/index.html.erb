@@ -1,18 +1,3 @@
-<% content_for :top_bar_section do %>
-<section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Map</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Sign Up</a></li>
-        <li><a href="#">Form</a></li>
-        <li><a href="#">Login</a></li>
-    </ul>
-</section>
-<% end %>
-
 <% content_for :breadcrumbs do %>
 <ul class="breadcrumbs">
   <li><a href="#">Home</a></li>
@@ -28,36 +13,73 @@
 <% end %>
 
 <% content_for :main do %>
-<div class="columns small-12 medium-9 large-9 main">
-    <iframe class="home" width="" height="" src="https://www.youtube.com/embed/yCxI5YHyX5k?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
-    <h3>How do you organize 30,000 volunteers from 100 organizations to 5,000 locations across a 500-mile arc in 8 weeks?</h3>
-    <h4>You don't. You let them organize themselves.</h4>
-    <p>Crisis Cleanup is a free, open source application that connects disaster recovery organizations with the people who need help. We've already connected • 40,000+ volunteers from • 230+ organizations with • 10,000 families in • 17 states and • 20 disasters in • 4 countries, creating more than • $26 million in impact.</p>
+<div id="main">
+    <div class="row">
+        <div class="columns small-12 medium-12 large-9">
+            <ul data-orbit>
+              <li>
+                <img src="http://placehold.it/1920x850" alt="slide 1" />
+                <div class="orbit-caption">
+                  Caption Two.
+                </div>
+              </li>                   
+              <li>
+                <img src="http://placehold.it/1920x850" alt="slide 2" />
+                <div class="orbit-caption">
+                  Caption Two.
+                </div>
+              </li>
+              <li>
+                <img src="http://placehold.it/1920x850" alt="slide 3" />
+                <div class="orbit-caption">
+                  Caption Three.
+                </div>
+              </li>
+            </ul>
+            </div> 
+                <div class="sidebar">
+                    <div class="columns small-12 medium-12 large-3">
+                        <h4>Sidebar Title</h4>
+                        <p><em>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball. Pig t-bone ham hock, ribeye pork chop rump boudin tongue pork belly pork pancetta kielbasa brisket alcatra tri-tip. </em></p>
+                        <ul class="stack-for small button-group" align="center">
+                          <li><a href="#" class="button red">Button 1</a></li>
+                          <li><a href="#" class="button orange">Button 2</a></li>
+                          <li><a href="#" class="button blue">Button 3</a></li>
+                          <li><a href="#" class="button yellow">Button 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+    </div>
+    <div class="row">
+        <div class="columns small-12 medium-4 large-4"> 
+        </div>
+            <div class="columns small-12 medium-4 large-4"> 
+            </div>
+                <div class="columns small-12 medium-4 large-4"> 
+                </div>        
+    </div>
+    <div class="row">
+        <div class="columns small-12 medium-12 large-12">
+            <h3>How do you organize 30,000 volunteers from 100 organizations to 5,000 locations across a 500-mile arc in 8 weeks?</h3>
+            <h4>You don't. You let them organize themselves.</h4>
+            <p>Crisis Cleanup is a free, open source application that connects disaster recovery organizations with the people who need help. We've already connected • 40,000+ volunteers from • 230+ organizations with • 10,000 families in • 17 states and • 20 disasters in • 4 countries, creating more than • $26 million in impact.</p>
 
-    <p>Crisis Cleanup empowers relief organizations to instantly coordinate response efforts in real time, redirecting thousands of volunteers from to waiting lines to survivors' basements.</p>
+            <p>Crisis Cleanup empowers relief organizations to instantly coordinate response efforts in real time, redirecting thousands of volunteers from to waiting lines to survivors' basements.</p>
 
-    <p>Crisis Cleanup was developed by and for field volunteers, team leaders, canvassers, and the people who work one-on-one with people whose homes have been affected by flood, tornadoes, earthquakes, wind, fire, or other disaster. Crisis Cleanup can respond to a new disaster the same day, permitting relief organizations to instantly coordinate efforts.</p>
+            <p>Crisis Cleanup was developed by and for field volunteers, team leaders, canvassers, and the people who work one-on-one with people whose homes have been affected by flood, tornadoes, earthquakes, wind, fire, or other disaster. Crisis Cleanup can respond to a new disaster the same day, permitting relief organizations to instantly coordinate efforts.</p>
 
-    <p>Crisis Cleanup implements a "Craigslist" philosophy to recovery efforts– organizations that are aware of work orders enter them into the system, and organizations with capacity to help can claim and perform the work. The system is not public, but it is open and transparent among participating organizations. No centralized organization is "in charge." This non-threatening approach minimizes duplication and maximizes communication, coordination, and efficiency.</p>
+            <p>Crisis Cleanup implements a "Craigslist" philosophy to recovery efforts– organizations that are aware of work orders enter them into the system, and organizations with capacity to help can claim and perform the work. The system is not public, but it is open and transparent among participating organizations. No centralized organization is "in charge." This non-threatening approach minimizes duplication and maximizes communication, coordination, and efficiency.</p>
 
-    <p>While entering a client into Crisis Cleanup does not guarantee that he or she will be served, it guarantees visibility and maximizes the chances for assistance, while helping relief organizations prioritize their limited resources.</p>
+            <p>While entering a client into Crisis Cleanup does not guarantee that he or she will be served, it guarantees visibility and maximizes the chances for assistance, while helping relief organizations prioritize their limited resources.</p>
 
-    <p>Crisis Cleanup was awarded the FedEx Innovative Program of the Year Award at the 2013 National VOAD conference.</p>
+            <p>Crisis Cleanup was awarded the FedEx Innovative Program of the Year Award at the 2013 National VOAD conference.</p>
 
-    <p>Disaster relief organizations may join as long as they: 1. Have a physical presence in a disaster area, 2. Perform assessments and/or gutting, mucking-out, debris removal, mold abatement, or rebuilding and 3. Are reputable (e.g. are a VOAD member or come recommended by a VOAD). Crisis Cleanup is free of charge.</p>
+            <p>Disaster relief organizations may join as long as they: 1. Have a physical presence in a disaster area, 2. Perform assessments and/or gutting, mucking-out, debris removal, mold abatement, or rebuilding and 3. Are reputable (e.g. are a VOAD member or come recommended by a VOAD). Crisis Cleanup is free of charge.</p> 
+        </div>
+    </div>
 </div>
 <% end %>
 
-<% content_for :sidebar do %>
-<div class="columns small-12 medium-3 large-3 sidebar">
-    <h4>Sidebar Title</h4>
-    <p><em>Description goes here</em></p>
-    <a href="#" class="button expand yellow">Action Item 1</a>
-    <a href="#" class="button expand yellow">Action Item 2</a>
-    <a href="#" class="button expand yellow">Action Item 3</a>
-    <a href="#" class="button expand yellow">Action Item 4</a>
-</div>
-<% end %>
 
 <% content_for :javascripts do %>
 <% end %>
