@@ -1,4 +1,10 @@
-@import "foundation_and_overrides";
-@import "static_pages";
+@import "modules/foundation_and_overrides";
+.public{
+	@import "public_pages/static_pages";
+}
+.dashboard{
+	@import "admin_pages/dashboard"
+}
+
 @import "compass";
 @import 'foundation-icons';
