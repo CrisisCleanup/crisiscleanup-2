@@ -14,7 +14,7 @@ $clay: #919192;
 $smoke: #5c5c5c;
 $coal: #242424;
 
-
+@import "icons/*.png";
 
 // Global
 html, body {
@@ -53,6 +53,9 @@ nav {
         height: 125px;
     }
 }
+.top-bar.expanded {
+    z-index: 300;
+}
 .breadcrumbs {
     li:nth-child(1) {
         margin-left: 20px;
@@ -74,9 +77,7 @@ nav {
 #main {
 }
 .sidebar {
-    background: $coal;
     & .columns {
-        background: $coal;
         border-radius: 5px 5px;
     }
         & h4, p {
@@ -130,76 +131,124 @@ h1, h2, h3, h4, h5, h6 {
     color: $royal;
     font-weight: bold;
 }
+.center {
+    text-align: center;
+}
+ul li, ol li {
+    margin-bottom: 10px;
+}
+
+// Color Blocks
+.color-block, .cta {
+    margin: 20px 0 20px 0;
+    padding: 20px 0 20px 0;
+    & h2, h3, h4, p {
+        margin-left: 13%;
+    }
+}
+.color-block {
+    & h2, h3, h4, p {
+        color: #fff;
+    }
+}
+.cta .columns .button {
+    margin-top: 20px;
+}
+.white {
+    color: $off-white;
+}
+.red, .red .columns {
+    background-color: $berry;
+}
+.orange, .orange .columns {
+    background-color: $pumpkin;
+}
+.yellow, .yellow .columns {
+    background-color: $goldenrod;
+}
+.green, .green .columns {
+    background-color: $forest;
+}
+.blue, .blue .columns {
+    background-color: $baby;
+}
+.gray, .gray .columns {
+    background-color: $smoke;
+}
+.black, .black .columns {
+    background-color: $coal;
+}
 
 // Buttons
-.button.yellow {
-    background-color: $goldenrod;
+.button {
     border: 1px dashed #fff;
     color: #fff;
     border-radius: 5px 5px;
-    &:hover {
+    transition: all 0.5s ease;
+}
+.button.yellow:hover {
         background-color: $mustard;
-    }
 }
-.button.orange {
-    background-color: $pumpkin;
-    border: 1px dashed #fff;
-    color: #fff;
-    border-radius: 5px 5px;
-    &:hover {
+.button.orange:hover {
         background-color: $terra;
-    }
 } 
-.button.red {
-    background-color: $berry;
-    border: 1px dashed #fff;
-    color: #fff;
-    border-radius: 5px 5px;
-    &:hover {
+.button.red:hover {
         background-color: $maroon;
-    }
 }   
-.button.green {
-    background-color: $jade;
-    border: 1px dashed #fff;
-    color: #fff;
-    border-radius: 5px 5px;
-    &:hover {
+.button.green:hover {
         background-color: $forest;
-    }
 }       
-.button.blue {
-    background-color: $baby;
-    border: 1px dashed #fff;
-    color: #fff;
-    border-radius: 5px 5px;
-    &:hover {
+.button.blue:hover {
         background-color: $royal;
-    }
 }  
-.button.gray {
-    background-color: $clay;
-    border: 1px dashed #fff;
-    color: #fff;
-    border-radius: 5px 5px;
-    &:hover {
+.button.gray:hover {
         background-color: $coal;
-    }
 }
-.button.black {
-    background-color: $baby;
-    border: 1px dashed #fff;
-    color: #fff;
-    border-radius: 5px 5px;
-    &:hover {
-        background-color: $royal;
-    }
+.button.black:hover {
+        background-color: $coal;
 }   
 .button-group > li {
     margin-right: 5px;
 }
 
 // Home Page
+.home-icons {
+    margin: 40px 0 0 0;
+    & img {
+        vertical-align: middle;
+        margin: 0 0 0 25%;
+        width: 50%;
+        height: auto;
+        }
+        & h2, h3, p {
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        & .columns {
+            margin-top: 20px;
+        }
+}
+.tornado-block, .hurricane-block, .flood-block {
+    & h3, p {
+        color: #fff;
+    }
+    & img {
+        margin-left: auto;
+        margin-right: auto;
+        vertical-align: middle;
+        width: 150px;
+        height: 150px;
+    }
+}
+.tornado-block {
+    background-color: $berry;
+}
+.hurricane-block {
+    background-color: $mustard;
+}
+.flood-block {
+    background-color: $royal;
+}
 
 // Media Queries
 @media only screen and (min-width: 40.0625em) { // Foundatin default width
