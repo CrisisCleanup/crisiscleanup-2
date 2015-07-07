@@ -7,5 +7,32 @@ module Admin
     def index
 
     end
+    def new
+    	@event = Legacy::LegacyEvent.new
+    end
+    def create
+		       
+        @event = Legacy::LegacyEvent.new(event_params) 
+        if @event.save
+         	render :index
+        else
+            render :new
+        end
+    
+    end
+    private
+	    def event_params
+	        params.require(:legacy_legacy_event).permit(
+	        	:case_label,
+	        	:counties,
+	        	:name,
+	        	:short_name,
+	        	:created_date,
+	        	:start_date,:end_date,
+	        	:num_sites,:reminder_contents,
+	        	:reminder_days
+			)
+	    end
   end
 end
+
