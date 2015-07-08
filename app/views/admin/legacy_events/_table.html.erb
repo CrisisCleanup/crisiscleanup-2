@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th width="200">Case Label</th>
+      <th>Name</th>
+      <th width="150">Start Date</th>
+      <th width="150">End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% events.each do |event| %>
+      <tr>
+        <td> <%= event.case_label %> </td>
+        <td> <%= event.name %> </td>
+        <td> <%= event.start_date %> </td>
+        <td> <%= event.end_date %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

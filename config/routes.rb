@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :legacy_events
+    resources :legacy_sites
   end
 
 

@@ -1,6 +1,9 @@
 module Legacy
   class LegacySite < ActiveRecord::Base
   	  belongs_to :legacy_event
+  	  validates_presence_of :address,:blurred_latitude,:blurred_longitude,:case_number,:city,:latitude,:longitude,:name
+  	
+
   	  def claimed_by_org
   	  	LegacyOrganization.find(self.claimed_by)
   	  end

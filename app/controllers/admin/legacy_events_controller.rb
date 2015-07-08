@@ -5,7 +5,8 @@ module Admin
     # add logic to only allow ccu admins to access this
     # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
-
+        # todo implement search and sort and paginate
+        @events = Legacy::LegacyEvent.all
     end
     def new
     	@event = Legacy::LegacyEvent.new
@@ -14,7 +15,7 @@ module Admin
 		       
         @event = Legacy::LegacyEvent.new(event_params) 
         if @event.save
-         	render :index
+         	redirect_to admin_legacy_events_path
         else
             render :new
         end

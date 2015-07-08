@@ -1,0 +1,89 @@
+<%= simple_form_for site, url: url do |f| %>
+  <div class="margin-top row">
+    <div class="medium-12 columns">
+      <%= f.input :name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.association :legacy_event %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :case_number %>
+    </div>
+  </div>
+
+  <div class="row">
+  	<div class="medium-8 columns">
+  		<%= f.input :address %>
+  	</div>
+    <div class="medium-4 columns">
+      <%= f.input :city %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :state %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :phone %>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :latitude %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :longitude %>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="medium-6 columns">
+  		<%= f.input :blurred_latitude %>
+  	</div>
+    <div class="medium-6 columns">
+      <%= f.input :blurred_longitude %>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="small-12 medium-6 columns">
+  		<%= f.input :claimed_by %>
+  	</div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :reported_by %>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="medium-12 columns">
+  		<%= f.input :requested_at %>
+  	</div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :work_type %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :status %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :data,  as: :text %>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="medium-12 columns">
+  		<%= f.button :submit %>
+  	</div>
+  </div>
+
+<% end %>
+
+    
+                       
+                        
+     
+       
+     
