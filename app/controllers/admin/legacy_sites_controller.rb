@@ -19,6 +19,17 @@ module Admin
             render :new
         end 
     end
+    def edit        
+        @site = Legacy::LegacySite.find(params[:id])
+    end
+    def update
+        @site = Legacy::LegacySite.find(params[:id])
+        if  @site.update_attributes(site_params)
+            redirect_to admin_legacy_sites_path
+        else
+            redirect_to edit_admin_legacy_site_path(@site.id)
+        end
+    end
     private
 	    def site_params
 	        params.require(:legacy_legacy_site).permit(

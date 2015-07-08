@@ -11,8 +11,7 @@ module Admin
     def new
     	@event = Legacy::LegacyEvent.new
     end
-    def create
-		       
+    def create    
         @event = Legacy::LegacyEvent.new(event_params) 
         if @event.save
          	redirect_to admin_legacy_events_path
@@ -20,6 +19,17 @@ module Admin
             render :new
         end
     
+    end
+    def edit
+        @event = Legacy::LegacyEvent.find(params[:id])
+    end
+    def update
+        @event = Legacy::LegacyEvent.find(params[:id])
+        if  @event.update_attributes(event_params)
+            redirect_to admin_legacy_events_path
+        else
+            redirect_to edit_admin_legacy_event_path(@event.id)
+        end
     end
     private
 	    def event_params

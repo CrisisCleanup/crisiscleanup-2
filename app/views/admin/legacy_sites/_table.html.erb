@@ -10,7 +10,11 @@
   <tbody>
     <% sites.each do |site| %>
       <tr>
-        <td> <%= site.legacy_event.case_label %> </td>
+        <td> 
+          <a href=<%=edit_admin_legacy_site_path(site.id)%>>
+              <%= site.legacy_event.case_label %>
+            </a>
+        </td>
         <td> <%= site.name %> </td>
         <td> <%= site.address %> </td>
         <td> <%= site.city %> </td>

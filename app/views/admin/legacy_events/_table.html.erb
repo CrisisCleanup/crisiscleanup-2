@@ -10,7 +10,11 @@
   <tbody>
     <% events.each do |event| %>
       <tr>
-        <td> <%= event.case_label %> </td>
+        <td>
+          <a href=<%=edit_admin_legacy_event_path(event.id)%>> 
+            <%= event.case_label %>
+          </a>
+        </td>
         <td> <%= event.name %> </td>
         <td> <%= event.start_date %> </td>
         <td> <%= event.end_date %> </td>
