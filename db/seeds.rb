@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 5.times do 
 	legacy_event = Legacy::LegacyEvent.create(
-		case_label: Faker::Lorem.sentence,                                                                   
-		name: Faker::Name.name,   
-		short_name: Faker::Name.name,  
+		case_label: Faker::Company.bs,                                                                   
+		name: Faker::Address.city + " Disaster",   
+		short_name: 'Disaster',
 		created_date:  DateTime.now.to_date,                                   
 		start_date: DateTime.now.to_date, 
 		end_date: DateTime.now.to_date, 
@@ -19,7 +19,8 @@
 
 
 	5.times do
-		Legacy::LegacyOrganization.create(
+		
+		org = Legacy::LegacyOrganization.create(
 			activate_by: DateTime.now.to_date,
 			activated_at: DateTime.now.to_date,
 			activation_code: Faker::Code.ean,
@@ -31,7 +32,7 @@
 			is_active: true,
 			latitude: Faker::Address.latitude,
 			longitude: Faker::Address.longitude,
-			name:   Faker::Name.name,
+			name:   Faker::Team.name,
 			password:  Faker::Internet.password,
 			permissions: Faker::Lorem.word,
 			phone: Faker::PhoneNumber.cell_phone,
@@ -47,6 +48,16 @@
 			work_area:Faker::Lorem.sentence,
 			zip_code: Faker::Address.zip
 		)
+		
+		2.times do
+			Legacy::LegacyContact.create(
+				email: Faker::Internet.email,
+				first_name: Faker::Name.first_name,
+				last_name: Faker::Name.last_name,
+				legacy_organization_id: org.id,
+				phone: Faker::PhoneNumber.cell_phone
+			)
+		end
 	end
 
 	5.times do 
@@ -59,7 +70,7 @@
 			case_number: Faker::Lorem.sentence,
 			city: Faker::Address.city,
 			legacy_event_id: legacy_event.id,
-			name:      Faker::Name.name,
+			name:     Faker::Address.city + 'Disaster',
 			phone:       Faker::PhoneNumber.cell_phone,
 			reported_by: 1,
 			requested_at: DateTime.now.to_date,

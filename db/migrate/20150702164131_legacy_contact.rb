@@ -5,7 +5,7 @@ class LegacyContact < ActiveRecord::Migration
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.integer :legacy_organization_id, null: false
-      t.boolean :is_primary
+      t.boolean :is_primary, default: false
 	  t.string :phone, null: false
   	end
   end

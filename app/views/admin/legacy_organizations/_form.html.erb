@@ -15,6 +15,7 @@
       <%= f.input :publish %>
     </div> 
   </div>
+  
   <div class="row">
     <div class="small-12 medium-6 columns">
       <%= f.input :is_active %>
@@ -22,9 +23,11 @@
   </div>
 
   <div class="row">
-    <div class="medium-6 columns">
-      <%= f.input :password %>
-    </div>
+    <% if !org.id.present? %>
+        <div class="medium-6 columns">
+          <%= f.input :password %>
+        </div>
+    <%end%>    
     <div class="medium-6 columns">
       <%= f.input :permissions %>
     </div>

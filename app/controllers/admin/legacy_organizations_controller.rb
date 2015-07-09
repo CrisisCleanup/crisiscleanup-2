@@ -11,25 +11,20 @@ module Admin
     def new
     	@org = Legacy::LegacyOrganization.new
     end
-    def create    
-        
+    def create          
         @org = Legacy::LegacyOrganization.new(org_params) 
         if @org.save
          	redirect_to admin_legacy_organizations_path
         else
             render :new
-        end
-    
+        end 
     end
     def edit
         @org = Legacy::LegacyOrganization.find(params[:id])
     end
     def update
-        
         @org = Legacy::LegacyOrganization.find(params[:id])
-        
         if  @org.update_attributes(org_params)
-          
             redirect_to admin_legacy_organizations_path
         else
             redirect_to edit_admin_legacy_organization_path(@org.id)

@@ -1,0 +1,44 @@
+<%= simple_form_for contact, url: url do |f| %>
+  <div class="margin-top row">
+  	<div class="medium-6 columns">
+  		<%= f.association :legacy_organization %>
+  	</div>
+    <div class="medium-6 columns">
+      <%= f.input :email %>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="medium-6 columns">
+  		<%= f.input :first_name %>
+  	</div>
+    <div class="medium-6 columns">
+      <%= f.input :last_name %>
+    </div>
+  </div>
+
+  <div class="row">
+  	<div class="medium-12 columns">
+  		<%= f.input :is_primary %>
+  	</div>
+  </div>
+  <div class="row">
+  	<div class="large-12 columns">
+  		<%= f.input :phone %>
+  	</div>
+  </div>
+  
+  <div class="row">
+  	<div class="large-12 columns">
+  		<%= f.button :submit %>
+  	</div>
+  </div>
+
+<% end %>
+
+                  
+                   
+                       
+                        
+     
+       
+     

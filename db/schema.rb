@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 20150703181119) do
   enable_extension "hstore"
 
   create_table "legacy_contacts", force: :cascade do |t|
-    t.string  "email",                  null: false
-    t.string  "first_name",             null: false
-    t.string  "last_name",              null: false
-    t.integer "legacy_organization_id", null: false
-    t.boolean "is_primary"
-    t.string  "phone",                  null: false
+    t.string  "email",                                  null: false
+    t.string  "first_name",                             null: false
+    t.string  "last_name",                              null: false
+    t.integer "legacy_organization_id",                 null: false
+    t.boolean "is_primary",             default: false
+    t.string  "phone",                                  null: false
   end
 
   create_table "legacy_events", force: :cascade do |t|
