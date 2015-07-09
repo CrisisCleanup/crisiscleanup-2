@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20150703181119) do
     t.string   "email",                                       null: false
     t.string   "facebook"
     t.boolean  "is_active",                                   null: false
-    t.boolean  "is_admin",                                    null: false
+    t.boolean  "is_admin",                    default: false
     t.float    "latitude",                                    null: false
     t.float    "longitude",                                   null: false
     t.string   "name",                                        null: false

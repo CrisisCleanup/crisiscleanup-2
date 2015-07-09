@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th width="200">Name</th>
+      <th width="150">City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orgs.each do |org| %>
+      <tr>
+        <td>
+          <a href=<%=edit_admin_legacy_organization_path(org.id)%>> 
+            <%= org.name %>
+          </a>
+        </td>
+        <td> <%= org.city %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

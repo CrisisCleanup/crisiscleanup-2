@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :legacy_events
     resources :legacy_sites
+    resources :legacy_organizations
+
   end
 
 

@@ -34,7 +34,8 @@ module Admin
     private
 	    def event_params
 	        params.require(:legacy_legacy_event).permit(
-	        	:case_label,
+	        	{:legacy_organization_ids => []},
+                :case_label,
 	        	:counties,
 	        	:name,
 	        	:short_name,
