@@ -1,0 +1,195 @@
+<%= simple_form_for org, url: url do |f| %>
+  <div class="margin-top row">
+    <div class="medium-6 columns">
+      <%= f.input :name %>
+    </div>   
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.association :legacy_events %>
+    </div>   
+  </div>
+  
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :publish %>
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :is_active %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% if !org.id.present? %>
+        <div class="medium-6 columns">
+          <%= f.input :password %>
+        </div>
+    <%end%>    
+    <div class="medium-6 columns">
+      <%= f.input :permissions %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :deprecated %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :is_admin %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :reputable %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :org_verified %>
+    </div>
+  </div>
+            
+  <div class="row">
+    <div class="medium-8 columns">
+      <%= f.input :address %>
+    </div>
+    <div class="medium-4 columns">
+      <%= f.input :city %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :state %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :zip_code %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :email %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :phone %>
+    </div>
+  </div>
+  <div class="row">   
+    <div class="medium-12 columns">
+      <%= f.input :url %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :facebook %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :twitter %>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :latitude %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :longitude %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :activate_by %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :does_only_coordination %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :does_only_sit_aware %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :does_recovery %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :does_something_else %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :not_an_org %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :physical_presence %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :activated_at %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :activation_code %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :voad_referral %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :work_area %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :only_session_authentication %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :terms_privacy %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-12 columns">
+      <%= f.input :timestamp_login %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-12 columns">
+      <%= f.input :timestamp_signup %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :admin_notes,  as: :text %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.button :submit %>
+    </div>
+  </div>
+
+<% end %>
+
+    
+                      
+
+                   
+            
+           
+                        
+     
+       
+     

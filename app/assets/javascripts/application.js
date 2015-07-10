@@ -15,5 +15,6 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
-
+//= require ./scripts.js
+//= require_tree ./plugins
 $(function(){ $(document).foundation(); });
