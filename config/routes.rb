@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     resources :legacy_contacts
   end
 
-  get "/dashboard" => 'volunteer/dashboard#index', as:"dashboard"
-  namespace :volunteer do
+  get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
+  namespace :worker do
      get "/dashboard" => 'dashboard#index', as:"dashboard"
   end
 

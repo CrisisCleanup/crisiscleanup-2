@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   def assign_layout
         if admin_dashboard_mode
             'admin_dashboard'
-        elsif volunteer_dashboard_mode
-            'volunteer_dashboard'          
+        elsif worker_dashboard_mode
+            'worker_dashboard'          
         end
           
   end
@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
   def admin_dashboard_mode
     self.class.parent == Admin
   end
-  def volunteer_dashboard_mode
-    self.class.parent == Volunteer
+  def worker_dashboard_mode
+    self.class.parent == Worker
   end
 
   def after_sign_in_path_for(resource)

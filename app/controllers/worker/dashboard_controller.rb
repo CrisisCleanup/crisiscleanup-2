@@ -1,4 +1,4 @@
-module Volunteer
+module Worker
   class DashboardController < ApplicationController
     include ApplicationHelper
     before_filter :check_user
