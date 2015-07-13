@@ -59,52 +59,8 @@ desc "imports"
 		appengine_import 'organization', nil, ["incidents"], ["incidents", "incident"], Legacy::LegacyOrganization
 	end
   	
-  	task :import_contacts_2 => :environment do
-  		appengine_import 'organization', {"organization": "legacy_organization_id"}, nil, nil, Legacy::LegacyContact
-  	end
   	task :import_contacts => :environment do
-  		puts "IMPORTING CONTACTS..."
-  		create_log_file CCU_ERROR_LOGS
-  		create_log_file CONTACT_LOGS
-  		errors_count = 0
-  		count = 0
-  		errors = false
-	  	results = get_results("contact_keys", "contact")
-	  	results.each do |result|
-	  		values_hash = JSON[result]
-	  		# create as a function argument
-	  		organization = values_hash["organization"]
-	  		values_hash.delete("organization")
-	  		org_entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, organization if organization
-	  	    values_hash["legacy_organization_id"] = org_entity.id if org_entity
-	  	    #
-	  	    # Need: key, table, hash_key_name
-	  		contact = Legacy::LegacyContact.new(values_hash)
-	  		unless are_entities_identical? values_hash, contact
-	  			write_to_log_file(CONTACT_LOGS, "#{values_hash['appengine_key']} is not identical")
-	  			errors = true
-	  		end
-	  		if are_there_duplicates?(Legacy::LegacyContact, values_hash["appengine_key"])
-	  			write_to_log_file(CONTACT_LOGS, "#{values_hash['appengine_key']} has duplicates")
-	  			errors = true
-	  		end
-	  		if errors
-	  			errors_count += 1
-	  			puts "#{errors_count} errors"
-	  		else
-	  			begin
-	  				contact.save
-			  		count +=1
-			  		puts "#{count} saved"
-			  	rescue => e
-			  		puts "db error"
-			  		puts e.message
-			  		errors_count += 1
-			  		puts "#{errors_count} errors"
-			  		write_to_log_file(CONTACT_LOGS, "#{values_hash['appengine_key']} has error: #{e}")
-			  	end
-		  	end
-	  	end	  	
+  		appengine_import 'contact', {"organization": "legacy_organization_id"}, nil, nil, Legacy::LegacyContact
   	end
 
   	task :import_sites_2 => :environment do
@@ -207,14 +163,15 @@ def get_keys_from_appengine(keys)
 	client = HTTPClient.new(proxy)
 	target = "http://#{URL}/api/migration?action=#{keys}"
 	result = client.get_content(target)
+	JSON[result]
 end
 def get_results(keys, table_name)
 	results = []
 	proxy = ENV['HTTP_PROXY']
 	client = HTTPClient.new(proxy)
 
-	result = get_keys_from_appengine keys
-	result_keys = JSON[result]
+	result_keys = get_keys_from_appengine keys
+	
 	puts result_keys.count
 	# puts "Results retrieved"
 	# result.delete! "[]"
@@ -375,7 +332,6 @@ end
 def run_integrity_check keys_type, table_name, pg_table
     puts "[#{table_name}-integrity_check]-[Information]-[Start #{table_name} integrity_check]"
 	results = get_keys_from_appengine keys_type
-	results = JSON[results]
 	count = 0
 	errors_count = 0
 	results.each do |result|
@@ -417,6 +373,22 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 	    		entity.delete(deletion)
 	    	end
 	    end
+	    if relations
+	    	relations.each do |key, value|
+
+				relation = entity[key.to_s]
+				entity.delete(key.to_s)
+				# db_table = Legacy::LegacyOrganization if key == "organization"
+				# db_table = Legacy::LegacyEvent if key != "organization"
+				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, relation if relation and key.to_s == "organization"
+				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, relation if relation and key.to_s != "organization"
+
+			    entity[value.to_s] = db_entity.id if db_entity
+
+			    # binding.pry
+
+	    	end
+	    end
 
     	pg_entity = pg_table.new(entity)
     	unless identical_and_unique? entity, pg_entity, Legacy::LegacyEvent
@@ -455,8 +427,7 @@ def get_appengine_entities(table_name)
 	proxy = ENV['HTTP_PROXY']
 	client = HTTPClient.new(proxy)
 
-	result = get_keys_from_appengine "#{table_name}_keys"
-	result_keys = JSON[result]
+	result_keys = get_keys_from_appengine "#{table_name}_keys"
 	puts "[#{table_name}-import]-[Information]-[Total entities: #{result_keys.count}]"
 	count = 0
 	errors_count = 0
