@@ -64,7 +64,7 @@ desc "imports"
   	end
 
   	task :import_sites_2 => :environment do
-  		appengine_import 'site', {"event": "legacy_event_id", "created_by": "created_by", "reported_by": "reported_by"}, nil, nil, Legacy::LegacySite
+  		appengine_import 'site', {"legacy_event_id": "legacy_event_id", "created_by": "created_by", "reported_by": "reported_by", "claimed_by": "claimed_by"}, nil, nil, Legacy::LegacySite
   	end
   	task :import_sites => :environment do
   		puts "IMPORTING Sites..."
@@ -219,8 +219,10 @@ def are_entities_identical? appengine_hash, model_entity
 			elsif key.include? "blurred"
 			elsif key.include? "claimed_by" or key.include? "reported_by"
 				# get entity by key, check ids against one another
-				org = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, value
-				unless org.id == model_entity.attributes[key]
+				entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, value
+				entity = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, value if entity.nil?
+				# set up for event
+				unless entity.id == model_entity.attributes[key]
 					puts key
 					identical = false
 				end
@@ -325,6 +327,11 @@ def values_hash_for_sites values_hash
 			values_hash["data"][key] = values_hash[key]
 			values_hash.delete(key)
 		end
+		if key == "work_type"
+			if value.nil? or value == ""
+				values_hash["work_type"] == "Other"
+			end
+		end
 	end
 	values_hash
 end
@@ -378,17 +385,16 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 
 				relation = entity[key.to_s]
 				entity.delete(key.to_s)
+
 				# db_table = Legacy::LegacyOrganization if key == "organization"
 				# db_table = Legacy::LegacyEvent if key != "organization"
 				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, relation if relation and key.to_s == "organization"
 				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, relation if relation and key.to_s != "organization"
 
 			    entity[value.to_s] = db_entity.id if db_entity
-
-			    # binding.pry
-
 	    	end
 	    end
+	    entity = values_hash_for_sites entity if appengine_table == "site"
 
     	pg_entity = pg_table.new(entity)
     	unless identical_and_unique? entity, pg_entity, Legacy::LegacyEvent
@@ -434,9 +440,9 @@ def get_appengine_entities(table_name)
 	result_keys.each do |key|
 		begin
 			count += 1
-			# if count > 10
-			# 	break
-			# end
+			if count > 500
+				break
+			end
 			puts "[#{table_name}-import]-[Information]-[getting #{count}]"
 			target = "http://#{URL}/api/migration?action=get_entity_by_key&table=#{table_name}&key=#{key}"
 			result = client.get_content(target)
