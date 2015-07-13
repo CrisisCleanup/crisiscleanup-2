@@ -1,9 +1,10 @@
 @import "modules/foundation_and_overrides";
 @import "modules/multi-select";
-.public{
+.public, .volunteer-dashboard{
 	@import "public_pages/static_pages";
 }
-.dashboard{
+
+.admin-dashboard{
 	@import "admin_pages/dashboard"
 }
 

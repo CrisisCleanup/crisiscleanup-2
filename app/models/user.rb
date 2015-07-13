@@ -7,5 +7,8 @@ class User < ActiveRecord::Base
   has_many :invitations, class_name: "User", foreign_key: "referring_user_id" 
   belongs_to :reference, class_name: "User", foreign_key: "referring_user_id"
 
+  def invited_by
+  	self.reference
+  end
 
 end
