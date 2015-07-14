@@ -1,9 +1,6 @@
 class ConsolidateMigrationsForApiImport < ActiveRecord::Migration
   def change
 
-  	add_column :legacy_sites, :date_closed, :date
-  	add_column :legacy_contacts, :title, :string
-
   	add_column :legacy_organizations, :voad_member, :boolean
   	add_column :legacy_organizations, :mold_treatment, :boolean
   	add_column :legacy_organizations, :tree_removal, :boolean
