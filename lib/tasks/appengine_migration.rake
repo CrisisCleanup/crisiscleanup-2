@@ -34,6 +34,7 @@ desc "imports"
 
 	task :import_and_check_organizations => :environment do
 		Rake::Task["appengine_migration:import_organizations"].invoke
+
 		Rake::Task["appengine_migration:organizations_integrity_check"].invoke
 		Rake::Task["appengine_migration:pg_check_organizations"].invoke
 	end
@@ -44,7 +45,7 @@ desc "imports"
 		Rake::Task["appengine_migration:pg_check_contacts"].invoke
 	end
 
-	task :import_and_check_sites => :environment do
+		task :import_and_check_sites => :environment do
 		Rake::Task["appengine_migration:import_sites"].invoke
 		Rake::Task["appengine_migration:sites_integrity_check"].invoke
 		Rake::Task["appengine_migration:pg_check_sites"].invoke
@@ -63,73 +64,17 @@ desc "imports"
   		appengine_import 'contact', {"organization": "legacy_organization_id"}, nil, nil, Legacy::LegacyContact
   	end
 
-  	task :import_sites_2 => :environment do
+  	
+  	task :import_sites => :environment do
   		appengine_import 'site', {"legacy_event_id": "legacy_event_id", "created_by": "created_by", "reported_by": "reported_by", "claimed_by": "claimed_by"}, nil, nil, Legacy::LegacySite
   	end
-  	task :import_sites => :environment do
-  		puts "IMPORTING Sites..."
-  		create_log_file CCU_ERROR_LOGS
-  		create_log_file SITE_LOGS
-
-  		errors_count = 0
-  		count = 0
-  		errors = false
-	  	results = get_results("site_keys", "site")
-	  	results.each do |result|
-	  		values_hash = JSON[result]
-	  		values_hash = values_hash_for_sites values_hash
-	  		event = values_hash["event"]
-	  		reported_by = values_hash["reported_by"]
-	  		claimed_by = values_hash["claimed_by"]
-
-	  		values_hash.delete("event")
-	  		values_hash.delete("claimed_by")
-	  		values_hash.delete("reported_by")
-
-	  		event_entity = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, event_entity if event_entity
-	  		reported_by_entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, reported_by if reported_by
-	  		claimed_by_entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, claimed_by if claimed_by
-
-
-	  	    values_hash["legacy_event_id"] = event_entity.id if event_entity
-	  	    values_hash["reported_by"] = reported_by_entity.id if reported_by_entity
-	  	    values_hash["claimed_by"] = claimed_by_entity.id if claimed_by_entity
-	  		site = Legacy::LegacySite.new(values_hash)
-	  		unless are_sites_identical? values_hash, site
-	  			write_to_log_file(SITE_LOGS, "#{values_hash['appengine_key']} is not identical")
-	  			errors = true
-	  		end
-	  		if are_there_duplicates?(Legacy::LegacySite, values_hash["appengine_key"])
-	  			write_to_log_file(SITE_LOGS, "#{values_hash['appengine_key']} has duplicates")
-	  			errors = true
-	  		end
-	  		if errors
-	  			errors_count += 1
-	  			puts "#{errors_count} errors"
-	  		else
-	  			begin
-	  				site.save
-			  		count +=1
-			  		puts "#{count} saved"
-			  	rescue => e
-			  		puts "db error"
-			  		puts e.message
-			  		errors_count += 1
-			  		puts "#{errors_count} errors"
-			  		write_to_log_file(SITE_LOGS, "#{values_hash['appengine_key']} has error: #{e}")
-			  	end
-		  	end
-	  	end	  	
-
-
-  	end
-
+  	
   	task :events_integrity_check => :environment do
 	  	run_integrity_check "event_keys", "event", Legacy::LegacyEvent
   	end
 
   	task :organizations_integrity_check => :environment do
-  		run_integrity_check "org_keys", "organization", Legacy::LegacyOrganization
+  		run_integrity_check "organization_keys", "organization", Legacy::LegacyOrganization
    	end
 
   	task :contacts_integrity_check => :environment do
@@ -193,8 +138,6 @@ def get_results(keys, table_name)
 			results << result
 		rescue
 			puts key
-			write_to_log_file(CCU_ERROR_LOGS, "#{key} is not being returned")
-
 		end
 	end
 	results
@@ -246,11 +189,6 @@ def are_entities_identical? appengine_hash, model_entity
 				end
 			else
 				puts key
-				puts value
-				puts model_entity.attributes[key]
-				puts appengine_hash["latitude"]
-				puts model_entity.attributes["latitude"]
-				write_to_log_file(CCU_ERROR_LOGS, "#{appengine_hash} is not identical")
 				identical = false
 			end
 		end
@@ -267,10 +205,6 @@ def are_there_duplicates? table, key
 	!table.find_by(appengine_key: key).nil?
 end
 
-def create_log_file filename
-   	File.open(filename, 'w') do |f|  
-  	end 
-end
 
 def write_to_log_file filename, line
    	File.open(filename, 'a') do |f|  
@@ -295,29 +229,52 @@ end
 
 
 def run_sites_integrity_check_from_pg pg_entities, table, log_file
+	puts "[#{table}-postgres_integrity_check]-[Information]-[Start #{table} integrity_check]"
+	count = 0
+	errors_count = 0
 	pg_entities.each do |entity|
 		appengine_entity = get_appengine_entity_from_key table, entity.appengine_key
 		if are_sites_identical? appengine_entity, entity
-			puts true
+			count += 1
+			puts "[#{table}-postgres_integrity_check]-[Success]-[Count: #{count}]"
 		else
-			write_to_log_file log_file, "#{entity.appengine_key} is not identical"
-			puts false
+			errors_count += 1
+			puts "[#{table}-postgres_integrity_check]-[Error]-[Error count: #{errors_count}]-[PG entity: #{entity.attributes}]"
 		end
 	end
+	puts "[#{table}-postgres_integrity_check]-[Information]-[Final success count: #{count}]"
+	puts "[#{table}-postgres_integrity_check]-[Information]-[Final errors count: #{errors_count}]"
 end
 
 def run_integrity_check_from_pg pg_entities, table, log_file #remove log file
-	puts "[#{table_name}-postgres_integrity_check]-[Information]-[Start #{table_name} integrity_check]"
-
+	puts "[#{table}-postgres_integrity_check]-[Information]-[Start #{table} integrity_check]"
+	count = 0
+	errors_count = 0
 	pg_entities.each do |entity|
 		appengine_entity = get_appengine_entity_from_key table, entity.appengine_key
+		if table == "organization"
+			# check reference
+			appengine_entity.delete("incidents")
+		end
+
+		if table == "contact"
+			# check reference
+			appengine_entity.delete("organization")
+		end
+		if table == "site"
+			# check references
+		end
 		if are_entities_identical? appengine_entity, entity
-			puts true
+			count += 1
+			puts "[#{table}-postgres_integrity_check]-[Success]-[Count: #{count}]"
 		else
-			write_to_log_file log_file, "#{entity.appengine_key} is not identical"
-			puts false
+			errors_count += 1
+			# binding.pry
+			puts "[#{table}-postgres_integrity_check]-[Error]-[Error count: #{errors_count}]-[PG entity: #{entity.attributes}]"
 		end
 	end
+	puts "[#{table}-postgres_integrity_check]-[Information]-[Final success count: #{count}]"
+	puts "[#{table}-postgres_integrity_check]-[Information]-[Final errors count: #{errors_count}]"
 end
 
 def values_hash_for_sites values_hash
@@ -360,7 +317,6 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 
     entities = get_appengine_entities(appengine_table)
     entities.each do |entity|
-
     	#make these separate functions
     	#entity = add_joins entity if joins, etc
     	if joins
@@ -377,26 +333,35 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 	    end
 	    if relations
 	    	relations.each do |key, value|
-
 				relation = entity[key.to_s]
-				entity.delete(key.to_s)
-
+				entity.delete(key)
 				# db_table = Legacy::LegacyOrganization if key == "organization"
 				# db_table = Legacy::LegacyEvent if key != "organization"
-				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, relation if relation and key.to_s == "organization"
-				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, relation if relation and key.to_s != "organization"
-
+				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, relation if relation and key.to_s != "legacy_event_id"
+				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, relation if relation and key.to_s == "legacy_event_id"
 			    entity[value.to_s] = db_entity.id if db_entity
+			    # if value == "claimed_by"
+			    # 	binding.pry 
+			    # end
+
 	    	end
 	    end
 	    entity = values_hash_for_sites entity if appengine_table == "site"
 
     	pg_entity = pg_table.new(entity)
-    	unless identical_and_unique? entity, pg_entity, Legacy::LegacyEvent
-    		errors_count += 1
-    		puts "[#appengine_table}-import]-[Errors count: #{errors_count}]"
-    		break
-    	end
+    	if appengine_table == "site"
+	    	unless identical_and_unique? entity, pg_entity, Legacy::LegacySite
+	    		errors_count += 1
+	    		puts "[#appengine_table}-import]-[Errors count: #{errors_count}]"
+	    		next
+	    	end
+	    else
+	    	unless identical_and_unique? entity, pg_entity, Legacy::LegacyEvent
+	    		errors_count += 1
+	    		puts "[#appengine_table}-import]-[Errors count: #{errors_count}]"
+	    		next
+	    	end
+	    end
     	begin
     		count += 1
         	pg_entity.save
@@ -435,7 +400,7 @@ def get_appengine_entities(table_name)
 	result_keys.each do |key|
 		begin
 			count += 1
-			if count > 500
+			if count > 10
 				break
 			end
 			puts "[#{table_name}-import]-[Information]-[getting #{count}]"
@@ -458,12 +423,12 @@ end
 def identical_and_unique? appengine_hash, model_entity, pg_table
 	success = true
 	unless are_entities_identical? appengine_hash, model_entity
-		puts "[Error]-[Entities are not identical]-[key: #{appengine_hash[appengine_key]}]"
-		success = true
+		puts "[Error]-[Entities are not identical]-[key: #{appengine_hash['appengine_key']}]"
+		success = false
 	end
 	if are_there_duplicates?(pg_table, appengine_hash["appengine_key"])
-		puts "[Error]-[Entity has a duplicate]-[key: #{appengine_hash[appengine_key]}]"
-		success = true
+		puts "[Error]-[Entity has a duplicate]-[key: #{appengine_hash['appengine_key']}]"
+		success = false
 	end
 	puts "[Success]-[Identical and Unique]" if success
 	success
