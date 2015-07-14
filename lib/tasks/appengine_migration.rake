@@ -361,10 +361,13 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 	    	end
 	    end
     	begin
-    		count += 1
+    		pg_entity.created_at = DateTime.now if pg_entity.created_at.nil?
+    		pg_entity.updated_at = DateTime.now if pg_entity.updated_at.nil?
+
         	pg_entity.save
+
         	unless pg_entity.valid?
-        		puts pg_entity.errors
+        		binding.pry
         	end
         	if joins
         		joins_hash.each do |key, value|
@@ -375,8 +378,10 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
         			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]"
         		end
         	end
+        	count += 1
         	puts "[#{appengine_table}-import]-[Information]-[Success count: #{count}]"
         rescue => e
+        	binding.pry
         	errors_count += 1
         	puts "[#{appengine_table}-import]-[Error]-[Database Error Message: #{e}]"
         	puts "[#{appengine_table}-import]-[Error]-[App engine key: #{entity['appengine_key']}]"

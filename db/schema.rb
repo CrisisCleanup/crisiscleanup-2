@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714173559) do
+ActiveRecord::Schema.define(version: 20150714224556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150714173559) do
     t.boolean  "does_something_else",         default: false
     t.string   "email"
     t.string   "facebook"
-    t.boolean  "is_active",                                   null: false
+    t.boolean  "is_active",                   default: false, null: false
     t.boolean  "is_admin",                    default: false
     t.float    "latitude",                                    null: false
     t.float    "longitude",                                   null: false
