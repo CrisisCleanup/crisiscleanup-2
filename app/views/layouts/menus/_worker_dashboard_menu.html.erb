@@ -1,0 +1,18 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+      <li class="name">
+          <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home"  %></a>
+      </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+  <!-- right side navigation -->
+  <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+          <li class="active"> 
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+          </li>
+      </ul>
+  </section>
+</nav>

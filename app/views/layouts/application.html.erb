@@ -18,7 +18,7 @@
     <header>
       <%= render "layouts/menus/application_menu" %>
     </header>
-        
+ 
     <!-- breadcrumbs -->
     <%= yield :breadcrumbs %>
 
@@ -27,7 +27,10 @@
         
     <div id="wrapper">
     <!-- main content -->
-      <%= yield :main %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>   
+
+    <%= yield :main %>
     </div>
         
     <footer>
