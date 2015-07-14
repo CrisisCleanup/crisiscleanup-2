@@ -363,6 +363,9 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
     	begin
     		count += 1
         	pg_entity.save
+        	unless pg_entity.valid?
+        		puts pg_entity.errors
+        	end
         	if joins
         		joins_hash.each do |key, value|
         			event = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, value
