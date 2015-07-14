@@ -17,22 +17,6 @@ ActiveRecord::Schema.define(version: 20150713193940) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-  create_table "form_fields", force: :cascade do |t|
-    t.integer  "form_id"
-    t.string   "name"
-    t.string   "label"
-    t.string   "field_type"
-    t.string   "options"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "forms", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "legacy_contacts", force: :cascade do |t|
     t.string  "email",                                  null: false
     t.string  "first_name",                             null: false

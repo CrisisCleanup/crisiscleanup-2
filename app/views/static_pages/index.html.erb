@@ -1,52 +1,62 @@
-<% content_for :breadcrumbs do %>
-<ul class="breadcrumbs">
-  <li><a href="#">Home</a></li>
-</ul>      
-<% end %>
-
 <% content_for :subheader do %>
 <div class="subheader">
     <h2>Open Source Disaster Relief Mapping and Work Coordination</h1>
-    <h4>• 15,000+ helped • 20 disasters • 4 countries • 300+ organizations • 40,000+ volunteers • $26m impact • Free •</h4>
+    <h4 class="basic">• 15,000+ helped • 20 disasters • 4 countries • 300+ organizations • 40,000+ volunteers • $26m impact • Free •</h4>
     <hr class="medium">
 </div>
 <% end %>
 
 <% content_for :main do %>
 <div id="main">
-    <div class="row">
+    <div class="row orgs">
+        <h2 class="center">Choose your organization</h2>
+        <p class="center"><strong>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</strong></p>
+        <a href="#">
+            <div class="columns small-12 medium-6 large-3 voad" align="center">
+                <h3 class="basic">V.O.A.D</h3>
+                <%= image_tag "icons/volunteers.png", :alt => "Volunteers Organized in Active Disaster Relief"  %>
+                <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
+            </div>
+        </a>
+        <a href="#">
+            <div class="columns small-12 medium-6 large-3 gov" align="center">
+                <h3 class="basic">Government</h3>
+                <%= image_tag "icons/government.png", :alt => "Government agencies"  %>
+                <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
+            </div>
+        </a>
+        <a href="#">
+            <div class="columns small-12 medium-6 large-3 volunteers" align="center">
+                <h3 class="basic">Volunteers</h3>
+                <%= image_tag "icons/volunteer.png", :alt => "Volunteers"  %>
+                <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
+            </div>
+        </a>
+        <a href="#">
+            <div class="columns small-12 medium-6 large-3 survivors" align="center">
+                <h3 class="basic">Survivors</h3>
+                <%= image_tag "icons/survivors.png", :alt => "Survivors"  %>
+                <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
+            </div>     
+        </a>
+    </div>
+    <hr>
+    <div class="row incident-map">
+        <h2 class="center">Incident Map</h2>
+        <p class="center"><strong>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</strong></p>
         <div class="columns small-12 medium-12 large-9">
-            <ul data-orbit>
-              <li>
-                <img src="http://placehold.it/1920x850" alt="slide 1" />
-                <div class="orbit-caption">
-                  Caption Two.
-                </div>
-              </li>                   
-              <li>
-                <img src="http://placehold.it/1920x850" alt="slide 2" />
-                <div class="orbit-caption">
-                  Caption Two.
-                </div>
-              </li>
-              <li>
-                <img src="http://placehold.it/1920x850" alt="slide 3" />
-                <div class="orbit-caption">
-                  Caption Three.
-                </div>
-              </li>
-            </ul>
-            </div> 
+            <img src="http://placehold.it/960x400" alt="slide 1" />
+            </div>
                 <div class="sidebar black">
-                    <div class="columns small-12 medium-12 large-3">
-                        <h4>Sidebar Title</h4>
-                        <p><em>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball. Pig t-bone ham hock, ribeye pork chop rump boudin tongue pork belly pork pancetta kielbasa brisket alcatra tri-tip. </em></p>
-                        <ul class="stack-for small button-group" align="center">
-                          <li><a href="#" class="button red">Button 1</a></li>
-                          <li><a href="#" class="button orange">Button 2</a></li>
-                          <li><a href="#" class="button blue">Button 3</a></li>
-                          <li><a href="#" class="button yellow">Button 4</a></li>
-                        </ul>
+                    <div class="columns small-12 medium-12 large-3 timeline">
+                        <h4>Incident Timeline</h4>
+                        <p>Incident Name - Location - Time</p>
+                        <p>Incident Name - Location - Time</p>
+                        <p>Incident Name - Location - Time</p>
+                        <p>Incident Name - Location - Time</p>
+                        <p>Incident Name - Location - Time</p>
+                        <p>Incident Name - Location - Time</p>
+                        <p>Incident Name - Location - Time</p>
                     </div>
                 </div>
     </div>
@@ -68,7 +78,22 @@
             <h3>Texas Oklahoma Floods</h3>
             <%= image_tag "icons/flood-w.png", :alt => "Texas Oklahoma Floods"  %>
             <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
-        </div>        
+        </div>
+        <div class="columns small-12 medium-12 large-4 snow-block" align="center">
+            <h3>Boston Snowstorm</h3>
+            <%= image_tag "icons/snowflake-w.png", :alt => "Boston Snowstorm"  %>
+            <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
+        </div> 
+        <div class="columns small-12 medium-12 large-4 fire-block" align="center">
+            <h3>Black Forest Fires</h3>
+            <%= image_tag "icons/fire-w.png", :alt => "Black Forest Fires"  %>
+            <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
+        </div>
+        <div class="columns small-12 medium-12 large-4 wind-block" align="center">
+            <h3>Southern NJ Dericho Storms</h3>
+            <%= image_tag "icons/wind-w.png", :alt => "Southern NJ Dericho Storms"  %>
+            <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
+        </div>     
     </div>
     <div class="row cta">
         <div class="columns small-12 medium-8 large-8">
@@ -82,12 +107,31 @@
     <hr>
     <div class="row">
         <h3 class="center">How do you organize 30,000 volunteers from 100 organizations<br>to 5,000 locations across a 500-mile arc in 8 weeks?</h3>
-        <h4 class="center">You don't. You let them organize themselves.</h4>
+        <h4 class="center basic">You don't. You let them organize themselves.</h4>
         <br>
         <div class="columns small-12 medium-8 large-8">
-            <img src="http://placehold.it/960x320" alt="slide 1" />
+            <ul data-orbit>
+              <li>
+                <img src="http://placehold.it/1920x850" alt="slide 1" />
+                <div class="orbit-caption">
+                  Caption Two.
+                </div>
+              </li>                   
+              <li>
+                <img src="http://placehold.it/1920x850" alt="slide 2" />
+                <div class="orbit-caption">
+                  Caption Two.
+                </div>
+              </li>
+              <li>
+                <img src="http://placehold.it/1920x850" alt="slide 3" />
+                <div class="orbit-caption">
+                  Caption Three.
+                </div>
+              </li>
+            </ul>
             <p></p>
-            <p><strong>Crisis Cleanup is a free, open source application that connects disaster recovery organizations with the people who need help.</strong></p>
+            <h5>Crisis Cleanup is a free, open source application that connects disaster recovery organizations with the people who need help.</h5>
 
             <p>Crisis Cleanup empowers relief organizations to instantly coordinate response efforts in real time, redirecting thousands of volunteers from to waiting lines to survivors' basements.</p>
 
@@ -100,7 +144,7 @@
             <p>Crisis Cleanup was awarded the FedEx Innovative Program of the Year Award at the 2013 National VOAD conference.</p>
         </div>
         <div class="sidebar black">
-            <div class="columns small-12 medium-4 large-4">
+            <div class="columns small-12 medium-4 large-4">                
                 <h4>Disaster relief organizations may join as long as they:</h4> 
                 <ol class="white">
                     <li>Have a physical presence in a disaster area</li> 

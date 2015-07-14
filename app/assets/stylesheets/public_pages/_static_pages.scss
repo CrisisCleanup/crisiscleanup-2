@@ -34,19 +34,19 @@ header {
 nav.top-bar {
     //needs separate declaration away from nest
     height: 125px;
-    background: $coal;
+    background: url('black_bg.jpg') repeat center;
 }
 nav {
     .top-bar-section {
         margin-right: 20px;
     }
     .top-bar-section li:not(.has-form) a:not(.button) {
-        background: $coal;
+        background: transparent;
         color: $goldenrod;
         font-size: 16px;
     }
     .top-bar-section ul li {
-        background: $coal;
+        background: transparent;
         
     }
     ul.top-bar.expanded, ul.title-area {
@@ -56,12 +56,21 @@ nav {
 .top-bar.expanded {
     z-index: 300;
 }
-.breadcrumbs {
-    li:nth-child(1) {
-        margin-left: 20px;
-    }
+.alert_menu {
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    list-style: none;
+    margin-left: 0;
+    overflow: hidden;
+    padding: 0.5625rem 0.875rem 0.5625rem;
+    background-color: #f4f4f4;
+    border-color: gainsboro;
+    border-radius: 3px;    
+    text-align: center;
 }
 .subheader {
+    padding-top: 20px;
     text-align: center;
     & h2 {
         color: $royal;
@@ -76,6 +85,7 @@ nav {
 }
 #main {
 }
+
 .sidebar {
     & .columns {
         border-radius: 5px 5px;
@@ -100,7 +110,7 @@ footer {
         & .columns {
         }
             & #footer {
-                max-width: 100rem;
+                max-width: 95%;
             }
 }
 #copyright {
@@ -134,8 +144,20 @@ h1, h2, h3, h4, h5, h6 {
 .center {
     text-align: center;
 }
+.left-margin {padding-left: 1.5%;
+}
 ul li, ol li {
     margin-bottom: 10px;
+}
+.alert {color: $berry;
+}
+.warning {color: $terra;
+}
+.success {color: $jade;
+}
+.info {color: $baby;
+}
+.basic {color: $coal;
 }
 
 // Color Blocks
@@ -212,6 +234,52 @@ ul li, ol li {
 }
 
 // Home Page
+.orgs {
+    & img {
+        width: 50%;
+        vertical-align: middle;
+        width: 50%;
+        height: auto;
+        }
+        & .columns {
+            transition: all 0.5s ease;
+            }   
+            & .voad {
+                    background-color: rgba(65, 156, 56, .2);
+                    }
+                    & .voad:hover {
+                        background-color: rgba(65, 156, 56, .5);
+                    }
+            & .gov {
+                    background-color: rgba(27, 132, 206,.2);
+                    } 
+                    & .gov:hover {
+                        background-color: rgba(27, 132, 206,.5);
+                    }    
+            & .volunteers {
+                    background-color: rgba(221, 161, 0, .2);
+                    } 
+                    & .volunteers:hover {
+                        background-color: rgba(221, 161, 0, .5);
+                    }    
+            &  .survivors {
+                    background-color: rgba(211, 37, 25, .2);
+                    } 
+                    & .survivors:hover {
+                        background-color: rgba(211, 37, 25, .5);
+                    }    
+}
+.orgs .columns p {
+    color: $coal;
+}
+.timeline {
+    scroll: auto;
+    & p {
+        border-bottom: 1px dashed $off-white;
+    }
+}
+.incident-map {       
+}
 .home-icons {
     margin: 40px 0 0 0;
     & img {
@@ -222,13 +290,11 @@ ul li, ol li {
         }
         & h2, h3, p {
             text-align: center;
-            transition: all 0.5s ease;
         }
-        & .columns {
-            margin-top: 20px;
+        & .columns {            
         }
 }
-.tornado-block, .hurricane-block, .flood-block {
+.tornado-block, .hurricane-block, .flood-block, .snow-block, .fire-block, .wind-block {
     & h3, p {
         color: #fff;
     }
@@ -248,6 +314,15 @@ ul li, ol li {
 }
 .flood-block {
     background-color: $royal;
+}
+.snow-block {
+    background-color: $forest;
+}
+.fire-block {
+    background-color: $coal;
+}
+.wind-block {
+    background-color: $terra;
 }
 
 // Media Queries
@@ -280,7 +355,12 @@ ul li, ol li {
         background: #008CBA;
         color: #fff;
     }
+    .incident-map img {
+        margin-bottom: 40px;
+    }
 }
-@media only screen and (max-width: 650px) {
-    .orbit-container {margin-bottom: 40px;}
+@media only screen and (max-width: 1024px) {
+    .incident-map img {
+        margin-bottom: 40px;
+    }
 }
