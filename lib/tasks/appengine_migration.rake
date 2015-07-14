@@ -125,7 +125,7 @@ def get_results(keys, table_name)
 	# #TODO use JSON
 	count = 0
 	# sidekiq task
-	result_keys.take(10).each do |key|
+	result_keys.each do |key|
 		begin
 			count += 1
 			# if count > 1
@@ -334,15 +334,13 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 	    if relations
 	    	relations.each do |key, value|
 				relation = entity[key.to_s]
-				entity.delete(key)
+				entity.delete(key.to_s)
 				# db_table = Legacy::LegacyOrganization if key == "organization"
 				# db_table = Legacy::LegacyEvent if key != "organization"
 				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, relation if relation and key.to_s != "legacy_event_id"
 				db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, relation if relation and key.to_s == "legacy_event_id"
 			    entity[value.to_s] = db_entity.id if db_entity
-			    # if value == "claimed_by"
-			    # 	binding.pry 
-			    # end
+	
 
 	    	end
 	    end
@@ -368,7 +366,6 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
         	if joins
         		joins_hash.each do |key, value|
         			event = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, value
-        			puts value
         			puts "[#{appengine_table}-import]-[Error]-[Can't find event with id: #{value}]" if event.nil?
         			puts joins_hash if event.nil?
         			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
@@ -400,9 +397,9 @@ def get_appengine_entities(table_name)
 	result_keys.each do |key|
 		begin
 			count += 1
-			if count > 10
-				break
-			end
+			# if count > 10
+			# 	break
+			# end
 			puts "[#{table_name}-import]-[Information]-[getting #{count}]"
 			target = "http://#{URL}/api/migration?action=get_entity_by_key&table=#{table_name}&key=#{key}"
 			result = client.get_content(target)

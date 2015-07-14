@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713213454) do
+ActiveRecord::Schema.define(version: 20150714173559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20150713213454) do
     t.integer "legacy_organization_id"
     t.boolean "is_primary"
     t.string  "phone",                  null: false
-    t.string  "appengine_key"
     t.string  "title"
+    t.string  "appengine_key"
   end
 
   create_table "legacy_events", force: :cascade do |t|
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20150713213454) do
     t.integer  "reminder_days"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.string   "appengine_key"
     t.datetime "timestamp_last_login"
+    t.string   "appengine_key"
   end
 
   create_table "legacy_organization_events", force: :cascade do |t|
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20150713213454) do
     t.string   "zip_code"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
-    t.string   "appengine_key"
     t.boolean  "voad_member"
     t.boolean  "mold_treatment"
     t.boolean  "tree_removal"
@@ -114,31 +113,32 @@ ActiveRecord::Schema.define(version: 20150713213454) do
     t.string   "number_volunteers"
     t.string   "primary_contact_email"
     t.string   "voad_member_url"
+    t.string   "appengine_key"
   end
 
   create_table "legacy_sites", force: :cascade do |t|
-    t.string   "address",           null: false
-    t.float    "blurred_latitude",  null: false
-    t.float    "blurred_longitude", null: false
-    t.string   "case_number",       null: false
-    t.string   "city",              null: false
+    t.string   "address",                             null: false
+    t.float    "blurred_latitude",                    null: false
+    t.float    "blurred_longitude",                   null: false
+    t.string   "case_number",                         null: false
+    t.string   "city",                                null: false
     t.integer  "claimed_by"
-    t.integer  "legacy_event_id",   null: false
-    t.float    "latitude",          null: false
-    t.float    "longitude",         null: false
-    t.string   "name",              null: false
+    t.integer  "legacy_event_id",                     null: false
+    t.float    "latitude",                            null: false
+    t.float    "longitude",                           null: false
+    t.string   "name",                                null: false
     t.string   "phone"
     t.integer  "reported_by"
     t.date     "requested_at"
-    t.string   "state",             null: false
-    t.string   "status",            null: false
-    t.string   "work_type"
+    t.string   "state",                               null: false
+    t.string   "status",                              null: false
+    t.string   "work_type",         default: "Other", null: false
     t.hstore   "data"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "appengine_key"
-    t.date     "request_date"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.date     "date_closed"
+    t.date     "request_date"
+    t.string   "appengine_key"
   end
 
 end
