@@ -61,12 +61,12 @@ desc "imports"
 	end
   	
   	task :import_contacts => :environment do
-  		appengine_import 'contact', {"organization": "legacy_organization_id"}, nil, nil, Legacy::LegacyContact
+  		appengine_import 'contact', {organization: "legacy_organization_id"}, nil, nil, Legacy::LegacyContact
   	end
 
   	
   	task :import_sites => :environment do
-  		appengine_import 'site', {"legacy_event_id": "legacy_event_id", "created_by": "created_by", "reported_by": "reported_by", "claimed_by": "claimed_by"}, nil, nil, Legacy::LegacySite
+  		appengine_import 'site', {legacy_event_id: "legacy_event_id", created_by: "created_by", reported_by: "reported_by", claimed_by: "claimed_by"}, nil, nil, Legacy::LegacySite
   	end
   	
   	task :events_integrity_check => :environment do
