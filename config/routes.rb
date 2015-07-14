@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
   namespace :worker do
      get "/dashboard" => 'dashboard#index', as:"dashboard"
+     resource :invitation_lists, only: [:create]
   end
 
 

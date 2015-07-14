@@ -5,7 +5,7 @@ module Worker
     # add logic to only allow ccu admins to access this
     # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
-
+    	
     end
   end
 end

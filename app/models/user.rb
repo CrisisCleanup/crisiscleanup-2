@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :invitations
+  has_many :invitations, inverse_of: :user
   belongs_to :reference, class_name: "User", foreign_key: "referring_user_id"
 
   def invited_by

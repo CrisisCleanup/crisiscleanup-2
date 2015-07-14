@@ -1,0 +1,9 @@
+<%= form_tag worker_invitation_lists_path %>
+<div class="margin-top row">
+	<div class="medium-6 columns">
+	  <%= text_field_tag :email_addresses, nil, autocomplete: "off", placeholder: "Enter a List of Emails to Invite" %>
+	</div>     
+	<div class="medium-6 columns">
+	  <%= submit_tag "Submit"%>
+	</div>   
+</div>

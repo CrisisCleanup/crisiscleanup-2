@@ -1,5 +1,6 @@
 class Invitation < ActiveRecord::Base
   belongs_to :user
+  validates :invitee_email, email_format: { message: "doesn't look like an email address" }
   before_create :generate_token
 
   protected

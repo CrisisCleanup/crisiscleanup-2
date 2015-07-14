@@ -1,1 +1,0 @@
-_invite_form.rb

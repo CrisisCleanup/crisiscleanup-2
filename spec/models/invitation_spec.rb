@@ -4,6 +4,7 @@ require 'spec_helper'
 RSpec.describe Invitation, type: :model do
     describe "associations" do
       it { should belong_to :user }
+ 
     end
     describe '.generate token' do
       let(:frank) { User.create(name:'Frank', email:'Frank@aol.com', password:'blue32blue32') }
