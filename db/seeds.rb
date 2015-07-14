@@ -46,7 +46,8 @@
 			twitter:Faker::Internet.url('twitter.com'),
 			url:Faker::Internet.url('example.com'),
 			work_area:Faker::Lorem.sentence,
-			zip_code: Faker::Address.zip
+			zip_code: Faker::Address.zip,
+			is_admin: true
 		)
 		
 		2.times do

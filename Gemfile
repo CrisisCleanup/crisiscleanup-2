@@ -21,7 +21,10 @@ gem 'pry-rails'
 gem 'rails_12factor', group: :production
 
 gem 'foundation-rails'
+
 gem 'foundation-icons-sass-rails'
+
+gem "httpclient"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

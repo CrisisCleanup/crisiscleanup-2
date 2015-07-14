@@ -16,7 +16,7 @@ class AddLegacySites < ActiveRecord::Migration
       t.date :requested_at, null: false
       t.string :state, null: false
       t.string :status, null: false
-      t.string :work_type, null: false
+      t.string :work_type, null: false, default: "Other"
       t.hstore :data
       t.timestamps null: false
     end
