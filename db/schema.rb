@@ -17,30 +17,13 @@ ActiveRecord::Schema.define(version: 20150714173559) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-  create_table "form_fields", force: :cascade do |t|
-    t.integer  "form_id"
-    t.string   "name"
-    t.string   "label"
-    t.string   "field_type"
-    t.string   "options"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "forms", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "legacy_contacts", force: :cascade do |t|
-    t.string  "email",                  null: false
-    t.string  "first_name",             null: false
-    t.string  "last_name",              null: false
+    t.string  "email",                                  null: false
+    t.string  "first_name",                             null: false
+    t.string  "last_name",                              null: false
     t.integer "legacy_organization_id"
-    t.boolean "is_primary"
-    t.string  "phone",                  null: false
-    t.string  "title"
+    t.boolean "is_primary",             default: false
+    t.string  "phone",                                  null: false
     t.string  "appengine_key"
   end
 
@@ -81,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150714173559) do
     t.string   "email"
     t.string   "facebook"
     t.boolean  "is_active",                                   null: false
-    t.boolean  "is_admin",                                    null: false
+    t.boolean  "is_admin",                    default: false
     t.float    "latitude",                                    null: false
     t.float    "longitude",                                   null: false
     t.string   "name",                                        null: false
@@ -152,7 +135,6 @@ ActiveRecord::Schema.define(version: 20150714173559) do
     t.hstore   "data"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.date     "date_closed"
     t.date     "request_date"
     t.string   "appengine_key"
   end

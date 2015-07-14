@@ -4,6 +4,6 @@ module Legacy
   	  has_many :legacy_sites
  	  has_many :legacy_organizations, through: :legacy_organization_events
   	 
-  	  validates_presence_of :name,:case_label,:created_date,:start_date,:end_date
+  	  validates_presence_of :name,:case_label,:created_date,:start_date
   end
 end
