@@ -3,7 +3,10 @@ module ApplicationHelper
         # here is a method to check if we are logged in
         # if not...redirect
     end
-    def is_super_admin?
-        # current_user.is_ccu_admin?
+    def check_user
+		if !current_user.present?
+			redirect_to '/login'
+		end
     end
+
 end
