@@ -37,6 +37,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'faker'
 
+gem 'will_paginate', '~> 3.0.6'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
