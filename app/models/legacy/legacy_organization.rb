@@ -1,5 +1,6 @@
 module Legacy
   class LegacyOrganization < ActiveRecord::Base
+  	  has_paper_trail
       has_many :legacy_organization_events
  	  has_many :legacy_events, through: :legacy_organization_events
   	  has_many :legacy_contacts,

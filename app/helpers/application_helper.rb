@@ -9,5 +9,4 @@ module ApplicationHelper
 			redirect_to '/login'
 		end
     end
-
 end

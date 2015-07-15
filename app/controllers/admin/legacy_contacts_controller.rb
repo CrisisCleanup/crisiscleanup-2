@@ -22,6 +22,8 @@ module Admin
     end
     def edit
         @contact = Legacy::LegacyContact.find(params[:id])
+        @versions = @contact.versions
+
     end
     def update
         @contact = Legacy::LegacyContact.find(params[:id])

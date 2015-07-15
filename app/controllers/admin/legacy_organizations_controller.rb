@@ -21,6 +21,7 @@ module Admin
     end
     def edit
         @org = Legacy::LegacyOrganization.find(params[:id])
+        @versions = @org.versions
     end
     def update
         @org = Legacy::LegacyOrganization.find(params[:id])

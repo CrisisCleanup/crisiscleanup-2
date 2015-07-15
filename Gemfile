@@ -39,6 +39,8 @@ gem 'faker'
 
 gem 'will_paginate', '~> 3.0.6'
 
+gem 'paper_trail', '~> 4.0.0.rc'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'

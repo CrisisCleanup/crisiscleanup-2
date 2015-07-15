@@ -1,1 +1,13 @@
-<%= render 'form', contact: @contact, url: @contact.id.present? ? admin_legacy_contact_path(@contact.id) : admin_legacy_contacts_path %>
+<ul class="tabs" data-tab>
+    <li class="tab-title active"><a href="#edit-panel">Edit</a></li>
+    <li class="tab-title"><a href="#versions">Previous Versions</a></li>
+</ul>
+<div class="tabs-content">
+	<div class="content active" id="edit-panel">
+		<%= render 'form', contact: @contact, url: @contact.id.present? ? admin_legacy_contact_path(@contact.id) : admin_legacy_contacts_path %>
+    </div>
+
+    <div class="content" id="versions">
+    	<%= render 'versions', versions: @versions%>
+	</div>
+</div>
