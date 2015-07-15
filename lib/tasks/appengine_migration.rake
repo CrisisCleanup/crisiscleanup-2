@@ -316,6 +316,8 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 
     entities = get_appengine_entities(appengine_table)
     entities.each do |entity|
+    	# sleep for heroku throttling
+    	sleep 0.1
     	#make these separate functions
     	#entity = add_joins entity if joins, etc
     	if joins
