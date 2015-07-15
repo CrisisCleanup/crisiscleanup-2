@@ -12,12 +12,14 @@ Rails.application.routes.draw do
     resources :legacy_contacts
   end
 
+  
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
   namespace :worker do
      get "/dashboard" => 'dashboard#index', as:"dashboard"
      resource :invitation_lists, only: [:create]
   end
 
-
+  get "/invitations/activate" => "invitations#activate"
+  post "/invitations/activate" => "invitations#sign_up"
 
 end

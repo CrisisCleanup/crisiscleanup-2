@@ -8,5 +8,11 @@ module ApplicationHelper
 			redirect_to '/login'
 		end
     end
+    def check_token
+    	if !Invitation.where(token:params[:token]).present?
+    		# add error messages
+    		redirect_to root_path
+    	end
+    end
 
 end

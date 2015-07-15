@@ -11,6 +11,7 @@ class InvitationList
     		@ready = []
     		@rejected = []
     		@email_addresses = parse(@string)
+    		self.prepare!
     	end
     end
     def prepare!
@@ -18,9 +19,6 @@ class InvitationList
     	 	inv = Invitation.new(user_id: sender.id, invitee_email:ad)
     		inv.save ? @ready << inv : @rejected << inv
     	end
-    end
-    def send!
-
     end
 
     private

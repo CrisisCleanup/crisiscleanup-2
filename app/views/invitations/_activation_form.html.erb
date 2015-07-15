@@ -1,0 +1,20 @@
+<% content_for :main do %>
+<h2>Sign up</h2>
+
+<%= simple_form_for(User.new, url: invitations_activate_path+"?token=#{@invitation.token}") do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, :as => :hidden, :input_html => { :value => @invitation.invitee_email } %>
+    <%= f.input :name, required: true %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+    <%= f.input :password_confirmation, required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
+
+
+<%end%>
