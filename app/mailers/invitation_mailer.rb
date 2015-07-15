@@ -1,6 +1,7 @@
 class InvitationMailer < ActionMailer::Base
 
   def send_invitation(inv, request)
+   
     @user = User.find(inv.user_id)
     @email = inv.invitee_email
     @url = request + "/invitations/activate?token="+inv.token
