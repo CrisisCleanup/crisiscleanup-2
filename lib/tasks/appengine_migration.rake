@@ -269,7 +269,6 @@ def run_integrity_check_from_pg pg_entities, table, log_file #remove log file
 			puts "[#{table}-postgres_integrity_check]-[Success]-[Count: #{count}]"
 		else
 			errors_count += 1
-			# binding.pry
 			puts "[#{table}-postgres_integrity_check]-[Error]-[Error count: #{errors_count}]-[PG entity: #{entity.attributes}]"
 		end
 	end

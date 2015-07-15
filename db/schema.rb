@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714224556) do
+ActiveRecord::Schema.define(version: 20150715003842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "legacy_contacts", force: :cascade do |t|
-    t.string  "email",                                  null: false
-    t.string  "first_name",                             null: false
-    t.string  "last_name",                              null: false
-    t.integer "legacy_organization_id"
-    t.boolean "is_primary",             default: false
-    t.string  "phone",                                  null: false
-    t.string  "appengine_key"
+    t.string   "email",                                  null: false
+    t.string   "first_name",                             null: false
+    t.string   "last_name",                              null: false
+    t.integer  "legacy_organization_id"
+    t.boolean  "is_primary",             default: false
+    t.string   "phone",                                  null: false
+    t.string   "appengine_key"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "legacy_events", force: :cascade do |t|
