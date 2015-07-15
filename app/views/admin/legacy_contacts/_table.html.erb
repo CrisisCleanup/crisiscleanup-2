@@ -14,7 +14,9 @@
             <%= contact.first_name + ' '+ contact.last_name %>
           </a>
         </td>
-        <td> <%= contact.legacy_organization.name %> </td>
+        <% if contact.legacy_organization %>
+          <td> <%= contact.legacy_organization.name %> </td>
+        <% end %>
         <td> <%= contact.email %> </td>
        
       </tr>
