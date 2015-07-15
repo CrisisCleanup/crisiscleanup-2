@@ -21,6 +21,7 @@ module Admin
     end
     def edit        
         @site = Legacy::LegacySite.find(params[:id])
+        @versions = @site.versions
     end
     def update
         @site = Legacy::LegacySite.find(params[:id])
