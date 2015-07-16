@@ -53,5 +53,24 @@ module Legacy
             count = Legacy::LegacySite.where("DATE(updated_at) = ?", Date.today).count
         end
 
+        def self.open_by_organization organization_id
+            count = 0
+            Legacy::LegacySite.where(claimed_by: 8).each do |site|
+                if site.status.include? "Open"
+                    count +=1
+                end
+            end
+            count
+        end
+
+        def self.closed_by_organization organization_id
+            count = 0
+            Legacy::LegacySite.where(claimed_by: 8).each do |site|
+                if site.status.include? "Closed"
+                    count +=1
+                end
+            end
+            count
+        end
     end
 end
