@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
   	self.reference
   end
 
+  def self.todays_login_count
+  	count = User.where("DATE(last_sign_in_at) = ?", Date.today).count
+  end
 end

@@ -9,4 +9,20 @@ module ApplicationHelper
 			redirect_to '/login'
 		end
     end
+
+    def organization_claimed_site_count organization_id 
+        count = Legacy::LegacySite.where(claimed_by: organization_id).count
+    end
+
+    def organization_open_site_count organization_id
+        count = Legacy::LegacySite.open_by_organization organization_id
+    end
+
+    def organization_closed_site_count organization_id
+        count = Legacy::LegacySite.closed_by_organization organization_id
+    end
+
+    def organization_reported_site_count organization_id
+        count = Legacy::LegacySite.where(reported_by: organization_id).count
+    end
 end

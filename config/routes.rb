@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :legacy_sites
     resources :legacy_organizations
     resources :legacy_contacts
+
+    get "/stats" => "stats#index", as: "stats"
+    get "/stats/:id" => "stats#by_incident", as: "stats_by_incident"
+
   end
 
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
