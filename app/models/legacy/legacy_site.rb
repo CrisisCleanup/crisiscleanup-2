@@ -55,7 +55,7 @@ module Legacy
 
         def self.open_by_organization organization_id
             count = 0
-            Legacy::LegacySite.where(claimed_by: 8).each do |site|
+            Legacy::LegacySite.where(claimed_by: organization_id).each do |site|
                 if site.status.include? "Open"
                     count +=1
                 end
@@ -65,7 +65,7 @@ module Legacy
 
         def self.closed_by_organization organization_id
             count = 0
-            Legacy::LegacySite.where(claimed_by: 8).each do |site|
+            Legacy::LegacySite.where(claimed_by: organization_id).each do |site|
                 if site.status.include? "Closed"
                     count +=1
                 end
