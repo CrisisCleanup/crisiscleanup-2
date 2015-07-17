@@ -6,7 +6,7 @@ module Admin
     # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
         # todo implement search and sort and paginate
-        @orgs = Legacy::LegacyOrganization.all
+        @orgs = Legacy::LegacyOrganization.paginate(:page => params[:page], :per_page => 50)
     end
     def new
     	@org = Legacy::LegacyOrganization.new
@@ -21,6 +21,7 @@ module Admin
     end
     def edit
         @org = Legacy::LegacyOrganization.find(params[:id])
+        @versions = @org.versions
     end
     def update
         @org = Legacy::LegacyOrganization.find(params[:id])

@@ -1,1 +1,13 @@
-<%= render 'form', org: @org, url: @org.id.present? ? admin_legacy_organization_path(@org.id) : admin_legacy_organizations_path %>
+<ul class="tabs" data-tab>
+    <li class="tab-title active"><a href="#edit-panel">Edit</a></li>
+    <li class="tab-title"><a href="#versions">Previous Versions</a></li>
+</ul>
+<div class="tabs-content">
+	<div class="content active" id="edit-panel">
+		<%= render 'form', org: @org, url: @org.id.present? ? admin_legacy_organization_path(@org.id) : admin_legacy_organizations_path %>
+    </div>
+
+    <div class="content" id="versions">
+    	<%= render 'versions', versions: @versions%>
+	</div>
+</div>

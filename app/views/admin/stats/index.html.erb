@@ -1,0 +1,29 @@
+<h2>Stats</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Events</th>
+      <th>Organizations</th>
+      <th>Contacts</th>
+      <th>Sites</th>
+      <th>Users</th>
+      <th>Today's Logins</th>
+      <th>Today's Site Edits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @events_count %></td>
+      <td><%= @orgs_count %></td>
+      <td><%= @contacts_count %></td>
+      <td><%= @sites_counts %></td>
+      <td><%= @users_count %></td>
+      <td><%= @todays_login_count %></td>
+      <td><%= @todays_create_and_edit_count %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Stats by event</h3>
+<%= render 'events_table', events: @events %>

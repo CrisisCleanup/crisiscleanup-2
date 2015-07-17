@@ -14,7 +14,7 @@ class AddLegacyOrganization < ActiveRecord::Migration
 	  t.boolean :does_something_else, default: false
 	  t.string :email , null:false
 	  t.string :facebook
-	  t.boolean :is_active, null: false
+	  t.boolean :is_active, default: false
 	  t.boolean :is_admin, default: false
       t.float :latitude, null:false
       t.float :longitude, null:false

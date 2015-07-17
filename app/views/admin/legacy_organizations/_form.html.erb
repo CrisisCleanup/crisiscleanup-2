@@ -101,7 +101,7 @@
   </div>
   <div class="row">
     <div class="medium-12 columns">
-      <%= f.input :activate_by %>
+      <%= f.input :activate_by, include_blank: true %>
     </div>
   </div>
 
@@ -134,7 +134,7 @@
 
   <div class="row">
     <div class="medium-12 columns">
-      <%= f.input :activated_at %>
+      <%= f.input :activated_at, include_blank: true %>
     </div>
   </div>
   <div class="row">
@@ -162,12 +162,12 @@
   </div>
   <div class="row">
     <div class="small-12 medium-12 columns">
-      <%= f.input :timestamp_login %>
+      <%= f.input :timestamp_login, include_blank: true %>
     </div>
   </div>
   <div class="row">
     <div class="small-12 medium-12 columns">
-      <%= f.input :timestamp_signup %>
+      <%= f.input :timestamp_signup, include_blank: true %>
     </div>
   </div>
   <div class="row">

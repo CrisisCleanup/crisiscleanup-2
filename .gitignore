@@ -17,3 +17,16 @@
 /tmp
 .env
 /config/database.yml
+
+# Ignore appengine migration log files
+import_event_error_logs.txt
+import_organization_error_logs.txt
+import_contact_error_logs.txt
+import_site_error_logs.txt
+
+event_integrity_check_logs.txt
+organization_integrity_check_logs.txt
+contact_integrity_check_logs.txt
+site_integrity_check_logs.txt
+
+500_error_logs.txt

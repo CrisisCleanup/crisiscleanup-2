@@ -1,0 +1,15 @@
+<div class="row paper-trail-versions">
+	<div class="small-12">
+	<% versions.each_with_index do |version, index| %>
+		<% if version.object %>
+			<h2>Version <%= index %></h2>
+		<% end %>
+		<% object = YAML::load(version.object) if version.object %>
+		<% if object %>
+			<% object.each do |key, value| %>
+			  <p><%= key %>: <%= value %></p>
+		    <% end %>
+		<% end %>
+	<% end %>
+	</div>
+</div>

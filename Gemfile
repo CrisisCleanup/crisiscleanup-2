@@ -21,7 +21,10 @@ gem 'pry-rails'
 gem 'rails_12factor', group: :production
 
 gem 'foundation-rails'
+
 gem 'foundation-icons-sass-rails'
+
+gem "httpclient"
 gem 'devise'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -32,9 +35,17 @@ gem 'jbuilder', '~> 2.0'
 gem 'validates_email_format_of'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'faker'
+
+gem 'will_paginate', '~> 3.0.6'
+
+gem 'paper_trail', '~> 4.0.0.rc'
+
 group :development, :test do
-  gem 'faker'
+
   gem 'letter_opener'
+
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
