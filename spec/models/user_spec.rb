@@ -5,6 +5,8 @@ RSpec.describe User, type: :model do
     describe "associations" do
       it { should have_many :invitations }
       it { should belong_to :reference }
+      it { should belong_to Legacy::LegacyOrganization }
+
     end
     describe '.invitations and .invited_by' do
       let(:frank) { User.create(name:'Frank', email:'frank@aol.com', password:'blue32blue32') }

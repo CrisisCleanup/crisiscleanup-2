@@ -13,9 +13,10 @@ RSpec.describe InvitationList, type: :model do
         expect(good).to be_valid
         expect(bad).to be_valid
       end
-      it 'should have a ready attribute for good emails, and a reject attribute for bad ones' do
-      	expect(good.ready.count).to eq(2)
-        expect(bad.rejected.count).to be(5)
-     end
-    end
+    it 'should have a ready attribute for good emails, and a reject attribute for bad ones' do
+    	expect(good.ready.count).to eq(2)
+      expect(bad.rejected.count).to be(5)
+   end
+     # test the separation 
+  end
 end

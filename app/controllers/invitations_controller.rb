@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
 
   def sign_up 
     @user = User.new(email: params["user"]["email"],password: params["user"]["password"],password_confirmation: params["user"]["password"],name: params["user"]["name"])
-    if @user.save
+    if @user.save      
       redirect_to worker_dashboard_path
     else
       redirect_to :back

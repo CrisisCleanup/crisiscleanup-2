@@ -7,7 +7,7 @@ RSpec.describe InvitationsController, :type => :controller do
     @frank = User.create(name:'Frank', email:'Frank@aol.com', password:'blue32blue32') 
     @invitation = Invitation.create(user_id:@frank.id, invitee_email:'Dhruv@aol.com') 
   end
-  
+
   describe "it handles the token" do 
     it 'redirects away from controller actions' do
       get :activate
@@ -19,3 +19,5 @@ RSpec.describe InvitationsController, :type => :controller do
     end
   end
 end
+
+

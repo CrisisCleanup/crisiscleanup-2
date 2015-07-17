@@ -8,7 +8,6 @@ RSpec.describe InvitationMailer do
       @invitation = Invitation.create(user_id:@frank.id, invitee_email:'Dhruv@aol.com') 
       @mail = InvitationMailer.send_invitation(@invitation,"http://www.crisisCleanup.org")
     end
-
     it 'renders the subject' do
       expect(@mail.subject).to eq("frank@aol.com has invited you to join Crisis Cleanup")
     end
