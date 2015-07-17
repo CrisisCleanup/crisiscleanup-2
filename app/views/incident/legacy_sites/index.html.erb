@@ -1,1 +1,8 @@
-<h2>Sites index</h2>
+<% content_for :main do %> 
+	<h2>Sites<h2>
+	<div class="small-12 large-12 columns">
+		<%= render 'table', sites: @sites %>
+	</div>
+	<%= will_paginate @sites %>
+
+<% end %>

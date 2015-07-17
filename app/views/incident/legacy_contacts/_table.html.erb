@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th width="200">Name</th>
+      <th>Organization</th>
+      <th width="150">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% contacts.each do |contact| %>
+      <tr>
+        <td>
+          <a href=<%=edit_admin_legacy_contact_path(contact.id)%>> 
+            <%= contact.first_name + ' '+ contact.last_name %>
+          </a>
+        </td>
+        <% if contact.legacy_organization %>
+          <td> <%= contact.legacy_organization.name %> </td>
+        <% end %>
+        <td> <%= contact.email %> </td>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
