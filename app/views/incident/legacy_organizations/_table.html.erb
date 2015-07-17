@@ -9,7 +9,7 @@
     <% orgs.each do |org| %>
       <tr>
         <td>
-          <a href=<%=incident_legacy_organization_path(org.id)%>> 
+          <a href=<%=incident_legacy_organization_path(event_id, org.id)%>> 
             <%= org.name %>
           </a>
         </td>
