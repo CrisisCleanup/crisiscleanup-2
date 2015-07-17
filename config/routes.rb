@@ -16,9 +16,12 @@ Rails.application.routes.draw do
 
   end
 
+  
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
   namespace :worker do
      get "/dashboard" => 'dashboard#index', as:"dashboard"
+     resource :invitation_lists, only: [:create]
+    
   end
 
   namespace :incident do
@@ -28,4 +31,8 @@ Rails.application.routes.draw do
     get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
     get "/:event_id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
   end
+  
+  get "/invitations/activate" => "invitations#activate"
+  post "/invitations/activate" => "invitations#sign_up"
+  post "/verify/:user_id" => "worker/dashboard#verify_user"
 end

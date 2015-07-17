@@ -7,7 +7,16 @@ module ApplicationHelper
     def check_user
 		if !current_user.present?
 			redirect_to '/login'
-		end
+		elsif !current_user.verified
+            # messaging for not being verified
+            redirect_to root_path
+        end
+    end
+    def check_token
+    	if !Invitation.where(token:params[:token]).present?
+    		# add error messages
+    		redirect_to root_path
+    	end
     end
 
     def organization_claimed_site_count organization_id 

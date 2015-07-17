@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <p>
+      <%= @user.email %> has invited you to join Crisis Cleanup.  Please navigate to the link below to activiate your account<br>
+    </p>
+    <ul>
+      <li>Activiation Link: <a target='_blank' href=<%=@url%>> Activate </a> </li>
+      <li>About Us: CrisisCleanup.org</li>
+      
+    </ul>
+    <p>Thanks,</p>
+    <p>Crisis Cleanup</p>
+  </body>
+</html>

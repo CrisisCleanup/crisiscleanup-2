@@ -32,6 +32,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+gem 'validates_email_format_of'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -42,6 +43,9 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'paper_trail', '~> 4.0.0.rc'
 
 group :development, :test do
+
+  gem 'letter_opener'
+
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'

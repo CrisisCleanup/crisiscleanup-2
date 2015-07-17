@@ -121,6 +121,8 @@ GEM
     json (1.8.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.3.0)
+      launchy (~> 2.2)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -237,6 +239,8 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     valid_attribute (2.0.0)
+    validates_email_format_of (1.6.2)
+      i18n
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.7)
@@ -262,6 +266,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  letter_opener
   paper_trail (~> 4.0.0.rc)
   pg
   pry-rails
@@ -275,4 +280,5 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   valid_attribute
+  validates_email_format_of
   will_paginate (~> 3.0.6)

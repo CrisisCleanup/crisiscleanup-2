@@ -2,10 +2,12 @@ module Worker
   class DashboardController < ApplicationController
     include ApplicationHelper
     before_filter :check_user
-    # add logic to only allow ccu admins to access this
-    # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
-
+    	@unverified_users = current_user.legacy_organization.users.where(verified:false)
+    end
+    def verify_user
+    	User.find(params["user_id"]).verify!
+    	redirect_to worker_dashboard_path
     end
   end
 end

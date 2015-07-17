@@ -1,5 +1,6 @@
 @import "modules/foundation_and_overrides";
 @import "modules/multi-select";
+@import "modules/helpers";
 .public, .worker-dashboard{
 	@import "public_pages/static_pages";
 }
@@ -10,3 +11,4 @@
 
 @import "compass";
 @import 'foundation-icons';
+
