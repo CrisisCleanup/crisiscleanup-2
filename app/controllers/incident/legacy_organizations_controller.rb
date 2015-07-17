@@ -4,7 +4,7 @@ module Incident
     before_filter :check_user
 
     def index
-    	@orgs = Legacy::LegacyOrganization.paginate(:page => params[:page], :per_page => 500)
+    	@orgs = Legacy::LegacyOrganization.paginate(:page => params[:page])
     	@event_id = params[:id]
     end
 
