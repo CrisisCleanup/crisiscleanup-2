@@ -1,1 +1,8 @@
-<%= render 'invite_form' %>
+
+<div class="margin-top row">	
+	<div class="small-12 large-12 columns">
+		<%= render 'invite_form' %>
+		<h3>Do You Know These People?</h3>
+		<%= render 'user_table', users: @unverified_users %>
+	</div>
+</div>

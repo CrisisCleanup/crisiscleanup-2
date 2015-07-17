@@ -16,7 +16,7 @@ class InvitationList
     end
     def prepare!
     	@email_addresses.each do |ad|
-    	 	inv = Invitation.new(user_id: sender.id, invitee_email:ad)
+    	 	inv = Invitation.new(user_id: sender.id, invitee_email:ad, organization_id:sender.org.id)
     		inv.save ? @ready << inv : @rejected << inv
     	end
     end

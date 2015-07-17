@@ -7,7 +7,8 @@ class InvitationsController < ApplicationController
   end
 
   def sign_up 
-    @user = User.new(email: params["user"]["email"],password: params["user"]["password"],password_confirmation: params["user"]["password"],name: params["user"]["name"])
+    inv = Invitation.where(token:params[:token]).first
+    @user = User.new(email: params["user"]["email"],password: params["user"]["password"],password_confirmation: params["user"]["password"],name: params["user"]["name"], legacy_organization_id:inv.organization_id, referring_user_id:inv.user_id)
     if @user.save      
       redirect_to worker_dashboard_path
     else
@@ -17,3 +18,4 @@ class InvitationsController < ApplicationController
   end
   
 end
+   

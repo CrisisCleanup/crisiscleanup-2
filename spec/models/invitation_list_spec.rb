@@ -3,7 +3,8 @@ require 'spec_helper'
 
 RSpec.describe InvitationList, type: :model do
     describe "attributes" do
-      let(:frank) { User.create(name:'Frank', email:'frank@aol.com', password:'blue32blue32') }
+      org = FactoryGirl.create :legacy_organization 
+      let(:frank) { User.create(name:'Frank', email:'frank@aol.com', password:'blue32blue32', legacy_organization_id:org.id) }
       let(:good) { InvitationList.new("frank@aol.com,dhruv@aol.com", frank)}
       let(:empty) {  InvitationList.new('', frank)}
       let(:bad) {  InvitationList.new('1,2,3,4,5', frank)}

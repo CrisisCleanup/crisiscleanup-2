@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th width="200">Name</th>
+      <th>Email</th>
+      <th width="150">Verify!</th>
+      <th width="150">Invited By</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+
+        <td> <%= user.name %> </td>
+        <td> <%= user.email %> </td>
+        <td>
+          <%= link_to "Verify Me", "/verify/#{user.id.to_s}", :method=> :post %>
+        </td>
+        <td> <%= user.reference.email %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

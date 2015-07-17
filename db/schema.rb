@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715161736) do
+ActiveRecord::Schema.define(version: 20150717174113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 20150715161736) do
   create_table "invitations", force: :cascade do |t|
     t.integer "user_id"
     t.string  "invitee_email"
-    t.string  "token",         null: false
+    t.string  "token",           null: false
+    t.integer "organization_id", null: false
   end
 
   create_table "legacy_contacts", force: :cascade do |t|
@@ -71,7 +72,7 @@ ActiveRecord::Schema.define(version: 20150715161736) do
     t.boolean  "does_something_else",         default: false
     t.string   "email"
     t.string   "facebook"
-    t.boolean  "is_active",                                   null: false
+    t.boolean  "is_active",                   default: false
     t.boolean  "is_admin",                    default: false
     t.float    "latitude",                                    null: false
     t.float    "longitude",                                   null: false
@@ -124,38 +125,38 @@ ActiveRecord::Schema.define(version: 20150715161736) do
   end
 
   create_table "legacy_sites", force: :cascade do |t|
-    t.string   "address",           null: false
-    t.float    "blurred_latitude",  null: false
-    t.float    "blurred_longitude", null: false
-    t.string   "case_number",       null: false
-    t.string   "city",              null: false
+    t.string   "address",                             null: false
+    t.float    "blurred_latitude",                    null: false
+    t.float    "blurred_longitude",                   null: false
+    t.string   "case_number",                         null: false
+    t.string   "city",                                null: false
     t.integer  "claimed_by"
-    t.integer  "legacy_event_id",   null: false
-    t.float    "latitude",          null: false
-    t.float    "longitude",         null: false
-    t.string   "name",              null: false
+    t.integer  "legacy_event_id",                     null: false
+    t.float    "latitude",                            null: false
+    t.float    "longitude",                           null: false
+    t.string   "name",                                null: false
     t.string   "phone"
     t.integer  "reported_by"
     t.date     "requested_at"
-    t.string   "state",             null: false
-    t.string   "status",            null: false
-    t.string   "work_type",         null: false
+    t.string   "state",                               null: false
+    t.string   "status",                              null: false
+    t.string   "work_type",         default: "Other", null: false
     t.hstore   "data"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.date     "request_date"
     t.string   "appengine_key"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "name",                   default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.integer  "legacy_organization_id"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "legacy_organization_id",                 null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -163,6 +164,7 @@ ActiveRecord::Schema.define(version: 20150715161736) do
     t.integer  "referring_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "verified",               default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -4,8 +4,9 @@ RSpec.describe InvitationMailer do
 
   describe "Sends Invitations" do
     before(:each) do 
-      @frank = User.create(name:'Frank', email:'Frank@aol.com', password:'blue32blue32') 
-      @invitation = Invitation.create(user_id:@frank.id, invitee_email:'Dhruv@aol.com') 
+       org = FactoryGirl.create :legacy_organization 
+      @frank = User.create(name:'Frank', email:'Frank@aol.com', password:'blue32blue32', legacy_organization_id:org.id) 
+      @invitation = Invitation.create(user_id:@frank.id, invitee_email:'Dhruv@aol.com', organization_id: org.id) 
       @mail = InvitationMailer.send_invitation(@invitation,"http://www.crisisCleanup.org")
     end
     it 'renders the subject' do

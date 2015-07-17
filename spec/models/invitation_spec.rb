@@ -7,9 +7,10 @@ RSpec.describe Invitation, type: :model do
  
     end
     describe '.generate token' do
-      let(:frank) { User.create(name:'Frank', email:'Frank@aol.com', password:'blue32blue32') }
+      let(:org){ FactoryGirl.create :legacy_organization }
+      let(:frank) { User.create(name:'Frank', email:'Frank@aol.com', password:'blue32blue32', legacy_organization_id:org.id) }
       before do
-        Invitation.create(user_id:frank.id, invitee_email:'Dhruv@aol.com') 
+        Invitation.create(user_id:frank.id, invitee_email:'Dhruv@aol.com', organization_id: org.id) 
       end
       it 'should have a random token, because of before create' do
         expect(frank.invitations.first.token).not_to be_empty

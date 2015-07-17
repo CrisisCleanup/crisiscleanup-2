@@ -5,6 +5,7 @@ FactoryGirl.define do
 	activation_code Faker::Code.ean                         
 	address Faker::Address.street_address                                     
 	admin_notes Faker::Lorem.sentence
+
 	city Faker::Address.city                                                 
 	email Faker::Internet.email                                      
 	facebook Faker::Internet.url('facebook.com')
