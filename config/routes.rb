@@ -26,6 +26,6 @@ Rails.application.routes.draw do
     get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"
     get "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization"
     get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
-    get "/:id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
+    get "/:event_id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
   end
 end

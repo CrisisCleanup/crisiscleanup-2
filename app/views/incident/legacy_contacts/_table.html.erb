@@ -10,7 +10,7 @@
     <% contacts.each do |contact| %>
       <tr>
         <td>
-          <a href=<%=incident_legacy_contact_path(contact.id)%>> 
+          <a href=<%=incident_legacy_contact_path(event_id, contact.id)%>> 
             <%= contact.first_name + ' '+ contact.last_name %>
           </a>
         </td>
