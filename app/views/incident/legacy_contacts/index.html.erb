@@ -1,0 +1,7 @@
+<% content_for :main do %> 
+	<h2>Contacts<h2>
+	<div class="small-12 large-12 columns">
+		<%= render 'table', contacts: @contacts, event_id: @event_id %>
+	</div>
+	<%= will_paginate @contacts %>
+<% end %>

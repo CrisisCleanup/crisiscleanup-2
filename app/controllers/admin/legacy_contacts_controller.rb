@@ -6,7 +6,7 @@ module Admin
     # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
         # todo implement search and sort and paginate
-        @contacts = Legacy::LegacyContact.paginate(:page => params[:page], :per_page => 30)
+        @contacts = Legacy::LegacyContact.paginate(:page => params[:page])
     end
     def new
     	@contact = Legacy::LegacyContact.new
