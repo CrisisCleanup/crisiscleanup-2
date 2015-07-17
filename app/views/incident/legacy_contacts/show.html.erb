@@ -1,1 +1,6 @@
-<h2>Contacts show</h2>
+<% content_for :main do %> 
+	<h2>Contacts show</h2>
+	<div class="small-12 large-12 columns">
+		<%= render 'show_table', contact: @contact %>
+	</div>
+<% end %>

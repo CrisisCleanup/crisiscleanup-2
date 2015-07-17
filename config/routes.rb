@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   namespace :incident do
     get "/:id/sites" => "legacy_sites#index", as: "legacy_sites_index"
     get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"
-    get "/:id/organizations/:id" => "legacy_organizations#show", as: "legacy_organization"
+    get "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization"
     get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
-    get "/:id/contacts" => "legacy_contacts#show", as: "legacy_contact"
+    get "/:id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
   end
 end

@@ -8,6 +8,7 @@ module Incident
     end
 
     def show
+    	@organization = Legacy::LegacyOrganization.find(params[:org_id])
     end
   end
 end

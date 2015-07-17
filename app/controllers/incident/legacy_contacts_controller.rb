@@ -8,7 +8,7 @@ module Incident
     end
 
     def show
-
+    	@contact = Legacy::LegacyContact.find(params[:contact_id])
     end
   end
 end
