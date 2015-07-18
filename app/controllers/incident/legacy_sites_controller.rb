@@ -6,5 +6,9 @@ module Incident
     def index
     	@sites = Legacy::LegacySite.paginate(:page => params[:page])
     end
+
+    def map
+
+    end
   end
 end

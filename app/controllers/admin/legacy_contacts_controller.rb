@@ -23,8 +23,8 @@ module Admin
     def edit
         @contact = Legacy::LegacyContact.find(params[:id])
         @versions = @contact.versions
-
     end
+
     def update
         @contact = Legacy::LegacyContact.find(params[:id])
         if  @contact.update_attributes(contact_params)
@@ -33,6 +33,7 @@ module Admin
             redirect_to edit_admin_legacy_contact_path(@contact.id)
         end
     end
+    
     private
 	    def contact_params
 	        params.require(:legacy_legacy_contact).permit(:email,:first_name,:last_name,:legacy_organization_id,:is_primary,:phone)

@@ -1,0 +1,41 @@
+<% content_for :main do %> 
+<style>
+  #map-canvas {
+    width: 90%;
+    height: 600px;
+    background-color: #CCC;
+  }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+  function initialize() {
+    var mapCanvas = document.getElementById('map-canvas');
+    var mapOptions = {
+      center: new google.maps.LatLng(40.5403, -73.5463),
+      zoom: 7,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions)
+
+    $.get( "/api/map", function( data ) {
+      $.each(data, function(index, obj) {
+      	var marker1 = new google.maps.Marker({
+      		position: new google.maps.LatLng(parseFloat(obj["latitude"]), parseFloat(obj["longitude"])),
+      	    map: map
+      	});
+      })
+    });
+  }
+
+  
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<script>
+
+</script>
+
+	<h2>Map<h2>
+	<div id="map-canvas"></div>
+
+
+<% end %>

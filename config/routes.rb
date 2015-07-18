@@ -30,9 +30,20 @@ Rails.application.routes.draw do
     get "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization"
     get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
     get "/:event_id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
+    get "/:id/map" => "legacy_sites#map", as: "legacy_map"
   end
   
   get "/invitations/activate" => "invitations#activate"
   post "/invitations/activate" => "invitations#sign_up"
   post "/verify/:user_id" => "worker/dashboard#verify_user"
+
+  namespace :api do
+    # TODO /map
+    # TODO /public-map
+    # TODO /export
+    # TODO /import
+    # TODO /geocode
+    get "/exports" => "exports#sites", as: "exports_sites"
+    get "/map" => "exports#map", as: "exports_map"
+  end
 end
