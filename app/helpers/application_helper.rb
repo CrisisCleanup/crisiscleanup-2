@@ -7,9 +7,9 @@ module ApplicationHelper
     def check_user
 		if !current_user.present?
 			redirect_to '/login'
-		elsif !current_user.verified
-            # messaging for not being verified
-            redirect_to root_path
+		# elsif !current_user.verified
+  #           # messaging for not being verified
+  #           redirect_to root_path
         end
     end
     def check_token

@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150717174113) do
     t.boolean  "is_primary",             default: false
     t.string   "phone",                                  null: false
     t.string   "appengine_key"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,7 +73,7 @@ ActiveRecord::Schema.define(version: 20150717174113) do
     t.boolean  "does_something_else",         default: false
     t.string   "email"
     t.string   "facebook"
-    t.boolean  "is_active",                   default: false
+    t.boolean  "is_active",                   default: false, null: false
     t.boolean  "is_admin",                    default: false
     t.float    "latitude",                                    null: false
     t.float    "longitude",                                   null: false
@@ -156,7 +157,6 @@ ActiveRecord::Schema.define(version: 20150717174113) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",          default: 0,     null: false
-    t.integer  "legacy_organization_id",                 null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
