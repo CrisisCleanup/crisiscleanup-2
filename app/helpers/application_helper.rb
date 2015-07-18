@@ -2,7 +2,9 @@ module ApplicationHelper
     def check_admin?
         # here is a method to check if we are logged in
         # if not...redirect
-        check_user
+        unless current_user and current_user.admin
+            redirect_to "/login"
+        end
     end
     def check_user
 		if !current_user.present?
