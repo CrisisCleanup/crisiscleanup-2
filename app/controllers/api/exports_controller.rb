@@ -10,8 +10,11 @@ module Api
 			# 	format.csv { send_data @sites.to_csv }
 			# end
 			send_data @sites.to_csv
-			binding.pry
+			binding.pry	
 		end
-	  
+
+		def map
+			render json: @sites = Legacy::LegacySite.select("address, blurred_latitude, blurred_longitude, case_number, city, latitude, longitude, name, phone, state, status, work_type, request_date").all
+		end		  
 	end
 end

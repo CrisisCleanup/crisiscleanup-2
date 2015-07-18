@@ -43,5 +43,6 @@ Rails.application.routes.draw do
     # TODO /import
     # TODO /geocode
     get "/exports" => "exports#sites", as: "exports_sites"
+    get "/map" => "exports#map", as: "exports_map"
   end
 end
