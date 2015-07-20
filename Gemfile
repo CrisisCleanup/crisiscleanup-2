@@ -37,7 +37,7 @@ gem 'validates_email_format_of'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'faker'
-
+gem 'mail'
 gem 'will_paginate', '~> 3.0.6'
 
 gem 'paper_trail', '~> 4.0.0.rc'
