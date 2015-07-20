@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
     get "/:event_id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
     get "/:id/map" => "legacy_sites#map", as: "legacy_map"
+    get "/:id/form" => "legacy_sites#form", as: "legacy_form"
   end
   
   get "/invitations/activate" => "invitations#activate"

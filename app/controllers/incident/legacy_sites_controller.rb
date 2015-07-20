@@ -10,5 +10,8 @@ module Incident
     def map
 
     end
+
+    def form
+    end
   end
 end
