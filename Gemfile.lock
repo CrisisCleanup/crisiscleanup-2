@@ -267,7 +267,6 @@ DEPENDENCIES
   jquery-rails
   launchy
   letter_opener
-  mail
   paper_trail (~> 4.0.0.rc)
   pg
   pry-rails

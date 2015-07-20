@@ -9,7 +9,6 @@ module Worker
     			list.ready.each do |inv|
     				InvitationMailer.send_invitation(inv, request.base_url).deliver_now
     			end
-    			redirect_to worker_dashboard_path
     		end
         end  
         # if list.rejected.present? then WRITE ERROR HANDLING end
