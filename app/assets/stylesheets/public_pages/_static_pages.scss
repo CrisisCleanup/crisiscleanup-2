@@ -34,7 +34,9 @@ header {
 nav.top-bar {
     //needs separate declaration away from nest
     height: 125px;
-    background: url('black_bg.jpg') repeat center;
+    background-image: image-url('black_bg.jpg');
+    background-repeat: repeat;
+    background-position: center;
 }
 nav {
     .top-bar-section {
@@ -112,6 +114,14 @@ footer {
             & #footer {
                 max-width: 95%;
             }
+                & .footer-logo img {
+                    width: 65%;
+                    height: auto;
+                    margin: 3% 0 5px 0;
+                }
+                    & .medium-8 .medium-4.columns {
+                        border-left: 1px dashed #fff;
+                    }
 }
 #copyright {
     background: $coal;
@@ -323,6 +333,10 @@ ul li, ol li {
 }
 .wind-block {
     background-color: $terra;
+}
+
+.join {
+    margin-top: 20px;
 }
 
 // Media Queries

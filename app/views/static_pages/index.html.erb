@@ -10,7 +10,7 @@
 <div id="main">
     <div class="row orgs">
         <h2 class="center">Choose your organization</h2>
-        <p class="center"><strong>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</strong></p>
+        <p class="center">Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
         <a href="#">
             <div class="columns small-12 medium-6 large-3 voad" align="center">
                 <h3 class="basic">V.O.A.D</h3>
@@ -43,7 +43,7 @@
     <hr>
     <div class="row incident-map">
         <h2 class="center">Incident Map</h2>
-        <p class="center"><strong>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</strong></p>
+        <p class="center">Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
         <div class="columns small-12 medium-12 large-9">
             <img src="http://placehold.it/960x400" alt="slide 1" />
             </div>
@@ -63,7 +63,7 @@
     <hr>
     <div class="row home-icons">
         <h2>20+ Disasters Impacted</h2>
-        <p><strong>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</strong></em>
+        <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
         <div class="columns small-12 medium-12 large-4 tornado-block" align="center">
             <h3>Tulsa Tornado</h3>
             <%= image_tag "icons/tornado-w.png", :alt => "Tulsa Tornado"  %>
@@ -110,27 +110,6 @@
         <h4 class="center basic">You don't. You let them organize themselves.</h4>
         <br>
         <div class="columns small-12 medium-8 large-8">
-            <ul data-orbit>
-              <li>
-                <img src="http://placehold.it/1920x850" alt="slide 1" />
-                <div class="orbit-caption">
-                  Caption Two.
-                </div>
-              </li>                   
-              <li>
-                <img src="http://placehold.it/1920x850" alt="slide 2" />
-                <div class="orbit-caption">
-                  Caption Two.
-                </div>
-              </li>
-              <li>
-                <img src="http://placehold.it/1920x850" alt="slide 3" />
-                <div class="orbit-caption">
-                  Caption Three.
-                </div>
-              </li>
-            </ul>
-            <p></p>
             <h5>Crisis Cleanup is a free, open source application that connects disaster recovery organizations with the people who need help.</h5>
 
             <p>Crisis Cleanup empowers relief organizations to instantly coordinate response efforts in real time, redirecting thousands of volunteers from to waiting lines to survivors' basements.</p>
@@ -146,7 +125,8 @@
         <div class="sidebar black">
             <div class="columns small-12 medium-4 large-4">                
                 <h4>Disaster relief organizations may join as long as they:</h4> 
-                <ol class="white">
+                 <img src="http://placehold.it/768x400" alt="join" />
+                <ol class="join white">
                     <li>Have a physical presence in a disaster area</li> 
                     <li>Perform assessments and/or gutting, mucking-out, debris removal, mold abatement, or rebuilding</li> 
                     <li>Are reputable (e.g. are a VOAD member or come recommended by a VOAD). Crisis Cleanup is free of charge.</li>
@@ -154,6 +134,21 @@
                 <a href="#" class="button expand yellow">Sound like you? Sign up!</a>
             </div>
         </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="large-12 columns">
+        <h3 class="center">Organizations Using Crisis Cleanup</h3>
+        <p class="center">Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball.</p>
+        <ul class="small-block-grid-3 medium-block-grid-6 large-block-grid-6">
+            <li><%= image_tag "red-cross.jpg", :alt => "American Red Cross"  %></li>
+            <li><%= image_tag "voad.jpg", :alt => "National Voluntary Organizations Active in Disaster"  %></li>
+            <li><%= image_tag "houston.jpg", :alt => "City of Houston"  %></li>
+            <li><%= image_tag "good-done-great.jpg", :alt => "Good Done Great"  %></li>            
+            <li><%= image_tag "211.jpg", :alt => "Good Done Great"  %></li>
+            <li><%= image_tag "iom.jpg", :alt => "international organization for migration"  %></li>
+        </ul>
     </div>
 </div>
 <% end %>
