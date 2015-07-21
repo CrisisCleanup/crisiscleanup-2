@@ -1,0 +1,45 @@
+<%= simple_form_for user, url: url do |f| %>
+  <div class="margin-top row">
+    <div class="medium-12 columns">
+      <%= f.input :name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :email %>
+    </div>
+  </div>
+  <% unless user.persisted? %>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :password %>
+    </div>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :verified %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :admin %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.association :legacy_organization %>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="medium-12 columns">
+  		<%= f.button :submit %>
+  	</div>
+  </div>
+<% end %>
+
+    
+                       
+                        
+     
+       

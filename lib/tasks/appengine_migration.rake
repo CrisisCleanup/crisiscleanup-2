@@ -128,7 +128,7 @@ def get_results(keys, table_name)
 	result_keys.each do |key|
 		begin
 			count += 1
-			# if count > 1
+			# if count > 10
 			# 	break
 			# end
 			puts "getting #{count}"

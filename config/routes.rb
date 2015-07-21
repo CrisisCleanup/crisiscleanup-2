@@ -6,10 +6,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :legacy_events
-    resources :legacy_sites
-    resources :legacy_organizations
-    resources :legacy_contacts
+    resources :legacy_events, except: [:show]
+    resources :legacy_sites, except: [:show]
+    resources :legacy_organizations, except: [:show]
+    resources :legacy_contacts, except: [:show]
+    resources :users, except: [:show]
 
     get "/stats" => "stats#index", as: "stats"
     get "/stats/:id" => "stats#by_incident", as: "stats_by_incident"
