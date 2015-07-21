@@ -1,18 +1,29 @@
 module Legacy
     class LegacySite < ActiveRecord::Base
+        PERSONAL_FIELDS = ["id", "address", "case_number", "latitude", "longitude", "claimed_by", "phone", "name", "created_at", "updated_at", "appengine_key"]
         self.per_page = 500
         has_paper_trail
-    	  
+        geocoded_by :full_street_address 
+        before_validation :geocode, if: ->(obj){ obj.latitude.nil? or obj.longitude.nil? or obj.address_changed? }
+        before_validation :create_blurred_geocoordinates
         belongs_to :legacy_event
-    	  validates_presence_of :address,:blurred_latitude,:blurred_longitude,:case_number,:city,:latitude,:longitude,:name
+    	validates_presence_of :address,:blurred_latitude,:blurred_longitude,:case_number,:city,:latitude,:longitude,:name
     	
+        def full_street_address
+            "#{self.address}, #{self.city}, #{self.state}"
+        end
 
-    	  def claimed_by_org
-    	  	LegacyOrganization.find(self.claimed_by)
-    	  end
-    	  def reported_by_org
-    	  	LegacyOrganization.find(self.reported_by)
-    	  end
+        def create_blurred_geocoordinates
+            self.blurred_latitude = self.latitude + rand(-0.0187..0.0187)
+            self.blurred_longitude = self.longitude + rand(-0.0187..0.0187)
+        end
+
+        def claimed_by_org
+        	LegacyOrganization.find(self.claimed_by)
+        end
+        def reported_by_org
+        	LegacyOrganization.find(self.reported_by)
+        end
 
         def self.statuses_by_event event_id
           distinct_attribute_by_event_id "status", event_id
@@ -72,18 +83,28 @@ module Legacy
                 end
             end
             count
-        end
-        
+        end     
 
-        def self.to_csv(options = {})
+        def self.to_csv(options = {}, params)
           CSV.generate(options) do |csv|
-            csv << column_names
-            all.each do |product|
-              csv << product.attributes.values_at(*column_names)
+            binding.pry
+            csv << get_column_names(params)
+            all.each do |site|
+                # make a site hash with 'data' extracted
+                # replace site.attributes.below
+              csv << site.attributes.values_at(*column_names)
             end
           end
         end
 
-
+        def self.get_column_names(params)
+            @c = column_names
+            if params[:params][:type] == "deidentified"
+                PERSONAL_FIELDS.each do |field|
+                    @c.delete(field)
+                end
+            end
+            @c
+        end
     end
 end

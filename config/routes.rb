@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     get "/stats" => "stats#index", as: "stats"
     get "/stats/:id" => "stats#by_incident", as: "stats_by_incident"
+    get "/import" => "import#form", as: "csv_import_form"
 
   end
 
@@ -40,12 +41,10 @@ Rails.application.routes.draw do
   post "/verify/:user_id" => "worker/dashboard#verify_user"
 
   namespace :api do
-    # TODO /map
-    # TODO /public-map
-    # TODO /export
     # TODO /import
-    # TODO /geocode
-    get "/exports" => "exports#sites", as: "exports_sites"
-    get "/map" => "exports#map", as: "exports_map"
+    get "/map" => "json#map", as: "json_map"
+    get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"
+    get "/public/map" => "public/json#map", as: "public_json_map"
+    post "/import" => "import#csv", as: "import_csv"
   end
 end

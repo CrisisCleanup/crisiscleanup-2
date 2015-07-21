@@ -37,7 +37,7 @@ module Admin
             :address,:blurred_latitude,:blurred_longitude,
             :case_number,:city,:claimed_by,:legacy_event_id,
             :latitude,:longitude,:name,:phone,:reported_by,
-            :requested_at,:state,:status,:work_type,:data)
+            :requested_at,:state,:status,:work_type,:data,:zip_code)
 	    end
   end
 end

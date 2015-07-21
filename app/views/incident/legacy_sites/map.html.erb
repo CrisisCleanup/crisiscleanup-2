@@ -11,13 +11,13 @@
   function initialize() {
     var mapCanvas = document.getElementById('map-canvas');
     var mapOptions = {
-      center: new google.maps.LatLng(40.5403, -73.5463),
-      zoom: 7,
+      center: new google.maps.LatLng(39, -90),
+      zoom: 4,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     var map = new google.maps.Map(mapCanvas, mapOptions)
 
-    $.get( "/api/map", function( data ) {
+    $.get( "/api/map?legacy_event_id=<%= @legacy_event_id %>", function( data ) {
       $.each(data, function(index, obj) {
       	var marker1 = new google.maps.Marker({
       		position: new google.maps.LatLng(parseFloat(obj["latitude"]), parseFloat(obj["longitude"])),

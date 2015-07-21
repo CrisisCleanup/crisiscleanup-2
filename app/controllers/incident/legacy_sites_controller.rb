@@ -8,7 +8,7 @@ module Incident
     end
 
     def map
-
+        @legacy_event_id = params[:id]
     end
 
     def form
