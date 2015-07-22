@@ -8,8 +8,8 @@ module Legacy
   	  	inverse_of: :legacy_organization
   	  has_many :legacy_contacts,
 	    inverse_of: :legacy_organization
-	  validates_presence_of :longitude, :latitude, :name, :password, :permissions, :timestamp_signup
-
+	  validates_presence_of :name
+    accepts_nested_attributes_for :legacy_contacts, allow_destroy: true
   end
 end 			
 			

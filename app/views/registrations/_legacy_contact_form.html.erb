@@ -1,0 +1,23 @@
+<div class="contact">
+	<div class="row">
+		<div class="medium-6 columns">
+			<%= contact.input :email %>
+		</div>
+	</div>
+	<div class="row">
+	  	<div class="medium-6 columns">
+	  		<%= contact.input :first_name %>
+	  	</div>
+	    <div class="medium-6 columns">
+	      <%= contact.input :last_name %>
+	    </div>
+ 	</div>
+
+	<div class="row">
+	  	<div class="large-12 columns">
+	  		<%= contact.input :phone %>
+	  	</div>
+	</div>  
+	<%= contact.input :_destroy, as: :hidden %>
+	<%= link_to "Remove Contact", '#', class:"remove_fields" %>
+</div>

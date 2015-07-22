@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718203745) do
+ActiveRecord::Schema.define(version: 20150722194841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,14 +74,14 @@ ActiveRecord::Schema.define(version: 20150718203745) do
     t.string   "facebook"
     t.boolean  "is_active",                   default: false
     t.boolean  "is_admin",                    default: false
-    t.float    "latitude",                                    null: false
-    t.float    "longitude",                                   null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "name",                                        null: false
     t.boolean  "not_an_org",                  default: false
     t.boolean  "only_session_authentication", default: false
     t.boolean  "org_verified",                default: false
-    t.string   "password",                                    null: false
-    t.string   "permissions",                                 null: false
+    t.string   "password"
+    t.string   "permissions"
     t.string   "phone"
     t.boolean  "physical_presence"
     t.boolean  "publish"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150718203745) do
     t.string   "state"
     t.string   "terms_privacy"
     t.datetime "timestamp_login"
-    t.datetime "timestamp_signup",                            null: false
+    t.datetime "timestamp_signup"
     t.string   "twitter"
     t.string   "url"
     t.text     "voad_referral"

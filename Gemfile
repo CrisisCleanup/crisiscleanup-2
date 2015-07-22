@@ -19,7 +19,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'simple_form'
 gem 'pry-rails'
 gem 'rails_12factor', group: :production
-
+gem 'binding_of_caller'
 gem 'foundation-rails'
 
 gem 'foundation-icons-sass-rails'
