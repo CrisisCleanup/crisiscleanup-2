@@ -10,12 +10,16 @@
         <section class="top-bar-section">
             <!-- Right Nav Section -->
             <ul class="right">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li class="active"><%= link_to "Home", root_path %></li>
+                <li><%= link_to "About", about_path %></li>
                 <li><a href="#">Map</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
                 <li><a href="#">Sign Up</a></li>
-                <li><a href="#">Login</a></li>
+                <% if current_user %>
+                  <li><%= link_to "Login", new_user_session_path %></li> 
+                <% else %>
+                  <li><%= link_to "Logout", destroy_user_session_path %></li>
+                <% end %>
             </ul>
         </section>
     </nav>

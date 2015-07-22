@@ -16,7 +16,7 @@ $coal: #242424;
 
 @import "icons/*.png";
 
-// Global
+// Global & Full-Width
 html, body {
     width: 100%;
     height: 100%;
@@ -79,16 +79,37 @@ nav {
     }
 }
 #wrapper {
-    max-width: 95%;
+    max-width: 96%;
     margin-left: 2%;
+    display: table;
 }
 .row {
     max-width: 100%;
 }
 #main {
 }
-
-.sidebar {
+.alt {  // Sidebar Template
+    display: table-cell;
+    width: 70%;
+    & p, ul {
+        width: 95%;
+    }
+}
+#sidebar { // Sidebar Template
+    width: 30%;
+    left: 70%;
+    display: table-cell;
+    background-color: gainsboro;
+    border-radius: 5px 5px;
+    border: 2px dashed $smoke;
+    & h4, p, ul li {
+        width: 90%; margin-left: 5%;
+        }
+        & h4 {
+            margin-top: 10px;
+        }    
+}
+.sideblock {
     & .columns {
         border-radius: 5px 5px;
     }
@@ -144,6 +165,9 @@ footer {
                 & a:link, a:visited {
                     color: $goldenrod;
                 }
+                    & .right {
+                            margin-right: 40px;
+                        }
 }
 
 // Typography
@@ -158,6 +182,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 ul li, ol li {
     margin-bottom: 10px;
+}
+.custom {
+    margin-left: 0;
+    & li {
+        list-style-type: none;
+    }
+}
+.indent {
+    margin-left: 50px;
 }
 .alert {color: $berry;
 }
@@ -241,6 +274,12 @@ ul li, ol li {
 }   
 .button-group > li {
     margin-right: 5px;
+}
+
+//Videos & Third Party Media
+.about-intro {
+    width: 95%;
+    height: 315px;
 }
 
 // Home Page
@@ -334,9 +373,18 @@ ul li, ol li {
 .wind-block {
     background-color: $terra;
 }
-
 .join {
     margin-top: 20px;
+}
+
+// About Page
+.team {
+    display: inline-block;
+}
+.team img {
+    border-radius: 5px 5px;
+    width: 100%; 
+    height: auto;
 }
 
 // Media Queries
@@ -376,5 +424,27 @@ ul li, ol li {
 @media only screen and (max-width: 1024px) {
     .incident-map img {
         margin-bottom: 40px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .alt {  
+        display: block;
+        width: 100%;
+        clear:both;
+        & p {
+            width: 100%;
+        }
+    }
+    #sidebar {
+        width: 100%;
+        clear:both;
+        display: block;
+        padding: 10px 0 10px 0;
+        background-color: gainsboro;
+        border-radius: 5px 5px;        
+    }
+    #copyright .right {
+        margin-right: 0; 
     }
 }
