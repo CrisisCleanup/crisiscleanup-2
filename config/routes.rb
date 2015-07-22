@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, path:'',:path_names => {:sign_in => 'login', :sign_out => 'logout'}
   root 'static_pages#index'
-
+  
+  get "/about" => "static_pages#about", as: "about"
+  get "/privacy" => "static_pages#privacy", as: "privacy"
+  get "/terms" => "static_pages#terms", as: "terms"    
+    
   get "/admin" => 'admin/dashboard#index'
 
   namespace :admin do
