@@ -21,7 +21,11 @@ class RegistrationsController < ApplicationController
 		end	
 	end
   	if @org.valid?
+  		@org.legacy_events << Legacy::LegacyEvent.find(params['legacy_legacy_organization']['legacy_events']))
   		@org.save
+  		User.where(admin:true).each do |u|
+       AdminMailer.send_registration_alert(u,@org).deliver_now
+      end
   		redirect_to root_path
   	else
   		# with errors

@@ -22,7 +22,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.class == User
+  
+    if resource.class == User && current_user.admin?
+      '/admin/dashboard'
+    else
       '/dashboard'
     end
   end

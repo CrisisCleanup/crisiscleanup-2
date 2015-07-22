@@ -31,6 +31,23 @@ module Admin
             redirect_to edit_admin_legacy_organization_path(@org.id)
         end
     end
+    def verify
+        org = Legacy::LegacyOrganization.find(params[:id])
+        if org.verify!(current_user)
+            emails = org.legacy_contacts.map{|c| c.email }
+            list = InvitationList.new(emails.join(','),current_user)
+            if list.valid?
+                if list.ready.present?  
+                    list.ready.each do |inv|
+                        InvitationMailer.send_invitation(inv, request.base_url).deliver_now
+                    end
+                end
+            end 
+        end
+        # errors
+        redirect_to admin_dashboard_index_path
+        
+    end
     private
 	    def org_params
 	        params.require(:legacy_legacy_organization).permit(

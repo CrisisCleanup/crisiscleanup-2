@@ -1,6 +1,13 @@
 <%= simple_form_for org, url: url do |f| %>
   <div class="margin-top row">
     <div class="medium-6 columns">
+      <% if org.id.present? && !org.org_verified %>
+          <%= link_to "Click to Verify!", "/admin/legacy_organizations/verify?id=#{org.id}",method: :post %>
+      <%end%>
+    </div>
+  </div>
+  <div class="margin-top row">
+    <div class="medium-6 columns">
       <%= f.input :name %>
     </div>   
   </div>

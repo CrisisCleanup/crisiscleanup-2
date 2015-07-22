@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
     get "/stats" => "stats#index", as: "stats"
     get "/stats/:id" => "stats#by_incident", as: "stats_by_incident"
-
+    post '/legacy_organizations/verify' => "legacy_organizations#verify"
   end
 
   
