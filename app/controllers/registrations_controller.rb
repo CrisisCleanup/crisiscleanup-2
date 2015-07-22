@@ -2,7 +2,7 @@ class RegistrationsController < ApplicationController
   def new
     
     @org = Legacy::LegacyOrganization.new
- 
+ 	@org.legacy_contacts.build
   end
 
   def create 
