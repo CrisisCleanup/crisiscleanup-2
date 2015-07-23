@@ -1,5 +1,6 @@
 module Legacy
     class LegacySite < ActiveRecord::Base
+        STANDARD_SITE_VALUES = ["address", "blurred_latitude", "blurred_longitude","case_number", "city", "claimed_by", "legacy_event_id", "latitude", "longitude", "name", "phone", "reported_by", "requested_at", "state", "status", "work_type", "data", "created_at", "updated_at", "appengine_key", "request_date"]
         PERSONAL_FIELDS = ["id", "address", "case_number", "latitude", "longitude", "claimed_by", "phone", "name", "created_at", "updated_at", "appengine_key"]
         self.per_page = 500
         has_paper_trail
@@ -87,12 +88,10 @@ module Legacy
 
         def self.to_csv(options = {}, params)
           CSV.generate(options) do |csv|
-            binding.pry
-            csv << get_column_names(params)
+            column_names = get_column_names(params)
+            csv << column_names
             all.each do |site|
-                # make a site hash with 'data' extracted
-                # replace site.attributes.below
-              csv << site.attributes.values_at(*column_names)
+              csv << site_to_hash(site.attributes).values_at(*column_names)
             end
           end
         end
@@ -104,7 +103,20 @@ module Legacy
                     @c.delete(field)
                 end
             end
-            @c
+            all.each do |site|
+                site.data.each do |key, value|
+                    @c << key
+                end
+            end
+            @c.flatten.uniq
+        end
+
+        def self.site_to_hash (site_attributes)
+            site_attributes['data'].each do |key, value|
+                site_attributes[key] = value
+            end
+            site_attributes.delete('data')
+            site_attributes
         end
     end
 end

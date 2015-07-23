@@ -18,12 +18,12 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 				expect(should).to render_template :index
 			end
 
-			it "populates an array of LegacyOrganizations" do
-				allow(controller).to receive(:current_user).and_return(@admin)
-				@organization = FactoryGirl.create :legacy_organization
-				get :index 
-				assigns(:orgs).should eq([@organization])
-			end
+			# it "populates an array of LegacyOrganizations" do
+			# 	allow(controller).to receive(:current_user).and_return(@admin)
+			# 	@organization = FactoryGirl.create :legacy_organization
+			# 	get :index 
+			# 	assigns(:orgs).should eq([@organization])
+			# end
 		end
 
 		context "without an admin user" do
