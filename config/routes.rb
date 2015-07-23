@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :legacy_events, except: [:show]
+    resources :legacy_events do
+      resources :forms
+    end
     resources :legacy_sites, except: [:show]
     resources :legacy_organizations, except: [:show]
     resources :legacy_contacts, except: [:show]

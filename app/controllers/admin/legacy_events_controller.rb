@@ -8,6 +8,9 @@ module Admin
         # todo implement search and sort and paginate
         @events = Legacy::LegacyEvent.paginate(:page => params[:page])
     end
+    def show
+        @event = Legacy::LegacyEvent.find(params[:id])
+    end
     def new
     	@event = Legacy::LegacyEvent.new
     end

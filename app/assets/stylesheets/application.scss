@@ -9,7 +9,8 @@
 }
 
 .admin-dashboard{
-	@import "admin_pages/dashboard"
+	@import "admin_pages/dashboard";
+	@import "admin_pages/form";
 }
 
 @import "compass";

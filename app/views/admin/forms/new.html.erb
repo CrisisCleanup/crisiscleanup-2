@@ -1,0 +1,22 @@
+<%= simple_form_for @form, url: admin_legacy_event_forms_path(@event.id) do |f| %>
+	<div class="margin-top row">
+    	<h3 class='medium-8 columns'>
+    		Form for <%=@event.name%>
+    	</h3>
+    	<div class="medium-12 columns">
+      		<%= f.input :html, required:true %>
+    	</div>
+    	
+  	</div>
+  	<div class="row">
+  		<a href="#" class='preview medium-12 columns' data-reveal-id="preview">Preview</a>
+  		<div class="medium-12 columns margin-top">
+  			<%= f.button :submit %>
+  		</div>
+  	</div>
+    <div id="preview" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+      <h2 id="modalTitle">Form Preview</h2>
+      <p class="lead"></p>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  </div>
+<%end%>
