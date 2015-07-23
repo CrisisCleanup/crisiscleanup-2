@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Organization</th>
+      <th>Verified</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td> 
+          <a href=<%=edit_admin_user_path(user.id)%>>
+              <%= user.email %>
+            </a>
+        </td>
+        <td> <%= user.name %> </td>
+        <td> <%= user.legacy_organization.name %> </td>
+        <td> <%= user.verified %>  </td>
+        <td> <%= user.admin %>  </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

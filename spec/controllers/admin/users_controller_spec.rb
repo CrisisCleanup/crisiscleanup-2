@@ -1,14 +1,13 @@
 require 'rails_helper'
 require 'spec_helper'
 
-RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
+RSpec.describe Admin::UsersController, :type => :controller do
 
 
 	before do |example|
 	  org = FactoryGirl.create :legacy_organization 
 	  @admin = User.create(name:'Frank', email:'Frank@aol.com', password:'blue32blue32', legacy_organization_id: org.id, admin: true) 
 	  @user = User.create(name:'Gary', email:'Gary@aol.com', password:'blue32blue32', legacy_organization_id: org.id, admin: false) 
-	  @organization = FactoryGirl.create :legacy_organization
 	end
 
 	describe "Get #index" do
@@ -19,11 +18,11 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 				expect(should).to render_template :index
 			end
 
-			# it "populates an array of LegacyOrganizations" do
+			# it "populates an array of Users" do
 			# 	allow(controller).to receive(:current_user).and_return(@admin)
-			# 	@organization = FactoryGirl.create :legacy_organization
+			# 	@user = FactoryGirl.create :user
 			# 	get :index 
-			# 	assigns(:orgs).should eq([@organization])
+			# 	assigns(:users).should eq([@user])
 			# end
 		end
 
@@ -43,6 +42,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			end
 		end
 	end
+
 	describe "Get #new" do
 		context "with an admin user" do
 			it "renders the new view" do
@@ -51,10 +51,10 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 				expect(should).to render_template :new
 			end
 
-			it "returns a new legacy organization" do
+			it "returns a new user" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				get :new
-				assigns(:org).name.should eq(nil)
+				assigns(:user).name.should eq("")
 			end
 		end
 
@@ -78,17 +78,17 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 
 	describe "Post #create" do
 		context "with an admin user" do
-			it "creates a new organization" do
+			it "creates a new user" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				expect {
-					post :create, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization)
-				}.to change(Legacy::LegacyOrganization, :count).by(1)
+					post :create, user: FactoryGirl.attributes_for(:user)
+				}.to change(User, :count).by(1)
 			end
 
-			it "redirects to the organization index" do
+			it "redirects to the user index" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				post :create, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization)
-				response.should redirect_to :admin_legacy_organizations
+				post :create, user: FactoryGirl.attributes_for(:user)
+				response.should redirect_to :admin_users
 			end
 		end
 
@@ -111,17 +111,17 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 
 	describe "Get #edit" do
 		context "with an admin user" do
-			it "renders the edit view with the correct organization" do
+			it "renders the edit view with the correct user" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				organization = FactoryGirl.create :legacy_organization
-				get :edit, id: organization
+				user = FactoryGirl.create :user
+				get :edit, id: user
 				expect(should).to render_template :edit
 			end
 
-			it "assigns the requested organization to @organization" do
+			it "assigns the requested user to @user" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				organization = FactoryGirl.create :legacy_organization
-				get :edit, id: organization
+				user = FactoryGirl.create :user
+				get :edit, id: user
 				expect(should).to render_template :edit
 			end
 		end
@@ -129,8 +129,8 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 		context "without an admin user" do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
-				organization = FactoryGirl.create :legacy_organization
-				get :edit, id: organization
+				user = FactoryGirl.create :user
+				get :edit, id: user
 				expect(should).to redirect_to "/login"
 			end
 		end
@@ -138,8 +138,8 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 		context "without a user" do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(nil)
-				organization = FactoryGirl.create :legacy_organization
-				get :edit, id: organization
+				user = FactoryGirl.create :user
+				get :edit, id: user
 				expect(should).to redirect_to "/login"
 			end
 		end
@@ -147,26 +147,26 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 	end
 	describe "Put #update" do
 		context "with an admin user" do
-			it "locates the correct organization" do
+			it "locates the correct user" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				organization = FactoryGirl.create :legacy_organization
-				put :update, id: organization, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization)
-		      	assigns(:org).should eq(organization)  
+				user = FactoryGirl.create :user
+				put :update, id: user, user: FactoryGirl.attributes_for(:user)
+		      	assigns(:user).should eq(user)  
 			end
 			context "with correct attributes" do
-				it "changes the organizations attributes" do
-					@organization = FactoryGirl.create :legacy_organization
+				it "changes the user's attributes" do
+					@user = FactoryGirl.create :user
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, id: @organization, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization, name: "ZZ")
-					@organization.reload
-					@organization.name.should eq("ZZ")
+					put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "ZZ")
+					@user.reload
+					@user.name.should eq("ZZ")
 				end
 
-				it "redirects the updated organization" do
-					@organization = FactoryGirl.create :legacy_organization
+				it "redirects the updated user" do
+					@user = FactoryGirl.create :user
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, id: @organization, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization, case_label: "ZZ")
-					expect(response).to redirect_to :admin_legacy_organizations
+					put :update, id: @user, user: FactoryGirl.attributes_for(:user, case_label: "ZZ")
+					expect(response).to redirect_to "/admin/users"
 				end
 			end
 		end
@@ -174,8 +174,8 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 		context "without an admin user" do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
-				organization = FactoryGirl.create :legacy_organization
-				put :update, id: organization
+				user = FactoryGirl.create :user
+				put :update, id: user
 				expect(should).to redirect_to "/login"
 			end
 		end
@@ -183,8 +183,8 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 		context "without a user" do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(nil)
-				organization = FactoryGirl.create :legacy_organization
-				post :create, id: organization
+				user = FactoryGirl.create :user
+				post :create, id: user
 				expect(should).to redirect_to "/login"
 			end
 		end

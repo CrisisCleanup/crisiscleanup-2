@@ -18,6 +18,7 @@ module ApplicationHelper
     	end
     end
 
+    #TODO these belong in the model
     def organization_claimed_site_count organization_id 
         count = Legacy::LegacySite.where(claimed_by: organization_id).count
     end

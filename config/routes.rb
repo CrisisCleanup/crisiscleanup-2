@@ -10,14 +10,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :legacy_events
-    resources :legacy_sites
-    resources :legacy_organizations
-    resources :legacy_contacts
+    resources :legacy_events, except: [:show]
+    resources :legacy_sites, except: [:show]
+    resources :legacy_organizations, except: [:show]
+    resources :legacy_contacts, except: [:show]
+    resources :users, except: [:show]
 
     get "/stats" => "stats#index", as: "stats"
     get "/stats/:id" => "stats#by_incident", as: "stats_by_incident"
     post '/legacy_organizations/verify' => "legacy_organizations#verify"
+    get "/import" => "import#form", as: "csv_import_form"
   end
 
   
@@ -44,13 +46,11 @@ Rails.application.routes.draw do
 
 
   namespace :api do
-    # TODO /map
-    # TODO /public-map
-    # TODO /export
     # TODO /import
-    # TODO /geocode
-    get "/exports" => "exports#sites", as: "exports_sites"
-    get "/map" => "exports#map", as: "exports_map"
+    get "/map" => "json#map", as: "json_map"
+    get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"
+    get "/public/map" => "public/json#map", as: "public_json_map"
+    post "/import" => "import#csv", as: "import_csv"
   end
 
   # Organization Registrations

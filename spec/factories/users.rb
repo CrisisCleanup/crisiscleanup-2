@@ -1,7 +1,7 @@
 FactoryGirl.define do
     factory :user do
       name "Gary"
-      email "gary@aol.com"
+      email Faker::Internet.email
       password "blue32blue32"
       admin false
       legacy_organization_id 1
@@ -9,7 +9,7 @@ FactoryGirl.define do
 
     factory :admin, class: User do
       name "Frank"
-      email "frank@aol.com"
+      email Faker::Internet.email
       password "blue32blue32"
       admin false
       legacy_organization_id 1
