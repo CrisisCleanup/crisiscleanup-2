@@ -4,7 +4,7 @@ $(document).on("ready page:load",function() {
 	var page = path.split('/')[2];
 	var elem = '.'+page;
 	if (dashboard){
-		$('select').foundationSelect()
+		$('select').foundationSelect();
 		$(document).foundation();
 		$('.dashboard li').removeClass('active');
 		$(elem).addClass('active');

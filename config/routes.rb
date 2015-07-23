@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     get "/stats" => "stats#index", as: "stats"
     get "/stats/:id" => "stats#by_incident", as: "stats_by_incident"
-
+    post '/legacy_organizations/verify' => "legacy_organizations#verify"
   end
 
   
@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   post "/invitations/activate" => "invitations#sign_up"
   post "/verify/:user_id" => "worker/dashboard#verify_user"
 
+
   namespace :api do
     # TODO /map
     # TODO /public-map
@@ -51,4 +52,9 @@ Rails.application.routes.draw do
     get "/exports" => "exports#sites", as: "exports_sites"
     get "/map" => "exports#map", as: "exports_map"
   end
+
+  # Organization Registrations
+  get "/register" => 'registrations#new'
+  post "/register" => 'registrations#create'
+
 end

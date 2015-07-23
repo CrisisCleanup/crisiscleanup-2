@@ -1,0 +1,114 @@
+<%= simple_form_for org, url: url do |f| %>
+  <div class="row">
+    <h4 class="medium-12 columns">Choose a Distaster</h4>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :legacy_events, collection: Legacy::LegacyEvent.all, label: false %>
+    </div>   
+  </div>
+    <div class="contact_section">
+      <div class="row">
+         <h4 class="medium-12 columns">Primary Contacts</h4>
+      </div>
+      <div class="row">
+        <div class="medium-6 columns contact_form">
+          <%= f.simple_fields_for :legacy_contacts do |p| %>
+            <%= render 'legacy_contact_form', contact: p %>
+          <% end %>
+          <%= link_to_add_contact "Add Contact",f,:legacy_contacts %>
+        </div>   
+      </div>
+    </div>
+  <div class="row">
+    <h3 class="medium-12">Organization Information</h3>
+    <p class="medium-12">Please use your local team name. E.g. "Team Rubicon Region 5" or "LDS Church-Plainview Stake" rather than "Team Rubicon" or "LDS Church"</p>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :name, label:'Organization Name' %>
+    </div>   
+  </div>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :address %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :city %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :state %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :zip_code %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :email %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :phone %>
+    </div>
+  </div>
+  <div class="row">   
+    <div class="medium-12 columns">
+      <%= f.input :url, label:'Website' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :facebook %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :twitter %>
+    </div>
+  </div>  
+  <div class="boxes">
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :does_only_coordination %>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <%= f.input :does_only_sit_aware %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :does_recovery %>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <%= f.input :does_something_else %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :not_an_org %>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <%= f.input :physical_presence %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.button :submit, "Sign Up" %>
+    </div>
+  </div>
+<% end %>
+
+    
+                      
+
+                   
+            
+           
+                        
+     
+       
+     

@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+@u = User.create(email:'admin@aol.com', password:'blue32blue32', name:'frank', admin:true)
 5.times do 
 	legacy_event = Legacy::LegacyEvent.create(
 		case_label: Faker::Company.bs,                                                                   
@@ -49,7 +50,8 @@
 			zip_code: Faker::Address.zip,
 			is_admin: true
 		)
-		
+		User.create(email:'frank@aol.com', password:'blue32blue32', name:'frank', admin:false, legacy_organization_id:org.id, referring_user_id:@u.id)
+
 		2.times do
 			Legacy::LegacyContact.create(
 				email: Faker::Internet.email,
@@ -81,5 +83,6 @@
 
 	) 
 	end
+
 end
 
