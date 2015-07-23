@@ -368,7 +368,7 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
         	pg_entity.save
 
         	unless pg_entity.valid?
-        		binding.pry
+        		# TODO
         	end
         	if joins
         		joins_hash.each do |key, value|

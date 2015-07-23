@@ -12,6 +12,7 @@ module Incident
     end
 
     def form
+        @form = Form.find_by(legacy_event_id: params[:id]).html
     end
   end
 end
