@@ -73,9 +73,9 @@
                 <li><a href="#">Policies</a> |</li>
                 <li><a href="#">Sign Up</a> |</li>
                 <% if current_user %>
-                  <li><%= link_to "Login", new_user_session_path %></li> 
+                 <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
                 <% else %>
-                  <li><%= link_to "Logout", destroy_user_session_path %></li>
+                 <li><%= link_to "Login", new_user_session_path %></li> 
                 <% end %>
             </ul>
         </div>  
