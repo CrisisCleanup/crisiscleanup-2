@@ -1,30 +1,29 @@
 class RegistrationsController < ApplicationController  
   def new
-    
     @org = Legacy::LegacyOrganization.new
- 	@org.legacy_contacts.build
+ 	  @org.legacy_contacts.build
   end
 
   def create 
  	@org = Legacy::LegacyOrganization.new(org_params) 
   	contacts = params["legacy_legacy_organization"]["legacy_contacts_attributes"]
   	if contacts.present?
-		contacts.each do |c|
-			if c[1]["_destroy"] == "false"
-				@org.legacy_contacts << Legacy::LegacyContact.new(
-					email: c[1]["email"],
-					first_name: c[1]["first_name"],
-					last_name: c[1]["last_name"],
-					phone: c[1]["phone"]
-					)
-			end
-		end	
-	end
+  		contacts.each do |c|
+  			if c[1]["_destroy"] == "false"
+  				@org.legacy_contacts << Legacy::LegacyContact.new(
+  					email: c[1]["email"],
+  					first_name: c[1]["first_name"],
+  					last_name: c[1]["last_name"],
+  					phone: c[1]["phone"]
+  					)
+  			end
+  		end	
+  	end
   	if @org.valid?
-  		@org.legacy_events << Legacy::LegacyEvent.find(params['legacy_legacy_organization']['legacy_events']))
+  		@org.legacy_events << Legacy::LegacyEvent.find(params['legacy_legacy_organization']['legacy_events'])
   		@org.save
   		User.where(admin:true).each do |u|
-       AdminMailer.send_registration_alert(u,@org).deliver_now
+        AdminMailer.send_registration_alert(u,@org).deliver_now
       end
   		redirect_to root_path
   	else

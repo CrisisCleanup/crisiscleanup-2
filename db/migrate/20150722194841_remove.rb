@@ -5,6 +5,7 @@ class Remove < ActiveRecord::Migration
     change_column_null :legacy_organizations, :password, true
     change_column_null :legacy_organizations, :permissions, true
     change_column_null :legacy_organizations, :timestamp_signup, true
+     change_column_null :users, :legacy_organization_id, true
   	
   end
 end

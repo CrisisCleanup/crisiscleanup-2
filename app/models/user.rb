@@ -9,13 +9,20 @@ class User < ActiveRecord::Base
   has_many :invitations, inverse_of: :user
   belongs_to :legacy_organization, :class_name => "Legacy::LegacyOrganization"
   belongs_to :reference, class_name: "User", foreign_key: "referring_user_id"
-  
+  validates_presence_of :legacy_organization_id, :if => :is_not_admin?
   
   def invited_by
   	self.reference
   end
   def verify!
-    self.update(verified:true)
+    if self.update(verified:true)
+      true
+    else
+      false
+    end
+  end
+  def is_not_admin?
+    !self.admin 
   end
   def org
     # this is where we'll add new orgs too

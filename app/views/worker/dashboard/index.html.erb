@@ -1,8 +1,14 @@
-
 <div class="margin-top row">	
 	<div class="small-12 large-12 columns">
-		<%= render 'invite_form' %>
-		<h3>Do You Know These People?</h3>
-		<%= render 'user_table', users: @unverified_users %>
+		<% if @current_user.admin %>
+			I am: <%=current_user.email %> and I am an Admin therefore I cannot invite people to an organization
+		<% else %>
+		I am: <%=current_user.email %> and I belong to <%=current_user.legacy_organization.name %>
+			<%= render 'invite_form' %>
+		<%end%>
+		<% if @unverified_users.present? %>	
+			<h3>Do You Know These People?</h3>
+			<%= render 'user_table', users: @unverified_users %>
+		<%end%>
 	</div>
 </div>
