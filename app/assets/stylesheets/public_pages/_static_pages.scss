@@ -13,17 +13,18 @@ $royal: #1b84ce;
 $clay: #919192;
 $smoke: #5c5c5c;
 $coal: #242424;
-
 @import "icons/*.png";
-
 // Global & Full-Width
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
+
 header {
     height: 125px;
 }
+
 .name img {
     width: 175px;
     margin-top: 10px;
@@ -31,6 +32,7 @@ header {
     vertical-align: middle;
     margin-left: 20px;
 }
+
 nav.top-bar {
     //needs separate declaration away from nest
     height: 125px;
@@ -38,6 +40,7 @@ nav.top-bar {
     background-repeat: repeat;
     background-position: center;
 }
+
 nav {
     .top-bar-section {
         margin-right: 20px;
@@ -49,15 +52,18 @@ nav {
     }
     .top-bar-section ul li {
         background: transparent;
-        
     }
-    ul.top-bar.expanded, ul.title-area {
+    ul.top-bar.expanded,
+    ul.title-area {
         height: 125px;
     }
 }
+
 .top-bar.expanded {
     z-index: 300;
+    height: auto;
 }
+
 .alert_menu {
     border-style: solid;
     border-width: 1px;
@@ -68,9 +74,10 @@ nav {
     padding: 0.5625rem 0.875rem 0.5625rem;
     background-color: #f4f4f4;
     border-color: gainsboro;
-    border-radius: 3px;    
+    border-radius: 3px;
     text-align: center;
 }
+
 .subheader {
     padding-top: 20px;
     text-align: center;
@@ -78,24 +85,30 @@ nav {
         color: $royal;
     }
 }
+
 #wrapper {
     max-width: 96%;
     margin-left: 2%;
     display: table;
 }
+
 .row {
     max-width: 100%;
 }
-#main {
-}
-.alt {  // Sidebar Template
+
+#main {}
+
+.alt {
+    // Sidebar Template
     display: table-cell;
     width: 70%;
     & p, ul {
         width: 95%;
     }
 }
-#sidebar { // Sidebar Template
+
+#sidebar {
+    // Sidebar Template
     width: 30%;
     left: 70%;
     display: table-cell;
@@ -103,47 +116,51 @@ nav {
     border-radius: 5px 5px;
     border: 2px dashed $smoke;
     & h4, p, ul li {
-        width: 90%; margin-left: 5%;
-        }
-        & h4 {
-            margin-top: 10px;
-        }    
+        width: 90%;
+        margin-left: 5%;
+    }
+    & h4 {
+        margin-top: 10px;
+    }
 }
+
 .sideblock {
     & .columns {
         border-radius: 5px 5px;
     }
-        & h4, p {
-            color: #fff!important;
-        }
-            & h4 {
-                margin-top: 10px;
-            }
+    & h4,
+    p {
+        color: #fff!important;
+    }
+    & h4 {
+        margin-top: 10px;
+    }
 }
+
 footer {
     background: $coal;
     color: #fff;
-        & h4 {
-            color: #fff;
-            margin-top: 10px;
-        }
+    & h4 {
+        color: #fff;
+        margin-top: 10px;
+    }
     clear:both;
     height: auto;
     width: 100%;
-        & .columns {
-        }
-            & #footer {
-                max-width: 95%;
-            }
-                & .footer-logo img {
-                    width: 65%;
-                    height: auto;
-                    margin: 3% 0 5px 0;
-                }
-                    & .medium-8 .medium-4.columns {
-                        border-left: 1px dashed #fff;
-                    }
+    & .columns {}
+    & #footer {
+        max-width: 95%;
+    }
+    & .footer-logo img {
+        width: 65%;
+        height: auto;
+        margin: 3% 0 5px 0;
+    }
+    & .medium-8 .medium-4.columns {
+        border-left: 1px dashed #fff;
+    }
 }
+
 #copyright {
     background: $coal;
     color: #fff;
@@ -154,93 +171,134 @@ footer {
     & .columns p {
         margin: 0;
     }
-        & ul {
-            padding: 0;
-            margin: 0;
-        }
-            & ul li {
-                list-style-type: none;
-                display: inline;
-            }
-                & a:link, a:visited {
-                    color: $goldenrod;
-                }
-                    & .right {
-                            margin-right: 40px;
-                        }
+    & ul {
+        padding: 0;
+        margin: 0;
+    }
+    & ul li {
+        list-style-type: none;
+        display: inline;
+    }
+    & a:link,
+    a:visited {
+        color: $goldenrod;
+    }
+    & .right {
+        margin-right: 40px;
+    }
 }
 
 // Typography
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: $royal;
     font-weight: bold;
 }
+
 .center {
     text-align: center;
 }
-.left-margin {padding-left: 1.5%;
+
+.left-margin {
+    padding-left: 1.5%;
 }
-ul li, ol li {
+
+ul li,
+ol li {
     margin-bottom: 10px;
 }
+
 .custom {
     margin-left: 0;
     & li {
         list-style-type: none;
     }
 }
+
 .indent {
     margin-left: 50px;
 }
-.alert {color: $berry;
+
+.alert {
+    color: $berry;
 }
-.warning {color: $terra;
+
+.warning {
+    color: $terra;
 }
-.success {color: $jade;
+
+.success {
+    color: $jade;
 }
-.info {color: $baby;
+
+.info {
+    color: $baby;
 }
-.basic {color: $coal;
+
+.basic {
+    color: $coal;
 }
 
 // Color Blocks
-.color-block, .cta {
+.color-block,
+.cta {
     margin: 20px 0 20px 0;
     padding: 20px 0 20px 0;
     & h2, h3, h4, p {
         margin-left: 13%;
     }
 }
+
 .color-block {
     & h2, h3, h4, p {
         color: #fff;
     }
 }
+
 .cta .columns .button {
     margin-top: 20px;
 }
+
 .white {
     color: $off-white;
 }
-.red, .red .columns {
+
+.red,
+.red .columns {
     background-color: $berry;
 }
-.orange, .orange .columns {
+
+.orange,
+.orange .columns {
     background-color: $pumpkin;
 }
-.yellow, .yellow .columns {
+
+.yellow,
+.yellow .columns {
     background-color: $goldenrod;
 }
-.green, .green .columns {
+
+.green,
+.green .columns {
     background-color: $forest;
 }
-.blue, .blue .columns {
+
+.blue,
+.blue .columns {
     background-color: $baby;
 }
-.gray, .gray .columns {
+
+.gray,
+.gray .columns {
     background-color: $smoke;
 }
-.black, .black .columns {
+
+.black,
+.black .columns {
     background-color: $coal;
 }
 
@@ -251,27 +309,35 @@ ul li, ol li {
     border-radius: 5px 5px;
     transition: all 0.5s ease;
 }
+
 .button.yellow:hover {
-        background-color: $mustard;
+    background-color: $mustard;
 }
+
 .button.orange:hover {
-        background-color: $terra;
-} 
-.button.red:hover {
-        background-color: $maroon;
-}   
-.button.green:hover {
-        background-color: $forest;
-}       
-.button.blue:hover {
-        background-color: $royal;
-}  
-.button.gray:hover {
-        background-color: $coal;
+    background-color: $terra;
 }
+
+.button.red:hover {
+    background-color: $maroon;
+}
+
+.button.green:hover {
+    background-color: $forest;
+}
+
+.button.blue:hover {
+    background-color: $royal;
+}
+
+.button.gray:hover {
+    background-color: $coal;
+}
+
 .button.black:hover {
-        background-color: $coal;
-}   
+    background-color: $coal;
+}
+
 .button-group > li {
     margin-right: 5px;
 }
@@ -289,46 +355,49 @@ ul li, ol li {
         vertical-align: middle;
         width: 50%;
         height: auto;
-        }
-        & .columns {
-            transition: all 0.5s ease;
-            }   
-            & .voad {
-                    background-color: rgba(65, 156, 56, .2);
-                    }
-                    & .voad:hover {
-                        background-color: rgba(65, 156, 56, .5);
-                    }
-            & .gov {
-                    background-color: rgba(27, 132, 206,.2);
-                    } 
-                    & .gov:hover {
-                        background-color: rgba(27, 132, 206,.5);
-                    }    
-            & .volunteers {
-                    background-color: rgba(221, 161, 0, .2);
-                    } 
-                    & .volunteers:hover {
-                        background-color: rgba(221, 161, 0, .5);
-                    }    
-            &  .survivors {
-                    background-color: rgba(211, 37, 25, .2);
-                    } 
-                    & .survivors:hover {
-                        background-color: rgba(211, 37, 25, .5);
-                    }    
+    }
+    & .columns {
+        transition: all 0.5s ease;
+    }
+    & .voad {
+        background-color: rgba(65, 156, 56, .2);
+    }
+    & .voad:hover {
+        background-color: rgba(65, 156, 56, .5);
+    }
+    & .gov {
+        background-color: rgba(27, 132, 206, .2);
+    }
+    & .gov:hover {
+        background-color: rgba(27, 132, 206, .5);
+    }
+    & .volunteers {
+        background-color: rgba(221, 161, 0, .2);
+    }
+    & .volunteers:hover {
+        background-color: rgba(221, 161, 0, .5);
+    }
+    & .survivors {
+        background-color: rgba(211, 37, 25, .2);
+    }
+    & .survivors:hover {
+        background-color: rgba(211, 37, 25, .5);
+    }
 }
+
 .orgs .columns p {
     color: $coal;
 }
+
 .timeline {
     scroll: auto;
     & p {
         border-bottom: 1px dashed $off-white;
     }
 }
-.incident-map {       
-}
+
+.incident-map {}
+
 .home-icons {
     margin: 40px 0 0 0;
     & img {
@@ -336,14 +405,21 @@ ul li, ol li {
         margin: 0 0 0 25%;
         width: 50%;
         height: auto;
-        }
-        & h2, h3, p {
-            text-align: center;
-        }
-        & .columns {            
-        }
+    }
+    & h2,
+    h3,
+    p {
+        text-align: center;
+    }
+    & .columns {}
 }
-.tornado-block, .hurricane-block, .flood-block, .snow-block, .fire-block, .wind-block {
+
+.tornado-block,
+.hurricane-block,
+.flood-block,
+.snow-block,
+.fire-block,
+.wind-block {
     & h3, p {
         color: #fff;
     }
@@ -355,24 +431,31 @@ ul li, ol li {
         height: 150px;
     }
 }
+
 .tornado-block {
     background-color: $berry;
 }
+
 .hurricane-block {
     background-color: $mustard;
 }
+
 .flood-block {
     background-color: $royal;
 }
+
 .snow-block {
     background-color: $forest;
 }
+
 .fire-block {
     background-color: $coal;
 }
+
 .wind-block {
     background-color: $terra;
 }
+
 .join {
     margin-top: 20px;
 }
@@ -380,15 +463,33 @@ ul li, ol li {
 // About Page
 .team {
     display: inline-block;
+    & p {
+        text-align: right;
+    }
+    & img {
+        vertical-align: middle;
+        border-radius: 5px 5px;
+        width: 100%;
+        height: auto;
+    }
+    & i {
+        font-size: 25px;
+        transition: all 0.5s ease;
+        margin-top: -5px;
+        float: left;
+        &:hover {
+            color: $jade;
+        }
+    }
+    & .has-tip {
+        float: left;        
+    }
 }
-.team img {
-    border-radius: 5px 5px;
-    width: 100%; 
-    height: auto;
-}
+    
 
 // Media Queries
-@media only screen and (min-width: 40.0625em) { // Foundatin default width
+@media only screen and (min-width: 40.0625em) {
+    // Foundatin default width
     nav .top-bar-section li.active:not(.has-form) a:not(.button) {
         border-radius: 5px 5px;
         border: 1px dashed #fff;
@@ -404,14 +505,15 @@ ul li, ol li {
         &:hover {
             background: #008CBA;
             color: #fff;
-            border-radius: 10px 10px;        
+            border-radius: 10px 10px;
             border: 1px dashed #fff;
-        }    
-    }        
+        }
+    }
     nav .top-bar-section ul li {
         margin-top: 2.5em;
     }
 }
+
 @media only screen and (max-width: 40.0624em) {
     nav .top-bar-section li:not(.has-form) a:not(.button):hover {
         background: #008CBA;
@@ -421,6 +523,7 @@ ul li, ol li {
         margin-bottom: 40px;
     }
 }
+
 @media only screen and (max-width: 1024px) {
     .incident-map img {
         margin-bottom: 40px;
@@ -428,23 +531,23 @@ ul li, ol li {
 }
 
 @media only screen and (max-width: 767px) {
-    .alt {  
+    .alt {
         display: block;
         width: 100%;
-        clear:both;
+        clear: both;
         & p {
             width: 100%;
         }
     }
     #sidebar {
         width: 100%;
-        clear:both;
+        clear: both;
         display: block;
         padding: 10px 0 10px 0;
         background-color: gainsboro;
-        border-radius: 5px 5px;        
+        border-radius: 5px 5px;
     }
     #copyright .right {
-        margin-right: 0; 
+        margin-right: 0;
     }
 }

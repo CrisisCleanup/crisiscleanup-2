@@ -1,6 +1,6 @@
 <% content_for :main do %>
 <h2>Forgot your password?</h2>
-
+<p>Enter your email address below, and instructions will be sent to reset your password.</p>
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
@@ -14,4 +14,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<br>
 <%end%>
