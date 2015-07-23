@@ -1,0 +1,19 @@
+<div class="margin-top row">
+	<div class="small-12 large-12 columns">
+		<h1><%= @event.name %> </h1>
+		<a href=<%=edit_admin_legacy_event_path(@event.id)%> 
+		class="button">Edit Event</a>
+		<% if @event.form.present? %>
+			<a href=<%=edit_admin_legacy_event_form_path(@event.id,@event.form.id)%> class="button">Edit Form</a>
+		<%else%>
+			<a href=<%=new_admin_legacy_event_form_path(@event.id)%> class="button">New Form</a>
+		<%end%>
+
+	</div>
+
+	<div class="small-12 large-12 columns">
+		<h3>Sites</h3>
+		<%= render :partial => 'admin/legacy_sites/table',  locals: {sites: @event.legacy_sites} %>
+		
+	</div>
+</div>

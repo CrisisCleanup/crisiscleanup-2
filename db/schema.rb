@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722194841) do
+ActiveRecord::Schema.define(version: 20150723183246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "forms", force: :cascade do |t|
+    t.integer "legacy_event_id", null: false
+    t.text    "html"
+  end
 
   create_table "invitations", force: :cascade do |t|
     t.integer "user_id"

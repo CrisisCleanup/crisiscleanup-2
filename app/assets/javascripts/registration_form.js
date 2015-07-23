@@ -10,4 +10,4 @@ $(document).on("ready page:load",function() {
 	    $(this).before($(this).data('fields').replace(regexp, time));
 	    event.preventDefault()
 	});
-	});
+});

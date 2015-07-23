@@ -11,7 +11,7 @@
     <% events.each do |event| %>
       <tr>
         <td>
-          <a href=<%=edit_admin_legacy_event_path(event.id)%>> 
+          <a href=<%=admin_legacy_event_path(event.id)%>> 
             <%= event.case_label %>
           </a>
         </td>

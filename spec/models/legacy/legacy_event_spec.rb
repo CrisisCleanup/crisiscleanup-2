@@ -8,6 +8,7 @@ module Legacy
   describe LegacyEvent do
     describe "associations" do
       it { should have_many :legacy_organizations }
+      it { should have_one :form }
     end
     describe "validations" do
       subject { Legacy::LegacyEvent.new }
