@@ -1,14 +1,27 @@
-<% content_for :main do %> 
-<div class="row">
-    <div class="small-12 medium-12 large-12 columns">
-	   <h2>Sites<h2>
+<% content_for :subheader do %> 
+<div class="subheader">
+    <div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+    <h2>Sites<h2>
+    <hr>
+        </div>
     </div>    
-<hr>           
-</div>       
-<div class="row">        
-    <div class="small-12 medium-12 large-12 columns">
+</div>    
+<% end %>
+
+<% content_for :main do %> 
+<div id="main" class="alt">
+    <div class="row">
 		<%= render 'table', sites: @sites %>
-        <%= will_paginate @sites %>
-	</div>
+        <%= will_paginate @sites %> 
+	</div>	     
+</div>    
+<% end %>
+    
+<% content_for :sidebar do %> 
+<div id="sidebar">
+    <h4>Info for Sites</h4>
+    <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball. T-bone meatloaf capicola pancetta beef ribs biltong andouille pig ham.</p>
 </div>
 <% end %>
+        

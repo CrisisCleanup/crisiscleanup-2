@@ -21,19 +21,24 @@
  
     <!-- alert menu -->
     <%= render "layouts/menus/alert_menu" %>
-
-      <!-- subheader -->
-    <%= yield :subheader %>
-        
-    <div id="wrapper">
-    <!-- main content -->
+    
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>   
-
+    <p class="alert"><%= alert %></p>  
+      
+    <!-- subheader -->
+    <%= yield :subheader %>
+      
+    <div id="wrapper">
     <!-- main content -->        
-    <%= yield :main %>
+        
+    <!-- main content -->        
+        <%= yield :main %>        
+        
+            <!-- sidebar -->
+            <%= yield :sidebar %>  
         
     </div>
+    <br>
         
     <footer align="center">
         <div class="row" id="footer">

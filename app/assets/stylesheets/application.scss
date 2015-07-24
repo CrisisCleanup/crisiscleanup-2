@@ -3,13 +3,13 @@
 @import "modules/helpers";
 @import "modules/color_palette";
 @import "modules/typography";
-.public, .worker-dashboard{
+@import "modules/color_blocks";
+@import "modules/buttons";
+.public, {
 	@import "public_pages/static_pages";
+    @import "public_pages/registration";
 }
-.public{
-	@import "public_pages/registration";
-}
-.incident{
+.worker-dashboard, .incident{
 	@import "incident_pages/user";
 }    
 .admin-dashboard{

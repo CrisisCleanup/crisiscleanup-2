@@ -1,6 +1,25 @@
+<% content_for :subheader do %> 
+<div class="subheader">
+    <div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+    <h2>Organizations Show</h2>
+    <hr>
+        </div>
+    </div>    
+</div>    
+<% end %>
+
 <% content_for :main do %> 
-	<h2>Organizations show</h2>
-	<div class="small-12 large-12 columns">
-		<%= render 'show_table', organization: @organization %>
-	</div>
+<div id="main" class="alt">
+    <div class="row">
+        <%= render 'show_table', organization: @organization %>       
+    </div>
+</div>    
+<% end %>
+
+<% content_for :sidebar do %> 
+<div id="sidebar">
+    <h4>Info for Org Show</h4>
+    <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball. T-bone meatloaf capicola pancetta beef ribs biltong andouille pig ham.</p>
+</div>
 <% end %>

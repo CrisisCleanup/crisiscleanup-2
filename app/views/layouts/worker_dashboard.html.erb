@@ -11,11 +11,73 @@
     <%= csrf_meta_tags %>
 </head>
 <body class='worker-dashboard'>
-<div class="container">
     <%= render 'layouts/menus/worker_dashboard_menu' %>
     <!-- to do render message partial if there is a message -->
     <%= yield %>
-</div>
-
-</body>
+    
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>  
+      
+    <!-- subheader -->
+    <%= yield :subheader %>
+      
+    <div id="wrapper">
+    <!-- main content -->        
+        
+    <!-- main content -->        
+        <%= yield :main %>        
+        
+            <!-- sidebar -->
+            <%= yield :sidebar %>  
+        
+    </div>    
+    <br>
+    <footer align="center">
+        <div class="row" id="footer">
+            <div class="medium-4 columns footer-logo">
+                <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home"  %></a>
+                <h5>Open Source Disaster Relief Mapping and Work Coordination</h5>
+            </div>
+            <div class="medium-8 columns">
+                <div class="row-collapse">
+                    <div class="medium-4 columns">
+                        <h4>Widget Title</h4>
+                        <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball. T-bone meatloaf capicola pancetta beef ribs biltong andouille pig ham.</p>    
+                    </div>
+                    <div class="medium-4 columns">
+                        <h4>Widget Title</h4>
+                        <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball. T-bone meatloaf capicola pancetta beef ribs biltong andouille pig ham. </p>    
+                    </div>
+            </div>
+                    <div class="medium-4 columns">
+                        <h4>Widget Title</h4>
+                        <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball. T-bone meatloaf capicola pancetta beef ribs biltong andouille pig ham. </p>    
+                    </div>              
+        </div>
+    </footer>
+        <div class="row collapse" id="copyright">
+        <div class="small-12 medium-4 large-4 columns">
+            <p>Crisis Cleanup is an <a href="#">open source project</a></p>
+        </div>
+        <div class="small-12 medium-8 large-8 columns">
+            <ul class="right">
+                <li><%= link_to "Home", root_path %> |</li>
+                <li><%= link_to "About", about_path %> |</li>
+                <li><a href="#">Map</a></a> |</li>
+                <li><a href="http://blog.crisiscleanup.org/">Blog</a> |</li>
+                <li><%= link_to "Terms", terms_path %> |</li>
+                <li><%= link_to "Privacy", privacy_path %> |</li>
+                <li><a href="#">Policies</a> |</li>
+                <li><a href="#">Sign Up</a> |</li>
+                <% if current_user %>
+                 <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+                <% else %>
+                 <li><%= link_to "Login", new_user_session_path %></li> 
+                <% end %>
+            </ul>
+        </div>  
+    </div>                            
+        <!-- javascript libraries -->
+    <%= yield :javascripts %>
+  </body>
 </html>
