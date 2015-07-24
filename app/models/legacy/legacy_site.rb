@@ -7,11 +7,12 @@ module Legacy
         self.per_page = 500
         has_paper_trail
         geocoded_by :full_street_address 
+        validates_presence_of :address,:blurred_latitude,:blurred_longitude,:case_number,:city,:latitude,:longitude,:name
         before_validation :geocode, if: ->(obj){ obj.latitude.nil? or obj.longitude.nil? or obj.address_changed? }
         before_validation :create_blurred_geocoordinates
-        # before_validation :add_case_number
+        before_validation :add_case_number
         belongs_to :legacy_event
-    	validates_presence_of :address,:blurred_latitude,:blurred_longitude,:case_number,:city,:latitude,:longitude,:name
+    	
     	
         def full_street_address
             "#{self.address}, #{self.city}, #{self.state}"
