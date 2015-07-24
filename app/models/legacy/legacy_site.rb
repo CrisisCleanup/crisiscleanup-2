@@ -1,5 +1,7 @@
 module Legacy
     class LegacySite < ActiveRecord::Base
+        require 'csv'
+
         STANDARD_SITE_VALUES = ["address", "blurred_latitude", "blurred_longitude","case_number", "city", "claimed_by", "legacy_event_id", "latitude", "longitude", "name", "phone", "reported_by", "requested_at", "state", "status", "work_type", "data", "created_at", "updated_at", "appengine_key", "request_date"]
         PERSONAL_FIELDS = ["id", "address", "case_number", "latitude", "longitude", "claimed_by", "phone", "name", "created_at", "updated_at", "appengine_key"]
         self.per_page = 500
@@ -7,11 +9,19 @@ module Legacy
         geocoded_by :full_street_address 
         before_validation :geocode, if: ->(obj){ obj.latitude.nil? or obj.longitude.nil? or obj.address_changed? }
         before_validation :create_blurred_geocoordinates
+        # before_validation :add_case_number
         belongs_to :legacy_event
     	validates_presence_of :address,:blurred_latitude,:blurred_longitude,:case_number,:city,:latitude,:longitude,:name
     	
         def full_street_address
             "#{self.address}, #{self.city}, #{self.state}"
+        end
+
+        def add_case_number
+            # event = Legacy::LegacyEvent.find(self.legacy_event_id)
+            # count = Legacy::LegacySite.where(legacy_event_id: self.legacy_event_id).count
+            self.case_number = "A777"
+            self.legacy_event_id = 1
         end
 
         def create_blurred_geocoordinates
@@ -111,12 +121,34 @@ module Legacy
             @c.flatten.uniq
         end
 
-        def self.site_to_hash (site_attributes)
+        def self.site_to_hash site_attributes
             site_attributes['data'].each do |key, value|
                 site_attributes[key] = value
             end
             site_attributes.delete('data')
             site_attributes
+        end
+
+        def self.hash_to_site hash_attributes
+            data = {}
+            hash_attributes.each do |key, value|
+                unless STANDARD_SITE_VALUES.include? key
+                    data[key] = value
+                    hash_attributes.delete(key)
+                end
+            end
+            hash_attributes.delete("reported_by")
+            hash_attributes.delete("claimed_by")
+            hash_attributes['data'] = data
+            hash_attributes
+        end
+
+
+        def self.import(file)
+            CSV.foreach(file.path, headers: true) do |row|
+                # binding.pry
+                Legacy::LegacySite.create! hash_to_site(row.to_hash)
+            end
         end
     end
 end
