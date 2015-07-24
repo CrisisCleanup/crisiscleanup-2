@@ -1,14 +1,33 @@
-<div class="margin-top row">	
-	<div class="small-12 large-12 columns">
-		<% if @current_user.admin %>
-			I am: <%=current_user.email %> and I am an Admin therefore I cannot invite people to an organization
-		<% else %>
-		I am: <%=current_user.email %> and I belong to <%=current_user.legacy_organization.name %>
-			<%= render 'invite_form' %>
-		<%end%>
+<% content_for :subheader do %> 
+<div class="subheader">
+    <div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+    <h2>Worker Dashboard<h2>
+    <hr>
+        </div>
+    </div>    
+</div>    
+<% end %>
+        
+<% content_for :main do %> 
+<div id="main" class="alt">
+    
 		<% if @unverified_users.present? %>	
-			<h3>Do You Know These People?</h3>
+            <h4>Invite Users</h4>
+            <%= render 'invite_form' %>
+			<h4>Do You Know These People?</h4>
 			<%= render 'user_table', users: @unverified_users %>
+		<%end%>    
+</div>    
+<% end %>
+
+<% content_for :sidebar do %> 
+<div id="sidebar">
+    <h4>User Info</h4>
+		<% if @current_user.admin %>        
+			<p>I am: <strong><%=current_user.email %></strong> and I am an Admin therefore I cannot invite people to an organization</p>
+		<% else %>
+		<p>I am: <strong><%=current_user.email %></strong> and I belong to <strong><%=current_user.legacy_organization.name %></strong></p>			
 		<%end%>
-	</div>
 </div>
+<% end %>

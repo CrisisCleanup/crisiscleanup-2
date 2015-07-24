@@ -1,0 +1,45 @@
+// Buttons
+.button {
+    border: 1px dashed #fff;
+    color: #fff;
+    border-radius: 5px 5px;
+    transition: all 0.5s ease;
+}
+
+.button.yellow:hover {
+    background-color: $mustard;
+}
+
+.button.orange:hover {
+    background-color: $terra;
+}
+
+.button.red:hover {
+    background-color: $maroon;
+}
+
+.button.green:hover {
+    background-color: $forest;
+}
+
+.button.blue:hover {
+    background-color: $royal;
+}
+
+.button.gray:hover {
+    background-color: $coal;
+}
+
+.button.black:hover {
+    background-color: $coal;
+}
+
+.button-group > li {
+    margin-right: 5px;
+}
+
+//Videos & Third Party Media
+.about-intro {
+    width: 95%;
+    height: 315px;
+}

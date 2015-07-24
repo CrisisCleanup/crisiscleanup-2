@@ -23,6 +23,7 @@ nav.top-bar {
     background-image: image-url('black_bg.jpg');
     background-repeat: repeat;
     background-position: center;
+    margin-bottom: 40px;
 }
 
 nav {
@@ -64,9 +65,9 @@ nav {
 
 .subheader {
     padding-top: 20px;
-    text-align: center;
     & h2 {
         color: $royal;
+        margin-left: 1.5%;
     }
 }
 
@@ -78,9 +79,17 @@ nav {
 
 .row {
     max-width: 100%;
+    margin-bottom: 0!important;
 }
 
-#main {}
+.columns {
+    margin-bottom: 10px;
+}
+
+hr {
+    width: 98%;
+    padding-top: 1rem;
+}
 
 .alt {
     // Sidebar Template
@@ -89,6 +98,7 @@ nav {
     & p, ul {
         width: 95%;
     }
+    & h4 {}
 }
 
 // Sidebar Template
@@ -172,112 +182,29 @@ footer {
     }
 }
 
-// Color Blocks
-.color-block,
-.cta {
-    margin: 20px 0 20px 0;
-    padding: 20px 0 20px 0;
-    & h2, h3, h4, p {
-        margin-left: 13%;
+.invite {
+    padding-left: 0;
+    & input#email_addresses {
+        height: 50px;
     }
 }
 
-.color-block {
-    & h2, h3, h4, p {
-        color: #fff;
-    }
-}
-
-.cta .columns .button {
-    margin-top: 20px;
-}
-
-.white {
-    color: $off-white;
-}
-
-.red,
-.red .columns {
-    background-color: $berry;
-}
-
-.orange,
-.orange .columns {
-    background-color: $pumpkin;
-}
-
-.yellow,
-.yellow .columns {
-    background-color: $goldenrod;
-}
-
-.green,
-.green .columns {
-    background-color: $forest;
-}
-
-.blue,
-.blue .columns {
-    background-color: $baby;
-}
-
-.gray,
-.gray .columns {
-    background-color: $smoke;
-}
-
-.black,
-.black .columns {
-    background-color: $coal;
-}
-
-// Buttons
 .button {
-    border: 1px dashed #fff;
-    color: #fff;
-    border-radius: 5px 5px;
-    transition: all 0.5s ease;
+    border: none;
 }
 
-.button.yellow:hover {
-    background-color: $mustard;
+// Tables
+table {
+    margin-bottom: 0;
 }
 
-.button.orange:hover {
-    background-color: $terra;
+// Map
+#map-canvas {
+    width: 100%;
+    height: 600px;
+    background-color: $smoke;
+    margin-top: -41px;
 }
-
-.button.red:hover {
-    background-color: $maroon;
-}
-
-.button.green:hover {
-    background-color: $forest;
-}
-
-.button.blue:hover {
-    background-color: $royal;
-}
-
-.button.gray:hover {
-    background-color: $coal;
-}
-
-.button.black:hover {
-    background-color: $coal;
-}
-
-.button-group > li {
-    margin-right: 5px;
-}
-
-//Videos & Third Party Media
-.about-intro {
-    width: 95%;
-    height: 315px;
-}
-
-
 
 // Media Queries
 @media only screen and (min-width: 40.0625em) {
@@ -311,15 +238,6 @@ footer {
         background: #008CBA;
         color: #fff;
     }
-    .incident-map img {
-        margin-bottom: 40px;
-    }
-}
-
-@media only screen and (max-width: 1024px) {
-    .incident-map img {
-        margin-bottom: 40px;
-    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -333,6 +251,7 @@ footer {
     }
     #sidebar {
         width: 100%;
+        margin-top: 20px;
         clear: both;
         display: block;
         padding: 10px 0 10px 0;

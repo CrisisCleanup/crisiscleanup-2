@@ -1,8 +1,26 @@
-<% content_for :main do %> 
-	<h2>Organizations<h2>
-	<div class="small-12 large-12 columns">
-		<%= render 'table', orgs: @orgs, event_id: @event_id %>
-	</div>
-	<%= will_paginate @orgs %>
+<% content_for :subheader do %> 
+<div class="subheader">
+    <div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+    <h2>Organizations</h2>
+    <hr>
+        </div>
+    </div>    
+</div>    
+<% end %>
 
+<% content_for :main do %> 
+<div id="main" class="alt">
+    <div class="row">
+        <%= render 'table', orgs: @orgs, event_id: @event_id %>
+        <%= will_paginate @orgs %>        
+    </div>
+</div>    
+<% end %>
+
+<% content_for :sidebar do %> 
+<div id="sidebar">
+    <h4>Info for Org</h4>
+    <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball. T-bone meatloaf capicola pancetta beef ribs biltong andouille pig ham.</p>
+</div>
 <% end %>
