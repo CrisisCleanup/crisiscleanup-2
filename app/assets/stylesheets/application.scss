@@ -1,18 +1,21 @@
 @import "modules/foundation_and_overrides";
 @import "modules/multi-select";
 @import "modules/helpers";
+@import "modules/color_palette";
+@import "modules/typography";
 .public, .worker-dashboard{
 	@import "public_pages/static_pages";
 }
 .public{
 	@import "public_pages/registration";
 }
-
+.incident{
+	@import "incident_pages/user";
+}    
 .admin-dashboard{
 	@import "admin_pages/dashboard";
 	@import "admin_pages/form";
 }
-
 @import "compass";
 @import 'foundation-icons';
 

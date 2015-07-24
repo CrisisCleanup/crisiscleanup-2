@@ -1,8 +1,14 @@
 <% content_for :main do %> 
-	<h2>Sites<h2>
-	<div class="small-12 large-12 columns">
+<div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+	   <h2>Sites<h2>
+    </div>    
+<hr>           
+</div>       
+<div class="row">        
+    <div class="small-12 medium-12 large-12 columns">
 		<%= render 'table', sites: @sites %>
+        <%= will_paginate @sites %>
 	</div>
-	<%= will_paginate @sites %>
-
+</div>
 <% end %>

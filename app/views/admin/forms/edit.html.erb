@@ -1,21 +1,26 @@
 <%= simple_form_for @form, url: admin_legacy_event_form_path(@event.id,@form.id) do |f| %>
-	<div class="margin-top row">
-    	<h3 class='medium-8 columns'>
-    		Form for <%=@event.name%>
-    	</h3>
-    	<div class="medium-12 columns">
-      		<%= f.input :html, required:true %>
-    	</div>
-    	
-  	</div>
+<div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+        <h2>Form for <%=@event.name%></h2>
+    </div>    
+    <hr>
+</div>
+<div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+        <%= f.input :html, required:true %>
+    </div>
+</div>    	
   	<div class="row">
-  		<a href="#" class='preview medium-12 columns' data-reveal-id="preview">Preview</a>
-  		<div class="medium-12 columns margin-top">
+        <div class="small-12 medium-12 large-12 columns">
+  		<a href="#" class='preview' data-reveal-id="preview">Preview</a>
+        </div>
+  		<div class="small-12 medium-12 large-12 columns">
   			<%= f.button :submit %>
   		</div>
   	</div>
-    <div id="preview" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <div id="preview" class="reveal-modal small-12 mediume-12 large-12 columns" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
       <h2 id="modalTitle">Form Preview</h2>
+        <hr>
       <p class="lead"></p>
       <a class="close-reveal-modal" aria-label="Close">&#215;</a>
   </div>
