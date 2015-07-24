@@ -20,6 +20,9 @@ class ApplicationController < ActionController::Base
   def worker_dashboard_mode
     self.class.parent == Worker
   end
+  def incident_dashboard_mode
+    self.class.parent == Incident
+  end
 
   def after_sign_in_path_for(resource)
   

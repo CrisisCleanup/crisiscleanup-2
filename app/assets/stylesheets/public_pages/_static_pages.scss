@@ -1,19 +1,3 @@
-// Color Palette
-$off-white: #f0f0f0;
-$goldenrod: #ffcc44;
-$mustard: #dda100;
-$berry: #d32519;
-$maroon: #a2221b;
-$pumpkin: #ee8a15;
-$terra: #e45b17;
-$jade: #419c38;
-$forest: #006c37;
-$baby: #41b7d8;
-$royal: #1b84ce;
-$clay: #919192;
-$smoke: #5c5c5c;
-$coal: #242424;
-@import "icons/*.png";
 // Global & Full-Width
 html,
 body {
@@ -107,8 +91,8 @@ nav {
     }
 }
 
+// Sidebar Template
 #sidebar {
-    // Sidebar Template
     width: 30%;
     left: 70%;
     display: table-cell;
@@ -186,61 +170,6 @@ footer {
     & .right {
         margin-right: 40px;
     }
-}
-
-// Typography
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: $royal;
-    font-weight: bold;
-}
-
-.center {
-    text-align: center;
-}
-
-.left-margin {
-    padding-left: 1.5%;
-}
-
-ul li,
-ol li {
-    margin-bottom: 10px;
-}
-
-.custom {
-    margin-left: 0;
-    & li {
-        list-style-type: none;
-    }
-}
-
-.indent {
-    margin-left: 50px;
-}
-
-.alert {
-    color: $berry;
-}
-
-.warning {
-    color: $terra;
-}
-
-.success {
-    color: $jade;
-}
-
-.info {
-    color: $baby;
-}
-
-.basic {
-    color: $coal;
 }
 
 // Color Blocks
@@ -482,10 +411,9 @@ ol li {
         }
     }
     & .has-tip {
-        float: left;        
+        float: left;
     }
 }
-    
 
 // Media Queries
 @media only screen and (min-width: 40.0625em) {

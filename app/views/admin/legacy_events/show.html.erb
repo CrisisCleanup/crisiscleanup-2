@@ -1,6 +1,8 @@
-<div class="margin-top row">
-	<div class="small-12 large-12 columns">
-		<h1><%= @event.name %> </h1>
+<div class="row">
+	<div class="small-12 medium-7 large-8 columns">
+		<h2><%= @event.name %> </h2>
+    </div>
+    <div class="small-12 medium-5 large-4 columns">
 		<a href=<%=edit_admin_legacy_event_path(@event.id)%> 
 		class="button">Edit Event</a>
 		<% if @event.form.present? %>
@@ -8,10 +10,11 @@
 		<%else%>
 			<a href=<%=new_admin_legacy_event_form_path(@event.id)%> class="button">New Form</a>
 		<%end%>
-
-	</div>
-
-	<div class="small-12 large-12 columns">
+    </div>
+<hr>
+</div>
+<div class="row">
+	<div class="small-12 medium-12 large-12 columns">
 		<h3>Sites</h3>
 		<%= render :partial => 'admin/legacy_sites/table',  locals: {sites: @event.legacy_sites} %>
 		

@@ -1,9 +1,15 @@
-<div class="margin-top row">
-	<div class="small-12 large-12 columns">
-		<a href=<%=new_admin_user_path%> class="button">New Legacy Site</a>
-	</div>
-	<div class="small-12 large-12 columns">
+<div class="row">
+	<div class="small-12 medium-7 large-8 columns">
+		<h2>Legacy User Dashboard</h2>
+    </div>
+    <div class="small-12 medium-5 large-4 columns">
+		<a href=<%=new_admin_user_path%> class="button">New Legacy User</a>
+    </div>
+<hr>    
+</div>
+<div class="row">
+	<div class="small-12 medium-12 large-12 columns">
 		<%= render 'table', users: @users %>
+        <%= will_paginate @users %>
 	</div>
-	<%= will_paginate @users %>
 </div>

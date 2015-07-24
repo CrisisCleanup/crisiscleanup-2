@@ -1,0 +1,54 @@
+// Typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $royal;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+.left-margin {
+    padding-left: 1.5%;
+}
+
+ul li,
+ol li {
+    margin-bottom: 10px;
+}
+
+.custom {
+    margin-left: 0;
+    & li {
+        list-style-type: none;
+    }
+}
+
+.indent {
+    margin-left: 50px;
+}
+
+.alert {
+    color: $berry;
+}
+
+.warning {
+    color: $terra;
+}
+
+.success {
+    color: $jade;
+}
+
+.info {
+    color: $baby;
+}
+
+.basic {
+    color: $coal;
+}

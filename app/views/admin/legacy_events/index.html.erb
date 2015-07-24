@@ -1,8 +1,14 @@
-<div class="margin-top row">
-	<div class="small-12 large-12 columns">
+<div class="row">
+	<div class="small-12 medium-7 large-8 columns">
+        <h2>Legacy Event Dashboard</h2>
+    </div>
+    <div class="small-12 medium-5 large-4 columns">
 		<a href=<%=new_admin_legacy_event_path%> class="button">New Legacy Event</a>
 	</div>
-	<div class="small-12 large-12 columns">
+<hr>
+</div>
+<div class="row">
+	<div class="small-12 medium-12 large-12 columns">
 		<%= render 'table', events: @events %>
 		<%= will_paginate @events %>
 	</div>

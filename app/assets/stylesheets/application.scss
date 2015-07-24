@@ -1,6 +1,8 @@
 @import "modules/foundation_and_overrides";
 @import "modules/multi-select";
 @import "modules/helpers";
+@import "modules/color_palette";
+@import "modules/typography";
 .public, .worker-dashboard{
 	@import "public_pages/static_pages";
 }
