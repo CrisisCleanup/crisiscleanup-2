@@ -1,0 +1,345 @@
+// Global & Full-Width
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    height: 125px;
+}
+
+.name img {
+    width: 175px;
+    margin-top: 10px;
+    height: auto;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+nav.top-bar {
+    //needs separate declaration away from nest
+    height: 125px;
+    background-image: image-url('black_bg.jpg');
+    background-repeat: repeat;
+    background-position: center;
+}
+
+nav {
+    .top-bar-section {
+        margin-right: 20px;
+    }
+    .top-bar-section li:not(.has-form) a:not(.button) {
+        background: transparent;
+        color: $goldenrod;
+        font-size: 16px;
+    }
+    .top-bar-section ul li {
+        background: transparent;
+    }
+    ul.top-bar.expanded,
+    ul.title-area {
+        height: 125px;
+    }
+}
+
+.top-bar.expanded {
+    z-index: 300;
+    height: auto;
+}
+
+.alert_menu {
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    list-style: none;
+    margin-left: 0;
+    overflow: hidden;
+    padding: 0.5625rem 0.875rem 0.5625rem;
+    background-color: #f4f4f4;
+    border-color: gainsboro;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.subheader {
+    padding-top: 20px;
+    text-align: center;
+    & h2 {
+        color: $royal;
+    }
+}
+
+#wrapper {
+    max-width: 96%;
+    margin-left: 2%;
+    display: table;
+}
+
+.row {
+    max-width: 100%;
+}
+
+#main {}
+
+.alt {
+    // Sidebar Template
+    display: table-cell;
+    width: 70%;
+    & p, ul {
+        width: 95%;
+    }
+}
+
+// Sidebar Template
+#sidebar {
+    width: 30%;
+    left: 70%;
+    display: table-cell;
+    background-color: gainsboro;
+    border-radius: 5px 5px;
+    border: 2px dashed $smoke;
+    & h4, p, ul li {
+        width: 90%;
+        margin-left: 5%;
+    }
+    & h4 {
+        margin-top: 10px;
+    }
+}
+
+.sideblock {
+    & .columns {
+        border-radius: 5px 5px;
+    }
+    & h4,
+    p {
+        color: #fff!important;
+    }
+    & h4 {
+        margin-top: 10px;
+    }
+}
+
+footer {
+    background: $coal;
+    color: #fff;
+    & h4 {
+        color: #fff;
+        margin-top: 10px;
+    }
+    clear:both;
+    height: auto;
+    width: 100%;
+    & .columns {}
+    & #footer {
+        max-width: 95%;
+    }
+    & .footer-logo img {
+        width: 65%;
+        height: auto;
+        margin: 3% 0 5px 0;
+    }
+    & .medium-8 .medium-4.columns {
+        border-left: 1px dashed #fff;
+    }
+}
+
+#copyright {
+    background: $coal;
+    color: #fff;
+    max-width: 100rem;
+    text-align: center;
+    border-top: 1px dashed #fff;
+    padding: 5px 0 5px 0;
+    & .columns p {
+        margin: 0;
+    }
+    & ul {
+        padding: 0;
+        margin: 0;
+    }
+    & ul li {
+        list-style-type: none;
+        display: inline;
+    }
+    & a:link,
+    a:visited {
+        color: $goldenrod;
+    }
+    & .right {
+        margin-right: 40px;
+    }
+}
+
+// Color Blocks
+.color-block,
+.cta {
+    margin: 20px 0 20px 0;
+    padding: 20px 0 20px 0;
+    & h2, h3, h4, p {
+        margin-left: 13%;
+    }
+}
+
+.color-block {
+    & h2, h3, h4, p {
+        color: #fff;
+    }
+}
+
+.cta .columns .button {
+    margin-top: 20px;
+}
+
+.white {
+    color: $off-white;
+}
+
+.red,
+.red .columns {
+    background-color: $berry;
+}
+
+.orange,
+.orange .columns {
+    background-color: $pumpkin;
+}
+
+.yellow,
+.yellow .columns {
+    background-color: $goldenrod;
+}
+
+.green,
+.green .columns {
+    background-color: $forest;
+}
+
+.blue,
+.blue .columns {
+    background-color: $baby;
+}
+
+.gray,
+.gray .columns {
+    background-color: $smoke;
+}
+
+.black,
+.black .columns {
+    background-color: $coal;
+}
+
+// Buttons
+.button {
+    border: 1px dashed #fff;
+    color: #fff;
+    border-radius: 5px 5px;
+    transition: all 0.5s ease;
+}
+
+.button.yellow:hover {
+    background-color: $mustard;
+}
+
+.button.orange:hover {
+    background-color: $terra;
+}
+
+.button.red:hover {
+    background-color: $maroon;
+}
+
+.button.green:hover {
+    background-color: $forest;
+}
+
+.button.blue:hover {
+    background-color: $royal;
+}
+
+.button.gray:hover {
+    background-color: $coal;
+}
+
+.button.black:hover {
+    background-color: $coal;
+}
+
+.button-group > li {
+    margin-right: 5px;
+}
+
+//Videos & Third Party Media
+.about-intro {
+    width: 95%;
+    height: 315px;
+}
+
+
+
+// Media Queries
+@media only screen and (min-width: 40.0625em) {
+    // Foundatin default width
+    nav .top-bar-section li.active:not(.has-form) a:not(.button) {
+        border-radius: 5px 5px;
+        border: 1px dashed #fff;
+        padding: 5px 0 5px 0;
+        margin-left: 5px;
+    }
+    nav .top-bar-section li:not(.has-form) a:not(.button) {
+        width: 80px;
+        text-align: center;
+        padding: 5px 0 5px 0;
+        margin-left: 5px;
+        transition: all 0.5s ease;
+        &:hover {
+            background: #008CBA;
+            color: #fff;
+            border-radius: 10px 10px;
+            border: 1px dashed #fff;
+        }
+    }
+    nav .top-bar-section ul li {
+        margin-top: 2.5em;
+    }
+}
+
+@media only screen and (max-width: 40.0624em) {
+    nav .top-bar-section li:not(.has-form) a:not(.button):hover {
+        background: #008CBA;
+        color: #fff;
+    }
+    .incident-map img {
+        margin-bottom: 40px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .incident-map img {
+        margin-bottom: 40px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .alt {
+        display: block;
+        width: 100%;
+        clear: both;
+        & p {
+            width: 100%;
+        }
+    }
+    #sidebar {
+        width: 100%;
+        clear: both;
+        display: block;
+        padding: 10px 0 10px 0;
+        background-color: gainsboro;
+        border-radius: 5px 5px;
+    }
+    #copyright .right {
+        margin-right: 0;
+    }
+}
