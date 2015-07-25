@@ -1,2 +1,7 @@
-<h4>Site form</h4>
-<%= @form.html_safe %>
+<div class='remote'>
+	<h4>Site form</h4>
+	<%= simple_form_for @site, url: incident_path(@site.legacy_event
+		.id),remote: true do |f| %>
+		<%= @form.html_safe %>
+	<%end%>
+</div>
