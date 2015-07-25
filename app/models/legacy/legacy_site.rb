@@ -5,6 +5,7 @@ module Legacy
 
         STANDARD_SITE_VALUES = ["address", "blurred_latitude", "blurred_longitude","case_number", "city", "claimed_by", "legacy_event_id", "latitude", "longitude", "name", "phone", "reported_by", "requested_at", "state", "status", "work_type", "data", "created_at", "updated_at", "appengine_key", "request_date"]
         PERSONAL_FIELDS = ["id", "address", "case_number", "latitude", "longitude", "claimed_by", "phone", "name", "created_at", "updated_at", "appengine_key"]
+        CSV_HEADER_FIELDS = ["request_date", "case_number", "name", "address", "phone", "latitude", "longitude", "city", "state", "status", "work_type", "claimed_by", "reported_by" ]
         self.per_page = 500
         has_paper_trail
         geocoded_by :full_street_address 
@@ -99,16 +100,20 @@ module Legacy
 
         def self.to_csv(options = {}, params)
           CSV.generate(options) do |csv|
-            column_names = get_column_names(params)
-            csv << column_names
+            csv_column_names = get_column_names(params)
+            csv << csv_column_names
+            orgs_hash = {}
+            Legacy::LegacyOrganization.select(:id, :name).each do |org|
+                orgs_hash[org.id] = org.name
+            end
             all.each do |site|
-              csv << site_to_hash(site.attributes).values_at(*column_names)
+              csv << site_to_hash(site.attributes, orgs_hash).values_at(*csv_column_names)
             end
           end
         end
 
         def self.get_column_names(params)
-            @c = column_names
+            @c = CSV_HEADER_FIELDS
             if params[:params][:type] == "deidentified"
                 PERSONAL_FIELDS.each do |field|
                     @c.delete(field)
@@ -119,14 +124,24 @@ module Legacy
                     @c << key
                 end
             end
+            @c.delete("name_metaphone")
+            @c.delete("address_metaphone")
+            @c.delete("city_metaphone")
             @c.flatten.uniq
         end
 
-        def self.site_to_hash site_attributes
+        def self.site_to_hash site_attributes, orgs_hash = None
             site_attributes['data'].each do |key, value|
                 site_attributes[key] = value
             end
             site_attributes.delete('data')
+            site_attributes.delete('event')
+            if orgs_hash
+                claimed_by_id = site_attributes['claimed_by']
+                reported_by_id = site_attributes['reported_by']
+                site_attributes["claimed_by"] = orgs_hash[claimed_by_id]
+                site_attributes["reported_by"] = orgs_hash[reported_by_id]
+            end
             site_attributes
         end
 
@@ -147,7 +162,6 @@ module Legacy
 
         def self.import(file)
             CSV.foreach(file.path, headers: true) do |row|
-                # binding.pry
                 Legacy::LegacySite.create! hash_to_site(row.to_hash)
             end
         end
