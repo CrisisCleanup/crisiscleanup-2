@@ -6,7 +6,7 @@ module Admin
     # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
         # todo implement search and sort and paginate
-        @users = User.paginate(:page => params[:page])
+        @users = User.order("name").paginate(:page => params[:page])
     end
     def new
     	@user = User.new

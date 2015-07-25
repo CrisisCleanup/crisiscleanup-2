@@ -4,7 +4,8 @@ module Incident
     before_filter :check_user
 
     def index
-    	@sites = Legacy::LegacySite.paginate(:page => params[:page])
+    	@sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page]) unless params[:order]
+        @sites = Legacy::LegacySite.select_order(params[:order]).paginate(:page => params[:page]) if params[:order]
     end
 
     def map
