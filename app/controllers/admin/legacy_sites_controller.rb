@@ -6,7 +6,7 @@ module Admin
     # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
         # todo implement search and sort and paginate
-        @sites = Legacy::LegacySite.paginate(:page => params[:page])
+        @sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page])
     end
     def new
     	@site = Legacy::LegacySite.new

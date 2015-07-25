@@ -1,5 +1,6 @@
 module Legacy
     class LegacySite < ActiveRecord::Base
+        # default_scope { order('case_number') }
         require 'csv'
 
         STANDARD_SITE_VALUES = ["address", "blurred_latitude", "blurred_longitude","case_number", "city", "claimed_by", "legacy_event_id", "latitude", "longitude", "name", "phone", "reported_by", "requested_at", "state", "status", "work_type", "data", "created_at", "updated_at", "appengine_key", "request_date"]
@@ -149,6 +150,17 @@ module Legacy
                 # binding.pry
                 Legacy::LegacySite.create! hash_to_site(row.to_hash)
             end
+        end
+
+        def self.select_order(order)
+            @sites = nil
+            @sites = all.order("county") if order == "county"
+            @sites = all.order("state") if order == "state"
+            @sites = all.order("name ASC") if order == "name_asc"
+            @sites = all.order("name DESC") if order == "name_desc"
+            @sites = all.order("request_date ASC") if order == "date_asc"
+            @sites = all.order("request_date DESC") if order == "date_desc"
+            @sites
         end
     end
 end

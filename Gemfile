@@ -44,6 +44,10 @@ gem 'paper_trail', '~> 4.0.0.rc'
 
 gem 'geocoder'
 
+gem 'unicorn'
+
+gem 'rack-timeout'
+
 group :development, :test do
 
   gem 'letter_opener'

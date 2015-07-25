@@ -6,7 +6,7 @@ module Admin
     # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
         # todo implement search and sort and paginate
-        @events = Legacy::LegacyEvent.paginate(:page => params[:page])
+        @events = Legacy::LegacyEvent.order("created_date DESC").paginate(:page => params[:page])
     end
     def show
         @event = Legacy::LegacyEvent.find(params[:id])
