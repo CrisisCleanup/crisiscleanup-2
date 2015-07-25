@@ -6,7 +6,7 @@ module Api
 		before_filter :check_admin?
 
 		def sites
-			@sites = Legacy::LegacySite.all
+			@sites = Legacy::LegacySite.order("name")
 			@sites = @sites.select("blurred_latitude, blurred_longitude, city, claimed_by, legacy_event_id, requested_at, state, status, work_type, data, requested_at") if params[:type] == "deidentified"
 			@sites = @sites.where('claimed_by is NULL') if params[:claimed_by] == "false"
 			@sites = @sites.where('claimed_by is NOT NULL') if params[:claimed_by] == "true"

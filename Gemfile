@@ -46,7 +46,9 @@ gem 'geocoder'
 
 gem 'unicorn'
 
-# gem 'rack-timeout'
+group :production do 
+  gem 'rack-timeout'
+end
 
 group :development, :test do
 

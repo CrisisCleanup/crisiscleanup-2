@@ -102,15 +102,18 @@ module Legacy
           CSV.generate(options) do |csv|
             csv_column_names = get_column_names(params)
             csv << csv_column_names
+            orgs_hash = {}
+            Legacy::LegacyOrganization.select(:id, :name).each do |org|
+                orgs_hash[org.id] = org.name
+            end
             all.each do |site|
-              csv << site_to_hash(site.attributes).values_at(*csv_column_names)
+              csv << site_to_hash(site.attributes, orgs_hash).values_at(*csv_column_names)
             end
           end
         end
 
         def self.get_column_names(params)
             @c = CSV_HEADER_FIELDS
-            binding.pry
             if params[:params][:type] == "deidentified"
                 PERSONAL_FIELDS.each do |field|
                     @c.delete(field)
@@ -124,15 +127,21 @@ module Legacy
             @c.delete("name_metaphone")
             @c.delete("address_metaphone")
             @c.delete("city_metaphone")
-            binding.pry
             @c.flatten.uniq
         end
 
-        def self.site_to_hash site_attributes
+        def self.site_to_hash site_attributes, orgs_hash = None
             site_attributes['data'].each do |key, value|
                 site_attributes[key] = value
             end
             site_attributes.delete('data')
+            site_attributes.delete('event')
+            if orgs_hash
+                claimed_by_id = site_attributes['claimed_by']
+                reported_by_id = site_attributes['reported_by']
+                site_attributes["claimed_by"] = orgs_hash[claimed_by_id]
+                site_attributes["reported_by"] = orgs_hash[reported_by_id]
+            end
             site_attributes
         end
 
