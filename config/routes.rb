@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"
     get "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization"
     get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
-    get "/:event_id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
+    get "/:id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
     get "/:id/map" => "legacy_sites#map", as: "legacy_map"
     get "/:id/form" => "legacy_sites#form", as: "legacy_form"
     post "/:id/submit" => "legacy_sites#submit"

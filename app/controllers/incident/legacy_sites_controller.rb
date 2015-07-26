@@ -1,7 +1,7 @@
 module Incident
   class LegacySitesController < ApplicationController
     include ApplicationHelper
-    before_filter :check_user
+    before_filter { |c| c.check_incident_permissions params[:id] }
 
     def index
     	@sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page]) unless params[:order]

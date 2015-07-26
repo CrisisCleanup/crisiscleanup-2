@@ -11,6 +11,18 @@ module ApplicationHelper
 			redirect_to '/login'
         end
     end
+
+    def current_user_event
+        current_user.legacy_organization.legacy_organization_events.first || 1
+    end
+
+    def check_incident_permissions event_id
+        unless check_admin?
+            # flash[:alert]
+            redirect_to "/worker/dashboard" unless event_id = current_user_event
+        end
+    end
+
     def check_token
     	if !Invitation.where(token:params[:token]).present?
     		# add error messages
