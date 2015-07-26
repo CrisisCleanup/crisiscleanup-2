@@ -17,10 +17,11 @@ module ApplicationHelper
     end
 
     def check_incident_permissions event_id
-        unless check_admin?
-            # flash[:alert]
-            redirect_to "/worker/dashboard" unless event_id = current_user_event
-        end
+        # unless check_admin?
+        #     # flash[:alert]
+        #     redirect_to "/worker/dashboard" unless event_id = current_user_event
+        # end
+        check_user
     end
 
     def check_token
