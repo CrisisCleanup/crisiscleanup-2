@@ -14,11 +14,12 @@
                 <li><%= link_to "Form", incident_legacy_form_path(current_user_event) %></li>
                 <li><%= link_to "Map", incident_legacy_map_path(current_user_event) %></li>
                 <li><%= link_to "Contacts", incident_legacy_contacts_path(current_user_event) %></li>
-                <li><%= link_to "Organizations", incident_legacy_organizations_path(current_user_event) %></li>
-                <% if current_user.admin %>
-                    <li><%= link_to "Admin", admin_path%></li>
-                <% end %>
+                <li><%= link_to "Orgs", incident_legacy_organizations_path(current_user_event) %></li>
                 <% if current_user %>
+                    <li><%= link_to "Dashboard", worker_dashboard_path %></li>
+                    <% if current_user.admin %>
+                        <li><%= link_to "Admin", admin_path%></li>
+                    <% end %>
                     <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
                 <% else %>
                     <li><%= link_to "Login", new_user_session_path %></li> 
