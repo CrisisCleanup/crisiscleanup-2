@@ -11,10 +11,13 @@
             <!-- Right Nav Section -->
             <ul class="right">
                 <li class="active"><%= link_to "Home", root_path %></li>
-                <li><%= link_to "About", about_path %></li>
-                <li><a href="/public_map">Map</a></li>
-                <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
-                <li><a href="/register">Sign Up</a></li>
+                <li><%= link_to "Form", incident_legacy_form_path(current_user_event) %></li>
+                <li><%= link_to "Map", incident_legacy_map_path(current_user_event) %></li>
+                <li><%= link_to "Contacts", incident_legacy_contacts_path(current_user_event) %></li>
+                <li><%= link_to "Orgs", incident_legacy_organizations_path(current_user_event) %></li>
+                <li><%= link_to "Sites", incident_legacy_sites_index_path(current_user_event) %></li>
+                <li><%= link_to "Stats", "#" %></li>
+
                 <% if current_user %>
                     <li><%= link_to "Dashboard", worker_dashboard_path %></li>
                     <% if current_user.admin %>

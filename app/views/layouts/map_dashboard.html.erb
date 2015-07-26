@@ -14,26 +14,31 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class='public'>
+  <body class='map'>
     <header>
-      <%= render "layouts/menus/application_menu" %>
+      <%= render "layouts/menus/map_menu" %>
     </header>
  
     <!-- alert menu -->
     <%= render "layouts/menus/alert_menu" %>
-
-      <!-- subheader -->
-    <%= yield :subheader %>
-        
-    <div id="wrapper">
-    <!-- main content -->
+    
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>   
-
+    <p class="alert"><%= alert %></p>  
+      
+    <!-- subheader -->
+    <%= yield :subheader %>
+      
+    <div id="wrapper">
     <!-- main content -->        
-    <%= yield :main %>
+        
+    <!-- main content -->        
+        <%= yield :main %>        
+        
+            <!-- sidebar -->
+            <%= yield :sidebar %>  
         
     </div>
+    <br>
         
     <footer align="center">
         <div class="row" id="footer">
@@ -66,7 +71,7 @@
             <ul class="right">
                 <li><%= link_to "Home", root_path %> |</li>
                 <li><%= link_to "About", about_path %> |</li>
-                <li><a href="/public_map">Map</a> |</li>
+                <li><a href="#">Map</a></a> |</li>
                 <li><a href="http://blog.crisiscleanup.org/">Blog</a> |</li>
                 <li><%= link_to "Terms", terms_path %> |</li>
                 <li><%= link_to "Privacy", privacy_path %> |</li>

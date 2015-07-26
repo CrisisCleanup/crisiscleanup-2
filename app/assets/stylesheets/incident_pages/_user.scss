@@ -23,6 +23,7 @@ nav.top-bar {
     background-image: image-url('black_bg.jpg');
     background-repeat: repeat;
     background-position: center;
+    margin-bottom: 40px;
 }
 
 nav {
@@ -64,9 +65,9 @@ nav {
 
 .subheader {
     padding-top: 20px;
-    text-align: center;
     & h2 {
         color: $royal;
+        margin-left: 1.5%;
     }
 }
 
@@ -78,9 +79,17 @@ nav {
 
 .row {
     max-width: 100%;
+    margin-bottom: 0!important;
 }
 
-#main {}
+.columns {
+    margin-bottom: 10px;
+}
+
+hr {
+    width: 98%;
+    padding-top: 1rem;
+}
 
 .alt {
     // Sidebar Template
@@ -89,6 +98,7 @@ nav {
     & p, ul {
         width: 95%;
     }
+    & h4 {}
 }
 
 // Sidebar Template
@@ -106,13 +116,10 @@ nav {
     & h4 {
         margin-top: 10px;
     }
-    & img {
+    & form, select option {
     width: 95%;
     margin-left: 2.5%;
-    margin-bottom: 20px;
-    border-radius: 5px 5px;
-    height: auto;
-}
+    }    
 }
 
 .sideblock {
@@ -179,157 +186,29 @@ footer {
     }
 }
 
-// Videos & Third Party Media
-.index-intro {
-    width: 95%;
-    margin-left: 2.5%;
-    height: 200px
-}
-.about-intro {
-    width: 95%;
-    height: 315px;
-}
-
-
-// Home Page
-.orgs {
-    & img {
-        width: 50%;
-        vertical-align: middle;
-        width: 50%;
-        height: auto;
-    }
-    & .columns {
-        transition: all 0.5s ease;
-        min-height: 305px;
-    }
-    & .voad {
-        background-color: rgba(65, 156, 56, .2);
-    }
-    & .voad:hover {
-        background-color: rgba(65, 156, 56, .5);
-    }
-    & .gov {
-        background-color: rgba(27, 132, 206, .2);
-    }
-    & .gov:hover {
-        background-color: rgba(27, 132, 206, .5);
-    }
-    & .volunteers {
-        background-color: rgba(221, 161, 0, .2);
-    }
-    & .volunteers:hover {
-        background-color: rgba(221, 161, 0, .5);
-    }
-    & .survivors {
-        background-color: rgba(211, 37, 25, .2);
-    }
-    & .survivors:hover {
-        background-color: rgba(211, 37, 25, .5);
+.invite {
+    padding-left: 0;
+    & input#email_addresses {
+        height: 50px;
     }
 }
 
-.orgs .columns p {
-    color: $coal;
+.button {
+    border: none;
 }
 
-.timeline {
-    scroll: auto;
-    & p {
-        border-bottom: 1px dashed $off-white;
-    }
+// Tables
+table {
+    margin-bottom: 0;
 }
 
-.incident-map {}
-
-.home-icons {
-    margin: 40px 0 0 0;
-    & img {
-        vertical-align: middle;
-        margin: 0 0 0 25%;
-        width: 50%;
-        height: auto;
-    }
-    & h2,
-    h3,
-    p {
-        text-align: center;
-    }
-    & .columns {}
+// Map
+#map-canvas {
+    width: 100%;
+    height: 600px;
+    background-color: $smoke;
+    margin-top: -41px;
 }
-
-.tornado-block,
-.hurricane-block,
-.flood-block,
-.snow-block,
-.fire-block,
-.wind-block {
-    & h3, p {
-        color: #fff;
-    }
-    & img {
-        margin-left: auto;
-        margin-right: auto;
-        vertical-align: middle;
-        width: 150px;
-        height: 150px;
-    }
-}
-
-.tornado-block {
-    background-color: $berry;
-}
-
-.hurricane-block {
-    background-color: $mustard;
-}
-
-.flood-block {
-    background-color: $royal;
-}
-
-.snow-block {
-    background-color: $forest;
-}
-
-.fire-block {
-    background-color: $coal;
-}
-
-.wind-block {
-    background-color: $terra;
-}
-
-.join {
-    margin-top: 20px;
-}
-
-// About Page
-.team {
-    display: inline-block;
-    & p {
-        text-align: right;
-    }
-    & img {
-        vertical-align: middle;
-        border-radius: 5px 5px;
-        width: 100%;
-        height: auto;
-    }
-    & i {
-        font-size: 25px;
-        transition: all 0.5s ease;
-        margin-top: -5px;
-        float: left;
-        &:hover {
-            color: $jade;
-        }
-    }
-    & .has-tip {
-        float: left;
-    }
-}
-
 
 // Media Queries
 @media only screen and (min-width: 40.0625em) {
@@ -363,15 +242,6 @@ footer {
         background: #008CBA;
         color: #fff;
     }
-    .incident-map img {
-        margin-bottom: 40px;
-    }
-}
-
-@media only screen and (max-width: 1024px) {
-    .incident-map img {
-        margin-bottom: 40px;
-    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -385,6 +255,7 @@ footer {
     }
     #sidebar {
         width: 100%;
+        margin-top: 20px;
         clear: both;
         display: block;
         padding: 10px 0 10px 0;

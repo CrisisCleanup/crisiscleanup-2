@@ -1,0 +1,65 @@
+<% content_for :subheader do %>
+<div class="subheader">
+    <h2>Visualize the Disaster in Real Time</h2>
+    <h4 class="basic">Personal information has been hidden, and the location has been blurred to 400 meters.</h4>
+    <hr class="medium">
+</div>
+<% end %>
+
+<% content_for :main do %>
+<div id="main" class="alt">
+    <p>Map Goes Here</p>
+<!--
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>    
+  function initialize() {
+    var mapCanvas = document.getElementById('map-canvas');
+    var mapOptions = {
+      center: new google.maps.LatLng(39, -90),
+      zoom: 4,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      scrollwheel: false        
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions)
+
+    $.get( "/api/map?legacy_event_id=<%= @legacy_event_id %>", function( data ) {
+      $.each(data, function(index, obj) {
+      	var marker1 = new google.maps.Marker({
+      		position: new google.maps.LatLng(parseFloat(obj["latitude"]), parseFloat(obj["longitude"])),
+      	    map: map
+      	});
+      })
+    });
+  }
+
+  
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+-->
+    <br> <!-- DO NOT REMOVE BREAK TAG -->
+	<div id="map-canvas"></div>
+
+</div>
+<% end %>
+
+<% content_for :sidebar do %>        
+<div id="sidebar">
+<h4>View Disaster Data For Over 20+ Incidents</h4>
+    <p>Simply choose an incident from the dropdown below, and the map will populate live work orders from our system.</p>
+    <div class="dropdown-button-area">
+    <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">Choose An Incident</button><br>
+        <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
+          <li><a href="#">Incident 1</a></li>
+          <li><a href="#">Incident 2</a></li>
+          <li><a href="#">Incident 3</a></li>
+          <li><a href="#">Incident 4</a></li>
+          <li><a href="#">Incident 5</a></li>
+          <li><a href="#">Incident 6</a></li>
+          <li><a href="#">Incident 7</a></li>
+          <li><a href="#">Incident 8</a></li>
+          <li><a href="#">Incident 9</a></li>    
+        </ul>
+    </div>   
+    <%= image_tag "legend.jpg", :alt => "Map Legend"  %>
+</div>
+<% end %> 

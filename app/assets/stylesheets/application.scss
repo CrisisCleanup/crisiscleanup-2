@@ -16,6 +16,9 @@
 	@import "admin_pages/dashboard";
 	@import "admin_pages/form";
 }
+.map {
+    @import "incident_pages/map";
+}
 @import "compass";
 @import 'foundation-icons';
 
