@@ -1,14 +1,7 @@
 <% content_for :subheader do %> 
-<div class="subheader">
-    <div class="row">
-        <div class="small-12 medium-12 large-12 columns">
-    <h2>Form<h2>
-    <hr>
-        </div>
-    </div>    
-</div>    
+ 
 <% end %>
-        
+
 <% content_for :main do %>
 <div id="main" class="alt">
 <script src="https://maps.googleapis.com/maps/api/js"></script>
@@ -19,7 +12,7 @@
       center: new google.maps.LatLng(39, -90),
       zoom: 4,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      scrollwheel: false        
+      scrollwheel: false    
     }
     var map = new google.maps.Map(mapCanvas, mapOptions)
 
@@ -38,13 +31,13 @@
 </script>
     <br> <!-- DO NOT REMOVE BREAK TAG -->
 	<div id="map-canvas"></div>
+    <%= image_tag "map_legend.png", :class => "legend"  %>
 
 </div>
 <% end %>
-
+        
 <% content_for :sidebar do %>        
 <div id="sidebar">
     <%= render 'site_form' %>
 </div>
-<% end %> 
-
+<% end %>
