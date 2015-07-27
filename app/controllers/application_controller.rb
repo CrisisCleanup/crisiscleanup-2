@@ -11,9 +11,8 @@ class ApplicationController < ActionController::Base
         elsif worker_dashboard_mode
             'worker_dashboard'      
         elsif incident_dashboard_mode
-            'incident_dashboard'    
+            'incident_dashboard'                  
         end
-          
   end
 
   def admin_dashboard_mode
@@ -24,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
   def incident_dashboard_mode
     self.class.parent == Incident
-  end
+  end 
 
   def after_sign_in_path_for(resource)
   

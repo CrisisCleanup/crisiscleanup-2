@@ -38,8 +38,22 @@
     margin-right: 5px;
 }
 
-//Videos & Third Party Media
-.about-intro {
-    width: 95%;
-    height: 315px;
+// Dropdown
+.dropdown-button-area {
+    position: relative;
+    & .button {
+        width: 95%;
+        margin-left: 2.5%;
+    }
+    & .f-dropdown {
+        position: absolute;
+        width: 95%;
+        max-width: none;
+        max-height: 200px;
+        overflow-y: scroll;
+            & li:hover, li a:hover {
+                background: $royal;
+                color: #fff;
+            }
+    }
 }

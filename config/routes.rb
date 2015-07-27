@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   
   get "/about" => "static_pages#about", as: "about"
+  get "/public_map" => "static_pages#public_map", as: "public_map"    
   get "/privacy" => "static_pages#privacy", as: "privacy"
   get "/terms" => "static_pages#terms", as: "terms"    
     

@@ -12,18 +12,6 @@
 <% content_for :main do %> 
 <div id="main" class="alt">
     <div class="row">
-        <label for="sort_order">Order By:</label>
-        <select id="sort_order" name="sort_order">
-          <option value="">Choose a sort order</option>
-          <option value="county">County</option>
-          <option value="state">State</option>
-          <option value="name_asc">Name (Ascending order)</option>
-          <option value="name_desc">Name (Descending order)</option>
-          <option value="date_asc">Date (Ascending order)</option>
-          <option value="date_desc">Date (Descending order)</option>
-
-        </select> 
-        <a id="submit_sort_order" class="button">Submit</a>
 		<%= render 'table', sites: @sites %>
         <%= will_paginate @sites %> 
 	</div>	     
@@ -50,8 +38,37 @@ $(function() {
     
 <% content_for :sidebar do %> 
 <div id="sidebar">
-    <h4>Info for Sites</h4>
-    <p>Bacon ipsum dolor amet biltong boudin ribeye doner strip steak bresaola meatball. T-bone meatloaf capicola pancetta beef ribs biltong andouille pig ham.</p>
+    <h4>Site Filter</h4>
+    <p>Choose a way to order sites with the form below.</p>
+        <form>
+            <label for="sort_order"><strong> Order By:</strong></label>
+                <select id="sort_order" name="sort_order">
+                  <option value="">Choose a sort order</option>
+                  <option value="county">County</option>
+                  <option value="state">State</option>
+                  <option value="name_asc">Name (Ascending order)</option>
+                  <option value="name_desc">Name (Descending order)</option>
+                  <option value="date_asc">Date (Ascending order)</option>
+                  <option value="date_desc">Date (Descending order)</option>
+                </select> 
+                <a id="submit_sort_order" class="button expand">Submit</a>   
+            <script>
+                $(function() {
+                $( "#submit_sort_order" ).click(function() {
+                    var sort_order = $("#sort_order").val();
+                    var current_url = window.location.href;
+                    if (current_url.indexOf("?") != -1) {
+                        current_url = current_url.slice(0, current_url.indexOf("?"))
+                    }
+                    window.location = current_url + "?order=" + sort_order
+                });
+                var myParam = location.search.split('order=')[1]
+                if (myParam) {
+                    $("#sort_order").val(myParam);
+                }
+            });
+            </script>  
+        </form> 
 </div>
 <% end %>
         

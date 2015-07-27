@@ -1,5 +1,6 @@
 module Incident
   class LegacySitesController < ApplicationController
+    layout "map_dashboard", only: [:form, :map]
     include ApplicationHelper
     before_filter { |c| c.check_incident_permissions params[:id] }
 

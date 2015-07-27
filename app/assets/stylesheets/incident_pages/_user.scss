@@ -116,6 +116,10 @@ hr {
     & h4 {
         margin-top: 10px;
     }
+    & form, select option {
+    width: 95%;
+    margin-left: 2.5%;
+    }    
 }
 
 .sideblock {
