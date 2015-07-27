@@ -3,7 +3,7 @@ module Worker
     class LegacySitesController < ApplicationController
       include ApplicationHelper
       before_filter :check_incident_permissions
-
+      before_filter :assign_class
       def index
       	@sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page]) unless params[:order]
         @sites = Legacy::LegacySite.select_order(params[:order]).paginate(:page => params[:page]) if params[:order]
@@ -11,6 +11,7 @@ module Worker
       end
 
       def map
+          @body = 'map'
           @legacy_event = Legacy::LegacyEvent.find(params[:id])
           @site = Legacy::LegacySite.new(legacy_event_id: @legacy_event.id)
           @form = Form.find_by(legacy_event_id: @legacy_event.id).html
@@ -43,7 +44,9 @@ module Worker
         @work_type_counts = Legacy::LegacySite.work_type_counts(@event.id)
         @status_counts = Legacy::LegacySite.status_counts(@event.id)
       end
-     
+      def assign_class
+        @body = 'incident'
+      end
       private
       def site_params
               params.require(:legacy_legacy_site).permit(
