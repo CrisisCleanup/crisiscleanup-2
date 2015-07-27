@@ -50,6 +50,8 @@
 			zip_code: Faker::Address.zip,
 			is_admin: true
 		)
+		Legacy::LegacyOrganizationEvent.create(legacy_organization_id: org.id, legacy_event_id: 1)
+		
 		User.create(email:'frank@aol.com', password:'blue32blue32', name:'frank', admin:false, legacy_organization_id:org.id, referring_user_id:@u.id)
 
 		2.times do

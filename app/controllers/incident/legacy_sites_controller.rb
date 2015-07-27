@@ -1,6 +1,6 @@
 module Incident
   class LegacySitesController < ApplicationController
-
+    
     include ApplicationHelper
     before_filter { |c| c.check_incident_permissions params[:id] }
 

@@ -6,6 +6,7 @@
       <th>Phone</th>
       <th>Website</th>
       <th>Primary Contact</th>
+      <th>Events</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,11 @@
         <td> <%= org.phone %> </td>
         <td> <%= org.url %> </td>
         <td> <a href="<%=incident_legacy_contact_path(event_id, org.primary_contact_id(org.id)) if org.primary_contact_id(org.id)%>"><%= org.primary_contact_name(org.id) %></a> </td>
+        <td>
+          <% org.legacy_events.each do |event| %>
+            <%= event.name %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
