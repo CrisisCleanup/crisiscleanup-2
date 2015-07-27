@@ -1,7 +1,7 @@
 module Incident
   class LegacySitesController < ApplicationController
-    layout "map_dashboard", only: [:form, :map]
-    layout "incident_dashboard", except: [:form, :map]
+    layout "map_dashboard", only: [:map, :form, :edit], except: [:index, :stats]
+
     include ApplicationHelper
     before_filter { |c| c.check_incident_permissions params[:id] }
 
