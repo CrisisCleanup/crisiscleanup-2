@@ -18,6 +18,20 @@ module Legacy
       false
      end
     end
+
+    def primary_contact_id(organization_id)
+      contact = Legacy::LegacyOrganization.find(organization_id).legacy_contacts.find_by(is_primary: true)
+      contact.id if contact
+
+    end
+
+    def primary_contact_name(organization_id)
+      # contact = Legacy::LegacyOrganization.find(organization_id).legacy_contacts.find_by(is_primary: true)
+      # contact.id if contact
+      contact = Legacy::LegacyOrganization.find(organization_id).legacy_contacts.find_by(is_primary: true)
+      name = "#{contact.first_name} #{contact.last_name}" if contact
+      name if contact
+    end
   end
 end 			
 			

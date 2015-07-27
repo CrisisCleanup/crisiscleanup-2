@@ -1,8 +1,11 @@
 <table>
   <thead>
     <tr>
-      <th width="200">Name</th>
-      <th width="150">City</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Website</th>
+      <th>Primary Contact</th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +16,10 @@
             <%= org.name %>
           </a>
         </td>
-        <td> <%= org.city %> </td>
+        <td> <%= org.email %> </td>
+        <td> <%= org.phone %> </td>
+        <td> <%= org.url %> </td>
+        <td> <a href="<%=incident_legacy_contact_path(event_id, org.primary_contact_id(org.id)) if org.primary_contact_id(org.id)%>"><%= org.primary_contact_name(org.id) %></a> </td>
       </tr>
     <% end %>
   </tbody>

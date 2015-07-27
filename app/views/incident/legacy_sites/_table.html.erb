@@ -1,23 +1,30 @@
 <table>
   <thead>
     <tr>
-      <th width="200">Event</th>
+      <th>Case Number</th>
       <th>Name</th>
-      <th width="150">Address</th>
-      <th width="150">City</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Action</th>
+
     </tr>
   </thead>
   <tbody>
     <% sites.each do |site| %>
       <tr>
-        <td> 
-          <a href=<%=edit_admin_legacy_site_path(site.id)%>>
-              <%= site.legacy_event.case_label %>
-            </a>
-        </td>
-        <td> <%= site.name %> </td>
+        <td> <%= site.case_number %> </td>
+        <td> <%= site.name %></td>
         <td> <%= site.address %> </td>
         <td> <%= site.city %> </td>
+        <td> <%= site.state %> </td>
+        <td> <%= site.zip_code %> </td>
+        <td> 
+          <a href=<%=edit_admin_legacy_site_path(site.id)%>>
+              Edit
+            </a>
+        </td>
       </tr>
     <% end %>
   </tbody>

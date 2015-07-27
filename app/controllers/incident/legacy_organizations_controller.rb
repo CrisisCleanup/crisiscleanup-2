@@ -10,7 +10,7 @@ module Incident
 
     def show
     	@organization = Legacy::LegacyOrganization.find(params[:org_id])
-    	@event_id = params[:event_id]
+    	@event_id = params[:id]
     end
   end
 end
