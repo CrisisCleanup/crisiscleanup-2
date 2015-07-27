@@ -11,7 +11,9 @@
         
 <% content_for :main do %> 
 <div id="main" class="alt">
-    
+    <% unless current_user_event %>
+    	<p>You're organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
+    <% end %>
 		<% if @unverified_users.present? %>	
             <h4>Invite Users</h4>
             <%= render 'invite_form' %>

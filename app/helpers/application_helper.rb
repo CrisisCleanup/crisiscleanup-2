@@ -13,15 +13,20 @@ module ApplicationHelper
     end
 
     def current_user_event
-        current_user.legacy_organization.legacy_organization_events.first || 1
+        if current_user.admin
+            request.params[:id]
+        else
+            current_user.legacy_organization.legacy_organization_events.first.legacy_event_id if current_user.legacy_organization.legacy_organization_events
+        end
     end
 
     def check_incident_permissions event_id
-        # unless check_admin?
-        #     # flash[:alert]
-        #     redirect_to "/worker/dashboard" unless event_id = current_user_event
-        # end
-        check_user
+        if current_user_event.nil?
+            redirect_to "/worker/dashboard"
+        elsif check_admin?.nil? != true
+            raise "wrong event" unless event_id == current_user_event
+            redirect_to "/worker/dashboard" unless event_id == current_user_event
+        end
     end
 
     def check_token
