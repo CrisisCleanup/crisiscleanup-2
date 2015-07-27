@@ -147,7 +147,7 @@ module Legacy
             site_attributes
         end
 
-        def self.hash_to_site hash_attributes
+        def self.hash_to_site hash_attributes, event_id
             data = {}
             hash_attributes.each do |key, value|
                 unless STANDARD_SITE_VALUES.include? key
@@ -155,16 +155,21 @@ module Legacy
                     hash_attributes.delete(key)
                 end
             end
+
+            ### TODO delete these when using real ids
             hash_attributes.delete("reported_by")
             hash_attributes.delete("claimed_by")
+            #########################################
+
             hash_attributes['data'] = data
+            hash_attributes['legacy_event_id'] = event_id
             hash_attributes
         end
 
 
-        def self.import(file)
+        def self.import(file, event_id)
             CSV.foreach(file.path, headers: true) do |row|
-                Legacy::LegacySite.create! hash_to_site(row.to_hash)
+                Legacy::LegacySite.create! hash_to_site(row.to_hash, event_id)
             end
         end
 
