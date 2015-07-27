@@ -10,6 +10,12 @@ module Worker
         @event_id = params[:id]
       end
 
+      def form
+          @site = Legacy::LegacySite.new(legacy_event_id: params[:id])
+          @form = Form.find_by(legacy_event_id: params[:id]).html
+          @legacy_event = Legacy::LegacyEvent.find(params[:id])
+      end
+
       def map
           @body = 'map'
           @legacy_event = Legacy::LegacyEvent.find(params[:id])
@@ -33,7 +39,7 @@ module Worker
 
       def edit
         @site = Legacy::LegacySite.find(params[:site_id])
-        @event_id = params[:id]
+        @legacy_event = Legacy::LegacyEvent.find(params[:id])
         @form = Form.find_by(legacy_event_id: params[:id]).html
       end
 

@@ -12,6 +12,7 @@
             <ul class="right">
                 <li class="active"><%= link_to "Home", root_path %></li>
                 <% if current_user_event %>
+                    <li><%= link_to "Form", worker_incident_legacy_form_path(current_user_event) %></li>
                     <li><%= link_to "Map", worker_incident_legacy_map_path(current_user_event) %></li>
                     <li><%= link_to "Contacts", worker_incident_legacy_contacts_path(current_user_event) %></li>
                     <li><%= link_to "Orgs", worker_incident_legacy_organizations_path(current_user_event) %></li>
