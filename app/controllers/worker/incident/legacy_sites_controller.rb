@@ -11,21 +11,18 @@ module Worker
       end
 
       def map
-       
-          @legacy_event_id = params[:id]
+          @legacy_event = Legacy::LegacyEvent.find(params[:id])
+          @site = Legacy::LegacySite.new(legacy_event_id: @legacy_event.id)
+          @form = Form.find_by(legacy_event_id: @legacy_event.id).html
       end
 
-      def form
-          @site = Legacy::LegacySite.new(legacy_event_id: params[:id])
-          @form = Form.find_by(legacy_event_id: params[:id]).html
-      end
       def submit
        
          @site = Legacy::LegacySite.new(site_params)
          @form =  Form.find_by(legacy_event_id: params[:id]).html
-
+       
          if @site.save
-              # figure out what to do here
+              Legacy::LegacyEvent.find(params[:id]).legacy_sites << @site
               render json: @site
          else
               render json: @site.errors.full_messages

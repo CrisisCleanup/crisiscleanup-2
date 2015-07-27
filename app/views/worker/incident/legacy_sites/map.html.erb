@@ -3,41 +3,16 @@
 <% end %>
 
 <% content_for :main do %>
-<div id="main" class="alt">
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script>
-  function initialize() {
-    var mapCanvas = document.getElementById('map-canvas');
-    var mapOptions = {
-      center: new google.maps.LatLng(39, -90),
-      zoom: 4,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      scrollwheel: false    
-    }
-    var map = new google.maps.Map(mapCanvas, mapOptions)
-
-    $.get( "/api/map?legacy_event_id=<%= @legacy_event_id %>", function( data ) {
-      $.each(data, function(index, obj) {
-      	var marker1 = new google.maps.Marker({
-      		position: new google.maps.LatLng(parseFloat(obj["latitude"]), parseFloat(obj["longitude"])),
-      	    map: map
-      	});
-      })
-    });
-  }
-
-  
-  google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+  <div id="main" class="alt">
+    <span class='m-id hidden'><%= @legacy_event.id %></span>
     <br> <!-- DO NOT REMOVE BREAK TAG -->
-	<div id="map-canvas"></div>
+    <div id="map-canvas"></div>
     <%= image_tag "map_legend.png", :class => "legend"  %>
-
-</div>
+  </div>
 <% end %>
         
 <% content_for :sidebar do %>        
-<div id="sidebar">
+  <div id="sidebar">
     <h4>Incident Map Tools</h4>
         <ul class="tabs" data-tab>
           <li class="tab-title active"><a href="#panel1">Edit Form</a></li>
@@ -45,41 +20,41 @@
         </ul>
         <div class="tabs-content">
           <div class="content active" id="panel1">
-            <p>INCIDENT EDIT FORM GOES HERE</p>
-            <p>Will need to include JS + Rails code to make edit forms "pop" up in timing for when map icons are clicked</p>
+            <%= render 'site_form' %>
           </div>
           <div class="content" id="panel2">
-                        <p><div id="filters">
-<h5>Use filters below to display custom results on the map</h5>
-<p>Edit a specific incident, or populate the map with custom filters.</p>              
-<p><strong>Only show the following types:</strong></p>
-<form>
-<input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="claimed">
-<label for="claimed">Claimed by Admin</label><br />
+<!--             <p><div id="filters">
+            <h5>Use filters below to display custom results on the map</h5>
+            <p>Edit a specific incident, or populate the map with custom filters.</p>              
+            <p><strong>Only show the following types:</strong></p> -->
+            <!-- <form>
+            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="claimed">
+            <label for="claimed">Claimed by Admin</label><br />
 
-<input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="unclaimed">
-<label for="unclaimed">Unclaimed</label><br />
+            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="unclaimed">
+            <label for="unclaimed">Unclaimed</label><br />
 
-<input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="open">
-<label for="open">Open</label><br />
+            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="open">
+            <label for="open">Open</label><br />
 
-<input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="closed">
-<label for="closed">Closed</label><br />
+            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="closed">
+            <label for="closed">Closed</label><br />
 
-<input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="reported">
-<label for="reported">Reported by Admin</label><br />
+            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="reported">
+            <label for="reported">Reported by Admin</label><br />
 
-<input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Flood">
-<label for="Flood">Problem: Flood damage</label><br />
+            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Flood">
+            <label for="Flood">Problem: Flood damage</label><br />
 
-<input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Trees">
-<label for="Trees">Problem: Trees</label><br />
+            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Trees">
+            <label for="Trees">Problem: Trees</label><br />
 
-<input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Goods or Services">
-<label for="Goods or Services">Need: Goods and services</label><br /></p>
-</form>              
+            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Goods or Services">
+            <label for="Goods or Services">Need: Goods and services</label><br /></p>
+            </form>           --> 
+
           </div>
-          </div>
-        </div>   
+        </div>
+      </div>   
 </div>
 <% end %>        
