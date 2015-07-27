@@ -1,12 +1,14 @@
 module Incident
   class LegacySitesController < ApplicationController
     layout "map_dashboard", only: [:form, :map]
+    layout "incident_dashboard", except: [:form, :map]
     include ApplicationHelper
     before_filter { |c| c.check_incident_permissions params[:id] }
 
     def index
     	@sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page]) unless params[:order]
-        @sites = Legacy::LegacySite.select_order(params[:order]).paginate(:page => params[:page]) if params[:order]
+      @sites = Legacy::LegacySite.select_order(params[:order]).paginate(:page => params[:page]) if params[:order]
+      @event_id = params[:id]
     end
 
     def map
@@ -29,6 +31,12 @@ module Incident
             render json: @site.errors.full_messages
        end
 
+    end
+
+    def edit
+      @site = Legacy::LegacySite.find(params[:site_id])
+      @event_id = params[:id]
+      @form = Form.find_by(legacy_event_id: params[:id]).html
     end
    
     private

@@ -1,5 +1,5 @@
 <% content_for :main do %> 
-	<h2>Contacts show</h2>
+	<h2><%= @contact.first_name %> <%= @contact.last_name %>: <%= @contact.legacy_organization.name if @contact.legacy_organization %></h2>
 	<div class="small-12 large-12 columns">
 		<%= render 'show_table', contact: @contact, event_id: @event_id %>
 	</div>

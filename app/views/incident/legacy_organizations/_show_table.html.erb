@@ -2,6 +2,14 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Website</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip Code</th>
+
     </tr>
   </thead>
   <tbody>
@@ -9,6 +17,32 @@
         <td>
           	<%= organization.name %>
         </td>
+        <td>
+            <%= organization.email %>
+        </td>
+        <td>
+            <%= organization.phone %>
+        </td>
+        <td>
+            <%= organization.url %>
+        </td>
+        <td>
+            <%= organization.address %>
+        </td>
+        <td>
+            <%= organization.city %>
+        </td>
+        <td>
+            <%= organization.state %>
+        </td>
+        <td>
+            <%= organization.zip_code %>
+        </td>
+        
       </tr>
   </tbody>
 </table>
+
+<h3>Contacts</h3>
+<%= render 'contacts_table', contacts: organization.legacy_contacts, event_id: @event_id %>
+
