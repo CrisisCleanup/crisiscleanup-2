@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
         elsif worker_dashboard_mode
             'worker_dashboard'      
         elsif incident_dashboard_mode
-            'incident_dashboard'                  
+            'incident_dashboard'   
         end
   end
 

@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
       render :layout => 'application_sidebar'
   end
   def public_map
+      @events = Legacy::LegacyEvent.all
       render :layout => 'application_sidebar'
   end
   def privacy
