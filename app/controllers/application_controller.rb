@@ -10,11 +10,16 @@ class ApplicationController < ActionController::Base
             'admin_dashboard'
         elsif worker_dashboard_mode
             'worker_dashboard'      
+        elsif map_dashboard_mode
+            'map_dashboard'
         elsif incident_dashboard_mode
             'incident_dashboard'   
         end
   end
 
+  def map_dashboard_mode
+    self.env["REQUEST_URI"].include? "map" or self.env["REQUEST_URI"].include? "form" or self.env["REQUEST_URI"].include? "edit"
+  end
   def admin_dashboard_mode
     self.class.parent == Admin
   end
