@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".remote .new_legacy_legacy_site input[type='submit']").on("click",function(e){
+	$(".remote .new_legacy_legacy_site").on("submit",function(e){ 
 		e.preventDefault();
 		$('.error').remove();
 		var errorList = getErrors();
