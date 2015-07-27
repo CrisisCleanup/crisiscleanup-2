@@ -2,7 +2,8 @@ module Worker
     module Incident
       class LegacyOrganizationsController < ApplicationController
         include ApplicationHelper
-        before_filter { |c| c.check_incident_permissions params[:id] }
+        before_filter :check_incident_permissions
+
 
         def index
         	@orgs = Legacy::LegacyOrganization.order("name").paginate(:page => params[:page])

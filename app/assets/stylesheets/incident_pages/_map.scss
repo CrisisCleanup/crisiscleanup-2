@@ -5,43 +5,6 @@ body {
     height: 100%;
 }
 
-header {
-    height: 50px;
-}
-
-.name img {
-    height: 45px;
-    margin-top: 2.5px;
-    width: auto;
-    vertical-align: middle;
-    margin-left: 20px;
-}
-
-nav.top-bar {
-    //needs separate declaration away from nest
-    height: 50px;
-    background-image: image-url('black_bg.jpg');
-    background-repeat: repeat;
-    background-position: center;
-}
-nav {
-    & .top-bar-section {
-        height: 50px;
-    }
-    & .top-bar-section li:not(.has-form) a:not(.button) {
-        background: transparent;
-        color: $goldenrod;
-        font-size: 16px;
-    }
-    & .top-bar-section ul li {
-        background: transparent;
-        line-height: 0;
-        height: 50px;
-    }
-    & ul.top-bar.expanded {
-        height: 125px;
-    }
-}
 .top-bar.expanded {
     z-index: 300;
     height: auto;

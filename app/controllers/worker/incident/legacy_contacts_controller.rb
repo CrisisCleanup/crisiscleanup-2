@@ -2,7 +2,7 @@ module Worker
     module Incident
       class LegacyContactsController < ApplicationController
         include ApplicationHelper
-        before_filter { |c| c.check_incident_permissions params[:id] }
+        before_filter :check_incident_permissions
 
         def index
         	@contacts = Legacy::LegacyContact.order("first_name").paginate(:page => params[:page])

@@ -10,15 +10,14 @@
 	@import "public_pages/static_pages";
     @import "public_pages/registration";
 }
-.worker-dashboard, .incident{
+.worker-dashboard{
 	@import "incident_pages/user";
+	@import "incident_pages/map";
 }    
 .admin-dashboard{
 	@import "admin_pages/dashboard";
 	@import "admin_pages/form";
 }
-.map {
-    @import "incident_pages/map";
-}
+
 @import "compass";
 @import 'foundation-icons';

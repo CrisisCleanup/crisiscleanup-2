@@ -20,15 +20,19 @@ module ApplicationHelper
         end
     end
 
-    def check_incident_permissions event_id
+    def check_incident_permissions
         if current_user_event.nil?
             redirect_to "/worker/dashboard"
-        elsif check_admin?.nil? != true
-            raise "wrong event" unless event_id == current_user_event
-            redirect_to "/worker/dashboard" unless event_id == current_user_event
+        elsif !current_user.admin 
+            raise "wrong event" unless params["id"].to_i == current_user_event
+            if !check_incident(params["id"].to_i)
+               redirect_to "/worker/dashboard"
+            end
         end
     end
-
+    def check_incident(event_id)
+        event_id == current_user_event 
+    end
     def check_token
     	if !Invitation.where(token:params[:token]).present?
     		# add error messages

@@ -13,14 +13,14 @@
     <% orgs.each do |org| %>
       <tr>
         <td>
-          <a href=<%=incident_legacy_organization_path(event_id, org.id)%>> 
+          <a href=<%=worker_incident_legacy_organization_path(event_id, org.id)%>> 
             <%= org.name %>
           </a>
         </td>
         <td> <%= org.email %> </td>
         <td> <%= org.phone %> </td>
         <td> <%= org.url %> </td>
-        <td> <a href="<%=incident_legacy_contact_path(event_id, org.primary_contact_id(org.id)) if org.primary_contact_id(org.id)%>"><%= org.primary_contact_name(org.id) %></a> </td>
+        <td> <a href="<%=worker_incident_legacy_contact_path(event_id, org.primary_contact_id(org.id)) if org.primary_contact_id(org.id)%>"><%= org.primary_contact_name(org.id) %></a> </td>
         <td>
           <% org.legacy_events.each do |event| %>
             <%= event.name %>
