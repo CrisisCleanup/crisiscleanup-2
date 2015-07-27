@@ -28,23 +28,24 @@ Rails.application.routes.draw do
   
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
   namespace :worker do
-     get "/dashboard" => 'dashboard#index', as:"dashboard"
-     resource :invitation_lists, only: [:create]
-    
+    get "/dashboard" => 'dashboard#index', as:"dashboard"
+    resource :invitation_lists, only: [:create]
+      namespace :incident do
+        get "/:id/sites" => "legacy_sites#index", as: "legacy_sites_index"
+        get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"
+        get "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization"
+        get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
+        get "/:id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
+        get "/:id/map" => "legacy_sites#map", as: "legacy_map"
+        get "/:id/form" => "legacy_sites#form", as: "legacy_form"
+        get "/:id/edit/:site_id" => "legacy_sites#edit", as: "legacy_edit_site"
+        post "/:id/submit" => "legacy_sites#submit"
+        get "/:id/stats" => "legacy_sites#stats", as: "stats"
+      end     
+  
   end
 
-  namespace :incident do
-    get "/:id/sites" => "legacy_sites#index", as: "legacy_sites_index"
-    get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"
-    get "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization"
-    get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
-    get "/:id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
-    get "/:id/map" => "legacy_sites#map", as: "legacy_map"
-    get "/:id/form" => "legacy_sites#form", as: "legacy_form"
-    get "/:id/edit/:site_id" => "legacy_sites#edit", as: "legacy_edit_site"
-    post "/:id/submit" => "legacy_sites#submit"
-    get "/:id/stats" => "legacy_sites#stats", as: "stats"
-  end
+
   
   get "/invitations/activate" => "invitations#activate"
   post "/invitations/activate" => "invitations#sign_up"

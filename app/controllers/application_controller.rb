@@ -10,10 +10,6 @@ class ApplicationController < ActionController::Base
             'admin_dashboard'
         elsif worker_dashboard_mode
             'worker_dashboard'      
-        elsif map_dashboard_mode
-            'map_dashboard'
-        elsif incident_dashboard_mode
-            'incident_dashboard'   
         end
   end
 
@@ -24,11 +20,9 @@ class ApplicationController < ActionController::Base
     self.class.parent == Admin
   end
   def worker_dashboard_mode
-    self.class.parent == Worker
+    self.class.parent == Worker || self.class.parent.parent == Worker
   end
-  def incident_dashboard_mode
-    self.class.parent == Incident
-  end 
+
 
   def after_sign_in_path_for(resource)
   

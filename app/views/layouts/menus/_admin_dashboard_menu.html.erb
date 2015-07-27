@@ -37,10 +37,10 @@
           <li class='about'>
             <a href=<%=about_path%>>About</a>
           </li>
-          <li class='legacy_organizations'>
+          <li class='privacy'>
             <a href=<%=privacy_path%>>Privacy</a>
           </li>
-          <li class='legacy_contacts'>
+          <li class='terms'>
             <a href=<%=terms_path%>>Terms</a>
           </li>
         </ul>
@@ -52,9 +52,11 @@
             <a href="#">Forms</a>
             <ul class="dropdown">
               <% Legacy::LegacyEvent.all.each do |event| %>
-                <li class='incident_form'>
-                  <a href=<%=incident_legacy_form_path(event.id)%>> <%= event.name %></a>
-                </li>
+                <% if event.form.present? %>
+                  <li class='incident_form'>
+                    <a href=<%=admin_legacy_event_form_path(event.id, event.form.id)%>> <%= event.name %></a>
+                  </li>
+                <%end%>
               <% end %>
             </ul>
           </li>
@@ -64,7 +66,7 @@
             <ul class="dropdown">
               <% Legacy::LegacyEvent.all.each do |event| %>
                 <li class='incident_map'>
-                  <a href=<%=incident_legacy_map_path(event.id)%>> <%= event.name %></a>
+                  <a href=<%=worker_incident_legacy_map_path(event.id)%>> <%= event.name %></a>
                 </li>
               <% end %>
             </ul>
@@ -75,7 +77,7 @@
             <ul class="dropdown">
               <% Legacy::LegacyEvent.all.each do |event| %>
                 <li class='incident_sites'>
-                  <a href=<%=incident_legacy_sites_index_path(event.id)%>> <%= event.name %></a>
+                  <a href=<%=worker_incident_legacy_sites_index_path(event.id)%>> <%= event.name %></a>
                 </li>
               <% end %>
             </ul>
@@ -86,7 +88,7 @@
             <ul class="dropdown">
               <% Legacy::LegacyEvent.all.each do |event| %>
                 <li class='incident_sites'>
-                  <a href=<%=incident_legacy_organizations_path(event.id)%>> <%= event.name %></a>
+                  <a href=<%=worker_incident_legacy_organizations_path(event.id)%>> <%= event.name %></a>
                 </li>
               <% end %>
             </ul>
@@ -97,7 +99,7 @@
             <ul class="dropdown">
               <% Legacy::LegacyEvent.all.each do |event| %>
                 <li class='incident_sites'>
-                  <a href=<%=incident_legacy_contacts_path(event.id)%>> <%= event.name %></a>
+                  <a href=<%=worker_incident_legacy_contacts_path(event.id)%>> <%= event.name %></a>
                 </li>
               <% end %>
             </ul>

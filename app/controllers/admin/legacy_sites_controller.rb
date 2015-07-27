@@ -15,6 +15,7 @@ module Admin
         @site = Legacy::LegacySite.new(site_params) 
         if @site.save
          	redirect_to admin_legacy_sites_path
+      
         else
             render :new
         end 

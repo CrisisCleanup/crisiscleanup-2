@@ -15,6 +15,9 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
-//= require ./scripts.js
 //= require_tree ./plugins
+//= require ./worker/ccmap.js
+//= require ./worker/sites.js
+//= require ./scripts.js
+
 $(function(){ $(document).foundation(); });
