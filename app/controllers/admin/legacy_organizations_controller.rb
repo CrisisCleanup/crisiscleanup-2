@@ -13,8 +13,10 @@ module Admin
     def create          
         @org = Legacy::LegacyOrganization.new(org_params) 
         if @org.save
+            flash[:notice] = "Organization #{@org.name} successfully saved"
          	redirect_to admin_legacy_organizations_path
         else
+            flash[:alert] = "Organization #{@org.name} not saved"
             render :new
         end 
     end
@@ -25,8 +27,10 @@ module Admin
     def update
         @org = Legacy::LegacyOrganization.find(params[:id])
         if  @org.update_attributes(org_params)
+            flash[:notice] = "Organization #{@org.name} successfully updated"
             redirect_to admin_legacy_organizations_path
         else
+            flash[:alert] = "Organization #{@org.name} not updated"
             redirect_to edit_admin_legacy_organization_path(@org.id)
         end
     end

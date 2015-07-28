@@ -13,9 +13,9 @@
 <body class='admin-dashboard'>
 <div class="container">
     <%= render 'layouts/menus/admin_dashboard_menu' %>
-    <!-- to do render message partial if there is a message -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> 
     <%= yield %>
 </div>
-
 </body>
 </html>
