@@ -1,7 +1,5 @@
 <div class='remote'>
-	<h4>Incident Form</h4>
-	<%= simple_form_for @site, url: worker_incident_path(@site.legacy_event
-		.id),remote: true do |f| %>
+	<%= simple_form_for @site, url: url,remote: true do |f| %>
 		<%= @form.html_safe %>
 	<%end%>
 </div>

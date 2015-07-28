@@ -29,7 +29,7 @@ module Worker
 
          @site.legacy_event_id = current_user_event
          @form =  Form.find_by(legacy_event_id: params[:id]).html
-         binding.pry
+       
          if @site.save
               Legacy::LegacyEvent.find(current_user_event).legacy_sites << @site
               render json: @site
@@ -37,6 +37,16 @@ module Worker
               render json: @site.errors.full_messages
          end
 
+      end
+      def update
+         @site = Legacy::LegacySite.find(params["site_id"])
+         @site.data = params[:legacy_legacy_site][:data]
+         @form =  Form.find_by(legacy_event_id: params[:id]).html
+         if @site.update(site_params)
+              render json: {updated:@site}
+         else
+             render json: @site.errors.full_messages
+         end
       end
 
       def edit
