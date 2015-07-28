@@ -21,14 +21,16 @@ module Legacy
         end
 
         def add_case_number
-            count = Legacy::LegacySite.where(legacy_event_id: self.legacy_event_id).count
-            event_case_label = Legacy::LegacyEvent.find(self.legacy_event_id).case_label
-            self.case_number = "#{event_case_label}#{count + 1}"
+            if self.legacy_event_id
+                count = Legacy::LegacySite.where(legacy_event_id: self.legacy_event_id).count
+                event_case_label = Legacy::LegacyEvent.find(self.legacy_event_id).case_label
+                self.case_number = "#{event_case_label}#{count + 1}"
+            end
         end
 
         def create_blurred_geocoordinates
-            self.blurred_latitude = self.latitude + rand(-0.0187..0.0187)
-            self.blurred_longitude = self.longitude + rand(-0.0187..0.0187)
+            self.blurred_latitude = self.latitude + rand(-0.0187..0.0187) if self.latitude
+            self.blurred_longitude = self.longitude + rand(-0.0187..0.0187) if self.longitude
         end
 
         def claimed_by_org
