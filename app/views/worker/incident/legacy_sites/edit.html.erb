@@ -9,9 +9,24 @@
     <div id="map-canvas"></div>
     <%= image_tag "map_legend.png", :class => "legend"  %>
   </div>
+  <script>
+  $(function() {
+    var siteAttributes = <%= @site_json.html_safe %>;
+    for (i in siteAttributes) {
+
+      console.log(i);
+      var attr = "#legacy_legacy_site_" + i;
+      var elm = $(attr).val(siteAttributes[i]);
+    }
+    // TODO Make this work for HSTore data as well.
+    // for (i in siteAttributes.data)
+  });
+    </script>
+
 <% end %>
         
-<% content_for :sidebar do %>        
+<% content_for :sidebar do %>   
+  
   <div id="sidebar">
     <h4>Incident Map Tools</h4>
         <ul class="tabs" data-tab>
