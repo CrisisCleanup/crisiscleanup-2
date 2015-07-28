@@ -14,8 +14,10 @@ module Admin
     def create    
         @contact = Legacy::LegacyContact.new(contact_params) 
         if @contact.save
+            flash[:notice] = "Contact #{@contact.first_name} #{@contact.last_name} successfully saved"
          	redirect_to admin_legacy_contacts_path
         else
+            flash[:alert] = "Contact #{@contact.first_name} #{@contact.last_name} not saved"
             render :new
         end
     
@@ -28,8 +30,10 @@ module Admin
     def update
         @contact = Legacy::LegacyContact.find(params[:id])
         if  @contact.update_attributes(contact_params)
+            flash[:notice] = "Contact #{@contact.first_name} #{@contact.last_name} successfully updated"
             redirect_to admin_legacy_contacts_path
         else
+            flash[:alert] = "Contact #{@contact.first_name} #{@contact.last_name} not updated"
             redirect_to edit_admin_legacy_contact_path(@contact.id)
         end
     end

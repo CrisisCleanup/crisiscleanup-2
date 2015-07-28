@@ -14,9 +14,10 @@ module Admin
     def create       
         @site = Legacy::LegacySite.new(site_params) 
         if @site.save
+            flash[:notice] = "Site for #{@site.name} successfully created"
          	redirect_to admin_legacy_sites_path
-      
         else
+            flash[:alert] = "Site not created"
             render :new
         end 
     end
@@ -27,8 +28,10 @@ module Admin
     def update
         @site = Legacy::LegacySite.find(params[:id])
         if  @site.update_attributes(site_params)
+            flash[:notice] = "Site for #{@site.name} successfully updated"
             redirect_to admin_legacy_sites_path
         else
+            flash[:alert] = "Site for #{@site.name} not updated"
             redirect_to edit_admin_legacy_site_path(@site.id)
         end
     end

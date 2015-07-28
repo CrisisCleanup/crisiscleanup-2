@@ -14,8 +14,10 @@ module Admin
     def create       
         @user = User.new(site_params) 
         if @user.save
+            flash[:notice] = "User #{@user.name} successfully created"
          	redirect_to admin_users_path
         else
+            flash[:alert] = "User not created"
             render :new
         end 
     end
@@ -25,8 +27,10 @@ module Admin
     def update
         @user = User.find(params[:id])
         if  @user.update_attributes(site_params)
+            flash[:notice] = "User #{@user.name} successfully updated"
             redirect_to admin_users_path
         else
+            flash[:notice] = "User #{@user.name} not updated"
             redirect_to edit_admin_user_path(@user.id)
         end
     end
