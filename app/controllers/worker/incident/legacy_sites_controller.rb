@@ -24,8 +24,8 @@ module Worker
       end
 
       def submit
-       
          @site = Legacy::LegacySite.new(site_params)
+         @site.data = params[:legacy_legacy_site][:data]
          @form =  Form.find_by(legacy_event_id: params[:id]).html
        
          if @site.save
@@ -41,6 +41,7 @@ module Worker
         @site = Legacy::LegacySite.find(params[:site_id])
         @legacy_event = Legacy::LegacyEvent.find(params[:id])
         @form = Form.find_by(legacy_event_id: params[:id]).html
+        @site_json = JSON[@site.attributes]
       end
 
       def stats
