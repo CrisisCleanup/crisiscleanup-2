@@ -15,7 +15,6 @@ module Legacy
      if self.update(org_verified: true, is_active:true)
       true
      else
-      binding.pry
       false
      end
     end
