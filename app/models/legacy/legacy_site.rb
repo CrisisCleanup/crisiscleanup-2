@@ -13,6 +13,7 @@ module Legacy
         before_validation :geocode, if: ->(obj){ obj.latitude.nil? or obj.longitude.nil? or obj.address_changed? }
         before_validation :create_blurred_geocoordinates
         before_validation :add_case_number
+        before_save :check
         belongs_to :legacy_event
     	
     	
@@ -20,11 +21,14 @@ module Legacy
             "#{self.address}, #{self.city}, #{self.state}"
         end
 
+        def check
+            binding.pry
+        end
+
         def add_case_number
-            # event = Legacy::LegacyEvent.find(self.legacy_event_id)
-            # count = Legacy::LegacySite.where(legacy_event_id: self.legacy_event_id).count
-            self.case_number = "A777"
-            self.legacy_event_id = 1
+            count = Legacy::LegacySite.where(legacy_event_id: self.legacy_event_id).count
+            event_case_label = Legacy::LegacyEvent.find(self.legacy_event_id).case_label
+            self.case_number = "#{event_case_label}#{count + 1}"
         end
 
         def create_blurred_geocoordinates

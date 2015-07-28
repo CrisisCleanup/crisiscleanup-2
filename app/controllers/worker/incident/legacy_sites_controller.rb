@@ -26,6 +26,8 @@ module Worker
       def submit
          @site = Legacy::LegacySite.new(site_params)
          @site.data = params[:legacy_legacy_site][:data]
+
+         @site.legacy_event_id = current_user_event
          @form =  Form.find_by(legacy_event_id: params[:id]).html
        
          if @site.save

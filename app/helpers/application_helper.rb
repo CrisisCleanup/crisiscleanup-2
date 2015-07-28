@@ -13,11 +13,12 @@ module ApplicationHelper
     end
 
     def current_user_event
-        if current_user and current_user.admin
-            request.params[:id]
-        else
-            current_user.legacy_organization.legacy_organization_events.first.legacy_event_id if current_user and current_user.legacy_organization.legacy_organization_events
-        end
+        2
+        # if current_user and current_user.admin
+        #     request.params[:id]
+        # else
+        #     current_user.legacy_organization.legacy_organization_events.first.legacy_event_id if current_user and current_user.legacy_organization.legacy_organization_events
+        # end
     end
 
     def check_incident_permissions
