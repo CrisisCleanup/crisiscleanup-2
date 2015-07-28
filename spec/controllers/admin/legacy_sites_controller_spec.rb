@@ -20,7 +20,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 
 			it "populates an array of LegacySites" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				@site = FactoryGirl.create :legacy_site
+				@site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 				get :index 
 				assigns(:sites).should eq([@site])
 			end
@@ -81,13 +81,13 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 			it "creates a new site" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				expect {
-					post :create, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site)
+					post :create, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id)
 				}.to change(Legacy::LegacySite, :count).by(1)
 			end
 
 			it "redirects to the site index" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				post :create, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site)
+				post :create, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id)
 				response.should redirect_to :admin_legacy_sites
 			end
 		end
@@ -113,14 +113,14 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 		context "with an admin user" do
 			it "renders the edit view with the correct site" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				site = FactoryGirl.create :legacy_site
+				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 				get :edit, id: site
 				expect(should).to render_template :edit
 			end
 
 			it "assigns the requested site to @site" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				site = FactoryGirl.create :legacy_site
+				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 				get :edit, id: site
 				expect(should).to render_template :edit
 			end
@@ -129,7 +129,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 		context "without an admin user" do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
-				site = FactoryGirl.create :legacy_site
+				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 				get :edit, id: site
 				expect(should).to redirect_to "/login"
 			end
@@ -138,7 +138,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 		context "without a user" do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(nil)
-				site = FactoryGirl.create :legacy_site
+				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 				get :edit, id: site
 				expect(should).to redirect_to "/login"
 			end
@@ -149,23 +149,23 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 		context "with an admin user" do
 			it "locates the correct site" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				site = FactoryGirl.create :legacy_site
-				put :update, id: site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site)
+				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
+				put :update, id: site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id)
 		      	assigns(:site).should eq(site)  
 			end
 			context "with correct attributes" do
 				it "changes the site's attributes" do
-					@site = FactoryGirl.create :legacy_site
+					@site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, id: @site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, name: "ZZ")
+					put :update, id: @site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, name: "ZZ", legacy_event_id: Legacy::LegacyEvent.first.id)
 					@site.reload
 					@site.name.should eq("ZZ")
 				end
 
 				it "redirects the updated site" do
-					@site = FactoryGirl.create :legacy_site
+					@site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, id: @site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, case_label: "ZZ")
+					put :update, id: @site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, case_label: "ZZ", legacy_event_id: Legacy::LegacyEvent.first.id)
 					expect(response).to redirect_to :admin_legacy_sites
 				end
 			end
@@ -174,7 +174,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 		context "without an admin user" do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
-				site = FactoryGirl.create :legacy_site
+				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 				put :update, id: site
 				expect(should).to redirect_to "/login"
 			end
@@ -183,7 +183,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 		context "without a user" do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(nil)
-				site = FactoryGirl.create :legacy_site
+				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 				post :create, id: site
 				expect(should).to redirect_to "/login"
 			end
