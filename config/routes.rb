@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"
     get "/public/map" => "public/json#map", as: "public_json_map"
     post "/import" => "import#csv", as: "import_csv"
+    get "/pdf/site" => "pdf#site", as: "pdf_site"
   end
 
   # Organization Registrations
