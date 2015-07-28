@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".remote .new_legacy_legacy_site, simple_form .edit_legacy_legacy_site").on("submit",function(e){ 
+	$(".remote .new_legacy_legacy_site, .edit_legacy_legacy_site").on("submit",function(e){ 
 		e.preventDefault();
 		e.stopImmediatePropagation();
 		$('.error, .alert-box').remove();
@@ -11,24 +11,32 @@ $(document).ready(function(){
 			  	data: $( this ).serialize(),
 			  	success: function(data){
 				  		
-				  		if (data["id"] == undefined){
-					  		debugger;
+				  		if (data["id"] == undefined && data["updated"] == undefined){
 					  		var html = "<div data-alert class='alert-box'>"+data+"<a href='#' class='close'>&times;</a></div>"
 					  	 	$('form').prepend(html);
 					  	 	$('.close').click(function(){
 					  	 		$('.alert-box').remove();
 					  	 	});
-					  	} else {
 					  	
+					  	} else if(data["updated"] != undefined) {
+
+					  		var html = "<div data-alert class='alert-box'>"+data["updated"]["name"]+" was successfully saved<a href='#' class='close'>&times;</a></div>";
+					  	 	$('form').prepend(html);
+					  	 	$('.close').click(function(){
+					  	 		$('.alert-box').remove();
+					  	 	});
+					  		new CCMAP('map-canvas',data["updated"]["legacy_event_id"],data["updated"]["latitude"],data["updated"]["longitude"],18).build(data["updated"]["id"]);
+					  	} else {		
 					  		var html = "<div data-alert class='alert-box'>"+data['name']+" was successfully saved<a href='#' class='close'>&times;</a></div>";
 					  	 	$('form').prepend(html);
 					  	 	$('.close').click(function(){
 					  	 		$('.alert-box').remove();
 					  	 	});
-					  	 	$('form')[0].reset();
+					  	 	
 							$('html,body').animate({scrollTop: 0});
-					  		
-							new CCMAP('map-canvas',data["legacy_event_id"],data["latitude"],data["longitude"],18).build();
+					  		$('form')[0].reset();
+
+							new CCMAP('map-canvas',data["legacy_event_id"],data["latitude"],data["longitude"],18).build(data["id"]);
 					  	}
 
 			  		},

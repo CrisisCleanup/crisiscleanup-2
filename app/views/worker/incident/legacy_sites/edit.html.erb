@@ -4,10 +4,12 @@
 
 <% content_for :main do %>
   <div id="main" class="alt">
+    <!-- DO NOT REMOVE BREAK TAG or these spans-->
     <span class='m-id hidden'><%= @legacy_event.id %></span>
+    <span class='m-pin hidden'><%= @site.id %></span>
     <br> <!-- DO NOT REMOVE BREAK TAG -->
     <div id="map-canvas"></div>
-    <%= image_tag "map_legend.png", :class => "legend"  %>
+    
   </div>
   <script>
   $(function() {

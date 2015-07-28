@@ -43,9 +43,9 @@ module Worker
          @site.data = params[:legacy_legacy_site][:data]
          @form =  Form.find_by(legacy_event_id: params[:id]).html
          if @site.update(site_params)
-              redirect_to worker_incident_legacy_edit_site_path(@site.legacy_event_id,@site.id)
+              render json: {updated:@site}
          else
-              redirect_to :back 
+             render json: @site.errors.full_messages
          end
       end
 

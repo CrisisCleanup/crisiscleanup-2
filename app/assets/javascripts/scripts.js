@@ -14,15 +14,14 @@ $(document).on("ready page:load",function() {
 			$(elem).parents('.has-dropdown').addClass('active');
 		}
 	}
-	
+	// if a map is on the page
 	if(workerMap != 0){	
-		
+		// get incident id
 		var id = $('.m-id.hidden')[0].innerHTML;
+		// get pin to determine which pins, if any or all to display
+		var pin = $('.m-pin.hidden')[0].innerHTML;	
 		var ccmap = new CCMAP('map-canvas',id);
-
-		google.maps.event.addDomListener(window, 'ready',ccmap.build());
-	
-
+		google.maps.event.addDomListener(window, 'ready',ccmap.build(pin));
 	}
 	
   	
