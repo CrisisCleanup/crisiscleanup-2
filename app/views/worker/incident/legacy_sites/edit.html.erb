@@ -14,7 +14,7 @@
     var siteAttributes = <%= @site_json.html_safe %>;
     for (i in siteAttributes) {
 
-      console.log(i);
+ 
       var attr = "#legacy_legacy_site_" + i;
       var elm = $(attr).val(siteAttributes[i]);
     }
@@ -35,7 +35,7 @@
         </ul>
         <div class="tabs-content">
           <div class="content active" id="panel1">
-            <%= render 'site_form' %>
+              <%= render 'site_form', url:worker_incident_legacy_update_site_path(@site.legacy_event.id,@site.id) %>
           </div>
           <div class="content" id="panel2">
             <p><div id="filters">

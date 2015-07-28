@@ -1,13 +1,13 @@
-function CCMAP(elm, event_id,lat,lng){
+function CCMAP(elm, event_id,lat,lng,zoom){
 	this.canvas = document.getElementById(elm);
 	this.incident = event_id;
-
+	this.zoom = typeof lat !== 'undefined' ? zoom : 4;
 	this.latitude = typeof lat !== 'undefined' ? lat : 39;
    	this.longitude = typeof lng !== 'undefined' ? lng : -90;
 	
 	this.options = {
 	  center: new google.maps.LatLng(this.latitude, this.longitude),
-	  zoom: 4,
+	  zoom: this.zoom,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP,
 	  scrollwheel: false    
 	}
@@ -21,8 +21,7 @@ CCMAP.prototype.build = function(){
 		  	success: function(data){
 				
 				$.each(data, function(index, obj) {
-			  	debugger;
-			  	var marker1 = new google.maps.Marker({
+			  		var marker1 = new google.maps.Marker({
 			  		position: new google.maps.LatLng(parseFloat(obj["latitude"]), parseFloat(obj["longitude"])),
 			  	    map: map
 			  	});
