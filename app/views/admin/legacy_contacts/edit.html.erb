@@ -10,11 +10,12 @@
     </div>
 <hr>
 </div>
-<div class="row">
-    <div class="small-12 medium-12 large-12 columns">
-		<%= render 'form', contact: @contact, url: @contact.id.present? ? admin_legacy_contact_path(@contact.id) : admin_legacy_contacts_path %>
-    </div>
-    <div class="small-12 medium-12 large-12 columns" id="versions">
-    	<%= render 'versions', versions: @versions%>
-	</div>
+
+<div class="tabs-content">
+  <section role="tabpanel" aria-hidden="false" class="content active" id="edit-panel">
+        <%= render 'form', contact: @contact, url: @contact.id.present? ? admin_legacy_contact_path(@contact.id) : admin_legacy_contacts_path %>
+  </section>
+  <section role="tabpanel" aria-hidden="true" class="content" id="versions">
+    <%= render 'versions', versions: @versions%>
+  </section>
 </div>

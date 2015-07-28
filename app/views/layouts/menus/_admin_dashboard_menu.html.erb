@@ -54,7 +54,7 @@
               <% Legacy::LegacyEvent.all.each do |event| %>
                 <% if event.form.present? %>
                   <li class='incident_form'>
-                    <a href=<%=admin_legacy_event_form_path(event.id, event.form.id)%>> <%= event.name %></a>
+                    <a href=<%=edit_admin_legacy_event_form_path(event.id, event.form.id)%>> <%= event.name %></a>
                   </li>
                 <%end%>
               <% end %>
