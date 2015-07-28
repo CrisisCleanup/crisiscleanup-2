@@ -29,9 +29,9 @@ module Worker
 
          @site.legacy_event_id = current_user_event
          @form =  Form.find_by(legacy_event_id: params[:id]).html
-       
+         binding.pry
          if @site.save
-              Legacy::LegacyEvent.find(params[:id]).legacy_sites << @site
+              Legacy::LegacyEvent.find(current_user_event).legacy_sites << @site
               render json: @site
          else
               render json: @site.errors.full_messages

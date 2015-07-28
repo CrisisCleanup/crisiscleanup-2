@@ -13,16 +13,11 @@ module Legacy
         before_validation :geocode, if: ->(obj){ obj.latitude.nil? or obj.longitude.nil? or obj.address_changed? }
         before_validation :create_blurred_geocoordinates
         before_validation :add_case_number
-        before_save :check
         belongs_to :legacy_event
     	
     	
         def full_street_address
             "#{self.address}, #{self.city}, #{self.state}"
-        end
-
-        def check
-            binding.pry
         end
 
         def add_case_number
