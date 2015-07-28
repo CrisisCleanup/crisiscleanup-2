@@ -13,16 +13,18 @@ module Legacy
     # this is where we describe model methods
     describe '.claimed_by_org' do
  		it 'takes the claimed by id and returns its org' do
+      @event = Legacy::LegacyEvent.first
 	 		org = FactoryGirl.create :legacy_organization 
-	 		site = FactoryGirl.create :legacy_site, reported_by: org.id
+	 		site = FactoryGirl.create :legacy_site, reported_by: org.id, legacy_event_id: @event.id
 	    	site.claimed_by = org.id
 	    	expect(site.claimed_by_org).to be_a(Legacy::LegacyOrganization)
     	end
     end
     describe '.reported_by_org' do
  		it 'takes the claimed by id and returns its org' do
+      @event = Legacy::LegacyEvent.first
 	 		org = FactoryGirl.create :legacy_organization 
-	 		site = FactoryGirl.create :legacy_site, reported_by: org.id
+	 		site = FactoryGirl.create :legacy_site, reported_by: org.id, legacy_event_id: @event.id
 	    	site.claimed_by = org.id
 	    	expect(site.reported_by_org).to be_a(Legacy::LegacyOrganization)
     	end
