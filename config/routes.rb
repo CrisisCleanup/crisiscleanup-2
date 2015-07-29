@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         patch "/:id/edit/:site_id" => "legacy_sites#update", as:"legacy_update_site"
         post "/:id/submit" => "legacy_sites#submit"
         get "/:id/stats" => "legacy_sites#stats", as: "stats"
+        get "/:id/print" => "legacy_sites#print", as: "print"
       end     
   
   end

@@ -91,8 +91,8 @@ hr {
     padding-top: 1rem;
 }
 
+// Sidebar Template
 .alt {
-    // Sidebar Template
     display: table-cell;
     width: 70%;
     & p, ul {
@@ -101,7 +101,6 @@ hr {
     & h4 {}
 }
 
-// Sidebar Template
 #sidebar {
     width: 30%;
     left: 70%;
@@ -200,6 +199,10 @@ footer {
 // Tables
 table {
     margin-bottom: 0;
+}
+.section-heading-tab {
+    background: #242424;
+    color: #fff;
 }
 
 // Map
