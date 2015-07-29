@@ -165,14 +165,55 @@ module Legacy
             hash_attributes['legacy_event_id'] = event_id
             hash_attributes
         end
-
-
-        def self.import(file, event_id)
+        def self.import(file, event_id, duplicate_check=nil, duplicate_method=nil)
             CSV.foreach(file.path, headers: true) do |row|
-                Legacy::LegacySite.create! hash_to_site(row.to_hash, event_id)
+                hashed_row = row.to_hash
+                if duplicate_check
+                    check_update(hashed_row, duplicate_check, duplicate_method, event_id)
+                else
+                    create_from_row(hashed_row, event_id)
+                end
             end
         end
 
+        def self.check_update(hashed_row, duplicate_check, duplicate_method, event_id)
+            if search_duplicate(hashed_row, duplicate_check)
+                update_from_row(hashed_row, duplicate_method, duplicate_method)
+            else
+                create_from_row(hashed_row, event_id)
+            end
+        end
+
+        def self.create_from_row(hashed_row, event_id)
+            Legacy::LegacySite.create! hash_to_site(hashed_row, event_id)
+        end
+
+        def self.update_from_row(hashed_row, duplicate_check, duplicate_method)
+            if duplicate_method == "references"
+                @site = search_duplicate(hashed_row, duplicate_check)
+                @site.update(claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
+            elsif duplicate_method = "references_and_work_type"
+                @site = search_duplicate(hashed_row, duplicate_check)
+                @site.update(work_type: hashed_row["work_type"], claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
+            else
+                @site = search_duplicate(hashed_row, duplicate_check)
+                @site.update(hash_to_site(hashed_row, event_id))
+            end
+
+        end
+
+        def self.search_duplicate(hashed_row, duplicate_check)
+            @site = nil
+            if duplicate_check == "name_lat_lng"
+                @site = Legacy::LegacySite.find_by(name: hashed_row["name"], latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
+            elsif duplicate_check = "lat_lng"
+                @site = Legacy::LegacySite.find_by(latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
+            else
+                raise "Improperly formatted duplicate check"
+            end
+            @site
+        end
+        
         def self.select_order(order)
             @sites = nil
             @sites = all.order("county") if order == "county"
