@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 </head>
-<body class='worker-dashboard <%= @body.present? ? @body : "" %>'>
+<body class='<%= @body.present? ? @body : "worker-dashboard" %>'>
     <%= render 'layouts/menus/worker_dashboard_menu' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> 

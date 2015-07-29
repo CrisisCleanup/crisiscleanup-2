@@ -1,7 +1,6 @@
 module Worker
   class InvitationListsController < ApplicationController
     include ApplicationHelper
-   
     def create
     	list = InvitationList.new(params[:email_addresses], current_user)
     	if list.valid?
