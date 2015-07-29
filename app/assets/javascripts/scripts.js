@@ -3,7 +3,7 @@ $(document).on("ready page:load",function() {
 	var dashboard = path.split('/')[1] == 'admin';	
 	var page = path.split('/')[2];
 	var elem = '.'+page;
-	var workerMap = $('.worker-dashboard #map-canvas').length
+	var workerMap = $('#map-canvas').length
 	
 	if (dashboard){
 		$('select').foundationSelect();
