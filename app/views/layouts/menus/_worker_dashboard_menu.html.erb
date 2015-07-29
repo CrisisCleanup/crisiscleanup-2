@@ -10,18 +10,18 @@
         <section class="top-bar-section">
             <!-- Right Nav Section -->
             <ul class="right">
-                <li class="active"><%= link_to "Home", root_path %></li>
+                <li class=<%=active_class("/")%>><%= link_to "Home", root_path %></li>
                 <% if current_user_event %>
-                    <li><%= link_to "Form", worker_incident_legacy_form_path(current_user_event) %></li>
-                    <li><%= link_to "Map", worker_incident_legacy_map_path(current_user_event) %></li>
-                    <li><%= link_to "Contacts", worker_incident_legacy_contacts_path(current_user_event) %></li>
-                    <li><%= link_to "Orgs", worker_incident_legacy_organizations_path(current_user_event) %></li>
-                    <li><%= link_to "Sites", worker_incident_legacy_sites_index_path(current_user_event) %></li>
-                    <li><%= link_to "Stats", worker_incident_stats_path(current_user_event) %></li>
+                    <li class=<%=active_class(worker_incident_legacy_form_path(current_user_event))%> ><%= link_to "Form", worker_incident_legacy_form_path(current_user_event) %></li>
+                    <li class=<%=active_class(worker_incident_legacy_map_path(current_user_event))%>><%= link_to "Map", worker_incident_legacy_map_path(current_user_event) %></li>
+                    <li class=<%=active_class(worker_incident_legacy_contacts_path(current_user_event))%>><%= link_to "Contacts", worker_incident_legacy_contacts_path(current_user_event) %></li>
+                    <li class=<%=active_class(worker_incident_legacy_organizations_path(current_user_event))%>><%= link_to "Orgs", worker_incident_legacy_organizations_path(current_user_event) %></li>
+                    <li class=<%=active_class(worker_incident_legacy_sites_index_path(current_user_event))%>><%= link_to "Sites", worker_incident_legacy_sites_index_path(current_user_event) %></li>
+                    <li class=<%=active_class(worker_incident_stats_path(current_user_event))%>><%= link_to "Stats", worker_incident_stats_path(current_user_event) %></li>
                 <% end %>
 
                 <% if current_user %>
-                    <li><%= link_to "Dashboard", worker_dashboard_path %></li>
+                    <li class=<%=active_class(worker_dashboard_path )%>><%= link_to "Dashboard", worker_dashboard_path %></li>
                     <% if current_user.admin %>
                         <li><%= link_to "Admin", admin_path%></li>
                     <% end %>
