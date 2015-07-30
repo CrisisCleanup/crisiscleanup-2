@@ -6,6 +6,22 @@
 		<a href=<%=new_admin_legacy_organization_path%> class="button">New Legacy Organization</a>
 	</div>
 <hr>
+<div class="row">
+	<div class="small-12">
+		<label for="verified_select">Verified</label> 
+        <select id="verified_select" name="verified_select">
+        	<option value="True">True</option>
+        	<option value="False">False</option>
+        </select>
+        <label for="active_select">Active</label> 
+        <select id="active_select" name="active_select">
+        	<option value="True">True</option>
+        	<option value="False">False</option>
+        </select>
+        <br>
+        <a id="organization_filters_button" class="button">Search</a>
+    </div>
+<hr>
 </div>
 <div class="row">
 	<div class="small-12 medium-12 large-12 columns">
@@ -13,3 +29,32 @@
         <%= will_paginate @orgs %>
 	</div>
 </div>
+
+<script>
+$(function() {
+    $( "#organization_filters_button" ).click(function() {
+        var verified = $("#verified_select").val();
+        var active = $("#active_select").val();
+
+        var current_url = window.location.href;
+        if (current_url.indexOf("?") != -1) {
+            current_url = current_url.slice(0, current_url.indexOf("?"))
+        }
+        alert(verified)
+        window.location = current_url + "?verified=" + verified + "&active=" + active;
+    });
+    var active = location.search.split('active=')[1]
+    if (active) {
+        $("#active_select").val(active);
+    }
+    var verified = location.search.split('verified=')[1]
+
+    if (verified) {
+    	if (verified.indexOf("&") != -1) {
+    	    verified = verified.slice(0, verified.indexOf("&"))
+    	}
+        $("#verified_select").val(verified);
+        alert($("#verified_select").val())
+    }
+});
+</script>

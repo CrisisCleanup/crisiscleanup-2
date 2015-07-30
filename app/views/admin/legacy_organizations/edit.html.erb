@@ -6,6 +6,7 @@
         <ul class="tabs" data-tab>    
             <li class="tab-title active"><a href="#edit-panel">Edit</a></li>
             <li class="tab-title"><a href="#versions">Previous Versions</a></li>
+            <li class="tab-title"><a href="#contacts">Contacts</a></li>
         </ul>
     </div>
 <hr>    
@@ -16,5 +17,8 @@
   </section>
   <section role="tabpanel" aria-hidden="true" class="content" id="versions">
     <%= render 'versions', versions: @versions%>
+  </section>
+  <section role="tabpanel" aria-hidden="true" class="content" id="contacts">
+    <%= render 'admin/legacy_contacts/table', contacts: @org.legacy_contacts%>
   </section>
 </div>
