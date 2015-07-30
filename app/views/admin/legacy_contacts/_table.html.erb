@@ -5,6 +5,7 @@
       <th>Organization</th>
       <th width="150">Email</th>
       <th>Phone</th>
+      <th>Primary Contact</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
         <% end %>
         <td> <%= contact.email %> </td>
         <td> <%= contact.phone %> </td>
+        <td> <%= contact.is_primary %> </td>
       </tr>
     <% end %>
   </tbody>

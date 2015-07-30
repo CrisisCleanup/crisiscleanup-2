@@ -9,20 +9,22 @@
   </thead>
   <tbody>
     
-    <% users.each do |user| %>
-      <tr>
+    <% if @unverified_users %>
+      <% @unverified_users.each do |user| %>
+        <tr>
 
-        <td> <%= user.name %> </td>
-        <td> <%= user.email %> </td>
-        <td>
-          <% if user.reference.email != current_user.email %>
-            <%= link_to "Verify Me", "/verify/#{user.id.to_s}", :method=> :post %>
-          <%else%>
-            You Invited This Person
-          <%end%>
-        </td>
-        <td> <%= user.reference.email %> </td>
-      </tr>
+          <td> <%= user.name %> </td>
+          <td> <%= user.email %> </td>
+          <td>
+            <% if user.reference.email != current_user.email %>
+              <%= link_to "Verify Me", "/verify/#{user.id.to_s}", :method=> :post %>
+            <%else%>
+              You Invited This Person
+            <%end%>
+          </td>
+          <td> <%= user.reference.email %> </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

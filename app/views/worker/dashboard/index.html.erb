@@ -11,15 +11,16 @@
         
 <% content_for :main do %> 
 <div id="main" class="alt">
-    <% unless current_user_event %>
-    	<p>You're organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
+    <% unless current_user.admin %>
+        <% unless current_user_event %>
+        	<p>You're organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
+        <% end %>
+    		
+        <h4>Invite Users</h4>
+        <%= render 'invite_form' %>
+    	<h4>Do You Know These People?</h4>
+    	<%= render 'user_table', users: @unverified_users %>
     <% end %>
-		
-            <h4>Invite Users</h4>
-            <%= render 'invite_form' %>
-			<h4>Do You Know These People?</h4>
-			<%= render 'user_table', users: @unverified_users %>
-		   
 </div>    
 <% end %>
 
@@ -27,7 +28,7 @@
 <div id="sidebar">
     <h4>User Info</h4>
 		<% if @current_user.admin %>        
-			<p>I am: <strong><%=current_user.email %></strong> and I am an Admin therefore I cannot invite people to an organization</p>
+			<p>I am: <strong><%= current_user.name %> (<%=current_user.email %>)</strong> and I am an Admin therefore I cannot invite people to an organization</p>
 		<% else %>
 		<p>I am: <strong><%=current_user.email %></strong> and I belong to <strong><%=current_user.legacy_organization.name %></strong></p>			
 		<%end%>
