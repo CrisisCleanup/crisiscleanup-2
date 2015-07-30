@@ -4,7 +4,6 @@ module Api
 	class SpreadsheetsController < ApplicationController
 		include ApplicationHelper
 		before_filter :check_admin?
-
 		def sites
 			@sites = Legacy::LegacySite.order("name")
 			@sites = @sites.select("blurred_latitude, blurred_longitude, city, claimed_by, legacy_event_id, requested_at, state, status, work_type, data, requested_at") if params[:type] == "deidentified"

@@ -122,8 +122,10 @@ module Legacy
                 end
             end
             all.each do |site|
-                site.data.each do |key, value|
-                    @c << key
+                if site.data
+                    site.data.each do |key, value|
+                        @c << key
+                    end
                 end
             end
             @c.delete("name_metaphone")
@@ -133,8 +135,10 @@ module Legacy
         end
 
         def self.site_to_hash site_attributes, orgs_hash = None
-            site_attributes['data'].each do |key, value|
-                site_attributes[key] = value
+            if site_attributes["data"]
+                site_attributes['data'].each do |key, value|
+                    site_attributes[key] = value
+                end
             end
             site_attributes.delete('data')
             site_attributes.delete('event')
