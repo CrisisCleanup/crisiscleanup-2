@@ -6,6 +6,11 @@ module Admin
     # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
         @orgs = Legacy::LegacyOrganization.order("name").paginate(:page => params[:page])
+        @orgs = @orgs.where(org_verified: true) if params[:verified] == "True"
+        @orgs = @orgs.where(org_verified: false) if params[:verified] == "False"
+        @orgs = @orgs.where(is_active: true) if params[:active] == "True"
+        @orgs = @orgs.where(is_active: false) if params[:active] == "False"
+
     end
     def new
     	@org = Legacy::LegacyOrganization.new
