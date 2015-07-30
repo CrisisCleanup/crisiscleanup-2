@@ -8,7 +8,8 @@ module Worker
         def index
             # search legacy_organization_event for legacy_organization_id: current_user_event
             # pass those ids to LegacyOrg.find(ids)
-        	@orgs = Legacy::LegacyOrganization.order("name").paginate(:page => params[:page])
+            org_ids = Legacy::LegacyOrganizationEvent.select("id").where(legacy_event_id: current_user_event)
+        	@orgs = Legacy::LegacyOrganization.order("name").where(id: org_ids).paginate(:page => params[:page])
         	@event_id = params[:id]
         end
   
