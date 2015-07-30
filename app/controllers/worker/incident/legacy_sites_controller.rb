@@ -7,6 +7,7 @@ module Worker
       def index
       	@sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page]) unless params[:order]
         @sites = Legacy::LegacySite.select_order(params[:order]).paginate(:page => params[:page]) if params[:order]
+        @sites = @sites.where(legacy_event_id: current_user_event)
         @event_id = params[:id]
       end
 

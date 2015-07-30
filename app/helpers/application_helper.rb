@@ -24,9 +24,9 @@ module ApplicationHelper
         if current_user_event.nil?
             redirect_to "/worker/dashboard"
         elsif !current_user.admin 
-            raise "wrong event" unless params["id"].to_i == current_user_event
             if !check_incident(params["id"].to_i)
-               redirect_to "/worker/dashboard"
+                flash[:alert] = "You don't have permission to view that event."
+                redirect_to "/worker/dashboard"
             end
         end
     end
