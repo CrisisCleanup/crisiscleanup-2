@@ -2,6 +2,21 @@
 
 <%= form_tag api_import_csv_path, multipart: true do %>
   <%= file_field_tag :file %>
+  <%= select_tag "event_id", options_from_collection_for_select(Legacy::LegacyEvent.all, "id", "name") %>
+  <br>
+  Duplicate Check Method<br>
+  <select name="duplicate_check_method" id="duplicate_check_method">
+  	<option value="lat_lng">Latitude and Longitude</option>
+  	<option value="name_lat_lng">Name, Latitude and Longitude</option>
+  </select>
+  <br>
+  Handle Duplicates Method<br>
+  <select name="handle_duplicates_method" id="handle_duplicates_method">
+  	<option value="replace_all">Replace All</option>
+  	<option value="references_only">Reported by and Claimed by references only</option>
+  	<option value="references_and_work_type">Work type, Reported by and Claimed by references only</option>
+  </select>
+  <br>
   <%= submit_tag "Import" %>
 <% end %>
 
