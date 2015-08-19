@@ -63,5 +63,8 @@ module ApplicationHelper
           render(association.to_s.singularize + "_form", contact: builder)
         end
         link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+    end
+    def active_class(link_path)
+        current_page?(link_path) ? "active" : ""
     end    
 end

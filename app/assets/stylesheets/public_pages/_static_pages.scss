@@ -5,49 +5,6 @@ body {
     height: 100%;
 }
 
-header {
-    height: 125px;
-}
-
-.name img {
-    width: 175px;
-    margin-top: 10px;
-    height: auto;
-    vertical-align: middle;
-    margin-left: 20px;
-}
-
-nav.top-bar {
-    //needs separate declaration away from nest
-    height: 125px;
-    background-image: image-url('black_bg.jpg');
-    background-repeat: repeat;
-    background-position: center;
-}
-
-nav {
-    .top-bar-section {
-        margin-right: 20px;
-    }
-    .top-bar-section li:not(.has-form) a:not(.button) {
-        background: transparent;
-        color: $goldenrod;
-        font-size: 16px;
-    }
-    .top-bar-section ul li {
-        background: transparent;
-    }
-    ul.top-bar.expanded,
-    ul.title-area {
-        height: 125px;
-    }
-}
-
-.top-bar.expanded {
-    z-index: 300;
-    height: auto;
-}
-
 .alert_menu {
     border-style: solid;
     border-width: 1px;
