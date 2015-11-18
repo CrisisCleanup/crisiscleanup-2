@@ -15,24 +15,7 @@
 		<%= render 'table', sites: @sites, event_id: @event_id %>
         <%= will_paginate @sites %> 
 	</div>	     
-</div>    
-
-<script>
-$(function() {
-    $( "#submit_sort_order" ).click(function() {
-        var sort_order = $("#sort_order").val();
-        var current_url = window.location.href;
-        if (current_url.indexOf("?") != -1) {
-            current_url = current_url.slice(0, current_url.indexOf("?"))
-        }
-        window.location = current_url + "?order=" + sort_order
-    });
-    var myParam = location.search.split('order=')[1]
-    if (myParam) {
-        $("#sort_order").val(myParam);
-    }
-});
-</script>
+</div>
 
 <% end %>
     
@@ -52,22 +35,6 @@ $(function() {
                   <option value="date_desc">Date (Descending order)</option>
                 </select> 
                 <a id="submit_sort_order" class="button expand">Submit</a>   
-            <script>
-                $(function() {
-                $( "#submit_sort_order" ).click(function() {
-                    var sort_order = $("#sort_order").val();
-                    var current_url = window.location.href;
-                    if (current_url.indexOf("?") != -1) {
-                        current_url = current_url.slice(0, current_url.indexOf("?"))
-                    }
-                    window.location = current_url + "?order=" + sort_order
-                });
-                var myParam = location.search.split('order=')[1]
-                if (myParam) {
-                    $("#sort_order").val(myParam);
-                }
-            });
-            </script>  
         </form> 
 </div>
 <% end %>
