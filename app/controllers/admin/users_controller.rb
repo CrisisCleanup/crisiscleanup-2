@@ -14,7 +14,7 @@ module Admin
     def create       
         @user = User.new(site_params) 
         if @user.save
-            AdminMailer.send_user_registration_alert(u,@org).deliver_now
+            AdminMailer.send_user_registration_alert(@user ,@org).deliver_now
             flash[:notice] = "User #{@user.name} successfully created"
          	redirect_to admin_users_path
         else
