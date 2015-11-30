@@ -196,7 +196,7 @@ module Legacy
             if duplicate_method == "references"
                 @site = search_duplicate(hashed_row, duplicate_check)
                 @site.update(claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
-            elsif duplicate_method = "references_and_work_type"
+            elsif duplicate_method == "references_and_work_type"
                 @site = search_duplicate(hashed_row, duplicate_check)
                 @site.update(work_type: hashed_row["work_type"], claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
             else
@@ -210,7 +210,7 @@ module Legacy
             @site = nil
             if duplicate_check == "name_lat_lng"
                 @site = Legacy::LegacySite.find_by(name: hashed_row["name"], latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
-            elsif duplicate_check = "lat_lng"
+            elsif duplicate_check == "lat_lng"
                 @site = Legacy::LegacySite.find_by(latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
             else
                 raise "Improperly formatted duplicate check"
