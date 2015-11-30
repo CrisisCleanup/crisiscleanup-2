@@ -4,10 +4,10 @@ require 'spec_helper'
 RSpec.describe InvitationList, type: :model do
     describe "attributes" do
       org = FactoryGirl.create :legacy_organization 
-      let(:frank) { User.create(name:'Frank', email:'frank@aol.com', password:'blue32blue32', legacy_organization_id:org.id) }
-      let(:good) { InvitationList.new("frank@aol.com,dhruv@aol.com", frank)}
-      let(:empty) {  InvitationList.new('', frank)}
-      let(:bad) {  InvitationList.new('1,2,3,4,5', frank)}
+      frank = FactoryGirl.create(:user)
+      good = InvitationList.new("frank@aol.com,dhruv@aol.com", frank)
+      empty = InvitationList.new('', frank)
+      bad = InvitationList.new('1,2,3,4,5', frank)
 
  	  it 'should not be valid if it is instantiated with an empty string' do
         expect(empty).to_not be_valid

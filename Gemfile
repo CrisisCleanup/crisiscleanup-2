@@ -63,6 +63,7 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-email'
   gem 'launchy'
+  gem 'database_cleaner'
 end
 
 # Use ActiveModel has_secure_password
