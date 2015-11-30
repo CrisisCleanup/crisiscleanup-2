@@ -15,6 +15,7 @@ module Legacy
  		it 'takes the claimed by id and returns its org' do
       @event = Legacy::LegacyEvent.first
 	 		org = FactoryGirl.create :legacy_organization 
+      mock_geocoding!
 	 		site = FactoryGirl.create :legacy_site, reported_by: org.id, legacy_event_id: @event.id
 	    	site.claimed_by = org.id
 	    	expect(site.claimed_by_org).to be_a(Legacy::LegacyOrganization)
@@ -24,6 +25,7 @@ module Legacy
  		it 'takes the claimed by id and returns its org' do
       @event = Legacy::LegacyEvent.first
 	 		org = FactoryGirl.create :legacy_organization 
+      mock_geocoding!
 	 		site = FactoryGirl.create :legacy_site, reported_by: org.id, legacy_event_id: @event.id
 	    	site.claimed_by = org.id
 	    	expect(site.reported_by_org).to be_a(Legacy::LegacyOrganization)
