@@ -11,7 +11,7 @@ FactoryGirl.define do
       name "Frank"
       email Faker::Internet.email
       password "blue32blue32"
-      admin false
+      admin true
       legacy_organization_id 1
     end
 end
