@@ -5,7 +5,13 @@ require 'spec_helper'
 # Maybe our validations should be loose, to make sure we recieve all data
 
 module Legacy
+
   describe LegacySite do
+
+    before do |example|
+      FactoryGirl.create :legacy_event 
+    end
+    
     describe "associations" do
       it { should belong_to :legacy_event }
     end

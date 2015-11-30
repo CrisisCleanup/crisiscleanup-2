@@ -3,9 +3,9 @@ require 'spec_helper'
 
 RSpec.describe Admin::LegacySitesController, :type => :controller do
 
-
 	before do |example|
 	  org = FactoryGirl.create :legacy_organization 
+	  FactoryGirl.create :legacy_event
 	  @admin = User.create(name:'Frank', email:'Frank@aol.com', password:'blue32blue32', legacy_organization_id: org.id, admin: true) 
 	  @user = User.create(name:'Gary', email:'Gary@aol.com', password:'blue32blue32', legacy_organization_id: org.id, admin: false) 
 	end
