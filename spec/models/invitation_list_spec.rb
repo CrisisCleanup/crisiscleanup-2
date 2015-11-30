@@ -4,7 +4,7 @@ require 'spec_helper'
 RSpec.describe InvitationList, type: :model do
     describe "attributes" do
       org = FactoryGirl.create :legacy_organization 
-      frank = FactoryGirl.create(:user)
+      frank = FactoryGirl.create(:user, legacy_organization_id: org.id)
       good = InvitationList.new("frank@aol.com,dhruv@aol.com", frank)
       empty = InvitationList.new('', frank)
       bad = InvitationList.new('1,2,3,4,5', frank)
