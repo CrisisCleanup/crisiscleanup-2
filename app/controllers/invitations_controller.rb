@@ -14,7 +14,7 @@ class InvitationsController < ApplicationController
       if inv.user.admin?
          @user.verify!
       end
-      redirect_to root_path
+      redirect_to "/dashboard"
     else
       redirect_to :back
     end

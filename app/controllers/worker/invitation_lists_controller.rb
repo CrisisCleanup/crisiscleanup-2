@@ -11,6 +11,7 @@ module Worker
     		end
         end  
         # if list.rejected.present? then WRITE ERROR HANDLING end
+        flash[:notice] = "Invitation sent to #{params[:email_addresses]}"
     	redirect_to worker_dashboard_path
     end
   end
