@@ -18,15 +18,6 @@ feature "Signing in" do
     click_button 'Log in'
     expect(page).to have_content 'Worker Dashboard'
   end
-  scenario "Signing in as a worker with incorrect credentials" do
-    visit '/login'
-    within("#new_user") do
-      fill_in 'Email', :with => 'Gary@aol.com'
-      fill_in 'Password', :with => 'incorrect'
-    end
-    click_button 'Log in'
-    expect(page).to have_content 'Invalid email or password'
-  end
 
   scenario "Signing in as an admin with correct credentials" do
     visit '/login'
@@ -36,5 +27,15 @@ feature "Signing in" do
     end
     click_button 'Log in'
     expect(page).to have_content 'Admin Dashboard'
+  end
+
+  scenario "Signing in with incorrect credentials" do
+    visit '/login'
+    within("#new_user") do
+      fill_in 'Email', :with => 'Gary@aol.com'
+      fill_in 'Password', :with => 'incorrect'
+    end
+    click_button 'Log in'
+    expect(page).to have_content 'Invalid email or password'
   end
 end
