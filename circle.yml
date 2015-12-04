@@ -6,5 +6,6 @@ dependencies:
   pre:
     - gem install rake -v '10.4.2'
     - gem install json -v '1.8.3'
+    - gem install i18n -v '0.7.0'
   post:
     - bundle exec rake assets:precompile
