@@ -46,6 +46,11 @@ gem 'geocoder'
 
 gem 'unicorn'
 
+# CircleCI test metadata formatters
+gem 'rspec_junit_formatter', '0.2.2'
+gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
+
+
 group :production do 
   gem 'rack-timeout'
 end
