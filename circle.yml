@@ -1,0 +1,7 @@
+machine:
+  ruby:
+  	version: ruby 2.2.1p85
+
+dependencies:
+  post:
+    - bundle exec rake assets:precompile
