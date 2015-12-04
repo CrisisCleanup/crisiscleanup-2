@@ -7,6 +7,7 @@ dependencies:
     - gem install rake -v '10.4.2'
     - gem install json -v '1.8.3'
     - gem install i18n -v '0.7.0'
+    - gem install nokogiri -v '1.6.6.2'
     - bundle install
   post:
     - bundle exec rake assets:precompile
