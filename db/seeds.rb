@@ -17,6 +17,9 @@
 		reminder_contents: Faker::Lorem.sentence,                                                 	                                     
 		reminder_days: 12  
 		)
+		form = Form.create(
+			legacy_event_id: legacy_event.id
+		)
 
 
 	5.times do
