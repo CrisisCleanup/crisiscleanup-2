@@ -14,6 +14,7 @@ module Admin
     end
     def new
     	@org = Legacy::LegacyOrganization.new
+        @org.legacy_contacts.build
     end
     def create          
         @org = Legacy::LegacyOrganization.new(org_params) 

@@ -10,6 +10,7 @@ module Legacy
       it { should have_many :legacy_events }
       it { should have_many :legacy_contacts }
       it { should have_many :users }
+      it { should validate_uniqueness_of :name}
 
     end
     

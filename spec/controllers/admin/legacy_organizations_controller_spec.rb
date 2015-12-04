@@ -5,10 +5,10 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 
 
 	before do |example|
-	  org = FactoryGirl.create :legacy_organization 
+	  org = FactoryGirl.create(:legacy_organization, name: Faker::Name.name)
 	  @admin = User.create(name:'Frank', email:'Frank@aol.com', password:'blue32blue32', legacy_organization_id: org.id, admin: true) 
 	  @user = User.create(name:'Gary', email:'Gary@aol.com', password:'blue32blue32', legacy_organization_id: org.id, admin: false) 
-	  @organization = FactoryGirl.create :legacy_organization
+	  @organization = FactoryGirl.create(:legacy_organization, name: Faker::Name.name)
 	end
 
 	describe "Get #index" do

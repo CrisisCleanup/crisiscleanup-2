@@ -28,6 +28,7 @@ class RegistrationsController < ApplicationController
   		redirect_to root_path
   	else
   		# with errors
+      flash[:alert] = "The organization name #{@org.name} has already been taken."
   		render :new
   	end
   end

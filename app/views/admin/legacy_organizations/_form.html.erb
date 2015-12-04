@@ -5,6 +5,14 @@
           <%= link_to "Click to Verify!", "/admin/legacy_organizations/verify?id=#{org.id}",method: :post %>
       <%end%>
     </div>
+    <div class="row">
+      <div class="medium-6 columns contact_form">
+        <%= f.simple_fields_for :legacy_contacts do |p| %>
+          <%= render 'legacy_contact_form', contact: p %>
+        <% end %>
+        <%= link_to_add_contact "Add Contact",f,:legacy_contacts %>
+      </div>   
+    </div>
   </div>
   <div class="margin-top row">
     <div class="medium-6 columns">
