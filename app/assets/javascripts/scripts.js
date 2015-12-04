@@ -15,15 +15,20 @@ $(document).on("ready page:load",function() {
 		}
 	}
 	// if a map is on the page
-	if(workerMap != 0){	
-		// get incident id
-		var id = $('.m-id.hidden')[0].innerHTML;
-		// get pin to determine which pins, if any or all to display
-		var pin = $('.m-pin.hidden')[0].innerHTML;	
-		var ccmap = new CCMAP('map-canvas',id);
-		google.maps.event.addDomListener(window, 'ready',ccmap.build(pin));
-	}
-	
-  	
+	// get incident id
+	if (workerMap != 0) {
+		var id, pin;
+		try {
+			var id = $('.m-id.hidden')[0].innerHTML;
+			// get pin to determine which pins, if any or all to display
+			var pin = $('.m-pin.hidden')[0].innerHTML;	
+		}
+		catch(err) {
+		    console.log(err.message);
+		}
 
+		var ccmap = new CCMAP('map-canvas', id);
+		google.maps.event.addDomListener(window, 'ready',ccmap.build(pin));
+
+	}
 });

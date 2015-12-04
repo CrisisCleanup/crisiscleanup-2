@@ -1,5 +1,6 @@
 function CCMAP(elm, event_id,lat,lng,zoom){
 	this.canvas = document.getElementById(elm);
+	console.log(event_id);
 	this.incident = event_id;
 	this.zoom = typeof zoom !== 'undefined' ? zoom : 4;
 	this.latitude = typeof lat !== 'undefined' ? lat : 39;
