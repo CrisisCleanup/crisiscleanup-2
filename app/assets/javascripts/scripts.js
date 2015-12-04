@@ -16,8 +16,7 @@ $(document).on("ready page:load",function() {
 	}
 	// if a map is on the page
 	// get incident id
-	// if (workerMap != 0) {
-		console.log("workerMap"+workerMap);
+	if (workerMap != 0) {
 		var id, pin;
 		try {
 			var id = $('.m-id.hidden')[0].innerHTML;
@@ -31,5 +30,5 @@ $(document).on("ready page:load",function() {
 		var ccmap = new CCMAP('map-canvas', id);
 		google.maps.event.addDomListener(window, 'ready',ccmap.build(pin));
 
-	// }
+	}
 });
