@@ -14,9 +14,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class='public' <% if content_for?(:body_attributes) %>
-    <%= yield(:body_attributes) %> 
-  <% end %>>
+  <body class='public' data-no-turbolink="true">
     <header>
       <%= render "layouts/menus/application_menu" %>
     </header>
