@@ -3,5 +3,7 @@ machine:
     version: rbx-2.2.1
 
 dependencies:
+  pre:
+    - gem install rake -v '10.4.2
   post:
     - bundle exec rake assets:precompile
