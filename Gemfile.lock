@@ -213,6 +213,9 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    rspec_junit_formatter (0.2.2)
+      builder (< 4)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubyzip (1.1.7)
     sass (3.4.15)
     sass-rails (5.0.1)
@@ -298,6 +301,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails_12factor
   rspec-rails
+  rspec_junit_formatter (= 0.2.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selenium-webdriver
