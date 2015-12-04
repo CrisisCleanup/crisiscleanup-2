@@ -4,6 +4,6 @@ machine:
 
 dependencies:
   pre:
-    - gem install rake -v '10.4.2
+    - gem install rake -v '10.4.2'
   post:
     - bundle exec rake assets:precompile
