@@ -30,7 +30,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :index
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -62,7 +62,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :new
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -96,7 +96,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				post :create
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -131,7 +131,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				event = FactoryGirl.create :legacy_event
 				get :edit, id: event
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -176,7 +176,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				event = FactoryGirl.create :legacy_event
 				put :update, id: event
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 

@@ -30,7 +30,7 @@ RSpec.describe Admin::LegacyContactsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :index
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -62,7 +62,7 @@ RSpec.describe Admin::LegacyContactsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :new
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -96,7 +96,7 @@ RSpec.describe Admin::LegacyContactsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				post :create
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -131,7 +131,7 @@ RSpec.describe Admin::LegacyContactsController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				contact = FactoryGirl.create :legacy_contact
 				get :edit, id: contact
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -177,7 +177,7 @@ RSpec.describe Admin::LegacyContactsController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				contact = FactoryGirl.create :legacy_contact
 				put :update, id: contact
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 

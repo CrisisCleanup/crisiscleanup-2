@@ -23,7 +23,7 @@ RSpec.describe Admin::DashboardController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :index
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 	end

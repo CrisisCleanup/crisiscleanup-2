@@ -18,19 +18,19 @@ RSpec.describe Admin::UsersController, :type => :controller do
 				expect(should).to render_template :index
 			end
 
-			# it "populates an array of Users" do
-			# 	allow(controller).to receive(:current_user).and_return(@admin)
-			# 	@user = FactoryGirl.create :user
-			# 	get :index 
-			# 	assigns(:users).should eq([@user])
-			# end
+			it "populates an array of Users" do
+				allow(controller).to receive(:current_user).and_return(@admin)
+				get :index 
+				binding.pry
+				assigns(:users).should eq([@admin, @user])
+			end
 		end
 
 		context "without an admin user" do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :index
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -62,7 +62,7 @@ RSpec.describe Admin::UsersController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :new
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -96,7 +96,7 @@ RSpec.describe Admin::UsersController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				post :create
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -131,7 +131,7 @@ RSpec.describe Admin::UsersController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				user = FactoryGirl.create :user
 				get :edit, id: user
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -176,7 +176,7 @@ RSpec.describe Admin::UsersController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				user = FactoryGirl.create :user
 				put :update, id: user
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 

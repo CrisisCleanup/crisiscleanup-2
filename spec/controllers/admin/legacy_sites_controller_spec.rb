@@ -31,7 +31,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :index
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -63,7 +63,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :new
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -99,7 +99,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				post :create
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -137,7 +137,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				mock_geocoding!
 				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 				get :edit, id: site
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -187,7 +187,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				mock_geocoding!
 				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 				put :update, id: site
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 

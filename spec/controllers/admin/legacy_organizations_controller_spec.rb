@@ -31,7 +31,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :index
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -62,7 +62,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :new
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -96,7 +96,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				post :create
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -131,7 +131,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				organization = FactoryGirl.create :legacy_organization
 				get :edit, id: organization
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 
@@ -176,7 +176,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				organization = FactoryGirl.create :legacy_organization
 				put :update, id: organization
-				expect(should).to redirect_to "/login"
+				expect(should).to redirect_to "/dashboard"
 			end
 		end
 

@@ -4,6 +4,7 @@ module ApplicationHelper
         # if not...redirect
         unless current_user
             redirect_to "/login"
+            return
         end
 
         unless current_user and current_user.admin
