@@ -21,7 +21,6 @@ RSpec.describe Admin::UsersController, :type => :controller do
 			it "populates an array of Users" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				get :index 
-				binding.pry
 				assigns(:users).should eq([@admin, @user])
 			end
 		end
