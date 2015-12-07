@@ -70,7 +70,7 @@ Rails.application.routes.draw do
 
   # Errors
   get "/404", :to => "errors#not_found"
-  get "/404", :to => "errors#server_error"
+  get "/500", :to => "errors#server_error"
 
 
 end
