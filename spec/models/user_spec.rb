@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
       end
     end
     describe '.invitations and .invited_by' do
-      org = FactoryGirl.create(:legacy_organization, name: Faker::Name.name)
+      org = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
       let(:frank) { User.create(name:'Frank', email:'frank@aol.com', password:'blue32blue32',legacy_organization_id:org.id) }
       let(:dhruv) { User.create(name:'Dhruv', email:'Dhruv@aol.com', password:'blue32blue32',legacy_organization_id:org.id) }
       before do
@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
 
     end
     describe '.verify' do
-      org = FactoryGirl.create(:legacy_organization, name: Faker::Name.name)
+      org = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
       let(:frank) { User.create(name:'Frank', email:'frank@aol.com', password:'blue32blue32',legacy_organization_id:org.id) }  
       before do
         frank.verify!

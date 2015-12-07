@@ -31,7 +31,7 @@ class RegistrationsController < ApplicationController
   		redirect_to "/welcome"
   	else
   		# with errors
-      flash[:alert] = "The organization name #{@org.name} has already been taken."
+      flash[:alert] = "The organization name #{@org.name} or email #{@org.email} has already been taken."
   		render :new
   	end
   end
