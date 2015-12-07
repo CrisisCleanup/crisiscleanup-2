@@ -20,4 +20,4 @@
 //= require ./worker/sites.js
 //= require ./scripts.js
 
-$(function(){ $(document).foundation(); });
+$(function(){ $(document).foundation('tooltips'); });
