@@ -1,4 +1,7 @@
-class RegistrationsController < ApplicationController  
+class RegistrationsController < ApplicationController 
+  def welcome
+  end 
+
   def new
     @org = Legacy::LegacyOrganization.new
  	  @org.legacy_contacts.build
@@ -25,7 +28,7 @@ class RegistrationsController < ApplicationController
   		User.where(admin:true).each do |u|
         AdminMailer.send_registration_alert(u,@org).deliver_now
       end
-  		redirect_to root_path
+  		redirect_to "/welcome"
   	else
   		# with errors
       flash[:alert] = "The organization name #{@org.name} has already been taken."

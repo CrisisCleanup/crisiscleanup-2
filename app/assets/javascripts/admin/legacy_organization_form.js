@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("ready page:load",function() {
     $( "#organization_filters_button" ).click(function() {
         var verified = $("#verified_select").val();
         var active = $("#active_select").val();
@@ -11,7 +11,7 @@ $(function() {
     });
     var active = location.search.split('active=')[1]
     if (active) {
-        $("#active_select").val(active);
+        $("#active_select option[value='" + active + "']").attr("selected","selected");
     }
     var verified = location.search.split('verified=')[1]
 
@@ -19,6 +19,8 @@ $(function() {
     	if (verified.indexOf("&") != -1) {
     	    verified = verified.slice(0, verified.indexOf("&"))
     	}
-        $("#verified_select").val(verified);
+        $("#verified_select option[value='" + verified + "']").attr("selected","selected");
+
+
     }
 });

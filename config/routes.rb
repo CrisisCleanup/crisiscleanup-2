@@ -66,5 +66,6 @@ Rails.application.routes.draw do
   # Organization Registrations
   get "/register" => 'registrations#new'
   post "/register" => 'registrations#create'
+  get "/welcome" => 'registrations#welcome'
 
 end
