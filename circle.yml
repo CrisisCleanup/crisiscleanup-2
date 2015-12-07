@@ -8,4 +8,4 @@ dependencies:
 
 test:
   override:
-    - rspec
+    - bundle exec rspec --color --require spec_helper --format RspecJunitFormatter --out /tmp/circle-junit.dDz3fWr/rspec/rspec.xml spec --format progress
