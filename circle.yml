@@ -5,3 +5,7 @@ machine:
 dependencies:
   post:
     - bundle exec rake assets:precompile
+
+test:
+  override:
+    - rspec
