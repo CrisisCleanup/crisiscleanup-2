@@ -68,4 +68,7 @@ Rails.application.routes.draw do
   post "/register" => 'registrations#create'
   get "/welcome" => 'registrations#welcome'
 
+  # Errors
+  get "/404", :to => "errors#not_found"
+
 end
