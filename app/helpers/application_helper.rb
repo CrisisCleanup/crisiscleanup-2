@@ -11,10 +11,11 @@ module ApplicationHelper
             redirect_to "/dashboard"
         end
     end
+
     def check_user
-		if !current_user.present?
-			redirect_to '/login'
-        end
+      if !current_user.present?
+        redirect_to '/login'
+      end
     end
 
     def current_user_event
@@ -43,6 +44,14 @@ module ApplicationHelper
     		# add error messages
     		redirect_to root_path
     	end
+    end
+
+    def nav_link(content, path)
+      class_name = current_page?(path) ? 'active' : ''
+
+      content_tag(:li, :class => class_name) do
+        link_to content, path
+      end
     end
 
     #TODO these belong in the model
