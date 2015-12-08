@@ -4,7 +4,8 @@ class InvitationList
     include ActiveModel::Validations
 	attr_accessor :email_addresses, :string, :sender, :ready, :rejected, :org_id
 	validates_presence_of :string
-    def initialize(addresses_string, sender, org_id = sender.org.id)    	
+    def initialize(addresses_string, sender, org_id = nil)  
+        org_id = org_id || sender.org.id  	
     	if addresses_string.present?
     		@string = addresses_string
     		@sender = sender

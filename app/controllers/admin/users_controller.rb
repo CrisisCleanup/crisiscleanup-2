@@ -10,6 +10,7 @@ module Admin
     end
     def new
     	@user = User.new
+        @organizations = Legacy::LegacyOrganization.all
     end
     def create       
         @user = User.new(site_params) 
