@@ -1,3 +1,7 @@
+<% content_for :title do %>
+    Crisis Cleanup - Edit Form
+<% end %>
+
 <%= simple_form_for @form, url: admin_legacy_event_form_path(@event.id,@form.id) do |f| %>
 <div class="row">
     <div class="small-12 medium-12 large-12 columns">

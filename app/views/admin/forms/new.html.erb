@@ -1,3 +1,7 @@
+<% content_for :title do %>
+    Crisis Cleanup - New Form
+<% end %>
+
 <%= simple_form_for @form, url: admin_legacy_event_forms_path(@event.id) do |f| %>
 	<div class="margin-top row">
     	<h3 class='medium-8 columns'>

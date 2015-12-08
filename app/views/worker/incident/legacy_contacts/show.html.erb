@@ -1,3 +1,8 @@
+<% content_for :title do %>
+    Crisis Cleanup - Contact
+<% end %>
+
+
 <% content_for :main do %> 
 	<h2><%= @contact.first_name %> <%= @contact.last_name %>: <%= @contact.legacy_organization.name if @contact.legacy_organization %></h2>
 	<div class="small-12 large-12 columns">
