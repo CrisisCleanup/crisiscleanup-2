@@ -5,7 +5,7 @@ FactoryGirl.define do
 	longitude Faker::Address.longitude 
 	blurred_latitude  Faker::Address.latitude                                  
 	blurred_longitude Faker::Address.longitude 
-	case_number Faker::Lorem.sentence
+	case_number Faker::Code.isbn
 	city Faker::Address.city                                                 	                                     
 	legacy_event_id 1                             
 	name      Faker::Name.name                                                                           
@@ -13,8 +13,8 @@ FactoryGirl.define do
 	reported_by 1
 	requested_at DateTime.now.to_date                                                              
 	state     Faker::Address.state                                  
-	status Faker::Lorem.sentence
-	work_type Faker::Lorem.sentence                                                                   	
+	status Faker::Lorem.word
+	work_type Faker::Lorem.word                                                                   	
   end
 end  
 

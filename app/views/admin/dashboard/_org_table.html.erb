@@ -4,6 +4,7 @@
       <th width="200">Name</th>
       <th width="150">City</th>
       <th width="150">Event</th>
+      <th width="150">Created At</th>
       <th width="150">Verify</th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
         </td>
         <td> <%= org.city %> </td>
         <td> <%= org.legacy_events.present? ? org.legacy_events.first.name : "Unassigned" %> </td>
+        <td> <%= org.created_at %> </td>
         <td>  <%= link_to "Verify", "/admin/legacy_organizations/verify?id=#{org.id}",method: :post %> </td>
       </tr>
     <% end %>
