@@ -13,8 +13,8 @@
 
 <% content_for :main do %>
 <div id="main" class="alt">
-<br>
-	<div id="map-canvas" style="width: 95%; height: 600px;"></div>
+    <br>
+	<div id="map-canvas" style="width: 95%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
 </div>
 <% end %>
 
@@ -27,7 +27,7 @@
         <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
         </ul>
     </div>    -->
-    <label>Select Incident
+    <label style="width: 90%; margin-left: 5%;">Select Incident
       <select class="select_incident">
         <option value="">Choose Incident</option>
         <% @events.each do |event| %>
