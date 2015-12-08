@@ -1,29 +1,29 @@
- <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-            <li class="name">
-                <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home"  %></a>
-            </li>
-            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-        <!-- right side navigation -->
-        <section class="top-bar-section">
-            <!-- Right Nav Section -->
-            <ul class="right">
-                <li class="active"><%= link_to "Home", root_path %></li>
-                <li><%= link_to "About", about_path %></li>
-                <li><a href="/public_map">Map</a></li>
-                <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
-                <li><a href="/register">Sign Up</a></li>
-                <% if current_user %>
-                    <li><%= link_to "Dashboard", worker_dashboard_path %></li>
-                    <% if current_user.admin %>
-                        <li><%= link_to "Admin", admin_path%></li>
-                    <% end %>
-                    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-                <% else %>
-                    <li><%= link_to "Login", new_user_session_path %></li> 
-                <% end %>
-            </ul>
-        </section>
-    </nav>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home"  %></a>
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+  <!-- right side navigation -->
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <%= nav_link "Home", root_path %>
+      <%= nav_link "About", about_path %>
+      <%= nav_link "Map", public_map_path %>
+      <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
+      <%= nav_link "Sign Up", register_path %>
+      <% if current_user %>
+        <li><%= link_to "Dashboard", worker_dashboard_path %></li>
+        <% if current_user.admin %>
+          <li><%= link_to "Admin", admin_path%></li>
+        <% end %>
+        <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+      <% else %>
+        <li><%= link_to "Login", new_user_session_path %></li> 
+      <% end %>
+    </ul>
+  </section>
+</nav>

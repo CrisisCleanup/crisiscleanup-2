@@ -10,7 +10,7 @@
         <section class="top-bar-section">
             <!-- Right Nav Section -->
             <ul class="right">
-                <li class="active"><%= link_to "Home", root_path %></li>
+                <li><%= link_to "Home", root_path %></li>
                 <% if current_user_event %>
                     <li><%= link_to "Form", worker_incident_legacy_form_path(current_user_event) %></li>
                     <li><%= link_to "Map", worker_incident_legacy_map_path(current_user_event) %></li>
@@ -21,9 +21,9 @@
                 <% end %>
 
                 <% if current_user %>
-                    <li><%= link_to "Dashboard", worker_dashboard_path %></li>
+                    <%= nav_link "Dashboard", worker_dashboard_path %>
                     <% if current_user.admin %>
-                        <li><%= link_to "Admin", admin_path%></li>
+                        <li><%= link_to "Admin", admin_path %></li>
                     <% end %>
                     <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
                 <% else %>
