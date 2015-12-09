@@ -16,7 +16,7 @@
 !/log/.keep
 /tmp
 .env
-/config/database.yml
+config/database.yml
 
 # Ignore appengine migration log files
 import_event_error_logs.txt
