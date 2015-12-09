@@ -81,7 +81,7 @@
 			name:     Faker::Address.city + 'Disaster',
 			phone:       Faker::PhoneNumber.cell_phone,
 			reported_by: 1,
-			requested_at: DateTime.now.to_date,
+			request_date: DateTime.now.to_date,
 			state:     Faker::Address.state,
 			status: Faker::Lorem.word,
 			work_type: Faker::Lorem.word
