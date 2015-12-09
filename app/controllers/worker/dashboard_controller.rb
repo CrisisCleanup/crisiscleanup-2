@@ -4,6 +4,7 @@ module Worker
     before_filter :check_user
     def index
     	@unverified_users = !current_user.admin? ? current_user.legacy_organization.users.where(verified:false) : nil
+        @requested_invitations = RequestInvitation.where(user_created: false, legacy_organization_id: current_user.legacy_organization_id).order(:name)
     end
     def verify_user
     	user = User.find(params["user_id"])

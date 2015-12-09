@@ -22,8 +22,10 @@
     		
         <h4>Invite Users</h4>
         <%= render 'invite_form' %>
-    	<h4>Do You Know These People?</h4>
+    	<h4>Verify Invited Users</h4>
     	<%= render 'user_table', users: @unverified_users %>
+        <h4>Requested Invitations</h4>
+        <%= render 'request_invitation_table', users: @requested_invitations %>
     <% end %>
 </div>    
 <% end %>

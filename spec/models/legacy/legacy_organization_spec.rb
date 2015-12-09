@@ -10,6 +10,7 @@ module Legacy
       it { should have_many :legacy_events }
       it { should have_many :legacy_contacts }
       it { should have_many :users }
+      it { should have_many :request_invitations }
       it { should validate_presence_of :name}
       it { should validate_uniqueness_of :name}
       it { should validate_presence_of :email}
