@@ -161,8 +161,8 @@ module Legacy
             end
 
             ### TODO delete these when using real ids
-            hash_attributes.delete("reported_by")
-            hash_attributes.delete("claimed_by")
+            # hash_attributes.delete("reported_by")
+            # hash_attributes.delete("claimed_by")
             #########################################
 
             hash_attributes['data'] = data
