@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     
   get "/admin" => 'admin/dashboard#index'
 
+  resources :request_invitations, only: [:new, :create]
+
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :legacy_events do

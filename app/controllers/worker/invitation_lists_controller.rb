@@ -2,11 +2,13 @@ module Worker
   class InvitationListsController < ApplicationController
     include ApplicationHelper
     def create
-    	list = InvitationList.new(params[:email_addresses], current_user, params[:organization])
+        organization = params[:organization] || current_user.legacy_organization.id
+    	list = InvitationList.new(params[:email_addresses], current_user, organization)
     	if list.valid?
     		if list.ready.present?  
     			list.ready.each do |inv|
     				InvitationMailer.send_invitation(inv, request.base_url).deliver_now
+                    RequestInvitation.invited!(inv.invitee_email)
     			end
     		end
         end  

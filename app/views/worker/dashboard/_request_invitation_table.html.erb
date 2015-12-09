@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th width="200">Name</th>
+      <th>Email</th>
+      <th>Invited?</th>
+      <th width="150">Send Invitation</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <% if @requested_invitations %>
+      <% @requested_invitations.each do |request| %>
+        <tr>
+
+          <td> <%= request.name %> </td>
+          <td> <%= request.email %> </td>
+          <td> <%= request.invited %> </td>
+          <td><% unless request.invited %>
+              <%= link_to "Send Invitation", "/worker/invitation_lists?email_addresses=#{request.email}", :method=> :post %>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

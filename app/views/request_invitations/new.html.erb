@@ -1,0 +1,16 @@
+<% content_for :title do %>
+    Crisis Cleanup - Request an Invitation
+<% end %>
+
+<% content_for :main do %>
+	<div class="row">
+		<div class='small-12 medium-12 large-12 columns'>
+        	<h3>Request an invitation from your organization</h3>		
+		</div>
+	</div>
+	<div class="row">
+		<div class='small-12 medium-12 large-12 columns'>
+	       <%= render 'request_invitation_form', org: @request_invitation, url: '/request_invitation' %>
+        </div>
+</div>
+<%end%>
