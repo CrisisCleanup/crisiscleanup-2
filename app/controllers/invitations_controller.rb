@@ -18,9 +18,7 @@ class InvitationsController < ApplicationController
       redirect_to "/dashboard"
     else
       redirect_to :back
-    end
-  
+    end  
   end
-  
 end
    

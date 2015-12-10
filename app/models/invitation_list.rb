@@ -5,7 +5,11 @@ class InvitationList
 	attr_accessor :email_addresses, :string, :sender, :ready, :rejected, :org_id
 	validates_presence_of :string
     def initialize(addresses_string, sender, org_id = nil)  
-        org_id = org_id || sender.org.id  	
+        org_id = org_id || sender.org.id 
+        sender = sender
+        unless sender.kind_of? Fixnum
+            sender = sender.id
+        end
     	if addresses_string.present?
     		@string = addresses_string
     		@sender = sender
@@ -18,7 +22,7 @@ class InvitationList
     end
     def prepare!
     	@email_addresses.each do |ad|
-    	 	inv = Invitation.new(user_id: sender.id, invitee_email:ad, organization_id:org_id)
+    	 	inv = Invitation.new(user_id: sender, invitee_email:ad, organization_id:org_id)
     		inv.save ? @ready << inv : @rejected << inv
     	end
     end

@@ -1,0 +1,18 @@
+<%= form_tag worker_authorize_temporary_password_path %>
+<div class="row">
+	<div class="small-12 medium-7 large-8 columns invite">
+	  <%= text_field_tag :email, nil, autocomplete: "off", placeholder: "Enter your email" %>
+	</div>  
+	<div class="small-12 medium-7 large-8 columns invite">
+	  <%= text_field_tag :password, nil, autocomplete: "off", placeholder: "Password" %>
+	</div>     
+	<div class="small-12 medium-7 large-8 columns invite">
+	  <%= text_field_tag :password_confirmation, nil, autocomplete: "off", placeholder: "Password Conformation" %>
+	</div>  
+	<div class="small-12 medium-7 large-8 columns invite">
+		<%= select_tag "legacy_organization_id", options_from_collection_for_select(@organizations, "id", "name") %>
+	</div>
+	<div class="small-12 medium-5 large-4 columns invite">
+	  <%= submit_tag "Submit", :class => "button" %>
+	</div>   
+</div>

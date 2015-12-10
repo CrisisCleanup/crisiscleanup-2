@@ -32,7 +32,7 @@ module Features
 
     def send_invites(email_addresses)
     	fill_in 'email_addresses', with: email_addresses
-    	click_button 'Submit'
+    	click_button 'Submit Invites'
     end
   end
 end

@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   namespace :worker do
     get "/dashboard" => 'dashboard#index', as:"dashboard"
     resource :invitation_lists, only: [:create]
+    resources :temporary_passwords, only: [:create, :new]
+    post "temporary_passwords/authorize" => "temporary_passwords#authorize", as: "authorize_temporary_password"
+
       namespace :incident do
         get "/:id/sites" => "legacy_sites#index", as: "legacy_sites_index"
         get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"
