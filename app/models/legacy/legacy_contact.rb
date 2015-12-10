@@ -5,5 +5,6 @@ module Legacy
   	  belongs_to :legacy_organization,
     	inverse_of: :legacy_contacts
     validates_presence_of :email, :first_name, :last_name, :phone 
+    validates_uniqueness_of :email
   end
 end
