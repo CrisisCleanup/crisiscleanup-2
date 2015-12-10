@@ -2,68 +2,74 @@
     Crisis Cleanup - Stats By Incident
 <% end %>
 
-<h2>Stats by incident: <%= @event.name %></h2>
-<h3>Work types</h3>
-<table>
-  <thead>
-    <tr>
-      <% @work_type_counts.each do |work_type| %>
-      	<td><%= work_type[0] %></td>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @work_type_counts.each do |work_type| %>
-      	<td><%= work_type[1] %></td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="small-12 medium-12 large-12 columns">
+    <h2>Stats by incident: <%= @event.name %></h2>
+    <%= link_to 'Export CSV', admin_stats_by_incident_path(format: :csv) %>
+  </div>
+  <div class="small-12 medium-12 large-12 columns">
+    <h3>Work types</h3>
+    <table>
+      <thead>
+        <tr>
+          <% @work_type_counts.each do |work_type| %>
+            <td><%= work_type[0] %></td>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% @work_type_counts.each do |work_type| %>
+            <td><%= work_type[1] %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
 
-<h3>Statuses</h3>
-<table>
-  <thead>
-    <tr>
-      <% @status_counts.each do |status| %>
-      	<td><%= status[0] %></td>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @status_counts.each do |status| %>
-      	<td><%= status[1] %></td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+    <h3>Statuses</h3>
+    <table>
+      <thead>
+        <tr>
+          <% @status_counts.each do |status| %>
+            <td><%= status[0] %></td>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% @status_counts.each do |status| %>
+            <td><%= status[1] %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
 
-<h3>By Organization</h3>
-<table>
-  <thead>
-    <tr>
-      <td>Incident</td>
-      <td>Organization</td>
-      <td>Claimed Work Orders</td>
-      <td>Open</td>
-      <td>Closed</td>
-      <td>Reported</td>
-      <td>Last Login</td>
-    </tr>
-  </thead>
-  <tbody>
-  	<% @orgs.each do |org| %>
-	    <tr>
-	      <td><%= @event.name %></td>
-        <td><%= org.name %></td>
-        <td><%= organization_claimed_site_count org.id %></td>
-        <td><%= organization_open_site_count org.id %></td>
-        <td><%= organization_closed_site_count org.id %></td>
-        <td><%= organization_reported_site_count org.id %></td>
-        <td><%= org.timestamp_login %></td>
-	    </tr>
-	<% end %>
-  </tbody>
-</table>
-
+    <h3>By Organization</h3>
+    <table>
+      <thead>
+        <tr>
+          <td>Incident</td>
+          <td>Organization</td>
+          <td>Claimed Work Orders</td>
+          <td>Open</td>
+          <td>Closed</td>
+          <td>Reported</td>
+          <td>Last Login</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orgs.each do |org| %>
+          <tr>
+            <td><%= @event.name %></td>
+            <td><%= org.name %></td>
+            <td><%= organization_claimed_site_count org.id %></td>
+            <td><%= organization_open_site_count org.id %></td>
+            <td><%= organization_closed_site_count org.id %></td>
+            <td><%= organization_reported_site_count org.id %></td>
+            <td><%= org.timestamp_login %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
