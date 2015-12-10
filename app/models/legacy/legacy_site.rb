@@ -151,7 +151,7 @@ module Legacy
             site_attributes
         end
 
-        def self.hash_to_site hash_attributes, event_id
+        def self.hash_to_site hash_attributes, event_id=nil
             data = {}
             hash_attributes.each do |key, value|
                 unless STANDARD_SITE_VALUES.include? key
@@ -166,7 +166,7 @@ module Legacy
             #########################################
 
             hash_attributes['data'] = data
-            hash_attributes['legacy_event_id'] = event_id
+            hash_attributes['legacy_event_id'] = event_id if event_id
             hash_attributes
         end
         def self.import(file, event_id, duplicate_check=nil, duplicate_method=nil)
@@ -201,7 +201,7 @@ module Legacy
                 @site.update(work_type: hashed_row["work_type"], claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
             else
                 @site = search_duplicate(hashed_row, duplicate_check)
-                @site.update(hash_to_site(hashed_row, event_id))
+                @site.update(hash_to_site(hashed_row))
             end
 
         end
@@ -212,6 +212,8 @@ module Legacy
                 @site = Legacy::LegacySite.find_by(name: hashed_row["name"], latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
             elsif duplicate_check == "lat_lng"
                 @site = Legacy::LegacySite.find_by(latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
+            elsif duplicate_check == "replace_all"
+                
             else
                 raise "Improperly formatted duplicate check"
             end

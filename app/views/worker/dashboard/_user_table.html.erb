@@ -17,7 +17,7 @@
           <td> <%= user.email %> </td>
           <td>
             <% if user.reference.email != current_user.email %>
-              <%= link_to "Verify Me", "/verify/#{user.id.to_s}", :method=> :post %>
+              <%= link_to "Verify Me", "/verify/#{user.id.to_s}", :method=> :post, :onclick => "return confirm('Please confirm that you would like to verify this user.')" %>
             <%else%>
               You Invited This Person
             <%end%>

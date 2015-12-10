@@ -17,7 +17,7 @@
           <td> <%= request.email %> </td>
           <td> <%= request.invited %> </td>
           <td><% unless request.invited %>
-              <%= link_to "Send Invitation", "/worker/invitation_lists?email_addresses=#{request.email}", :method=> :post %>
+              <%= link_to "Send Invitation", "/worker/invitation_lists?email_addresses=#{request.email}", :method=> :post, :onclick => "return confirm('Please confirm that this user is a part of your organization.')" %>
               <% end %>
           </td>
         </tr>
