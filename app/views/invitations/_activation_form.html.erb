@@ -1,5 +1,5 @@
 <% content_for :main do %>
-<h2>Sign up</h2>
+<h2>Sign up and activate account</h2>
 
 <%= simple_form_for(User.new, url: invitations_activate_path+"?token=#{@invitation.token}") do |f| %>
   <%= f.error_notification %>
