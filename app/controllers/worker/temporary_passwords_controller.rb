@@ -28,7 +28,9 @@ module Worker
               if list.valid?
                 if list.ready.present?  
                   list.ready.each do |inv|
-                    InvitationMailer.send_invitation(inv, request.base_url).deliver_now
+                    if obj.expires > DateTime.now.utc
+                      InvitationMailer.send_invitation(inv, request.base_url).deliver_now
+                    end
                   end
                 end
               end  
