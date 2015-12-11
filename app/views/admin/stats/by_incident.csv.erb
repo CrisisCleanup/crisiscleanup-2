@@ -1,1 +1,17 @@
-TODO: build out the stats here.
+<%=
+  CSV.generate do |csv|
+    csv << ["Lusk, WY", "Flood Statistics, Generated 2015 11-25 01:22 UTC"]
+    csv << []
+    csv << ["Work Orders", "Open, unassigned", "Open, assigned", "Open, partially completed", "Open, needs follow-up", "Closed, completed", "Closed, incomplete", "Closed, out of scope", "Closed, done by others", "Closed, no help wanted", "Closed, rejected", "Closed, duplicate", "Total Open", "Total Closed", "Total"]
+    csv << ["numbers", "numbers", "etc"]
+    csv << ["Incident", "Organization", "Claimed Work Orders", "Open", "Closed", "Reported Work Orders", "Last Login", "Number of Logins - last 7 days", "Number of Logins - last 30 days"]
+    csv << ["Totals"]
+    csv << []
+    csv << ["Work Type", "Open", "Closed", "Total"]
+    csv << []
+    csv << ["County", "Open", "Closed", "Total"]
+    csv << []
+    csv << ["", "Since Entered"]
+    csv << ["Average Days Waiting for Open Work Orders", "numbers"]
+  end .html_safe
+%>
