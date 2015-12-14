@@ -24,10 +24,12 @@ $(document).on("ready page:load",function() {
 			var pin = $('.m-pin.hidden')[0].innerHTML;	
 		}
 		catch(err) {
+		  
 		    console.log(err.message);
 		}
 
 		var ccmap = new CCMAP('map-canvas', id);
+		debugger;
 		google.maps.event.addDomListener(window, 'ready',ccmap.build(pin));
 
 	}
