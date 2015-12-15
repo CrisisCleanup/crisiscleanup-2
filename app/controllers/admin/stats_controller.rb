@@ -22,11 +22,9 @@ module Admin
     end
 
     def by_incident
-      @event = Legacy::LegacyEvent.find(params[:id])
-      org_ids = Legacy::LegacyOrganizationEvent.where(legacy_event_id: @event.id)
-      @orgs = Legacy::LegacyOrganization.where(id: org_ids)
-      @work_type_counts = Legacy::LegacySite.work_type_counts(@event.id)
-      @status_counts = Legacy::LegacySite.status_counts(@event.id)
+      @event = Legacy::LegacyEvent.eager_load(:legacy_organizations, :legacy_sites).find(params[:id])
+      @work_types = @event.legacy_sites.select('legacy_sites.*').order(:work_type).group_by(&:work_type)
+      @work_orders = @event.legacy_sites.select('legacy_sites.*').order(:status).group_by(&:status)
       filename = Time.now.utc.iso8601.gsub('-', '').gsub(':', '') + "-" + @event.name + ".csv"
 
       respond_to do |format|
