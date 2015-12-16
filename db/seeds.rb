@@ -60,7 +60,7 @@
     end
   end
 
-  15.times do
+  5.times do
     Legacy::LegacySite.create(
       address: Faker::Address.street_address,
       latitude:  Faker::Address.latitude,
