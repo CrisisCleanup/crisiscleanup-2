@@ -75,10 +75,10 @@
           <tr>
             <td><%= @event.name %></td>
             <td><%= org.name %></td>
-            <td><%= organization_claimed_site_count org.id %></td>
-            <td><%= organization_open_site_count org.id %></td>
-            <td><%= organization_closed_site_count org.id %></td>
-            <td><%= organization_reported_site_count org.id %></td>
+            <td><%= org.claimed_site_count %></td>
+            <td><%= org.open_site_count %></td>
+            <td><%= org.closed_site_count %></td>
+            <td><%= org.reported_site_count %></td>
             <td><%= org.timestamp_login %></td>
           </tr>
         <% end %>

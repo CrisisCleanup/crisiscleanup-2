@@ -33,5 +33,21 @@ module Legacy
       name = "#{contact.first_name} #{contact.last_name}" if contact
       name if contact
     end
+
+    def claimed_site_count
+      Legacy::LegacySite.where(claimed_by: self).count
+    end
+
+    def open_site_count
+      Legacy::LegacySite.open_by_organization self
+    end
+
+    def closed_site_count
+      Legacy::LegacySite.closed_by_organization self
+    end
+
+    def reported_site_count
+      Legacy::LegacySite.where(reported_by: self).count
+    end
   end
 end
