@@ -13,11 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
+
 //= require_tree .
 //= require_tree ./plugins
 //= require ./worker/ccmap.js
 //= require ./worker/sites.js
 //= require ./scripts.js
 
-$(function(){ $(document).foundation('tooltips'); });
+
+$(document).ready(function(){
+	$(document).foundation(); 
+})
+	

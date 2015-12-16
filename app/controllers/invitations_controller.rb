@@ -22,6 +22,7 @@ class InvitationsController < ApplicationController
       end
       flash[:notice] = "Invitation accepted. Please log in."
       redirect_to "/login"
+      return
     else
       redirect_to :back
     end  
