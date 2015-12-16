@@ -3,51 +3,51 @@
 <% end %>
 
 <div class="row">
-    <div class="small-12 medium-12 large-12 columns">
-        <h2>Stats</h2>
-    </div>    
-    <div class="small-12 medium-12 large-6 columns">
-        <table role="grid">
-          <thead>
-            <tr>
-              <th scope="column">Events</th>
-              <th scope="column">Organizations</th>
-              <th scope="column">Contacts</th>
-              <th scope="column">Sites</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= @events_count %></td>
-              <td><%= @orgs_count %></td>
-              <td><%= @contacts_count %></td>
-              <td><%= @sites_counts %></td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <div class="small-12 medium-12 large-6 columns">
-        <table role="grid">
-          <thead>
-            <tr>
-              <th scope="column">Users</th>
-              <th scope="column">Today's Logins</th>
-              <th scope="column">Today's Site Edits</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= @users_count %></td>
-              <td><%= @todays_login_count %></td>
-              <td><%= @todays_create_and_edit_count %></td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
+  <div class="small-12 medium-12 large-12 columns">
+    <h2>Stats</h2>
+  </div>
+  <div class="small-12 medium-12 large-6 columns">
+    <table role="grid">
+      <thead>
+        <tr>
+          <th scope="column">Events</th>
+          <th scope="column">Organizations</th>
+          <th scope="column">Contacts</th>
+          <th scope="column">Sites</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @events_count %></td>
+          <td><%= @orgs_count %></td>
+          <td><%= @contacts_count %></td>
+          <td><%= @sites_counts %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="small-12 medium-12 large-6 columns">
+    <table role="grid">
+      <thead>
+        <tr>
+          <th scope="column">Users</th>
+          <th scope="column">Today's Logins</th>
+          <th scope="column">Today's Site Edits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @users_count %></td>
+          <td><%= @todays_login_count %></td>
+          <td><%= @todays_create_and_edit_count %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div class="row">
-    <div class="small-12 medium-12 large-12 columns">
-        <h3>Stats by event</h3>
-        <%= render 'events_table', events: @events %>
-    </div>
+  <div class="small-12 medium-12 large-12 columns">
+    <h3>Stats by event</h3>
+    <%= render 'events_table', events: @events %>
+  </div>
 </div>
