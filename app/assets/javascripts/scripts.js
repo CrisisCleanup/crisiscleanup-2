@@ -1,13 +1,17 @@
-$(document).on("ready page:load",function() {
+
+$(document).ready(function() {
+	
 	var path = $(location).attr('pathname');
 	var dashboard = path.split('/')[1] == 'admin';	
+	console.log(dashboard);
 	var page = path.split('/')[2];
 	var elem = '.'+page;
 	var workerMap = $('#map-canvas').length
 	
 	if (dashboard){
+		
 		$('select').foundationSelect();
-		$(document).foundation();
+		
 		$('.dashboard li').removeClass('active');
 		$(elem).addClass('active');
 		if ($(elem).parents('.has-dropdown').length) {
@@ -29,7 +33,7 @@ $(document).on("ready page:load",function() {
 		}
 
 		var ccmap = new CCMAP('map-canvas', id);
-		debugger;
+	
 		google.maps.event.addDomListener(window, 'ready',ccmap.build(pin));
 
 	}
