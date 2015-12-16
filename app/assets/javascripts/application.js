@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+if(typeof FastClick !== 'undefined') {
+      FastClick.attach(document.body);
+  }
 //= require turbolinks
 //= require_tree .
 //= require_tree ./plugins
@@ -20,4 +23,8 @@
 //= require ./worker/sites.js
 //= require ./scripts.js
 
-$(function(){ $(document).foundation('tooltips'); });
+
+$(document).ready(function(){
+	$(document).foundation(); 
+})
+	
