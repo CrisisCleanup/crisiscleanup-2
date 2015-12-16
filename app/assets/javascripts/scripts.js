@@ -1,5 +1,5 @@
 
-$(document).ready(function() {
+$(document).on("ready page:load", function() {
 	
 	var path = $(location).attr('pathname');
 	var dashboard = path.split('/')[1] == 'admin';	
