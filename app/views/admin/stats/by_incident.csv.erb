@@ -1,0 +1,65 @@
+<%=
+  CSV.generate do |csv|
+    csv << ["Lusk, WY", "Flood Statistics, Generated 2015 11-25 01:22 UTC"]
+    csv << []
+<<<<<<< HEAD
+
+    # Work Statuses
+    work_orders_row = ["Work Orders"]
+    claimed_row = ["Claimed"]
+    unclaimed_row = ["Unclaimed"]
+    totals_row = ["Total"]
+    @work_orders.each do |wo|
+      work_orders_row.push wo[0]
+      claimed_row.push wo[1].select { |x| x.claimed_by }.count
+      unclaimed_row.push wo[1].select { |x| x.claimed_by.nil? }.count
+      totals_row.push wo[1].count
+    end
+
+    csv << work_orders_row
+    csv << claimed_row
+    csv << unclaimed_row
+    csv << totals_row
+    csv << []
+
+    # Work Types
+    csv << ["Work Type","Open","Closed","Total"]
+    @work_types.each do |wt|
+      row = [wt[0]]
+      row.push wt[1].select { |x| x.status =~ /Open/ }.count
+      row.push wt[1].select { |x| x.status =~ /Closed/ }.count
+      row.push wt[1].count
+      csv << row
+    end
+    csv << []
+
+    # Organizations
+    csv << ["Incident", "Organization", "Claimed Work Orders", "Open", "Closed", "Reported Work Orders", "Last Login", "Number of Logins - last 7 days", "Number of Logins - last 30 days"]
+    @event.legacy_organizations.each do |org|
+        row = [@event.name]
+        row.push org.name
+        row.push organization_claimed_site_count org.id
+        row.push organization_open_site_count org.id
+        row.push organization_closed_site_count org.id
+        row.push organization_reported_site_count org.id
+        row.push org.timestamp_login
+        csv << row
+    end
+    csv << ["Totals"]
+    csv << []
+
+=======
+    csv << ["Work Orders", "Open, unassigned", "Open, assigned", "Open, partially completed", "Open, needs follow-up", "Closed, completed", "Closed, incomplete", "Closed, out of scope", "Closed, done by others", "Closed, no help wanted", "Closed, rejected", "Closed, duplicate", "Total Open", "Total Closed", "Total"]
+    csv << ["numbers", "numbers", "etc"]
+    csv << ["Incident", "Organization", "Claimed Work Orders", "Open", "Closed", "Reported Work Orders", "Last Login", "Number of Logins - last 7 days", "Number of Logins - last 30 days"]
+    csv << ["Totals"]
+    csv << []
+    csv << ["Work Type", "Open", "Closed", "Total"]
+    csv << []
+>>>>>>> a620affad2165002fb3d5b6ef0a3d990e3cf3808
+    csv << ["County", "Open", "Closed", "Total"]
+    csv << []
+    csv << ["", "Since Entered"]
+    csv << ["Average Days Waiting for Open Work Orders", "numbers"]
+  end .html_safe
+%>
