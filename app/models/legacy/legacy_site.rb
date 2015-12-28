@@ -172,7 +172,6 @@ module Legacy
       hash_attributes
     end
 
-    #def self.import(file, event_id, duplicate_check=nil, duplicate_method=nil)
     def self.import(params)
       header = []
       # Throw away the top row of the legacy export csv
@@ -192,8 +191,8 @@ module Legacy
     end
 
     def self.check_update(hashed_row, params)
-      if search_duplicate(hashed_row, params[:duplicate_check_method])
-        update_from_row(hashed_row, params[:duplicate_check_method], params[:handle_duplicates_method])
+      if site = search_duplicate(hashed_row, params[:duplicate_check_method])
+        update_from_row(site, params[:handle_duplicates_method])
       else
         create_from_row(hashed_row, params[:event_id])
       end
@@ -203,31 +202,29 @@ module Legacy
       Legacy::LegacySite.create! hash_to_site(hashed_row, event_id)
     end
 
-    def self.update_from_row(hashed_row, duplicate_check, duplicate_method)
-      if duplicate_method == "references"
-        @site = search_duplicate(hashed_row, duplicate_check)
-        @site.update(claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
-      elsif duplicate_method == "references_and_work_type"
-        @site = search_duplicate(hashed_row, duplicate_check)
-        @site.update(work_type: hashed_row["work_type"], claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
-      elsif duplicate_method == "replace_all"
-        @site = search_duplicate(hashed_row, duplicate_check)
-        @site.update(hash_to_site(hashed_row))
+    def self.update_from_row(site, duplicate_method)
+      case duplicate_method
+      when "references"
+        site.update(claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
+      when "references_and_work_type"
+        site.update(work_type: hashed_row["work_type"], claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
+      when "replace_all"
+        site.update(hash_to_site(hashed_row))
       else
         raise "Improperly formatted duplicate method."
       end
     end
 
     def self.search_duplicate(hashed_row, duplicate_check)
-      @site = nil
-      if duplicate_check == "name_lat_lng"
-        @site = Legacy::LegacySite.find_by(name: hashed_row["name"], latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
-      elsif duplicate_check == "lat_lng"
-        @site = Legacy::LegacySite.find_by(latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
+      case duplicate_check
+      when "name_lat_lng"
+        Legacy::LegacySite.find_by(name: hashed_row["name"], latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
+      when "lat_lng"
+        Legacy::LegacySite.find_by(latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
       else
         raise "Improperly formatted duplicate check"
       end
-      @site
+      false
     end
 
     def self.select_order(order)
