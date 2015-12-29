@@ -17,7 +17,6 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'simple_form'
-gem 'pry-rails'
 gem 'rails_12factor', group: :production
 gem 'binding_of_caller'
 gem 'foundation-rails'
@@ -58,7 +57,6 @@ end
 group :development, :test do
 
   gem 'letter_opener'
-
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -70,6 +68,8 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
 end
 
 # Use ActiveModel has_secure_password
