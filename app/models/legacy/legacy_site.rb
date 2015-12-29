@@ -172,29 +172,29 @@ module Legacy
       hash_attributes
     end
 
-    def self.import(params)
+    def self.import(file, dup_check_method, dup_handler, event_id)
       header = []
       # Throw away the top row of the legacy export csv
-      CSV.parse(File.readlines(params[:file].path).drop(1).join) do |row|
+      CSV.parse(File.readlines(file.path).drop(1).join) do |row|
         # Assume the first row is the header
         if header.empty?
           header = row
         else
           hashed_row = Hash[header.zip row]
-          if params[:duplicate_check_method]
-            check_update(hashed_row, params)
+          if dup_check_method
+            check_update(hashed_row, dup_check_method, dup_handler, event_id)
           else
-            create_from_row(hashed_row, params[:event_id])
+            create_from_row(hashed_row, event_id)
           end
         end
       end
     end
 
-    def self.check_update(hashed_row, params)
-      if site = search_duplicate(hashed_row, params[:duplicate_check_method])
-        update_from_row(site, hashed_row, params[:handle_duplicates_method])
+    def self.check_update(hashed_row, dup_check_method, dup_handler, event_id)
+      if site = search_duplicate(hashed_row, dup_check_method)
+        update_from_row(site, hashed_row, dup_handler)
       else
-        create_from_row(hashed_row, params[:event_id])
+        create_from_row(hashed_row, event_id)
       end
     end
 
@@ -202,8 +202,8 @@ module Legacy
       Legacy::LegacySite.create! hash_to_site(hashed_row, event_id)
     end
 
-    def self.update_from_row(site, hashed_row, duplicate_method)
-      case duplicate_method
+    def self.update_from_row(site, hashed_row, dup_handler)
+      case dup_handler
       when "references"
         site.update(claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
       when "references_and_work_type"
@@ -215,8 +215,8 @@ module Legacy
       end
     end
 
-    def self.search_duplicate(hashed_row, duplicate_check)
-      case duplicate_check
+    def self.search_duplicate(hashed_row, dup_check_method)
+      case dup_check_method
       when "name_lat_lng"
         return Legacy::LegacySite.find_by(name: hashed_row["name"], latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
       when "lat_lng"
