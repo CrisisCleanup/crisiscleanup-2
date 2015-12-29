@@ -192,7 +192,7 @@ module Legacy
 
     def self.check_update(hashed_row, params)
       if site = search_duplicate(hashed_row, params[:duplicate_check_method])
-        update_from_row(site, params[:handle_duplicates_method])
+        update_from_row(site, hashed_row, params[:handle_duplicates_method])
       else
         create_from_row(hashed_row, params[:event_id])
       end
@@ -202,7 +202,7 @@ module Legacy
       Legacy::LegacySite.create! hash_to_site(hashed_row, event_id)
     end
 
-    def self.update_from_row(site, duplicate_method)
+    def self.update_from_row(site, hashed_row, duplicate_method)
       case duplicate_method
       when "references"
         site.update(claimed_by: hashed_row[:claimed_by], reported_by: hashed_row[:reported_by])
@@ -218,13 +218,12 @@ module Legacy
     def self.search_duplicate(hashed_row, duplicate_check)
       case duplicate_check
       when "name_lat_lng"
-        Legacy::LegacySite.find_by(name: hashed_row["name"], latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
+        return Legacy::LegacySite.find_by(name: hashed_row["name"], latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
       when "lat_lng"
-        Legacy::LegacySite.find_by(latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
+        return Legacy::LegacySite.find_by(latitude: hashed_row["latitude"], longitude: hashed_row["longitude"])
       else
         raise "Improperly formatted duplicate check"
       end
-      false
     end
 
     def self.select_order(order)
