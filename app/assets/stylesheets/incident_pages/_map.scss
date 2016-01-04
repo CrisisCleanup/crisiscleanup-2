@@ -110,7 +110,7 @@ hr {
     background-color: gainsboro;
     border-radius: 5px 5px;
     border: 2px dashed $smoke;
-    & h4, p, ul, form, h5 {
+    & h4, p, ul, h5 {
         width: 90%;
         margin-left: 5%;
     }
@@ -120,7 +120,22 @@ hr {
     & input[type="checkbox"] + label, input[type="radio"] + label {
         margin-right: 0;
     }
+    
+    & .simple_form {
+        max-height: 715px;
+        overflow-y: scroll;
+        width: 90%;
+        margin-left: 5%;
+        & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"] {
+            height: 1.75rem;
+            margin: 0;
+        }
+        & .columns {
+            padding-left: 0;
+        }
+    }
 }
+
 
 .sideblock {
     & .columns {
