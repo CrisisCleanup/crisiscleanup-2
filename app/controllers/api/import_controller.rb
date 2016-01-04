@@ -1,11 +1,11 @@
-require 'csv'
-
 module Api
-	class ImportController < ApplicationController
-		include ApplicationHelper
-		before_filter :check_admin?
-		def csv
-			Legacy::LegacySite.import(params[:file], params[:event_id], params[:duplicate_check_method], params[:handle_duplicates_method])
-		end
-	end
+  class ImportController < ApplicationController
+    include ApplicationHelper
+    before_filter :check_admin?
+
+    def csv
+      Legacy::LegacySite.import(params[:file], params[:duplicate_check_method], params[:handle_duplicates_method], params[:event_id])
+      redirect_to worker_incident_legacy_sites_index_path(params[:event_id])
+    end
+  end
 end
