@@ -117,9 +117,9 @@
         <a href=<%=admin_csv_import_form_path%>>Import</a>
       </li>
       <% if current_user %>
-          <li class="right"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+          <li class="login"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
       <% else %>
-          <li class="right"><%= link_to "Login", new_user_session_path %></li> 
+          <li class="login"><%= link_to "Login", new_user_session_path %></li> 
       <% end %>
     </ul>
   </section>

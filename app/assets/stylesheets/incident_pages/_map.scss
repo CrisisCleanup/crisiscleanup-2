@@ -18,15 +18,21 @@ header {
 
 nav.top-bar {
     //needs separate declaration away from nest
-    height: 50px;
     background-image: image-url('black_bg.jpg');
     background-repeat: repeat;
     background-position: center;
 }
+
+.top-bar {
+    height: 50px;
+}
+
+.top-bar-section {
+    height: 350px;
+    overflow-y: scroll;
+}
+
 nav {
-    & .top-bar-section {
-        height: 50px;
-    }
     & .top-bar-section li:not(.has-form) a:not(.button) {
         background: transparent;
         color: $goldenrod;
@@ -36,11 +42,9 @@ nav {
         background: transparent;
         line-height: 0;
         height: 50px;
-    }
-    & ul.top-bar.expanded {
-        height: 125px;
-    }
+    }   
 }
+
 .top-bar.expanded {
     z-index: 300;
     height: auto;
@@ -215,7 +219,7 @@ table {
   max-width: 200px;
 }
 // Media Queries
-@media only screen and (min-width: 40.0625em) {
+@media only screen and (min-width: 1024px) {
     // Foundatin default width
     nav .top-bar-section li.active:not(.has-form) a:not(.button) {
         /*
@@ -247,7 +251,7 @@ table {
     }
 }
 
-@media only screen and (max-width: 40.0624em) {
+@media only screen and (max-width: 1024px) {
     nav .top-bar-section li:not(.has-form) a:not(.button) {
         height: 100%;
         line-height: 1.75rem;
@@ -258,8 +262,9 @@ table {
     }    
     .title-area {
         height: 50px;
-    }
+    }    
 }
+
 @media only screen and (max-width: 767px) {
     .alt {
         display: block;
@@ -288,5 +293,6 @@ table {
         height: 600px;
         background-color: $smoke;
         margin-top: -41px;
-}    
+    }    
 }
+

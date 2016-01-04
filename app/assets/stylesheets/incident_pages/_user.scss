@@ -28,7 +28,7 @@ nav.top-bar {
 
 nav {
     .top-bar-section {
-        margin-right: 20px;
+        margin-right: 20px;        
     }
     .top-bar-section li:not(.has-form) a:not(.button) {
         background: transparent;
@@ -214,7 +214,7 @@ table {
 }
 
 // Media Queries
-@media only screen and (min-width: 40.0625em) {
+@media only screen and (min-width: 1024px) {
     // Foundatin default width
     nav .top-bar-section li.active:not(.has-form) a:not(.button) {
         border-radius: 5px 5px;
@@ -240,10 +240,15 @@ table {
     }
 }
 
-@media only screen and (max-width: 40.0624em) {
+@media only screen and (max-width: 1024px) {
     nav .top-bar-section li:not(.has-form) a:not(.button):hover {
         background: #008CBA;
         color: #fff;
+    }
+    .top-bar-section {
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 }
 
