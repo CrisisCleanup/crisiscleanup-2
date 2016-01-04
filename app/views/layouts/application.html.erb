@@ -13,12 +13,15 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-
-  <body class='public' data-no-turbolink="true">
+    
+<div class="off-canvas-wrap" data-offcanvas>
+<div class="inner-wrap"> 
+    
+  <body class='public' data-no-turbolink="true">     
     <header>
       <%= render "layouts/menus/application_menu" %>
     </header>
- 
+    
     <!-- alert menu -->
     <%= render "layouts/menus/alert_menu" %>
 
@@ -31,9 +34,14 @@
     <p class="alert"><%= alert %></p>   
 
     <!-- main content -->        
-    <%= yield :main %>
-        
+    <%= yield :main %>  
+
+<!-- CLOSE THE OFF-CANVAS MENU -->
+    <a class="exit-off-canvas"></a>
+ 
     </div>
+</div>        
+</div> <!-- END OFF CANVAS --> 
         
     <footer align="center">
         <div class="row" id="footer">
@@ -82,5 +90,6 @@
     </div>                            
         <!-- javascript libraries -->
     <%= yield :javascripts %>
+
   </body>
 </html>

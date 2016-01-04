@@ -20,7 +20,6 @@
 //= require ./worker/sites.js
 //= require ./scripts.js
 
-
 $(document).ready(function(){
 	$(document).foundation(); 
 })

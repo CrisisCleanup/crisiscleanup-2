@@ -6,46 +6,19 @@ body {
 }
 
 header {
-    height: 125px;
+    height: auto;
 }
 
 .name img {
-    width: 175px;
-    margin-top: 10px;
-    height: auto;
+    width: auto;
+    margin-top: 2.5px;
+    height: 40px;
     vertical-align: middle;
     margin-left: 20px;
 }
 
-nav.top-bar {
-    //needs separate declaration away from nest
-    height: 125px;
-    background-image: image-url('black_bg.jpg');
-    background-repeat: repeat;
-    background-position: center;
-}
-
-nav {
-    .top-bar-section {
-        margin-right: 20px;
-    }
-    .top-bar-section li:not(.has-form) a:not(.button) {
-        background: transparent;
-        color: $goldenrod;
-        font-size: 16px;
-    }
-    .top-bar-section ul li {
-        background: transparent;
-    }
-    ul.top-bar.expanded,
-    ul.title-area {
-        height: 125px;
-    }
-}
-
-.top-bar.expanded {
-    z-index: 300;
-    height: auto;
+nav li {
+    margin-bottom:0px;
 }
 
 .alert_menu {
@@ -60,6 +33,7 @@ nav {
     border-color: gainsboro;
     border-radius: 3px;
     text-align: center;
+    width: 100%;
 }
 
 .subheader {
@@ -330,43 +304,6 @@ footer {
     }
 }
 
-
-// Media Queries
-@media only screen and (min-width: 40.0625em) {
-    // Foundatin default width
-    nav .top-bar-section li.active:not(.has-form) a:not(.button) {
-        border-radius: 5px 5px;
-        border: 1px dashed #fff;
-        padding: 5px 0 5px 0;
-        margin-left: 5px;
-    }
-    nav .top-bar-section li:not(.has-form) a:not(.button) {
-        width: 80px;
-        text-align: center;
-        padding: 5px 0 5px 0;
-        margin-left: 5px;
-        transition: all 0.5s ease;
-        &:hover {
-            background: #008CBA;
-            color: #fff;
-            border-radius: 10px 10px;
-            border: 1px dashed #fff;
-        }
-    }
-    nav .top-bar-section ul li {
-        margin-top: 2.5em;
-    }
-}
-
-@media only screen and (max-width: 40.0624em) {
-    nav .top-bar-section li:not(.has-form) a:not(.button):hover {
-        background: #008CBA;
-        color: #fff;
-    }
-    .incident-map img {
-        margin-bottom: 40px;
-    }
-}
 
 @media only screen and (max-width: 1024px) {
     .incident-map img {

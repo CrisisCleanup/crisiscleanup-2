@@ -5,7 +5,6 @@
 @import "modules/typography";
 @import "modules/color_blocks";
 @import "modules/buttons";
-@import "modules/nav_dropdown_mobile";
 
 .public {
 	@import "public_pages/static_pages";
@@ -24,5 +23,3 @@
 }
 @import "compass";
 @import 'foundation-icons';
-
-
