@@ -13,16 +13,17 @@ $(function() {
   var map;
   function initialize() {
     var mapCanvas = document.getElementById('map-canvas');
-    var mapOptions = {
-      center: new google.maps.LatLng(39, -90),
-      zoom: 4,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      scrollwheel: false    
+    if (mapCanvas) {
+      var mapOptions = {
+        center: new google.maps.LatLng(39, -90),
+        zoom: 4,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scrollwheel: false
+      }
+      map = new google.maps.Map(mapCanvas, mapOptions)
     }
-    map = new google.maps.Map(mapCanvas, mapOptions)
   }
 
-  
   google.maps.event.addDomListener(window, 'load', initialize);
 
   $( ".select_incident" ).change(function() {
