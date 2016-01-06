@@ -2,8 +2,16 @@
     Crisis Cleanup - Stats
 <% end %>
 
+<% content_for :subheader do %> 
+<div class="subheader">
+    <div class="row">
+    <h2>Stats by incident: <%= @event.name %></h2>
+    <hr>
+    </div>    
+</div>    
+<% end %>
+
 <% content_for :main do %>
-<h2>Stats by incident: <%= @event.name %></h2>
 <h3>Work types</h3>
 <table>
   <thead>
@@ -21,7 +29,7 @@
     </tr>
   </tbody>
 </table>
-
+<br>
 <h3>Statuses</h3>
 <table>
   <thead>
@@ -39,7 +47,7 @@
     </tr>
   </tbody>
 </table>
-
+<br>
 <h3>By Organization</h3>
 <table>
   <thead>
@@ -72,6 +80,6 @@
 
 <% content_for :sidebar do %>        
 <div id="sidebar">
-    <h2>Sidebar</h2>
+    <h4>Sidebar</h4>
 </div>
 <% end %>

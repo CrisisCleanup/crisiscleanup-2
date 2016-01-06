@@ -1,3 +1,7 @@
+/* MAP & FORM
+   ----------------------------- */
+
+/* GB Start */
 html,
 body {
     width: 100%;
@@ -5,45 +9,19 @@ body {
 }
 
 header {
-    height: 50px;
+    height: auto;
 }
 
 .name img {
-    height: 45px;
-    margin-top: 2.5px;
     width: auto;
+    margin-top: 2.5px;
+    height: 40px;
     vertical-align: middle;
     margin-left: 20px;
 }
 
-nav.top-bar {
-    //needs separate declaration away from nest
-    height: 50px;
-    background-image: image-url('black_bg.jpg');
-    background-repeat: repeat;
-    background-position: center;
-}
-nav {
-    & .top-bar-section {
-        height: 50px;
-    }
-    & .top-bar-section li:not(.has-form) a:not(.button) {
-        background: transparent;
-        color: $goldenrod;
-        font-size: 16px;
-    }
-    & .top-bar-section ul li {
-        background: transparent;
-        line-height: 0;
-        height: 50px;
-    }
-    & ul.top-bar.expanded {
-        height: 125px;
-    }
-}
-.top-bar.expanded {
-    z-index: 300;
-    height: auto;
+nav li {
+    margin-bottom:0px;
 }
 
 .alert_menu {
@@ -58,15 +36,18 @@ nav {
     border-color: gainsboro;
     border-radius: 3px;
     text-align: center;
+    width: 100%;
 }
 
 .subheader {
     padding-top: 20px;
+    text-align: center;
     & h2 {
         color: $royal;
-        margin-left: 1.5%;
     }
 }
+
+/* GB END */
 
 #wrapper {
     width: 100%;
@@ -105,7 +86,7 @@ hr {
     display: table-cell;
     background-color: gainsboro;
     border-radius: 5px 5px;
-    border: 2px dashed $smoke;
+    border: 2px solid $smoke;
     & h4, p, ul, form, h5 {
         width: 90%;
         margin-left: 5%;
@@ -151,7 +132,7 @@ footer {
         margin: 3% 0 5px 0;
     }
     & .medium-8 .medium-4.columns {
-        border-left: 1px dashed #fff;
+        border-left: 1px solid #fff;
     }
 }
 
@@ -160,7 +141,7 @@ footer {
     color: #fff;
     max-width: 100rem;
     text-align: center;
-    border-top: 1px dashed #fff;
+    border-top: 1px solid #fff;
     padding: 5px 0 5px 0;
     & .columns p {
         margin: 0;
@@ -196,6 +177,8 @@ table {
     margin-bottom: 0;
 }
 
+/* GB START */
+
 // Map
 #map-canvas {
     width: 100%;
@@ -214,52 +197,13 @@ table {
   padding: 0px;
   max-width: 200px;
 }
-// Media Queries
-@media only screen and (min-width: 40.0625em) {
-    // Foundatin default width
-    nav .top-bar-section li.active:not(.has-form) a:not(.button) {
-        /*
-        border-radius: 5px 5px;
-        border: 1px dashed #fff;
-        */
-        padding: 5px 0 5px 0;
-        height: 50px;
-        line-height: 2.5rem;
-    }
-    nav .top-bar-section li:not(.has-form) a:not(.button) {
-        width: 85px;
-        text-align: center;
-        padding: 5px 0 5px 0;
-        transition: all 0.5s ease;
-        height: 50px;
-        line-height: 2.5rem;
-        &:hover {
-            background: #008CBA;
-            color: #fff;
-            /*
-            border-radius: 10px 10px;
-            border: 1px dashed #fff;
-            */
-        }
-    }
-    .top-bar-section ul {
-        height: 50px!important;
+
+@media only screen and (max-width: 1024px) {
+    .name img {
+    margin-top: 0;
     }
 }
 
-@media only screen and (max-width: 40.0624em) {
-    nav .top-bar-section li:not(.has-form) a:not(.button) {
-        height: 100%;
-        line-height: 1.75rem;
-    }
-    nav .top-bar-section li:not(.has-form) a:not(.button):hover {
-        background: #008CBA;
-        color: #fff;
-    }    
-    .title-area {
-        height: 50px;
-    }
-}
 @media only screen and (max-width: 767px) {
     .alt {
         display: block;
@@ -271,8 +215,8 @@ table {
     }
     #sidebar {
         width: 98%;
-        margin-left: 1%;
-        margin-top: 20px;
+        margin-left: 1%; /* diff */
+        margin-top: 20px; /* diff */
         clear: both;
         display: block;
         padding: 10px 0 10px 0;
@@ -281,7 +225,7 @@ table {
     }
     #copyright .right {
         margin-right: 0;
-    }
+    }                       /* GB END */
     #map-canvas {
         width: 98%;
         margin-left: 1%;

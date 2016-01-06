@@ -14,6 +14,9 @@
     <%= csrf_meta_tags %>
   </head>
 
+<div class="off-canvas-wrap" data-offcanvas>
+<div class="inner-wrap"> 
+    
   <body class='public'>
     <header>
       <%= render "layouts/menus/application_menu" %>
@@ -25,15 +28,24 @@
       <!-- subheader -->
     <%= yield :subheader %>
         
-    <div id="wrapper">
-            
+    <div id="wrapper">   
+        
         <!-- main content -->
         <%= yield :main %>        
         
             <!-- sidebar -->
             <%= yield :sidebar %>                
     </div>
-    <br>          
+
+<!-- CLOSE THE OFF-CANVAS MENU -->
+    <a class="exit-off-canvas"></a>
+ 
+    </div>
+</div>        
+<!-- END OFF CANVAS --> 
+    
+    <br> <!-- do not remove --> 
+    
     <footer align="center">
         <div class="row" id="footer">
             <div class="medium-4 columns footer-logo">
