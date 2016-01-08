@@ -3,7 +3,7 @@ require 'csv'
 module Api
 	class JsonController < ApplicationController
 		include ApplicationHelper
-		before_filter :check_admin?
+		before_filter :check_user
 		def map
 			if params["pin"]
 				render json: @sites = Legacy::LegacySite.find(params["pin"])
