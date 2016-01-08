@@ -14,7 +14,9 @@
     <span class='m-pin hidden'>all</span>
     
     <br> <!-- DO NOT REMOVE BREAK TAG -->
-    <div id="map-canvas"></div>
+    <div class='map-wrapper'>
+      <div id="worker-map-canvas" style="width: 95%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
+    </div>
     <%= image_tag "map_legend.png", :class => "legend"  %>
   </div>
 <% end %>
