@@ -35,21 +35,21 @@ p.notice {
 	position:relative;
 }
 .loading{
-background-image: image-url('loading.gif');
-height: 50%;
-width: 50%;
-z-index: 100;
-background-size: cover;
-background-position: center center;
-background-repeat: no-repeat;
-opacity: .6;
-position: absolute;
-margin-left: auto;
-margin-right: auto;
-left: 0;
-right: 0;
-top: 20%;
-border-radius: 147px;
+	background-image: image-url('loading.gif');
+	height: 25%;
+	width: 25%;
+	z-index: 100;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity: .6;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	top: 40%;
+	border-radius: 300px;
 }
 /*==================================================================================================*/
 
