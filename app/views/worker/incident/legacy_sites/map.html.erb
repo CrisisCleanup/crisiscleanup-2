@@ -2,9 +2,8 @@
     Crisis Cleanup - Print
 <% end %>
 
+<% content_for :subheader do %>
 
-<% content_for :subheader do %> 
- 
 <% end %>
 
 <% content_for :main do %>
@@ -12,7 +11,7 @@
     <!-- DO NOT REMOVE BREAK TAG or these spans-->
     <span class='m-id hidden'><%= @legacy_event.id %></span>
     <span class='m-pin hidden'>all</span>
-    
+
     <br> <!-- DO NOT REMOVE BREAK TAG -->
     <div class='map-wrapper'>
       <div id="worker-map-canvas" style="width: 95%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
@@ -20,8 +19,8 @@
     <%= image_tag "map_legend.png", :class => "legend"  %>
   </div>
 <% end %>
-        
-<% content_for :sidebar do %>        
+
+<% content_for :sidebar do %>
   <div id="sidebar">
     <h4>Incident Map Tools</h4>
         <ul class="tabs" data-tab>
@@ -35,7 +34,7 @@
           <div class="content" id="panel2">
 <!--        <p><div id="filters">
             <h5>Use filters below to display custom results on the map</h5>
-            <p>Edit a specific incident, or populate the map with custom filters.</p>              
+            <p>Edit a specific incident, or populate the map with custom filters.</p>
             <p><strong>Only show the following types:</strong></p> -->
             <!-- <form>
             <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="claimed">
@@ -61,10 +60,10 @@
 
             <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Goods or Services">
             <label for="Goods or Services">Need: Goods and services</label><br /></p>
-            </form>           --> 
+            </form>           -->
 
           </div>
         </div>
-      </div>   
+      </div>
 </div>
-<% end %>        
+<% end %>
