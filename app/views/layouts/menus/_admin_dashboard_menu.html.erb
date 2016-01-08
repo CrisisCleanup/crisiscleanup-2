@@ -1,19 +1,22 @@
-<!-- example admin dashboard nav -->
-<nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="<%=admin_dashboard_index_path%>">Admin Dashboard</a></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
+<!-- LARGE SCREEN TOP BAR MENU -->
+<section class="navigation-section show-for-large-up">
 
-  <section class="top-bar-section">
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li class="has-dropdown">
+            <!-- TOP BAR INITIALIZATION -->
+            <nav class="top-bar" data-topbar>
+                <ul class="title-area">
+                    <li class="name">
+                        <a href="/">
+                            <%=image_tag "ccu-logo-white.png", :alt=> "Crisis Cleanup Home" %></a>
+                    </li>
+                </ul>
+                <!-- END UL.TITLE-AREA -->
+
+                <!-- TOP BAR MENU ELEMENTS -->
+                <section class="top-bar-section">
+                    <ul class="right" data-dropdown-menu data-click-open="false">
+                        <li class="has-dropdown">
         <a href="#">Legacy Models</a>
-        <ul class="dropdown">
+        <ul class="dropdown" >
           <li class='legacy_events'>
             <a href=<%=admin_legacy_events_path%>>Legacy Events</a>
           </li>
@@ -117,10 +120,163 @@
         <a href=<%=admin_csv_import_form_path%>>Import</a>
       </li>
       <% if current_user %>
-          <li class="login"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
       <% else %>
-          <li class="login"><%= link_to "Login", new_user_session_path %></li> 
+          <li><%= link_to "Login", new_user_session_path %></li> 
       <% end %>
     </ul>
-  </section>
-</nav>
+                </section>
+                <!-- END SECTION.TOP-BAR-SECTION -->
+            </nav>
+            <!-- END NAV.TOP-BAR -->
+</section>
+<!-- END SECTION.NAVIGATION-SECTION -->
+
+        <!-- OFF CANVAS MENU BAR -->
+        <nav class="tab-bar hide-for-large-up">
+
+            <section class="left">
+                        <a href="/" class="name">
+                            <%=image_tag "ccu-logo-white.png", :alt=> "Crisis Cleanup Home" %></a>
+                </ul>
+            </section>
+
+            <section class="right-small tab-bar-section">                
+                <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+            </section>
+
+        </nav>
+        <!-- END NAV.TAB-BAR HIDE-FOR-LARGE-UP -->
+
+        <!-- OFF CANVAS MENU -->
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li>
+                    <label>Navigation</label>
+                </li>
+            </ul>
+            <ul class="off-canvas-list">
+                <li class="has-submenu"><a href="#">Legacy Models</a>
+                    <ul class="left-submenu">
+                    <li class="back"><a href="#">Back</a></li>
+                      <li><label>Legacy Models</label></li>
+                      <li class='legacy_events'>
+                        <a href=<%=admin_legacy_events_path%>>Legacy Events</a>
+                      </li>
+                      <li class='legacy_sites'>
+                        <a href=<%=admin_legacy_sites_path%>>Legacy Sites</a>
+                      </li>
+                      <li class='legacy_organizations'>
+                        <a href=<%=admin_legacy_organizations_path%>>Legacy Organizations</a>
+                      </li>
+                      <li class='legacy_contacts'>
+                        <a href=<%=admin_legacy_contacts_path%>>Legacy Contacts</a>
+                      </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="off-canvas-list">
+              <li class="has-submenu"><a href="#">Public Pages</a>
+                <ul class="left-submenu">
+                  <li class="back"><a href="#">Back</a></li>
+                    <li><label>Public pages</label></li>
+                  <li class='home'>
+                    <a href=<%=root_path%>>Home Page</a>
+                  </li>
+                  <li class='about'>
+                    <a href=<%=about_path%>>About</a>
+                  </li>
+                  <li class='privacy'>
+                    <a href=<%=privacy_path%>>Privacy</a>
+                  </li>
+                  <li class='terms'>
+                    <a href=<%=terms_path%>>Terms</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="off-canvas-list">
+                <li class="has-submenu"><a href="#">Incident Pages</a>
+                <ul class="left-submenu">
+                  <li class="back"><a href="#">Back</a></li>
+                    <li><label>Incident Pages</label></li>
+                      <li class="has-submenu"><a href="#">Forms</a>
+                        <ul class="left-submenu">
+                            <li class="back"><a href="#">Back</a></li>
+                                  <li><label>Forms</label></li>
+                          <% Legacy::LegacyEvent.all.each do |event| %>
+                            <% if event.form.present? %>
+                              <li class='incident_form'>
+                                <a href=<%=edit_admin_legacy_event_form_path(event.id, event.form.id)%>> <%= event.name %></a>
+                              </li>
+                            <%end%>
+                          <% end %>
+                        </ul>
+                      </li>
+                  <li class="has-submenu"><a href="#">Maps</a>
+                    <ul class="left-submenu">
+                        <li class="back"><a href="#">Back</a></li>
+                            <li><label>Maps</label></li>
+                      <% Legacy::LegacyEvent.all.each do |event| %>
+                        <li class='incident_map'>
+                          <a href=<%=worker_incident_legacy_map_path(event.id)%>> <%= event.name %></a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+
+                  <li class="has-submenu"><a href="#">Sites</a>
+                    <ul class="left-submenu">
+                        <li class="back"><a href="#">Back</a></li>
+                            <li><label>Sites</label></li>
+                      <% Legacy::LegacyEvent.all.each do |event| %>
+                        <li class='incident_sites'>
+                          <a href=<%=worker_incident_legacy_sites_index_path(event.id)%>> <%= event.name %></a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+
+                  <li class="has-submenu"> <a href="#">Organizations</a>
+                    <ul class="left-submenu">
+                        <li class="back"><a href="#">Back</a></li>
+                            <li><label>Organizations</label></li>
+                      <% Legacy::LegacyEvent.all.each do |event| %>
+                        <li class='incident_sites'>
+                          <a href=<%=worker_incident_legacy_organizations_path(event.id)%>> <%= event.name %></a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+
+                  <li class="has-submenu"><a href="#">Contacts</a>
+                    <ul class="left-submenu">
+                        <li class="back"><a href="#">Back</a></li>
+                            <li><label>Contacts</label></li>
+                      <% Legacy::LegacyEvent.all.each do |event| %>
+                        <li class='incident_sites'>
+                          <a href=<%=worker_incident_legacy_contacts_path(event.id)%>> <%= event.name %></a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>      
+            <ul class="off-canvas-list">        
+              <li class="users">
+                <a href=<%=admin_users_path%>>Users</a>
+              </li>
+              <li class="stats">
+                <a href=<%=admin_stats_path%>>Stats</a>
+              </li>
+              <li class="import">
+                <a href=<%=admin_csv_import_form_path%>>Import</a>
+              </li>
+              <% if current_user %>
+                  <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+              <% else %>
+                  <li><%= link_to "Login", new_user_session_path %></li> 
+              <% end %>
+            </ul>
+        </aside>

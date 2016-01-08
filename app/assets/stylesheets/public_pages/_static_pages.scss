@@ -1,4 +1,7 @@
-// Global & Full-Width
+/* PUBLIC PAGES
+   ----------------------------- */
+
+/* GB START */
 html,
 body {
     width: 100%;
@@ -6,46 +9,19 @@ body {
 }
 
 header {
-    height: 125px;
+    height: auto;
 }
 
 .name img {
-    width: 175px;
-    margin-top: 10px;
-    height: auto;
+    width: auto;
+    margin-top: 2.5px;
+    height: 40px;
     vertical-align: middle;
     margin-left: 20px;
 }
 
-nav.top-bar {
-    //needs separate declaration away from nest
-    height: 125px;
-    background-image: image-url('black_bg.jpg');
-    background-repeat: repeat;
-    background-position: center;
-}
-
-nav {
-    .top-bar-section {
-        margin-right: 20px;
-    }
-    .top-bar-section li:not(.has-form) a:not(.button) {
-        background: transparent;
-        color: $goldenrod;
-        font-size: 16px;
-    }
-    .top-bar-section ul li {
-        background: transparent;
-    }
-    ul.top-bar.expanded,
-    ul.title-area {
-        height: 125px;
-    }
-}
-
-.top-bar.expanded {
-    z-index: 300;
-    height: 350px;
+nav li {
+    margin-bottom:0px;
 }
 
 .alert_menu {
@@ -60,6 +36,7 @@ nav {
     border-color: gainsboro;
     border-radius: 3px;
     text-align: center;
+    width: 100%;
 }
 
 .subheader {
@@ -69,6 +46,8 @@ nav {
         color: $royal;
     }
 }
+
+/* GB END */
 
 #wrapper {
     max-width: 96%;
@@ -98,7 +77,7 @@ nav {
     display: table-cell;
     background-color: gainsboro;
     border-radius: 5px 5px;
-    border: 2px dashed $smoke;
+    border: 2px solid $smoke;
     & h4, p, ul li {
         width: 90%;
         margin-left: 5%;
@@ -148,7 +127,7 @@ footer {
         margin: 3% 0 5px 0;
     }
     & .medium-8 .medium-4.columns {
-        border-left: 1px dashed #fff;
+        border-left: 1px solid #fff;
     }
 }
 
@@ -157,7 +136,7 @@ footer {
     color: #fff;
     max-width: 100rem;
     text-align: center;
-    border-top: 1px dashed #fff;
+    border-top: 1px solid #fff;
     padding: 5px 0 5px 0;
     & .columns p {
         margin: 0;
@@ -236,11 +215,28 @@ footer {
 .timeline {
     scroll: auto;
     & p {
-        border-bottom: 1px dashed $off-white;
+        border-bottom: 1px solid $off-white;
     }
 }
 
-.incident-map {}
+// Map
+.map-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height:600px;
+    background-color: $smoke;
+    margin-top: -41px;
+}
+.legend {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  margin-top: -215px;
+  background-color: #ffffff;
+  opacity: .8;
+  padding: 0px;
+  max-width: 200px;
+}
 
 .home-icons {
     margin: 40px 0 0 0;
@@ -331,52 +327,17 @@ footer {
 }
 
 
-// Media Queries
-@media only screen and (min-width: 1024px) { /* default 40.0625em */
-    // Foundatin default width
-    nav .top-bar-section li.active:not(.has-form) a:not(.button) {
-        border-radius: 5px 5px;
-        border: 1px dashed #fff;
-        padding: 5px 0 5px 0;
-        margin-left: 5px;
-    }
-    nav .top-bar-section li:not(.has-form) a:not(.button) {
-        width: 80px;
-        text-align: center;
-        padding: 5px 0 5px 0;
-        margin-left: 5px;
-        transition: all 0.5s ease;
-        &:hover {
-            background: #008CBA;
-            color: #fff;
-            border-radius: 10px 10px;
-            border: 1px dashed #fff;
-        }
-    }
-    nav .top-bar-section ul li {
-        margin-top: 2.5em;
-    }
-}
-
-@media only screen and (max-width: 1024px) { /* default 40.0625em */
-    nav .top-bar-section li:not(.has-form) a:not(.button):hover {
-        background: #008CBA;
-        color: #fff;
-    }
-    nav .top-bar-section {
-        width: 100%;
-        height: 100%;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-}
-
 @media only screen and (max-width: 1024px) {
     .incident-map img {
         margin-bottom: 40px;
     }
+    .name img {
+    margin-top: 0;
+    
+    }
 }
 
+/* GB START */
 @media only screen and (max-width: 767px) {
     .alt {
         display: block;
@@ -398,3 +359,4 @@ footer {
         margin-right: 0;
     }
 }
+/* GB END */

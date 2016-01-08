@@ -10,6 +10,8 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 </head>
+<div class="off-canvas-wrap" data-offcanvas>
+<div class="inner-wrap">     
 <body class='admin-dashboard'>
 <div class="container">
     <%= render 'layouts/menus/admin_dashboard_menu' %>
@@ -17,5 +19,10 @@
     <p class="alert"><%= alert %></p> 
     <%= yield %>
 </div>
+<!-- CLOSE THE OFF-CANVAS MENU -->
+    <a class="exit-off-canvas"></a>
+ 
+</div>        
+</div> <!-- END OFF CANVAS -->     
 </body>
 </html>

@@ -1,29 +1,94 @@
-<nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home"  %></a>
-    </li>
-    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-  <!-- right side navigation -->
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <%= nav_link "Home", root_path %>
-      <%= nav_link "About", about_path %>
-      <%= nav_link "Map", public_map_path %>
-      <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
-      <%= nav_link "Sign Up", register_path %>
-      <% if current_user %>
-        <li><%= link_to "Dashboard", worker_dashboard_path %></li>
-        <% if current_user.admin %>
-          <li><%= link_to "Admin", admin_path%></li>
-        <% end %>
-        <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-      <% else %>
-        <%= nav_link "Login", new_user_session_path %>
-      <% end %>
-    </ul>
-  </section>
-</nav>
+<!-- LARGE SCREEN TOP BAR MENU -->
+<section class="navigation-section show-for-large-up">
+
+            <!-- TOP BAR INITIALIZATION -->
+            <nav class="top-bar" data-topbar>
+                <ul class="title-area">
+                    <li class="name">
+                        <a href="/">
+                            <%=image_tag "ccu-logo-white.png", :alt=> "Crisis Cleanup Home" %></a>
+                    </li>
+                </ul>
+                <!-- END UL.TITLE-AREA -->
+
+                <!-- TOP BAR MENU ELEMENTS -->
+                <section class="top-bar-section">
+                    <ul class="right" data-dropdown-menu data-click-open="false">
+                        <li><%=nav_link "Home", root_path %></li>
+                            <li><%=nav_link "About", about_path %></li>
+                                <li><%=nav_link "Map", public_map_path %></li>
+                                    <li><a href="http://blog.crisiscleanup.org/">Blog</a>
+                                    </li>
+                        <li><%=nav_link "Sign Up", register_path %></li>
+                                        <% if current_user %>
+                                            <li>
+                                                <%=link_to "Dashboard", worker_dashboard_path %>
+                                            </li>
+                                            <% if current_user.admin %>
+                                                <li>
+                                                    <%=link_to "Admin", admin_path%>
+                                                </li>
+                                                <% end %>
+                                                    <li>
+                                                        <%=link_to "Logout", destroy_user_session_path, :method=> :delete %></li>
+                                                    <% else %>
+                                                        <li>
+                                                            <%=link_to "Login", new_user_session_path %>
+                                                        </li>
+                                                        <% end %>
+                    </ul>
+                </section>
+                <!-- END SECTION.TOP-BAR-SECTION -->
+            </nav>
+            <!-- END NAV.TOP-BAR -->
+</section>
+<!-- END SECTION.NAVIGATION-SECTION -->
+
+        <!-- OFF CANVAS MENU BAR -->
+        <nav class="tab-bar hide-for-large-up">
+
+            <section class="left">
+                        <a href="/" class="name">
+                            <%=image_tag "ccu-logo-white.png", :alt=> "Crisis Cleanup Home" %></a>
+                </ul>
+            </section>
+
+            <section class="right-small tab-bar-section">                
+                <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+            </section>
+
+        </nav>
+        <!-- END NAV.TAB-BAR HIDE-FOR-LARGE-UP -->
+
+        <!-- OFF CANVAS MENU -->
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li>
+                    <label>Navigation</label>
+                </li>
+                <%=nav_link "Home", root_path %>
+                    </li>
+            </ul>
+            <ul class="off-canvas-list">
+                <li><%=nav_link "About", about_path %></li>
+                <li><%=nav_link "Map", public_map_path %></li>
+                        <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
+                        <li><%=nav_link "Sign Up", register_path %>
+                            <% if current_user %>
+                                <li>
+                                    <%=link_to "Dashboard", worker_dashboard_path %>
+                                </li>
+                                <% if current_user.admin %>
+                                    <li>
+                                        <%=link_to "Admin", admin_path%>
+                                    </li>
+                                    <% end %>
+                                        <li>
+                                            <%=link_to "Logout", destroy_user_session_path, :method=> :delete %></li>
+                                        <% else %>
+                                            <li>
+                                                <%=link_to "Login", new_user_session_path %>
+                                            </li>
+                                            <% end %>
+            </ul>
+        </aside>
