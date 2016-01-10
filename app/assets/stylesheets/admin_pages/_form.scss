@@ -1,30 +1,6 @@
-// Global
-.row {
-    clear: both;
-}
-.columns {
-    margin-bottom: 10px;
-}
-.top-bar {
-    margin-bottom: 40px;
-}
-.top-bar-section {
-    & .active {
-        background: $royal;
-        color: #fff;
-    }
-    & li:not(.has-form) a:not(.button) {
-        background: transparent;
-        font-size: 16px;
-        &:hover {
-            background: $royal;
-            color: #fff;
-        }  
-    }
-    & .dropdown li {
-        margin: 0;
-    }
-}
+/* ADMIN DASHBOARD
+   ----------------------------- */
+
 hr {
     width: 97%;
     margin-left: 1.5%;
@@ -55,19 +31,3 @@ label {
         margin: 0 0 10px 0;
     }
 }
-
-.f-dropdown.open {
-    height: 250px;
-    overflow: scroll;
-    & li:hover {
-        background: $royal;
-        color: #fff;
-    }
-}
-li.tab-title.active a {
-    background: $royal;
-    color: #fff;
-}
-
-// Media Queries
-@media only screen and (max-width: 767px) {}

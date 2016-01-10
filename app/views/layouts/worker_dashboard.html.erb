@@ -11,16 +11,20 @@
 </head>
 <body class='<%= @body.present? ? @body : "worker-dashboard" %>'>
     <%= render 'layouts/menus/worker_dashboard_menu' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> 
     <%= yield %>
 
+    <!-- alert menu -->
+    <%= render "layouts/menus/alert_menu" %>
       
     <!-- subheader -->
     <%= yield :subheader %>
       
     <div id="wrapper">
-    <!-- main content -->              
+    <!-- main content -->  
+        
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> 
+        
         <%= yield :main %>        
         
             <!-- sidebar -->

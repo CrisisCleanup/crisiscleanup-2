@@ -25,16 +25,62 @@
 @import "compass";
 @import 'foundation-icons';
 
-/*==================================================================================================*/
-/* GLOBAL STYLES FOR PUBLIC, USER, & ADMIN GO HERE */
+/* GLOBAL STYLES
+   ----------------------------- */
 
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+header {
+    height: auto;
+}
+.name img {
+    width: auto;
+    height: 40px;
+    margin-top: 2.5px;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+.top-bar li {
+    margin-bottom: 0;
+}
+.row {
+    clear: both;
+    max-width: 100%!important; /* offsets default 62.5em default */
+}
+.columns {
+    margin-bottom: 10px;
+}
+.alert_menu {
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    list-style: none;
+    margin-left: 0;
+    overflow: hidden;
+    padding: 0.5625rem 0.875rem 0.5625rem;
+    background-color: #f4f4f4;
+    border-color: gainsboro;
+    border-radius: 3px;
+    text-align: center;
+}
+.subheader {
+    padding-top: 20px;
+    text-align: center;
+    & h2 {
+        color: $royal;
+        margin-left: 1.5%;
+    }
+}
 p.notice {
     text-align: center;
 }
 .map-wrapper{
 	position:relative;
 }
-.loading{
+.loading {
 	background-image: image-url('loading.gif');
 	height: 25%;
 	width: 25%;
@@ -50,6 +96,14 @@ p.notice {
 	right: 0;
 	top: 40%;
 	border-radius: 300px;
+}
+@media screen and (min-width: 1024px) {
+    .top-bar-section li.active:not(.has-form) a:not(.button) {
+        background: #008CBA;
+        color: #FFFFFF;
+        line-height: 2.8125rem;
+        padding: 0 0.9375rem;
+    }
 }
 /*==================================================================================================*/
 
