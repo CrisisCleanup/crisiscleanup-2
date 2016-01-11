@@ -23,47 +23,16 @@
 <% content_for :sidebar do %>
   <div id="sidebar">
     <h4>Incident Map Tools</h4>
-        <ul class="tabs" data-tab>
-          <li class="tab-title active"><a href="#panel1">Edit Form</a></li>
-          <li class="tab-title"><a href="#panel2">Filters</a></li>
-        </ul>
-        <div class="tabs-content">
-          <div class="content active" id="panel1">
-            <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
-          </div>
-          <div class="content" id="panel2">
-<!--        <p><div id="filters">
-            <h5>Use filters below to display custom results on the map</h5>
-            <p>Edit a specific incident, or populate the map with custom filters.</p>
-            <p><strong>Only show the following types:</strong></p> -->
-            <!-- <form>
-            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="claimed">
-            <label for="claimed">Claimed by Admin</label><br />
-
-            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="unclaimed">
-            <label for="unclaimed">Unclaimed</label><br />
-
-            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="open">
-            <label for="open">Open</label><br />
-
-            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="closed">
-            <label for="closed">Closed</label><br />
-
-            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="reported">
-            <label for="reported">Reported by Admin</label><br />
-
-            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Flood">
-            <label for="Flood">Problem: Flood damage</label><br />
-
-            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Trees">
-            <label for="Trees">Problem: Trees</label><br />
-
-            <input type="checkbox" onClick="sandy.map.Refilter()" name="filter" id="Goods or Services">
-            <label for="Goods or Services">Need: Goods and services</label><br /></p>
-            </form>           -->
-
-          </div>
-        </div>
+    <ul class="tabs" data-tab>
+      <li class="tab-title active"><a href="#panel1">Edit Form</a></li>
+      <li class="tab-title"><a href="#panel2">Filters</a></li>
+    </ul>
+    <div class="tabs-content">
+      <div class="content active" id="panel1">
+        <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
       </div>
-</div>
+      <div class="content" id="panel2">
+      </div>
+    </div>
+  </div>
 <% end %>
