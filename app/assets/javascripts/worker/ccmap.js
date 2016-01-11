@@ -3,7 +3,18 @@ var markers = [];
 var map;
 var markerCluster;
 var markerBounds = new google.maps.LatLngBounds();
+var iconDir = '/assets/map_icons/';
 
+/**
+ * Initializes a Google map object
+ * @constructor
+ * @param {Object} params - The configuration paramters
+ * @param {string} params.elm - The id of the map div
+ * @param {number} params.event_id - The id of the event
+ * @param {number} [params.zoom] - The initial zoom level of the map
+ * @param {number} [params.lat] - Latitude of the initial map center
+ * @param {number} [params.lng] - Longitutde of the initial map center
+ */
 function CCMAP(params) {
   this.canvas = document.getElementById(params.elm);
   this.worker =  params.elm != 'public-map-canvas' ? true : false;
@@ -20,6 +31,10 @@ function CCMAP(params) {
   map = new google.maps.Map(this.canvas, this.options)
 }
 
+/**
+ * Fetch the sites for the incident
+ * @param {number} id - The event id
+ */
 CCMAP.prototype.buildMarkers = function(id) {
   $('.map-wrapper').append('<div class="loading"></div>')
   this.incident = id;
@@ -27,29 +42,30 @@ CCMAP.prototype.buildMarkers = function(id) {
   lat = this.worker ? "latitude" : "blurred_latitude";
   lng = this.worker ? "longitude" : "blurred_longitude";
   $.ajax({
-      type: "GET",
-      url: route,
-      success: function(data) {
-        clearOverlays();
-        if (data.length > 0) {
-          $.each(data, function(index, obj) {
-            markerBounds.extend(new google.maps.LatLng(parseFloat(obj[lat]), parseFloat(obj[lng])));
-            var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(parseFloat(obj[lat]), parseFloat(obj[lng])),
-              map: map
-            });
-            markers.push(marker);
-          })
-          markerCluster = new MarkerClusterer(map, markers);
-          map.fitBounds(markerBounds);
-          $('.loading').remove();
-        } else {
-          alert("no reported incidents");
-        }
-      },
-      error: function() {
-        alert('500 error');
-     }
+    type: "GET",
+    url: route,
+    success: function(data) {
+      clearOverlays();
+      if (data.length > 0) {
+        $.each(data, function(index, obj) {
+          markerBounds.extend(new google.maps.LatLng(parseFloat(obj[lat]), parseFloat(obj[lng])));
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(parseFloat(obj[lat]), parseFloat(obj[lng])),
+            map: map,
+            icon: generateIconFilename(obj)
+          });
+          markers.push(marker);
+        })
+        markerCluster = new MarkerClusterer(map, markers);
+        map.fitBounds(markerBounds);
+        $('.loading').remove();
+      } else {
+        alert("no reported incidents");
+      }
+    },
+    error: function() {
+      alert('500 error');
+    }
   });
 }
 
@@ -61,4 +77,9 @@ var clearOverlays = function() {
   if (typeof markerCluster !== 'undefined'){
     markerCluster.clearMarkers();
   }
+}
+
+// TODO: check if the file exists on the server or some other validation here.
+var generateIconFilename = function(obj) {
+  return iconDir + obj.work_type + '_black.png';
 }
