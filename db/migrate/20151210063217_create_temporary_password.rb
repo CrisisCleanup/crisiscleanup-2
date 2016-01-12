@@ -1,4 +1,4 @@
-# class CreateTemporaryPassword < ActiveRecord::Migration
+class CreateTemporaryPassword < ActiveRecord::Migration
   def change
     create_table :temporary_passwords do |t|
     	t.integer :created_by
