@@ -1,7 +1,7 @@
 $(document).on("ready page:load",function() {
 
     $( "#model_filters_button" ).click(function() {
-        
+
         var verified = $("#verified_select").val();
         var active = $("#active_select").val();
 
@@ -11,7 +11,6 @@ $(document).on("ready page:load",function() {
         }
         current_url = current_url + "?"
         $( "select" ).each(function( i ) {
-            console.log("select each" + $(this).attr("id") );
             var name = $(this).attr("id").replace("_select", "");
             var value = $(this).val();
             current_url = current_url + "" + name + "=" + value + "&";
@@ -20,14 +19,9 @@ $(document).on("ready page:load",function() {
     });
 
     var vars = getUrlVars();
-    console.log(vars);
-    console.log(vars.length);
     for (i = 0; i < vars.length; i++) { 
-        console.log("get vars");
         var key = vars[i];
         var value = vars[key];
-        console.log(key);
-        console.log(value);
         // if not undefined
         var element = "#" + key + "_select option[value='" + value + "']";
         $(element).attr("selected", "selected");
