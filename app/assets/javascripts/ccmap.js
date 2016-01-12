@@ -4,6 +4,19 @@ var map;
 var markerCluster;
 var markerBounds = new google.maps.LatLngBounds();
 var iconDir = '/assets/map_icons/';
+var unclaimedStatusColorMap = {
+  "Open, unassigned": "orange",
+  "Open, assigned": "yellow",
+  "Open, partially completed": "yellow",
+  "Open, partially completed": "yellow",
+  "Closed, completed": "green",
+  "Closed, incomplete": "gray",
+  "Closed, out of scope": "gray",
+  "Closed, done by others": "gray",
+  "Closed, no help wanted": "xgray",
+  "Closed, rejected": "xgray",
+  "Closed, duplicate": "xgray"
+};
 
 /**
  * Initializes a Google map object
@@ -17,7 +30,7 @@ var iconDir = '/assets/map_icons/';
  */
 function CCMAP(params) {
   this.canvas = document.getElementById(params.elm);
-  this.worker =  params.elm != 'public-map-canvas' ? true : false;
+  this.worker =  params.elm !== 'public-map-canvas' ? true : false;
   this.incident = params.event_id;
   this.zoom = typeof params.zoom !== 'undefined' ? params.zoom : 4;
   this.latitude = typeof params.lat !== 'undefined' ? params.lat : 39;
@@ -81,5 +94,11 @@ var clearOverlays = function() {
 
 // TODO: check if the file exists on the server or some other validation here.
 var generateIconFilename = function(obj) {
-  return iconDir + obj.work_type + '_black.png';
+  var color;
+  if (obj.claimed_by) {
+    color = unclaimedStatusColorMap[obj.status];
+  } else {
+    color = "red";
+  }
+  return iconDir + obj.work_type + '_' + color + '.png';
 }
