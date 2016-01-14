@@ -4,6 +4,94 @@
 
 
 <% content_for :subheader do %>
+  <style type="text/css">
+
+
+ol.custom {
+  list-style-type: none;
+  margin-left: 0;
+  counter-reset: item;
+}
+
+ol.custom > li {
+  counter-increment: customlistcounter;
+  display: block;
+}
+
+ol.custom:first-child, ol.custom:second-child {
+  counter-reset: customlistcounter;
+}
+
+ol.custom > li:before {
+  counter-increment: item;
+  /*content: "#" counter(customlistcounter);*/
+  font-weight: bold;
+  float: left;
+  width: 3em;
+}
+
+ol.one > li:before {
+  content: "1." counters(item, ".") " ";
+}
+
+ol.two > li:before {
+  content: "2." counters(item, ".") " ";
+}
+
+ol.three > li:before {
+  content: "3." counters(item, ".") " ";
+}
+
+ol.four > li:before {
+  content: "4." counters(item, ".") " ";
+}
+
+ol.five > li:before {
+  content: "5." counters(item, ".") " ";
+}
+
+ol.six > li:before {
+  content: "6." counters(item, ".") " ";
+}
+
+ol.seven > li:before {
+  content: "7." counters(item, ".") " ";
+}
+
+ol.eight > li:before {
+  content: "8." counters(item, ".") " ";
+}
+
+ol.nine > li:before {
+  content: "9." counters(item, ".") " ";
+}
+
+ol.ten > li:before {
+  content: "10." counters(item, ".") " ";
+}
+
+ol.eleven > li:before {
+  content: "11." counters(item, ".") " ";
+}
+
+ol.twelve > li:before {
+  content: "12." counters(item, ".") " ";
+}
+
+ol.thirteen > li:before {
+  content: "13." counters(item, ".") " ";
+}
+
+ol.fourteen > li:before {
+  content: "14." counters(item, ".") " ";
+}
+
+ol.fifteen > li:before {
+  content: "15." counters(item, ".") " ";
+}
+
+</style>
+
 <div class="subheader">
     <h2>Code of Conduct, Terms, and Conditions</h2>
     <h4 class="basic">Please read these terms and conditions carefully.<br> 
@@ -23,7 +111,7 @@
         <p>The Code of Conduct outlines your basic responsibilities and obligations. You agree that:</p>
             <ul>
                 <li>You will use the Service and Website only for non-commercial disaster recovery efforts.</li>
-                <li>You understand that Crisis Cleanup is used to store information about <em>property</em>, rather than <em>people</em>, and you will never use the Service store social security numbers, medical records numbers, bank account numbers, credit card information, sensitive personal information, or personal information about minors.</li>
+                <li>You agree to use Crisis Cleanup to store information about <em>property</em>, rather than <em>people</em>, and you will never use the Service store social security numbers, medical records numbers, bank account numbers, credit card information, case management information, sensitive personal information, or personal information about minors.</li>
                 <li>You will only store information directly related to property cleanup and restoration.</li>
                 <li>You represent a reputable not-for-profit organization that does cleanup or rebuilding work, which has a physical presence in the disaster area.</li>
                 <li>You will safeguard your password(s), and immediately report if it is compromised.</li>
@@ -39,98 +127,104 @@
         
         <h3>3. Definitions</h3>
         <p>The terms below are defined for the purposes of these Terms and Condition as follows:</p>
-            <ul class="custom">
-                <li><strong>3.1 Company</strong>, "we", "us", or "our": Means Crisis Cleanup LLC, a New Jersey Limited Liability Corporation.</li>
-                <li><strong> 3.2 Website:</strong> Means the website located at <a href="http://www.crisiscleanup.org">CrisisCleanup.org</a>, including all subdomains and other domains related to the Service, operated or powered by us.</li>
-                <li><strong>3.3 Service:</strong> Means all current and future services provided on the Website as described herein or otherwise offered at the Website, or through another medium, such as a smart phone app; including, but not limited to work order, canvassing, and damage mapping, and tools to assist cleanup and rebuilding after an Incident.</li>
-                <li><strong>3.4 Third Party Service:</strong> Means all services or features provided by third parties that integrate to some degree with the Service.</li>
-                <li><strong>3.5 You, or User:</strong> Means any entity which visits the Website or uses the Service, including the organization you represent.</li>
-                <li><strong>3.6 Client:</strong> Means an individual with whom your organization interacts, whose contact information is stored by the Service.</li>
-                <li><strong>3.7 Incident:</strong> A disaster for which the Service is used to coordinate cleanup or restoration activities.</li>
-                <li><strong>3.8 Your Materials:</strong> Means any client information, location data, content, text, recording, images, video or other content you submit to the Service directly or through a Third Party Service.</li>
-                <li><strong>3.9 Trademarks:</strong> Means certain intellectual property owned or licensed by the Company that used to describe the Company, Website, or Service. In particular "Trademarks" means, without limitation:</li>
-                <li class="indent"><strong>3.9.1</strong> The name, "Crisis Cleanup" and the domain, "CrisisCleanup.org."</li>
-                <li class="indent"><strong>3.9.2</strong> The Crisis Cleanup logo.</li>
-                <li class="indent"><strong>3.9.3</strong> Any other distinctive marks reasonably calculated to distinguish the Company, Website or Service.</li>
-                <li class="indent"><strong>3.9.4</strong> The Company makes no intellectual property claims upon the trademarks of other organizations which may be referenced on the Service.</li>
-            </ul>
+            <ol class="custom three">
+                <li><strong>Company</strong>, "we", "us", or "our": Means Crisis Cleanup LLC, a New Jersey Limited Liability Corporation.</li>
+                <li><strong>Website:</strong> Means the website located at <a href="http://www.crisiscleanup.org">CrisisCleanup.org</a>, including all subdomains and other domains related to the Service, operated or powered by us.</li>
+                <li><strong>Service:</strong> Means all current and future services provided on the Website as described herein or otherwise offered at the Website, or through another medium, such as a smart phone app; including, but not limited to work order, canvassing, and damage mapping, and tools to assist cleanup and rebuilding after an Incident.</li>
+                <li><strong>Third Party Service:</strong> Means all services or features provided by third parties that integrate to some degree with the Service.</li>
+                <li><strong>You, or User:</strong> Means any entity which visits the Website or uses the Service, including the organization you represent.</li>
+                <li><strong>Client:</strong> Means an individual with whom your organization interacts, whose contact information is stored by the Service.</li>
+                <li><strong>Incident:</strong> A disaster for which the Service is used to coordinate cleanup or restoration activities.</li>
+                <li><strong>Your Materials:</strong> Means any client information, location data, content, text, recording, images, video or other content you submit to the Service directly or through a Third Party Service.</li>
+                <li><strong>Trademarks:</strong> Means certain intellectual property owned or licensed by the Company that used to describe the Company, Website, or Service. In particular "Trademarks" means, without limitation:</li>
+                <ul>
+                    <li class="indent"><strong>3.9.1</strong> The name, "Crisis Cleanup" and the domain, "CrisisCleanup.org."</li>
+                    <li class="indent"><strong>3.9.2</strong> The Crisis Cleanup logo.</li>
+                    <li class="indent"><strong>3.9.3</strong> Any other distinctive marks reasonably calculated to distinguish the Company, Website or Service.</li>
+                    <li class="indent"><strong>3.9.4</strong> The Company makes no intellectual property claims upon the trademarks of other organizations which may be referenced on the Service.</li>
+                </ul>
+            </ol>
             
         <h3>4. Your Acceptance</h3>
-            <ul class="custom">
-                <li><strong>4.1</strong> In accordance with the Terms and Conditions, by accessing the Service, you agree that you:</li>
-                <li class="indent"><strong>4.1.1</strong> shall be bound by the Terms and Conditions;</li>
-                <li class="indent"><strong>4.1.2</strong> shall comply with the Privacy and Security Policy set forth at <a href="http://www.CrisisCleanup.org/privacy">http://www.CrisisCleanup.org/privacy</a>, as revised from time to time by the Company;</li>
-                <li class="indent"><strong>4.1.3</strong> shall comply with any <a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies">policies</a>, technical specifications, rules of operation, or security procedures set forth by the Company from time to time on the Website.</li>
-                <li><strong>4.1.4 Modification.</strong> The Company may, at its sole discretion, from time to time, revise or modify these Terms and Conditions by posting the revised Terms and Conditions on the Website. While the Company will endeavor to provide notice to you of any material changes to these Terms and Conditions, whether or not we provide notice to you, you shall be bound by the revised Terms and Conditions for all subsequent uses of the Service after such modifications have been made. It is therefore your responsibility to review the most up-to-date version of the Terms and Conditions. Accordingly, each time you use the Website you should check the date of this Policy (which appears at the end of this document) and review any changes since the last time you used the site. If you do not agree to any of the Terms and Conditions set forth herein, you should not use the Service.</li>
-            </ul> 
+            <ol class="custom four">
+                <li>In accordance with the Terms and Conditions, by accessing the Service, you agree that you:</li>
+                <ul>
+                    <li class="indent"><strong>4.1.1</strong> shall be bound by the Terms and Conditions;</li>
+                    <li class="indent"><strong>4.1.2</strong> shall comply with the Privacy and Security Policy set forth at <a href="http://www.CrisisCleanup.org/privacy">http://www.CrisisCleanup.org/privacy</a>, as revised from time to time by the Company;</li>
+                    <li class="indent"><strong>4.1.3</strong> shall comply with any <a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies">policies</a>, technical specifications, rules of operation, or security procedures set forth by the Company from time to time on the Website.</li>
+                    <li><strong>4.1.4 Modification.</strong> The Company may, at its sole discretion, from time to time, revise or modify these Terms and Conditions by posting the revised Terms and Conditions on the Website. While the Company will endeavor to provide notice to you of any material changes to these Terms and Conditions, whether or not we provide notice to you, you shall be bound by the revised Terms and Conditions for all subsequent uses of the Service after such modifications have been made. It is therefore your responsibility to review the most up-to-date version of the Terms and Conditions. Accordingly, each time you use the Website you should check the date of this Policy (which appears at the end of this document) and review any changes since the last time you used the site. If you do not agree to any of the Terms and Conditions set forth herein, you should not use the Service.</li>
+                </ul>
+            </ol> 
             
     <h3>5. Our Services</h3>
-        <ul class="custom">
-            <li><strong>5.1 Description.</strong> The Website and Service provides disaster recovery organizations tools to assist Clients assess, clean up, and rebuild after a disaster.</li>
-            <li><strong>5.2 Ongoing Innovation.</strong> We reserve the right to add or discontinue any function, service, or feature at any time, or integrate Third Party Services.</li>
-        </ul>    
+        <ol class="custom five">
+            <li><strong>Description.</strong> The Website and Service provides disaster recovery organizations tools to assist Clients assess, clean up, and rebuild after a disaster.</li>
+            <li><strong>Ongoing Innovation.</strong> We reserve the right to add or discontinue any function, service, or feature at any time, or integrate Third Party Services.</li>
+        </ol>    
             
     <h3>6. Website Content</h3>
-        <ul class="custom">
-            <li><strong>6.1 References and Links to Third Parties.</strong> The Website may reference or link to third party websites from time to time. The Company is not responsible for the content of any third party websites or any other websites linked to or from the Website. Links appearing on the Website are for convenience only and shall not constitute an endorsement by the Company of the referenced content, product, service, or supplier, nor shall it constitute an endorsement of the Service by the Third Party, unless explicitly indicated.</li>
-        </ul>
+        <ol class="custom six">
+            <li><strong>References and Links to Third Parties.</strong> The Website may reference or link to third party websites from time to time. The Company is not responsible for the content of any third party websites or any other websites linked to or from the Website. Links appearing on the Website are for convenience only and shall not constitute an endorsement by the Company of the referenced content, product, service, or supplier, nor shall it constitute an endorsement of the Service by the Third Party, unless explicitly indicated.</li>
+        </ol>
             
     <h3>7. Intellectual Property Rights</h3>
-        <ul class="custom">
-            <li><strong>7.1 Your Materials.</strong> You retain all copyrights in Your Materials. You hereby grant to the Company a nonexclusive, royalty-free, transferable, fully paid-up, world-wide license to perform, use, copy, transform, transmit, publish, license, sublicense, and distribute Your Materials. You warrant that you are authorized to grant such rights to the Materials to the Company, and you specifically warrant that Your Materials do not violate any duty to or right of a third party.</li>
-            <li><strong>7.2 Infringement.</strong> The Company reserves the right to remove any of Your Materials or refuse to give service if Your Materials are likely to infringe on another's intellectual property rights. The Company obtains no other right, title, or interest in Your Materials except as set forth herein.</li>
-            <li><strong>7.3 DMCA Notice and Procedure for Making Claims of Copyright Infringement.</strong> If you believe that your work has been copied in a way that constitutes copyright infringement, please provide our copyright agent the written information specified below. Please note that this procedure is exclusively for notifying the Company that your copyrighted material has been infringed. Include:</li>
-            <li class="indent"><strong>7.3.1</strong> An electronic or physical signature of the person authorized to act on behalf of the owner of the copyright interest;</li>
-            <li class="indent"><strong>7.3.2</strong> A description of the copyrighted work that you claim has been infringed upon;</li>
-            <li class="indent"><strong>7.3.3</strong>A description of where the material that you claim is infringing is located on the site, including the full URL, if applicable;</li>
-            <li class="indent"><strong>7.3.4</strong> Your address, telephone number, and e-mail address;</li>
-            <li class="indent"><strong>7.3.5</strong> A statement by you that you have a good-faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law;</li>
-            <li class="indent"><strong>7.3.6</strong> A statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner's behalf.</li>
-            <li class="indent"><strong>7.3.7</strong> You may contact our Copyright Agent for notice of claims of copyright infringement by following the instructions on our Contact Page.</li>
-            <li><strong>7.4</strong> The Crisis Cleanup code base is <a href="https://github.com/aarontitus/crisiscleanup/">open source</a>, and released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</li>
-        </ul>      
+        <ol class="custom seven">
+            <li><strong>Your Materials.</strong> You retain all copyrights in Your Materials. You hereby grant to the Company a nonexclusive, royalty-free, transferable, fully paid-up, world-wide license to perform, use, copy, transform, transmit, publish, license, sublicense, and distribute Your Materials. You warrant that you are authorized to grant such rights to the Materials to the Company, and you specifically warrant that Your Materials do not violate any duty to or right of a third party.</li>
+            <li><strong>Infringement.</strong> The Company reserves the right to remove any of Your Materials or refuse to give service if Your Materials are likely to infringe on another's intellectual property rights. The Company obtains no other right, title, or interest in Your Materials except as set forth herein.</li>
+            <li><strong>DMCA Notice and Procedure for Making Claims of Copyright Infringement.</strong> If you believe that your work has been copied in a way that constitutes copyright infringement, please provide our copyright agent the written information specified below. Please note that this procedure is exclusively for notifying the Company that your copyrighted material has been infringed. Include:</li>
+            <ul>
+                <li class="indent"><strong>7.3.1</strong> An electronic or physical signature of the person authorized to act on behalf of the owner of the copyright interest;</li>
+                <li class="indent"><strong>7.3.2</strong> A description of the copyrighted work that you claim has been infringed upon;</li>
+                <li class="indent"><strong>7.3.3</strong>A description of where the material that you claim is infringing is located on the site, including the full URL, if applicable;</li>
+                <li class="indent"><strong>7.3.4</strong> Your address, telephone number, and e-mail address;</li>
+                <li class="indent"><strong>7.3.5</strong> A statement by you that you have a good-faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law;</li>
+                <li class="indent"><strong>7.3.6</strong> A statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner's behalf.</li>
+                <li class="indent"><strong>7.3.7</strong> You may contact our Copyright Agent for notice of claims of copyright infringement by following the instructions on our Contact Page.</li>
+            </ul>
+            <li>The Crisis Cleanup code base is <a href="https://github.com/aarontitus/crisiscleanup/">open source</a>, and released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</li>
+        </ol>      
             
     <h3>8. Representations and Warranties; Disclaimers</h3>
-        <ul classs="custom">
-            <li><strong>8.1</strong> YOU AGREE THAT YOUR USE OF THE SERVICE SHALL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, THE COMPANY, ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, SUCCESSORS, CONTRACTORS, AND ASSIGNS DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SERVICE AND YOUR USE THEREOF. You represent and warrant that you shall perform your obligations in a manner that complies with the applicable federal, state, and local laws, regulations, ordinances, and codes. Without limiting the generality of the foregoing, you further warrant that you own or otherwise have sufficient rights to grant the licenses granted hereunder to Your Materials, have created Your Materials in compliance with all applicable laws, rules, and regulations (including any infringement or misappropriation of U.S. patent, copyright, trademark or trade secret); and that the use and provision of Your Materials as contemplated herein will not infringe upon any intellectual property, privacy or other rights of any third party.</li>
-            <li><strong>8.2</strong> THE FOREGOING WARRANTIES ARE IN LIEU OF ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT, FITNESS FOR A PARTICULAR PURPOSE AND TITLE, AND ANY AND ALL IMPLIED WARRANTIES ARISING FROM STATUTE, COURSE OF DEALING, COURSE OF PERFORMANCE OR USAGE OF TRADE. To the extent permitted by law, the Company expressly disclaims any and all such other warranties and duties, including but not limited to the obligation to maintain the Service or keep the Website operational. Further, we cannot prevent or insure against all glitches and security flaws (foreseen or unforeseen), potential hackers and others who would engage in computer crimes. Further, unscrupulous individuals could theoretically redirect you to an unauthorized website. If you have any doubt as to the authenticity of the website, you should not use the Service. Instead, please contact us immediately.</li>
-        </ul>  
+        <ol classs="custom eight">
+            <li>YOU AGREE THAT YOUR USE OF THE SERVICE SHALL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, THE COMPANY, ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, SUCCESSORS, CONTRACTORS, AND ASSIGNS DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SERVICE AND YOUR USE THEREOF. You represent and warrant that you shall perform your obligations in a manner that complies with the applicable federal, state, and local laws, regulations, ordinances, and codes. Without limiting the generality of the foregoing, you further warrant that you own or otherwise have sufficient rights to grant the licenses granted hereunder to Your Materials, have created Your Materials in compliance with all applicable laws, rules, and regulations (including any infringement or misappropriation of U.S. patent, copyright, trademark or trade secret); and that the use and provision of Your Materials as contemplated herein will not infringe upon any intellectual property, privacy or other rights of any third party.</li>
+            <li>THE FOREGOING WARRANTIES ARE IN LIEU OF ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT, FITNESS FOR A PARTICULAR PURPOSE AND TITLE, AND ANY AND ALL IMPLIED WARRANTIES ARISING FROM STATUTE, COURSE OF DEALING, COURSE OF PERFORMANCE OR USAGE OF TRADE. To the extent permitted by law, the Company expressly disclaims any and all such other warranties and duties, including but not limited to the obligation to maintain the Service or keep the Website operational. Further, we cannot prevent or insure against all glitches and security flaws (foreseen or unforeseen), potential hackers and others who would engage in computer crimes. Further, unscrupulous individuals could theoretically redirect you to an unauthorized website. If you have any doubt as to the authenticity of the website, you should not use the Service. Instead, please contact us immediately.</li>
+        </ol>  
             
     <h3>9. Indemnification</h3>
-        <ul class="custom">
-            <li><strong>9.1 By You.</strong> You agree to indemnify, defend, and hold harmless the Company and its officers, directors, employees, agents, contractors, successors and assigns, from any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses (including but not limited to attorneys’ fees and court costs) arising from: (i) your use of the Services and access to the Website; (ii) your violation of any term of these Terms and Conditions; (iii) the violation by you, or anyone using Your Materials, of any third party right, including without limitation any copyright, property, or privacy right; (iv) fraud or misrepresentation by you; (iv) any claim arising from your organization's assistance to a Client or (v) any claim that your use of the Service caused damage to a third party. This defense and indemnification obligation shall survive these Terms and Conditions and your use of the Services and Website.</li>
-            <li><strong>9.2 Procedures.</strong> A party seeking indemnification hereunder (the “Indemnitee”) shall promptly notify the other party (the “Indemnitor”) upon knowledge of the likelihood of any action or proceeding, and on receipt of notice of the commencement or threatened commencement of any action or proceeding that may be subject to indemnification hereunder. The Indemnitor shall have sole control over the defense and settlement of such claim, provided that the Indemnitee (a) shall be entitled to participate in the defense of such claim and to employ counsel at its own expense to assist in the handling of such claim and (b) shall reasonably cooperate with Indemnitor in the defense or settlement of such claim.</li>
-        </ul>          
+        <ol class="custom nine">
+            <li><strong>By You.</strong> You agree to indemnify, defend, and hold harmless the Company and its officers, directors, employees, agents, contractors, successors and assigns, from any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses (including but not limited to attorneys’ fees and court costs) arising from: (i) your use of the Services and access to the Website; (ii) your violation of any term of these Terms and Conditions; (iii) the violation by you, or anyone using Your Materials, of any third party right, including without limitation any copyright, property, or privacy right; (iv) fraud or misrepresentation by you; (iv) any claim arising from your organization's assistance to a Client or (v) any claim that your use of the Service caused damage to a third party. This defense and indemnification obligation shall survive these Terms and Conditions and your use of the Services and Website.</li>
+            <li><strong>Procedures.</strong> A party seeking indemnification hereunder (the “Indemnitee”) shall promptly notify the other party (the “Indemnitor”) upon knowledge of the likelihood of any action or proceeding, and on receipt of notice of the commencement or threatened commencement of any action or proceeding that may be subject to indemnification hereunder. The Indemnitor shall have sole control over the defense and settlement of such claim, provided that the Indemnitee (a) shall be entitled to participate in the defense of such claim and to employ counsel at its own expense to assist in the handling of such claim and (b) shall reasonably cooperate with Indemnitor in the defense or settlement of such claim.</li>
+        </ol>          
             
     <h3>10. Limitations on Liability</h3>
-        <ul class="custom">
-            <li><strong>10.1</strong> The Company’s liability to you for any recoverable losses or damages arising under, or in connection with, these Terms and Conditions and your use of this Service or of the Website shall be limited, to extent applicable, to the actual, direct damages incurred by you, in an amount not to exceed the total revenue received by the Company resulting from your use of the Service provided hereunder during the most recently preceding 12-month period, or $1,000, whichever is greater. The Company shall not be liable for: (i) damages caused by your failure to perform your responsibilities imposed by law or this agreement; (ii) claims or demands of third parties; (iii) any lost or corrupted data; or (iv) any lost profits, loss of business, loss of use, lost savings, or other consequential, special, incidental, indirect, exemplary, or punitive damages, even if the Company has been advised of the possibility of such damages.</li>
-            <li><strong>10.2</strong> To the maximum extent permitted by law, the Company disclaims liability for any loss or damages, whether direct, indirect, special, incidental, or consequential (even if the Company has been advised of the possibility of such damages) arising out of (i) your use of the Website and Services or your inability to do so, (ii) your reliance on any content provided on the Service or through the Services provided thereunder, (iii) goods and services in any way associated with this Service, (iv) unexpected or adverse tax consequences as a result of using the Services, and/or (v) damages caused by malicious hackers or crackers.</li>
-            <li><strong>10.3</strong> The limitations of liability set forth in this Section will survive and apply notwithstanding the failure of any limited or exclusive remedy for breach of warranty set forth in these Terms and Conditions. YOU AGREE THAT ANY CAUSE OF ACTION AGAINST THE Company ARISING OUT OF OR RELATED TO THE WEBSITE OR THE SERVICE MUST COMMENCE WITHIN ONE (1) YEAR AFTER THE CAUSE OF ACTION ACCRUES. OTHERWISE, SUCH CAUSE OF ACTION IS PERMANENTLY BARRED.</li>
-        </ul>    
+        <ol class="custom ten">
+            <li>The Company’s liability to you for any recoverable losses or damages arising under, or in connection with, these Terms and Conditions and your use of this Service or of the Website shall be limited, to extent applicable, to the actual, direct damages incurred by you, in an amount not to exceed the total revenue received by the Company resulting from your use of the Service provided hereunder during the most recently preceding 12-month period, or $1,000, whichever is greater. The Company shall not be liable for: (i) damages caused by your failure to perform your responsibilities imposed by law or this agreement; (ii) claims or demands of third parties; (iii) any lost or corrupted data; or (iv) any lost profits, loss of business, loss of use, lost savings, or other consequential, special, incidental, indirect, exemplary, or punitive damages, even if the Company has been advised of the possibility of such damages.</li>
+            <li>To the maximum extent permitted by law, the Company disclaims liability for any loss or damages, whether direct, indirect, special, incidental, or consequential (even if the Company has been advised of the possibility of such damages) arising out of (i) your use of the Website and Services or your inability to do so, (ii) your reliance on any content provided on the Service or through the Services provided thereunder, (iii) goods and services in any way associated with this Service, (iv) unexpected or adverse tax consequences as a result of using the Services, and/or (v) damages caused by malicious hackers or crackers.</li>
+            <li>The limitations of liability set forth in this Section will survive and apply notwithstanding the failure of any limited or exclusive remedy for breach of warranty set forth in these Terms and Conditions. YOU AGREE THAT ANY CAUSE OF ACTION AGAINST THE Company ARISING OUT OF OR RELATED TO THE WEBSITE OR THE SERVICE MUST COMMENCE WITHIN ONE (1) YEAR AFTER THE CAUSE OF ACTION ACCRUES. OTHERWISE, SUCH CAUSE OF ACTION IS PERMANENTLY BARRED.</li>
+        </ol>    
             
     <h3>11. Jurisdiction and Consent</h3>
-        <ul class="custom">
-            <li><strong>11.1 Venue and Choice of Law.</strong> This Agreement shall be governed by the laws of the State of New Jersey, without reference to the conflict of law provisions thereof. Any action brought in regards to this Agreement shall be brought in the courts of the State of New Jersey, United States of America, in the applicable state or federal court closest to the Company's address as provided in this Agreement.</li>
-            <li><strong>11.2 Jurisdiction.</strong> Each of the Parties irrevocably agrees and submits to the exclusive jurisdiction of the applicable court(s) listed in this Section for any action or proceeding arising out of or related to this Agreement.</li>
-        </ul>
+        <ol class="custom eleven">
+            <li><strong>Venue and Choice of Law.</strong> This Agreement shall be governed by the laws of the State of New Jersey, without reference to the conflict of law provisions thereof. Any action brought in regards to this Agreement shall be brought in the courts of the State of New Jersey, United States of America, in the applicable state or federal court closest to the Company's address as provided in this Agreement.</li>
+            <li><strong>Jurisdiction.</strong> Each of the Parties irrevocably agrees and submits to the exclusive jurisdiction of the applicable court(s) listed in this Section for any action or proceeding arising out of or related to this Agreement.</li>
+        </ol>
 
     <h3>12. Miscellaneous Provisions</h3>            
-        <ul class="custom">
-            <li><strong>12.1 Severability.</strong> If any term or condition set forth in this agreement is found by a court to be unenforceable, then the remaining terms and conditions will remain in full force and effect. Terms and conditions found to be unenforceable, if any, will be modified by the court to conform to a provision that most closely expresses the intent of the unenforceable term or condition.</li>
-            <li><strong>12.2 Nature of Relationship.</strong> Nothing contained herein shall be deemed to create any association, Company, joint venture or similar relationship between you and the Company. Neither party shall have the authority to make financial commitments on behalf of the other party, nor shall either party have the authority to incur any financial obligations in the other party’s name without the express written approval of the other party or as expressly stated herein. Neither party nor any employee or subcontractor employed by either party shall act, appear to act, or be deemed for any purpose whatsoever to be an agent, employee, servant or representative of the other party.</li>
-            <li><strong>12.3 Third Party Beneficiaries.</strong> There are no third party beneficiaries to this Agreement.</li>
-            <li><strong>12.4 Force Majeure.</strong> Neither party shall be liable for any default or delay in the performance of its obligations herein if and to the extent such default or delay is caused by causes beyond that party's reasonable control and occurring without its fault or negligence, including, without limitation: fire, flood, earthquake, elements of nature or acts of god; riots, civil disorders, rebellions or revolutions in any country; or any other similar cause. In such event the non-performing party shall be excused from further performance or observance of the obligation.</li>
-            <li><strong>12.5 Waiver of Rights.</strong> No failure of either party to exercise or enforce any of its rights hereunder will constitute a waiver of that or any other provision. No waiver granted under this Agreement as to any one provision herein shall constitute a subsequent waiver of such provision or of any other provision herein.</li>
-            <li><strong>12.6 Headings.</strong> The headings and titles used in this Agreement are for reference and convenience only and shall not enter into the interpretation hereof.</li>
-            <li><strong>12.7 Assignment.</strong> Neither this Agreement nor any of your rights or obligations may be assigned by you without the prior written approval of the Company.</li>
-            <li><strong>12.8 Address.</strong> The address of the Company is:<br />
+        <ol class="custom twelve">
+            <li><strong>Severability.</strong> If any term or condition set forth in this agreement is found by a court to be unenforceable, then the remaining terms and conditions will remain in full force and effect. Terms and conditions found to be unenforceable, if any, will be modified by the court to conform to a provision that most closely expresses the intent of the unenforceable term or condition.</li>
+            <li><strong>Nature of Relationship.</strong> Nothing contained herein shall be deemed to create any association, Company, joint venture or similar relationship between you and the Company. Neither party shall have the authority to make financial commitments on behalf of the other party, nor shall either party have the authority to incur any financial obligations in the other party’s name without the express written approval of the other party or as expressly stated herein. Neither party nor any employee or subcontractor employed by either party shall act, appear to act, or be deemed for any purpose whatsoever to be an agent, employee, servant or representative of the other party.</li>
+            <li><strong>Third Party Beneficiaries.</strong> There are no third party beneficiaries to this Agreement.</li>
+            <li><strong>Force Majeure.</strong> Neither party shall be liable for any default or delay in the performance of its obligations herein if and to the extent such default or delay is caused by causes beyond that party's reasonable control and occurring without its fault or negligence, including, without limitation: fire, flood, earthquake, elements of nature or acts of god; riots, civil disorders, rebellions or revolutions in any country; or any other similar cause. In such event the non-performing party shall be excused from further performance or observance of the obligation.</li>
+            <li><strong>Waiver of Rights.</strong> No failure of either party to exercise or enforce any of its rights hereunder will constitute a waiver of that or any other provision. No waiver granted under this Agreement as to any one provision herein shall constitute a subsequent waiver of such provision or of any other provision herein.</li>
+            <li><strong>Headings.</strong> The headings and titles used in this Agreement are for reference and convenience only and shall not enter into the interpretation hereof.</li>
+            <li><strong>Assignment.</strong> Neither this Agreement nor any of your rights or obligations may be assigned by you without the prior written approval of the Company.</li>
+            <li><strong>Address.</strong> The address of the Company is:<br />
                 Crisis Cleanup, LLC<br />
                 Attn: Aaron Titus or Bert Tobia<br />
                 271 Route 46 West, Suite B101<br />
                 Fairfield, NJ 07004
-            <li><strong>12.9 Entire Agreement.</strong> This agreement sets forth the entire agreement between you and the Company regarding the subject of the Agreement, and may be amended only in writing signed by both parties. This Agreement supersedes all prior or contemporaneous communications, understandings, promises and proposals, whether oral, written or electronic, between the parties with respect to its subject matter.</li>
-            <li><strong>12.10 Date.</strong> This agreement was last updated on January 14, 2016.  </li>
+            <li><strong>Entire Agreement.</strong> This agreement sets forth the entire agreement between you and the Company regarding the subject of the Agreement, and may be amended only in writing signed by both parties. This Agreement supersedes all prior or contemporaneous communications, understandings, promises and proposals, whether oral, written or electronic, between the parties with respect to its subject matter.</li>
+            <li><strong>Date.</strong> This agreement was last updated on January 14, 2016.  </li>
         </ul>            
         </div>
     </div>
