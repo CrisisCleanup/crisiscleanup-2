@@ -16,10 +16,10 @@ $(document).ready(function() {
   // if a map is on the page get incident id
   if (worker_map !== 0) {
     var id = typeof $('.m-id.hidden')[0] !== 'undefined' ? $('.m-id.hidden')[0].innerHTML : 'none';
-    var ccmap = new CCMAP({
+    var ccmap = new CC.Map.Map({
       elm: 'worker-map-canvas',
-      event_id: id
+      event_id: id,
+      public_map: false
     });
-    ccmap.buildMarkers(id);
   }
 });
