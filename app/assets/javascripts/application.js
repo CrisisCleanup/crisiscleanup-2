@@ -14,12 +14,11 @@
 //= require jquery_ujs
 //= require foundation
 
-//= require_tree .
+
 //= require_tree ./plugins
-//= require ./worker/ccmap.js
 //= require ./worker/sites.js
 //= require ./scripts.js
-
+//= require_tree .
 
 $(document).ready(function(){
 	$(document).foundation(); 
