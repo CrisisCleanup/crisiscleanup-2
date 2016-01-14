@@ -30,7 +30,7 @@ hr {
     background-color: gainsboro;
     
     border: 2px solid $smoke;
-    & h4, p, ul, h5 {
+    & h4, ul {
         width: 90%;
         margin-left: 5%;
     }
@@ -40,18 +40,29 @@ hr {
     & input[type="checkbox"] + label, input[type="radio"] + label {
         margin-right: 0;
     }
-    
     & .simple_form {
         max-height: 715px;
         overflow-y: scroll;
         width: 90%;
         margin-left: 5%;
-        & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"] {
+        & .columns {
+            padding-left: 0;
+        }
+        & h4 {
+            width: 100%; // offsets global #sidebar h4 styling
+            margin-left: 0; // offsets global #sidebar h4 styling
+        }        
+        & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"]{
+            width: 100%;
             height: 1.75rem;
             margin: 0;
         }
-        & .columns {
-            padding-left: 0;
+        & select {
+            width: 100%;
+        }
+        & #show_hide_button {
+            margin: .5rem 0 0 1px;
+            padding: 5px 10px 5px 10px;
         }
     }
 }

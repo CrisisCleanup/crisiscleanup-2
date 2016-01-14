@@ -28,14 +28,19 @@
 /* GLOBAL STYLES
    ----------------------------- */
 
+// page containers
 html,
 body {
     width: 100%;
     height: 100%;
 }
+
+// header
 header {
     height: auto;
 }
+
+// logo
 .name img {
     width: auto;
     height: 40px;
@@ -43,9 +48,13 @@ header {
     vertical-align: middle;
     margin-left: 20px;
 }
+
+// removes nav margin-bottom for alert_menu width
 .top-bar li {
     margin-bottom: 0;
 }
+
+// foundation overrides for rows/columns
 .row {
     clear: both;
     max-width: 100%!important; /* offsets default 62.5em default */
@@ -53,7 +62,9 @@ header {
 .columns {
     margin-bottom: 10px;
 }
-.alert_menu {
+
+// gray bar below nav for site-wide announcements
+.alert_menu { 
     border-style: solid;
     border-width: 1px;
     display: block;
@@ -66,6 +77,8 @@ header {
     border-radius: 3px;
     text-align: center;
 }
+
+//page title and subtitle section
 .subheader {
     padding-top: 20px;
     text-align: center;
@@ -74,9 +87,13 @@ header {
         margin-left: 1.5%;
     }
 }
-p.notice {
-    text-align: center;
+
+// sign-in notification
+p.notice { 
+    padding-left: 0.9375rem;
 }
+
+// map requirements
 .map-wrapper{
 	position:relative;
 }
@@ -97,6 +114,12 @@ p.notice {
 	top: 40%;
 	border-radius: 300px;
 }
+
+// form section hide/show
+.hide {display: none;} 
+.unhide {display: block;}
+
+// media queries
 @media screen and (min-width: 1024px) {
     .top-bar-section li.active:not(.has-form) a:not(.button) {
         background: #008CBA;
