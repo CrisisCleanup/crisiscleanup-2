@@ -16,6 +16,7 @@
 
 
 //= require_tree ./plugins
+//= require ./worker/ccmap.js
 //= require ./worker/sites.js
 //= require ./scripts.js
 //= require_tree .
