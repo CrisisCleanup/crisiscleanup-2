@@ -4,15 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hello</h1>
-    <p>
-      <%= @org.name %> has signed up for Crisis Cleanup.  Please go to the admin dashboard to vet this organization. 
+    <p>Dear Crisis Cleanup Administrator,</p>
+    <p>The following group has applied to participate on Crisis Cleanup.  To review and verify, visit: {APPROVALLINK}.</p>
+    <p>Organization name: <%= @org.name %><br />
+      Organization Website: {ORGURL}<br />
+      Incident: {INCIDENTNAME}
     </p>
-    <ul>
-        <li>Log In: <a target='_blank' href="http://crisiscleanup.org/admin/dashboard"> CrisisCleanup Admin </a> </li>
-    </ul>
-
-    <p>Thanks,</p>
-    <p>Crisis Cleanup</p>
+    <p><strong>Contacts:</strong></p>
+    <p>{ALLCONTACTINFO}</p>
+    <p>The approval process is two steps: Verification and Activation.  You, the administrator, verifies that this group is eligible to participate in Crisis Cleanup.  Once you verify this organization, the contact(s) will receive an email notification asking them to activate their account.</p>
+    <p>The activation process may require the contact to answer a few easy questions about how Crisis Cleanup works. The purpose of activation is to make sure that at least one person in that organization has received a minimum amount of training. The questions are not designed to be hard; just to make them think.</p>
   </body>
 </html>
