@@ -22,8 +22,11 @@ $(document).on("ready page:load",function() {
     for (i = 0; i < vars.length; i++) { 
         var key = vars[i];
         var value = vars[key];
-        // if not undefined
-        var element = "#" + key + "_select option[value='" + value + "']";
+        var element;
+        // TODO: figure out what's going on here and remove this band-aid
+        if (typeof value !== 'undefined') {
+          element = "#" + key + "_select option[value='" + value + "']";
+        }
         $(element).attr("selected", "selected");
     }
 });
