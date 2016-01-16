@@ -21,5 +21,7 @@ $(document).ready(function() {
       event_id: id,
       public_map: false
     });
+    // TODO: remove this once the worker map instantiation is setting the event correctly.
+    ccmap.setEventId(id);
   }
 });
