@@ -2,7 +2,7 @@
 var markers = [];
 var map;
 var markerCluster;
-var markerBounds = new google.maps.LatLngBounds();
+// var markerBounds = new google.maps.LatLngBounds();
 var iconDir = '/assets/map_icons/';
 var unclaimedStatusColorMap = {
   "Open, unassigned": "orange",
@@ -61,7 +61,7 @@ CCMAP.prototype.buildMarkers = function(id) {
       clearOverlays();
       if (data.length > 0) {
         $.each(data, function(index, obj) {
-          markerBounds.extend(new google.maps.LatLng(parseFloat(obj[lat]), parseFloat(obj[lng])));
+          // markerBounds.extend(new google.maps.LatLng(parseFloat(obj[lat]), parseFloat(obj[lng])));
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(parseFloat(obj[lat]), parseFloat(obj[lng])),
             map: map,
@@ -70,7 +70,7 @@ CCMAP.prototype.buildMarkers = function(id) {
           markers.push(marker);
         })
         markerCluster = new MarkerClusterer(map, markers);
-        map.fitBounds(markerBounds);
+        // map.fitBounds(markerBounds);
         $('.loading').remove();
       } else {
         alert("no reported incidents");
