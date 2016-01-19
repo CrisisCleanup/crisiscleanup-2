@@ -28,7 +28,7 @@ hr {
     left: 70%;
     display: table-cell;
     background-color: gainsboro;
-    
+
     border: 2px solid $smoke;
     & h4, ul {
         width: 90%;
@@ -40,6 +40,7 @@ hr {
     & input[type="checkbox"] + label, input[type="radio"] + label {
         margin-right: 0;
     }
+
     & .simple_form {
         max-height: 715px;
         overflow-y: scroll;
@@ -70,7 +71,7 @@ hr {
 
 .sideblock {
     & .columns {
-        
+
     }
     & h4,
     p {
@@ -165,6 +166,17 @@ table {
   max-width: 200px;
 }
 
+// TODO: make this crap look good!
+#map-infobox {
+  z-index: 2;
+  position: absolute;
+  left: 200px;
+  margin-top: -215px;
+  background-color: #ffffff;
+  opacity: 0.8;
+  padding: 0px;
+}
+
 @media only screen and (max-width: 767px) {
     .alt {
         display: block;
@@ -192,6 +204,6 @@ table {
         height: 600px;
         background-color: $smoke;
         margin-top: -41px;
-    }    
+    }
 }
 
