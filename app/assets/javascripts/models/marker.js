@@ -52,11 +52,11 @@ CCMap.Site = function(params) {
     // Create an object of key value pairs to display
     var displayObj = {
       "Case Number": this.site.case_number,
-      "Name": "[Org Contact]",
-      "Requests": "[requets]",
-      "Address": this.site.address,
+      "Name": this.site.name,
+      "Requests": this.site.work_type,
+      "Address": this.site.address + ", " + this.site.city + ", " + this.site.state,
       "Phone": this.site.phone,
-      "Phone": "[another number]",
+      "Phone": "[alternate number]",
       "Details": "[...]"
     };
 
@@ -73,6 +73,7 @@ CCMap.Site = function(params) {
 
     // status dropdown
     var statusDropdown = document.createElement('select');
+    statusDropdown.onchange = statusSelect.bind(this); 
     var statusOptions = [
       "Open, unassigned",
       "Open, assigned",
@@ -111,18 +112,20 @@ CCMap.Site = function(params) {
     // action buttons
     // TODO: a button class would be cool here, so we could attach the click event callbacks and whatnot.
     var actionButtons = {
-      "Contact Organization": "contactOrg",
-      "Printer Friendly": "print",
-      "Edit": "edit",
-      "Unclaim": "unclaim"
+      "Contact Organization": contactOrg.bind(this),
+      "Printer Friendly": print.bind(this),
+      "Edit": edit.bind(this),
+      "Unclaim": unclaim.bind(this)
     }
     var buttonRow = document.createElement('tr');
     var buttonCell = document.createElement('td');
     buttonCell.setAttribute('colspan', '2');
     for (var key in actionButtons) {
       if (actionButtons.hasOwnProperty(key)) {
-        var button = document.createElement('button');
+        var button = document.createElement('a');
+        button.className = 'button tiny';
         button.appendChild(document.createTextNode(key));
+        button.onclick = actionButtons[key];
         buttonCell.appendChild(button);
       }
     }
@@ -147,10 +150,31 @@ CCMap.Site = function(params) {
     var valueCell = document.createElement('td');
     strongLabel.appendChild(labelNode);
     labelCell.appendChild(strongLabel);
+    labelCell.className = 'text-right';
     valueCell.appendChild(valueNode);
     row.appendChild(labelCell);
     row.appendChild(valueCell);
 
     return row;
+  }
+
+  function statusSelect(event) {
+    console.log('status update:', event.target.value);
+  }
+
+  function contactOrg(event) {
+    console.log('contact org:', this);
+  }
+
+  function print(event) {
+    console.log('print:', this);
+  }
+
+  function edit(event) {
+    console.log('edit:', this);
+  }
+
+  function unclaim(event) {
+    console.log('unclaim:', this);
   }
 }
