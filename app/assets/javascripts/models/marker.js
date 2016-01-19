@@ -159,7 +159,12 @@ CCMap.Site = function(params) {
   }
 
   function statusSelect(event) {
-    console.log('status update:', event.target.value);
+    var status = event.target.value;
+    if (status === 'Open, unassigned') {
+      console.log('Set status to ' + status + ', and clear claimed_by field.');
+    } else {
+      console.log('Set status to ' + status + ', and set claimed_by field to logged in user\'s organization.');
+    }
   }
 
   function contactOrg(event) {
