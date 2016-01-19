@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   namespace :api do
     # TODO /import
     get "/map" => "json#map", as: "json_map"
+    post "/update-site-status" => "json#update_legacy_site_status"
     get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"
     get "/public/map" => "public/json#map", as: "public_json_map"
     post "/import" => "import#csv", as: "import_csv"

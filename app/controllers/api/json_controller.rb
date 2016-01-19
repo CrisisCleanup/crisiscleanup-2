@@ -4,6 +4,7 @@ module Api
   class JsonController < ApplicationController
     include ApplicationHelper
     before_filter :check_user
+
     def map
       if params["pin"]
         render json: @sites = Legacy::LegacySite.find(params["pin"])
@@ -24,5 +25,10 @@ module Api
         ").where(legacy_event_id: params[:legacy_event_id])
       end
     end
+
+    def update_legacy_site_status
+      render json: "update status here"
+    end
+
   end
 end
