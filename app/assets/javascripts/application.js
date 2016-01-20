@@ -17,6 +17,7 @@
 //= require_tree ./plugins
 //= require ./worker/sites.js
 //= require ./scripts.js
+//= require images
 //= require_tree .
 
 $(document).ready(function(){
