@@ -65,7 +65,10 @@ CCMap.Map = function(params) {
             });
             this.sites.push(site);
           }, this);
-          this.markerCluster = new MarkerClusterer(this.map, this.sites.map(function(site) { return site.marker; }));
+          var mcOptions = {
+            maxZoom: 15
+          }
+          this.markerCluster = new MarkerClusterer(this.map, this.sites.map(function(site) { return site.marker; }), mcOptions);
           this.map.fitBounds(this.markerBounds);
         } else {
           // TODO: modal or something other than an alert box.
