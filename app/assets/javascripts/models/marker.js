@@ -1,7 +1,6 @@
 var CCMap = CCMap || {};
 
 // build map with all of the pins clustered
-CCMap.IconDir = '/assets/map_icons/';
 CCMap.UnclaimedStatusColorMap = {
   "Open, unassigned": "orange",
   "Open, assigned": "yellow",
@@ -34,7 +33,8 @@ CCMap.Site = function(params) {
     } else {
       color = "red";
     }
-    return CCMap.IconDir + this.site.work_type + '_' + color + '.png';
+    // this is the key sent to the image_path function in app/assets/javascripts/images.js.erb
+    return image_path('map_icons/' + this.site.work_type + '_' + color + '.png');
   }
 
   function toggleInfobox() {

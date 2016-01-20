@@ -1,0 +1,13 @@
+/**
+ * Absolutely ridiculous work around so we can use asset pipeline crap in js files
+ */
+<%
+  imgs = {}
+  Dir.chdir("#{Rails.root}/app/assets/images/") do
+    imgs = Dir["**/**"].inject({}) { |h,f| h.merge! f => image_path(f) }
+  end
+%>
+
+window.image_path = function(name) {
+  return <%= imgs.to_json %>[name];
+}
