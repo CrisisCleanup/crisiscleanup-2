@@ -27,7 +27,20 @@ module Api
     end
 
     def update_legacy_site_status
-      render json: "update status here"
+      if params["id"]
+        if site = Legacy::LegacySite.find(params[:id])
+          if site.status == 'Open, unassigned' && site.claimed_by == nil
+            site.claimed_by = current_user.legacy_organization_id
+          end
+          site.status = params[:status]
+          site.save
+          render json: { status: 'success', claimed_by: site.claimed_by }
+        else
+          render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our syste.' }
+        end
+      else
+        render json: { status: 'error', msg: 'Site id is required.' }
+      end
     end
 
   end
