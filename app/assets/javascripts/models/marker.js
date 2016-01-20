@@ -73,7 +73,7 @@ CCMap.Site = function(params) {
 
     // status dropdown
     var statusDropdown = document.createElement('select');
-    statusDropdown.onchange = statusSelect.bind(this); 
+    statusDropdown.onchange = statusSelect.bind(this);
     var statusOptions = [
       "Open, unassigned",
       "Open, assigned",
@@ -89,9 +89,12 @@ CCMap.Site = function(params) {
     ];
     statusOptions.forEach(function(optionLabel) {
       var option = document.createElement('option');
+      if (optionLabel === this.site.status) {
+        option.selected = 'selected';
+      }
       option.appendChild(document.createTextNode(optionLabel));
       statusDropdown.appendChild(option);
-    });
+    }.bind(this));
     table.appendChild(
       createTableRow(
         document.createTextNode('Status:'),
@@ -114,8 +117,10 @@ CCMap.Site = function(params) {
     var actionButtons = {
       "Contact Organization": contactOrg.bind(this),
       "Printer Friendly": print.bind(this),
-      "Edit": edit.bind(this),
-      "Unclaim": unclaim.bind(this)
+      "Edit": edit.bind(this)
+    }
+    if (this.site.claimed_by) {
+      actionButtons['Unclaim'] = unclaim.bind(this);
     }
     var buttonRow = document.createElement('tr');
     var buttonCell = document.createElement('td');
@@ -160,11 +165,26 @@ CCMap.Site = function(params) {
 
   function statusSelect(event) {
     var status = event.target.value;
-    if (status === 'Open, unassigned') {
-      console.log('Set status to ' + status + ', and clear claimed_by field.');
-    } else {
-      console.log('Set status to ' + status + ', and set claimed_by field to logged in user\'s organization.');
-    }
+    $.ajax({
+      url: '/api/update-site-status/' + this.site.id,
+      type: "POST",
+      context: this,
+      data: {
+        status: status
+      },
+      dataType: 'json',
+      success: function(data) {
+        if (data.status === 'success') {
+          // This is kinda gross and asking for trouble. React?
+          this.site.claimed_by = data.claimed_by;
+          this.site.status = status;
+          this.marker.setIcon(generateIconFilename.call(this));
+        }
+      },
+      error: function(data) {
+        //console.log('error:', data);
+      }
+    });
   }
 
   function contactOrg(event) {
