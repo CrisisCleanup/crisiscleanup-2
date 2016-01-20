@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users, path:'',:path_names => {:sign_in => 'login', :sign_out => 'logout'}
   root 'static_pages#index'
-  
+
   get "/about" => "static_pages#about", as: "about"
+  get "/government" => "static_pages#government", as: "government"
+  get "/voad" => "static_pages#voad", as: "voad"
+  get "/survivor" => "static_pages#survivor", as: "survivor"
+  get "/volunteer" => "static_pages#volunteer", as: "volunteer"
   get "/public_map" => "static_pages#public_map", as: "public_map"
   get "/privacy" => "static_pages#privacy", as: "privacy"
-  get "/terms" => "static_pages#terms", as: "terms"    
-    
+  get "/terms" => "static_pages#terms", as: "terms"
   get "/admin" => 'admin/dashboard#index'
 
   resources :request_invitations, only: [:new, :create]
@@ -59,6 +62,7 @@ Rails.application.routes.draw do
   namespace :api do
     # TODO /import
     get "/map" => "json#map", as: "json_map"
+    post "/update-site-status" => "json#update_legacy_site_status"
     get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"
     get "/public/map" => "public/json#map", as: "public_json_map"
     post "/import" => "import#csv", as: "import_csv"
