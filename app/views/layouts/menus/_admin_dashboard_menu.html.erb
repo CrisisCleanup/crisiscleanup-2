@@ -11,111 +11,34 @@
   <section class="top-bar-section">
     <!-- Left Nav Section -->
     <ul class="right">
-      <li class="has-dropdown">
-        <a href="#">Legacy Models</a>
-        <ul class="dropdown">
-          <li class='legacy_events'>
-            <a href=<%=admin_legacy_events_path%>>Legacy Events</a>
-          </li>
-          <li class='legacy_sites'>
-            <a href=<%=admin_legacy_sites_path%>>Legacy Sites</a>
-          </li>
-          <li class='legacy_organizations'>
-            <a href=<%=admin_legacy_organizations_path%>>Legacy Organizations</a>
-          </li>
-          <li class='legacy_contacts'>
-            <a href=<%=admin_legacy_contacts_path%>>Legacy Contacts</a>
-          </li>
-        </ul>
-      </li>
-      <li class="has-dropdown">
-        <a href="#">Public Pages</a>
-        <ul class="dropdown">
-          <li class='home'>
-            <a href=<%=root_path%>>Home Page</a>
-          </li>
-          <li class='about'>
-            <a href=<%=about_path%>>About</a>
-          </li>
-          <li class='privacy'>
-            <a href=<%=privacy_path%>>Privacy</a>
-          </li>
-          <li class='terms'>
-            <a href=<%=terms_path%>>Terms</a>
-          </li>
-        </ul>
-      </li>
-      <li class="has-dropdown">
-        <a href="#">Incident Pages</a>
-        <ul class="dropdown">
-          <li class="has-dropdown"> 
-            <a href="#">Forms</a>
+      <li><%= nav_link "Home", root_path %></li>
+      <li><%= nav_link "Map", root_path %></li> <!-- goes to incident map based on selection -->
+      <li><%= nav_link "Form", root_path %></li> <!-- goes to incident form based on selection -->        
+      <% if current_user.admin %> <!-- user verified only -->
+        <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
             <ul class="dropdown">
-              <% Legacy::LegacyEvent.all.each do |event| %>
-                <% if event.form.present? %>
-                  <li class='incident_form'>
-                    <a href=<%=edit_admin_legacy_event_form_path(event.id, event.form.id)%>> <%= event.name %></a>
-                  </li>
-                <%end%>
-              <% end %>
+                <li><%= link_to "Contacts", root_path %></li>
+                <li><%= link_to "Orgs", root_path %></li>
+                <li><%= link_to "Sites", root_path %></li>
+                <li><%= link_to "Stats", root_path %></li>
             </ul>
-          </li>
-
-          <li class="has-dropdown"> 
-            <a href="#">Maps</a>
+        </li> <!-- end user verified only -->   
+          <li class="has-dropdown"><%= link_to "Admin", admin_path%>
             <ul class="dropdown">
-              <% Legacy::LegacyEvent.all.each do |event| %>
-                <li class='incident_map'>
-                  <a href=<%=worker_incident_legacy_map_path(event.id)%>> <%= event.name %></a>
-                </li>
-              <% end %>
+                <li class="users"><a href=<%=admin_users_path%>>Users</a></li>
+                <li class="stats"><a href=<%=admin_stats_path%>>Stats</a></li>
+                <li class="import"><a href=<%=admin_csv_import_form_path%>>Import</a></li>
+                <li class="has-dropdown"><a href="#">Legacy Models</a>
+                    <ul class="dropdown">
+                      <li class='legacy_events'><a href=<%=admin_legacy_events_path%>>Legacy Events</a></li>
+                      <li class='legacy_sites'><a href=<%=admin_legacy_sites_path%>>Legacy Sites</a></li>
+                      <li class='legacy_organizations'><a href=<%=admin_legacy_organizations_path%>>Legacy Organizations</a></li>
+                      <li class='legacy_contacts'><a href=<%=admin_legacy_contacts_path%>>Legacy Contacts</a></li>
+                    </ul>
+                </li>      
             </ul>
-          </li>
-
-          <li class="has-dropdown"> 
-            <a href="#">Sites</a>
-            <ul class="dropdown">
-              <% Legacy::LegacyEvent.all.each do |event| %>
-                <li class='incident_sites'>
-                  <a href=<%=worker_incident_legacy_sites_index_path(event.id)%>> <%= event.name %></a>
-                </li>
-              <% end %>
-            </ul>
-          </li>
-
-          <li class="has-dropdown"> 
-            <a href="#">Organizations</a>
-            <ul class="dropdown">
-              <% Legacy::LegacyEvent.all.each do |event| %>
-                <li class='incident_sites'>
-                  <a href=<%=worker_incident_legacy_organizations_path(event.id)%>> <%= event.name %></a>
-                </li>
-              <% end %>
-            </ul>
-          </li>
-
-          <li class="has-dropdown"> 
-            <a href="#">Contacts</a>
-            <ul class="dropdown">
-              <% Legacy::LegacyEvent.all.each do |event| %>
-                <li class='incident_sites'>
-                  <a href=<%=worker_incident_legacy_contacts_path(event.id)%>> <%= event.name %></a>
-                </li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
-        
-      </li>
-      <li class="users">
-        <a href=<%=admin_users_path%>>Users</a>
-      </li>
-      <li class="stats">
-        <a href=<%=admin_stats_path%>>Stats</a>
-      </li>
-      <li class="import">
-        <a href=<%=admin_csv_import_form_path%>>Import</a>
-      </li>
+          </li> <!-- end admin verified only -->
+        <% end %>
       <% if current_user %>
           <li class="login"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
       <% else %>
