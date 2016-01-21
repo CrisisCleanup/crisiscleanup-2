@@ -3,7 +3,12 @@ module Worker
     include ApplicationHelper
     def create
         organization = params[:organization] || current_user.legacy_organization.id
-    	list = InvitationList.new(params[:email_addresses], current_user, organization)
+        emails = params[:email_addresses].gsub(/\s+/, "").split(",")
+        used_emails = check_user_emails emails
+
+        valid_emails = emails - used_emails
+        binding.pry
+    	list = InvitationList.new(valid_emails.join(","), current_user, organization)
     	if list.valid?
     		if list.ready.present?  
     			list.ready.each do |inv|
@@ -13,7 +18,14 @@ module Worker
     		end
         end  
         # if list.rejected.present? then WRITE ERROR HANDLING end
-        flash[:notice] = "Invitation sent to #{params[:email_addresses]}"
+        notice = ""
+        if valid_emails
+            notice += "Invitation sent to #{params[:email_addresses]}."
+        end
+        if used_emails
+            notice += " Invitation not sent to existing emails #{used_emails.join(",")}"
+        end
+        flash[:notice] = notice
     	redirect_to current_user.admin ? admin_path : worker_dashboard_path
     end
   end
