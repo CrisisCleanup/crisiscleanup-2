@@ -26,7 +26,7 @@
               Someone else has to verify you
             <%end%>
           </td>
-          <td> <%= user.reference.email %> </td>
+          <td> <% if user.reference %> <%= user.reference.email %> <% end %> </td>
         </tr>
       <% end %>
     <% end %>
