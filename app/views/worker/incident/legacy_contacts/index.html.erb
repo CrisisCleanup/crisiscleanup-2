@@ -15,12 +15,24 @@
 <% end %>
 
 <% content_for :main do %> 
-<div id="main" class="alt">
-    <div class="row">
-		<%= render 'table', contacts: @contacts, event_id: @event_id %>
-        <%= will_paginate @contacts %>  
-	</div>	     
-</div>    
+<ul class="tabs" data-tab>
+  <li class="tab-title active"><a href="#contacts">All Organizations</a></li>
+  <li class="tab-title"><a href="#org-users">My Organization</a></li>
+</ul>
+<div class="tabs-content">
+  <div class="content active" id="contacts">
+    <div id="main" class="alt">
+        <div class="row">
+            <%= render 'table', contacts: @contacts, event_id: @event_id %>
+            <%= will_paginate @contacts %>  
+        </div>       
+    </div>    
+  </div>
+  <div class="content" id="org-users">
+    <%= render 'users_table', users: @users %>
+  </div>
+</div>
+
 <% end %>
     
     <% content_for :sidebar do %> 
