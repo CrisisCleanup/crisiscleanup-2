@@ -7,7 +7,7 @@ class InvitationsController < ApplicationController
     unless @invitation
       flash[:notice] = "This invitation does not exist."
       redirect_to root_path
-      endh
+    end
   end
 
   def sign_up 
