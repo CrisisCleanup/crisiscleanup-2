@@ -7,7 +7,6 @@ module Worker
         used_emails = check_user_emails emails
 
         valid_emails = emails - used_emails
-        binding.pry
     	list = InvitationList.new(valid_emails.join(","), current_user, organization)
     	if list.valid?
     		if list.ready.present?  
