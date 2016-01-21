@@ -8,20 +8,27 @@ class RegistrationsController < ApplicationController
   end
 
   def create 
- 	@org = Legacy::LegacyOrganization.new(org_params) 
-  	contacts = params["legacy_legacy_organization"]["legacy_contacts_attributes"]
-  	if contacts.present?
-  		contacts.each do |c|
-  			if c[1]["_destroy"] == "false"
-  				@org.legacy_contacts << Legacy::LegacyContact.new(
-  					email: c[1]["email"],
-  					first_name: c[1]["first_name"],
-  					last_name: c[1]["last_name"],
-  					phone: c[1]["phone"]
-  					)
-  			end
-  		end	
-  	end
+    @org = Legacy::LegacyOrganization.new(org_params) 
+    contacts = params["legacy_legacy_organization"]["legacy_contacts_attributes"]
+    if contacts.present?
+      contacts.each do |c|
+        if c[1]["_destroy"] == "false"
+          @org.legacy_contacts << Legacy::LegacyContact.new(
+            email: c[1]["email"],
+            first_name: c[1]["first_name"],
+            last_name: c[1]["last_name"],
+            phone: c[1]["phone"]
+            )
+        end
+      end 
+    end
+    unless check_user_emails(params)
+      flash[:alert] = "Contact email has already been taken. If you represent an organization that wishes to re-deploy to a new incident, click the 'Re-deploy' link below. If you are a volunteer who wishes to join a new organization, please use a different email address."
+      render :new
+      return
+    end
+
+
   	if @org.valid?
   		@org.legacy_events << Legacy::LegacyEvent.find(params['legacy_legacy_organization']['legacy_events'])
   		@org.save
@@ -36,6 +43,22 @@ class RegistrationsController < ApplicationController
   	end
   end
   private
+
+  def check_user_emails params
+    emails = []
+    list = params[:legacy_legacy_organization][:legacy_contacts_attributes]
+    list.each do |obj|
+      emails.append(obj[1][:email])
+    end
+    emails.each do |email|
+
+      if User.find_by(email: email)
+        return false
+      end
+    end
+    return true
+  end
+
   def org_params
 	params.require(:legacy_legacy_organization).permit(
                 :activate_by,
