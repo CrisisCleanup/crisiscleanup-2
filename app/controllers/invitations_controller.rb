@@ -3,7 +3,15 @@ class InvitationsController < ApplicationController
   before_filter :check_token
   
   def activate
-    @invitation = Invitation.where(token:params[:token]).first
+    @invitation = Invitation.where(token:params[:token]).where('expiration > ?', DateTime.now).first
+    unless @invitation
+      if Invitation.where(token:params)
+       flash[:notice] = 'Your account has already been activated. Please <a href="/login">Login</a> or <a href="/password/new">Request a New Password</a>.'.html_safe
+     else
+       flash[:notice] = 'That invitation does not exist.'
+     end
+      redirect_to root_path
+    end
   end
 
   def sign_up 

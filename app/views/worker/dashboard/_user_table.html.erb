@@ -16,17 +16,17 @@
           <td> <%= user.name %> </td>
           <td> <%= user.email %> </td>
           <td>
-            <% if user.reference.email != current_user.email and user.email != current_user.email %>
+            <% if user.reference and user.reference.email != current_user.email and user.email != current_user.email %>
               <%= link_to "Verify Me", "/verify/#{user.id.to_s}", :method=> :post, :onclick => "return confirm('Please confirm that you would like to verify this user.')" %>
             <% end %>
-            <% if user.reference.email == current_user.email %>
+            <% if user.reference and user.reference.email == current_user.email %>
               You Invited This Person
             <%end%>
             <% if user.email == current_user.email %>
               Someone else has to verify you
             <%end%>
           </td>
-          <td> <%= user.reference.email %> </td>
+          <td> <% if user.reference %> <%= user.reference.email %> <% end %> </td>
         </tr>
       <% end %>
     <% end %>

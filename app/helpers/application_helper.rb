@@ -62,4 +62,14 @@ module ApplicationHelper
       end
       link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
     end
+
+    def check_user_emails emails
+      used_emails = []
+      emails.each do |email|
+          if User.find_by(email: email.strip)
+              used_emails.append(email.strip)
+          end
+      end
+      used_emails
+    end
 end
