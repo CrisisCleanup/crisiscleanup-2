@@ -11,10 +11,12 @@
 </head>
 <body class='<%= @body.present? ? @body : "worker-dashboard" %>'>
     <%= render 'layouts/menus/worker_dashboard_menu' %>
+    <!-- alert menu -->
+    <%= render "layouts/menus/alert_menu" %>
+    
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> 
     <%= yield %>
-
       
     <!-- subheader -->
     <%= yield :subheader %>

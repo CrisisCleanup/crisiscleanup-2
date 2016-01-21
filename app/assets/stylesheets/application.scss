@@ -65,17 +65,37 @@ header {
 
 // gray bar below nav for site-wide announcements
 .alert_menu { 
+    width: 100%;
+    height: auto;
     border-style: solid;
     border-width: 1px;
     display: block;
     list-style: none;
     margin-left: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 0.5625rem 0.875rem 0.5625rem;
     background-color: #f4f4f4;
     border-color: gainsboro;
     border-radius: 3px;
-    text-align: center;
+    text-align: left;
+    & .alert_one_half {
+        margin: 0;
+        padding: 0;
+        & form {
+            width: 100%;
+        }
+        & label {        
+            margin: 0;
+        }
+        & select {
+            
+            margin: 0;
+            display:inline-block!important;
+        }
+        & .custom-dropdown-area {
+            display: none;
+        }
+    }
 }
 
 //page title and subtitle section
