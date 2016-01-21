@@ -22,8 +22,8 @@ class RegistrationsController < ApplicationController
         end
       end 
     end
-    unless check_user_emails(params)
-      flash[:alert] = "Contact email has already been taken. If you represent an organization that wishes to re-deploy to a new incident, click the 'Re-deploy' link below. If you are a volunteer who wishes to join a new organization, please use a different email address."
+    unless check_user_emails(params, @org)
+      flash[:alert] = "That email address is already being used. You may <a href='/login'>login</a> or <a href='/password/new'>request a new password</a>.".html_safe
       render :new
       return
     end
@@ -44,8 +44,8 @@ class RegistrationsController < ApplicationController
   end
   private
 
-  def check_user_emails params
-    emails = []
+  def check_user_emails params, org
+    emails = [org.name]
     list = params[:legacy_legacy_organization][:legacy_contacts_attributes]
     list.each do |obj|
       emails.append(obj[1][:email])
