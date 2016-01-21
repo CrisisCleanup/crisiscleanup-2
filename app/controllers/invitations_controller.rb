@@ -3,7 +3,11 @@ class InvitationsController < ApplicationController
   before_filter :check_token
   
   def activate
-    @invitation = Invitation.where(token:params[:token]).first
+    @invitation = Invitation.where(token:params[:token]).where('expiration > ?', DateTime.now).first
+    unless @invitation
+      flash[:notice] = "This invitation does not exist."
+      redirect_to root_path
+    end
   end
 
   def sign_up 
