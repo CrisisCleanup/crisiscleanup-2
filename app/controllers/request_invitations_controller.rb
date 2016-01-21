@@ -4,7 +4,7 @@ class RequestInvitationsController < ApplicationController
         @organizations = Legacy::LegacyOrganization.all.order(:name)
     end
     def create       
-        @request_invitation = RequestInvitation.new(request_invitation_params) 
+        @request_invitation = RequestInvitation.new(request_invitation_params)
         if @request_invitation.save
             flash[:notice] = "An invitation request has been send for #{@request_invitation.email}."
          	redirect_to "/login"
