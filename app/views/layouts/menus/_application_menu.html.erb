@@ -10,19 +10,41 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <%= nav_link "Home", root_path %>
-      <%= nav_link "About", about_path %>
-      <%= nav_link "Map", public_map_path %>
+      <li><%= nav_link "Home", root_path %></li>
+      <li><%= nav_link "Map", public_map_path %></li> <!-- add public vs incident links -->
+      <li><%= nav_link "Form", public_map_path %></li> <!-- hide for public view -->
+      <li><%= nav_link "About", about_path %></li>      
       <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
-      <%= nav_link "Sign Up", register_path %>
-      <% if current_user %>
-        <li><%= link_to "Dashboard", worker_dashboard_path %></li>
-        <% if current_user.admin %>
-          <li><%= link_to "Admin", admin_path%></li>
+      <li><%= nav_link "Sign Up", register_path %></li> <!-- hide for verified user / admin -->
+      <% if current_user %> <!-- user verified only -->
+        <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
+            <ul class="dropdown">
+                <li><%= link_to "Contacts", root_path %></li>
+                <li><%= link_to "Orgs", root_path %></li>
+                <li><%= link_to "Sites", root_path %></li>
+                <li><%= link_to "Stats", root_path %></li>
+            </ul>
+        </li> <!-- end user verified only -->   
+        <% if current_user.admin %> <!-- admin verified only -->
+          <li class="has-dropdown"><%= link_to "Admin", admin_path%>
+            <ul class="dropdown">
+                <li class="users"><a href=<%=admin_users_path%>>Users</a></li>
+                <li class="stats"><a href=<%=admin_stats_path%>>Stats</a></li>
+                <li class="import"><a href=<%=admin_csv_import_form_path%>>Import</a></li>
+                <li class="has-dropdown"><a href="#">Legacy Models</a>
+                    <ul class="dropdown">
+                      <li class='legacy_events'><a href=<%=admin_legacy_events_path%>>Legacy Events</a></li>
+                      <li class='legacy_sites'><a href=<%=admin_legacy_sites_path%>>Legacy Sites</a></li>
+                      <li class='legacy_organizations'><a href=<%=admin_legacy_organizations_path%>>Legacy Organizations</a></li>
+                      <li class='legacy_contacts'><a href=<%=admin_legacy_contacts_path%>>Legacy Contacts</a></li>
+                    </ul>
+                </li>      
+            </ul>
+          </li> <!-- end admin verified only -->
         <% end %>
         <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
       <% else %>
-        <%= nav_link "Login", new_user_session_path %>
+        <li><%= nav_link "Login", new_user_session_path %></li>
       <% end %>
     </ul>
   </section>
