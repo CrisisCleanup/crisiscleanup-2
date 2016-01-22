@@ -31,10 +31,12 @@ module Api
         if site = Legacy::LegacySite.find(params[:id])
           if site.status == 'Open, unassigned' && site.claimed_by == nil
             site.claimed_by = current_user.legacy_organization_id
+          elsif params["unclaim"] == 'true' && site.claimed_by == current_user.legacy_organization_id
+            site.claimed_by = nil
           end
-          site.status = params[:status]
+          site.status = params[:status] if params[:status]
           site.save
-          render json: { status: 'success', claimed_by: site.claimed_by }
+          render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
         else
           render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our syste.' }
         end
