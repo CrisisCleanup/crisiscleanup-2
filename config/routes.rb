@@ -63,6 +63,7 @@ Rails.application.routes.draw do
     # TODO /import
     get "/map" => "json#map", as: "json_map"
     post "/update-site-status/:id" => "json#update_legacy_site_status"
+    post "/claim-site/:id" => "json#claim_legacy_site"
     get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"
     get "/public/map" => "public/json#map", as: "public_json_map"
     post "/import" => "import#csv", as: "import_csv"
