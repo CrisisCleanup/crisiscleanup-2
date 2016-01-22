@@ -40,7 +40,7 @@ module Admin
 	    def site_params
 	        params.require(:user).permit(
             :admin, :email, :name, :password,
-            :legacy_organization_id, :verified)
+            :legacy_organization_id)
 	    end
   end
 end

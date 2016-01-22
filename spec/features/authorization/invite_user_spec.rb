@@ -10,10 +10,10 @@ feature "Inviting a new user" do
   end
 
   scenario "Regular user invites multiple users" do
-    emails = "NewUser1@aol.com, NewUser2@aol.com"
+    emails = "NewUser11@aol.com, NewUser12@aol.com"
     sign_in_with_user
     send_invites(emails)
-    expect(page).to have_content "Invitation sent to #{emails}"
+    expect(page).to have_content "Invitation sent to NewUser11@aol.com,NewUser12@aol.com"
   end
 
   scenario "User registers at emailed invite link and can navigate the system" do

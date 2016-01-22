@@ -18,11 +18,11 @@ module Worker
         end  
         # if list.rejected.present? then WRITE ERROR HANDLING end
         notice = ""
-        if valid_emails
-            notice += 'Invitation sent to valid_emails.join(",").'
+        unless valid_emails.empty?
+            notice += "Invitation sent to " + valid_emails.join(",")
         end
-        if used_emails
-            notice += " Invitation not sent to existing emails #{used_emails.join(",")}"
+        unless used_emails.empty?
+            notice += " Invitation not sent to existing emails #{used_emails.join(",")}".html_safe
         end
         flash[:notice] = notice
     	redirect_to current_user.admin ? admin_path : worker_dashboard_path
