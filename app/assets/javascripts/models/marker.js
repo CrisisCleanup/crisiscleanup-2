@@ -119,7 +119,9 @@ CCMap.Site = function(params) {
       "Edit": edit.bind(this)
     }
     if (this.site.claimed_by) {
-      actionButtons['Unclaim'] = unclaim.bind(this);
+      actionButtons['Unclaim'] = claim.bind(this);
+    } else {
+      actionButtons['Claim'] = claim.bind(this);
     }
     var buttonRow = document.createElement('tr');
     var buttonCell = document.createElement('td');
@@ -199,14 +201,12 @@ CCMap.Site = function(params) {
     console.log('edit:', this);
   }
 
-  function unclaim(event) {
+  // This should work like a toggle
+  function claim(event) {
     $.ajax({
-      url: '/api/update-site-status/' + this.site.id,
+      url: '/api/claim-site/' + this.site.id,
       type: "POST",
       context: this,
-      data: {
-        unclaim: true
-      },
       dataType: 'json',
       success: function(data) {
         if (data.status === 'success') {
