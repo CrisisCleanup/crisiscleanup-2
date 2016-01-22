@@ -16,6 +16,8 @@ CCMap.UnclaimedStatusColorMap = {
 };
 
 CCMap.Site = function(params) {
+  var $infobox = $('#map-infobox');
+
   this.map = params.map;
   this.site = params.site;
   this.marker = new google.maps.Marker({
@@ -23,7 +25,10 @@ CCMap.Site = function(params) {
     map: params.map,
     icon: generateIconFilename.call(this)
   });
-  this.marker.addListener("click", toggleInfobox.bind(this));
+  this.marker.addListener("click", function() {
+    toInfoboxHtml.call(this);
+    $infobox.show();
+  }.bind(this));
 
   // TODO: check if the file exists on the server or some other validation here.
   function generateIconFilename() {
@@ -35,12 +40,6 @@ CCMap.Site = function(params) {
     }
     // this is the key sent to the image_path function in app/assets/javascripts/images.js.erb
     return image_path('map_icons/' + this.site.work_type + '_' + color + '.png');
-  }
-
-  function toggleInfobox() {
-    // TODO: set the map container to a property on this
-    var $infobox = $('#map-infobox');
-    $infobox.html(toInfoboxHtml.call(this));
   }
 
   /**
@@ -137,7 +136,7 @@ CCMap.Site = function(params) {
     buttonRow.appendChild(buttonCell);
     table.appendChild(buttonRow);
 
-    return table;
+    $infobox.html(table);
   }
 
   /**
@@ -175,10 +174,11 @@ CCMap.Site = function(params) {
       dataType: 'json',
       success: function(data) {
         if (data.status === 'success') {
-          // This is kinda gross and asking for trouble. React?
           this.site.claimed_by = data.claimed_by;
           this.site.status = status;
           this.marker.setIcon(generateIconFilename.call(this));
+          // TODO: this will all be better in React. I promise.
+          toInfoboxHtml.call(this);
         }
       },
       error: function(data) {
@@ -200,6 +200,27 @@ CCMap.Site = function(params) {
   }
 
   function unclaim(event) {
-    console.log('unclaim:', this);
+    $.ajax({
+      url: '/api/update-site-status/' + this.site.id,
+      type: "POST",
+      context: this,
+      data: {
+        unclaim: true
+      },
+      dataType: 'json',
+      success: function(data) {
+        if (data.status === 'success') {
+          // This is kinda gross and asking for trouble. React?
+          this.site.claimed_by = data.claimed_by;
+          this.site.status = data.site_status;
+          this.marker.setIcon(generateIconFilename.call(this));
+          // TODO: this will all be better in React. I promise.
+          toInfoboxHtml.call(this);
+        }
+      },
+      error: function(data) {
+        //console.log('error:', data);
+      }
+    });
   }
 }
