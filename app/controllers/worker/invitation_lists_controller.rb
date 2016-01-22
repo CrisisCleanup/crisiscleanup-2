@@ -19,7 +19,7 @@ module Worker
         # if list.rejected.present? then WRITE ERROR HANDLING end
         notice = ""
         if valid_emails
-            notice += "Invitation sent to #{params[:email_addresses]}."
+            notice += 'Invitation sent to valid_emails.join(",").'
         end
         if used_emails
             notice += " Invitation not sent to existing emails #{used_emails.join(",")}"
