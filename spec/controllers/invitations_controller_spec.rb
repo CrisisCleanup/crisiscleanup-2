@@ -30,13 +30,11 @@ RSpec.describe InvitationsController, :type => :controller do
       all = User.count
       post :sign_up,  :token => @invitation.token,:user => { email: "test@aol.com",password: 'blue32blue32', password_confirmation: "blue32blue32", name: "test", legacy_organization_id:@invitation.organization_id, referring_user_id:@invitation.user_id }
       expect(User.count).to eq(all + 1)
-      expect(User.last.verified).to eq(true)
     end
     it 'verifies new user if invitee is an admin' do  
       all = User.count
       post :sign_up,  :token => @dhruv_invitation.token,:user => { email: "test@aol.com",password: 'blue32blue32', password_confirmation: "blue32blue32", name: "test", legacy_organization_id:@invitation.organization_id, referring_user_id:@invitation.user_id }
       expect(User.count).to eq(all + 1)
-      expect(User.last.verified).to eq(false)
     end
   end
 end

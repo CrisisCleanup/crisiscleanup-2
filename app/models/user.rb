@@ -14,13 +14,7 @@ class User < ActiveRecord::Base
   def invited_by
   	self.reference
   end
-  def verify!
-    if self.update(verified:true)
-      true
-    else
-      false
-    end
-  end
+
   def is_not_admin?
     !self.admin 
   end

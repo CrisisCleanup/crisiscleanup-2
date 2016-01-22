@@ -26,14 +26,11 @@
               <h4>Invite Users By Email</h4>
               <%= render 'invite_form' %>
               <h4>Invite Users With Temporary Password</h4>
-              <p>This password will expire [***] minutes from the time you create it.</p>
               <%= render 'temporary_password_form' %>
             </div>
           </li>
         </ul>
 
-    	<h4>Verify Invited Users</h4>
-    	<%= render 'user_table', users: @unverified_users %>
         <h4>Requested Invitations</h4>
         <%= render 'request_invitation_table', users: @requested_invitations %>
     <% end %>

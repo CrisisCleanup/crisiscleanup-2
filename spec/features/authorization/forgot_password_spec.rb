@@ -4,7 +4,7 @@ feature "Signing in" do
 	background do
 		org = FactoryGirl.create(:legacy_organization)
 		org_event = FactoryGirl.create(:legacy_organization_event, legacy_organization_id: org.id)
-		FactoryGirl.create(:user, email: "Gary@aol.com", password: "blue32blue32", legacy_organization_id: org.id, verified: true)
+		FactoryGirl.create(:user, email: "Gary@aol.com", password: "blue32blue32", legacy_organization_id: org.id)
 	end
 
 	scenario "User clicks 'Forgot your password'" do

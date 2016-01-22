@@ -56,7 +56,6 @@ Rails.application.routes.draw do
 
   get "/invitations/activate" => "invitations#activate"
   post "/invitations/activate" => "invitations#sign_up"
-  post "/verify/:user_id" => "worker/dashboard#verify_user"
 
 
   namespace :api do
