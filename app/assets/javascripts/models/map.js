@@ -12,6 +12,8 @@ var CCMap = CCMap || {};
  * @param {boolean=true} [params.public_map] - Whether or not it's a public map
  */
 CCMap.Map = function(params) {
+  var $infobox = $('#map-infobox');
+
   this.canvas = document.getElementById(params.elm);
   this.event_id = params.event_id;
   this.public_map = typeof params.public_map !== 'undefined' ? params.public_map : true;
@@ -28,6 +30,10 @@ CCMap.Map = function(params) {
   this.sites = [];
   this.markerCluster;
   this.markerBounds = new google.maps.LatLngBounds();
+
+  this.map.addListener('click', function() {
+    $('#map-infobox').hide();
+  }.bind(this));
 
   this.setEventId = function(event_id) {
     this.event_id = event_id;
