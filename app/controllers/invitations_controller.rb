@@ -22,7 +22,14 @@ class InvitationsController < ApplicationController
       redirect_to :back
       return
     end
+
+    if params["user"]["password"].length < 8
+      flash[:notice] = "Passwords not long enough"
+      redirect_to :back
+      return
+    end
     @user = User.new(email: params["user"]["email"],password: params["user"]["password"],name: params["user"]["name"], legacy_organization_id:inv.organization_id, referring_user_id:inv.user_id)
+
     if @user.save
       RequestInvitation.user_created!(params["user"]["email"])
       flash[:notice] = "Invitation accepted. Please log in."
