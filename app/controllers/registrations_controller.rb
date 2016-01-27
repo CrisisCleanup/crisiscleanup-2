@@ -35,6 +35,9 @@ class RegistrationsController < ApplicationController
   		User.where(admin:true).each do |u|
         AdminMailer.send_registration_alert(u,@org).deliver_now
       end
+      @org.legacy_contacts.each do |contact|
+        InvitationMailer.send_registration_confirmation(contact).deliver_now
+      end
   		redirect_to "/welcome"
   	else
   		# with errors
