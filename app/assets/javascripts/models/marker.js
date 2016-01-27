@@ -16,6 +16,8 @@ CCMap.UnclaimedStatusColorMap = {
 };
 
 CCMap.Site = function(params) {
+  var $infobox = $('#map-infobox');
+
   this.map = params.map;
   this.site = params.site;
   this.marker = new google.maps.Marker({
@@ -23,7 +25,10 @@ CCMap.Site = function(params) {
     map: params.map,
     icon: generateIconFilename.call(this)
   });
-  this.marker.addListener("click", toggleInfobox.bind(this));
+  this.marker.addListener("click", function() {
+    toInfoboxHtml.call(this);
+    $infobox.show();
+  }.bind(this));
 
   // TODO: check if the file exists on the server or some other validation here.
   function generateIconFilename() {
@@ -35,12 +40,6 @@ CCMap.Site = function(params) {
     }
     // this is the key sent to the image_path function in app/assets/javascripts/images.js.erb
     return image_path('map_icons/' + this.site.work_type + '_' + color + '.png');
-  }
-
-  function toggleInfobox() {
-    // TODO: set the map container to a property on this
-    var $infobox = $('#map-infobox');
-    $infobox.html(toInfoboxHtml.call(this));
   }
 
   /**
@@ -73,7 +72,7 @@ CCMap.Site = function(params) {
 
     // status dropdown
     var statusDropdown = document.createElement('select');
-    statusDropdown.onchange = statusSelect.bind(this); 
+    statusDropdown.onchange = statusSelect.bind(this);
     var statusOptions = [
       "Open, unassigned",
       "Open, assigned",
@@ -89,9 +88,12 @@ CCMap.Site = function(params) {
     ];
     statusOptions.forEach(function(optionLabel) {
       var option = document.createElement('option');
+      if (optionLabel === this.site.status) {
+        option.selected = 'selected';
+      }
       option.appendChild(document.createTextNode(optionLabel));
       statusDropdown.appendChild(option);
-    });
+    }.bind(this));
     table.appendChild(
       createTableRow(
         document.createTextNode('Status:'),
@@ -114,8 +116,12 @@ CCMap.Site = function(params) {
     var actionButtons = {
       "Contact Organization": contactOrg.bind(this),
       "Printer Friendly": print.bind(this),
-      "Edit": edit.bind(this),
-      "Unclaim": unclaim.bind(this)
+      "Edit": edit.bind(this)
+    }
+    if (this.site.claimed_by) {
+      actionButtons['Unclaim'] = claim.bind(this);
+    } else {
+      actionButtons['Claim'] = claim.bind(this);
     }
     var buttonRow = document.createElement('tr');
     var buttonCell = document.createElement('td');
@@ -132,7 +138,7 @@ CCMap.Site = function(params) {
     buttonRow.appendChild(buttonCell);
     table.appendChild(buttonRow);
 
-    return table;
+    $infobox.html(table);
   }
 
   /**
@@ -160,11 +166,27 @@ CCMap.Site = function(params) {
 
   function statusSelect(event) {
     var status = event.target.value;
-    if (status === 'Open, unassigned') {
-      console.log('Set status to ' + status + ', and clear claimed_by field.');
-    } else {
-      console.log('Set status to ' + status + ', and set claimed_by field to logged in user\'s organization.');
-    }
+    $.ajax({
+      url: '/api/update-site-status/' + this.site.id,
+      type: "POST",
+      context: this,
+      data: {
+        status: status
+      },
+      dataType: 'json',
+      success: function(data) {
+        if (data.status === 'success') {
+          this.site.claimed_by = data.claimed_by;
+          this.site.status = status;
+          this.marker.setIcon(generateIconFilename.call(this));
+          // TODO: this will all be better in React. I promise.
+          toInfoboxHtml.call(this);
+        }
+      },
+      error: function(data) {
+        //console.log('error:', data);
+      }
+    });
   }
 
   function contactOrg(event) {
@@ -179,7 +201,26 @@ CCMap.Site = function(params) {
     console.log('edit:', this);
   }
 
-  function unclaim(event) {
-    console.log('unclaim:', this);
+  // This should work like a toggle
+  function claim(event) {
+    $.ajax({
+      url: '/api/claim-site/' + this.site.id,
+      type: "POST",
+      context: this,
+      dataType: 'json',
+      success: function(data) {
+        if (data.status === 'success') {
+          // This is kinda gross and asking for trouble. React?
+          this.site.claimed_by = data.claimed_by;
+          this.site.status = data.site_status;
+          this.marker.setIcon(generateIconFilename.call(this));
+          // TODO: this will all be better in React. I promise.
+          toInfoboxHtml.call(this);
+        }
+      },
+      error: function(data) {
+        //console.log('error:', data);
+      }
+    });
   }
 }

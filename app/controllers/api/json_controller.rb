@@ -27,7 +27,42 @@ module Api
     end
 
     def update_legacy_site_status
-      render json: "update status here"
+      if params[:id]
+        if site = Legacy::LegacySite.find(params[:id])
+          if site.status == 'Open, unassigned' && site.claimed_by == nil
+            site.claimed_by = current_user.legacy_organization_id
+          end
+          site.status = params[:status] if params[:status]
+          site.save
+          render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
+        else
+          render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our syste.' }
+        end
+      else
+        render json: { status: 'error', msg: 'Site id is required.' }
+      end
+    end
+
+    # claim/unclaim toggle
+    # TODO: clean this up
+    def claim_legacy_site
+      if params[:id]
+        if site = Legacy::LegacySite.find(params[:id])
+          if site.claimed_by == nil
+            site.claimed_by = current_user.legacy_organization_id
+            site.save
+            render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
+          elsif site.claimed_by == current_user.legacy_organization_id
+            site.claimed_by = nil
+            site.save
+            render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
+          else
+            render json: { status: 'error', msg: 'You do not have permission to do that.' }
+          end
+        end
+      else
+        render json: { status: 'error', msg: 'Site id is required.' }
+      end
     end
 
   end
