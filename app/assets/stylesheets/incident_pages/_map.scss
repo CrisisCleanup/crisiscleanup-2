@@ -168,6 +168,7 @@ table {
 
 // TODO: make this crap look good!
 #map-infobox {
+  display: none;
   z-index: 2;
   position: absolute;
   left: 200px;
@@ -182,6 +183,17 @@ table {
        margin: 0px;
     }
   }
+}
+
+ul#map-filters {
+  list-style-type: none;
+  margin: 0;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;
 }
 
 @media only screen and (max-width: 767px) {
