@@ -9,7 +9,6 @@ module Worker
         	@contacts = Legacy::LegacyContact.order("first_name").where(legacy_organization_id: org_ids).paginate(:page => params[:page])
             @event_id = params[:id]
             @users = User.where(legacy_organization_id: current_user.legacy_organization_id)
-            binding.pry
         end
 
         def show
