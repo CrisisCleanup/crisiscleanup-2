@@ -1,51 +1,52 @@
- <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-            <li class="name">
-                <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home"  %></a>
-            </li>
-            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-        <!-- right side navigation -->
-        <section class="top-bar-section">
-            <!-- Right Nav Section -->
-            <ul class="right">
-                <li><%= link_to "Home", root_path %></li>
-        <% if current_user_event %> <!-- DOUBLE CHECK - MAP / FORM LINKS NOT SHOWING UP ON ADMIN VIEW -->
-                    <li><%= link_to "Map", worker_incident_legacy_map_path(current_user_event) %></li>   
-                    <li><%= link_to "Form", worker_incident_legacy_form_path(current_user_event) %></li>
-        <% end %>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+    <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home"  %></a>
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+  <!-- right side navigation -->
 
-               <% if current_user %> <!-- user verified only -->
-                <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
-                    <ul class="dropdown">
-                        <li><%= link_to "Contacts", root_path %></li>
-                        <li><%= link_to "Orgs", root_path %></li>
-                        <li><%= link_to "Sites", root_path %></li>
-                        <li><%= link_to "Stats", root_path %></li>
-                    </ul>
-                </li> <!-- end user verified only -->  
-                    <% if current_user.admin %> <!-- admin verified only -->
-                      <li class="has-dropdown"><%= link_to "Admin", admin_path%>
-                        <ul class="dropdown">
-                            <li class="users"><a href=<%=admin_users_path%>>Users</a></li>
-                            <li class="stats"><a href=<%=admin_stats_path%>>Stats</a></li>
-                            <li class="import"><a href=<%=admin_csv_import_form_path%>>Import</a></li>
-                            <li class="has-dropdown"><a href="#">Legacy Models</a>
-                                <ul class="dropdown">
-                                  <li class='legacy_events'><a href=<%=admin_legacy_events_path%>>Legacy Events</a></li>
-                                  <li class='legacy_sites'><a href=<%=admin_legacy_sites_path%>>Legacy Sites</a></li>
-                                  <li class='legacy_organizations'><a href=<%=admin_legacy_organizations_path%>>Legacy Organizations</a></li>
-                                  <li class='legacy_contacts'><a href=<%=admin_legacy_contacts_path%>>Legacy Contacts</a></li>
-                                </ul>
-                            </li>      
-                        </ul>
-                      </li> <!-- end admin verified only -->
-                    <% end %>
-                    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-                <% else %>
-                    <li><%= link_to "Login", new_user_session_path %></li> 
-                <% end %>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li><%= link_to "Home", root_path %></li>
+      <% if current_user_event %> <!-- DOUBLE CHECK - MAP / FORM LINKS NOT SHOWING UP ON ADMIN VIEW -->
+        <li><%= link_to "Map", worker_incident_legacy_map_path(current_user_event) %></li>
+        <li><%= link_to "Form", worker_incident_legacy_form_path(current_user_event) %></li>
+      <% end %>
+
+      <% if current_user %> <!-- user verified only -->
+        <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
+          <ul class="dropdown">
+            <li><%= link_to "Contacts", worker_incident_legacy_contacts_path(1) %></li>
+            <li><%= link_to "Orgs", worker_incident_legacy_organizations_path(1) %></li>
+            <li><%= link_to "Sites", worker_incident_legacy_sites_index_path(1) %></li>
+            <li><%= link_to "Stats", worker_incident_stats_path(1) %></li>
+          </ul>
+        </li> <!-- end user verified only -->
+        <% if current_user.admin %> <!-- admin verified only -->
+          <li class="has-dropdown"><%= link_to "Admin", admin_path %>
+            <ul class="dropdown">
+              <li class="users"><%= link_to "Users", admin_users_path %></li>
+              <li class="stats"><%= link_to "Stats", admin_stats_path %></li>
+              <li class="import"><%= link_to "Import", admin_csv_import_form_path %></li>
+              <li class="has-dropdown"><a href="#">Legacy Models</a>
+                <ul class="dropdown">
+                  <li class='legacy_events'><%= link_to "Legacy Events", admin_legacy_events_path %></li>
+                  <li class='legacy_sites'><%= link_to "Legacy Sites", admin_legacy_sites_path %></li>
+                  <li class='legacy_organizations'><%= link_to "Legacy Organizations", admin_legacy_organizations_path %></li>
+                  <li class='legacy_contacts'><%= link_to "Legacy Contacts", admin_legacy_contacts_path %></li>
+                </ul>
+              </li>
             </ul>
-        </section>
-    </nav>
+          </li> <!-- end admin verified only -->
+        <% end %>
+      <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+    <% else %>
+      <li><%= link_to "Login", new_user_session_path %></li>
+    <% end %>
+    </ul>
+  </section>
+</nav>
