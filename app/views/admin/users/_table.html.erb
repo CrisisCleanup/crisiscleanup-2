@@ -18,8 +18,8 @@
         </td>
         <td> <%= user.name || "Anonymous" %> </td>
         <td> <%= user.legacy_organization.present? ? user.legacy_organization.name : "Unafiliated"%> </td>
-        <td> <%= user.verified %>  </td>
-        <td> <%= user.admin %>  </td>
+        <td> <%# user.verified %>  </td>
+        <td> <%# user.admin %>  </td>
       </tr>
     <% end %>
   </tbody>
