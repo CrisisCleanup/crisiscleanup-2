@@ -10,7 +10,7 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td> 
+        <td>
           <a href=<%=edit_admin_user_path(user.id)%>>
               <%= user.email %>
             </a>
