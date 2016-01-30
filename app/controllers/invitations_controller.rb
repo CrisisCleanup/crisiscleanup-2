@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
       if Invitation.where(token:params)
        flash[:notice] = 'Your account has already been activated. Please <a href="/login">Login</a> or <a href="/password/new">Request a New Password</a>.'.html_safe
      else
-       flash[:notice] = 'That invitation does not exist.'
+       flash[:notice] =  "Either this invitation has expired, does not exist, or your account has already been activated. Please <a href='/login'>Login</a> or <a href='/password/new'>Request a New Password</a>.".html_safe
      end
       redirect_to root_path
     end
