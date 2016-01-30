@@ -12,5 +12,10 @@ class InvitationMailer < ActionMailer::Base
    
     mail(to: @new_user.email, subject: "#{@verified_by.email} has granted you access")
   end
+
+  def send_registration_confirmation(contact)
+    @contact = contact
+    mail(to: @contact.email, subject: "We have received your registration")
+  end
  	# TODO - do we need comment alerts? also an in-app mail or alert system, ala social network messages
 end
