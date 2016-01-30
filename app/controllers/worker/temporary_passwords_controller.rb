@@ -2,12 +2,13 @@ module Worker
   class TemporaryPasswordsController < ApplicationController
     include ApplicationHelper
     def create
-        @temporary_password = TemporaryPassword.new(temporary_password_params) 
+        random_pw = random_password
+        @temporary_password = TemporaryPassword.new(password: random_pw, password_confirmation: random_pw) 
         @temporary_password.created_by = current_user.id
         @temporary_password.legacy_organization_id = current_user.legacy_organization.id
         @temporary_password.expires = DateTime.now + 30.minutes
-        if params[:password].length >= 6 and @temporary_password.save
-            flash[:notice] = "Temporary password successfully created"
+        if @temporary_password.save
+            flash[:notice] = "Temporary password successfully created. Password is #{random_pw}"
          	redirect_to worker_dashboard_path
          	return
         else
@@ -18,7 +19,7 @@ module Worker
     end
 
     def authorize
-      tempoary_passwords = TemporaryPassword.where(legacy_organization_id: params[:legacy_organization_id])
+      tempoary_passwords = TemporaryPassword.all
 
       if tempoary_passwords and params[:password].length >= 6 and  params[:password] == params[:password_confirmation]
         tempoary_passwords.each do |temp|
@@ -46,12 +47,6 @@ module Worker
     end
 
     def new
-      @organizations = Legacy::LegacyOrganization.all.order(:name)
     end
-
-    private
-	    def temporary_password_params
-	        params.permit(:password, :password_confirmation)
-	    end
   end
 end
