@@ -9,5 +9,10 @@ module Legacy
     has_one :form,
       inverse_of: :legacy_event
     validates_presence_of :name,:case_label,:created_date,:start_date
+
+    CASE_LABELS = %w(A B C D E F G H J K M N Q R S T U V W X Y Z)
+    def self.next_case_label
+      CASE_LABELS[self.count % 22]
+    end
   end
 end

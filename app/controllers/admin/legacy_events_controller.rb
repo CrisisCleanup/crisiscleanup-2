@@ -13,6 +13,7 @@ module Admin
     end
     def new
     	@event = Legacy::LegacyEvent.new
+        @case_label = Legacy::LegacyEvent.next_case_label
     end
     def create    
         @event = Legacy::LegacyEvent.new(event_params) 
@@ -28,6 +29,7 @@ module Admin
     def edit
         @event = Legacy::LegacyEvent.find(params[:id])
         @versions = @event.versions
+        @case_label = @event.case_label
     end
 
     def update
