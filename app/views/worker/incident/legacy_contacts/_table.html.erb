@@ -7,6 +7,7 @@
       <th>Phone</th>
       <th>Title</th>
       <th>Organization</th>
+      <th>Primary Contact</th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +32,9 @@
         </td>
         <td> 
           <%= contact.legacy_organization.name if contact.legacy_organization %> 
+        </td>
+        <td>
+          <%= contact.is_primary %>
         </td>
     <% end %>
   </tbody>
