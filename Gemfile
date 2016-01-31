@@ -50,6 +50,10 @@ gem 'rspec_junit_formatter', '0.2.2'
 # gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
 
 
+gem 'mongoid'
+gem 'bson_ext'
+
+
 group :production do
   gem 'rack-timeout'
 end
