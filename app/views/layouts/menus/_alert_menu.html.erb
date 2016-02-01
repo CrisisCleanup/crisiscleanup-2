@@ -1,5 +1,5 @@
-<!-- alert messages go in the container below -->
-<!-- use <span class=""></span> formatting and the classes -->
+<!-- alert messages + incident selection -->
+<!-- for alerts use <span class=""></span> formatting and legend classes below -->
 <!-- legend:
         alert = red
         warning = orange
@@ -8,5 +8,23 @@
 -->
 
 <div class="alert_menu">
-<span class=""></span>
+    <div class="row">
+        <div class="small-12 medium-6 large-8 columns alert_one_half">
+            <p><span class="info">Welcome to Crisis Cleanup!</span></p>
+        </div>    
+        <div class="small-12 medium-6 large-4 columns alert_one_half">
+        <!-- show only for verified users -->    
+          <form>
+              <label>Choose Incident: 
+                <select>
+                  <option value="incident_1">current incident</option>
+                  <option value="incident_2">incident 2</option>
+                  <option value="incident_3">incident 3</option>
+                  <option value="incident_4">incident 4</option>
+                </select>
+              </label>
+          </form>
+        </div>
+        <!-- end show only for verified users -->    
+    </div>
 </div>
