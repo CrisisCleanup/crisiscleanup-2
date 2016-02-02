@@ -14,6 +14,19 @@ var CCMap = CCMap || {};
 CCMap.Map = function(params) {
   var $infobox = $('#map-infobox');
 
+  var userOrg = '[organization name]';
+  var filters = [
+    { id: "claimed-by", label: "Claimed by " + userOrg },
+    { id: "unclaimed", label:  "Unclaimed" },
+    { id: "open",  label: "Open" },
+    { id: "closed", label: "Closed" },
+    { id: "reported-by", label: "Reported by " + userOrg },
+    { id: "flood-damage", label: "Primary problem is flood damage" },
+    { id: "trees", label: "Primary problem is trees" },
+    { id: "debris", label: "Debris removal" },
+    { id: "goods-and-services", label: "Primary need is goods and services" }
+  ];
+
   this.canvas = document.getElementById(params.elm);
   this.event_id = params.event_id;
   this.public_map = typeof params.public_map !== 'undefined' ? params.public_map : true;
@@ -40,8 +53,10 @@ CCMap.Map = function(params) {
     buildMarkers.call(this);
   }
 
+  // The filter checkboxes in the sidebar
+  buildFilters();
+
   function buildMarkers() {
-    // TODO: fix this. I'd like to not directly access a parent DOM element if I can help it.
     $('.map-wrapper').append('<div class="loading"></div>');
 
     if (this.public_map) {
@@ -96,5 +111,35 @@ CCMap.Map = function(params) {
     if (typeof this.markerCluster !== 'undefined'){
       this.markerCluster.clearMarkers();
     }
+  }
+
+  function buildFilters() {
+    var filterList = document.getElementById('map-filters');
+    filters.forEach(function(filter) {
+      var input = document.createElement('input');
+      input.setAttribute('id', filter.id);
+      input.setAttribute('type', 'checkbox');
+      var label = document.createElement('label');
+      label.setAttribute('for', filter.id);
+      label.appendChild(document.createTextNode(filter.label));
+      var listItem = document.createElement('li');
+      listItem.setAttribute('data-filter', filter.id);
+      listItem.appendChild(input);
+      listItem.appendChild(label);
+      listItem.addEventListener('click', filterSites, true);
+      filterList.appendChild(listItem);
+    }, this);
+    //<li><input id="claimed-by-filter" type="checkbox"><label for="claimed-by-filter">Claimed by <%= current_user.legacy_organization.name %></label></li>
+    //<li><input id="unclaimed-filter" type="checkbox"><label for="unclaimed-filter">Unclaimed</label></li>
+    //<li><input id="open-filter" type="checkbox"><label for="open-filter">Open</label></li>
+    //<li><input id="closed-filter" type="checkbox"><label for="closed-filter">Closed</label></li>
+    //<li><input id="reported-by-filter" type="checkbox"><label for="reported-by-filter">Reported by <%= current_user.legacy_organization.name %></label></li>
+    //<li><input id="flood-damage-filter" type="checkbox"><label for="flood-damage-filter">Primary problem is flood damage</label></li>
+    //<li><input id="trees-filter" type="checkbox"><label for="trees-filter">Primary problem is trees</label></li>
+    //<li><input id="goods-and-services-filter" type="checkbox"><label for="goods-and-services-filter">Primary need is goods and services</label></li>
+  }
+
+  function filterSites(event) {
+    //console.log(event.target, this);
   }
 }
