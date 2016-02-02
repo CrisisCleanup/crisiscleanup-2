@@ -14,20 +14,8 @@ var CCMap = CCMap || {};
 CCMap.Map = function(params) {
   var $infobox = $('#map-infobox');
 
-  var userOrg = '[organization name]';
-  var filterInputs = [];
-  var activeFilters = [];
-  var filters = [
-    { id: "claimed-by", label: "Claimed by " + userOrg },
-    { id: "unclaimed", label:  "Unclaimed" },
-    { id: "open",  label: "Open" },
-    { id: "closed", label: "Closed" },
-    { id: "reported-by", label: "Reported by " + userOrg },
-    { id: "flood-damage", label: "Primary problem is flood damage" },
-    { id: "trees", label: "Primary problem is trees" },
-    { id: "debris", label: "Debris removal" },
-    { id: "goods-and-services", label: "Primary need is goods and services" }
-  ];
+  var allSites = [];
+  var activeMarkers = [];
 
   this.canvas = document.getElementById(params.elm);
   this.event_id = params.event_id;
@@ -42,7 +30,6 @@ CCMap.Map = function(params) {
     scrollwheel: false
   }
   this.map = new google.maps.Map(this.canvas, this.options)
-  this.sites = [];
   this.markerCluster;
   this.markerBounds = new google.maps.LatLngBounds();
 
@@ -54,9 +41,6 @@ CCMap.Map = function(params) {
     this.event_id = event_id;
     buildMarkers.call(this);
   }
-
-  // The filter checkboxes in the sidebar
-  buildFilters.call(this);
 
   function buildMarkers() {
     $('.map-wrapper').append('<div class="loading"></div>');
@@ -86,12 +70,13 @@ CCMap.Map = function(params) {
               position: lat_lng,
               site: obj
             });
-            this.sites.push(site);
+            allSites.push(site);
+            activeMarkers.push(site);
           }, this);
           var mcOptions = {
             maxZoom: 15
           }
-          this.markerCluster = new MarkerClusterer(this.map, this.sites.map(function(site) { return site.marker; }), mcOptions);
+          this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
           this.map.fitBounds(this.markerBounds);
         } else {
           // TODO: modal or something other than an alert box.
@@ -106,10 +91,10 @@ CCMap.Map = function(params) {
   }
 
   function clearOverlays() {
-    for (var i = 0; i < this.sites.length; i++) {
-      this.sites[i].marker.setMap(this.map);
+    for (var i = 0; i < activeMarkers.length; i++) {
+      activeMarkers[i].marker.setMap(this.map);
     }
-    this.sites = [];
+    activeMarkers = [];
     if (typeof this.markerCluster !== 'undefined'){
       this.markerCluster.clearMarkers();
     }
@@ -117,36 +102,11 @@ CCMap.Map = function(params) {
 
   function populateMap() {
     clearOverlays.call(this);
-    // roll over this.sites
-  }
-
-  function buildFilters() {
-    var filterList = document.getElementById('map-filters');
-    filters.forEach(function(filter) {
-      var input = document.createElement('input');
-      input.setAttribute('id', filter.id);
-      input.setAttribute('type', 'checkbox');
-      filterInputs.push(input);
-      var label = document.createElement('label');
-      label.setAttribute('for', filter.id);
-      label.appendChild(document.createTextNode(filter.label));
-      var listItem = document.createElement('li');
-      listItem.appendChild(input);
-      listItem.appendChild(label);
-      listItem.addEventListener('click', setFilters.bind(this), true);
-      filterList.appendChild(listItem);
-    }, this);
-  }
-
-  function setFilters(event) {
-    // Only trigger for the label element
-    if (event.target.tagName === 'INPUT') {
-      activeFilters = filterInputs.filter(function(filter) {
-        return filter.checked;
-      }).map(function(filter) {
-        return filter.id;
-      });
-      populateMap.call(this);
-    }
+    // roll over sites
+    var sites = allSites.filter(function(site) {
+      console.log(site);
+      return site.site.claimed_by === 122;
+    });
+    //console.log(sites);
   }
 }
