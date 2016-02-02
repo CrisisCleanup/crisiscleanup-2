@@ -15,6 +15,8 @@ CCMap.Map = function(params) {
   var $infobox = $('#map-infobox');
 
   var userOrg = '[organization name]';
+  var filterInputs = [];
+  var activeFilters = [];
   var filters = [
     { id: "claimed-by", label: "Claimed by " + userOrg },
     { id: "unclaimed", label:  "Unclaimed" },
@@ -54,7 +56,7 @@ CCMap.Map = function(params) {
   }
 
   // The filter checkboxes in the sidebar
-  buildFilters();
+  buildFilters.call(this);
 
   function buildMarkers() {
     $('.map-wrapper').append('<div class="loading"></div>');
@@ -113,33 +115,38 @@ CCMap.Map = function(params) {
     }
   }
 
+  function populateMap() {
+    clearOverlays.call(this);
+    // roll over this.sites
+  }
+
   function buildFilters() {
     var filterList = document.getElementById('map-filters');
     filters.forEach(function(filter) {
       var input = document.createElement('input');
       input.setAttribute('id', filter.id);
       input.setAttribute('type', 'checkbox');
+      filterInputs.push(input);
       var label = document.createElement('label');
       label.setAttribute('for', filter.id);
       label.appendChild(document.createTextNode(filter.label));
       var listItem = document.createElement('li');
-      listItem.setAttribute('data-filter', filter.id);
       listItem.appendChild(input);
       listItem.appendChild(label);
-      listItem.addEventListener('click', filterSites, true);
+      listItem.addEventListener('click', setFilters.bind(this), true);
       filterList.appendChild(listItem);
     }, this);
-    //<li><input id="claimed-by-filter" type="checkbox"><label for="claimed-by-filter">Claimed by <%= current_user.legacy_organization.name %></label></li>
-    //<li><input id="unclaimed-filter" type="checkbox"><label for="unclaimed-filter">Unclaimed</label></li>
-    //<li><input id="open-filter" type="checkbox"><label for="open-filter">Open</label></li>
-    //<li><input id="closed-filter" type="checkbox"><label for="closed-filter">Closed</label></li>
-    //<li><input id="reported-by-filter" type="checkbox"><label for="reported-by-filter">Reported by <%= current_user.legacy_organization.name %></label></li>
-    //<li><input id="flood-damage-filter" type="checkbox"><label for="flood-damage-filter">Primary problem is flood damage</label></li>
-    //<li><input id="trees-filter" type="checkbox"><label for="trees-filter">Primary problem is trees</label></li>
-    //<li><input id="goods-and-services-filter" type="checkbox"><label for="goods-and-services-filter">Primary need is goods and services</label></li>
   }
 
-  function filterSites(event) {
-    //console.log(event.target, this);
+  function setFilters(event) {
+    // Only trigger for the label element
+    if (event.target.tagName === 'INPUT') {
+      activeFilters = filterInputs.filter(function(filter) {
+        return filter.checked;
+      }).map(function(filter) {
+        return filter.id;
+      });
+      populateMap.call(this);
+    }
   }
 }
