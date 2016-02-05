@@ -37,6 +37,11 @@ CCMap.Map = function(params) {
     $('#map-infobox').hide();
   }.bind(this));
 
+  // Setting this up this way just in case we end up with dynamic filters per incident.
+  // Eventually, it could require a filters[] param, for example.
+  // This could also end up in the setEventId method.
+  var filters = new CCMap.Filters();
+
   this.setEventId = function(event_id) {
     this.event_id = event_id;
     buildMarkers.call(this);

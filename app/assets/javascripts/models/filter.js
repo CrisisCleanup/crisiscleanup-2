@@ -25,7 +25,6 @@ CCMap.Filter = function(params) {
     var listItem = document.createElement('li');
     listItem.appendChild(this.input);
     listItem.appendChild(label);
-    //listItem.addEventListener('click', setFilters.bind(this), true);
 
     return listItem;
   }.bind(this);
@@ -48,29 +47,35 @@ CCMap.Filters = function() {
     { id: "goods-and-services", label: "Primary need is goods and services" }
   ];
   this.filterInputs = [];
+  this.activeFilters = [];
+  renderFilters.call(this);
 
-  function buildFilters() {
+  function renderFilters() {
     var filterList = document.getElementById('map-filters');
     filters.forEach(function(filter) {
-      filterList.appendChild(new CCMap.Filter({
+      var filterObj = new CCMap.Filter({
         id: filter.id,
         label: filter.label,
         filterFunction: function() {
           console.log('TODO');
         }
-      }));
+      });
+      // srsly. wtf am i doing here...
+      var filterDOM = filterObj.build()
+      filterDOM.addEventListener('click', setFilters.bind(this), true);
+      filterList.appendChild(filterDOM);
+      this.filterInputs.push(filterObj.input);
     }, this);
   }
 
   function setFilters(event) {
     // Only trigger for the label element
     if (event.target.tagName === 'INPUT') {
-      activeFilters = CCMap.Filters.filterInputs.filter(function(filter) {
+      this.activeFilters = this.filterInputs.filter(function(filter) {
         return filter.checked;
       }).map(function(filter) {
         return filter.id;
       });
-      populateMap.call(this);
     }
   }
 };
