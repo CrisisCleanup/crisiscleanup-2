@@ -32,10 +32,14 @@ CCMap.Filter = function(params) {
 
 /**
  * Build all of the CCMap.Map filters here
+ * @constructor
+ * @param {Object} params - The configuration parameters
+ * @param {function} params.onUpdate - The function called when filters update
  */
 var userOrg = '[organization name]';
-CCMap.Filters = function() {
-  var filters = [
+CCMap.Filters = function(params) {
+  var onUpdate = params.onUpdate;
+  var filterParams = [
     { id: "claimed-by", label: "Claimed by " + userOrg },
     { id: "unclaimed", label:  "Unclaimed" },
     { id: "open",  label: "Open" },
@@ -46,13 +50,13 @@ CCMap.Filters = function() {
     { id: "debris", label: "Debris removal" },
     { id: "goods-and-services", label: "Primary need is goods and services" }
   ];
-  this.filterInputs = [];
+  this.filters = [];
   this.activeFilters = [];
   renderFilters.call(this);
 
   function renderFilters() {
     var filterList = document.getElementById('map-filters');
-    filters.forEach(function(filter) {
+    filterParams.forEach(function(filter) {
       var filterObj = new CCMap.Filter({
         id: filter.id,
         label: filter.label,
@@ -64,18 +68,19 @@ CCMap.Filters = function() {
       var filterDOM = filterObj.build()
       filterDOM.addEventListener('click', setFilters.bind(this), true);
       filterList.appendChild(filterDOM);
-      this.filterInputs.push(filterObj.input);
+      this.filters.push(filterObj);
     }, this);
   }
 
   function setFilters(event) {
-    // Only trigger for the label element
+    // Only trigger for the input element
     if (event.target.tagName === 'INPUT') {
-      this.activeFilters = this.filterInputs.filter(function(filter) {
-        return filter.checked;
+      this.activeFilters = this.filters.filter(function(filter) {
+        return filter.input.checked;
       }).map(function(filter) {
-        return filter.id;
+        return filter;
       });
+      onUpdate();
     }
   }
 };

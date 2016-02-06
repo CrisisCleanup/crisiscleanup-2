@@ -40,7 +40,9 @@ CCMap.Map = function(params) {
   // Setting this up this way just in case we end up with dynamic filters per incident.
   // Eventually, it could require a filters[] param, for example.
   // This could also end up in the setEventId method.
-  var filters = new CCMap.Filters();
+  var filters = new CCMap.Filters({
+    onUpdate: populateMap.bind(this)
+  });
 
   this.setEventId = function(event_id) {
     this.event_id = event_id;
@@ -107,11 +109,9 @@ CCMap.Map = function(params) {
 
   function populateMap() {
     clearOverlays.call(this);
-    // roll over sites
-    var sites = allSites.filter(function(site) {
-      console.log(site);
-      return site.site.claimed_by === 122;
+    filters.activeFilters.forEach(function(filter) {
+      // WIP: this is where it picks up
+      filter.filterFunction();
     });
-    //console.log(sites);
   }
 }
