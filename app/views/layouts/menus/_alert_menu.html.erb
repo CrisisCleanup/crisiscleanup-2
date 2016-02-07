@@ -14,7 +14,7 @@
         </div>    
         <div class="small-12 medium-6 large-4 columns alert_one_half">
         <!-- show only for verified users -->    
-        <% if current_user %>
+        <% if current_user and current_user.admin == false %>
               <label>Choose Incident: 
                 <select id="incident-chooser">
                   <% current_user.legacy_organization.legacy_events.each do |event| %>
@@ -22,6 +22,14 @@
                   <% end %>
                 </select>
               </label>
+        <% elsif %>
+        <label>Choose Incident: 
+          <select id="incident-chooser">
+            <% Legacy::LegacyEvent.all.each do |event| %>
+            <option value="<%= event.id %>" <% if event.id.to_s == session[:current_user_event] %> selected <% end %>><%= event.name %></option>
+            <% end %>
+          </select>
+        </label>
         <% end %>
         </div>
         <!-- end show only for verified users -->    

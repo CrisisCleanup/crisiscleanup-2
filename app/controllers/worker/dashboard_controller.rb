@@ -8,7 +8,7 @@ module Worker
 
     def incident_chooser
     	if current_user.legacy_organization.legacy_events.pluck(:id).include?(params[:id].to_i) or current_user.admin
-    		session[:current_user_event] = params[:id]
+    		current_user_event(params[:id])
     		event_name = Legacy::LegacyEvent.find(params[:id]).name
     		flash[:notice] = "Now viewing #{event_name}"
     	else

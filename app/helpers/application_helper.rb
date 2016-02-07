@@ -25,7 +25,7 @@ module ApplicationHelper
 
         # admin can select event by params[:id]
         elsif current_user and current_user.admin
-          session[:current_user_event] = request.params[:id]
+          session[:current_user_event] = request.params[:id] || 1
 
         # if event is already set, return event
         elsif session[:current_user_event]
@@ -42,14 +42,15 @@ module ApplicationHelper
         if current_user_event.nil?
             redirect_to "/worker/dashboard"
         elsif !current_user.admin 
-            if !check_incident(params["id"].to_i)
+
+            if check_incident(params["id"].to_i) == false
                 flash[:alert] = "You don't have permission to view that event."
                 redirect_to "/worker/dashboard"
             end
         end
     end
     def check_incident(event_id)
-        event_id == current_user_event 
+        event_id.to_s == current_user_event.to_s
     end
     def check_token
     	if !Invitation.where(token:params[:token]).present?
