@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/terms" => "static_pages#terms", as: "terms"
   get "/admin" => 'admin/dashboard#index'
 
+
   resources :request_invitations, only: [:new, :create]
 
   namespace :admin do
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
 
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
   namespace :worker do
+    get "/incident-chooser" => "dashboard#incident_chooser", as: "incident_chooser"
     get "/dashboard" => 'dashboard#index', as:"dashboard"
     resource :invitation_lists, only: [:create]
     resources :temporary_passwords, only: [:create, :new]

@@ -15,16 +15,13 @@
         <div class="small-12 medium-6 large-4 columns alert_one_half">
         <!-- show only for verified users -->    
         <% if current_user %>
-          <form>
               <label>Choose Incident: 
-                <select>
+                <select id="incident-chooser">
                   <% current_user.legacy_organization.legacy_events.each do |event| %>
-                  <option value="<%= event.id %>"><%= event.name %></option>
-                  
+                  <option value="<%= event.id %>" <% if event.id.to_s == session[:current_user_event] %> selected <% end %>><%= event.name %></option>
                   <% end %>
                 </select>
               </label>
-          </form>
         <% end %>
         </div>
         <!-- end show only for verified users -->    
