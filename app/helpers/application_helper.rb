@@ -93,12 +93,14 @@ module ApplicationHelper
     end
 
   def initial_state
-    {
-      user: {
-        org_id: current_user.legacy_organization_id,
-        org_name: current_user.legacy_organization.name,
-        admin: current_user.admin?
+    if current_user
+      {
+        user: {
+          org_id: current_user.legacy_organization_id,
+          org_name: current_user.legacy_organization.name,
+          admin: current_user.admin?
+        }
       }
-    }
+    end
   end
 end
