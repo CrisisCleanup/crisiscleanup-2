@@ -14,8 +14,7 @@ module Worker
     	else
     		flash[:notice] = "You don't have permission to view that event"
     	end
-        binding.pry
-    	redirect_to params[:path]
+    	redirect_to "/worker/dashboard"
     end
   end
 end
