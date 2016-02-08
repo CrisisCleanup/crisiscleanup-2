@@ -6,14 +6,12 @@ var CCMap = CCMap || {};
  * @param {Object} params - The configuration parameters
  * @param {string} params.id - The id used for DOM elements
  * @param {string} params.label - The visible label show to the user
- * @param {function} params.filterFunction - This is the function applied to the sites to get the subset
+ * @param {function} params.condition - Test site must pass to be in this set
  */
 CCMap.Filter = function(params) {
   this.id = params.id;
   this.label = params.label;
-  this.cached = false;
-  this.filteredSitesCache = [];
-  this.filterFunction = params.filterFunction;
+  this.condition = params.condition;
 
   this.build = function() {
     this.input = document.createElement('input');
@@ -40,47 +38,113 @@ var userOrg = '[organization name]';
 CCMap.Filters = function(params) {
   var onUpdate = params.onUpdate;
   var filterParams = [
-    { id: "claimed-by", label: "Claimed by " + userOrg },
-    { id: "unclaimed", label:  "Unclaimed" },
-    { id: "open",  label: "Open" },
-    { id: "closed", label: "Closed" },
-    { id: "reported-by", label: "Reported by " + userOrg },
-    { id: "flood-damage", label: "Primary problem is flood damage" },
-    { id: "trees", label: "Primary problem is trees" },
-    { id: "debris", label: "Debris removal" },
-    { id: "goods-and-services", label: "Primary need is goods and services" }
+    {
+      id: "claimed-by",
+      label: "Claimed by " + userOrg,
+      condition: function() {
+        console.log('TODO: claimed-by condition');
+      }
+    },
+    {
+      id: "unclaimed",
+      label:  "Unclaimed",
+      condition: function(site) {
+        return site.site.claimed_by === null;
+      }
+    },
+    {
+      id: "open",
+      label: "Open",
+      condition: function(site) {
+        return /Open/.test(site.site.status)
+      }
+    },
+    {
+      id: "closed",
+      label: "Closed",
+      condition: function(site) {
+        return /Closed/.test(site.site.status)
+      }
+    },
+    {
+      id: "reported-by",
+      label: "Reported by " + userOrg,
+      condition: function() {
+        console.log('TODO: reported-by condition');
+      }
+    },
+    {
+      id: "flood-damage",
+      label: "Primary problem is flood damage",
+      condition: function(site) {
+        return site.site.work_type === "Flood";
+      }
+    },
+    {
+      id: "trees",
+      label: "Primary problem is trees",
+      condition: function(site) {
+        return site.site.work_type === "Trees";
+      }
+    },
+    {
+      id: "debris",
+      label: "Debris removal",
+      condition: function(site) {
+        return site.site.work_type === "Debris removal";
+      }
+    },
+    {
+      id: "goods-and-services",
+      label: "Primary need is goods and services",
+      condition: function(site) {
+        return site.site.work_type === "Goods or Services";
+      }
+    }
   ];
-  this.filters = [];
-  this.activeFilters = [];
+  var filters = [];
+  var activeFilters = [];
   renderFilters.call(this);
 
   function renderFilters() {
     var filterList = document.getElementById('map-filters');
     filterParams.forEach(function(filter) {
-      var filterObj = new CCMap.Filter({
-        id: filter.id,
-        label: filter.label,
-        filterFunction: function() {
-          console.log('TODO');
-        }
-      });
-      // srsly. wtf am i doing here...
+      var filterObj = new CCMap.Filter(filter);
       var filterDOM = filterObj.build()
       filterDOM.addEventListener('click', setFilters.bind(this), true);
       filterList.appendChild(filterDOM);
-      this.filters.push(filterObj);
+      filters.push(filterObj);
     }, this);
   }
 
   function setFilters(event) {
     // Only trigger for the input element
     if (event.target.tagName === 'INPUT') {
-      this.activeFilters = this.filters.filter(function(filter) {
+      activeFilters = filters.filter(function(filter) {
         return filter.input.checked;
       }).map(function(filter) {
         return filter;
       });
       onUpdate();
     }
+  }
+
+  this.getFilteredSites = function(allSites) {
+    if (activeFilters.length === 0) {
+      return allSites;
+    }
+
+    var sites = [];
+
+    allSites.forEach(function(site) {
+      for (var i = 0; i < activeFilters.length; i++) {
+        if (activeFilters[i].condition(site)) {
+          sites.push(site);
+          break;
+        }
+      };
+    });
+
+    return sites;
   }
 };

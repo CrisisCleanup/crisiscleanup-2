@@ -109,9 +109,11 @@ CCMap.Map = function(params) {
 
   function populateMap() {
     clearOverlays.call(this);
-    filters.activeFilters.forEach(function(filter) {
-      // WIP: this is where it picks up
-      filter.filterFunction();
-    });
+    activeMarkers = filters.getFilteredSites(allSites);
+    var mcOptions = {
+      maxZoom: 15
+    }
+    this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
+    this.map.fitBounds(this.markerBounds);
   }
 }
