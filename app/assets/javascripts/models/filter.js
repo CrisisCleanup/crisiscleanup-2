@@ -34,15 +34,14 @@ CCMap.Filter = function(params) {
  * @param {Object} params - The configuration parameters
  * @param {function} params.onUpdate - The function called when filters update
  */
-var userOrg = '[organization name]';
 CCMap.Filters = function(params) {
   var onUpdate = params.onUpdate;
   var filterParams = [
     {
       id: "claimed-by",
-      label: "Claimed by " + userOrg,
-      condition: function() {
-        console.log('TODO: claimed-by condition');
+      label: "Claimed by " + InitialState.user.org_name,
+      condition: function(site) {
+        return site.site.claimed_by === InitialState.user.org_id
       }
     },
     {
@@ -68,9 +67,9 @@ CCMap.Filters = function(params) {
     },
     {
       id: "reported-by",
-      label: "Reported by " + userOrg,
-      condition: function() {
-        console.log('TODO: reported-by condition');
+      label: "Reported by " + InitialState.user.org_name,
+      condition: function(site) {
+        return site.site.reported_by === InitialState.user.org_id
       }
     },
     {

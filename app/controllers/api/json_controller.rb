@@ -19,6 +19,7 @@ module Api
           latitude,
           longitude,
           claimed_by,
+          reported_by,
           status,
           case_number,
           work_type
