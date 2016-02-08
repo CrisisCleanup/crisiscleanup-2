@@ -18,26 +18,39 @@ module ApplicationHelper
       end
     end
 
-    def current_user_event
-        if current_user and current_user.admin
-            request.params[:id]
+    def current_user_event(set_event = nil)
+        # set event with param
+        if set_event
+          session[:current_user_event] = set_event
+
+        # admin can select event by params[:id]
+        elsif current_user and current_user.admin
+          session[:current_user_event] = request.params[:id] || session[:current_user_event] || 1
+
+        # if event is already set, return event
+        elsif session[:current_user_event]
+          session[:current_user_event]
+
+        # if no event is set for this session, get the first event for a user
         else
-            current_user.legacy_organization.legacy_organization_events.first.legacy_event_id if current_user and current_user.legacy_organization.legacy_organization_events
+          session[:current_user_event] = current_user.legacy_organization.legacy_organization_events.first.legacy_event_id if current_user and current_user.legacy_organization.legacy_organization_events
         end
+        session[:current_user_event]
     end
 
     def check_incident_permissions
         if current_user_event.nil?
             redirect_to "/worker/dashboard"
         elsif !current_user.admin 
-            if !check_incident(params["id"].to_i)
+
+            if check_incident(params["id"].to_i) == false
                 flash[:alert] = "You don't have permission to view that event."
                 redirect_to "/worker/dashboard"
             end
         end
     end
     def check_incident(event_id)
-        event_id == current_user_event 
+      current_user.events.include? current_user_event.to_i
     end
     def check_token
     	if !Invitation.where(token:params[:token]).present?

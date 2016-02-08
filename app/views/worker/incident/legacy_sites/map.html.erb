@@ -35,11 +35,11 @@
         <div class="row">
           <div class="small-12 columns">
             <ul id="map-filters">
-              <li><input id="claimed-by-filter" type="checkbox"><label for="claimed-by-filter">Claimed by <%= current_user.legacy_organization.name %></label></li>
+              <% if current_user.admin == false %><li><input id="claimed-by-filter" type="checkbox"><label for="claimed-by-filter">Claimed by <%= current_user.legacy_organization.name %></label></li><% end %>
               <li><input id="unclaimed-filter" type="checkbox"><label for="unclaimed-filter">Unclaimed</label></li>
               <li><input id="open-filter" type="checkbox"><label for="open-filter">Open</label></li>
               <li><input id="closed-filter" type="checkbox"><label for="closed-filter">Closed</label></li>
-              <li><input id="reported-by-filter" type="checkbox"><label for="reported-by-filter">Reported by <%= current_user.legacy_organization.name %></label></li>
+              <% if current_user.admin == false %><li><input id="reported-by-filter" type="checkbox"><label for="reported-by-filter">Reported by <%= current_user.legacy_organization.name %></label></li><% end %>
               <li><input id="flood-damage-filter" type="checkbox"><label for="flood-damage-filter">Primary problem is flood damage</label></li>
               <li><input id="trees-filter" type="checkbox"><label for="trees-filter">Primary problem is trees</label></li>
               <li><input id="goods-and-services-filter" type="checkbox"><label for="goods-and-services-filter">Primary need is goods and services</label></li>
