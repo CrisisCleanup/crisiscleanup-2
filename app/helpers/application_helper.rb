@@ -25,7 +25,7 @@ module ApplicationHelper
 
         # admin can select event by params[:id]
         elsif current_user and current_user.admin
-          session[:current_user_event] = request.params[:id] || 1
+          session[:current_user_event] = request.params[:id] || session[:current_user_event] || 1
 
         # if event is already set, return event
         elsif session[:current_user_event]
@@ -50,7 +50,7 @@ module ApplicationHelper
         end
     end
     def check_incident(event_id)
-        event_id.to_s == current_user_event.to_s
+      current_user.events.include? current_user_event.to_i
     end
     def check_token
     	if !Invitation.where(token:params[:token]).present?

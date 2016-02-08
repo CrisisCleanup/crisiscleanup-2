@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
   def self.todays_login_count
   	count = User.where("DATE(last_sign_in_at) = ?", Date.today).count
   end
+
+  def events
+    self.legacy_organization.legacy_events.pluck(:id)
+  end
 end

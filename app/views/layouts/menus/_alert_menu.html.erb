@@ -22,14 +22,14 @@
                   <% end %>
                 </select>
               </label>
-        <% elsif %>
-        <label>Choose Incident: 
-          <select id="incident-chooser">
-            <% Legacy::LegacyEvent.all.each do |event| %>
-            <option value="<%= event.id %>" <% if event.id.to_s == session[:current_user_event] %> selected <% end %>><%= event.name %></option>
-            <% end %>
-          </select>
-        </label>
+        <% elsif current_user and current_user.admin %>
+          <label>Choose Incident: 
+            <select id="incident-chooser">
+              <% Legacy::LegacyEvent.all.each do |event| %>
+              <option value="<%= event.id %>" <% if event.id.to_s == session[:current_user_event] %> selected <% end %>><%= event.name %></option>
+              <% end %>
+            </select>
+          </label>
         <% end %>
         </div>
         <!-- end show only for verified users -->    
