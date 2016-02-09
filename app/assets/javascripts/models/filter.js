@@ -144,12 +144,18 @@ CCMap.Filters = function(params) {
     var sites = [];
 
     allSites.forEach(function(site) {
+      // General ORs for all active filtes. This should probably be refined.
+      var passes = true;
       for (var i = 0; i < activeFilters.length; i++) {
-        if (activeFilters[i].condition(site)) {
-          sites.push(site);
+        if (!activeFilters[i].condition(site)) {
+          passes = false;
           break;
         }
       };
+
+      if (passes) {
+        sites.push(site);
+      }
     });
 
     return sites;
