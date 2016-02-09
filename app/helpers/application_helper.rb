@@ -92,4 +92,15 @@ module ApplicationHelper
       "#{word_list[rand(word_list.length)]}#{word_list[rand(word_list.length)]}#{rand(100..999)}"
     end
 
+  def initial_state
+    if current_user
+      {
+        user: {
+          org_id: current_user.legacy_organization_id,
+          org_name: current_user.legacy_organization.name,
+          admin: current_user.admin?
+        }
+      }
+    end
+  end
 end
