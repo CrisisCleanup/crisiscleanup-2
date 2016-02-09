@@ -37,9 +37,12 @@ CCMap.Filter = function(params) {
 CCMap.Filters = function(params) {
   var userOrgId;
   var userOrgName;
+  var userAdmin;
+  // TODO: Update this mess once we get lodash in here.
   if (InitialState) {
     userOrgId = InitialState.user.org_id;
     userOrgName = InitialState.user.org_name;
+    userAdmin = InitialState.user.admin;
   }
   var onUpdate = params.onUpdate;
   var filterParams = [
@@ -116,6 +119,8 @@ CCMap.Filters = function(params) {
 
   function renderFilters() {
     filterParams.forEach(function(filter) {
+      if (userAdmin && filter.id === 'claimed-by') { return; }
+      if (userAdmin && filter.id === 'reported-by') { return; }
       var filterObj = new CCMap.Filter(filter);
       var filterDOM = filterObj.build()
       filterDOM.addEventListener('click', setFilters.bind(this), true);
