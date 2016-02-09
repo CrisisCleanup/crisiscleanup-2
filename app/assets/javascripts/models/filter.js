@@ -35,13 +35,19 @@ CCMap.Filter = function(params) {
  * @param {function} params.onUpdate - The function called when filters update
  */
 CCMap.Filters = function(params) {
+  var userOrgId;
+  var userOrgName;
+  if (InitialState) {
+    userOrgId = InitialState.user.org_id;
+    userOrgName = InitialState.user.org_name;
+  }
   var onUpdate = params.onUpdate;
   var filterParams = [
     {
       id: "claimed-by",
-      label: "Claimed by " + InitialState.user.org_name,
+      label: "Claimed by " + userOrgName,
       condition: function(site) {
-        return site.site.claimed_by === InitialState.user.org_id
+        return site.site.claimed_by === userOrgId;
       }
     },
     {
@@ -67,9 +73,9 @@ CCMap.Filters = function(params) {
     },
     {
       id: "reported-by",
-      label: "Reported by " + InitialState.user.org_name,
+      label: "Reported by " + userOrgName,
       condition: function(site) {
-        return site.site.reported_by === InitialState.user.org_id
+        return site.site.reported_by === userOrgId;
       }
     },
     {
@@ -103,10 +109,12 @@ CCMap.Filters = function(params) {
   ];
   var filters = [];
   var activeFilters = [];
-  renderFilters.call(this);
+  var filterList = document.getElementById('map-filters');
+  if (filterList) {
+    renderFilters.call(this);
+  }
 
   function renderFilters() {
-    var filterList = document.getElementById('map-filters');
     filterParams.forEach(function(filter) {
       var filterObj = new CCMap.Filter(filter);
       var filterDOM = filterObj.build()
