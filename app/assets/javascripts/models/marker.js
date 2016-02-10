@@ -54,10 +54,18 @@ CCMap.Site = function(params) {
       "Name": this.site.name,
       "Requests": this.site.work_type,
       "Address": this.site.address + ", " + this.site.city + ", " + this.site.state,
-      "Phone": this.site.phone,
       "Phone": "[alternate number]",
-      "Details": "[...]"
+      "Details": this.site.data
     };
+    console.log(this.site.data);
+
+    // Test for zip_code. I don't see any zip codes in the current data
+    if (this.site.zip_code) {
+      displayObj["Address"] += "  " + this.site.zip_code;
+    }
+
+    // data hstore field stuff
+
 
     for (var key in displayObj) {
       if (displayObj.hasOwnProperty(key)) {
