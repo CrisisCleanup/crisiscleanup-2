@@ -50,7 +50,7 @@ module ApplicationHelper
         end
     end
     def check_incident(event_id)
-      current_user.events.include? current_user_event.to_i
+      current_user.events.include? event_id.to_i
     end
     def check_token
     	if !Invitation.where(token:params[:token]).present?
