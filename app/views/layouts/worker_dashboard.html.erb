@@ -73,7 +73,13 @@
             </ul>
         </div>  
     </div>                            
-        <!-- javascript libraries -->
+
+    <!-- initial-state -->
+    <script type="text/javascript">
+      var InitialState = <%= raw initial_state.to_json %>
+    </script>
+
+    <!-- javascript libraries -->
     <%= yield :javascripts %>
   </body>
 </html>

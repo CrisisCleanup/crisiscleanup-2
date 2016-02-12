@@ -39,7 +39,7 @@ CCMap.Site = function(params) {
       color = "red";
     }
     // this is the key sent to the image_path function in app/assets/javascripts/images.js.erb
-    return image_path('map_icons/' + this.site.work_type + '_' + color + '.png');
+    return image_path('map_icons/' + this.site.work_type.replace(' ', '_') + '_' + color + '.png');
   }
 
   /**

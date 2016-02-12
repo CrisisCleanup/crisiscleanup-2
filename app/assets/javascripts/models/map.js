@@ -14,6 +14,9 @@ var CCMap = CCMap || {};
 CCMap.Map = function(params) {
   var $infobox = $('#map-infobox');
 
+  var allSites = [];
+  var activeMarkers = [];
+
   this.canvas = document.getElementById(params.elm);
   this.event_id = params.event_id;
   this.public_map = typeof params.public_map !== 'undefined' ? params.public_map : true;
@@ -27,7 +30,6 @@ CCMap.Map = function(params) {
     scrollwheel: false
   }
   this.map = new google.maps.Map(this.canvas, this.options)
-  this.sites = [];
   this.markerCluster;
   this.markerBounds = new google.maps.LatLngBounds();
 
@@ -35,13 +37,19 @@ CCMap.Map = function(params) {
     $('#map-infobox').hide();
   }.bind(this));
 
+  // Setting this up this way just in case we end up with dynamic filters per incident.
+  // Eventually, it could require a filters[] param, for example.
+  // This could also end up in the setEventId method.
+  var filters = new CCMap.Filters({
+    onUpdate: populateMap.bind(this)
+  });
+
   this.setEventId = function(event_id) {
     this.event_id = event_id;
     buildMarkers.call(this);
   }
 
   function buildMarkers() {
-    // TODO: fix this. I'd like to not directly access a parent DOM element if I can help it.
     $('.map-wrapper').append('<div class="loading"></div>');
 
     if (this.public_map) {
@@ -69,12 +77,13 @@ CCMap.Map = function(params) {
               position: lat_lng,
               site: obj
             });
-            this.sites.push(site);
+            allSites.push(site);
+            activeMarkers.push(site);
           }, this);
           var mcOptions = {
             maxZoom: 15
           }
-          this.markerCluster = new MarkerClusterer(this.map, this.sites.map(function(site) { return site.marker; }), mcOptions);
+          this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
           this.map.fitBounds(this.markerBounds);
         } else {
           // TODO: modal or something other than an alert box.
@@ -89,12 +98,22 @@ CCMap.Map = function(params) {
   }
 
   function clearOverlays() {
-    for (var i = 0; i < this.sites.length; i++) {
-      this.sites[i].marker.setMap(this.map);
+    for (var i = 0; i < activeMarkers.length; i++) {
+      activeMarkers[i].marker.setMap(this.map);
     }
-    this.sites = [];
+    activeMarkers = [];
     if (typeof this.markerCluster !== 'undefined'){
       this.markerCluster.clearMarkers();
     }
+  }
+
+  function populateMap() {
+    clearOverlays.call(this);
+    activeMarkers = filters.getFilteredSites(allSites);
+    var mcOptions = {
+      maxZoom: 15
+    }
+    this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
+    this.map.fitBounds(this.markerBounds);
   }
 }
