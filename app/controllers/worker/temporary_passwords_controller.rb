@@ -9,20 +9,23 @@ module Worker
         @temporary_password.expires = DateTime.now + 30.minutes
         if @temporary_password.save
             flash[:notice] = "Temporary password successfully created. Password is #{random_pw}"
+            flash[:temporary_password] = "Temporary password successfully created. Password is #{random_pw}"
+
          	redirect_to worker_dashboard_path
          	return
         else
             flash[:alert] = "Temporary password not created. Make sure password and password confirmation are identical, and at least 6 characters long."
+            flash[:temporary_password] = "Temporary password not created. Make sure password and password confirmation are identical, and at least 6 characters long."
             redirect_to worker_dashboard_path
             return
         end 
     end
 
     def authorize
-      tempoary_passwords = TemporaryPassword.all
+      temporary_passwords = TemporaryPassword.all
 
-      if tempoary_passwords and params[:password].length >= 6 and  params[:password] == params[:password_confirmation]
-        tempoary_passwords.each do |temp|
+      if temporary_passwords and params[:password].length >= 6 and  params[:password] == params[:password_confirmation]
+        temporary_passwords.each do |temp|
           obj = temp.authenticate(params[:password])
           if obj
               list = InvitationList.new(params[:email], obj.created_by, obj.legacy_organization_id)

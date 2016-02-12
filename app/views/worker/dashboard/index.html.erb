@@ -19,17 +19,13 @@
         <% unless current_user_event %>
         	<p>You're organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
         <% end %>
-        <ul class="accordion" data-accordion>
-          <li class="accordion-navigation">
-            <a href="#panel1a">Click to Invite Users By Email Or With A Temporary Password</a>
-            <div id="panel1a" class="content">
-              <h4>Invite Users By Email</h4>
-              <%= render 'invite_form' %>
-              <h4>Invite Users With Temporary Password</h4>
-              <%= render 'temporary_password_form' %>
-            </div>
-          </li>
-        </ul>
+        <div class="content">
+          <h4>Invite Users By Email</h4>
+          <%= render 'invite_form' %>
+          <h4>Invite Users With Temporary Password</h4>
+          <%= render 'temporary_password_form' %>
+        </div>
+
 
         <h4>Requested Invitations</h4>
         <%= render 'request_invitation_table', users: @requested_invitations %>
