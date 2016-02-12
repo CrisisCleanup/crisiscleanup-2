@@ -5,6 +5,7 @@
       <th width="150">City</th>
        <th width="150">Event</th>
       <th width="150">Status</th>
+      <th width="150">Delete</th>
 
 
     </tr>
@@ -27,6 +28,8 @@
            <%= link_to "Verify", "/admin/legacy_organizations/verify?id=#{org.id}",method: :post %>
           <% end %>
         </td>
+        <td><%= link_to 'Delete', admin_legacy_organization_path(org), method: :delete, :onclick => "return confirm('Are you sure you want to delete #{org.name}?')" %></td>   
+
       </tr>
     <% end %>
   </tbody>

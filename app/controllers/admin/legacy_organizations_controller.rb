@@ -57,6 +57,12 @@ module Admin
         redirect_to admin_dashboard_index_path
         
     end
+
+    def destroy
+        @org = Legacy::LegacyOrganization.find(params[:id]).delete
+        flash[:notice] = "Organization #{@org.name} deleted."
+        redirect_to request.env["HTTP_REFERER"]
+    end
     private
 	    def org_params
 	        params.require(:legacy_legacy_organization).permit(

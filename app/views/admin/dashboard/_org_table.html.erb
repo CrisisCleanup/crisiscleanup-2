@@ -6,6 +6,7 @@
       <th width="150">Event</th>
       <th width="150">Created At</th>
       <th width="150">Verify</th>
+      <th>Destroy</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
         <td> <%= org.legacy_events.present? ? org.legacy_events.first.name : "Unassigned" %> </td>
         <td> <%= org.created_at %> </td>
         <td>  <%= link_to "Verify", "/admin/legacy_organizations/verify?id=#{org.id}",method: :post %> </td>
+        <td><%= link_to 'Delete', admin_legacy_organization_path(org), method: :delete, :onclick => "return confirm('Are you sure you want to delete #{org.name}?')" %></td>   
       </tr>
     <% end %>
   </tbody>

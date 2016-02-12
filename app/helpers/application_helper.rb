@@ -93,7 +93,15 @@ module ApplicationHelper
     end
 
   def initial_state
-    if current_user
+    if current_user and current_user.admin
+      {
+        user: {
+          org_id: "None",
+          org_name: "None",
+          admin: current_user.admin?
+        }
+      }
+    elsif current_user and not current_user.admin
       {
         user: {
           org_id: current_user.legacy_organization_id,
