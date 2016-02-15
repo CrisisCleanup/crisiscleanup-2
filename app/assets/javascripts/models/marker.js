@@ -114,7 +114,7 @@ CCMap.Site = function(params) {
       table.appendChild(
         createTableRow(
           document.createTextNode('Claimed By:'),
-          document.createTextNode(this.site.claimed_by)
+          document.createTextNode(this.site.org_name)
         )
       );
     }
