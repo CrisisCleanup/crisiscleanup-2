@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20160122171649) do
     t.datetime "expiration"
   end
 
+  create_table "invitations_request", force: :cascade do |t|
+    t.integer "approved_by"
+    t.string  "email",        null: false
+    t.string  "name",         null: false
+    t.boolean "volunteer"
+    t.boolean "staff_member"
+    t.date    "expires_at",   null: false
+  end
+
   create_table "legacy_contacts", force: :cascade do |t|
     t.string   "email",                                  null: false
     t.string   "first_name",                             null: false
