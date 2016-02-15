@@ -54,6 +54,13 @@ CCMap.Filters = function(params) {
       }
     },
     {
+      id: "reported-by",
+      label: "Reported by " + userOrgName,
+      condition: function(site) {
+        return site.site.reported_by === userOrgId;
+      }
+    },
+    {
       id: "unclaimed",
       label:  "Unclaimed",
       condition: function(site) {
@@ -75,13 +82,6 @@ CCMap.Filters = function(params) {
       }
     },
     {
-      id: "reported-by",
-      label: "Reported by " + userOrgName,
-      condition: function(site) {
-        return site.site.reported_by === userOrgId;
-      }
-    },
-    {
       id: "flood-damage",
       label: "Primary problem is flood damage",
       condition: function(site) {
@@ -99,14 +99,14 @@ CCMap.Filters = function(params) {
       id: "debris",
       label: "Debris removal",
       condition: function(site) {
-        return site.site.work_type === "Debris removal";
+        return /Debris/.test(site.site.work_type);
       }
     },
     {
-      id: "goods-and-services",
-      label: "Primary need is goods and services",
+      id: "other",
+      label: "Any pin that is not Tree, Debris, or Flood",
       condition: function(site) {
-        return site.site.work_type === "Goods or Services";
+        return /^(?!Debris|Trees|Flood).*$/.test(site.site.work_type);
       }
     }
   ];
@@ -119,8 +119,6 @@ CCMap.Filters = function(params) {
 
   function renderFilters() {
     filterParams.forEach(function(filter) {
-      if (userAdmin && filter.id === 'claimed-by') { return; }
-      if (userAdmin && filter.id === 'reported-by') { return; }
       var filterObj = new CCMap.Filter(filter);
       var filterDOM = filterObj.build()
       filterDOM.addEventListener('click', setFilters.bind(this), true);

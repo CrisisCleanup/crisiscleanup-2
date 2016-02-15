@@ -114,6 +114,5 @@ CCMap.Map = function(params) {
       maxZoom: 15
     }
     this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
-    this.map.fitBounds(this.markerBounds);
   }
 }
