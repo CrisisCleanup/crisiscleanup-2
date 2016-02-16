@@ -52,56 +52,6 @@
     }
 }
 
-footer {
-    background: $coal;
-    color: #fff;
-    & h4 {
-        color: #fff;
-        margin-top: 10px;
-    }
-    clear:both;
-    height: auto;
-    width: 100%;
-    & .columns {}
-    & #footer {
-        max-width: 95%;
-    }
-    & .footer-logo img {
-        width: 65%;
-        height: auto;
-        margin: 3% 0 5px 0;
-    }
-    & .medium-8 .medium-4.columns {
-        border-left: 1px solid #fff;
-    }
-}
-
-#copyright {
-    background: $coal;
-    color: #fff;
-    max-width: 100rem;
-    text-align: center;
-    border-top: 1px solid #fff;
-    padding: 5px 0 5px 0;
-    & .columns p {
-        margin: 0;
-    }
-    & ul {
-        padding: 0;
-        margin: 0;
-    }
-    & ul li {
-        list-style-type: none;
-        display: inline;
-    }
-    & a:link,
-    a:visited {
-        color: $goldenrod;
-    }
-    & .right {
-        margin-right: 40px;
-    }
-}
 
 // Videos & Third Party Media
 .index-intro {
@@ -126,6 +76,9 @@ footer {
     & .columns {
         transition: all 0.5s ease;
         min-height: 305px;
+    }
+    & .audience {
+        margin-bottom: 0;
     }
     & .voad {
         background-color: rgba(65, 156, 56, .2);
@@ -227,6 +180,7 @@ footer {
 
 .join {
     margin-top: 20px;
+    margin-left: 30px;
 }
 
 // About Page
@@ -255,10 +209,31 @@ footer {
     }
 }
 
+// Media Queries
+
+@media only screen and (max-width: 1280px) {
+    .tornado-block,
+    .hurricane-block,
+    .flood-block,
+    .snow-block,
+    .fire-block,
+    .wind-block {
+        height: 325px;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     .incident-map img {
         margin-bottom: 40px;
     }
+    .tornado-block,
+    .hurricane-block,
+    .flood-block,
+    .snow-block,
+    .fire-block,
+    .wind-block {
+        height: 275px;
+    }    
 }
 
 @media only screen and (max-width: 767px) {
@@ -280,4 +255,12 @@ footer {
     #copyright .right {
         margin-right: 0;
     }
+    .tornado-block,
+    .hurricane-block,
+    .flood-block,
+    .snow-block,
+    .fire-block,
+    .wind-block {
+        height: 300px;
+    }   
 }

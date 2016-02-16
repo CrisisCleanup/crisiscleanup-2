@@ -45,6 +45,8 @@ gem 'geocoder'
 
 gem 'unicorn'
 
+gem 'font-awesome-sass'
+
 # CircleCI test metadata formatters
 gem 'rspec_junit_formatter', '0.2.2'
 # gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'

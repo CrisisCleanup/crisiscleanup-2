@@ -82,57 +82,6 @@ hr {
     }
 }
 
-footer {
-    background: $coal;
-    color: #fff;
-    & h4 {
-        color: #fff;
-        margin-top: 10px;
-    }
-    clear:both;
-    height: auto;
-    width: 100%;
-    & .columns {}
-    & #footer {
-        max-width: 95%;
-    }
-    & .footer-logo img {
-        width: 65%;
-        height: auto;
-        margin: 3% 0 5px 0;
-    }
-    & .medium-8 .medium-4.columns {
-        border-left: 1px solid #fff;
-    }
-}
-
-#copyright {
-    background: $coal;
-    color: #fff;
-    max-width: 100rem;
-    text-align: center;
-    border-top: 1px solid #fff;
-    padding: 5px 0 5px 0;
-    & .columns p {
-        margin: 0;
-    }
-    & ul {
-        padding: 0;
-        margin: 0;
-    }
-    & ul li {
-        list-style-type: none;
-        display: inline;
-    }
-    & a:link,
-    a:visited {
-        color: $goldenrod;
-    }
-    & .right {
-        margin-right: 40px;
-    }
-}
-
 .tabs dd.active a, .tabs .tab-title.active a {
     background: $royal;
     color: #fff;

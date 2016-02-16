@@ -24,6 +24,8 @@
 }
 @import "compass";
 @import 'foundation-icons';
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 /* GLOBAL STYLES
    ----------------------------- */
@@ -139,6 +141,80 @@ p.notice {
 .hide {display: none;} 
 .unhide {display: block;}
 
+// footer
+footer {
+    background: $coal;
+    clear:both;
+    height: auto;
+    width: 100%;
+    & #footer_row {
+        max-width: 95%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    & .footer-logo img {
+        width: 65%;
+        height: auto;
+        margin: 3% 0 5px 0;
+    }
+    & .medium-8 .medium-4.columns {
+        border-left: 1px solid rgba(255,255,255,.2);
+        height: 350px;
+        margin-bottom: 0;
+        & h4 {
+        color: rgba(255,255,255,.8);
+        margin-top: 10px;
+        }
+        & p {
+            color: rgba(255,255,255,.5);
+            font-size: 14px;
+            & span {
+                color: rgba(255,255,255,.75);
+            }
+        }
+        & i {
+            color: $goldenrod;
+            font-size: 50px;
+            margin-top: 20px;
+        }
+        & a:link, a:visited {
+            color: #1b84ce;
+        }
+        & a:hover {
+            color: $baby;
+        }
+    }
+}
+
+#copyright {
+    background: $coal;
+    color: #fff;
+    max-width: 100rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,.2);
+    padding: 15px 0 10px 0;
+    & .columns p {
+        margin: 0;
+    }
+    & ul {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        text-align: right;
+    }
+    & ul li {
+        list-style-type: none;
+        display: inline;
+    }
+    & a:link,
+    a:visited {
+        color: $goldenrod;
+    }
+    & .right {
+        margin-right: 40px;
+    }
+}
+
 // media queries
 @media screen and (min-width: 1024px) {
     .top-bar-section li.active:not(.has-form) a:not(.button) {
@@ -148,5 +224,29 @@ p.notice {
         padding: 0 0.9375rem;
     }
 }
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+    footer {
+        & .medium-8 .medium-4.columns {
+            height: auto;
+        }
+        & h4 {
+            font-size: large;
+        }
+        & p {
+            font-size: 11px;
+        }
+    }
+}
+@media screen and (max-width: 640px) { // foundation breakpoint for phone/phablet
+    footer {
+        & .medium-8 .medium-4.columns {
+            border-left: none;
+            border-top: 1px solid rgba(255,255,255,.2);
+            height: auto;
+            padding-bottom: 20px;
+        }
+    }
+}
+    
 /*==================================================================================================*/
 
