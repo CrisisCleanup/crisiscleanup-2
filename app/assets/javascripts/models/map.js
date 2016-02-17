@@ -47,6 +47,7 @@ CCMap.Map = function(params) {
   this.setEventId = function(event_id) {
     this.event_id = event_id;
     buildMarkers.call(this);
+    setupAddressAutocomplete.call(this);
   }
 
   function buildMarkers() {
@@ -114,5 +115,13 @@ CCMap.Map = function(params) {
       maxZoom: 15
     }
     this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
+  }
+
+  // Address autocomplete
+  function setupAddressAutocomplete() {
+    // TODO: This is a start, but we need to turn off the autocomplete and autofill in the form
+    var addressField = document.getElementById("legacy_legacy_site_address");
+    var options = {};
+    this.addressAC = new google.maps.places.Autocomplete(addressField, options);
   }
 }
