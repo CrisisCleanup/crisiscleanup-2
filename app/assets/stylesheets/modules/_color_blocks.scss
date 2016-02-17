@@ -1,65 +1,69 @@
-// Color Blocks
-.color-block,
-.cta {
-    margin: 20px 0 20px 0;
-    padding: 20px 0 20px 0;
-    & h2, h3, h4, p {
-        margin-left: 13%;
-    }
-}
-
-.color-block {
-    & h2, h3, h4, p {
-        color: #fff;
-    }
-}
-
-.cta .columns .button {
-    margin-top: 20px;
-}
+// Color Register
 
 .white {
     color: $off-white;
 }
+.white-block {
+    color: $off-white;
+}
 
-.red,
-.red .columns {
+.red {
+    color: $berry;
+}
+.red-block {
     background-color: $berry;
 }
 
-.orange,
-.orange .columns {
+.orange {
+    color: $pumpkin;
+}
+.orange-block {
     background-color: $pumpkin;
 }
 
-.yellow,
-.yellow .columns {
+.yellow {
+    color: $goldenrod;
+}
+.yellow-block{
     background-color: $goldenrod;
 }
 
-.green,
-.green .columns {
+.mustard {
+    color: $mustard;
+}
+.mustard-block {
+    background-color: $mustard;
+}
+
+.green {
+    color: $forest;
+}
+.green-block {
     background-color: $forest;
 }
 
-.blue,
-.blue .columns {
+.blue {
+    color: &baby;
+}
+.blue-block {
     background-color: $baby;
 }
 
-.gray,
-.gray .columns {
+.gray {
+    color: $smoke;
+}
+.gray-block {
     background-color: $smoke;
 }
 
-.black,
-.black .columns {
+.black {
+    color: $coal;
+}
+.black-block {
     background-color: $coal;
 }
 
 // Buttons
-
-
 .button.yellow:hover {
     background-color: $mustard;
 }

@@ -103,10 +103,9 @@ header {
 //page title and subtitle section
 .subheader {
     padding-top: 20px;
-    text-align: center;
+    text-align: left;
     & h2 {
         color: $royal;
-        margin-left: 1.5%;
     }
 }
 
@@ -140,6 +139,15 @@ p.notice {
 // form section hide/show
 .hide {display: none;} 
 .unhide {display: block;}
+
+//Characters
+.character {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 // footer
 footer {

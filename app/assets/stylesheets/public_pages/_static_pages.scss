@@ -7,8 +7,8 @@
     display: table;
 }
 
+// Sidebar Template
 .alt {
-    // Sidebar Template
     display: table-cell;
     width: 70%;
     & p, ul {
@@ -16,7 +16,6 @@
     }
 }
 
-// Sidebar Template
 #sidebar {
     width: 30%;
     left: 70%;
@@ -66,48 +65,61 @@
 
 
 // Home Page
-.orgs {
-    & img {
-        width: 50%;
-        vertical-align: middle;
-        width: 50%;
-        height: auto;
+.splash-image {
+    width: 100%;
+    height: 575px;
+    background: image-url('ccu-home-slide.png') bottom center;
+    background-size: cover;
+    background-position: center;
+    overflow: visible;
+}
+
+.splash-image-cta-section {
+    padding-top: 75px;
+    margin-left: 20px;
+    margin-right: auto;
+    text-align: left;
+    & h3 {
+        margin-bottom: 20px;
     }
-    & .columns {
-        transition: all 0.5s ease;
-        min-height: 305px;
+    & h4 {
+        color: #333;
+        margin-bottom: 20px;
     }
-    & .audience {
-        margin-bottom: 0;
-    }
-    & .voad {
-        background-color: rgba(65, 156, 56, .2);
-    }
-    & .voad:hover {
-        background-color: rgba(65, 156, 56, .5);
-    }
-    & .gov {
-        background-color: rgba(27, 132, 206, .2);
-    }
-    & .gov:hover {
-        background-color: rgba(27, 132, 206, .5);
-    }
-    & .volunteers {
-        background-color: rgba(221, 161, 0, .2);
-    }
-    & .volunteers:hover {
-        background-color: rgba(221, 161, 0, .5);
-    }
-    & .survivors {
-        background-color: rgba(211, 37, 25, .2);
-    }
-    & .survivors:hover {
-        background-color: rgba(211, 37, 25, .5);
+    & form {
+        width: 70%;
+        & button.gray-block:hover {
+            background-color: $clay;
+        }
     }
 }
 
-.orgs .columns p {
-    color: $coal;
+@media only screen and (max-width: 640px) {
+    .splash-image {
+        width: 100%;
+        height: 575px;
+        background: image-url('ccu-home-slide-at-640.jpg') bottom center;
+        background-size: cover;
+        background-position: bottom center;
+        overflow: visible;
+    }
+    .splash-image-cta-section {
+        padding-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        & h3 {
+            font-size: large;
+        }
+        & h3, h4 {
+            margin-bottom: 0;
+        }
+        & form {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
 }
 
 .timeline {
@@ -117,67 +129,27 @@
     }
 }
 
-.incident-map {}
-
-.home-icons {
-    margin: 40px 0 0 0;
-    & img {
-        vertical-align: middle;
-        margin: 0 0 0 25%;
-        width: 50%;
-        height: auto;
-    }
-    & h2,
-    h3,
-    p {
-        text-align: center;
-    }
-    & .columns {}
-}
-
-.tornado-block,
-.hurricane-block,
-.flood-block,
-.snow-block,
-.fire-block,
-.wind-block {
-    margin-bottom: 0;
-    & h3, p {
+.home_coordinated_disasters {
+    & h3 {
         color: #fff;
     }
     & img {
-        margin-left: auto;
-        margin-right: auto;
-        vertical-align: middle;
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
     }
 }
 
-.tornado-block {
-    background-color: $berry;
+.cta {
+    margin: 20px 0 20px 0;
+    padding: 20px 0 20px 0;
+    & h2, h3, h4, p {
+        margin-left: 13%;
+    }
 }
 
-.hurricane-block {
-    background-color: $mustard;
+.cta .columns .button {
+    margin-top: 20px;
 }
-
-.flood-block {
-    background-color: $royal;
-}
-
-.snow-block {
-    background-color: $forest;
-}
-
-.fire-block {
-    background-color: $coal;
-}
-
-.wind-block {
-    background-color: $terra;
-}
-
 .join {
     margin-top: 20px;
     margin-left: 30px;
