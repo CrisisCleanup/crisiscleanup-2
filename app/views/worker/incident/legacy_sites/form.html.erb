@@ -2,30 +2,27 @@
     Crisis Cleanup - Site form
 <% end %>
 
+<% content_for :subheader do %>
 
-<% content_for :subheader do %> 
- 
 <% end %>
 
 <% content_for :main do %>
   <div id="main" class="alt">
-    <!-- do not remove spans-->
+    <!-- do not remove spans -->
     <span class='m-id hidden'><%= @legacy_event.id %></span>
-     <span class='m-pin hidden'>init</span>
-      
-    <div id="map-canvas"></div>
-   
+    <span class='m-pin hidden'>init</span>
+
+    <div class='map-wrapper'>
+      <div id="worker-map-canvas" style="width: 100%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
+    </div>
   </div>
 <% end %>
-        
-<% content_for :sidebar do %>        
+
+<% content_for :sidebar do %>
   <div id="sidebar">
     <h4>Report Incident</h4>
-        <div class="content active">
-            <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
-        </div>
-
-        </div>
-      </div>   
-</div>
+    <div class="content active">
+      <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
+    </div>
+  </div>
 <% end %>
