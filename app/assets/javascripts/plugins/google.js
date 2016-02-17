@@ -17,5 +17,5 @@ google.maps = google.maps || {};
   };
 
   var loadScriptTime = (new Date).getTime();
-  getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAXkt-1qLdIKnPUkx0PmipJNc0DwlXbMNw");
+  getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAXkt-1qLdIKnPUkx0PmipJNc0DwlXbMNw&libraries=places");
 })();
