@@ -104,7 +104,7 @@ CCMap.Filters = function(params) {
     },
     {
       id: "other",
-      label: "Any pin that is not Tree, Debris, or Flood",
+      label: "Other",
       condition: function(site) {
         return /^(?!Debris|Trees|Flood).*$/.test(site.site.work_type);
       }
