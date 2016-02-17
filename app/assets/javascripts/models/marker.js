@@ -51,13 +51,57 @@ CCMap.Site = function(params) {
     // Create an object of key value pairs to display
     var displayObj = {
       "Case Number": this.site.case_number,
-      "Name": this.site.name,
-      "Requests": this.site.work_type,
-      "Address": this.site.address + ", " + this.site.city + ", " + this.site.state,
-      "Phone": this.site.phone,
-      "Phone": "[alternate number]",
-      "Details": "[...]"
+      "Name": this.site.name
     };
+
+    // Requests
+    if (this.site.data.work_requested) {
+      displayObj["Requests"] = this.site.data.work_requested;
+    }
+
+    // Address
+    displayObj["Address"] = this.site.address + ", " + this.site.city + ", " + this.site.state;
+
+    // Test for zip_code. I don't see any zip codes in the current data
+    if (this.site.zip_code) {
+      displayObj["Address"] += "  " + this.site.zip_code;
+    }
+
+    // Data field
+    if (this.site.data) {
+      // Phone field
+      var phone = [];
+      if (this.site.data.phone1 && this.site.data.phone1.length > 10) {
+        phone.push(this.site.data.phone1);
+      }
+      if (this.site.data.phone2 && this.site.data.phone2.length > 10) {
+        phone.push(this.site.data.phone2);
+      }
+      if (phone.length > 0) {
+        displayObj["Phone"] = phone.join(', ');
+      }
+      // end Phone field
+
+      // data hstore field stuff
+      var details = [];
+      for (var key in this.site.data) {
+        if (this.site.data.hasOwnProperty(key)) {
+          if (key === 'phone1') { continue; }
+          if (key === 'phone2') { continue; }
+          if (key === 'zip_code') { continue; }
+          if (this.site.data[key] === 'n') { continue; }
+          if (!this.site.data[key]) { continue; }
+          var formattedKey = key.replace(/_/g, ' ');
+          var formattedValue = this.site.data[key].replace(/_/g, ' ');
+          formattedKey = formattedKey.charAt(0).toUpperCase() + formattedKey.slice(1);
+          formattedValue = formattedValue.charAt(0).toUpperCase() + formattedValue.slice(1);
+          details.push(formattedKey + ": " + formattedValue);
+        }
+      }
+      if (details.length > 0) {
+        displayObj["Details"] = details.join(', ');
+      }
+    }
 
     for (var key in displayObj) {
       if (displayObj.hasOwnProperty(key)) {
@@ -106,7 +150,7 @@ CCMap.Site = function(params) {
       table.appendChild(
         createTableRow(
           document.createTextNode('Claimed By:'),
-          document.createTextNode(this.site.claimed_by)
+          document.createTextNode(this.site.org_name)
         )
       );
     }

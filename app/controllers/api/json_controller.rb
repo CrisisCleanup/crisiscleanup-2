@@ -10,20 +10,24 @@ module Api
         render json: @sites = Legacy::LegacySite.find(params["pin"])
       else
         render json: @sites = Legacy::LegacySite.select("
-          id,
-          name,
-          address,
-          city,
-          state,
-          phone,
-          latitude,
-          longitude,
-          claimed_by,
-          reported_by,
-          status,
-          case_number,
-          work_type
+          legacy_sites.id,
+          legacy_sites.name,
+          legacy_sites.address,
+          legacy_sites.city,
+          legacy_sites.state,
+          legacy_sites.zip_code,
+          legacy_sites.phone,
+          legacy_sites.data,
+          legacy_sites.latitude,
+          legacy_sites.longitude,
+          legacy_sites.claimed_by,
+          legacy_sites.reported_by,
+          legacy_sites.status,
+          legacy_sites.case_number,
+          legacy_sites.work_type,
+          legacy_organizations.name as org_name
         ").where(legacy_event_id: params[:legacy_event_id])
+          .joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = legacy_sites.claimed_by")
       end
     end
 
