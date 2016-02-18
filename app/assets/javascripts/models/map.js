@@ -119,9 +119,59 @@ CCMap.Map = function(params) {
 
   // Address autocomplete
   function setupAddressAutocomplete() {
-    // TODO: This is a start, but we need to turn off the autocomplete and autofill in the form
     var addressField = document.getElementById("legacy_legacy_site_address");
     var options = {};
-    this.addressAC = new google.maps.places.Autocomplete(addressField, options);
+    var addressAC = new google.maps.places.Autocomplete(addressField, options);
+
+    google.maps.event.addListener(addressAC, 'place_changed', function() {
+      var place = this.getPlace();
+      for (var i = 0; i < place.address_components.length; i++) {
+        var addressType = place.address_components[i].types[0];
+        switch (addressType) {
+          case 'street_number':
+            addressField.value = place.address_components[i].long_name;
+            break;
+          case 'route':
+            addressField.value += " " + place.address_components[i].long_name;
+            break;
+          case 'locality':
+            var city = document.getElementById("legacy_legacy_site_city")
+            if (city) {
+              city.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'administrative_area_level_2':
+            var county = document.getElementById("legacy_legacy_site_county")
+            if (county) {
+              county.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'administrative_area_level_1':
+            var state = document.getElementById("legacy_legacy_site_state")
+            if (state) {
+              state.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'country':
+            var country = document.getElementById("legacy_legacy_site_country")
+            if (country) {
+              country.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'postal_code':
+            var zip = document.getElementById("legacy_legacy_site_zip_code")
+            if (zip) {
+             zip.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'postal_code_suffix':
+            var zip = document.getElementById("legacy_legacy_site_zip_code")
+            if (zip) {
+              zip.value += "-" + place.address_components[i].long_name;
+            }
+            break;
+        }
+      }
+    });
   }
 }

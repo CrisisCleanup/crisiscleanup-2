@@ -1,5 +1,6 @@
 <div class='remote'>
-	<%= simple_form_for @site, url: url,remote: true do |f| %>
-		<%= @form.html_safe %>
-	<%end%>
+  <%= simple_form_for @site, url: url, remote: true, html: { autocomplete: 'off' } do |f| %>
+    <%= f.input :autofill_disable, as: :hidden, input_html: { autocomplete: false, style: 'display: none;' } %>
+    <%= @form.html_safe %>
+  <%end%>
 </div>
