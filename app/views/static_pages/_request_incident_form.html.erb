@@ -1,0 +1,30 @@
+<%= form_tag request_incident_path %>
+<div class="row">
+	<div class="small-12 medium-7 large-8 columns invite">
+	  <label>Name</label>
+	  <%= text_field_tag :name, nil, autocomplete: "off", placeholder: "Name" %>
+	</div>     
+	<div class="small-12 medium-7 large-8 columns invite">
+	  <label>Email</label>
+	  <%= text_field_tag :email, nil, autocomplete: "off", placeholder: "Email" %>
+	</div> 
+	<div class="small-12 medium-7 large-8 columns invite">
+	  <label>Phone Number</label>
+	  <%= text_field_tag :phone, nil, autocomplete: "off", placeholder: "Phone Number" %>
+	</div>    
+	<div class="small-12 medium-7 large-8 columns invite">
+	  <label>Organization</label>
+	  <%= text_field_tag :organization, nil, autocomplete: "off", placeholder: "Organization" %>
+	</div>    
+	<div class="small-12 medium-7 large-8 columns invite">
+	  <label>Title</label>
+	  <%= text_field_tag :title, nil, autocomplete: "off", placeholder: "Title" %>
+	</div>   
+	<div class="small-12 medium-7 large-8 columns invite">
+	  <label>Location and Details</label>
+	  <%= text_area_tag :details, nil, autocomplete: "off", placeholder: "Location of disaster	and any details you'd like to share" %>
+	</div>    
+	<div class="small-12 medium-12 large-12 columns invite">
+	  <%= submit_tag "Submit", :class => "button" %>
+	</div>   
+</div>

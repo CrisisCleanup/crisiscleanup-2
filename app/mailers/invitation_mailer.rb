@@ -1,6 +1,7 @@
 class InvitationMailer < ActionMailer::Base
   default from: "help@crisiscleanup.org"
   def send_invitation(inv, request)
+    binding.pry
     @user = User.find(inv.user_id)
     @email = inv.invitee_email
     @url = request + "/invitations/activate?token="+inv.token
@@ -18,4 +19,12 @@ class InvitationMailer < ActionMailer::Base
     mail(to: @contact.email, subject: "We have received your registration")
   end
  	# TODO - do we need comment alerts? also an in-app mail or alert system, ala social network messages
+  def send_incident_request(params, email)
+    @name = params[:name]
+    @email = params[:email]
+    @phone = params[:phone]
+    @title = params[:title]
+    @details = params[:details]
+    mail(to: email, subject: "New Incident Request")
+  end
 end

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get "/privacy" => "static_pages#privacy", as: "privacy"
   get "/terms" => "static_pages#terms", as: "terms"
   get "/admin" => 'admin/dashboard#index'
+  get "/signup" => 'static_pages#signup', as: "signup"
+  get "/new_incident" => 'static_pages#new_incident', as: "new_incident"
+  post "/request_incident" => 'static_pages#request_incident', as: "request_incident"
 
 
   resources :request_invitations, only: [:new, :create]
