@@ -128,12 +128,8 @@ CCMap.Map = function(params) {
     var options = {};
     var addressAC = new google.maps.places.Autocomplete(addressField, options);
     var map = this.map;
-    var marker = new google.maps.Marker({ map: map });
 
     addressAC.bindTo('bounds', map);
-    marker.addListener('click', function() {
-      // Do things maybe
-    });
 
     google.maps.event.addListener(addressAC, 'place_changed', function() {
       var place = this.getPlace();
@@ -191,13 +187,7 @@ CCMap.Map = function(params) {
         return;
       }
 
-      // Set the lat and lng fields
-      var lat = document.getElementById('legacy_legacy_site_latitude');
-      var lng = document.getElementById('legacy_legacy_site_longitude');
-      if (lat && lng) {
-        lat.value = place.geometry.location.lat();
-        lng.value = place.geometry.location.lng();
-      }
+      setLatLng(place.geometry.location);
 
       if (place.geometry.viewport) {
         map.fitBounds(place.geometry.viewport);
@@ -207,11 +197,28 @@ CCMap.Map = function(params) {
       }
 
       // Set the position of the marker using the place ID and location.
-      marker.setPlace({
-        placeId: place.place_id,
-        location: place.geometry.location
+      var marker = new google.maps.Marker({
+        draggable: true,
+        position: place.geometry.location,
+        map: map
       });
-      marker.setVisible(true);
+
+      marker.addListener('drag', function() {
+        setLatLng(this.position);
+      });
+
     });
+
+    // Takes a google marker position object. Seems to be called location sometimes as well.
+    // Whatever. It's the marker attribute that has lat and lng methods on it.
+    function setLatLng(position) {
+      var latInput = document.getElementById('legacy_legacy_site_latitude');
+      var lngInput = document.getElementById('legacy_legacy_site_longitude');
+      if (latInput && lngInput) {
+        latInput.value = position.lat();
+        lngInput.value = position.lng();
+      }
+
+    }
   }
 }
