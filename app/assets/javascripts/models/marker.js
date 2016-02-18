@@ -83,23 +83,9 @@ CCMap.Site = function(params) {
       // end Phone field
 
       // data hstore field stuff
-      var details = [];
-      for (var key in this.site.data) {
-        if (this.site.data.hasOwnProperty(key)) {
-          if (key === 'phone1') { continue; }
-          if (key === 'phone2') { continue; }
-          if (key === 'zip_code') { continue; }
-          if (this.site.data[key] === 'n') { continue; }
-          if (!this.site.data[key]) { continue; }
-          var formattedKey = key.replace(/_/g, ' ');
-          var formattedValue = this.site.data[key].replace(/_/g, ' ');
-          formattedKey = formattedKey.charAt(0).toUpperCase() + formattedKey.slice(1);
-          formattedValue = formattedValue.charAt(0).toUpperCase() + formattedValue.slice(1);
-          details.push(formattedKey + ": " + formattedValue);
-        }
-      }
-      if (details.length > 0) {
-        displayObj["Details"] = details.join(', ');
+      var details = formattedDetails(this.site.data);
+      if (details) {
+        displayObj["Details"] = details;
       }
     }
 
@@ -183,6 +169,71 @@ CCMap.Site = function(params) {
     table.appendChild(buttonRow);
 
     $infobox.html(table);
+  }
+
+  /**
+   * Takes a legacy_site.data obj and returns a string of details to show in the infobox
+   */
+  function formattedDetails(data) {
+    // TODO: clean this up once some of these fields are moved to the primary, LegacySite, model
+    var blackList = [
+      'address_digits',
+      'address_metaphone',
+      'assigned_to',
+      'city_metaphone',
+      'claim_for_org',
+      'county',
+      'cross_street',
+      'damage_level',
+      'date_closed',
+      'do_not_work_before',
+      'event',
+      'event_name',
+      'habitable',
+      'hours_worked_per_volunteer',
+      'ignore_similar',
+      'initials_of_resident_present',
+      'inspected_by',
+      'landmark',
+      'member_of_assessing_organization',
+      'modified_by',
+      'name_metaphone',
+      'phone1', // This is being shown in its own field
+      'phone2', // This is being shown in its own field
+      'phone_normalised',
+      'prepared_by',
+      'priority',
+      'release_form',
+      'temporary_address',
+      'time_to_call',
+      'total_loss',
+      'total_volunteers',
+      'unrestrained_animals',
+      'work_requested', // This is being shown in its own field
+      'zip_code' // This is being shown in the address field
+    ]
+    var details = [];
+
+    for (var key in data) {
+      if (data.hasOwnProperty(key)) {
+        if (blackList.indexOf(key) !== -1) { continue; }
+        if (!data[key]) { continue; }
+        if (data[key] === 'n') { continue; }
+        if (data[key] === '0') { continue; }
+
+        var formattedKey = key.replace(/_/g, ' ');
+        var formattedValue = data[key].replace(/_/g, ' ');
+        formattedKey = formattedKey.charAt(0).toUpperCase() + formattedKey.slice(1);
+        formattedValue = formattedValue.charAt(0).toUpperCase() + formattedValue.slice(1);
+        details.push(formattedKey + ": " + formattedValue);
+      }
+    }
+
+    if (details.length > 0) {
+      return details.join(', ');
+    } else {
+      return false;
+    }
   }
 
   /**
