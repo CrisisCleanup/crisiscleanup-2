@@ -1,6 +1,6 @@
 machine:
   ruby:
-    version: ruby-2.2.1
+    version: ruby-2.2.4
 
 dependencies:
   post:
