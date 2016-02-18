@@ -10,6 +10,7 @@ var CCMap = CCMap || {};
  * @param {number=39} [params.lat] - Latitude of the initial map center
  * @param {number=-90} [params.lng] - Longitutde of the initial map center
  * @param {boolean=true} [params.public_map] - Whether or not it's a public map
+ * @param {boolean=true} [params.form_map] - Whether or not it's a form map
  */
 CCMap.Map = function(params) {
   var $infobox = $('#map-infobox');
@@ -20,6 +21,7 @@ CCMap.Map = function(params) {
   this.canvas = document.getElementById(params.elm);
   this.event_id = params.event_id;
   this.public_map = typeof params.public_map !== 'undefined' ? params.public_map : true;
+  this.form_map = typeof params.form_map !== 'undefined' ? params.form_map : true;
   this.zoom = typeof params.zoom !== 'undefined' ? params.zoom : 4;
   this.latitude = typeof params.lat !== 'undefined' ? params.lat : 39;
   this.longitude = typeof params.lng !== 'undefined' ? params.lng : -90;
@@ -46,7 +48,10 @@ CCMap.Map = function(params) {
 
   this.setEventId = function(event_id) {
     this.event_id = event_id;
-    buildMarkers.call(this);
+    // TODO: refactor this nonsense.
+    if (!this.form_map) {
+      buildMarkers.call(this);
+    }
     setupAddressAutocomplete.call(this);
   }
 
