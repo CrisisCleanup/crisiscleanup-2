@@ -16,6 +16,9 @@ module Legacy
     before_validation :add_case_number
     belongs_to :legacy_event
 
+    # So we can hide the autofill on this model's simple_form
+    attr_accessor :autofill_disable
+
     def full_street_address
       "#{self.address}, #{self.city}, #{self.state}"
     end

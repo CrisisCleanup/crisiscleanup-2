@@ -1,7 +1,9 @@
 $(document).ready(function() {
+  // TODO: refactor the map.
   var path = $(location).attr('pathname');
-  var dashboard = path.split('/')[1] == 'admin';
-  var page = path.split('/')[2];
+  var pathArray = path.split('/');
+  var dashboard = pathArray[1] === 'admin';
+  var page = pathArray[2];
   var elem = '.'+page;
   var worker_map = $('#worker-map-canvas').length
 
@@ -19,7 +21,8 @@ $(document).ready(function() {
     var ccmap = new CCMap.Map({
       elm: 'worker-map-canvas',
       event_id: id,
-      public_map: false
+      public_map: false,
+      form_map: pathArray.indexOf('form') !== -1
     });
     // TODO: remove this once the worker map instantiation is setting the event correctly.
     ccmap.setEventId(id);

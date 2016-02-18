@@ -10,6 +10,7 @@ var CCMap = CCMap || {};
  * @param {number=39} [params.lat] - Latitude of the initial map center
  * @param {number=-90} [params.lng] - Longitutde of the initial map center
  * @param {boolean=true} [params.public_map] - Whether or not it's a public map
+ * @param {boolean=true} [params.form_map] - Whether or not it's a form map
  */
 CCMap.Map = function(params) {
   var $infobox = $('#map-infobox');
@@ -20,6 +21,7 @@ CCMap.Map = function(params) {
   this.canvas = document.getElementById(params.elm);
   this.event_id = params.event_id;
   this.public_map = typeof params.public_map !== 'undefined' ? params.public_map : true;
+  this.form_map = typeof params.form_map !== 'undefined' ? params.form_map : true;
   this.zoom = typeof params.zoom !== 'undefined' ? params.zoom : 4;
   this.latitude = typeof params.lat !== 'undefined' ? params.lat : 39;
   this.longitude = typeof params.lng !== 'undefined' ? params.lng : -90;
@@ -46,7 +48,11 @@ CCMap.Map = function(params) {
 
   this.setEventId = function(event_id) {
     this.event_id = event_id;
-    buildMarkers.call(this);
+    // TODO: refactor this nonsense.
+    if (!this.form_map) {
+      buildMarkers.call(this);
+    }
+    setupAddressAutocomplete.call(this);
   }
 
   function buildMarkers() {
@@ -114,5 +120,105 @@ CCMap.Map = function(params) {
       maxZoom: 15
     }
     this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
+  }
+
+  // Address autocomplete
+  function setupAddressAutocomplete() {
+    var addressField = document.getElementById("legacy_legacy_site_address");
+    var options = {};
+    var addressAC = new google.maps.places.Autocomplete(addressField, options);
+    var map = this.map;
+
+    addressAC.bindTo('bounds', map);
+
+    google.maps.event.addListener(addressAC, 'place_changed', function() {
+      var place = this.getPlace();
+
+      // populate the form with the returned place info
+      for (var i = 0; i < place.address_components.length; i++) {
+        var addressType = place.address_components[i].types[0];
+        switch (addressType) {
+          case 'street_number':
+            addressField.value = place.address_components[i].long_name;
+            break;
+          case 'route':
+            addressField.value += " " + place.address_components[i].long_name;
+            break;
+          case 'locality':
+            var city = document.getElementById("legacy_legacy_site_city")
+            if (city) {
+              city.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'administrative_area_level_2':
+            var county = document.getElementById("legacy_legacy_site_county")
+            if (county) {
+              county.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'administrative_area_level_1':
+            var state = document.getElementById("legacy_legacy_site_state")
+            if (state) {
+              state.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'country':
+            var country = document.getElementById("legacy_legacy_site_country")
+            if (country) {
+              country.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'postal_code':
+            var zip = document.getElementById("legacy_legacy_site_zip_code")
+            if (zip) {
+             zip.value = place.address_components[i].long_name;
+            }
+            break;
+          case 'postal_code_suffix':
+            var zip = document.getElementById("legacy_legacy_site_zip_code")
+            if (zip) {
+              zip.value += "-" + place.address_components[i].long_name;
+            }
+            break;
+        }
+      }
+
+      if (!place.geometry) {
+        return;
+      }
+
+      setLatLng(place.geometry.location);
+
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
+      }
+
+      // Set the position of the marker using the place ID and location.
+      var marker = new google.maps.Marker({
+        draggable: true,
+        position: place.geometry.location,
+        map: map
+      });
+
+      marker.addListener('drag', function() {
+        setLatLng(this.position);
+      });
+
+    });
+
+    // Takes a google marker position object. Seems to be called location sometimes as well.
+    // Whatever. It's the marker attribute that has lat and lng methods on it.
+    function setLatLng(position) {
+      var latInput = document.getElementById('legacy_legacy_site_latitude');
+      var lngInput = document.getElementById('legacy_legacy_site_longitude');
+      if (latInput && lngInput) {
+        latInput.value = position.lat();
+        lngInput.value = position.lng();
+      }
+
+    }
   }
 }
