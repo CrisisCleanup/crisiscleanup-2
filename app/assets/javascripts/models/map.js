@@ -127,9 +127,18 @@ CCMap.Map = function(params) {
     var addressField = document.getElementById("legacy_legacy_site_address");
     var options = {};
     var addressAC = new google.maps.places.Autocomplete(addressField, options);
+    var map = this.map;
+    var marker = new google.maps.Marker({ map: map });
+
+    addressAC.bindTo('bounds', map);
+    marker.addListener('click', function() {
+      // Do things maybe
+    });
 
     google.maps.event.addListener(addressAC, 'place_changed', function() {
       var place = this.getPlace();
+
+      // populate the form with the returned place info
       for (var i = 0; i < place.address_components.length; i++) {
         var addressType = place.address_components[i].types[0];
         switch (addressType) {
@@ -177,6 +186,32 @@ CCMap.Map = function(params) {
             break;
         }
       }
+
+      if (!place.geometry) {
+        return;
+      }
+
+      // Set the lat and lng fields
+      var lat = document.getElementById('legacy_legacy_site_latitude');
+      var lng = document.getElementById('legacy_legacy_site_longitude');
+      if (lat && lng) {
+        lat.value = place.geometry.location.lat();
+        lng.value = place.geometry.location.lng();
+      }
+
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
+      }
+
+      // Set the position of the marker using the place ID and location.
+      marker.setPlace({
+        placeId: place.place_id,
+        location: place.geometry.location
+      });
+      marker.setVisible(true);
     });
   }
 }
