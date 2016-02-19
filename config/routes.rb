@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/signup" => 'static_pages#signup', as: "signup"
   get "/new_incident" => 'static_pages#new_incident', as: "new_incident"
   post "/request_incident" => 'static_pages#request_incident', as: "request_incident"
-
+  get "/redeploy" => 'static_pages#redeploy', as: "redeploy"
 
   resources :request_invitations, only: [:new, :create]
 

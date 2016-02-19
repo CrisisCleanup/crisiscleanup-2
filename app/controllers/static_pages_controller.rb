@@ -27,4 +27,7 @@ class StaticPagesController < ApplicationController
     flash[:notice] = "Your request has been received"
     redirect_to "/"
   end
+
+  def redeploy
+  end
 end
