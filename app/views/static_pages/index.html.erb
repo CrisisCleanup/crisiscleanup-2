@@ -10,17 +10,14 @@
                 <h4>Luckily, Crisis Cleanup is here to help!</h4>
                 <h5>Start by telling us who you are:</h5>
                 <form>
-                    <select>
-                        <option value="">--Choose One--</option>
-                        <option value="/voad">VOAD/ Relief Organization</option>
-                        <option value="/government">Government</option>
-                        <option value="/volunteer">Volunteer</option>
-                        <option value="/survivor">Survivor</option>
-                        <option value="/about">Just Curious</option>
+                    <select id="location-select">
+                        <option value="voad">VOAD - Volunteers Organized in Active Disaster Relief</option>
+                        <option value="government">Government</option>
+                        <option value="volunteer">Volunteer</option>
+                        <option value="survivor">Survivor</option>
                     </select>
-                    <a href=""><button>Let's Go!</button></a>
-                    <a href="/login"><button class="gray-block">Login</button></a>
-                    </form>
+                    <a href="#" class="button" id="lets-go-btn">Let's Go!</a>
+                    <a href="#"><button class="gray-block">Login</button></a>
                 </form>
             </div>
         </div>
@@ -37,10 +34,10 @@
                 <%= image_tag "icons/tornado-red.png", :alt => "dallas tornadoes"  %>
                 <h3 class="red-block">Dallas Tornadoes</h3>
                 <p>Crisis Cleanup is actively helping dozens of relief agencies in the Dallas area assist survivors.<br /><br /><br /></p>
-            </div> 
+            </div>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/hurricane-yellow.png", :alt => "hurricane sandy"  %>
-                <h3 class="mustard-block">Hurricane Sandy</h3>        
+                <h3 class="mustard-block">Hurricane Sandy</h3>
                 <p>Our first major incident, more than 120 organizations and 30,000 volunteers used Crisis Cleanup to assist more than 5,000 families.<br /><br /></p>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
@@ -54,7 +51,7 @@
                 <%= image_tag "icons/snowflake-green.png", :alt => "boston snowflakes"  %>
                 <h3 class="green-block">Boston Snowstorm</h3>
                 <p>The Boston snowstorm of 2015 paralyzed the city. When volunteers by the hundreds helped their neighbors, Crisis Cleanup helped them coordinate their efforts.</p>
-            </div> 
+            </div>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/fire-black.png", :alt => "black forest fires"  %>
                 <h3 class="black-block">Black Forest Fires</h3>
@@ -64,7 +61,7 @@
                 <%= image_tag "icons/wind-orange.png", :alt => "south nj dericho storms"  %>
                 <h3 class="orange-block">S. NJ Dericho Storms</h3>
                 <p>More than 700 volunteers helped several hundred elderly residents remove downed trees in Southern New Jersey. Crisis Cleanup drastically improved efficiency and coordination.</p>
-            </div>     
+            </div>
         </div>
     <hr>
     <div class="row">
