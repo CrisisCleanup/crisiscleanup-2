@@ -11,13 +11,15 @@
                 <h5>Start by telling us who you are:</h5>
                 <form>
                     <select>
-                        <option>VOAD - Volunteers Organized in Active Disaster Relief</option>
-                        <option>Government</option>
-                        <option>Volunteer</option>
-                        <option>Survivor</option>
+                        <option value="">--Choose One--</option>
+                        <option value="/voad">VOAD/ Relief Organization</option>
+                        <option value="/government">Government</option>
+                        <option value="/volunteer">Volunteer</option>
+                        <option value="/survivor">Survivor</option>
+                        <option value="/about">Just Curious</option>
                     </select>
                     <a href=""><button>Let's Go!</button></a>
-                    <a href=""><button class="gray-block">Login</button></a>
+                    <a href="/login"><button class="gray-block">Login</button></a>
                     </form>
                 </form>
             </div>
@@ -29,7 +31,7 @@
 <% content_for :main do %>
 <div id="main">
     <div class="row home_coordinated_disasters">
-        <h2 align="center">29 Disasters Coordinated</h2>
+        <h2 align="center">31 Disasters Coordinated</h2>
         <p align="center">Ready Now: Multi-Agency Disaster Relief Coordination</p>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/tornado-red.png", :alt => "dallas tornadoes"  %>
@@ -79,7 +81,7 @@
             <h5>You don't. You let them organize themselves.</h5>
             <p>Crisis Cleanup empowers relief organizations to instantly coordinate response efforts in real time, redirecting thousands of volunteers from to waiting lines to survivors' basements.</p>
 
-            <p>Crisis Cleanup was developed by and for field volunteers, team leaders, canvassers, and the people who work one-on-one with people whose homes have been affected by flood, tornadoes, earthquakes, wind, fire, or other disaster. Crisis Cleanup can respond to a new disaster the same day, permitting relief organizations to instantly coordinate efforts.</p>
+            <p>Crisis Cleanup was developed by and for field volunteers, team leaders, canvassers, and the people who work one-on-one with survivors whose homes have been affected by flood, tornadoes, earthquakes, wind, fire, or other disaster. Crisis Cleanup can respond to a new disaster the same day, permitting relief organizations to instantly coordinate efforts.</p>
 
             <p>Crisis Cleanup implements a "Craigslist" philosophy to recovery efforts– organizations that are aware of work orders enter them into the system, and organizations with capacity to help can claim and perform the work. The system is not public, but it is open and transparent among participating organizations. No centralized organization is "in charge." This non-threatening approach minimizes duplication and maximizes communication, coordination, and efficiency.</p>
 
