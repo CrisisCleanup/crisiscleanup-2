@@ -139,7 +139,7 @@ p.notice {
 // form section hide/show
 .hide {display: none;} 
 .unhide {display: block;}
-.hide, .unhide {
+button.hide, button.unhide {
 	float: right;
 	margin: 0 0 0 5px;
 	padding: 5px 10px 5px 10px;
