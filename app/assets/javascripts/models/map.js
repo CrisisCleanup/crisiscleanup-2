@@ -36,7 +36,7 @@ CCMap.Map = function(params) {
   this.markerBounds = new google.maps.LatLngBounds();
 
   this.map.addListener('click', function() {
-    $('#map-infobox').hide();
+    $infobox.hide();
   }.bind(this));
 
   // Setting this up this way just in case we end up with dynamic filters per incident.
@@ -50,6 +50,7 @@ CCMap.Map = function(params) {
     this.event_id = event_id;
     // TODO: refactor this nonsense.
     if (!this.form_map) {
+      $infobox.empty();
       buildMarkers.call(this);
     }
     setupAddressAutocomplete.call(this);
