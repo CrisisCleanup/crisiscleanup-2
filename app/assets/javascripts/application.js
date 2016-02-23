@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require foundation
 
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree ./plugins
 //= require ./worker/sites.js
 //= require ./scripts.js
