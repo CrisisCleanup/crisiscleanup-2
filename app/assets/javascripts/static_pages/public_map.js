@@ -4,7 +4,8 @@ $(document).ready(function() {
     var id = typeof $('.m-id.hidden')[0] !== 'undefined' ? $('.m-id.hidden')[0].innerHTML : 'none';
     var ccmap = new CCMap.Map({
       elm: 'public-map-canvas',
-      event_id: id
+      event_id: id,
+      form_map: false
     });
 
     $( ".select_incident" ).change(function() {

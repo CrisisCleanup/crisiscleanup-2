@@ -80,6 +80,7 @@ CCMap.Map = function(params) {
             this.markerBounds.extend(lat_lng);
             var site = new CCMap.Site({
               map: this.map,
+              ccmap: this,
               position: lat_lng,
               site: obj
             });
