@@ -125,6 +125,7 @@ CCMap.Map = function(params) {
   // Address autocomplete
   function setupAddressAutocomplete() {
     var addressField = document.getElementById("legacy_legacy_site_address");
+    if (!addressField) { return; }
     var options = {};
     var addressAC = new google.maps.places.Autocomplete(addressField, options);
     var map = this.map;
