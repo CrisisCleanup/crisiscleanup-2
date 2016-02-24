@@ -54,7 +54,7 @@
   </div>
   <div class="row">    
     <div class="medium-6 columns">
-      <%= f.input :phone %>
+      <%= f.input :referral %>
     </div>
   <div class="medium-6 columns">
       <%= f.input :url, label:'Website' %>
@@ -67,7 +67,12 @@
     <div class="medium-6 columns">
       <%= f.input :twitter %>
     </div>
-  </div>  
+  </div> 
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :facebook %>
+    </div>
+  </div>   
   <div class="boxes">
     <div class="row">
       <div class="small-12 medium-6 columns">
@@ -93,6 +98,11 @@
       </div>
       <div class="small-12 medium-6 columns">
         <%= f.input :physical_presence %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :publishable, label: "Publish Organization Profile" %>
       </div>
     </div>
   </div>
