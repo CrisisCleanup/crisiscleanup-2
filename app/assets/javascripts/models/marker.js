@@ -183,11 +183,15 @@ CCMap.Site = function(params) {
 
     // action buttons
     // TODO: a button class would be cool here, so we could attach the click event callbacks and whatnot.
-    var actionButtons = {
-      "Contact Organization": contactOrg.bind(this),
-      "Printer Friendly": print.bind(this),
-      "Edit": edit.bind(this)
+    var actionButtons = {};
+    if (this.site.claimed_by) {
+      actionButtons["Contact Organization"] = contactOrg.bind(this);
     }
+
+    actionButtons["Printer Friendly"] = print.bind(this);
+
+    actionButtons["Edit"] = edit.bind(this);
+
     if (this.site.claimed_by) {
       actionButtons['Unclaim'] = claim.bind(this);
     } else {
@@ -325,7 +329,11 @@ CCMap.Site = function(params) {
   }
 
   function contactOrg(event) {
-    console.log('contact org:', this);
+    if (this.site.claimed_by) {
+      var url = '/worker/incident/' + this.ccmap.event_id + '/organizations/' + this.site.claimed_by;
+      var win = window.open(url, '_blank');
+      win.focus();
+    }
   }
 
   function print(event) {
