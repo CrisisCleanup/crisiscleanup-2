@@ -1,49 +1,41 @@
 <% content_for :title do %>
-    Crisis Cleanup - Public Map
+  Crisis Cleanup - Public Map
 <% end %>
 
-
 <% content_for :subheader do %>
-<div class="subheader">
+  <div class="subheader">
     <div class="small-12 medium-8 large-10 columns">
-        <h2>Visualize the Disaster in Real Time</h2>
-        <h4 class="basic">Personal information has been hidden, and the location has been blurred to 400 meters.</h4>
+      <h2>Visualize the Disaster in Real Time</h2>
+      <h4 class="basic">Personal information has been hidden, and the location has been blurred to 400 meters.</h4>
     </div>
     <div class="small-12 medium-4 large-2 columns" align="center">
-        <%= image_tag "characters/Earth.png", :class => "character" ,:alt => "crisis cleanup public map"  %>
-    </div>    
+      <%= image_tag "characters/Earth.png", :class => "character" ,:alt => "crisis cleanup public map" %>
+    </div>
     <hr class="medium">
-</div>
+  </div>
 <% end %>
 
 <% content_for :main do %>
-<div id="main" class="alt">
+  <div id="main" class="alt">
     <br>
     <div class='map-wrapper'>
-	   <div id="public-map-canvas" style="width: 95%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
+      <div id="public-map-canvas" style="width: 95%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
     </div>
-
-</div>
+    <div id="map-infobox"></div>
+  </div>
 <% end %>
 
-<% content_for :sidebar do %>        
-<div id="sidebar">
-<h4>View Disaster Data For Over 30+ Incidents</h4>
-    <p>Choose an incident from the dropdown below, and the map will populate live work orders from our system. <em>Note: Personal information is hidden, and the location has been randomized to about 1/4 mile.</p>
-    <!-- <div class="dropdown-button-area">
-    <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">Choose An Incident</button><br>
-        <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
-        </ul>
-    </div>    -->
+<% content_for :sidebar do %>
+  <div id="sidebar">
+  <h4>View Disaster Data For Over 30+ Incidents</h4>
+  <p>Choose an incident from the dropdown below, and the map will populate live work orders from our system. <em>Note: Personal information is hidden, and the location has been randomized to about 1/4 mile.</em></p>
     <label style="width: 90%; margin-left: 5%;">Select Incident
       <select class="select_incident">
         <option value="">Choose Incident</option>
         <% @events.each do |event| %>
           <option value="<%= event.id %>"><%= event.name %></option>
         <% end %>
-
       </select>
     </label>
-</div>
-
-<% end %> 
+  </div>
+<% end %>

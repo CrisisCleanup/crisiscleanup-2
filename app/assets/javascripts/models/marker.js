@@ -19,6 +19,7 @@ CCMap.Site = function(params) {
   var $infobox = $('#map-infobox');
 
   this.map = params.map;
+  this.ccmap = params.ccmap;
   this.site = params.site;
   this.marker = new google.maps.Marker({
     position: params.position,
@@ -26,7 +27,11 @@ CCMap.Site = function(params) {
     icon: generateIconFilename.call(this)
   });
   this.marker.addListener("click", function() {
-    toInfoboxHtml.call(this);
+    if (this.ccmap.public_map) {
+      toPublicInfoboxHtml.call(this);
+    } else {
+      toInfoboxHtml.call(this);
+    }
     $infobox.show();
   }.bind(this));
 
@@ -40,6 +45,41 @@ CCMap.Site = function(params) {
     }
     // this is the key sent to the image_path function in app/assets/javascripts/images.js.erb
     return image_path('map_icons/' + this.site.work_type.replace(' ', '_') + '_' + color + '.png');
+  }
+
+  /**
+   * Takes a legacy_site obj and returns an html table (string) of the attributes
+   * for the public map
+   */
+  function toPublicInfoboxHtml() {
+    var caseNumberText = document.createTextNode('Case Number: ' + this.site.case_number);
+    var caseNumberH4 = document.createElement('h4')
+    caseNumberH4.appendChild(caseNumberText);
+    $infobox.html(caseNumberH4);
+
+    var notice = document.createTextNode('Name, Address, Phone Number are removed from the public map');
+    var noticeP = document.createElement('p')
+    noticeP.appendChild(notice);
+    $infobox.append(noticeP);
+
+    var addressString = 'Address: ' + this.site.address + ', ' + this.site.city + ', ' + this.site.state;
+    if (this.site.zip_code) {
+      addressString += '  ' + this.site.zip_code;
+    }
+    var addressText = document.createTextNode(addressString);
+    var addressP = document.createElement('p')
+    addressP.appendChild(addressText);
+    $infobox.append(addressP);
+
+    var workTypeText = document.createTextNode('Work Type: ' + this.site.work_type);
+    var workTypeP = document.createElement('p')
+    workTypeP.appendChild(workTypeText);
+    $infobox.append(workTypeP);
+
+    var statusText = document.createTextNode('Status: ' + this.site.status);
+    var statusP = document.createElement('p')
+    statusP.appendChild(statusText);
+    $infobox.append(statusP);
   }
 
   /**

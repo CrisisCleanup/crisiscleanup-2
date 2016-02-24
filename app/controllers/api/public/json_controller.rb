@@ -4,8 +4,27 @@ module Api
   module Public
     class JsonController < ApplicationController
       include ApplicationHelper
+
       def map
-        render json: @sites = Legacy::LegacySite.select("blurred_latitude, blurred_longitude, city, state, status, claimed_by, work_type").where(legacy_event_id: params[:legacy_event_id])
+        @sites = Legacy::LegacySite.select("
+          data,
+          case_number,
+          blurred_latitude,
+          blurred_longitude,
+          address,
+          city,
+          state,
+          zip_code,
+          status,
+          claimed_by,
+          work_type
+        ").where(legacy_event_id: params[:legacy_event_id])
+
+        @sites.each do |site|
+          site.address.gsub!(/[0-9]+/, '')
+        end
+
+        render json: @sites
       end
     end
   end
