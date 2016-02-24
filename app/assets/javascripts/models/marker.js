@@ -62,6 +62,15 @@ CCMap.Site = function(params) {
     noticeP.appendChild(notice);
     $infobox.append(noticeP);
 
+    var addressString = 'Address: ' + this.site.address + ', ' + this.site.city + ', ' + this.site.state;
+    if (this.site.zip_code) {
+      addressString += '  ' + this.site.zip_code;
+    }
+    var addressText = document.createTextNode(addressString);
+    var addressP = document.createElement('p')
+    addressP.appendChild(addressText);
+    $infobox.append(addressP);
+
     var workTypeText = document.createTextNode('Work Type: ' + this.site.work_type);
     var workTypeP = document.createElement('p')
     workTypeP.appendChild(workTypeText);
