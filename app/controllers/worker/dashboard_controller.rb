@@ -16,5 +16,16 @@ module Worker
     	end
     	redirect_to "/worker/dashboard"
     end
+    def redeploy_form
+    end
+
+    def redeploy_request
+        @event = Legacy::LegacyEvent.find(params["Event"])
+        User.where(admin:true).each do |user|
+            InvitationMailer.send_redeploy_alert(@event, current_user, user.email).deliver_now
+        end
+        flash[:notice] = "Request to redeploy your organization for #{@event.name} sent."
+        redirect_to worker_dashboard_path
+    end
   end
 end

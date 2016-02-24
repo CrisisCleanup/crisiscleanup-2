@@ -27,4 +27,10 @@ class InvitationMailer < ActionMailer::Base
     @details = params[:details]
     mail(to: email, subject: "New Incident Request")
   end
+
+  def send_redeploy_alert(event, user, email)
+    @event = event
+    @user = user
+    mail(to: email, subject: "New Redeploy Request")
+  end
 end

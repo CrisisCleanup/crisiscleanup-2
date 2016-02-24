@@ -33,7 +33,6 @@ module ApplicationHelper
 
         # if no event is set for this session, get the first event for a user
         else
-          binding.pry
           session[:current_user_event] = current_user.legacy_organization.legacy_organization_events.first.legacy_event_id if current_user and current_user.legacy_organization.legacy_organization_events
         end
         session[:current_user_event]

@@ -24,6 +24,8 @@
             <li><%= link_to "Orgs", worker_incident_legacy_organizations_path(current_user_event) %></li>
             <li><%= link_to "Sites", worker_incident_legacy_sites_index_path(current_user_event) %></li>
             <li><%= link_to "Stats", worker_incident_stats_path(current_user_event) %></li>
+            </li>
+            <li><%= link_to "Redeploy", redeploy_form_path %></li>
           </ul>
         </li> <!-- end user verified only -->
         <% if current_user.admin %> <!-- admin verified only -->

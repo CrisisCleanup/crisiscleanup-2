@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   end
 
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
+  get "/redeploy_form" => 'worker/dashboard#redeploy_form', as: "redeploy_form"
+  post "/redeploy_request" => 'worker/dashboard#redeploy_request', as: "redeploy_request"
+
   namespace :worker do
     get "/incident-chooser" => "dashboard#incident_chooser", as: "incident_chooser"
     get "/dashboard" => 'dashboard#index', as:"dashboard"
