@@ -20,7 +20,7 @@
       <li><%= nav_link "About", about_path %></li>
       <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
       <% unless current_user %>
-      <li><%= nav_link "Sign Up", register_path %></li> <!-- hide for verified user / admin -->
+      <li><%= nav_link "Sign Up", signup_path %></li> <!-- hide for verified user / admin -->
       <% end %>
       <% if current_user %> <!-- user verified only -->
         <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
@@ -29,6 +29,8 @@
             <li><%= link_to "Orgs", worker_incident_legacy_organizations_path(1) %></li>
             <li><%= link_to "Sites", worker_incident_legacy_sites_index_path(1) %></li>
             <li><%= link_to "Stats", worker_incident_stats_path(1) %></li>
+            <li><%= link_to "Redeploy", redeploy_form_path %></li>
+
           </ul>
         </li> <!-- end user verified only -->
         <% if current_user.admin %> <!-- admin verified only -->

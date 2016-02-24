@@ -1,0 +1,56 @@
+<% content_for :title do %>
+    Crisis Cleanup - Signup
+<% end %>
+<% content_for :main do %>
+<div id="main">
+    <div class="row home_coordinated_disasters">
+        <h2 align="center">29 Disasters Coordinated</h2>
+        <p align="center">Ready Now: Multi-Agency Disaster Relief Coordination</p>
+            <div class="columns small-12 medium-12 large-4" align="center">
+                <%= image_tag "icons/tornado-red.png", :alt => "dallas tornadoes"  %>
+                <h3 class="red-block"><a href="<%= register_path %>">New Organization</a></h3>
+                <p>First time here? Sign up to collaborate with other qualified cleanup releif organizations.<br /><br /><br /></p>
+            </div> 
+            <div class="columns small-12 medium-12 large-4" align="center">
+                <%= image_tag "icons/hurricane-yellow.png", :alt => "hurricane sandy"  %>
+                <h3 class="mustard-block">​<a href="<%= new_request_invitation_path %>">New Volunteer</a></h3>        
+                <p>Are you a volunteer? Join your organization if it is already using Crisis Cleanup.<br /><br /></p>
+            </div>
+            <div class="columns small-12 medium-12 large-4" align="center">
+                <%= image_tag "icons/flood-blue.png", :alt => "tx / ok floods"  %>
+                <h3 class="blue-block">​<a href="<%= new_worker_temporary_password_path %>">I Have a Temporary Password​</a></h3>
+                <p>Did a team leader give you a temporary password? Use it to get started!</p>
+            </div>
+        </div>
+        <div class="row home_coordinated_disasters">
+            <div class="columns small-12 medium-12 large-4" align="center">
+                <%= image_tag "icons/snowflake-green.png", :alt => "boston snowflakes"  %>
+                <h3 class="green-block">​<a href="<%= new_incident_path %>">New Incident​</a></h3>
+                <p>Would you like to use Crisis Cleanup for a recent disaster? Just ask! We're happy to help.</p>
+            </div> 
+            <div class="columns small-12 medium-12 large-4" align="center">
+                <%= image_tag "icons/fire-black.png", :alt => "black forest fires"  %>
+                <h3 class="black-block">​<a href="<%= redeploy_path %>">Redeploy Your Organization​</a></h3>
+                <p>Has your organization used Crisis Cleanup before? Click here to join another incident.<br /><br /><br /></p>
+            </div>
+            <div class="columns small-12 medium-12 large-4" align="center">
+                <%= image_tag "icons/wind-orange.png", :alt => "south nj dericho storms"  %>
+                <h3 class="orange-block">​<a href="<%= about_path %>">Just Curious</a></h3>
+                <p>Want to learn more about Crisis Cleanup, play with the demo, or request a presentation?</p>
+            </div>     
+        </div>
+    <hr>
+    <div class="row">
+        <div class="columns small-12 medium-8 large-10">
+            <h3>Crisis Cleanup is a free, award-winning, ready-to-use, open source application that connects disaster recovery organizations with the people who need help.</h3>
+        </div>
+        <div class="columns small-12 medium-4 large-2" align="center">
+            <%= image_tag "characters/Celebrate.png", :class => "character" ,:alt => "self-organizing volunteers"  %>
+        </div>
+    </div>
+</div>
+<% end %>
+
+
+<% content_for :javascripts do %>
+<% end %>

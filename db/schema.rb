@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122171649) do
+ActiveRecord::Schema.define(version: 20160224042636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20160122171649) do
     t.datetime "expiration"
   end
 
+  create_table "invitations_request", force: :cascade do |t|
+    t.integer "approved_by"
+    t.string  "email",        null: false
+    t.string  "name",         null: false
+    t.boolean "volunteer"
+    t.boolean "staff_member"
+    t.date    "expires_at",   null: false
+  end
+
   create_table "legacy_contacts", force: :cascade do |t|
     t.string   "email",                                  null: false
     t.string   "first_name",                             null: false
@@ -41,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160122171649) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
+    t.string   "organizational_title"
   end
 
   create_table "legacy_events", force: :cascade do |t|
@@ -129,6 +139,8 @@ ActiveRecord::Schema.define(version: 20160122171649) do
     t.string   "primary_contact_email"
     t.string   "voad_member_url"
     t.string   "appengine_key"
+    t.string   "referral"
+    t.boolean  "publishable"
   end
 
   create_table "legacy_sites", force: :cascade do |t|
