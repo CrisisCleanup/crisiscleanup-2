@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   get "/privacy" => "static_pages#privacy", as: "privacy"
   get "/terms" => "static_pages#terms", as: "terms"
   get "/admin" => 'admin/dashboard#index'
-
+  get "/signup" => 'static_pages#signup', as: "signup"
+  get "/new_incident" => 'static_pages#new_incident', as: "new_incident"
+  post "/request_incident" => 'static_pages#request_incident', as: "request_incident"
+  get "/redeploy" => 'static_pages#redeploy', as: "redeploy"
 
   resources :request_invitations, only: [:new, :create]
 
@@ -32,6 +35,9 @@ Rails.application.routes.draw do
   end
 
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
+  get "/redeploy_form" => 'worker/dashboard#redeploy_form', as: "redeploy_form"
+  post "/redeploy_request" => 'worker/dashboard#redeploy_request', as: "redeploy_request"
+
   namespace :worker do
     get "/incident-chooser" => "dashboard#incident_chooser", as: "incident_chooser"
     get "/dashboard" => 'dashboard#index', as:"dashboard"
@@ -59,7 +65,6 @@ Rails.application.routes.draw do
   get "/invitations/activate" => "invitations#activate"
   post "/invitations/activate" => "invitations#sign_up"
 
-
   namespace :api do
     # TODO /import
     get "/map" => "json#map", as: "json_map"
@@ -79,6 +84,4 @@ Rails.application.routes.draw do
   # Errors
   get "/404", :to => "errors#not_found"
   get "/500", :to => "errors#server_error"
-
-
 end
