@@ -1,65 +1,56 @@
 <%= simple_form_for event, url: url do |f| %>
   <div class="margin-top row">
-  	<div class="large-12 columns">
-  		<%= f.input :name %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.input :name %>
+    </div>
     <div class="large-12 columns">
       <%= f.association :legacy_organizations %>
     </div>
   </div>
   <div class="row">
-  	<div class="large-12 columns">
-  		<%= f.input :case_label, label: 'Case Label', input_html: {value: @case_label} %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.input :case_label, label: 'Case Label', input_html: {value: @case_label} %>
+    </div>
   </div>
   <div class="row">
-  	<div class="large-12 columns">
-  		<%= f.input :short_name %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.input :short_name %>
+    </div>
   </div>
   <div class="row">
-  	<div class="large-12 columns">
-  		<%= f.input :counties %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.input :counties %>
+    </div>
   </div>
   <div class="row">
-  	<div class="large-12 columns">
-  		<%= f.input :created_date %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.input :created_date %>
+    </div>
   </div>
   <div class="row">
-  	<div class="large-12 columns">
-  		<%= f.input :start_date %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.input :start_date %>
+    </div>
   </div>
   <div class="row">
-  	<div class="large-12 columns">
-  		<%= f.input :end_date, include_blank: true %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.input :end_date, include_blank: true %>
+    </div>
   </div>
   <div class="row">
-  	<div class="large-12 columns">
-  		<%= f.input :reminder_contents %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.input :reminder_contents %>
+    </div>
   </div>
   <div class="row">
-  	<div class="large-12 columns">
-  		<%= f.input :reminder_days %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.input :reminder_days %>
+    </div>
   </div>
 
   <div class="row">
-  	<div class="large-12 columns">
-  		<%= f.button :submit %>
-  	</div>
+    <div class="large-12 columns">
+      <%= f.button :submit %>
+    </div>
   </div>
-
 <% end %>
-
-                  
-                   
-                       
-                        
-     
-       
-     
