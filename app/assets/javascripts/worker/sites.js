@@ -13,8 +13,8 @@ $(document).ready(function() {
 
           if (data["id"] == undefined && data["updated"] == undefined){
             var html = "<div data-alert class='alert-box'>"+data+"<a href='#' class='close'>&times;</a></div>"
-            $('form').prepend(html);
             $('.close').click(function(){
+            $('form').prepend(html);
               $('.alert-box').remove();
             });
           } else if (data["updated"] != undefined) {
