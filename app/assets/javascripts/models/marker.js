@@ -33,6 +33,7 @@ CCMap.Site = function(params) {
       toInfoboxHtml.call(this);
     }
     $infobox.show();
+    this.ccmap.showFilters();
   }.bind(this));
 
   // TODO: check if the file exists on the server or some other validation here.
@@ -341,19 +342,24 @@ CCMap.Site = function(params) {
   }
 
   function edit(event) {
-    $('#form-anchor').click();
     $infobox.hide();
+    // Just grabbing the simple_form id rendered from the server for now. Kinda jank.
     var $form = document.getElementById('new_legacy_legacy_site');
 
-    // Loop over the site attribues and populate the corresponding inputs if they exist
+    // Update the form action to update the site
     $form.action = '/worker/incident/' + this.ccmap.event_id + '/edit/' + this.site.id;
-    // omg
-    $form.method = 'put';
+
+    // Loop over the site attribues and populate the corresponding inputs if they exist
     for (var field in this.site) {
       if (this.site.hasOwnProperty(field) && typeof $form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
         $form.elements['legacy_legacy_site[' + field + ']'].value = this.site[field];
       }
     }
+
+    // Update the form header title
+    document.getElementById('form-header').innerHTML = 'Edit Case ' + this.site.case_number;
+
+    this.ccmap.showForm();
   }
 
   // This should work like a toggle
