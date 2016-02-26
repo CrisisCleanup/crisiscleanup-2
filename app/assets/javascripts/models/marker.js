@@ -356,6 +356,13 @@ CCMap.Site = function(params) {
       }
     }
 
+    // Loop over the site.data attribues and populate the corresponding inputs if they exist
+    for (var field in this.site.data) {
+      if (this.site.data.hasOwnProperty(field) && typeof $form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
+        $form.elements['legacy_legacy_site[' + field + ']'].value = this.site.data[field];
+      }
+    }
+
     // Update the form header title
     document.getElementById('form-header').innerHTML = 'Edit Case ' + this.site.case_number;
 
