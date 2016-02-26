@@ -30,4 +30,8 @@ class StaticPagesController < ApplicationController
 
   def redeploy
   end
+
+  def donate
+    redirect_to "https://www.crowdrise.com/CrisisCleanup"
+  end
 end
