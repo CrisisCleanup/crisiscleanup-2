@@ -95,7 +95,7 @@ CCMap.Site = function(params) {
     };
 
     // Requests
-    if (this.site.data.work_requested) {
+    if (this.site.data && this.site.data.work_requested) {
       displayObj["Requests"] = this.site.data.work_requested;
     }
 
@@ -341,7 +341,19 @@ CCMap.Site = function(params) {
   }
 
   function edit(event) {
-    console.log('edit:', this);
+    $('#form-anchor').click();
+    $infobox.hide();
+    var $form = document.getElementById('new_legacy_legacy_site');
+
+    // Loop over the site attribues and populate the corresponding inputs if they exist
+    $form.action = '/worker/incident/' + this.ccmap.event_id + '/edit/' + this.site.id;
+    // omg
+    $form.method = 'put';
+    for (var field in this.site) {
+      if (this.site.hasOwnProperty(field) && typeof $form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
+        $form.elements['legacy_legacy_site[' + field + ']'].value = this.site[field];
+      }
+    }
   }
 
   // This should work like a toggle
