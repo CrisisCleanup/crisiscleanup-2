@@ -22,21 +22,17 @@
 
 <% content_for :sidebar do %>
   <div id="sidebar">
-    <ul class="tabs" data-tab>
-      <li class="tab-title active"><a href="#filters-panel" id="filters-anchor">Filters</a></li>
-      <li class="tab-title"><a href="#form-panel" id="form-anchor">Edit Form</a></li>
-    </ul>
-    <div class="tabs-content">
-      <div class="content active" id="filters-panel">
-        <div class="row">
-          <div class="small-12 columns">
-            <ul id="map-filters"></ul>
-          </div>
+    <div id="filters-view">
+      <h4>Map Filters</h4>
+      <div class="row">
+        <div class="small-12 columns">
+          <ul id="map-filters"></ul>
         </div>
       </div>
-      <div class="content" id="form-panel">
-        <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
-      </div>
+    </div>
+    <div class="hide" id="form-view">
+      <h4 id="form-header">Map Filters</h4>
+      <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
     </div>
   </div>
 <% end %>

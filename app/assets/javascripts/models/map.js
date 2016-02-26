@@ -38,6 +38,7 @@ CCMap.Map = function(params) {
   this.map.addListener('click', function() {
     $('#filters-anchor').click();
     $infobox.hide();
+    this.showFilters();
   }.bind(this));
 
   // Setting this up this way just in case we end up with dynamic filters per incident.
@@ -55,6 +56,29 @@ CCMap.Map = function(params) {
       buildMarkers.call(this);
     }
     setupAddressAutocomplete.call(this);
+  }
+
+  this.showFilters = function() {
+    var $filtersView = $('#filters-view');
+    var $formView = $('#form-view');
+
+    if ($filtersView.hasClass('hide')) {
+      $formView.addClass('hide');
+      $filtersView.removeClass('hide');
+    }
+  }
+
+  this.showForm = function() {
+    // Hacky way to hide the form alert box between edits.
+    $('#form-view .alert-box a.close').click();
+
+    var $filtersView = $('#filters-view');
+    var $formView = $('#form-view');
+
+    if ($formView.hasClass('hide')) {
+      $filtersView.addClass('hide');
+      $formView.removeClass('hide');
+    }
   }
 
   function buildMarkers() {
