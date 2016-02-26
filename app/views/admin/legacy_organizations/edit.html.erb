@@ -17,6 +17,7 @@
 </div>    
 <div class="tabs-content">
   <section role="tabpanel" aria-hidden="false" class="content active" id="edit-panel">
+  <%= link_to 'Delete', admin_legacy_organization_path(@org), method: :delete, :onclick => "return confirm('Are you sure you want to delete #{@org.name}?')" %>
     <%= render 'form', org: @org, url: @org.id.present? ? admin_legacy_organization_path(@org.id) : admin_legacy_organizations_path %>
   </section>
   <section role="tabpanel" aria-hidden="true" class="content" id="versions">
