@@ -36,6 +36,7 @@ CCMap.Map = function(params) {
   this.markerBounds = new google.maps.LatLngBounds();
 
   this.map.addListener('click', function() {
+    $('#filters-anchor').click();
     $infobox.hide();
   }.bind(this));
 

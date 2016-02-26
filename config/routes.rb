@@ -55,7 +55,7 @@ Rails.application.routes.draw do
       get "/:id/map" => "legacy_sites#map", as: "legacy_map"
       get "/:id/form" => "legacy_sites#form", as: "legacy_form"
       get "/:id/edit/:site_id" => "legacy_sites#edit", as: "legacy_edit_site"
-      patch "/:id/edit/:site_id" => "legacy_sites#update", as:"legacy_update_site"
+      post "/:id/edit/:site_id" => "legacy_sites#update", as:"legacy_update_site"
       post "/:id/submit" => "legacy_sites#submit"
       get "/:id/stats" => "legacy_sites#stats", as: "stats"
       get "/:id/print" => "legacy_sites#print", as: "print"
