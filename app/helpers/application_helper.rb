@@ -49,9 +49,11 @@ module ApplicationHelper
             end
         end
     end
+
     def check_incident(event_id)
       current_user.events.include? event_id.to_i
     end
+
     def check_token
     	if !Invitation.where(token:params[:token]).present?
     		# add error messages
