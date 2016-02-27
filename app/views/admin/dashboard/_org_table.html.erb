@@ -36,7 +36,7 @@
             <%= org.name %>
         </td>
         <% if org.legacy_contacts.where(is_primary:true).count > 0 %>
-          <td> <%= org.legacy_contacts.where(is_primary: true).first.first_name %> <%= org.primary_contacts.where(is_primary: true).first.last_name %> </td>
+          <td> <%= org.legacy_contacts.where(is_primary: true).first.first_name %> <%= org.legacy_contacts.where(is_primary: true).first.last_name %> </td>
           <td> <%= org.legacy_contacts.where(is_primary: true).first.email %> </td>
         <% else %>
           <td>None</td>
