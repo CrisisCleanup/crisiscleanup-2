@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>{USERFULLNAME} (<%= @user.email %>) from {ORGNAME} has invited you to join Crisis Cleanup to assist with community recovery efforts. Before activating, please watch this Mandatory training video: <a href="https://www.youtube.com/watch?v=tpMOgDr_KGI">https://www.youtube.com/watch?v=tpMOgDr_KGI</a>.</p>
+    <p><%= @user.name %> (<%= @user.email %>) from <%= @user.legacy_organization.name %> has invited you to join Crisis Cleanup to assist with community recovery efforts. Before activating, please watch this Mandatory training video: <a href="https://www.youtube.com/watch?v=tpMOgDr_KGI">https://www.youtube.com/watch?v=tpMOgDr_KGI</a>.</p>
     <p>After you watch the training video, activate your account by clicking on this link: <a target='_blank' href=<%=@url%>><%=@url%></a>.</p>
     <p>If you received this email in error, you may ignore it. We won't send you any more email if you don't activate.</p>
     <p>If you're new to Crisis Cleanup, the system helps multiple non-profits communicate, coordinate, or work together easily in the chaotic days and weeks after a disaster. Crisis Cleanup lets organizations see the entire picture, seamlessly coordinate, minimize duplication of efforts, while improving the volunteer experience and efficiency. It has been used to coordinate relief efforts in more than two dozen disasters since Hurricane Sandy.</p>
