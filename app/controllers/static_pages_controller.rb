@@ -22,7 +22,7 @@ class StaticPagesController < ApplicationController
   def request_incident
     @users = User.where(admin:true)
     @users.each do |user| 
-      InvitationMailer.send_incident_request(params, user.email)
+      InvitationMailer.send_incident_request(params, user.email).deliver_now
     end
     flash[:notice] = "Your request has been received"
     redirect_to "/"
