@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224050308) do
+ActiveRecord::Schema.define(version: 20160227080451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 20160224050308) do
     t.date     "request_date"
     t.string   "appengine_key"
     t.string   "zip_code"
+    t.string   "county"
   end
 
   create_table "request_invitations", force: :cascade do |t|
