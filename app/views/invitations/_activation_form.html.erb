@@ -9,10 +9,12 @@
     <%= f.input :name, required: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
     <%= f.input :password_confirmation, required: true %>
+    <input type=checkbox id="accept-terms"> <strong>I agree to the <a target="_blank" id="privacy_link" href="/terms">Terms of Service</a> and <a target="_blank" id="privacy_link" href="/privacy">Privacy Policy</a></strong>
   </div>
 
+
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: 'invitation-confirmation-button' %>
   </div>
 <% end %>
 
