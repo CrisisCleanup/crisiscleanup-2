@@ -13,10 +13,6 @@ class InvitationMailer < ActionMailer::Base
     mail(to: @new_user.email, subject: "#{@verified_by.email} has granted you access")
   end
 
-  def send_registration_confirmation(contact)
-    @contact = contact
-    mail(to: @contact.email, subject: "We have received your registration")
-  end
   # TODO - do we need comment alerts? also an in-app mail or alert system, ala social network messages
   def send_incident_request(params, email)
     @name = params[:name]
@@ -31,5 +27,13 @@ class InvitationMailer < ActionMailer::Base
     @event = event
     @user = user
     mail(to: email, subject: "New Redeploy Request")
+  end
+
+  def send_registration_confirmation(inv, request, org)
+    @user = User.find(inv.user_id)
+    @email = inv.invitee_email
+    @url = request + "/invitations/activate?token="+inv.token
+    @org = org
+    mail(to: @email, subject: "#{@user.email} has invited you to join Crisis Cleanup")
   end
 end
