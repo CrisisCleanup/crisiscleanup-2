@@ -36,7 +36,7 @@
         <% elsif current_user and current_user.admin %>
           <label>
             <select id="incident-chooser">
-              <% Legacy::LegacyEvent.all.each do |event| %>
+              <% Legacy::LegacyEvent.all.order(:id).each do |event| %>
               <option value="<%= event.id %>" <% if event.id.to_s == session[:current_user_event] %> selected <% end %>><%= event.name %></option>
               <% end %>
             </select>
