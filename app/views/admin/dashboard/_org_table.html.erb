@@ -2,9 +2,10 @@
   <thead>
     <tr>
       <th width="200">Name</th>
-      <th width="150">City</th>
       <th width="150">Event</th>
       <th width="150">Created At</th>
+      <th width="150">Primary Contact Name</th>
+      <th width="150">Primary Contact Email</th>
       <th width="150">Verify</th>
       <th>Destroy</th>
     </tr>
@@ -17,7 +18,26 @@
             <%= org.name %>
           </a>
         </td>
-        <td> <%= org.city %> </td>
+        <td>
+            <% org.legacy_events.each do |event| %>
+              <%= event.name %>
+            <% end %>
+        </td>
+        <td>
+              <%= org.created_at %>
+        </td>
+        <td>
+            <%= org.name %>
+        </td>
+        <% if org.legacy_contacts.where(is_primary:true).count > 0 %>
+          <td> <%= org.legacy_contacts.where(is_primary: true).first.first_name %> <%= org.primary_contacts.where(is_primary: true).first.last_name %> </td>
+          <td> <%= org.legacy_contacts.where(is_primary: true).first.email %> </td>
+        <% else %>
+          <td>None</td>
+          <td>None</td>
+        <% end %>
+        
+
         <td> <%= org.legacy_events.present? ? org.legacy_events.first.name : "Unassigned" %> </td>
         <td> <%= org.created_at %> </td>
         <td>  <%= link_to "Verify", "/admin/legacy_organizations/verify?id=#{org.id}",method: :post %> </td>
