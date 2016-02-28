@@ -4,8 +4,8 @@
     <title><%= content_for?(:title) ? yield(:title) : "Crisis Cleanup" %></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Open Source Disaster Relief Mapping and Work Coordination
-• 15,000+ helped • 29 disasters • 4 countries • 300+ organizations • 40,000+ volunteers • $26m impact • Free" />
+    <meta name="description" content="Always-Ready Open Source Disaster Relief Mapping and Work Coordination
+• 16,000+ helped • 32 disasters • 4 countries • 300+ organizations • 40,000+ volunteers • $30m impact • Free" />
     <%= favicon_link_tag(source='favicon.ico', options={}) %>
 
     <%= stylesheet_link_tag    "application" %>
@@ -73,7 +73,9 @@
                 <li><%= link_to "About", about_path %> |</li>
                 <li><a href="/public_map">Map</a> |</li>
                 <li><a href="http://blog.crisiscleanup.org/">Blog</a> |</li>
-                <!--<li><a href="http://demo.crisiscleanup.org/">Demo</a> |</li>-->
+                <li><a href="http://demo.crisiscleanup.org/">Demo</a> |</li>
+                <li>Training |</li>
+                <li>Contact |</li>
                 <li><%= link_to "Terms", terms_path %> |</li>
                 <li><%= link_to "Privacy", privacy_path %> |</li>
                 <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies">Policies</a> |</li>
