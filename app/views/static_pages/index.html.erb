@@ -12,13 +12,14 @@
                 <form>
                     <select id="location-select">
                         <option value="" disabled selected="selected">-- Choose One --</option>
-                        <option value="voad">VOAD - Volunteers Organized in Active Disaster Relief</option>
+                        <option value="voad">VOAD/ Relief Organization</option>
                         <option value="government">Government</option>
                         <option value="volunteer">Volunteer</option>
                         <option value="survivor">Survivor</option>
+                        <option value="about">Just Curious</option>
                     </select>
                     <a href="#" class="button" id="lets-go-btn">Let's Go!</a>
-                    <a href="#"><button class="gray-block">Login</button></a>
+                    <button class="gray-block" onClick="parent.location='login'">Login</button>
                 </form>
             </div>
         </div>
@@ -29,7 +30,7 @@
 <% content_for :main do %>
 <div id="main">
     <div class="row home_coordinated_disasters">
-        <h2 align="center">31 Disasters Coordinated</h2>
+        <h2 align="center">32 Disasters Coordinated</h2>
         <p align="center">Ready Now: Multi-Agency Disaster Relief Coordination</p>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/tornado-red.png", :alt => "dallas tornadoes"  %>
