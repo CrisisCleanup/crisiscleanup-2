@@ -25,6 +25,7 @@ module Worker
         @form = Form.find_by(legacy_event_id: @legacy_event.id).html
       end
 
+      # create
       def submit
         @site = Legacy::LegacySite.new(site_params)
         @site.data = params[:legacy_legacy_site][:data]
@@ -43,8 +44,8 @@ module Worker
 
       def update
         @site = Legacy::LegacySite.find(params["site_id"])
-        @site.data = params[:legacy_legacy_site][:data]
-        @form =  Form.find_by(legacy_event_id: params[:id]).html
+        #@site.data = params[:legacy_legacy_site][:data]
+
         if @site.update(site_params)
           render json: {updated:@site}
         else
@@ -72,9 +73,10 @@ module Worker
       def site_params
         params.require(:legacy_legacy_site).permit(
           :address,:blurred_latitude,:blurred_longitude,
-          :case_number,:city,:claimed_by,:legacy_event_id,
-          :latitude,:longitude,:name,:phone,:reported_by,
-          :requested_at,:state,:status,:work_type,:data,:zip_code)
+          :case_number,:city,:claimed_by,:county,:legacy_event_id,
+          :latitude,:longitude,:name,:phone1,:phone2,:reported_by,
+          :requested_at,:state,:status,:work_requested,:work_type,
+          :data,:zip_code)
       end
     end
   end
