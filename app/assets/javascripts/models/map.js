@@ -51,11 +51,12 @@ CCMap.Map = function(params) {
   this.setEventId = function(event_id) {
     this.event_id = event_id;
     // TODO: refactor this nonsense.
-    if (!this.form_map) {
+    if (this.form_map) {
+      setupAddressAutocomplete.call(this);
+    } else {
       $infobox.empty();
       buildMarkers.call(this);
     }
-    setupAddressAutocomplete.call(this);
   }
 
   this.showFilters = function() {
