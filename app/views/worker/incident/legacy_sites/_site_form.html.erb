@@ -2,6 +2,11 @@
   <%= simple_form_for @site, url: url, remote: true, html: { autocomplete: 'off' } do |f| %>
     <%= f.input :autofill_disable, as: :hidden, input_html: { autocomplete: false, style: 'display: none;' } %>
     <%= @form.html_safe %>
-    <%= f.button :submit, 'Save', class: 'small-12' %>
+    <div class="row">
+      <div class="small-12 medium-12 large-12">
+        <%= link_to 'Cancel', '#', class: 'button secondary', id: 'cancel-form-btn' %>
+        <%= f.button :submit, 'Submit' %>
+      </div>
+    </div>
   <%end%>
 </div>

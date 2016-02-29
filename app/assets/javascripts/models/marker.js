@@ -346,6 +346,14 @@ CCMap.Site = function(params) {
     // Just grabbing the simple_form id rendered from the server for now. Kinda jank.
     var $form = document.getElementById('new_legacy_legacy_site');
 
+    // Add cancel form event to the cancel button - Probably not where any of this should be.
+    $('#cancel-form-btn').off().on('click', function() {
+      $form.reset();
+      $form.scrollTop = 0;
+      this.ccmap.showFilters();
+      $infobox.show();
+    }.bind(this));
+
     // Update the form action to update the site
     $form.action = '/worker/incident/' + this.ccmap.event_id + '/edit/' + this.site.id;
 
