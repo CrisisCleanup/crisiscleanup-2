@@ -53,6 +53,9 @@ CCMap.Map = function(params) {
     // TODO: refactor this nonsense.
     if (this.form_map) {
       setupAddressAutocomplete.call(this);
+      new CCMap.Form({
+        event_id: this.event_id
+      });
     } else {
       $infobox.empty();
       buildMarkers.call(this);

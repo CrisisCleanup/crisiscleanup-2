@@ -343,36 +343,15 @@ CCMap.Site = function(params) {
 
   function edit(event) {
     $infobox.hide();
-    // Just grabbing the simple_form id rendered from the server for now. Kinda jank.
-    var $form = document.getElementById('new_legacy_legacy_site');
+    var form = new CCMap.Form({
+      event_id: this.ccmap.event_id,
+      onCancel: function() {
+        this.ccmap.showFilters();
+        $infobox.show();
+      }.bind(this)
+    });
 
-    // Add cancel form event to the cancel button - Probably not where any of this should be.
-    $('#cancel-form-btn').off().on('click', function() {
-      $form.reset();
-      $form.scrollTop = 0;
-      this.ccmap.showFilters();
-      $infobox.show();
-    }.bind(this));
-
-    // Update the form action to update the site
-    $form.action = '/worker/incident/' + this.ccmap.event_id + '/edit/' + this.site.id;
-
-    // Loop over the site attribues and populate the corresponding inputs if they exist
-    for (var field in this.site) {
-      if (this.site.hasOwnProperty(field) && typeof $form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
-        $form.elements['legacy_legacy_site[' + field + ']'].value = this.site[field];
-      }
-    }
-
-    // Loop over the site.data attribues and populate the corresponding inputs if they exist
-    for (var field in this.site.data) {
-      if (this.site.data.hasOwnProperty(field) && typeof $form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
-        $form.elements['legacy_legacy_site[' + field + ']'].value = this.site.data[field];
-      }
-    }
-
-    // Update the form header title
-    document.getElementById('form-header').innerHTML = 'Edit Case ' + this.site.case_number;
+    form.hydrate(this.site);
 
     this.ccmap.showForm();
   }
