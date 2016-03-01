@@ -1,3 +1,4 @@
+// TODO: This whole thing needs to be moved with the map/form refactor
 $(document).ready(function() {
   $(".remote .new_legacy_legacy_site, .edit_legacy_legacy_site").on("submit", function(e) {
     e.preventDefault();
