@@ -28,7 +28,7 @@ module Worker
       # create
       def submit
         @site = Legacy::LegacySite.new(site_params)
-        @site.data.merge! params[:legacy_legacy_site][:data] unless params[:legacy_legacy_site][:data].blank?
+        @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
 
         @site.legacy_event_id = current_user_event
         @form =  Form.find_by(legacy_event_id: params[:id]).html
@@ -44,7 +44,7 @@ module Worker
 
       def update
         @site = Legacy::LegacySite.find(params["site_id"])
-        @site.data.merge! params[:legacy_legacy_site][:data] unless params[:legacy_legacy_site][:data].blank?
+        @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
 
         if @site.update(site_params)
           render json: {updated:@site}
