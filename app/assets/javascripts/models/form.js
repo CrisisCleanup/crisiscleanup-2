@@ -33,7 +33,14 @@ CCMap.Form = function(params) {
     // Loop over the site.data attribues and populate the corresponding inputs if they exist
     for (var field in site.data) {
       if (site.data.hasOwnProperty(field) && typeof form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
-        form.elements['legacy_legacy_site[' + field + ']'].value = site.data[field];
+        var input = form.elements['legacy_legacy_site[' + field + ']'];
+        // Deal with checkboxes. I'm honestly at a loss how to do this a better way.
+        if (input.length === 2 && site.data[field] === "y") {
+          // assume it's a checkbox
+          input[1].checked = true;
+        } else {
+          input.value = site.data[field];
+        }
       }
     }
 
@@ -106,10 +113,17 @@ CCMap.Form = function(params) {
     return list;
   }
 
+  // Most of this is hacking around the simple_form stuff we're not using anyway...
   var buildData = function(form) {
-    // Wow. I really hate my life right now.
+    var postData = {
+      legacy_legacy_site: {
+        data: {}
+      }
+    };
+
     // TODO: maybe make this suck slighly less by dynamically building it server
-    //   side based on the current state of the LegacySite model. lol
+    //   side based on the current state of the LegacySite model.
+    //   The params would be great.
     var topLevelFields = [
       "address",
       "blurred_latitude",
@@ -140,15 +154,31 @@ CCMap.Form = function(params) {
     // create the data object from all of the inputs that are not top level
     var inputs = form.elements;
     for (var i = 0; i < inputs.length; i++) {
-      if (inputs[i].type === 'hidden') { continue; }
+      //if (inputs[i].type === 'hidden') { continue; }
       if (inputs[i].type === 'button') { continue; }
       if (inputs[i].type === 'submit') { continue; }
-      if (topLevelFields.indexOf(/\[(.*)\]/.exec(inputs[i].name)[1]) > -1) { continue; }
-
-      // WIP: this isn't actually going to work.
-      //console.log(inputs[i].name, inputs[i].value);
+      // strip that simple_form crap out.
+      var fieldName = /\[(.*)\]/.exec(inputs[i].name);
+      if (fieldName && fieldName.length > 1) {
+        fieldName = fieldName[1];
+        if (topLevelFields.indexOf(fieldName) > -1) {
+          // Put it top level
+          postData.legacy_legacy_site[fieldName] = inputs[i].value;
+        } else {
+          // Put it in data
+          // deal with the checkboxes...
+          if (inputs[i].type === 'checkbox') {
+            if (inputs[i].checked) {
+              postData.legacy_legacy_site.data[fieldName] = inputs[i].value;
+            }
+          } else {
+            postData.legacy_legacy_site.data[fieldName] = inputs[i].value;
+          }
+        }
+      } else {
+        postData[inputs[i].name] = inputs[i].value;
+      }
     }
-    var serializedData = $(form).serialize();
-    return serializedData;
+    return postData;
   }
 }
