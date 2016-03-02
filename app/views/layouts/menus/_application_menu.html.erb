@@ -30,7 +30,7 @@
             <li><%= link_to "Sites", worker_incident_legacy_sites_index_path(current_user_event) %></li>
             <li><%= link_to "Stats", worker_incident_stats_path(current_user_event) %></li>
           </ul>
-        </li> <!-- end user verified only -->
+        </li>
         <% if current_user.admin %> <!-- admin verified only -->
           <li class="has-dropdown"><%= link_to "Admin", admin_path%>
             <ul class="dropdown">
@@ -46,12 +46,32 @@
                 </ul>
               </li>
             </ul>
-          </li> <!-- end admin verified only -->
-        <% end %>
-        <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-      <% else %>
-        <li><%= nav_link "Login", new_user_session_path %></li>
-      <% end %>
+          </li> 
+        <% end %> <!-- end admin verified only -->
+        <li class="has-dropdown"><%= link_to worker_dashboard_path do %>
+            <i class="fa fa-user"></i> <%= current_user.name %>
+            <% end %>
+            <ul class="dropdown">
+                <% if current_user.admin %>
+                  <li><%= link_to admin_path do %>
+                      <i class="fa fa-home"></i> Admin
+                      <% end %>
+                  </li>
+                <% else %>
+                  <li><%= link_to worker_incident_legacy_organizations_path(current_user_event) do %>
+                      <i class="fa fa-home"></i> <%=current_user.legacy_organization.name %>
+                      <% end %>
+                  </li>
+                <% end %>
+                <li><%= link_to destroy_user_session_path, :method => :delete do %>
+                    <i class="fa fa-sign-out"></i> Logout
+                    <% end %>
+                </li>
+            </ul>
+        </li>          
+        <% else %>
+            <li><%= nav_link "Login", new_user_session_path %></li>
+        <% end %> <!-- end user verified only -->
     </ul>
   </section>
 </nav>
