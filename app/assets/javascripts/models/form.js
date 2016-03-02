@@ -56,7 +56,7 @@ CCMap.Form = function(params) {
     e.stopImmediatePropagation();
     $('.error, .alert-box').remove();
     var errorList = getErrors();
-    if (errorList.length == 0){
+    if (errorList.length == 0) {
       var data = buildData(this);
       $.ajax({
         type: "POST",
@@ -75,7 +75,6 @@ CCMap.Form = function(params) {
             $('.close').click(function(){
               $('.alert-box').remove();
             });
-            new CCMap.Map('map-canvas',data["updated"]["legacy_event_id"],data["updated"]["latitude"],data["updated"]["longitude"],18).build(data["updated"]["id"]);
           } else {
             var html = "<div data-alert class='alert-box'>"+data['name']+" was successfully saved<a href='#' class='close'>&times;</a></div>";
             $('form').prepend(html);
@@ -85,15 +84,13 @@ CCMap.Form = function(params) {
 
             $('html,body').animate({scrollTop: 0});
             $('form')[0].reset();
-
-            new CCMap.Map('map-canvas',data["legacy_event_id"],data["latitude"],data["longitude"],18).build(data["id"]);
           }
         },
         error: function(){
           alert('500 error');
         }
       });
-    }else{
+    } else {
       $.each(errorList,function(i,v){
         $(v).parent().append("<small class='error'>can't be blank</small>")
       })
@@ -103,13 +100,54 @@ CCMap.Form = function(params) {
 
   var getErrors = function(){
     var list = [];
-    $.each($("form input.required"),function(i,v){
+    $.each($("form input.required"),function(i,v) {
       if (v.value == ''){list.push(v)}
     });
     return list;
   }
 
   var buildData = function(form) {
+    // Wow. I really hate my life right now.
+    // TODO: maybe make this suck slighly less by dynamically building it server
+    //   side based on the current state of the LegacySite model. lol
+    var topLevelFields = [
+      "address",
+      "blurred_latitude",
+      "blurred_longitude",
+      "case_number",
+      "claimed_by",
+      "legacy_event_id",
+      "latitude",
+      "longitude",
+      "name",
+      "city",
+      "county",
+      "state",
+      "zip_code",
+      "phone1",
+      "phone2",
+      "reported_by",
+      "requested_at",
+      "status",
+      "work_type",
+      "data",
+      "created_at",
+      "updated_at",
+      "request_date",
+      "appengine_key",
+      "work_requested"
+    ];
+    // create the data object from all of the inputs that are not top level
+    var inputs = form.elements;
+    for (var i = 0; i < inputs.length; i++) {
+      if (inputs[i].type === 'hidden') { continue; }
+      if (inputs[i].type === 'button') { continue; }
+      if (inputs[i].type === 'submit') { continue; }
+      if (topLevelFields.indexOf(/\[(.*)\]/.exec(inputs[i].name)[1]) > -1) { continue; }
+
+      // WIP: this isn't actually going to work.
+      //console.log(inputs[i].name, inputs[i].value);
+    }
     var serializedData = $(form).serialize();
     return serializedData;
   }
