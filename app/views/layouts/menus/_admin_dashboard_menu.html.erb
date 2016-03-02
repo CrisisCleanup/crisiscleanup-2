@@ -46,12 +46,12 @@
             <ul class="dropdown">
                 <% if current_user.admin %>
                   <li><%= link_to admin_path do %>
-                      <i class="fa fa-home"></i> <%=current_user.legacy_organization.name %>
+                      <i class="fa fa-home"></i> Admin
                       <% end %>
                   </li>
                 <% else %>
                   <li><%= link_to worker_incident_legacy_organizations_path(current_user_event) do %>
-                      <i class="fa fa-home"></i> Admin
+                      <i class="fa fa-home"></i> <%=current_user.legacy_organization.name %>
                       <% end %>
                   </li>
                 <% end %>
