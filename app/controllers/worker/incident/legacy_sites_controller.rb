@@ -30,6 +30,11 @@ module Worker
         @site = Legacy::LegacySite.new(site_params)
         @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
 
+        # Claimed_by
+        if (params[:claim_for_org])
+          @site.claimed_by = current_user.legacy_event_id
+        end
+
         @site.legacy_event_id = current_user_event
         @form =  Form.find_by(legacy_event_id: params[:id]).html
 
@@ -45,6 +50,11 @@ module Worker
       def update
         @site = Legacy::LegacySite.find(params["site_id"])
         @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
+
+        # Claimed_by
+        if (params[:claim_for_org] && @site.claimed_by == nil)
+          @site.claimed_by = current_user.legacy_event_id
+        end
 
         if @site.update(site_params)
           render json: {updated:@site}

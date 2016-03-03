@@ -23,6 +23,14 @@ CCMap.Form = function(params) {
     // Update the form action to update the site
     form.action = '/worker/incident/' + event_id + '/edit/' + site.id;
 
+    // Replace the claim checkbox if site is already claimed
+    // TODO: requires discussion
+    // if (site.claimed_by) {
+    //   $('div.legacy_legacy_site_claim_for_org').append('<p>Claimed by ' + site.org_name + '</p>');
+    // } else if (InitialState.user.admin) {
+    //   $('div.legacy_legacy_site_claim_for_org').hide();
+    // }
+
     // Loop over the site attribues and populate the corresponding inputs if they exist
     for (var field in site) {
       if (site.hasOwnProperty(field) && typeof form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
@@ -92,6 +100,7 @@ CCMap.Form = function(params) {
             $('html,body').animate({scrollTop: 0});
             $('form')[0].reset();
           }
+          form.scrollTop = 0;
         },
         error: function(){
           alert('500 error');
@@ -154,9 +163,13 @@ CCMap.Form = function(params) {
     // create the data object from all of the inputs that are not top level
     var inputs = form.elements;
     for (var i = 0; i < inputs.length; i++) {
-      //if (inputs[i].type === 'hidden') { continue; }
       if (inputs[i].type === 'button') { continue; }
       if (inputs[i].type === 'submit') { continue; }
+      // handle the claim_for_org special case
+      if (inputs[i].name === "legacy_legacy_site[claim_for_org]" && inputs[i].checked) {
+        postData.claim_for_org = true;
+        continue;
+      }
       // strip that simple_form crap out.
       var fieldName = /\[(.*)\]/.exec(inputs[i].name);
       if (fieldName && fieldName.length > 1) {
