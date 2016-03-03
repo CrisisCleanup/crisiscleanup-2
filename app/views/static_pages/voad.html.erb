@@ -9,7 +9,7 @@
         <h4 class="basic">We are building a new kind of system. Who's in charge? You are.</h4>
     </div>
     <div class="small-12 medium-4 large-2 columns" align="center">
-        <%= image_tag "characters/Two Soccer Players Running Toward One Another-Boxes.png", :class => "character" ,:alt => "Crisis Cleanup is for VOADs"  %>
+        <%= image_tag "characters/NVOAD.png", :class => "character" ,:alt => "Crisis Cleanup is for VOADs"  %>
     </div>
     <hr class="medium">
 </div>
@@ -18,6 +18,7 @@
 <% content_for :main do %>
 <div id="main" class="alt">
     <div class="row">
+        <div class="small-12 medium-12 large-12 columns">
         <h3>Welcome to Crisis Cleanup!</h3>
             <p>Crisis Cleanup helps relief organizations coordinate cleanup efforts after a disaster. In order to participate in Crisis Cleanup, an organization must:</p>
             <ul>
@@ -28,9 +29,9 @@
             </ul>
             <p>Crisis Cleanup has a <strong>bias for inclusion</strong>—that is, any organization that meets all four requirements should be allowed to participate, absent some extenuating or unforeseen circumstance.</p>
             <p>For full access, all four elements are required, which means that not every organization will be allowed to participate. For example, the American Red Cross and county offices of emergency management (OEM) are certainly reputable, and always has a physical presence in the area, but do not <em>usually</em> perform the type of cleanup work that Crisis Cleanup facilitates; therefore, the Red Cross and OEM would <em>typically</em> have <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007#access">lesser access</a>, unless they meet all requirements. Similar restrictions apply to <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007#government">local governments</a>, unless they play a direct assessment or active coordination role in disaster recovery.</p>
-            <p>Non-VOAD and spontaneous grassroots organizations that can demonstrate <a href="#reputability">reputability</a> are encouraged to join Crisis Cleanup. See the <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007">Requirements for Participation</a> for complete details.</p>
-            <p>If your organization qualifies, please watch this Mandatory Training video, and <a href=""><button>Sign Up!</button></a></p>
-            <p><iframe width="560" height="315" src="https://www.youtube.com/embed/tpMOgDr_KGI" frameborder="0" allowfullscreen></iframe></p>
+            <p>Non-VOAD and spontaneous grassroots organizations that can demonstrate reputability are encouraged to join Crisis Cleanup. See the <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007">Requirements for Participation</a> for complete details.</p>
+            <p>If your organization qualifies, please watch this Mandatory Training video, and <a href="">Sign Up!</a></p>
+            <p><iframe width="100%" height="315" src="https://www.youtube.com/embed/tpMOgDr_KGI" frameborder="0" allowfullscreen></iframe></p>
         <h3>Is Crisis Cleanup a Good Fit?</h3>
             <p>There is no such thing as the "One App to Rule Them All." Crisis Cleanup is really good at coordinating many organizations who are all cleaning up in the same area. Crisis Cleanup is a good fit when:
                 <ul>
@@ -54,6 +55,7 @@
                     <li>Donations Management</li>
                 </ul>
             <u>Crisis Cleanup may not be used to store sensitive personal information such as SSNs, medical information, or dates of birth</u>. See the <a href="/hc/en-us/articles/200819327-Client-Personal-Data-Collection-Policy">Client Personal Data Collection Policy</a>.</p>
+        </div>
     </div>
 </div>
 <% end %>
@@ -61,7 +63,8 @@
 <% content_for :sidebar do %>
 <div id="sidebar">
     <h4>Join Crisis Cleanup!</h4>
-    <p>Crisis Cleanup is for reputable relief organizations only, and can be deployed with 6-hours' notice. <a href=""><button>Sign Up!</button></p>
+    <p>Crisis Cleanup is for reputable relief organizations only, and can be deployed with 6-hours' notice.</p>
+    <a href="/signup" class="button expand">Sign Up!</a>
     <p>There are no size or declaration requirements. Crisis Cleanup is free to relief agencies.</p>
     <p>Crisis Cleanup helps communication, coordination, collaboration, and cooperation. However, it cannot help with the 4Rs of disaster recovery: Relationships, Resources, Roles, and Responsibilities.</p>
 </div>
