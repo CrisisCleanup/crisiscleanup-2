@@ -148,17 +148,22 @@ p.notice {
 }
 
 // form section hide/show
-button.hide, button.unhide {
+.hide_button, unhide_button {
 	float: right;
 	margin: 0 0 0 5px;
 	padding: 5px 10px 5px 10px;
 }
 
+// tabs
+.tabs dd.active a, .tabs .tab-title.active a {
+    background: $royal;
+    color: #fff;
+}
+
 //Characters
 .character {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
+    width: auto;
+    height: 125px;
     margin-left: auto;
     margin-right: auto;
 }

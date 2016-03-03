@@ -20,7 +20,6 @@
 
 <% content_for :sidebar do %>
   <div id="sidebar">
-    <h4>Report Incident</h4>
     <div class="content active">
       <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
     </div>

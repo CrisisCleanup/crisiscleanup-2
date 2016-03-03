@@ -12,13 +12,10 @@ class StaticPagesController < ApplicationController
   end
   def terms
   end      
-
   def signup
   end
-
   def new_incident
   end
-
   def request_incident
     @users = User.where(admin:true)
     @users.each do |user| 
@@ -27,14 +24,23 @@ class StaticPagesController < ApplicationController
     flash[:notice] = "Your request has been received"
     redirect_to "/"
   end
-
   def redeploy
   end
-
   def donate
     redirect_to "https://www.crowdrise.com/CrisisCleanup"
   end
-
   def contact
+  end    
+  def voad
+      render :layout => 'application_sidebar'
   end
+  def volunteer
+      render :layout => 'application_sidebar'
+  end    
+  def government
+      render :layout => 'application_sidebar'
+  end        
+  def survivor
+      render :layout => 'application_sidebar'
+  end            
 end
