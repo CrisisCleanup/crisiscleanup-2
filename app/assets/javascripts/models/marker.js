@@ -374,6 +374,16 @@ CCMap.Site = function(params) {
     // Update the form header title
     document.getElementById('form-header').innerHTML = 'Edit Case ' + this.site.case_number;
 
+    var form = new CCMap.Form({
+      event_id: this.ccmap.event_id,
+      onCancel: function() {
+        this.ccmap.showFilters();
+        $infobox.show();
+      }.bind(this)
+    });
+
+    form.hydrate(this.site);
+
     this.ccmap.showForm();
   }
 

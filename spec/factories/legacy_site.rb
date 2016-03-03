@@ -9,7 +9,7 @@ FactoryGirl.define do
     city Faker::Address.city
     legacy_event_id 1
     name Faker::Name.name
-    phone Faker::PhoneNumber.cell_phone
+    phone1 Faker::PhoneNumber.cell_phone
     reported_by 1
     request_date DateTime.now.to_date
     state Faker::Address.state
