@@ -78,22 +78,22 @@ CCMap.Form = function(params) {
         url: this.action,
         data: data,
         success: function(data){
-          if (data["id"] == undefined && data["updated"] == undefined){
-            var html = "<div data-alert class='alert-box'>"+data+"<a href='#' class='close'>&times;</a></div>"
-            $('.close').click(function(){
+          if (data["id"] == undefined && data["updated"] == undefined) {
+            var html = "<div data-alert class='alert-box'>"+data+"<a href='#' class='close'>&times;</a></div>";
+            $('.close').click(function() {
               $('form').prepend(html);
               $('.alert-box').remove();
             });
           } else if (data["updated"] != undefined) {
-            var html = "<div data-alert class='alert-box'>"+data["updated"]["name"]+" was successfully saved<a href='#' class='close'>&times;</a></div>";
-            $('form').prepend(html);
-            $('.close').click(function(){
-              $('.alert-box').remove();
-            });
+            // Successful save on the edit form
+            var nameStr = data.updated.case_number + " - " + data.updated.name;
+            var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
+            $('#alert-container').html(html);
+            
           } else {
             var html = "<div data-alert class='alert-box'>"+data['name']+" was successfully saved<a href='#' class='close'>&times;</a></div>";
             $('form').prepend(html);
-            $('.close').click(function(){
+            $('.close').click(function() {
               $('.alert-box').remove();
             });
 
