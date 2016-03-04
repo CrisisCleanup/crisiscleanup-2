@@ -14,29 +14,25 @@
       <br>
     <div class='map-wrapper'>
       <div id="worker-map-canvas" style="width: 100%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
+      <%= image_tag "map_legend.png", :class => "legend"  %>
+      <div id="map-infobox"></div>
     </div>
-    <%= image_tag "map_legend.png", :class => "legend"  %>
-    <div id="map-infobox"></div>
   </div>
 <% end %>
 
 <% content_for :sidebar do %>
   <div id="sidebar">
-    <ul class="tabs" data-tab>
-      <li class="tab-title active"><a href="#panel1">Form</a></li>
-      <li class="tab-title"><a href="#panel2">Filters</a></li>
-    </ul>
-    <div class="tabs-content">
-      <div class="content active" id="panel1">
-        <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
-      </div>
-      <div class="content" id="panel2">
-        <div class="row">
-          <div class="small-12 columns">
-            <ul id="map-filters"></ul>
-          </div>
+    <div id="filters-view">
+      <h4>Map Filters</h4>
+      <div class="row">
+        <div class="small-12 columns">
+          <ul id="map-filters"></ul>
         </div>
       </div>
+    </div>
+    <div class="hide" id="form-view">
+      <h4 id="form-header">Map Filters</h4>
+      <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
     </div>
   </div>
 <% end %>

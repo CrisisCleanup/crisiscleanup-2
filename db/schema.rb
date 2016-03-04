@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227080451) do
+ActiveRecord::Schema.define(version: 20160229190456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20160227080451) do
     t.string   "token",           null: false
     t.integer  "organization_id", null: false
     t.datetime "expiration"
+  end
+
+  create_table "invitations_request", force: :cascade do |t|
+    t.integer "approved_by"
+    t.string  "email",        null: false
+    t.string  "name",         null: false
+    t.boolean "volunteer"
+    t.boolean "staff_member"
+    t.date    "expires_at",   null: false
   end
 
   create_table "legacy_contacts", force: :cascade do |t|
@@ -145,7 +154,7 @@ ActiveRecord::Schema.define(version: 20160227080451) do
     t.float    "latitude",                            null: false
     t.float    "longitude",                           null: false
     t.string   "name",                                null: false
-    t.string   "phone"
+    t.string   "phone1"
     t.integer  "reported_by"
     t.date     "requested_at"
     t.string   "state",                               null: false
@@ -158,6 +167,8 @@ ActiveRecord::Schema.define(version: 20160227080451) do
     t.string   "appengine_key"
     t.string   "zip_code"
     t.string   "county"
+    t.string   "phone2"
+    t.string   "work_requested"
   end
 
   create_table "request_invitations", force: :cascade do |t|

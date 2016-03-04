@@ -33,6 +33,7 @@ CCMap.Site = function(params) {
       toInfoboxHtml.call(this);
     }
     $infobox.show();
+    this.ccmap.showFilters();
   }.bind(this));
 
   // TODO: check if the file exists on the server or some other validation here.
@@ -95,7 +96,7 @@ CCMap.Site = function(params) {
     };
 
     // Requests
-    if (this.site.data.work_requested) {
+    if (this.site.data && this.site.data.work_requested) {
       displayObj["Requests"] = this.site.data.work_requested;
     }
 
@@ -183,11 +184,15 @@ CCMap.Site = function(params) {
 
     // action buttons
     // TODO: a button class would be cool here, so we could attach the click event callbacks and whatnot.
-    var actionButtons = {
-      "Contact Organization": contactOrg.bind(this),
-      "Printer Friendly": print.bind(this),
-      "Edit": edit.bind(this)
+    var actionButtons = {};
+    if (this.site.claimed_by) {
+      actionButtons["Contact Organization"] = contactOrg.bind(this);
     }
+
+    actionButtons["Printer Friendly"] = print.bind(this);
+
+    actionButtons["Edit"] = edit.bind(this);
+
     if (this.site.claimed_by) {
       actionButtons['Unclaim'] = claim.bind(this);
     } else {
@@ -325,7 +330,11 @@ CCMap.Site = function(params) {
   }
 
   function contactOrg(event) {
-    console.log('contact org:', this);
+    if (this.site.claimed_by) {
+      var url = '/worker/incident/' + this.ccmap.event_id + '/organizations/' + this.site.claimed_by;
+      var win = window.open(url, '_blank');
+      win.focus();
+    }
   }
 
   function print(event) {
@@ -333,7 +342,18 @@ CCMap.Site = function(params) {
   }
 
   function edit(event) {
-    console.log('edit:', this);
+    $infobox.hide();
+    var form = new CCMap.Form({
+      event_id: this.ccmap.event_id,
+      onCancel: function() {
+        this.ccmap.showFilters();
+        $infobox.show();
+      }.bind(this)
+    });
+
+    form.hydrate(this.site);
+
+    this.ccmap.showForm();
   }
 
   // This should work like a toggle
