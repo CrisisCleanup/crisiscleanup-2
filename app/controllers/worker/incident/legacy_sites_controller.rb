@@ -57,7 +57,7 @@ module Worker
         end
 
         if @site.update(site_params)
-          render json: {updated:@site}
+          render json: { updated: @site }
         else
           render json: @site.errors.full_messages
         end
