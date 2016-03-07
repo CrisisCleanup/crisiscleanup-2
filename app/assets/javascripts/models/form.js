@@ -6,10 +6,12 @@ var CCMap = CCMap || {};
  * @param {Object} params - The configuration paramters
  * @param {number} params.event_id
  * @param {function} [params.onCancel] - cancel callback
+ * @param {function} [params.onSave] - save callback
  */
 CCMap.Form = function(params) {
   // TODO: remove simple_form on the server
   // Silly generated id because we're using simple_form on the server
+  var self = this; // This is messy, but easier atm.
   var form = document.getElementById('new_legacy_legacy_site');
   var header = document.getElementById('form-header');
   var cancelBtn = document.getElementById('cancel-form-btn');
@@ -19,9 +21,12 @@ CCMap.Form = function(params) {
   }
   var event_id = params.event_id;
 
-  this.hydrate = function(site) {
+  this.hydrate = function(ccsite) {
     // Update the form action to update the site
-    form.action = '/worker/incident/' + event_id + '/edit/' + site.id;
+    form.action = '/worker/incident/' + event_id + '/edit/' + ccsite.site.id;
+
+    // Set the site so it can be updated on save
+    this.ccsite = ccsite;
 
     // Replace the claim checkbox if site is already claimed
     // TODO: requires discussion
@@ -32,28 +37,28 @@ CCMap.Form = function(params) {
     // }
 
     // Loop over the site attribues and populate the corresponding inputs if they exist
-    for (var field in site) {
-      if (site.hasOwnProperty(field) && typeof form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
-        form.elements['legacy_legacy_site[' + field + ']'].value = site[field];
+    for (var field in ccsite.site) {
+      if (ccsite.site.hasOwnProperty(field) && typeof form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
+        form.elements['legacy_legacy_site[' + field + ']'].value = ccsite.site[field];
       }
     }
 
     // Loop over the site.data attribues and populate the corresponding inputs if they exist
-    for (var field in site.data) {
-      if (site.data.hasOwnProperty(field) && typeof form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
+    for (var field in ccsite.site.data) {
+      if (ccsite.site.data.hasOwnProperty(field) && typeof form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
         var input = form.elements['legacy_legacy_site[' + field + ']'];
         // Deal with checkboxes. I'm honestly at a loss how to do this a better way.
-        if (input.length === 2 && site.data[field] === "y") {
+        if (input.length === 2 && ccsite.site.data[field] === "y") {
           // assume it's a checkbox
           input[1].checked = true;
         } else {
-          input.value = site.data[field];
+          input.value = ccsite.site.data[field];
         }
       }
     }
 
     // Update the form header title
-    header.innerHTML = 'Edit Case ' + site.case_number;
+    header.innerHTML = 'Edit Case ' + ccsite.site.case_number;
   };
 
   // Cancel
@@ -77,7 +82,7 @@ CCMap.Form = function(params) {
         type: "POST",
         url: this.action,
         data: data,
-        success: function(data){
+        success: function(data) {
           if (data["id"] == undefined && data["updated"] == undefined) {
             var html = "<div data-alert class='alert-box'>"+data+"<a href='#' class='close'>&times;</a></div>";
             $('.close').click(function() {
@@ -89,7 +94,23 @@ CCMap.Form = function(params) {
             var nameStr = data.updated.case_number + " - " + data.updated.name;
             var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
             $('#alert-container').html(html);
-            
+            form.reset();
+            form.scrollTop = 0;
+            if (params.onSave) {
+              params.onSave();
+            }
+
+            // update the site info
+            data.updated.org_name = self.ccsite.site.org_name;
+            self.ccsite.site = data.updated;
+
+            // update the map marker
+            self.ccsite.marker.setIcon(self.ccsite.generateIconFilename());
+            var lat_lng = new google.maps.LatLng(parseFloat(self.ccsite.site.latitude), parseFloat(self.ccsite.site.longitude));
+            self.ccsite.marker.setPosition(lat_lng);
+
+            // update the infobox
+            self.ccsite.updateInfoboxHtml();
           } else {
             var html = "<div data-alert class='alert-box'>"+data['name']+" was successfully saved<a href='#' class='close'>&times;</a></div>";
             $('form').prepend(html);
