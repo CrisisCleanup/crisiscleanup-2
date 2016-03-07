@@ -18,26 +18,14 @@ CCMap.UnclaimedStatusColorMap = {
 CCMap.Site = function(params) {
   var $infobox = $('#map-infobox');
 
+  var self = this;
   this.map = params.map;
   this.ccmap = params.ccmap;
   this.site = params.site;
-  this.marker = new google.maps.Marker({
-    position: params.position,
-    map: params.map,
-    icon: generateIconFilename.call(this)
-  });
-  this.marker.addListener("click", function() {
-    if (this.ccmap.public_map) {
-      toPublicInfoboxHtml.call(this);
-    } else {
-      toInfoboxHtml.call(this);
-    }
-    $infobox.show();
-    this.ccmap.showFilters();
-  }.bind(this));
+  this.updateInfoboxHtml = toInfoboxHtml.bind(this); // Gross. Calling this in form.js.
 
   // TODO: check if the file exists on the server or some other validation here.
-  function generateIconFilename() {
+  this.generateIconFilename = function() {
     var color;
     if (this.site.claimed_by) {
       color = CCMap.UnclaimedStatusColorMap[this.site.status];
@@ -47,6 +35,22 @@ CCMap.Site = function(params) {
     // this is the key sent to the image_path function in app/assets/javascripts/images.js.erb
     return image_path('map_icons/' + this.site.work_type.replace(' ', '_') + '_' + color + '.png');
   }
+
+  this.marker = new google.maps.Marker({
+    position: params.position,
+    map: params.map,
+    icon: self.generateIconFilename.call(self)
+  });
+
+  this.marker.addListener("click", function() {
+    if (this.ccmap.public_map) {
+      toPublicInfoboxHtml.call(this);
+    } else {
+      toInfoboxHtml.call(this);
+    }
+    $infobox.show();
+    this.ccmap.showFilters();
+  }.bind(this));
 
   /**
    * Takes a legacy_site obj and returns an html table (string) of the attributes
@@ -318,7 +322,7 @@ CCMap.Site = function(params) {
         if (data.status === 'success') {
           this.site.claimed_by = data.claimed_by;
           this.site.status = status;
-          this.marker.setIcon(generateIconFilename.call(this));
+          this.marker.setIcon(this.generateIconFilename.call(this));
           // TODO: this will all be better in React. I promise.
           toInfoboxHtml.call(this);
         }
@@ -348,10 +352,14 @@ CCMap.Site = function(params) {
       onCancel: function() {
         this.ccmap.showFilters();
         $infobox.show();
+      }.bind(this),
+      onSave: function() {
+        this.ccmap.showFilters();
+        $infobox.show();
       }.bind(this)
     });
 
-    form.hydrate(this.site);
+    form.hydrate(this);
 
     this.ccmap.showForm();
   }
@@ -368,7 +376,7 @@ CCMap.Site = function(params) {
           // This is kinda gross and asking for trouble. React?
           this.site.claimed_by = data.claimed_by;
           this.site.status = data.site_status;
-          this.marker.setIcon(generateIconFilename.call(this));
+          this.marker.setIcon(this.generateIconFilename.call(this));
           // TODO: this will all be better in React. I promise.
           toInfoboxHtml.call(this);
         }
