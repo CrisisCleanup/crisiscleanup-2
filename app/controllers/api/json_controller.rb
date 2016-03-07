@@ -27,7 +27,7 @@ module Api
           site.save
           render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
         else
-          render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our syste.' }
+          render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our system.' }
         end
       else
         render json: { status: 'error', msg: 'Site id is required.' }
@@ -42,8 +42,8 @@ module Api
           if site.claimed_by == nil
             site.claimed_by = current_user.legacy_organization_id
             site.save
-            render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
-          elsif site.claimed_by == current_user.legacy_organization_id
+            render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status, org_name: site.claimed_by_org.name }
+          elsif site.claimed_by == current_user.legacy_organization_id || current_user.admin
             site.claimed_by = nil
             site.save
             render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
