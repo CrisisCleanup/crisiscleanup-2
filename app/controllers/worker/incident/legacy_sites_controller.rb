@@ -25,6 +25,17 @@ module Worker
         @form = Form.find_by(legacy_event_id: @legacy_event.id).html
       end
 
+      def print
+        @site = Legacy::LegacySite.find(params[:id])
+        if (@site.claimed_by)
+          @claimed_by_org = Legacy::LegacyOrganization.find(@site.claimed_by)
+        end
+        if (@site.reported_by)
+          @reported_by_org = Legacy::LegacyOrganization.find(@site.reported_by)
+        end
+        render layout: false
+      end
+
       # create
       def submit
         @site = Legacy::LegacySite.new(site_params)

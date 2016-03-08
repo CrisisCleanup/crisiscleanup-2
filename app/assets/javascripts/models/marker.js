@@ -342,7 +342,9 @@ CCMap.Site = function(params) {
   }
 
   function print(event) {
-    console.log('print:', this);
+    var url = '/worker/incident/' + this.site.id + '/print';
+    var win = window.open(url, '_blank');
+    win.focus();
   }
 
   function edit(event) {
