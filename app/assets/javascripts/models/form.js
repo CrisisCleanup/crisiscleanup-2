@@ -62,7 +62,9 @@ CCMap.Form = function(params) {
   };
 
   // Cancel
-  cancelBtn.addEventListener('click', function() {
+  cancelBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
     form.reset();
     form.scrollTop = 0;
     if (params.onCancel) {
