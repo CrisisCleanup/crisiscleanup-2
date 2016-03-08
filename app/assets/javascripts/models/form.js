@@ -112,14 +112,12 @@ CCMap.Form = function(params) {
             // update the infobox
             self.ccsite.updateInfoboxHtml();
           } else {
-            var html = "<div data-alert class='alert-box'>"+data['name']+" was successfully saved<a href='#' class='close'>&times;</a></div>";
-            $('form').prepend(html);
-            $('.close').click(function() {
-              $('.alert-box').remove();
-            });
-
-            $('html,body').animate({scrollTop: 0});
-            $('form')[0].reset();
+            // Successful save on the edit form
+            var nameStr = data.case_number + " - " + data.name;
+            var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
+            $('#alert-container').html(html);
+            form.reset();
+            form.scrollTop = 0;
           }
           form.scrollTop = 0;
         },
