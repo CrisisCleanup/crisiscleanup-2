@@ -91,7 +91,7 @@ CCMap.Site = function(params) {
    * Takes a legacy_site obj and returns an html table (string) of the attributes
    */
   function toInfoboxHtml() {
-    var table = document.createElement('table');
+    var table = document.createElement('div');
 
     // Create an object of key value pairs to display
     var displayObj = {
@@ -294,13 +294,15 @@ CCMap.Site = function(params) {
    * @returns {HTMLElement} row - a tr with two td's
    */
   function createTableRow(labelNode, valueNode) {
-    var row = document.createElement('tr');
-    var labelCell = document.createElement('td');
+    var row = document.createElement('div');
+    row.className = 'row';
+    var labelCell = document.createElement('div');
+    labelCell.className = 'small-12 medium-3 large-2 columns';
     var strongLabel = document.createElement('strong');
-    var valueCell = document.createElement('td');
+    var valueCell = document.createElement('div');
+    valueCell.className = 'small-12 medium-9 large-10 columns';
     strongLabel.appendChild(labelNode);
     labelCell.appendChild(strongLabel);
-    labelCell.className = 'text-right';
     valueCell.appendChild(valueNode);
     row.appendChild(labelCell);
     row.appendChild(valueCell);
