@@ -197,9 +197,9 @@ CCMap.Site = function(params) {
 
     actionButtons["Edit"] = edit.bind(this);
 
-    if (this.site.claimed_by) {
+    if (this.site.claimed_by === InitialState.user.org_id || InitialState.user.admin) {
       actionButtons['Unclaim'] = claim.bind(this);
-    } else {
+    } else if (this.site.claimed_by === null) {
       actionButtons['Claim'] = claim.bind(this);
     }
     var buttonRow = document.createElement('tr');
@@ -376,6 +376,7 @@ CCMap.Site = function(params) {
           // This is kinda gross and asking for trouble. React?
           this.site.claimed_by = data.claimed_by;
           this.site.status = data.site_status;
+          this.site.org_name = data.org_name;
           this.marker.setIcon(this.generateIconFilename.call(this));
           // TODO: this will all be better in React. I promise.
           toInfoboxHtml.call(this);
