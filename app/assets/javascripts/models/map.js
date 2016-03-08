@@ -118,7 +118,39 @@ CCMap.Map = function(params) {
             activeMarkers.push(site);
           }, this);
           var mcOptions = {
-            maxZoom: 15
+            maxZoom: 15,
+            styles: [
+              {
+                textColor: 'black',
+                url: image_path('map_icons/m1.png'),
+                height: 53,
+                width: 52
+              },
+              {
+                textColor: 'black',
+                url: image_path('map_icons/m2.png'),
+                height: 56,
+                width: 55
+              },
+              {
+                textColor: 'black',
+                url: image_path('map_icons/m3.png'),
+                height: 66,
+                width: 65
+              },
+              {
+                textColor: 'black',
+                url: image_path('map_icons/m4.png'),
+                height: 78,
+                width: 77
+              },
+              {
+                textColor: 'black',
+                url: image_path('map_icons/m5.png'),
+                height: 90,
+                width: 89
+              }
+            ]
           }
           this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
           this.map.fitBounds(this.markerBounds);
