@@ -48,7 +48,7 @@ CCMap.Site = function(params) {
     } else {
       toInfoboxHtml.call(this);
     }
-    $infobox.show();
+    $infobox.slideToggle();
     this.ccmap.showFilters();
   }.bind(this));
 
@@ -92,6 +92,19 @@ CCMap.Site = function(params) {
    */
   function toInfoboxHtml() {
     var table = document.createElement('div');
+    var closeBtn = document.createElement('a');
+    closeBtn.className = 'close';
+    closeBtn.innerHTML = '&times;';
+    var row = document.createElement('div');
+    row.className = 'row';
+    var header = document.createElement('div');
+    header.className = 'small-12 columns';
+    closeBtn.addEventListener('click', function() {
+      $infobox.slideToggle();
+    });
+    header.appendChild(closeBtn);
+    row.appendChild(header);
+    table.appendChild(row);
 
     // Create an object of key value pairs to display
     var displayObj = {
@@ -202,9 +215,10 @@ CCMap.Site = function(params) {
     } else if (this.site.claimed_by === null) {
       actionButtons['Claim'] = claim.bind(this);
     }
-    var buttonRow = document.createElement('tr');
-    var buttonCell = document.createElement('td');
-    buttonCell.setAttribute('colspan', '2');
+    var buttonRow = document.createElement('div');
+    buttonRow.className = 'row';
+    var buttonCell = document.createElement('div');
+    buttonCell.className = 'small-12 medium-9 medium-offset-3 large-10 large-offset-2 columns';
     for (var key in actionButtons) {
       if (actionButtons.hasOwnProperty(key)) {
         var button = document.createElement('a');
