@@ -364,16 +364,16 @@ CCMap.Site = function(params) {
   }
 
   function edit(event) {
-    $infobox.hide();
+    $infobox.slideToggle();
     var form = new CCMap.Form({
       event_id: this.ccmap.event_id,
       onCancel: function() {
         this.ccmap.showFilters();
-        $infobox.show();
+        $infobox.slideToggle();
       }.bind(this),
       onSave: function() {
         this.ccmap.showFilters();
-        $infobox.show();
+        $infobox.slideToggle();
       }.bind(this)
     });
 
