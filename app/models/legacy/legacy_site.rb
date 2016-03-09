@@ -15,9 +15,12 @@ module Legacy
     before_validation :create_blurred_geocoordinates
     before_validation :add_case_number
     belongs_to :legacy_event
+    belongs_to :legacy_organization, foreign_key: :claimed_by
 
-    # So we can hide the autofill on this model's simple_form
+    # These are just to get around simple_form junk. Remove them once simple_form is gone.
+    # So we can hide the autofill on this model's simple_form - I don't think this is actually working.
     attr_accessor :autofill_disable
+    attr_accessor :claim
 
     def full_street_address
       "#{self.address}, #{self.city}, #{self.state}"

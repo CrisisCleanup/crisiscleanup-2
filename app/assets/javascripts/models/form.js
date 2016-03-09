@@ -15,6 +15,8 @@ CCMap.Form = function(params) {
   var form = document.getElementById('new_legacy_legacy_site');
   var header = document.getElementById('form-header');
   var cancelBtn = document.getElementById('cancel-form-btn');
+  var claimBtn = document.getElementById('claim-form-btn');
+  var saveBtn = document.getElementById('save-form-btn');
   if (!params.event_id) {
     console.error('CCMap.Form requires an event_id');
     return;
@@ -27,14 +29,6 @@ CCMap.Form = function(params) {
 
     // Set the site so it can be updated on save
     this.ccsite = ccsite;
-
-    // Replace the claim checkbox if site is already claimed
-    // TODO: requires discussion
-    // if (site.claimed_by) {
-    //   $('div.legacy_legacy_site_claim_for_org').append('<p>Claimed by ' + site.org_name + '</p>');
-    // } else if (InitialState.user.admin) {
-    //   $('div.legacy_legacy_site_claim_for_org').hide();
-    // }
 
     // Loop over the site attribues and populate the corresponding inputs if they exist
     for (var field in ccsite.site) {
@@ -57,6 +51,18 @@ CCMap.Form = function(params) {
       }
     }
 
+    // Update or hide the claim/unclaim submit button
+    if (InitialState.user.admin || ccsite.site.claimed_by === InitialState.user.org_id || !ccsite.site.claimed_by) {
+      $(claimBtn).show();
+      if (ccsite.site.claimed_by) {
+        claimBtn.value = 'Unclaim & Save';
+      } else {
+        claimBtn.value = 'Claim & Save';
+      }
+    } else {
+      $(claimBtn).hide();
+    }
+
     // Update the form header title
     header.innerHTML = 'Edit Case ' + ccsite.site.case_number;
   };
@@ -70,6 +76,14 @@ CCMap.Form = function(params) {
     if (params.onCancel) {
       params.onCancel();
     }
+  });
+
+  claimBtn.addEventListener('click', function(e) {
+    form.elements['legacy_legacy_site_claim'].value = true;
+  });
+
+  saveBtn.addEventListener('click', function(e) {
+    form.elements['legacy_legacy_site_claim'].value = false;
   });
 
   // Submit
@@ -103,7 +117,10 @@ CCMap.Form = function(params) {
             }
 
             // update the site info
-            data.updated.org_name = self.ccsite.site.org_name;
+            // TODO: Set up the legacy_organization association everywhere. name only.
+            if (data.updated.legacy_organization) {
+              data.updated.org_name = data.updated.legacy_organization.name
+            }
             self.ccsite.site = data.updated;
 
             // update the map marker
@@ -114,7 +131,7 @@ CCMap.Form = function(params) {
             // update the infobox
             self.ccsite.updateInfoboxHtml();
           } else {
-            // Successful save on the edit form
+            // Successful save on the new site form
             var nameStr = data.case_number + " - " + data.name;
             var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
             $('#alert-container').html(html);
@@ -159,6 +176,7 @@ CCMap.Form = function(params) {
       "blurred_latitude",
       "blurred_longitude",
       "case_number",
+      "claim",
       "claimed_by",
       "legacy_event_id",
       "latitude",
@@ -186,11 +204,6 @@ CCMap.Form = function(params) {
     for (var i = 0; i < inputs.length; i++) {
       if (inputs[i].type === 'button') { continue; }
       if (inputs[i].type === 'submit') { continue; }
-      // handle the claim_for_org special case
-      if (inputs[i].name === "legacy_legacy_site[claim_for_org]" && inputs[i].checked) {
-        postData.claim_for_org = true;
-        continue;
-      }
       // strip that simple_form crap out.
       var fieldName = /\[(.*)\]/.exec(inputs[i].name);
       if (fieldName && fieldName.length > 1) {
