@@ -41,9 +41,9 @@ module Worker
         @site = Legacy::LegacySite.new(site_params)
         @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
 
-        # Claimed_by
-        if (params[:claim_for_org])
-          @site.claimed_by = current_user.legacy_event_id
+        # Claimed_by toggle
+        if params[:legacy_legacy_site][:claim]
+          @site.claimed_by = current_user.legacy_organization_id
         end
 
         @site.legacy_event_id = current_user_event
@@ -62,9 +62,15 @@ module Worker
         @site = Legacy::LegacySite.find(params["site_id"])
         @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
 
-        # Claimed_by
-        if (params[:claim_for_org] && @site.claimed_by == nil)
-          @site.claimed_by = current_user.legacy_event_id
+        # Claimed_by toggle
+        if params[:legacy_legacy_site][:claim]
+          if @site.claimed_by == nil
+            @site.claimed_by = current_user.legacy_organization_id
+            @site.save
+          elsif @site.claimed_by == current_user.legacy_organization_id || current_user.admin
+            @site.claimed_by = nil
+            @site.save
+          end
         end
 
         if @site.update(site_params)
