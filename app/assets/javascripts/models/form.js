@@ -30,14 +30,6 @@ CCMap.Form = function(params) {
     // Set the site so it can be updated on save
     this.ccsite = ccsite;
 
-    // Replace the claim checkbox if site is already claimed
-    // TODO: requires discussion
-    // if (site.claimed_by) {
-    //   $('div.legacy_legacy_site_claim_for_org').append('<p>Claimed by ' + site.org_name + '</p>');
-    // } else if (InitialState.user.admin) {
-    //   $('div.legacy_legacy_site_claim_for_org').hide();
-    // }
-
     // Loop over the site attribues and populate the corresponding inputs if they exist
     for (var field in ccsite.site) {
       if (ccsite.site.hasOwnProperty(field) && typeof form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
@@ -125,8 +117,10 @@ CCMap.Form = function(params) {
             }
 
             // update the site info
-            // TODO: Send back the org_name from the server. This won't work for unclaimed sites when they are claimed from the form.
-            data.updated.org_name = self.ccsite.site.org_name;
+            // TODO: Set up the legacy_organization association everywhere. name only.
+            if (data.updated.legacy_organization) {
+              data.updated.org_name = data.updated.legacy_organization.name
+            }
             self.ccsite.site = data.updated;
 
             // update the map marker

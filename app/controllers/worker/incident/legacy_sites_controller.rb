@@ -66,15 +66,14 @@ module Worker
         if params[:legacy_legacy_site][:claim]
           if @site.claimed_by == nil
             @site.claimed_by = current_user.legacy_organization_id
-            @site.save
           elsif @site.claimed_by == current_user.legacy_organization_id || current_user.admin
             @site.claimed_by = nil
-            @site.save
           end
         end
 
         if @site.update(site_params)
-          render json: { updated: @site }
+          # lol. I'm not even sure what to say here.
+          render json: { updated: JSON.parse(@site.to_json(include: { legacy_organization: { only: :name } })) }
         else
           render json: @site.errors.full_messages
         end
