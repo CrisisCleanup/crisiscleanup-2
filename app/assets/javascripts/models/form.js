@@ -23,6 +23,14 @@ CCMap.Form = function(params) {
   }
   var event_id = params.event_id;
 
+  // Autopopulate the request_date field if empty (hydrate should overwrite this on edit forms)
+  var date = new Date;
+  var yyyy = date.getFullYear().toString();
+  var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
+  var dd  = date.getDate().toString();
+  var dateStr = yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+  form.elements['legacy_legacy_site_request_date'].value = dateStr;
+
   this.hydrate = function(ccsite) {
     // Update the form action to update the site
     form.action = '/worker/incident/' + event_id + '/edit/' + ccsite.site.id;

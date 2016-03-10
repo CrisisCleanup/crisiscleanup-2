@@ -101,7 +101,7 @@ module Worker
           :address,:blurred_latitude,:blurred_longitude,
           :case_number,:city,:claimed_by,:county,:legacy_event_id,
           :latitude,:longitude,:name,:phone1,:phone2,:reported_by,
-          :requested_at,:state,:status,:work_requested,:work_type,
+          :request_date,:state,:status,:work_requested,:work_type,
           :data,:zip_code)
       end
     end
