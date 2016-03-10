@@ -17,6 +17,41 @@ CCMap.Map = function(params) {
 
   var allSites = [];
   var activeMarkers = [];
+  var markerClustererOptions = {
+    maxZoom: 15,
+    styles: [
+      {
+        textColor: 'black',
+        url: image_path('map_icons/m1.png'),
+        height: 53,
+        width: 52
+      },
+      {
+        textColor: 'black',
+        url: image_path('map_icons/m2.png'),
+        height: 56,
+        width: 55
+      },
+      {
+        textColor: 'black',
+        url: image_path('map_icons/m3.png'),
+        height: 66,
+        width: 65
+      },
+      {
+        textColor: 'black',
+        url: image_path('map_icons/m4.png'),
+        height: 78,
+        width: 77
+      },
+      {
+        textColor: 'black',
+        url: image_path('map_icons/m5.png'),
+        height: 90,
+        width: 89
+      }
+    ]
+  }
 
   this.canvas = document.getElementById(params.elm);
   this.event_id = params.event_id;
@@ -117,42 +152,7 @@ CCMap.Map = function(params) {
             allSites.push(site);
             activeMarkers.push(site);
           }, this);
-          var mcOptions = {
-            maxZoom: 15,
-            styles: [
-              {
-                textColor: 'black',
-                url: image_path('map_icons/m1.png'),
-                height: 53,
-                width: 52
-              },
-              {
-                textColor: 'black',
-                url: image_path('map_icons/m2.png'),
-                height: 56,
-                width: 55
-              },
-              {
-                textColor: 'black',
-                url: image_path('map_icons/m3.png'),
-                height: 66,
-                width: 65
-              },
-              {
-                textColor: 'black',
-                url: image_path('map_icons/m4.png'),
-                height: 78,
-                width: 77
-              },
-              {
-                textColor: 'black',
-                url: image_path('map_icons/m5.png'),
-                height: 90,
-                width: 89
-              }
-            ]
-          }
-          this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
+          this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), markerClustererOptions);
           this.map.fitBounds(this.markerBounds);
         } else {
           // TODO: modal or something other than an alert box.
@@ -179,10 +179,7 @@ CCMap.Map = function(params) {
   function populateMap() {
     clearOverlays.call(this);
     activeMarkers = filters.getFilteredSites(allSites);
-    var mcOptions = {
-      maxZoom: 15
-    }
-    this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), mcOptions);
+    this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), markerClustererOptions);
   }
 
   // Address autocomplete
