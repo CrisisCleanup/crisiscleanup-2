@@ -7,6 +7,7 @@ FactoryGirl.define do
     blurred_longitude Faker::Address.longitude
     case_number Faker::Code.isbn
     city Faker::Address.city
+    county Faker::Lorem.word
     legacy_event_id 1
     name Faker::Name.name
     phone1 Faker::PhoneNumber.cell_phone

@@ -44,7 +44,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'paper_trail', '~> 4.0.0.rc'
 
 gem 'geocoder'
-
+gem 'text'
 gem 'unicorn'
 
 gem 'font-awesome-sass'

@@ -14,6 +14,7 @@ module Legacy
     before_validation :geocode, if: -> (obj) { obj.latitude.nil? or obj.longitude.nil? or obj.address_changed? }
     before_validation :create_blurred_geocoordinates
     before_validation :add_case_number
+    before_save :calculate_metaphones
     belongs_to :legacy_event
     belongs_to :legacy_organization, foreign_key: :claimed_by
 
@@ -32,6 +33,13 @@ module Legacy
         event_case_label = Legacy::LegacyEvent.find(self.legacy_event_id).case_label
         self.case_number = "#{event_case_label}#{count + 1}"
       end
+    end
+
+    def calculate_metaphones
+      self.name_metaphone = Text::Metaphone.metaphone(self.name)
+      self.city_metaphone = Text::Metaphone.metaphone(self.city)
+      self.county_metaphone = Text::Metaphone.metaphone(self.county)
+      self.address_metaphone = Text::Metaphone.metaphone(self.address)
     end
 
     def create_blurred_geocoordinates
