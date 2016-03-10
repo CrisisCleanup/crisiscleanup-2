@@ -25,7 +25,7 @@ module ApplicationHelper
 
         # admin can select event by params[:id]
         elsif current_user and current_user.admin
-          session[:current_user_event] = request.params[:id] || session[:current_user_event] || 1
+          session[:current_user_event] = session[:current_user_event] || request.params[:id] || 1
 
         # if event is already set, return event
         elsif session[:current_user_event]
