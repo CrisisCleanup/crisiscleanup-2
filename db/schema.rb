@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229190456) do
+ActiveRecord::Schema.define(version: 20160310170643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,6 +169,10 @@ ActiveRecord::Schema.define(version: 20160229190456) do
     t.string   "county"
     t.string   "phone2"
     t.string   "work_requested"
+    t.string   "name_metaphone"
+    t.string   "city_metaphone"
+    t.string   "county_metaphone"
+    t.string   "address_metaphone"
   end
 
   create_table "request_invitations", force: :cascade do |t|
