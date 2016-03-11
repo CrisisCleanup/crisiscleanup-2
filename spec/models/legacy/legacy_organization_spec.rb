@@ -13,8 +13,6 @@ module Legacy
       it { should have_many :request_invitations }
       it { should validate_presence_of :name}
       it { should validate_uniqueness_of :name}
-      it { should validate_presence_of :email}
-      it { should validate_uniqueness_of :email}
 
     end
     

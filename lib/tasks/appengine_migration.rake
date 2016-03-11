@@ -184,9 +184,12 @@ def are_entities_identical? appengine_hash, model_entity
 					puts key
 					puts appengine_hash[key].round(6)
 					puts model_entity.attributes[key]
+					puts key
 					identical = false
 
 				end
+			elsif key.include? "_password_hash_list"
+				identical = true
 			else
 				puts key
 				identical = false
@@ -365,16 +368,23 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
     		pg_entity.created_at = DateTime.now if pg_entity.created_at.nil?
     		pg_entity.updated_at = DateTime.now if pg_entity.updated_at.nil?
 
+    		if Legacy::LegacyOrganization.where(name: pg_entity.name).count > 0
+    			pg_entity.name = pg_entity.name + "_#{Random.rand(100)}"
+    		end
         	pg_entity.save
 
         	unless pg_entity.valid?
         		# TODO
+        		# if error is name is already taken, get existing entity and set that as the pg entity
         	end
-        	if joins
+        	if joins and joins != ["incidents"]
         		joins_hash.each do |key, value|
         			event = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, value
         			puts "[#{appengine_table}-import]-[Error]-[Can't find event with id: #{value}]" if event.nil?
         			puts joins_hash if event.nil?
+        			unless pg_entity.valid? 
+	        			binding.pry
+	        		end
         			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
         			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]"
         		end
@@ -382,7 +392,7 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
         	count += 1
         	puts "[#{appengine_table}-import]-[Information]-[Success count: #{count}]"
         rescue => e
-        	# binding.pry
+        	binding.pryev
         	errors_count += 1
         	puts "[#{appengine_table}-import]-[Error]-[Database Error Message: #{e}]"
         	puts "[#{appengine_table}-import]-[Error]-[App engine key: #{entity['appengine_key']}]"
@@ -429,6 +439,7 @@ end
 def identical_and_unique? appengine_hash, model_entity, pg_table
 	success = true
 	unless are_entities_identical? appengine_hash, model_entity
+		binding.pry
 		puts "[Error]-[Entities are not identical]-[key: #{appengine_hash['appengine_key']}]"
 		success = false
 	end
