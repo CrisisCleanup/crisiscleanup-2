@@ -48,7 +48,7 @@ CCMap.Site = function(params) {
     } else {
       toInfoboxHtml.call(this);
     }
-    $infobox.show();
+    $infobox.slideToggle();
     this.ccmap.showFilters();
   }.bind(this));
 
@@ -57,7 +57,7 @@ CCMap.Site = function(params) {
    * for the public map
    */
   function toPublicInfoboxHtml() {
-    var caseNumberText = document.createTextNode('Case Number: ' + this.site.case_number);
+    var caseNumberText = document.createTextNode('Case #: ' + this.site.case_number);
     var caseNumberH4 = document.createElement('h4')
     caseNumberH4.appendChild(caseNumberText);
     $infobox.html(caseNumberH4);
@@ -91,11 +91,24 @@ CCMap.Site = function(params) {
    * Takes a legacy_site obj and returns an html table (string) of the attributes
    */
   function toInfoboxHtml() {
-    var table = document.createElement('table');
+    var table = document.createElement('div');
+    var closeBtn = document.createElement('a');
+    closeBtn.className = 'close';
+    closeBtn.innerHTML = '&times;';
+    var row = document.createElement('div');
+    row.className = 'row';
+    var header = document.createElement('div');
+    header.className = 'small-12 columns';
+    closeBtn.addEventListener('click', function() {
+      $infobox.slideToggle();
+    });
+    header.appendChild(closeBtn);
+    row.appendChild(header);
+    table.appendChild(row);
 
     // Create an object of key value pairs to display
     var displayObj = {
-      "Case Number": this.site.case_number,
+      "Case #": this.site.case_number,
       "Name": this.site.name
     };
 
@@ -202,9 +215,10 @@ CCMap.Site = function(params) {
     } else if (this.site.claimed_by === null) {
       actionButtons['Claim'] = claim.bind(this);
     }
-    var buttonRow = document.createElement('tr');
-    var buttonCell = document.createElement('td');
-    buttonCell.setAttribute('colspan', '2');
+    var buttonRow = document.createElement('div');
+    buttonRow.className = 'row';
+    var buttonCell = document.createElement('div');
+    buttonCell.className = 'small-12 medium-9 medium-offset-3 large-9 large-offset-3 columns';
     for (var key in actionButtons) {
       if (actionButtons.hasOwnProperty(key)) {
         var button = document.createElement('a');
@@ -294,13 +308,15 @@ CCMap.Site = function(params) {
    * @returns {HTMLElement} row - a tr with two td's
    */
   function createTableRow(labelNode, valueNode) {
-    var row = document.createElement('tr');
-    var labelCell = document.createElement('td');
+    var row = document.createElement('div');
+    row.className = 'row';
+    var labelCell = document.createElement('div');
+    labelCell.className = 'small-12 medium-3 large-3 columns';
     var strongLabel = document.createElement('strong');
-    var valueCell = document.createElement('td');
+    var valueCell = document.createElement('div');
+    valueCell.className = 'small-12 medium-9 large-9 columns';
     strongLabel.appendChild(labelNode);
     labelCell.appendChild(strongLabel);
-    labelCell.className = 'text-right';
     valueCell.appendChild(valueNode);
     row.appendChild(labelCell);
     row.appendChild(valueCell);
@@ -348,16 +364,16 @@ CCMap.Site = function(params) {
   }
 
   function edit(event) {
-    $infobox.hide();
+    $infobox.slideToggle();
     var form = new CCMap.Form({
       event_id: this.ccmap.event_id,
       onCancel: function() {
         this.ccmap.showFilters();
-        $infobox.show();
+        $infobox.slideToggle();
       }.bind(this),
       onSave: function() {
         this.ccmap.showFilters();
-        $infobox.show();
+        $infobox.slideToggle();
       }.bind(this)
     });
 

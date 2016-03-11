@@ -30,11 +30,12 @@ hr {
     background-color: gainsboro;
 
     border: 2px solid $smoke;
-    & h4, ul {
+    & ul {
         width: 100%;
         margin-left: 0;
     }
     & h4 {
+        margin-left: 13px;
         margin-top: 10px;
     }
     & input[type="checkbox"] + label, input[type="radio"] + label {
@@ -55,7 +56,7 @@ hr {
         & .columns {
             padding-left: 0;
         }       
-        & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"]{
+        & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"]{
             width: 100%;
             height: 1.75rem;
             margin: 0;
@@ -103,40 +104,51 @@ table {
     height: 100%;
     min-height:600px;
     background-color: $smoke;
-    margin-top: 16px;
+    margin-top: -3px;
 }
 .legend {
   z-index: 2;
   position: absolute;
   left: 0;
-  margin-top: -215px;
+  margin-top: -214px;
   background-color: #ffffff;
-  opacity: .8;
   padding: 0px;
   max-width: 200px;
+    border-top: 2px solid #5c5c5c;    
+    border-right: 2px solid #5c5c5c;    
 }
 
-// TODO: make this crap look good!
 #map-infobox {
   display: none;
   z-index: 2;
   position: absolute;
-  left: 200px;
-  margin-top: -215px;
-  background-color: #ffffff;
+  bottom: 0;
+  background-color: #fff;
+  border-top: 2px solid #5c5c5c;    
+  border-right: 2px solid #5c5c5c;    
+  border-left: 2px solid #5c5c5c;        
   padding: 0px;
-
-  table tr td {
-    padding: 1px 4px;
-
-    * {
-       margin: 0px;
-    }
+  height: 215px;
+  width: 60%;
+  left: 215px;
+  overflow-y: scroll;
+  & .close {
+    z-index: 3;
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    background: inherit;
+    color: #333333;
+    font-size: 1.375rem;
+    opacity: 0.3;
+    padding: 0 6px 4px;
   }
+    & .button {
+        margin-right: 5px;
+    }
 }
 
-ul#map-filters {
-    list-style-type: none;
+#map-filters {
     margin: 0;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none;   /* Chrome/Safari/Opera */
@@ -144,6 +156,9 @@ ul#map-filters {
     -moz-user-select: none;      /* Firefox */
     -ms-user-select: none;       /* IE/Edge */
     user-select: none;
+    & .columns {
+        margin-bottom: 0!important;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -163,6 +178,10 @@ ul#map-filters {
         display: block;
         padding: 10px 0 10px 0;
         background-color: gainsboro;
+    }
+    #map-infobox {
+        width: 100%;
+        left: 0;
     }
     #copyright .right {
         margin-right: 0;
