@@ -212,7 +212,7 @@ CCMap.Site = function(params) {
 
     actionButtons["Edit"] = edit.bind(this);
 
-    if (this.site.claimed_by === InitialState.user.org_id || InitialState.user.admin) {
+    if (this.site.claimed_by === InitialState.user.org_id || (InitialState.user.admin && this.site.claimed_by !== null)) {
       actionButtons['Unclaim'] = claim.bind(this);
     } else if (this.site.claimed_by === null) {
       actionButtons['Claim'] = claim.bind(this);

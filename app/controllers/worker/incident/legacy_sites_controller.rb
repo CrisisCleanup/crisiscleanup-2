@@ -42,9 +42,9 @@ module Worker
         @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
 
         # Claimed_by toggle
-        #if params[:legacy_legacy_site][:claim]
-        #  @site.claimed_by = current_user.legacy_organization_id
-        #end
+        if params[:legacy_legacy_site][:claim] == "true"
+          @site.claimed_by = current_user.legacy_organization_id
+        end
 
         @site.legacy_event_id = current_user_event
         @form =  Form.find_by(legacy_event_id: params[:id]).html
@@ -63,13 +63,13 @@ module Worker
         @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
 
         # Claimed_by toggle
-        #if params[:legacy_legacy_site][:claim]
-        #  if @site.claimed_by == nil
-        #    @site.claimed_by = current_user.legacy_organization_id
-        #  elsif @site.claimed_by == current_user.legacy_organization_id || current_user.admin
-        #    @site.claimed_by = nil
-        #  end
-        #end
+        if params[:legacy_legacy_site][:claim] == "true"
+          if @site.claimed_by == nil
+            @site.claimed_by = current_user.legacy_organization_id
+          elsif @site.claimed_by == current_user.legacy_organization_id || current_user.admin
+            @site.claimed_by = nil
+          end
+        end
 
         if @site.update(site_params)
           # lol. I'm not even sure what to say here.
