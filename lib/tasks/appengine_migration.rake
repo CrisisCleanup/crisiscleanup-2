@@ -392,7 +392,6 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
         	count += 1
         	puts "[#{appengine_table}-import]-[Information]-[Success count: #{count}]"
         rescue => e
-        	binding.pryev
         	errors_count += 1
         	puts "[#{appengine_table}-import]-[Error]-[Database Error Message: #{e}]"
         	puts "[#{appengine_table}-import]-[Error]-[App engine key: #{entity['appengine_key']}]"
