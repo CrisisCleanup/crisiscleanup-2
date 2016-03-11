@@ -48,7 +48,9 @@ CCMap.Site = function(params) {
     } else {
       toInfoboxHtml.call(this);
     }
-    $infobox.slideToggle();
+    if ($infobox.is(':hidden')) {
+      $infobox.slideToggle();
+    }
     this.ccmap.showFilters();
   }.bind(this));
 
