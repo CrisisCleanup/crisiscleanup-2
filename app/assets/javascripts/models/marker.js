@@ -57,7 +57,7 @@ CCMap.Site = function(params) {
    * for the public map
    */
   function toPublicInfoboxHtml() {
-    var caseNumberText = document.createTextNode('Case Number: ' + this.site.case_number);
+    var caseNumberText = document.createTextNode('Case #: ' + this.site.case_number);
     var caseNumberH4 = document.createElement('h4')
     caseNumberH4.appendChild(caseNumberText);
     $infobox.html(caseNumberH4);
@@ -108,7 +108,7 @@ CCMap.Site = function(params) {
 
     // Create an object of key value pairs to display
     var displayObj = {
-      "Case Number": this.site.case_number,
+      "Case #": this.site.case_number,
       "Name": this.site.name
     };
 
@@ -218,7 +218,7 @@ CCMap.Site = function(params) {
     var buttonRow = document.createElement('div');
     buttonRow.className = 'row';
     var buttonCell = document.createElement('div');
-    buttonCell.className = 'small-12 medium-9 medium-offset-3 large-10 large-offset-2 columns';
+    buttonCell.className = 'small-12 medium-9 medium-offset-3 large-9 large-offset-3 columns';
     for (var key in actionButtons) {
       if (actionButtons.hasOwnProperty(key)) {
         var button = document.createElement('a');
@@ -311,10 +311,10 @@ CCMap.Site = function(params) {
     var row = document.createElement('div');
     row.className = 'row';
     var labelCell = document.createElement('div');
-    labelCell.className = 'small-12 medium-3 large-2 columns';
+    labelCell.className = 'small-12 medium-3 large-3 columns';
     var strongLabel = document.createElement('strong');
     var valueCell = document.createElement('div');
-    valueCell.className = 'small-12 medium-9 large-10 columns';
+    valueCell.className = 'small-12 medium-9 large-9 columns';
     strongLabel.appendChild(labelNode);
     labelCell.appendChild(strongLabel);
     valueCell.appendChild(valueNode);
