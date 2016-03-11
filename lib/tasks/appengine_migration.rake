@@ -377,7 +377,7 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
         		# TODO
         		# if error is name is already taken, get existing entity and set that as the pg entity
         	end
-        	if joins and joins != ["incidents"]
+        	if joins
         		joins_hash.each do |key, value|
         			event = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, value
         			puts "[#{appengine_table}-import]-[Error]-[Can't find event with id: #{value}]" if event.nil?
