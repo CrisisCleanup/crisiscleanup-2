@@ -20,11 +20,18 @@ CCMap.Filter = function(params) {
     var label = document.createElement('label');
     label.setAttribute('for', this.id);
     label.appendChild(document.createTextNode(this.label));
-    var listItem = document.createElement('li');
-    listItem.appendChild(this.input);
-    listItem.appendChild(label);
+    var row = document.createElement('div');
+    row.className = 'row';
+    var labelCell = document.createElement('div');
+    labelCell.className = 'small-10 medium-10 large-10 columns';
+    labelCell.appendChild(label);
+    var inputCell = document.createElement('div');
+    inputCell.className = 'small-2 medium-2 large-2 columns';
+    inputCell.appendChild(this.input);
+    row.appendChild(labelCell);
+    row.appendChild(inputCell);
 
-    return listItem;
+    return row;
   }.bind(this);
 }
 
