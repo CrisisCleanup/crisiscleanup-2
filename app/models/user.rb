@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
   end
 
   def events
-    self.legacy_organization.legacy_events.pluck(:id)
+    events = []
+    Legacy::LegacyOrganizationEvent.where(legacy_organization_id: self.legacy_organization.id).each do |leo|
+      events.push(leo.legacy_event_id)
+    end
+    events
   end
 end
