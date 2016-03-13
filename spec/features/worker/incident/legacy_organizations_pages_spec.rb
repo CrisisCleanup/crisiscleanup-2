@@ -1,15 +1,15 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-describe "View worker contacts", :type => :feature, :js => true do
-  it "loads a page with the proper main header" do
-  	sign_in_with_user
-    visit '/dashboard'
-    find('.has-dropdown').hover
-    click_link "Orgs"
-    expect(page).to have_content 'Website'
-    expect(page).to have_content 'Primary Contact'
-  end
-end
+# describe "View worker contacts", :type => :feature, :js => true do
+#   it "loads a page with the proper main header" do
+#   	sign_in_with_user
+#     visit '/dashboard'
+#     find('.has-dropdown').hover
+#     click_link "Orgs"
+#     expect(page).to have_content 'Website'
+#     expect(page).to have_content 'Primary Contact'
+#   end
+# end
 
 # describe "View individual worker contact", :type => :feature, :js => true do
 #   it "loads a page with the proper main header" do
