@@ -151,6 +151,11 @@ def are_entities_identical? appengine_hash, model_entity
 		if model_entity.attributes[key] != value
 			if key == "legacy_event_id"
 				#TODO ?
+			elsif key == "name"
+				unless model_entity.attributes[key].include? value
+					puts key
+					return false
+				end
 			elsif key == "data"
 				appengine_hash["data"].each do |key, value|
 					v = model_entity.data[key]
@@ -397,13 +402,11 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 		        			# unless pg_entity.valid? 
 			        		# 	binding.pry
 			        		# end
+			        		# count += 1
 		        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
 		        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]-[organization: #{pg_entity.name}]"
 	        			end
 	        		end
-        		end
-        		if pg_entity.name == "MHH-Cherry Hill NJ Stake"
-        			binding.pry
         		end
         	end
         	count += 1
