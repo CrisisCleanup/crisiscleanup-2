@@ -324,6 +324,7 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
     	#make these separate functions
     	#entity = add_joins entity if joins, etc
     	if joins
+    		
 	    	joins_hash = {}
 	    	joins.each do |join|
 	    		joins_hash[join] = entity[join]
@@ -379,14 +380,30 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
         	end
         	if joins
         		joins_hash.each do |key, value|
-        			event = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, value
-        			puts "[#{appengine_table}-import]-[Error]-[Can't find event with id: #{value}]" if event.nil?
-        			puts joins_hash if event.nil?
-        			unless pg_entity.valid? 
-	        			binding.pry
+        			if value.length == 1
+	        			event = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, value
+	        			puts "[#{appengine_table}-import]-[Error]-[Can't find event with id: #{value}]" if event.nil?
+	        			puts joins_hash if event.nil?
+	        			# unless pg_entity.valid? 
+		        		# 	binding.pry
+		        		# end
+	        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
+	        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]-[organization: #{pg_entity.name}]"
+	        		else
+	        			value.each do |val|
+		        			event = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, val
+		        			puts "[#{appengine_table}-import]-[Error]-[Can't find event with id: #{val}]" if event.nil?
+		        			puts joins_hash if event.nil?
+		        			# unless pg_entity.valid? 
+			        		# 	binding.pry
+			        		# end
+		        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
+		        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]-[organization: #{pg_entity.name}]"
+	        			end
 	        		end
-        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
-        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]"
+        		end
+        		if pg_entity.name == "MHH-Cherry Hill NJ Stake"
+        			binding.pry
         		end
         	end
         	count += 1
@@ -438,7 +455,6 @@ end
 def identical_and_unique? appengine_hash, model_entity, pg_table
 	success = true
 	unless are_entities_identical? appengine_hash, model_entity
-		binding.pry
 		puts "[Error]-[Entities are not identical]-[key: #{appengine_hash['appengine_key']}]"
 		success = false
 	end
