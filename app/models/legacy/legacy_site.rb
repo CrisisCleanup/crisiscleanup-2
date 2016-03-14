@@ -36,10 +36,10 @@ module Legacy
     end
 
     def calculate_metaphones
-      self.name_metaphone = Text::Metaphone.metaphone(self.name)
-      self.city_metaphone = Text::Metaphone.metaphone(self.city)
-      self.county_metaphone = Text::Metaphone.metaphone(self.county)
-      self.address_metaphone = Text::Metaphone.metaphone(self.address)
+      self.name_metaphone = Text::Metaphone.metaphone(self.name) unless self.name.nil? == true
+      self.city_metaphone = Text::Metaphone.metaphone(self.city) unless self.city.nil? == true
+      self.county_metaphone = Text::Metaphone.metaphone(self.county) unless self.county.nil? == true
+      self.address_metaphone = Text::Metaphone.metaphone(self.address) unless self.address.nil? == true
     end
 
     def create_blurred_geocoordinates

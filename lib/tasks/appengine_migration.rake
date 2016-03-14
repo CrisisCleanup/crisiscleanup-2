@@ -415,11 +415,12 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 
         	count += 1
 	    	unless count == pg_table.count
-	    		binding.pry
+	    		# binding.pry
 	    	end
         	puts "[#{appengine_table}-import]-[Information]-[Success count: #{count}]"
         rescue => e
         	errors_count += 1
+        	# binding.pry
         	puts "[#{appengine_table}-import]-[Error]-[Database Error Message: #{e}]"
         	puts "[#{appengine_table}-import]-[Error]-[App engine key: #{entity['appengine_key']}]"
             puts "[#{appengine_table}-import]-[Errors count: #{errors_count}]"
@@ -440,6 +441,9 @@ def get_appengine_entities(table_name)
 	count = 0
 	errors_count = 0
 	result_keys.each do |key|
+		# if count == 1000
+		# 	return results
+		# end
 		begin
 			count += 1
 			# if count > 10
