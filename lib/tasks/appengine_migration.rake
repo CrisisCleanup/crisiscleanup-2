@@ -325,6 +325,7 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
     entities = get_appengine_entities(appengine_table)
     entities.each do |entity|
     	# sleep for heroku throttling
+
     	sleep 0.1
     	#make these separate functions
     	#entity = add_joins entity if joins, etc
@@ -374,12 +375,14 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
     		pg_entity.created_at = DateTime.now if pg_entity.created_at.nil?
     		pg_entity.updated_at = DateTime.now if pg_entity.updated_at.nil?
 
-    		if Legacy::LegacyOrganization.where(name: pg_entity.name).count > 0
+
+    		if pg_table == Legacy::LegacyOrganization and Legacy::LegacyOrganization.where(name: pg_entity.name).count > 0
     			pg_entity.name = pg_entity.name + "_#{Random.rand(100)}"
     		end
         	pg_entity.save
 
         	unless pg_entity.valid?
+        		raise "entity invalid + #{pg_entity.to_json}"
         		# TODO
         		# if error is name is already taken, get existing entity and set that as the pg entity
         	end
@@ -409,7 +412,11 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 	        		end
         		end
         	end
+
         	count += 1
+	    	unless count == pg_table.count
+	    		binding.pry
+	    	end
         	puts "[#{appengine_table}-import]-[Information]-[Success count: #{count}]"
         rescue => e
         	errors_count += 1
