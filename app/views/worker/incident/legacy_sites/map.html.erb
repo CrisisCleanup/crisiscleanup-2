@@ -24,7 +24,7 @@
   <div id="sidebar">
     <div id="filters-view">
     <h4>Search</h4>
-        <input type="search" style="width: 95%!important; margin-left: 12px;" />        
+      <input id="map-search-btn" type="search" style="width: 95%!important; margin-left: 12px;" />
       <h4>Map Filters</h4>
           <div id="map-filters"></div>
         <h4>Download</h4>
@@ -35,4 +35,8 @@
       <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
     </div>
   </div>
+<% end %>
+
+<% content_for :javascripts do %>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 <% end %>
