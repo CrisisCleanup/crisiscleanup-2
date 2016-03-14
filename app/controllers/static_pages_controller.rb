@@ -29,18 +29,27 @@ class StaticPagesController < ApplicationController
   def donate
     redirect_to "https://www.crowdrise.com/CrisisCleanup"
   end
+
   def contact
-  end    
+  end
+
   def voad
       render :layout => 'application_sidebar'
   end
+
   def volunteer
       render :layout => 'application_sidebar'
-  end    
+  end
+
   def government
       render :layout => 'application_sidebar'
-  end        
+  end
+
   def survivor
       render :layout => 'application_sidebar'
-  end            
+  end
+
+  def training
+      render :layout => 'application_sidebar'
+  end
 end

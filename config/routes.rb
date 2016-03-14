@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/voad" => "static_pages#voad", as: "voad"
   get "/survivor" => "static_pages#survivor", as: "survivor"
   get "/volunteer" => "static_pages#volunteer", as: "volunteer"
+  get "/training" => "static_pages#training", as: "training"
   get "/public_map" => "static_pages#public_map", as: "public_map"
   get "/privacy" => "static_pages#privacy", as: "privacy"
   get "/terms" => "static_pages#terms", as: "terms"
