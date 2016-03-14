@@ -120,6 +120,49 @@ CCMap.Map = function(params) {
     }
   }
 
+  function setupSearch(siteList) {
+    var $searchBtn = $('#map-search-btn');
+    // Initialize the search typeahead
+    // TODO: this shouldn't be loaded or even rendered on every page.
+    if ($searchBtn) {
+      var siteBh = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: siteList.map(function(site) {
+          var siteStr = site.site.name;
+          siteStr += ', ' + site.site.address;
+          siteStr += ', ' + site.site.city;
+          siteStr += ', ' + site.site.state;
+          siteStr += '  ' + site.site.zip_code;
+          return siteStr;
+        })
+      });
+
+      var searchOpts = {
+        minLength: 3,
+        highlight: true
+      };
+
+      var sourceOpts = {
+        name: 'sites',
+        limit: 5,
+        source: siteBh.ttAdapter(),
+        templates: {
+          empty: [
+            '<div class="empty-message">',
+            'No sites match your query',
+            '</div>'
+          ].join('\n')
+        }
+      };
+
+      $searchBtn.typeahead(searchOpts, sourceOpts);
+      $searchBtn.bind('typeahead:select', function(event, selection) {
+        console.log(selection);
+      });
+    }
+  }
+
   function buildMarkers() {
     $('.map-wrapper').append('<div class="loading"></div>');
 
@@ -152,6 +195,7 @@ CCMap.Map = function(params) {
             allSites.push(site);
             activeMarkers.push(site);
           }, this);
+          setupSearch(allSites);
           this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), markerClustererOptions);
           this.map.fitBounds(this.markerBounds);
         } else {

@@ -42,7 +42,6 @@ CCMap.Filter = function(params) {
  * @param {function} params.onUpdate - The function called when filters update
  */
 CCMap.Filters = function(params) {
-  var $searchBtn = $('#map-search-btn');
   var userOrgId;
   var userOrgName;
   var userAdmin;
@@ -123,12 +122,6 @@ CCMap.Filters = function(params) {
   var filterList = document.getElementById('map-filters');
   if (filterList) {
     renderFilters.call(this);
-  }
-
-  // Initialize the search typeahead
-  // TODO: this shouldn't be loaded or even rendered on every page.
-  if ($searchBtn) {
-    // This is currently always run.
   }
 
   function renderFilters() {
