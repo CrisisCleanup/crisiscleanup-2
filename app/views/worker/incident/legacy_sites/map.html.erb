@@ -28,7 +28,7 @@
       <h4>Map Filters</h4>
           <div id="map-filters"></div>
         <h4>Download</h4>
-        <a href="#" style="margin-left: 13px;" class="button">CSV</a>
+        <%= link_to "CSV", worker_incident_event_sites_download_path(@legacy_event.id), class: "button", style: "margin-left: 13px;" %>
     </div>
     <div class="hide" id="form-view">
       <h4 id="form-header">Map Filters</h4>

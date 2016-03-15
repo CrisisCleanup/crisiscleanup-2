@@ -14,5 +14,15 @@ module Legacy
     def self.next_case_label
       CASE_LABELS[self.count % 22]
     end
+
+    def sites_to_csv
+      CSV.generate(headers: true) do |csv|
+        csv << Legacy::LegacySite.attribute_names
+
+        legacy_sites.each do |site|
+          csv << site.attributes.values
+        end
+      end
+    end
   end
 end
