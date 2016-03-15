@@ -20,7 +20,8 @@
 	@import "admin_pages/form";
 }
 .map {
-	@import "incident_pages/map"
+	@import "incident_pages/map";
+	@import "incident_pages/map_search";
 }
 @import "compass";
 @import 'foundation-icons';
