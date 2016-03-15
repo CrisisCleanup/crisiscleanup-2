@@ -16,11 +16,13 @@ module Legacy
     end
 
     def sites_to_csv
-      CSV.generate(headers: true) do |csv|
-        csv << Legacy::LegacySite.attribute_names
+      if legacy_sites.size > 0
+        CSV.generate(headers: true) do |csv|
+          csv << legacy_sites[0].attribute_names
 
-        legacy_sites.each do |site|
-          csv << site.attributes.values
+          legacy_sites.each do |site|
+            csv << site.attributes.values
+          end
         end
       end
     end
