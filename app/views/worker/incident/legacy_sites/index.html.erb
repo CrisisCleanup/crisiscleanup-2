@@ -2,44 +2,43 @@
     Crisis Cleanup - Browse Sites
 <% end %>
 
-
-<% content_for :subheader do %> 
-<div class="subheader">
+<% content_for :subheader do %>
+  <div class="subheader">
     <div class="row">
-        <div class="small-12 medium-12 large-12 columns">
-    <h2>Browse Sites<h2>
-    <hr>
-        </div>
-    </div>    
-</div>    
+      <div class="small-12 medium-12 large-12 columns">
+        <h2>Browse Sites<h2>
+            <hr>
+      </div>
+    </div>
+  </div>
 <% end %>
 
-<% content_for :main do %> 
-<div id="main" class="alt">
+<% content_for :main do %>
+  <div id="main" class="alt">
     <div class="row">
-		<%= render 'table', sites: @sites, event_id: @event_id %>
-        <%= will_paginate @sites %> 
-	</div>	     
-</div>
-
+      <%= render 'table', sites: @sites, event_id: @event_id %>
+      <%= will_paginate @sites %>
+    </div>
+  </div>
 <% end %>
-    
-<% content_for :sidebar do %> 
-<div id="sidebar">
+
+<% content_for :sidebar do %>
+  <div id="sidebar">
     <h4>Site Filter</h4>
     <p>Choose a way to order sites with the form below.</p>
-        <form>
-            <label for="sort_order"><strong> Order By:</strong></label>
-                <select id="sort_order" name="sort_order">
-                  <option value="">Choose a sort order</option>
-                  <option value="county">County</option>
-                  <option value="state">State</option>
-                  <option value="name_asc">Name (Ascending order)</option>
-                  <option value="name_desc">Name (Descending order)</option>
-                  <option value="date_asc">Date (Ascending order)</option>
-                  <option value="date_desc">Date (Descending order)</option>
-                </select> 
-                <a id="submit_sort_order" class="button expand">Submit</a>   
-        </form> 
-</div>
+    <form>
+      <label for="sort_order"><strong> Order By:</strong></label>
+      <select id="sort_order" name="sort_order">
+        <option value="">Choose a sort order</option>
+        <option value="county">County</option>
+        <option value="state">State</option>
+        <option value="name_asc">Name (Ascending order)</option>
+        <option value="name_desc">Name (Descending order)</option>
+        <option value="date_asc">Date (Ascending order)</option>
+        <option value="date_desc">Date (Descending order)</option>
+      </select>
+      <a id="submit_sort_order" class="button expand">Submit</a>
+      <%= link_to "Download CSV", worker_incident_event_sites_download_path(@event_id), class: "button expand" %>
+    </form>
+  </div>
 <% end %>
