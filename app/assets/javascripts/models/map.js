@@ -120,21 +120,46 @@ CCMap.Map = function(params) {
     }
   }
 
+  function zoomToMarker(id) {
+    var matchArray = $.grep(allSites, function(site) { return site.site.id === id; });
+    if (matchArray.length > 0) {
+      var marker = matchArray[0].marker;
+      this.map.setZoom(17);
+      this.map.setCenter(marker.getPosition());
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      // Stop the animation after awhile
+      setTimeout(function() {
+        marker.setAnimation(null);
+      }, 6000);
+    } else {
+      console.warn('Matching site not found.');
+    }
+  }
+  zoomToMarker = zoomToMarker.bind(this);
+
   function setupSearch(siteList) {
     var $searchBtn = $('#map-search-btn');
     // Initialize the search typeahead
     // TODO: this shouldn't be loaded or even rendered on every page.
     if ($searchBtn) {
       var siteBh = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        datumTokenizer: function(obj) {
+          return Bloodhound.tokenizers.whitespace(obj.siteStr);
+        },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
+        identify: function(obj) {
+          return obj.id;
+        },
         local: siteList.map(function(site) {
           var siteStr = site.site.name;
-          siteStr += ', ' + site.site.address;
-          siteStr += ', ' + site.site.city;
-          siteStr += ', ' + site.site.state;
-          siteStr += '  ' + site.site.zip_code;
-          return siteStr;
+          siteStr += ' ' + site.site.address;
+          siteStr += ' ' + site.site.city;
+          siteStr += ' ' + site.site.state;
+          siteStr += ' ' + site.site.zip_code;
+          return {
+            id: site.site.id,
+            siteStr: siteStr
+          }
         })
       });
 
@@ -146,9 +171,10 @@ CCMap.Map = function(params) {
       var sourceOpts = {
         name: 'sites',
         limit: 5,
+        displayKey: 'siteStr',
         source: siteBh.ttAdapter(),
         templates: {
-          empty: [
+          notFound: [
             '<div class="empty-message">',
             'No sites match your query',
             '</div>'
@@ -158,7 +184,7 @@ CCMap.Map = function(params) {
 
       $searchBtn.typeahead(searchOpts, sourceOpts);
       $searchBtn.bind('typeahead:select', function(event, selection) {
-        console.log(selection);
+        zoomToMarker(selection.id);
       });
     }
   }
