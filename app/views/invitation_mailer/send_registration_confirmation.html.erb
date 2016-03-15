@@ -9,7 +9,7 @@
     <p>Incident: <%= @org.legacy_events.first.name %></p>
     <p>Organization: <%= @org.name %></p>
 
-    <p>The current contacts for Hope Force International are:</p>
+    <p>The current contacts for <%= @org.name %> are:</p>
 
     <% @org.legacy_contacts.each do |contact| %>
       <p><%= contact.first_name %> <%= contact.last_name %> <%= contact.email %>
