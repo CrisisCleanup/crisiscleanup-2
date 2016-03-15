@@ -11,7 +11,7 @@
     <!-- do not remove spans -->
     <span class='m-id hidden'><%= @legacy_event.id %></span>
     <span class='m-pin hidden'>init</span>
-
+    <br>
     <div class='map-wrapper'>
       <div id="worker-map-canvas" style="width: 100%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
     </div>
@@ -24,4 +24,8 @@
       <%= render 'site_form', url: worker_incident_path(@site.legacy_event.id) %>
     </div>
   </div>
+<% end %>
+
+<% content_for :javascripts do %>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 <% end %>
