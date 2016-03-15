@@ -4,8 +4,8 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>{USERFULLNAME},</p>
-    <p>Congratulations! {INVITERFULLNAME} (<%= @verified_by.email %>) from {ORGNAME} has verified and activated our Crisis Cleanup account. Please log in here: <a target='_blank' href="http://crisiscleanup.org/login">http://crisiscleanup.org/login</a>.</p>
+    <p><%= @new_user.name %>,</p>
+    <p>Congratulations! <%= @verified_by.name %> (<%= @verified_by.email %>) from <%= @verified_by.legacy_organization.name %> has verified and activated our Crisis Cleanup account. Please log in here: <a target='_blank' href="http://crisiscleanup.org/login">http://crisiscleanup.org/login</a>.</p>
     <p>If you haven't already, please watch the Mandatory 8-Minute Training Video here: <a href="https://www.youtube.com/watch?v=tpMOgDr_KGI">https://www.youtube.com/watch?v=tpMOgDr_KGI</a>. This will answer all of your questions and get you into the field helping people right away.</p>
     <p><strong>-Crisis Cleanup Support Services</strong></p>
     <p>Twitter: <a href="https://twitter.com/CrisisCleanup">@CrisisCleanup</a><br />
