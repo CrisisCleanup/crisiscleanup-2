@@ -11,7 +11,7 @@
     <!-- do not remove spans-->
     <span class='m-id hidden'><%= @legacy_event.id %></span>
     <span class='m-pin hidden'>all</span>
-      <br>
+    <br>
     <div class='map-wrapper'>
       <div id="worker-map-canvas" style="width: 100%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
       <%= image_tag "map_legend.png", :class => "legend"  %>
@@ -24,15 +24,19 @@
   <div id="sidebar">
     <div id="filters-view">
     <h4>Search</h4>
-        <input type="search" style="width: 95%!important; margin-left: 12px;" />        
+      <input id="map-search-btn" type="search" style="width: 95%!important; margin-left: 12px;" />
       <h4>Map Filters</h4>
           <div id="map-filters"></div>
         <h4>Download</h4>
-        <a href="#" style="margin-left: 13px;" class="button">CSV</a>
+        <%= link_to "CSV", worker_incident_event_sites_download_path(@legacy_event.id), class: "button", style: "margin-left: 13px;" %>
     </div>
     <div class="hide" id="form-view">
       <h4 id="form-header">Map Filters</h4>
       <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
     </div>
   </div>
+<% end %>
+
+<% content_for :javascripts do %>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 <% end %>

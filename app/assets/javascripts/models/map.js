@@ -120,6 +120,75 @@ CCMap.Map = function(params) {
     }
   }
 
+  function zoomToMarker(id) {
+    var matchArray = $.grep(allSites, function(site) { return site.site.id === id; });
+    if (matchArray.length > 0) {
+      var marker = matchArray[0].marker;
+      this.map.setZoom(17);
+      this.map.setCenter(marker.getPosition());
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      // Stop the animation after awhile
+      setTimeout(function() {
+        marker.setAnimation(null);
+      }, 6000);
+    } else {
+      console.warn('Matching site not found.');
+    }
+  }
+  zoomToMarker = zoomToMarker.bind(this);
+
+  function setupSearch(siteList) {
+    var $searchBtn = $('#map-search-btn');
+    // Initialize the search typeahead
+    // TODO: this shouldn't be loaded or even rendered on every page.
+    if ($searchBtn) {
+      var siteBh = new Bloodhound({
+        datumTokenizer: function(obj) {
+          return Bloodhound.tokenizers.whitespace(obj.siteStr);
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        identify: function(obj) {
+          return obj.id;
+        },
+        local: siteList.map(function(site) {
+          var siteStr = site.site.name;
+          siteStr += ' ' + site.site.address;
+          siteStr += ' ' + site.site.city;
+          siteStr += ' ' + site.site.state;
+          siteStr += ' ' + site.site.zip_code;
+          return {
+            id: site.site.id,
+            siteStr: siteStr
+          }
+        })
+      });
+
+      var searchOpts = {
+        minLength: 3,
+        highlight: true
+      };
+
+      var sourceOpts = {
+        name: 'sites',
+        limit: 5,
+        displayKey: 'siteStr',
+        source: siteBh.ttAdapter(),
+        templates: {
+          notFound: [
+            '<div class="empty-message">',
+            'No sites match your query',
+            '</div>'
+          ].join('\n')
+        }
+      };
+
+      $searchBtn.typeahead(searchOpts, sourceOpts);
+      $searchBtn.bind('typeahead:select', function(event, selection) {
+        zoomToMarker(selection.id);
+      });
+    }
+  }
+
   function buildMarkers() {
     $('.map-wrapper').append('<div class="loading"></div>');
 
@@ -152,6 +221,7 @@ CCMap.Map = function(params) {
             allSites.push(site);
             activeMarkers.push(site);
           }, this);
+          setupSearch(allSites);
           this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), markerClustererOptions);
           this.map.fitBounds(this.markerBounds);
         } else {

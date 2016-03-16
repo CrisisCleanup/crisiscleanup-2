@@ -1,15 +1,7 @@
 <%= form_tag request_invitations_path %>
-<div class="row">
-	<div class="small-12 medium-7 large-8 columns invite">
+<div class="small-12 medium-12 large-12 columns registration_form_template">
 	  <%= text_field_tag :name, nil, autocomplete: "off", placeholder: "Enter your name" %>
-	</div>     
-	<div class="small-12 medium-7 large-8 columns invite">
 	  <%= text_field_tag :email, nil, autocomplete: "off", placeholder: "Enter your email" %>
-	</div>     
-	<div class="small-12 medium-7 large-8 columns invite">
-		<%= select_tag "legacy_organization_id", options_from_collection_for_select(@organizations, "id", "name") %>
-	</div>
-	<div class="small-12 medium-5 large-4 columns invite">
+      <%= select_tag "legacy_organization_id", options_from_collection_for_select(@organizations, "id", "name") %>
 	  <%= submit_tag "Submit", :class => "button" %>
-	</div>   
 </div>

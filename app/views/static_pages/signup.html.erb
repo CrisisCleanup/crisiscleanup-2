@@ -1,53 +1,62 @@
 <% content_for :title do %>
     Crisis Cleanup - Signup
 <% end %>
+
+<% content_for :subheader do %> 
+<div class="row subheader">
+        <div class="small-12 medium-8 large-10 columns">
+            <h2>Signup For Crisis Cleanup<h2>
+                <h4 class="basic">Crisis Cleanup is a free, award-winning, ready-to-use, open source application that connects disaster recovery organizations with the people who need help.</h4>
+                <hr class="medium"> 
+        </div>                
+        <div class="small-12 medium-4 large-2 columns" align="center">
+            <%= image_tag "characters/Checkmark.png", :class => "character" ,:alt => "worker dashboard"  %>
+        </div>    
+</div>    
+<% end %>
+            
 <% content_for :main do %>
 <div id="main">
-    <div class="row home_coordinated_disasters">
-        <h2 align="center">33 Disasters Coordinated</h2>
-        <p align="center">Ready Now: Multi-Agency Disaster Relief Coordination</p>
+    <div class="row">
             <div class="columns small-12 medium-12 large-4" align="center">
-                <%= image_tag "icons/tornado-red.png", :alt => "dallas tornadoes"  %>
-                <h3 class="red-block"><a href="<%= register_path %>">New Organization</a></h3>
-                <p>First time here? Sign up to collaborate with other qualified cleanup releif organizations.<br /><br /><br /></p>
+                <%= image_tag "characters/Team3-211.png", :class => "character" ,:alt => "worker dashboard"  %>
+                <h3 >New Organization</h3>
+                <p>First time here? Sign up to collaborate with other qualified cleanup releif organizations.</p>
+                <a href="/register" class="button">Register Here</a>
             </div> 
             <div class="columns small-12 medium-12 large-4" align="center">
-                <%= image_tag "icons/hurricane-yellow.png", :alt => "hurricane sandy"  %>
-                <h3 class="mustard-block">​<a href="<%= new_request_invitation_path %>">New Volunteer</a></h3>        
-                <p>Are you a volunteer? Join your organization if it is already using Crisis Cleanup.<br /><br /></p>
+                <%= image_tag "characters/Shovel Guy.png", :class => "character" ,:alt => "worker dashboard"  %>
+                <h3>New Volunteer</h3>        
+                <p>Are you a volunteer? Join your organization if it is already using Crisis Cleanup.</p>
+                <a href="/request_invitations/new" class="button">Request Invitation</a>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
-                <%= image_tag "icons/flood-blue.png", :alt => "tx / ok floods"  %>
-                <h3 class="blue-block">​<a href="<%= new_worker_temporary_password_path %>">I Have a Temporary Password​</a></h3>
+                <%= image_tag "characters/Smart Phone.png", :class => "character" ,:alt => "worker dashboard"  %>
+                <h3>Temporary Password</h3>
                 <p>Did a team leader give you a temporary password? Use it to get started!</p>
+                <a href="/worker/temporary_passwords/new" class="button">Use Password</a>
             </div>
         </div>
-        <div class="row home_coordinated_disasters">
+        <div class="row">
             <div class="columns small-12 medium-12 large-4" align="center">
-                <%= image_tag "icons/snowflake-green.png", :alt => "boston snowflakes"  %>
-                <h3 class="green-block">​<a href="<%= new_incident_path %>">New Incident​</a></h3>
+                <%= image_tag "characters/Tornado.png", :class => "character" ,:alt => "worker dashboard"  %>
+                <h3>New Incident</h3>
                 <p>Would you like to use Crisis Cleanup for a recent disaster? Just ask! We're happy to help.</p>
+                <a href="/new_incident" class="button">Register Now</a>
             </div> 
             <div class="columns small-12 medium-12 large-4" align="center">
-                <%= image_tag "icons/fire-black.png", :alt => "black forest fires"  %>
-                <h3 class="black-block">​<a href="<%= redeploy_path %>">Redeploy Your Organization​</a></h3>
-                <p>Has your organization used Crisis Cleanup before? Click here to join another incident.<br /><br /><br /></p>
+                <%= image_tag "characters/Workers Shovel Hammer-Team1.png", :class => "character" ,:alt => "worker dashboard"  %>
+                <h3>Redeploy Your Organization</h3>
+                <p>Has your organization used Crisis Cleanup before? Click here to join another incident.</p>
+                <a href="/redeploy" class="button">Redeploy Now</a>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
-                <%= image_tag "icons/wind-orange.png", :alt => "south nj dericho storms"  %>
-                <h3 class="orange-block">​<a href="<%= about_path %>">Just Curious</a></h3>
+                <%= image_tag "characters/Two Soccer Players Running Toward One Another-Right.png", :class => "character" ,:alt => "worker dashboard"  %>
+                <h3>Just Curious</h3>
                 <p>Want to learn more about Crisis Cleanup, play with the demo, or request a presentation?</p>
+                <a href="/about" class="button">Learn More</a>
             </div>     
         </div>
-    <hr>
-    <div class="row">
-        <div class="columns small-12 medium-8 large-10">
-            <h3>Crisis Cleanup is a free, award-winning, ready-to-use, open source application that connects disaster recovery organizations with the people who need help.</h3>
-        </div>
-        <div class="columns small-12 medium-4 large-2" align="center">
-            <%= image_tag "characters/Celebrate.png", :class => "character" ,:alt => "self-organizing volunteers"  %>
-        </div>
-    </div>
 </div>
 <% end %>
 

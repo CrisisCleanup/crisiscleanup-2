@@ -59,15 +59,30 @@ CCMap.Site = function(params) {
    * for the public map
    */
   function toPublicInfoboxHtml() {
+    var wrapper = document.createElement('div');
+    var closeBtn = document.createElement('a');
+    closeBtn.className = 'close';
+    closeBtn.innerHTML = '&times;';
+    var row = document.createElement('div');
+    row.className = 'row';
+    var header = document.createElement('div');
+    header.className = 'small-12 columns';
+    closeBtn.addEventListener('click', function() {
+      $infobox.slideToggle();
+    });
+    header.appendChild(closeBtn);
+    row.appendChild(header);
+    wrapper.appendChild(row);
+
     var caseNumberText = document.createTextNode('Case #: ' + this.site.case_number);
     var caseNumberH4 = document.createElement('h4')
     caseNumberH4.appendChild(caseNumberText);
-    $infobox.html(caseNumberH4);
+    wrapper.appendChild(caseNumberH4);
 
     var notice = document.createTextNode('Name, Address, Phone Number are removed from the public map');
     var noticeP = document.createElement('p')
     noticeP.appendChild(notice);
-    $infobox.append(noticeP);
+    wrapper.appendChild(noticeP);
 
     var addressString = 'Address: ' + this.site.address + ', ' + this.site.city + ', ' + this.site.state;
     if (this.site.zip_code) {
@@ -76,17 +91,19 @@ CCMap.Site = function(params) {
     var addressText = document.createTextNode(addressString);
     var addressP = document.createElement('p')
     addressP.appendChild(addressText);
-    $infobox.append(addressP);
+    wrapper.appendChild(addressP);
 
     var workTypeText = document.createTextNode('Work Type: ' + this.site.work_type);
     var workTypeP = document.createElement('p')
     workTypeP.appendChild(workTypeText);
-    $infobox.append(workTypeP);
+    wrapper.appendChild(workTypeP);
 
     var statusText = document.createTextNode('Status: ' + this.site.status);
     var statusP = document.createElement('p')
     statusP.appendChild(statusText);
-    $infobox.append(statusP);
+    wrapper.appendChild(statusP);
+
+    $infobox.html(wrapper);
   }
 
   /**

@@ -49,6 +49,9 @@ Rails.application.routes.draw do
     post "temporary_passwords/authorize" => "temporary_passwords#authorize", as: "authorize_temporary_password"
 
     namespace :incident do
+      # This should be an events (incident) controller
+      get "/:id/download-sites" => "legacy_events#download_sites", as: "event_sites_download"
+
       get "/:id/sites" => "legacy_sites#index", as: "legacy_sites_index"
       get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"
       get "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization"

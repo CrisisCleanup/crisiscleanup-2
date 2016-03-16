@@ -27,12 +27,20 @@ module Worker
 
       def print
         @site = Legacy::LegacySite.find(params[:id])
+
         if (@site.claimed_by)
           @claimed_by_org = Legacy::LegacyOrganization.find(@site.claimed_by)
         end
+
         if (@site.reported_by)
           @reported_by_org = Legacy::LegacyOrganization.find(@site.reported_by)
         end
+
+        @address2 = @site.city
+        @address2 += ", " + @site.state if @site.state
+        @address2 += "  " + @site.zip_code if @site.zip_code
+        @address2 += "(" + @site.county + ")" if @site.county
+
         render layout: false
       end
 

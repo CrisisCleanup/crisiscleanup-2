@@ -2,15 +2,19 @@
     Crisis Cleanup - Request a New Incident
 <% end %>
 
+<% content_for :subheader do %> 
+<div class="row subheader">
+        <div class="small-12 medium-8 large-10 columns">
+            <h2>Request to use CrisisCleanup for a new incident<h2>
+                <h4 class="basic">Before a new incident can be created, be sure to complete the and submit the following form for approval.</h4>
+                <hr class="medium"> 
+        </div>                
+        <div class="small-12 medium-4 large-2 columns" align="center">
+            <%= image_tag "characters/Tornado.png", :class => "character" ,:alt => "worker dashboard"  %>
+        </div>    
+</div>    
+<% end %>
+            
 <% content_for :main do %>
-	<div class="row">
-		<div class='small-12 medium-12 large-12 columns'>
-        	<h3>Request to use CrisisCleanup for a new incident.</h3>		
-		</div>
-	</div>
-	<div class="row">
-		<div class='small-12 medium-12 large-12 columns'>
-	       <%= render 'request_incident_form' %>
-        </div>
-</div>
+	   <%= render 'request_incident_form' %>
 <%end%>
