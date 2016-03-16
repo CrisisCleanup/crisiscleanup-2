@@ -35,10 +35,11 @@ class RegistrationsController < ApplicationController
   		User.where(admin:true).each do |u|
         AdminMailer.send_registration_alert(u,@org).deliver_now
       end
-      # TODO: this does not work, since the InvitationMailer expects an invite model as the first param
-      #@org.legacy_contacts.each do |contact|
-      #  InvitationMailer.send_registration_confirmation(contact, request.base_url, @org).deliver_now
-      #end
+
+      @org.legacy_contacts.each do |contact|
+       InvitationMailer.send_contact_alert(contact, @org).deliver_now
+      end
+
   		redirect_to "/welcome"
   	else
   		# with errors
