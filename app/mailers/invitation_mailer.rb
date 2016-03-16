@@ -37,4 +37,8 @@ class InvitationMailer < ActionMailer::Base
     @org = org
     mail(to: @email, subject: "#{@user.email} has invited you to join Crisis Cleanup")
   end
+
+  def send_contact_alert(contact, org)
+    mail(to: contact.email, subject: "Crisis Cleanup Application Pending Approval")
+  end
 end
