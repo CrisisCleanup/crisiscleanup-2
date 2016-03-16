@@ -197,7 +197,7 @@
       </td>
       <td rowspan="2" colspan="16" class="allBorders">
         <p class="data"><%= @site.address %><br>
-          <%= @address2 %>
+          <%= @address2 %> <%= @site.zip_code %>
         </p></td>
         <td>
           <p>&nbsp;</p>
@@ -206,7 +206,7 @@
           <p>Cross Street</p>
         </td>
         <td colspan="3" class="allBorders">
-          <p class="data"></p>
+          <p class="data"><%= @site.data["cross_street"] if @site.data %></p>
         </td>
       </tr>
 
@@ -239,7 +239,7 @@
         </td>
         <td colspan="3" class="allBorders">
           <p class="data">
-           <b>X</b> 
+           <b><%= 'X' if @site.data && @site.data["member_of_assessing_organization"] == 'y' %></b>
          </p>
        </td>
      </tr>
@@ -249,7 +249,7 @@
         <p>Best Time to Call</p>
       </td>
       <td colspan="16" class="allBorders">
-        <p class="data"></p>
+        <p class="data"><%= @site.data["time_to_call"] if @site.data %></p>
       </td>
       <td>
         <p>&nbsp;</p>
@@ -259,7 +259,7 @@
       </td>
       <td colspan="3" class="allBorders">
         <p class="data">
-         <b>X</b> 
+         <b><%= 'X' if @site.data && @site.data["first_responder"] == 'y' %></b>
        </p>
      </td>
    </tr>
@@ -271,8 +271,8 @@
     </td>
     <td colspan="16" class="allBorders">
       <p class="data">
-       - 
-     </p>
+        <b><%= 'X' if @site.data && @site.data["disabled"] == 'y' %></b>
+      </p>
    </td>
    <td>
     <p>&nbsp;</p>
@@ -292,7 +292,7 @@
     <p>Special Needs</p>
   </td>
   <td colspan="26" class="allBorders">
-    <p class="data"></p>
+    <p class="data"><%= @site.data["special_needs"] if @site.data %></p>
   </td>
 </tr>
 
@@ -309,7 +309,7 @@
     <p class="sectionTitle">Description of Work</p>
   </td>
   <td colspan="20" class="topThickBorder">
-    <p>&nbsp;</p>
+    <p><%= @site.data["damage_notes"] if @site.data %></p>
   </td>
 </tr>
 
@@ -318,7 +318,7 @@
    <p>Flood Height (ft)</p>
  </td>
  <td class="allBorders">
-  <p class="data"></p>
+  <p class="data"><%= @site.data["flood_height"] if @site.data %></p>
 </td>
 <td>
   <p>&nbsp;</p>
@@ -348,7 +348,7 @@
 </td>
 <td class="allBorders">
   <p class="data">
-   - 
+    <b><%= 'X' if @site.data && @site.data["nonvegitative_debris_removal"] == 'y' %></b><b><%= 'X' if @site.data && @site.data["vegitative_debris_removal"] == 'y' %></b><b><%= 'X' if @site.data && @site.data["debris_removal"] == 'y' %></b><b><%= 'X' if @site.data && @site.data["interior_debris_removal"] == 'y' %></b><b><%= 'X' if @site.data && @site.data["debris_in_trees_removal"] == 'y' %></b>
  </p>
 </td>
 </tr>
@@ -401,7 +401,7 @@
  </td>
  <td class="allBorders">
   <p class="data">
-   <b><%= 'X' if @site.data && @site.data["hardwood_floor"] == 'y' %></b> 
+   <b><%= 'X' if @site.data && @site.data["hardwood_floor_removal"] == 'y' %></b> 
  </p>
 </td>
 <td>
@@ -423,7 +423,7 @@
 </td>
 <td class="allBorders">
   <p class="data">
-   - 
+    <b><%= 'X' if @site.data && @site.data["house_roof_damage"] == 'y' %></b><b><%= 'X' if @site.data && @site.data["outbuilding_roof_damage"] == 'y' %></b>
  </p>
 </td>
 <td>
@@ -455,7 +455,7 @@
 </td>
 <td class="allBorders">
   <p class="data">
-   <b><%= 'X' if @site.data && @site.data["pump_requested"] == 'y' %></b> 
+   <b><%= 'X' if @site.data && @site.data["pump_needed"] == 'y' %></b> 
  </p>
 </td>
 <td>
@@ -465,7 +465,7 @@
   <p>Tarps Needed</p>
 </td>
 <td class="allBorders">
-  <p class="data"><%= 'X' if @site.data && @site.data["tarps_needed"] == 'y' %></p>
+  <p class="data"><%= @site.data["tarps_needed"] if @site.data %></p>
 </td>
 <td>
   <p>&nbsp;</p>
@@ -486,7 +486,7 @@
   </td>
   <td class="allBorders">
     <p class="data">
-     <b><%= 'X' if @site.data && @site.data["heavy_items"] == 'y' %></b> 
+     <b><%= 'X' if @site.data && @site.data["heavy_item_removal"] == 'y' %></b> 
    </p>
  </td>
  <td>
@@ -496,7 +496,7 @@
   <p>Floors Flooded</p>
 </td>
 <td colspan="16" class="allBorders">
-  <p class="data">None</p>
+  <p class="data"><%= @site.data["floors_affected"] if @site.data %></p>
 </td>
 </tr>
 
@@ -505,7 +505,7 @@
     <p>Other Work</p>
   </td>
   <td colspan="26" class="allBorders">
-    <p class="data"></p>
+    <p class="data"><%= @site.data["work_requested"] if @site.data %></p>
   </td>
 </tr>
 
@@ -514,7 +514,7 @@
     <p>Notes</p>
   </td>
   <td colspan="26" class="allBorders">
-    <p class="data"><%= @site.data["notes"] if @site.data %></p>
+    <p class="data"><%= @site.data["notes"] if @site.data %> <%= @site.data["damage_notes"] if @site.data %> <%= @site.data["status_notes"] if @site.data %></p>
   </td>
 </tr>
 
@@ -536,7 +536,7 @@
  </td>
  <td class="allBorders">
   <p class="data">
-   <b><%= 'X' if @site.data && @site.data["home_habitable"] == 'y' %></b> 
+   <b><%= 'X' if @site.data && @site.data["habitable"] == 'y' %><%= 'X' if @site.data && @site.data["uninhabitable"] == 'n' %></b> 
  </p>
 </td>
 <td>
@@ -558,7 +558,7 @@
 </td>
 <td class="allBorders">
   <p class="data">
-   <b><%= 'X' if @site.data && @site.data["downed_wires"] == 'y' %></b> 
+   <b><%= 'X' if @site.data && @site.data["electrical_lines"] == 'y' %></b> 
  </p>
 </td>
 <td>
@@ -569,7 +569,7 @@
 </td>
 <td class="allBorders">
   <p class="data">
-   <b><%= 'X' if @site.data && @site.data["work_without_homeowner"] == 'y' %></b> 
+   <b><%= 'X' if @site.data && @site.data["work_without_resident"] == 'y' %></b> 
  </p>
 </td>
 </tr>
@@ -579,7 +579,7 @@
     <p>Other Hazards</p>
   </td>
   <td colspan="26" class="allBorders">
-    <p class="data"></p>
+    <p class="data"><%= @site.data["other_hazards"] if @site.data %></p>
   </td>
 </tr>
 
@@ -603,7 +603,7 @@
 </tr>
 <tr>
   <td colspan="28" class="allBorders">
-    <p>I hold the volunteers, including their representatives and agents, harmless from any damage or injury that may occur on my property, including personal injury.  Further, I understand that no warranty or guarantee, express or implied, is provided for work performed on my property.  I have taken any photos needed for insurance purposes and give permission for repairs, demolition and/or debris removal. Volunteers (circle one):&nbsp;&nbsp;&nbsp;<strong>May</strong>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<strong>May Not</strong>&nbsp;&nbsp;&nbsp;perform service in my absence.</p>
+    <p>I hold the volunteers, their organization, representatives and agents, harmless from any damage or injury that may occur on my property, including personal injury.  Further, I understand that no warranty or guarantee, express or implied, is provided for work performed on my property.  I have taken any photos needed for insurance purposes and give permission for repairs, demolition and/or debris removal. Volunteers (circle one):&nbsp;&nbsp;&nbsp;<strong>May</strong>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<strong>May Not</strong>&nbsp;&nbsp;&nbsp;perform service in my absence.</p>
   </td>
 </tr>
 <tr>
