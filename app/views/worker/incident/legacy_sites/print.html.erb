@@ -197,7 +197,7 @@
       </td>
       <td rowspan="2" colspan="16" class="allBorders">
         <p class="data"><%= @site.address %><br>
-          <%= @address2 %> <%= @site.zip_code %>
+          <%= @address2 %>
         </p></td>
         <td>
           <p>&nbsp;</p>
@@ -505,7 +505,7 @@
     <p>Other Work</p>
   </td>
   <td colspan="26" class="allBorders">
-    <p class="data"><%= @site.data["work_requested"] if @site.data %></p>
+    <p class="data"><%= @site.work_requested %></p>
   </td>
 </tr>
 
