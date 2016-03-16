@@ -17,10 +17,10 @@ describe "Going to the signup page page", :type => :feature do
 end
 
 describe "Going to the signup page page", :type => :feature do
-  it "has a New Organization Link" do
+  it "has a New Incident Link" do
     visit '/signup'
     click_link 'Register Now'
-    expect(page).to have_content 'Request to use CrisisCleanup for a new incident.'
+    expect(page).to have_content 'Request to use CrisisCleanup for a new incident'
   end
 end
 
@@ -28,7 +28,7 @@ describe "Going to the signup page page", :type => :feature do
   it "has a New Organization Link" do
     visit '/signup'
     click_link 'Redeploy Now'
-    expect(page).to have_content 'Redeploy to a new incident.'
+    expect(page).to have_content 'Redeploy to a new incident'
   end
 end
 
