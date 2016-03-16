@@ -73,8 +73,9 @@
     width: 100%;
     height: 575px;
     background: image-url('ccu-home-slide.png') bottom center;
-    background-size: cover;
-    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center right;
     overflow: visible;
 }
 
@@ -98,6 +99,7 @@
     }
 }
 
+// infobox
 #map-infobox {
   display: none;
   z-index: 2;
@@ -171,6 +173,7 @@
         width: 100px;
         height: 100px;
     }
+    margin-bottom: 40px;
 }
 
 .cta {

@@ -106,18 +106,8 @@ table {
     background-color: $smoke;
     margin-top: -3px;
 }
-.legend {
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  margin-top: -214px;
-  background-color: #ffffff;
-  padding: 0px;
-  max-width: 200px;
-    border-top: 2px solid #5c5c5c;    
-    border-right: 2px solid #5c5c5c;    
-}
-
+    
+// infobox
 #map-infobox {
   display: none;
   z-index: 2;

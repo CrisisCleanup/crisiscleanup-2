@@ -23,15 +23,15 @@
                 </form>
             </div>
         </div>
-    </header>
-    <hr>
+    </header>    
 <% end %>
 
 <% content_for :main do %>
 <div id="main">
     <div class="row home_coordinated_disasters">
-        <h2 align="center">34 Disasters Coordinated</h2>
+        <h2 align="center">34 Disasters Coordinated</h2>        
         <p align="center">Ready Now: Multi-Agency Disaster Relief Coordination</p>
+        <hr class="medium">
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/tornado-red.png", :alt => "dallas tornadoes"  %>
                 <h3 class="red-block">Dallas Tornadoes</h3>
@@ -65,10 +65,10 @@
                 <p>More than 700 volunteers helped several hundred elderly residents remove downed trees in Southern New Jersey. Crisis Cleanup drastically improved efficiency and coordination.</p>
             </div>
         </div>
-    <hr>
     <div class="row">
         <div class="columns small-12 medium-8 large-10">
             <h3>Crisis Cleanup is a free, award-winning, ready-to-use, open source application that connects disaster recovery organizations with the people who need help.</h3>
+                <hr class="medium">
         </div>
         <div class="columns small-12 medium-4 large-2" align="center">
             <%= image_tag "characters/Celebrate.png", :class => "character" ,:alt => "self-organizing volunteers"  %>
@@ -98,7 +98,7 @@
                     <li>Are reputable (e.g. are a VOAD member or come recommended by a VOAD).</li>
                     <li>Committed to open data and collaboration. Crisis Cleanup is open-source and free of charge.</li>
                 </ol>
-                <a href="/register" class="button expand">Sound like you? Sign up!</a>
+                <a href="/signup" class="button expand">Sound like you? Sign up!</a>
             </div>
         </div>
     </div>

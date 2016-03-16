@@ -178,6 +178,19 @@ p.notice {
     margin-right: auto;
 }
 
+// legend 
+.legend {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  margin-top: -214px;
+  background-color: #ffffff;
+  padding: 0px;
+  max-width: 200px;
+  border-top: 2px solid #5c5c5c;    
+  border-right: 2px solid #5c5c5c;    
+}
+
 // generate random temporary password 
 .temporary_password {
     color: #43AC6A;
