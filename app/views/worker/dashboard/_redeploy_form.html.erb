@@ -1,11 +1,6 @@
 <%= form_tag redeploy_request_path %>
-<div class="row">
-	<div class="small-12 medium-7 large-8 columns invite">
-	  <label>Event</label>
-	  <%= select_tag "Event", options_from_collection_for_select(Legacy::LegacyEvent.all, "id", "name", "1") %>
-	</div>
-
-	<div class="small-12 medium-12 large-12 columns invite">
-	  <%= submit_tag "Submit", :class => "button" %>
-	</div>   
+<div class="small-12 medium-6 large-6 columns invite registration_form_template">
+    <label>Event</label>
+    <%= select_tag "Event", options_from_collection_for_select(Legacy::LegacyEvent.all, "id", "name", "1") %>
+    <%= submit_tag "Submit", :class => "button" %>
 </div>

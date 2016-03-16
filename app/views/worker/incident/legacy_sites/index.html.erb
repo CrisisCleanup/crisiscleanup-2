@@ -3,14 +3,15 @@
 <% end %>
 
 <% content_for :subheader do %>
-  <div class="subheader">
-    <div class="row">
-      <div class="small-12 medium-12 large-12 columns">
+<div class="row subheader">
+    <div class="small-12 medium-8 large-10 columns">
         <h2>Browse Sites<h2>
-            <hr>
-      </div>
+        <hr class="medium">
     </div>
-  </div>
+    <div class="small-12 medium-4 large-2 columns" align="center">
+        <%= image_tag "characters/Houses Broken.png", :class => "character" ,:alt => "browse sites"  %>
+    </div>              
+</div>
 <% end %>
 
 <% content_for :main do %>
@@ -24,7 +25,7 @@
 
 <% content_for :sidebar do %>
   <div id="sidebar">
-    <h4>Site Filter</h4>
+    <h4>Sites Filter</h4>
     <p>Choose a way to order sites with the form below.</p>
     <form>
       <label for="sort_order"><strong> Order By:</strong></label>
@@ -37,8 +38,8 @@
         <option value="date_asc">Date (Ascending order)</option>
         <option value="date_desc">Date (Descending order)</option>
       </select>
-      <a id="submit_sort_order" class="button expand">Submit</a>
-      <%= link_to "Download CSV", worker_incident_event_sites_download_path(@event_id), class: "button expand" %>
+      <a id="submit_sort_order" class="button">Submit</a>
+      <%= link_to "Download CSV", worker_incident_event_sites_download_path(@event_id), class: "button" %>
     </form>
   </div>
 <% end %>
