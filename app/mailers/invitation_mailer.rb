@@ -4,7 +4,7 @@ class InvitationMailer < ActionMailer::Base
     @user = User.find(inv.user_id)
     @email = inv.invitee_email
     @url = request + "/invitations/activate?token="+inv.token
-    mail(to: @email, subject: "#{@user.email} has invited you to join Crisis Cleanup")
+    mail(to: @email, subject: "#{@user.name} has invited you to join Crisis Cleanup")
   end
 
   def send_confirmation_alert(verified_by, new_user)
@@ -35,7 +35,7 @@ class InvitationMailer < ActionMailer::Base
     @email = inv.invitee_email
     @url = request + "/invitations/activate?token="+inv.token
     @org = org
-    mail(to: @email, subject: "#{@user.email} has invited you to join Crisis Cleanup")
+    mail(to: @email, subject: "#{@user.name} has invited you to join Crisis Cleanup")
   end
 
   def send_contact_alert(contact, org)

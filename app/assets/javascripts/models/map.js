@@ -151,7 +151,8 @@ CCMap.Map = function(params) {
           return obj.id;
         },
         local: siteList.map(function(site) {
-          var siteStr = site.site.name;
+          var siteStr = site.site.case_number + ': ';
+          siteStr += ' ' + site.site.name;
           siteStr += ' ' + site.site.address;
           siteStr += ' ' + site.site.city;
           siteStr += ' ' + site.site.state;
