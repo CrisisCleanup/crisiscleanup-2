@@ -3,7 +3,11 @@ class InvitationsController < ApplicationController
   before_filter :check_token
   
   def activate
-    @invitation = Invitation.where(token:params[:token]).where('expiration > ?', DateTime.now).first
+    @invitation = Invitation.select("invitations.*, legacy_organizations.name as org_name")
+                            .where(token:params[:token])
+                            .where('expiration > ?', DateTime.now)
+                            .joins("JOIN legacy_organizations ON legacy_organizations.id = invitations.organization_id")
+                            .first
     unless @invitation
       if Invitation.where(token:params)
        flash[:notice] = 'Your account has already been activated. Please <a href="/login">Login</a> or <a href="/password/new">Request a New Password</a>.'.html_safe
@@ -28,7 +32,14 @@ class InvitationsController < ApplicationController
       redirect_to :back
       return
     end
-    @user = User.new(email: params["user"]["email"],password: params["user"]["password"],name: params["user"]["name"], legacy_organization_id:inv.organization_id, referring_user_id:inv.user_id)
+    @user = User.new(email: params["user"]["email"],
+      password: params["user"]["password"],
+      name: params["user"]["name"],
+      role: params["user"]["role"],
+      mobile: params["user"]["mobile"],
+      legacy_organization_id:inv.organization_id,
+      referring_user_id:inv.user_id
+    )
 
     if @user.save
       RequestInvitation.user_created!(params["user"]["email"])

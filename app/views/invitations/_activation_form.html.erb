@@ -5,10 +5,16 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <div class="input string">
+      <label class="string">Organization</label>
+      <%= @invitation.org_name %>
+    </div>
     <%= f.input :email, :as => :hidden, :input_html => { :value => @invitation.invitee_email } %>
     <%= f.input :name, required: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
     <%= f.input :password_confirmation, required: true %>
+    <%= f.input :role, collection: ["Worker", "Team Leader", "Primary Contact"], prompt: "Select a role" %>
+    <%= f.input :mobile, label: "Cell Phone" %>
     <input type=checkbox id="accept-terms"> <strong>I agree to the <a target="_blank" id="privacy_link" href="/terms">Terms of Service</a> and <a target="_blank" id="privacy_link" href="/privacy">Privacy Policy</a></strong>
   </div>
 

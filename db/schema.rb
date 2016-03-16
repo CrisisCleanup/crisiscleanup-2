@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310170643) do
+ActiveRecord::Schema.define(version: 20160316230336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20160310170643) do
     t.string   "token",           null: false
     t.integer  "organization_id", null: false
     t.datetime "expiration"
+  end
+
+  create_table "invitations_request", force: :cascade do |t|
+    t.integer "approved_by"
+    t.string  "email",        null: false
+    t.string  "name",         null: false
+    t.boolean "volunteer"
+    t.boolean "staff_member"
+    t.date    "expires_at",   null: false
   end
 
   create_table "legacy_contacts", force: :cascade do |t|
@@ -203,6 +212,8 @@ ActiveRecord::Schema.define(version: 20160310170643) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
+    t.string   "role"
+    t.string   "mobile"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
