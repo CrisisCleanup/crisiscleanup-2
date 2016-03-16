@@ -3,34 +3,38 @@
 <% end %>
 
 <% content_for :subheader do %> 
-<div class="subheader">
-    <div class="row">
-        <div class="small-12 medium-12 large-12 columns">
-    <h2>Worker Dashboard<h2>
-    <hr>
-        </div>
-    </div>    
+<div class="row subheader">
+        <div class="small-12 medium-8 large-10 columns">
+            <h2>Worker Dashboard<h2>
+                <hr class="medium"> 
+        </div>                
+        <div class="small-12 medium-4 large-2 columns" align="center">
+            <%= image_tag "characters/House13.png", :class => "character" ,:alt => "worker dashboard"  %>
+        </div>    
 </div>    
 <% end %>
         
 <% content_for :main do %> 
 <div id="main" class="alt">
-    <% unless current_user.admin %>
-        <% unless current_user_event %>
-        	<p>You're organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
-        <% end %>
-        <div class="content">
+        <% unless current_user.admin %>
+            <% unless current_user_event %>
+                <p>You're organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
+            <% end %>
+    
+    <div class="row">
           <h4>Invite Users By Email</h4>
           <%= render 'invite_form' %>
+    </div>
+    <div class="row">    
           <h4>Invite Users With Temporary Password</h4>
           <%= render 'temporary_password_form' %>
-        </div>
-
-
+    </div>
+    <div class="row">    
         <h4>Requested Invitations</h4>
-        <%= render 'request_invitation_table', users: @requested_invitations %>
+            <%= render 'request_invitation_table', users: @requested_invitations %>
+    </div>
     <% end %>
-</div>    
+    </div>      
 <% end %>
 
 <% content_for :sidebar do %> 

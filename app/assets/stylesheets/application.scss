@@ -92,6 +92,15 @@ header {
             & .alert {      
                 color: #fff; /* TEMP FIX */
             }
+            & a:link {
+                color: rgba(255,255,255,.5);
+            }
+            & a:hover {
+                color:#fff;
+            }
+            & .subtext {
+                color: rgba(255,255,255,.5);
+            }
         }
         & p {
             padding: 0;
@@ -161,13 +170,28 @@ p.notice {
     color: #fff;
 }
 
-//Characters
+// characters
 .character {
     width: auto;
     height: 125px;
     margin-left: auto;
     margin-right: auto;
 }
+
+// generate random temporary password 
+.temporary_password {
+    color: #43AC6A;
+    font-size: x-large;
+}
+
+// registration forms template
+.registration_form_template input {
+    width: 370px;
+}
+.registration_form_template .button {    
+    width: auto;
+}
+
 
 // footer
 footer {
@@ -180,7 +204,35 @@ footer {
         padding-top: 40px;
         padding-bottom: 40px;
     }
-    & .footer-logo img {
+    & .footer-logo {
+        color: #fff;
+        text-align: center;
+        & a:link,
+        a:visited {
+            color: $goldenrod;
+        }
+        & .sms-icons {
+            list-style-type: none;
+            & li {
+                display: inline;
+                margin-right: 5px;
+            }
+            & i {
+                color: $baby;
+                font-size: 30px;
+                background: #fff;
+                padding: 10px;
+                border-radius: 50%;
+                width: 50px;
+                transition: all ease-in-out .5s;
+            }
+            & i:hover {
+                background: $coal;
+                color: $goldenrod;
+            }            
+        }
+    }
+        & img {
         width: 65%;
         height: auto;
         margin: 3% 0 5px 0;
@@ -228,7 +280,6 @@ footer {
         padding: 0;
         margin: 0;
         width: 100%;
-        text-align: right;
     }
     & ul li {
         list-style-type: none;
@@ -237,9 +288,6 @@ footer {
     & a:link,
     a:visited {
         color: $goldenrod;
-    }
-    & .right {
-        margin-right: 40px;
     }
 }
 

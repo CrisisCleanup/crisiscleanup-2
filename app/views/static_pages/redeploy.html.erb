@@ -2,15 +2,18 @@
     Crisis Cleanup - Request a New Incident
 <% end %>
 
+<% content_for :subheader do %> 
+<div class="row subheader">
+        <div class="small-12 medium-8 large-10 columns">
+            <h2>Redeploy to a new incident.<h2>
+                <h4 class="basic">To redeploy to a new incident, sign in, then hover over "Dashboard" on the nav bar and click "Redeploy".</h4>
+                <hr class="medium"> 
+        </div>                
+        <div class="small-12 medium-4 large-2 columns" align="center">
+            <%= image_tag "characters/Workers Shovel Hammer-Team1.png", :class => "character" ,:alt => "worker dashboard"  %>
+        </div>    
+</div>    
+<% end %>
+            
 <% content_for :main do %>
-	<div class="row">
-		<div class='small-12 medium-12 large-12 columns'>
-        	<h3>Redeploy to a new incident.</h3>		
-		</div>
-	</div>
-	<div class="row">
-		<div class='small-12 medium-12 large-12 columns'>
-	       <p>To redeploy to a new incident, sign in, then hover over "Dashboard" on the nav bar and click "Redeploy".</p>
-        </div>
-</div>
 <%end%>

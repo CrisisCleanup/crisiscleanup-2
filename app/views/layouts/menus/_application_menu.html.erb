@@ -11,6 +11,7 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <li><%= nav_link "Home", root_path %></li>
+      <li><%= nav_link "About", about_path %></li>    
       <% if current_user %>
         <li><%= nav_link "Map", worker_incident_legacy_map_path(current_user_event) %></li>
         <li><%= link_to worker_incident_legacy_form_path(current_user_event) do %>
@@ -20,7 +21,6 @@
       <% else %>
         <li><%= nav_link "Map", public_map_path %></li>
       <% end %>
-      <li><%= nav_link "About", about_path %></li>
       <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
       <% unless current_user %>
       <li><%= nav_link "Sign Up", signup_path %></li> <!-- hide for verified user / admin -->
