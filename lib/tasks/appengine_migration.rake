@@ -247,6 +247,7 @@ def run_sites_integrity_check_from_pg pg_entities, table, log_file
 			puts "[#{table}-postgres_integrity_check]-[Success]-[Count: #{count}]"
 		else
 			errors_count += 1
+			binding.pry
 			puts "[#{table}-postgres_integrity_check]-[Error]-[Error count: #{errors_count}]-[PG entity: #{entity.attributes}]"
 		end
 	end
@@ -274,6 +275,7 @@ def run_integrity_check_from_pg pg_entities, table, log_file #remove log file
 		end
 		if are_entities_identical? appengine_entity, entity
 			count += 1
+			binding.pry
 			puts "[#{table}-postgres_integrity_check]-[Success]-[Count: #{count}]"
 		else
 			errors_count += 1
@@ -441,9 +443,9 @@ def get_appengine_entities(table_name)
 	count = 0
 	errors_count = 0
 	result_keys.each do |key|
-		# if count == 1000
-		# 	return results
-		# end
+		if count == 1000
+			return results
+		end
 		begin
 			count += 1
 			# if count > 10
