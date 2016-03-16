@@ -2,16 +2,21 @@
     Crisis Cleanup - Sign in with temporary password
 <% end %>
         
+<% content_for :subheader do %> 
+<div class="row subheader">
+        <div class="small-12 medium-8 large-10 columns">
+            <h2>Use a temporary password<h2>
+                <h4 class="basic">If you have received a temporary password from someone in your organization, enter your email and temporary password here. You will get an email with more instructions.</h4>
+                <hr class="medium"> 
+        </div>                
+        <div class="small-12 medium-4 large-2 columns" align="center">
+            <%= image_tag "characters/Smart Phone.png", :class => "character" ,:alt => "worker dashboard"  %>
+        </div>    
+</div>    
+<% end %>
+            
 <% content_for :main do %>
 	<div class="row">
-		<div class='small-12 medium-12 large-12 columns'>
-        	<h3>Use a temporary password</h3>
-        	<p>If you have received a temporary password from someone in your organization, enter your email and temporary password here. You will get an email with more instructions.</p>
-		</div>
-	</div>
-	<div class="row">
-		<div class='small-12 medium-12 large-12 columns'>
-	       <%= render 'form', org: @request_invitation, url: '/request_invitation' %>
-        </div>
-</div>
+	   <%= render 'form', org: @request_invitation, url: '/request_invitation' %>
+    </div>
 <%end%>

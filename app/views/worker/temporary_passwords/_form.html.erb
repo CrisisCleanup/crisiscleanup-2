@@ -1,15 +1,7 @@
 <%= form_tag worker_authorize_temporary_password_path %>
-<div class="row">
-	<div class="small-12 medium-7 large-8 columns invite">
+	<div class="small-12 medium-12 large-12 columns invite registration_form_template">
 	  <%= text_field_tag :email, nil, autocomplete: "off", placeholder: "Enter your email" %>
-	</div>  
-	<div class="small-12 medium-7 large-8 columns invite">
 	  <%= text_field_tag :password, nil, autocomplete: "off", placeholder: "Enter Temporary Password" %>
-	</div>     
-	<div class="small-12 medium-7 large-8 columns invite">
 	  <%= text_field_tag :password_confirmation, nil, autocomplete: "off", placeholder: "Confirm Temporary Password" %>
-	</div>  
-	<div class="small-12 medium-5 large-4 columns invite">
 	  <%= submit_tag "Submit", :class => "button" %>
 	</div>   
-</div>

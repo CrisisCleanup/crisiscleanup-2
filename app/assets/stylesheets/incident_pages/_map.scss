@@ -58,7 +58,7 @@ hr {
         }       
         & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"]{
             width: 100%;
-            height: 1.75rem;
+            height: 1.8rem;
             margin: 0;
         }
         & select {
@@ -161,6 +161,7 @@ table {
     }
 }
 
+// MEDIA QUERIES
 @media only screen and (max-width: 767px) {
     .alt {
         display: block;
