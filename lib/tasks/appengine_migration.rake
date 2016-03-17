@@ -14,10 +14,17 @@ CCU_ERROR_LOGS = "CCU_error_logs.txt"
 STANDARD_SITE_VALUES = ["address", "blurred_latitude", "blurred_longitude","case_number", "city", "claimed_by", "legacy_event_id", "latitude", "longitude", "name", "phone", "reported_by", "requested_at", "state", "status", "work_type", "data", "created_at", "updated_at", "appengine_key", "request_date"]
 
 URL = "crisiscleanup.org"
+
+ADMIN_EMAIL = "admin@ccu.org"
+
 # URL = "localhost:8080"
 
 namespace :appengine_migration do
 desc "imports"
+
+	task :import_emails => :environment do
+		import_appengine_emails
+	end
 
 	task :import_and_check_all => :environment do
 		Rake::Task["appengine_migration:import_and_check_events"].invoke
@@ -110,6 +117,16 @@ def get_keys_from_appengine(keys)
 	result = client.get_content(target)
 	JSON[result]
 end
+
+def get_appengine_emails()
+	results = []
+	proxy = ENV['HTTP_PROXY']
+	client = HTTPClient.new(proxy)
+	target = "http://#{URL}/admin-emails-handler"
+	result = client.get_content(target)
+	JSON[result]
+end
+
 def get_results(keys, table_name)
 	results = []
 	proxy = ENV['HTTP_PROXY']
@@ -317,6 +334,29 @@ def run_integrity_check keys_type, table_name, pg_table
 	puts "[#{table_name}-integrity_check]-[Information]-[Final errors count: #{errors_count}]"
 end
 
+def import_appengine_emails
+	emails = get_appengine_emails
+	emails.each do |key, value|
+		# value.each do |v|
+			# get org
+			# determine a user
+			# remove second org from emails that don't require them (only 2 exist)
+		organization = Legacy::LegacyOrganization.find_by(appengine_key: value[0])
+		user = User.find_by(email: ADMIN_EMAIL)
+
+		list = InvitationList.new(key, user, organization.id)
+		if list.valid?
+			if list.ready.present?  
+				list.ready.each do |inv|
+					InvitationMailer.send_invitation(inv, "https://crisiscleanup.org").deliver_now
+	                RequestInvitation.invited!(inv.invitee_email)
+				end
+			end
+	    end  
+		# end
+	end
+
+end
 def appengine_import appengine_table, relations, joins, deletions, pg_table
     puts "[#{appengine_table}-import]-[Information]-[Start #{appengine_table} import]"
 
@@ -397,6 +437,9 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 	        			# unless pg_entity.valid? 
 		        		# 	binding.pry
 		        		# end
+		        		if pg_entity.name.include? "Knights"
+		        			binding.pry
+		        		end
 	        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
 	        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]-[organization: #{pg_entity.name}]"
 	        		else
@@ -408,6 +451,9 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 			        		# 	binding.pry
 			        		# end
 			        		# count += 1
+			        		if pg_entity.name.include? "Knights"
+			        			binding.pry
+			        		end
 		        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
 		        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]-[organization: #{pg_entity.name}]"
 	        			end
@@ -481,3 +527,4 @@ def identical_and_unique? appengine_hash, model_entity, pg_table
 	puts "[Success]-[Identical and Unique]" if success
 	success
 end
+
