@@ -15,6 +15,7 @@ module Api
         ").where(legacy_event_id: params[:legacy_event_id])
           .joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = legacy_sites.claimed_by")
       end
+      binding.pry
     end
 
     def update_legacy_site_status
