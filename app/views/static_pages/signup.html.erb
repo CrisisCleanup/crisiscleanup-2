@@ -22,19 +22,19 @@
                 <%= image_tag "characters/Team3-211.png", :class => "character" ,:alt => "worker dashboard"  %>
                 <h3 >New Organization</h3>
                 <p>First time here? Sign up to collaborate with other qualified cleanup releif organizations.</p>
-                <a href="/register" class="button">Register Here</a>
+                <a href="<%= register_path %>" class="button">Register Here</a>
             </div> 
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "characters/Shovel Guy.png", :class => "character" ,:alt => "worker dashboard"  %>
                 <h3>New Volunteer</h3>        
                 <p>Are you a volunteer? Join your organization if it is already using Crisis Cleanup.</p>
-                <a href="/request_invitations/new" class="button">Request Invitation</a>
+                <a href="<%= volunteer_path %>" class="button">Request Invitation</a>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "characters/Smart Phone.png", :class => "character" ,:alt => "worker dashboard"  %>
                 <h3>Temporary Password</h3>
                 <p>Did a team leader give you a temporary password? Use it to get started!</p>
-                <a href="/worker/temporary_passwords/new" class="button">Use Password</a>
+                <a href="<%= new_worker_temporary_password_path %>" class="button">Use Password</a>
             </div>
         </div>
         <div class="row">
@@ -42,19 +42,19 @@
                 <%= image_tag "characters/Tornado.png", :class => "character" ,:alt => "worker dashboard"  %>
                 <h3>New Incident</h3>
                 <p>Would you like to use Crisis Cleanup for a recent disaster? Just ask! We're happy to help.</p>
-                <a href="/new_incident" class="button">Register Now</a>
+                <a href="<%= new_incident_path %>" class="button">Register Now</a>
             </div> 
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "characters/Workers Shovel Hammer-Team1.png", :class => "character" ,:alt => "worker dashboard"  %>
                 <h3>Redeploy Your Organization</h3>
                 <p>Has your organization used Crisis Cleanup before? Click here to join another incident.</p>
-                <a href="/redeploy" class="button">Redeploy Now</a>
+                <a href="<%= redeploy_path %>" class="button">Redeploy Now</a>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "characters/Two Soccer Players Running Toward One Another-Right.png", :class => "character" ,:alt => "worker dashboard"  %>
                 <h3>Just Curious</h3>
                 <p>Want to learn more about Crisis Cleanup, play with the demo, or request a presentation?</p>
-                <a href="/about" class="button">Learn More</a>
+                <a href="<%= about_path %>" class="button">Learn More</a>
             </div>     
         </div>
 </div>
