@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316230336) do
+ActiveRecord::Schema.define(version: 20160317221352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "audits", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "action"
+  end
 
   create_table "forms", force: :cascade do |t|
     t.integer "legacy_event_id", null: false
@@ -74,10 +79,6 @@ ActiveRecord::Schema.define(version: 20160316230336) do
     t.string   "admin_notes"
     t.string   "city"
     t.boolean  "deprecated",                  default: false
-    t.boolean  "does_only_coordination",      default: false
-    t.boolean  "does_only_sit_aware",         default: false
-    t.boolean  "does_recovery",               default: false
-    t.boolean  "does_something_else",         default: false
     t.string   "email"
     t.string   "facebook"
     t.boolean  "is_active",                   default: false
@@ -133,6 +134,18 @@ ActiveRecord::Schema.define(version: 20160316230336) do
     t.string   "referral"
     t.boolean  "publishable"
     t.string   "_password_hash_list"
+    t.boolean  "does_damage_assessment"
+    t.boolean  "does_intake_assessment"
+    t.boolean  "does_cleanup"
+    t.boolean  "does_follow_up"
+    t.boolean  "does_minor_repairs"
+    t.boolean  "does_rebuilding"
+    t.boolean  "does_coordination"
+    t.boolean  "government"
+    t.boolean  "does_other_activity"
+    t.string   "where_are_you_working"
+    t.boolean  "accepted_terms"
+    t.datetime "accepted_terms_timestamp"
   end
 
   create_table "legacy_sites", force: :cascade do |t|
