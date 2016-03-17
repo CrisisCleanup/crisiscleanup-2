@@ -56,6 +56,7 @@ gem 'rspec_junit_formatter', '0.2.2'
 
 group :production do
   gem 'rack-timeout'
+  gem 'newrelic_rpm'
 end
 
 group :development, :test do
