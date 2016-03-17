@@ -5,7 +5,7 @@
 <% content_for :subheader do %> 
 <div class="row subheader">
         <div class="small-12 medium-8 large-10 columns">
-            <h2>Redeploy to a new incident.<h2>                
+            <h2>Redeploy to a new incident<h2>                
                 <hr class="medium"> 
         </div>                
         <div class="small-12 medium-4 large-2 columns" align="center">
@@ -15,6 +15,6 @@
 <% end %>
             
 <% content_for :main do %>
-<p>To redeploy to a new incident, sign in, then hover over "Dashboard" on the nav bar and click "Redeploy".</p> 
+<p>Already a Crisis Cleanup user? To redeploy to a new incident, <a href="<%= new_user_session_path %>">sign in</a>, then hover over "Dashboard" on the nav bar and click "Redeploy".</p> 
 <br><br>
 <%end%>
