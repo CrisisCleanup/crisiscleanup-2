@@ -1,0 +1,843 @@
+<!--Central Texas Fires Waiting List Form Last Updated: 2016-03-17 13:32:58. Heroku Format-->
+<p><strong>Central Texas Fires Waiting List</strong>: Enter property damage and needs. <u>No sensitive information!</u> Tell the client this information will be shared with many organizations to provide service as fast as possible, which may be several weeks. Service is not guaranteed.</p>
+
+<div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <h4>Property and Personal Information <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="<u>Crisis Cleanup is about property, not people.</u> <br /><strong>Never include SSNs, FEMA numbers, dates of birth, detailed medical information, etc.</strong>"><i class="fa fa-question"></i></span></h4>
+        </div>
+</div>
+<div class="unhide" id="property_info">
+<div class="row">
+    <div class="input string optional legacy_legacy_site_name">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_name">Resident Name <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="This may be the primary contact, resident, or owner."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[name]" id="legacy_legacy_site_name" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input datetime-local optional legacy_legacy_site_request_date">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_request_date">Request Date <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_request_date').readOnly=false; document.getElementById('legacy_legacy_site_request_date').focus(); return false;">edit</a>)</small></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="datetime-local optional" type="text" name="legacy_legacy_site[request_date]" id="legacy_legacy_site_request_date" readonly />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_do_not_work_before">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_do_not_work_before">Do not work before</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[do_not_work_before]" id="legacy_legacy_site_do_not_work_before" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_address">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_address">Street Address</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[address]" id="legacy_legacy_site_address" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_city">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_city">City</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[city]" id="legacy_legacy_site_city" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string required legacy_legacy_site_county">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_county"><abbr title="required">*</abbr> County <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="County is used for reporting purposes. Please do not edit unless you are sure it is incorrect."><i class="fa fa-question"></i></span> <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_county').readOnly=false; document.getElementById('legacy_legacy_site_county').focus(); return false;">edit</a>)</small></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string required" type="text" name="legacy_legacy_site[county]" id="legacy_legacy_site_county" readonly />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_state">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_state">State</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[state]" id="legacy_legacy_site_state" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_zip_code">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_zip_code">Zip Code</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[zip_code]" id="legacy_legacy_site_zip_code" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input float legacy_legacy_site_latitude">
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="float" type="hidden" name="legacy_legacy_site[latitude]" id="legacy_legacy_site_latitude" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input float legacy_legacy_site_longitude">
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="float" type="hidden" name="legacy_legacy_site[longitude]" id="legacy_legacy_site_longitude" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_cross_street">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_cross_street">Cross Street or Nearby Landmark</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[cross_street]" id="legacy_legacy_site_cross_street" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string required legacy_legacy_site_work_type">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_work_type"><abbr title="required">*</abbr> Primary help needed <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Chooses the icon that appears on the map. If there is more than one type, choose the type that is most pressing."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <select class="small-8 medium-8 large-8 columns" name="legacy_legacy_site[work_type]" id="legacy_legacy_site_work_type">
+                <option value="">--Choose One--</option>
+                <option value="Debris">Debris</option>
+                <option value="Ash">Ash</option>
+                <option value="Trees">Trees</option>
+                <option value="Landslide">Landslide</option>
+                <option value="Fire">Fire</option>
+                <option value="Other">Other</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string required legacy_legacy_site_phone1">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_phone1"><abbr title="required">*</abbr> Phone #s <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="At least one phone number is required. Call before helping."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string required" type="text" name="legacy_legacy_site[phone1]" id="legacy_legacy_site_phone1" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_phone2">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_phone2"></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[phone2]" id="legacy_legacy_site_phone2" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input email optional legacy_legacy_site_email1">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_email1">Email1</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="email optional" type="text" name="legacy_legacy_site[email1]" id="legacy_legacy_site_email1" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input email optional legacy_legacy_site_email2">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_email2">Email2</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="email optional" type="text" name="legacy_legacy_site[email2]" id="legacy_legacy_site_email2" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_temporary_address">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_temporary_address">Temporary Address</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[temporary_address]" id="legacy_legacy_site_temporary_address" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_time_to_call">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_time_to_call">Best time to call</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[time_to_call]" id="legacy_legacy_site_time_to_call" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_house_affected">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_house_affected">House Affected</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[house_affected]" id="legacy_legacy_site_house_affected_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[house_affected]" id="legacy_legacy_site_house_affected" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_outbuilding_affected">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_outbuilding_affected">Outbuilding Affected</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[outbuilding_affected]" id="legacy_legacy_site_outbuilding_affected_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[outbuilding_affected]" id="legacy_legacy_site_outbuilding_affected" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_exterior_property_affected">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_exterior_property_affected">Exterior Property Affected</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[exterior_property_affected]" id="legacy_legacy_site_exterior_property_affected_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[exterior_property_affected]" id="legacy_legacy_site_exterior_property_affected" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_rent_or_own">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_rent_or_own">Rent/ Own/ Public</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <select class="small-8 medium-8 large-8 columns" name="legacy_legacy_site[rent_or_own]" id="legacy_legacy_site_rent_or_own">
+                <option value="">--Choose One--</option>
+                <option value="Rent">Rent</option>
+                <option value="Own">Own</option>
+                <option value="Public Land">Public Land</option>
+                <option value="Non-Profit">Non-Profit</option>
+                <option value="Business">Business</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_work_without_resident">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_work_without_resident">Work without resident present? <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Note: Even if this is box is checked, it may not be a good idea to work without the resident present. Follow your organization's policy on this matter."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[work_without_resident]" id="legacy_legacy_site_work_without_resident_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[work_without_resident]" id="legacy_legacy_site_work_without_resident" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_first_responder">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_first_responder">First Responder <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="First responders and their families are often the last to receive help."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[first_responder]" id="legacy_legacy_site_first_responder_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[first_responder]" id="legacy_legacy_site_first_responder" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_older_than_60">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_older_than_60">Older than 60 <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Never include dates (or years) of birth in the notes."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[older_than_60]" id="legacy_legacy_site_older_than_60_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[older_than_60]" id="legacy_legacy_site_older_than_60" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_special_needs">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_special_needs">Special needs <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Please only include special needs that are directly related to service, e.g. 'Wheelchair-bound,' or 'Has difficulty hearing&mdash;knock hard.'"><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <textarea class="string optional" name="legacy_legacy_site[special_needs]" id="legacy_legacy_site_special_needs"></textarea>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_priority">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_priority">Priority</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[priority]" id="legacy_legacy_site_priority_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[priority]" id="legacy_legacy_site_priority" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_destruction_level">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_destruction_level">Destruction Level</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <select class="small-8 medium-8 large-8 columns" name="legacy_legacy_site[destruction_level]" id="legacy_legacy_site_destruction_level">
+                <option value="">--Choose One--</option>
+                <option value="Minor">Minor</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Major">Major</option>
+                <option value="Extreme">Extreme</option>
+                <option value="Destroyed">Destroyed</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_destruction_notes">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_destruction_notes">Destruction Notes</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <textarea class="string optional" name="legacy_legacy_site[destruction_notes]" id="legacy_legacy_site_destruction_notes"></textarea>
+        </div>
+    </div>
+</div>
+</div> <!--property_info_end-->
+
+<div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <h4>Work <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Contact <a href='mailto:help@crisiscleanup.org'>help@crisiscleanup.org</a> to request another question. Be sure to include the incident name."><i class="fa fa-question"></i></span></h4>
+        </div>
+</div>
+<div class="unhide" id="work_info">
+<div class="row">
+    <div class="input string optional legacy_legacy_site_work_requested">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_work_requested">Other Work Requested</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <textarea class="string optional" name="legacy_legacy_site[work_requested]" id="legacy_legacy_site_work_requested"></textarea>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_notes">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_notes">Notes</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <textarea class="string optional" name="legacy_legacy_site[notes]" id="legacy_legacy_site_notes"></textarea>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <h5>Ash Sifting</h5>
+        </div>
+</div>
+<div class="unhide" id="ash_sifting_info">
+<div class="row">
+    <div class="input string optional legacy_legacy_site_ash_sifting">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_ash_sifting">Ash Sifting</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[ash_sifting]" id="legacy_legacy_site_ash_sifting_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[ash_sifting]" id="legacy_legacy_site_ash_sifting" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_smoke_damage">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_smoke_damage">Smoke Damage</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[smoke_damage]" id="legacy_legacy_site_smoke_damage_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[smoke_damage]" id="legacy_legacy_site_smoke_damage" value="y" />
+        </div>
+    </div>
+</div>
+</div> <!--ash_sifting_info_end-->
+
+<div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <h5>Debris</h5>
+        </div>
+</div>
+<div class="unhide" id="debris_info">
+<div class="row">
+    <div class="input string optional legacy_legacy_site_interior_debris_removal">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_interior_debris_removal">Interior Debris Removal</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[interior_debris_removal]" id="legacy_legacy_site_interior_debris_removal_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[interior_debris_removal]" id="legacy_legacy_site_interior_debris_removal" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_nonvegitative_debris_removal">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_nonvegitative_debris_removal">Non-Vegetative Debris</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[nonvegitative_debris_removal]" id="legacy_legacy_site_nonvegitative_debris_removal_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[nonvegitative_debris_removal]" id="legacy_legacy_site_nonvegitative_debris_removal" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_vegitative_debris_removal">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_vegitative_debris_removal">Vegetative Debris</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[vegitative_debris_removal]" id="legacy_legacy_site_vegitative_debris_removal_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[vegitative_debris_removal]" id="legacy_legacy_site_vegitative_debris_removal" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_unsalvageable_structure">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_unsalvageable_structure">Unsalvageable Structure</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[unsalvageable_structure]" id="legacy_legacy_site_unsalvageable_structure_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[unsalvageable_structure]" id="legacy_legacy_site_unsalvageable_structure" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_heavy_machinary_required">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_heavy_machinary_required">Heavy Machinary Required</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[heavy_machinary_required]" id="legacy_legacy_site_heavy_machinary_required_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[heavy_machinary_required]" id="legacy_legacy_site_heavy_machinary_required" value="y" />
+        </div>
+    </div>
+</div>
+</div> <!--debris_info_end-->
+
+<div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <h5>Tree Work</h5>
+        </div>
+</div>
+<div class="unhide" id="tree_info">
+<div class="row">
+    <div class="input integer optional legacy_legacy_site_num_trees_down">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_num_trees_down">Number of trees down</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <select class="small-8 medium-8 large-8 columns" name="legacy_legacy_site[num_trees_down]" id="legacy_legacy_site_num_trees_down">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5+</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input integer optional legacy_legacy_site_num_wide_trees">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_num_wide_trees">Number of trees wider than 18 inches <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Many chainsaws have 18-inch blades."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <select class="small-8 medium-8 large-8 columns" name="legacy_legacy_site[num_wide_trees]" id="legacy_legacy_site_num_wide_trees">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5+</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_replanting_needed">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_replanting_needed">Replanting Needed</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[replanting_needed]" id="legacy_legacy_site_replanting_needed_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[replanting_needed]" id="legacy_legacy_site_replanting_needed" value="y" />
+        </div>
+    </div>
+</div>
+</div> <!--tree_info_end-->
+
+<div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <h5>Flood-Related Damage and Needs</h5>
+        </div>
+</div>
+<div class="unhide" id="flood_damage_info">
+<div class="row">
+    <div class="input string optional legacy_legacy_site_mud_mitigation">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_mud_mitigation">Mud Mitigation</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[mud_mitigation]" id="legacy_legacy_site_mud_mitigation_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[mud_mitigation]" id="legacy_legacy_site_mud_mitigation" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input integer optional legacy_legacy_site_flood_height">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_flood_height">Height of Flood (feet) <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="For 6 inches, please use '0.5'"><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="integer optional" type="text" name="legacy_legacy_site[flood_height]" id="legacy_legacy_site_flood_height" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_carpet_removal">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_carpet_removal">Carpet Removal</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[carpet_removal]" id="legacy_legacy_site_carpet_removal_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[carpet_removal]" id="legacy_legacy_site_carpet_removal" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_hardwood_floor_removal">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_hardwood_floor_removal">Hardwood Floor Removal</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[hardwood_floor_removal]" id="legacy_legacy_site_hardwood_floor_removal_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[hardwood_floor_removal]" id="legacy_legacy_site_hardwood_floor_removal" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_drywall_removal">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_drywall_removal">Drywall Removal</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[drywall_removal]" id="legacy_legacy_site_drywall_removal_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[drywall_removal]" id="legacy_legacy_site_drywall_removal" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_heavy_item_removal">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_heavy_item_removal">Heavy Item Removal</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[heavy_item_removal]" id="legacy_legacy_site_heavy_item_removal_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[heavy_item_removal]" id="legacy_legacy_site_heavy_item_removal" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_appliance_removal">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_appliance_removal">Appliance Removal</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[appliance_removal]" id="legacy_legacy_site_appliance_removal_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[appliance_removal]" id="legacy_legacy_site_appliance_removal" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_standing_water">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_standing_water">Standing Water</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[standing_water]" id="legacy_legacy_site_standing_water_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[standing_water]" id="legacy_legacy_site_standing_water" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_mold_remediation">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_mold_remediation">Mold Remediation</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[mold_remediation]" id="legacy_legacy_site_mold_remediation_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[mold_remediation]" id="legacy_legacy_site_mold_remediation" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_pump_needed">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_pump_needed">Pump Needed</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[pump_needed]" id="legacy_legacy_site_pump_needed_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[pump_needed]" id="legacy_legacy_site_pump_needed" value="y" />
+        </div>
+    </div>
+</div>
+</div> <!--flood_damage_info_end-->
+
+<div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <h5>Fencing</h5>
+        </div>
+</div>
+<div class="unhide" id="fencing_info">
+<div class="row">
+    <div class="input string optional legacy_legacy_site_damaged_fence_length">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_damaged_fence_length">Damaged Fence Length</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[damaged_fence_length]" id="legacy_legacy_site_damaged_fence_length" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_fence_type">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_fence_type">Fence Type</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[fence_type]" id="legacy_legacy_site_fence_type" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_fence_notes">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_fence_notes">Fence Notes</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[fence_notes]" id="legacy_legacy_site_fence_notes" />
+        </div>
+    </div>
+</div>
+</div> <!--fencing_info_end-->
+</div> <!--work_info_end-->
+
+<div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <h4>Hazards</h4>
+        </div>
+</div>
+<div class="unhide" id="hazards_info">
+<div class="row">
+    <div class="input string optional legacy_legacy_site_habitable">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_habitable">Is the home habitable</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[habitable]" id="legacy_legacy_site_habitable_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[habitable]" id="legacy_legacy_site_habitable" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_electricity">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_electricity">Power on</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[electricity]" id="legacy_legacy_site_electricity_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[electricity]" id="legacy_legacy_site_electricity" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_electrical_lines">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_electrical_lines">Downed Wires on Property</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[electrical_lines]" id="legacy_legacy_site_electrical_lines_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[electrical_lines]" id="legacy_legacy_site_electrical_lines" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_unsafe_roof">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_unsafe_roof">Unsafe Roof</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[unsafe_roof]" id="legacy_legacy_site_unsafe_roof_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[unsafe_roof]" id="legacy_legacy_site_unsafe_roof" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_unrestrained_animals">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_unrestrained_animals">Unrestrained Animals</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[unrestrained_animals]" id="legacy_legacy_site_unrestrained_animals_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[unrestrained_animals]" id="legacy_legacy_site_unrestrained_animals" value="y" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_other_hazards">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_other_hazards">Other Hazards</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <textarea class="string optional" name="legacy_legacy_site[other_hazards]" id="legacy_legacy_site_other_hazards"></textarea>
+        </div>
+    </div>
+</div>
+</div> <!--hazards_info_end-->
+
+<div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <h4>Claim, Status and Report</h4>
+        </div>
+</div>
+<div class="unhide" id="claim_status_report_info">
+<div class="row">
+    <div class="input string optional legacy_legacy_site_status">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_status">Current Status <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="<strong>Definitions</strong><br />
+<u>Open, unassigned</u>: Has not been assigned to an organization's internal team.<br />
+<u>Open, assigned</u>: Has been assigned to an internal team, and work is imminent.<br />
+<u>Open, partially completed</u>: Is partially complete, but needs additional work.<br />
+<u>Open, needs follow-up</u>: Needs additional information or work in order to continue.<br />
+<u>Closed, completed</u>: Is completed, and no further action for the current phase is necessary.<br />
+<u>Closed, incomplete</u>: Is not complete, but the organization will not complete the remaining work (e.g. deferred maintenance, demobiliztation).<br />
+<u>Closed, out of scope</u>: Is not complete, but the requested work is not in scope for any responding relief organization. (e.g. 4-foot diameter trees)<br />
+<u>Closed, done by others</u>: Is completed, but the work was done by others. No further action necessary.<br />
+<u>Closed, no help wanted</u>: Was declined by owner. No help was wanted. No further action necessary.<br />
+<u>Closed, rejected</u>: Was rejected by the responding organization. Please note the reason for rejection.<br />
+<u>Closed, duplicate</u>: Was a duplicate. No further action necessary. Use this status instead of trying do delete a record."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <select class="small-8 medium-8 large-8 columns" name="legacy_legacy_site[status]" id="legacy_legacy_site_status">
+                <option value="Open, unassigned">Open, unassigned</option>
+                <option value="Open, assigned">Open, assigned</option>
+                <option value="Open, partially completed">Open, partially completed</option>
+                <option value="Open, needs follow-up">Open, needs follow-up</option>
+                <option value="Closed, completed">Closed, completed</option>
+                <option value="Closed, incomplete">Closed, incomplete</option>
+                <option value="Closed, out of scope">Closed, out of scope</option>
+                <option value="Closed, done by others">Closed, done by others</option>
+                <option value="Closed, no help wanted">Closed, no help wanted</option>
+                <option value="Closed, rejected">Closed, rejected</option>
+                <option value="Closed, duplicate">Closed, duplicate</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row hide">
+    <div class="input string optional legacy_legacy_site_assigned_to">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_assigned_to">Assigned To <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Name of the worker with primary responsibility for this request."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[assigned_to]" id="legacy_legacy_site_assigned_to" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input integer optional legacy_legacy_site_total_volunteers">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_total_volunteers">Volunteers <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Number of volunteers who participated in relief efforts."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="integer optional" type="text" name="legacy_legacy_site[total_volunteers]" id="legacy_legacy_site_total_volunteers" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input float optional legacy_legacy_site_hours_worked_per_volunteer">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_hours_worked_per_volunteer">Hours per volunteer <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Number of hours volunteers worked on this request."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="float optional" type="text" name="legacy_legacy_site[hours_worked_per_volunteer]" id="legacy_legacy_site_hours_worked_per_volunteer" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_initials_of_resident_present">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_initials_of_resident_present">Initials of resident present during work <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="This may help if there is ever a misunderstanding about the work performed."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[initials_of_resident_present]" id="legacy_legacy_site_initials_of_resident_present" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="input string optional legacy_legacy_site_status_notes">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_status_notes">Status notes</label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <textarea class="string optional" name="legacy_legacy_site[status_notes]" id="legacy_legacy_site_status_notes"></textarea>
+        </div>
+    </div>
+</div>
+</div> <!--claim_status_report_info_end-->
+
+<div class="row">
+        <div class="small-9 medium-7 large-7 columns">
+            <h4>Other Information</h4>
+        </div>
+  <div class="small-3 medium-5 large-5 columns">
+    <button type="button" onclick="document.getElementById('other_information_info').style.display = 'block';" class="unhide_button">+</button><button type="button" onclick="document.getElementById('other_information_info').style.display = 'none';" class="hide_button">-</button>
+  </div>
+</div>
+<div class="hide" id="other_information_info">
+<div class="row">
+    <div class="input string optional legacy_legacy_site_prepared_by">
+        <div class="small-4 medium-4 large-4 columns">
+            <label class="" for="legacy_legacy_site_prepared_by">Prepared by <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Name of person who created the work request."><i class="fa fa-question"></i></span></label>
+        </div>
+        <div class="small-8 medium-8 large-8 columns">
+            <input class="string optional" type="text" name="legacy_legacy_site[prepared_by]" id="legacy_legacy_site_prepared_by" />
+        </div>
+    </div>
+</div>
+</div> <!--other_information_info_end-->
