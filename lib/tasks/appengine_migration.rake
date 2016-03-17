@@ -292,7 +292,7 @@ def run_integrity_check_from_pg pg_entities, table, log_file #remove log file
 		end
 		if are_entities_identical? appengine_entity, entity
 			count += 1
-			binding.pry
+			# binding.pry
 			puts "[#{table}-postgres_integrity_check]-[Success]-[Count: #{count}]"
 		else
 			errors_count += 1
@@ -437,9 +437,9 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 	        			# unless pg_entity.valid? 
 		        		# 	binding.pry
 		        		# end
-		        		if pg_entity.name.include? "Knights"
-		        			binding.pry
-		        		end
+		        		# if pg_entity.name.include? "Knights"
+		        		# 	binding.pry
+		        		# end
 	        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
 	        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]-[organization: #{pg_entity.name}]"
 	        		else
@@ -451,9 +451,9 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
 			        		# 	binding.pry
 			        		# end
 			        		# count += 1
-			        		if pg_entity.name.include? "Knights"
-			        			binding.pry
-			        		end
+			        		# if pg_entity.name.include? "Knights"
+			        		# 	binding.pry
+			        		# end
 		        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
 		        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]-[organization: #{pg_entity.name}]"
 	        			end
