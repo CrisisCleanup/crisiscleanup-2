@@ -12,6 +12,11 @@ module Legacy
     validates_presence_of :name
     validates_uniqueness_of :name
     accepts_nested_attributes_for :legacy_contacts, allow_destroy: true
+    before_save :set_terms_timestamp
+
+    def set_terms_timestamp
+      self.accepted_terms_timestamp = DateTime.now
+    end
 
     def verify!(current_user)
       if self.update(org_verified: true, is_active:true)

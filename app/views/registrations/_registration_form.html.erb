@@ -67,36 +67,69 @@
       <%= f.input :twitter %>
     </div>
   </div>
+  <h3>Roles</h3>
+
   <div class="boxes">
     <div class="row">
       <div class="small-12 medium-6 columns">
-        <%= f.input :does_only_coordination %>
+        <%= f.input :does_damage_assessment %>
       </div>
       <div class="small-12 medium-6 columns">
-        <%= f.input :does_only_sit_aware %>
+        <%= f.input :does_intake_assessment %>
       </div>
     </div>
 
     <div class="row">
       <div class="small-12 medium-6 columns">
-        <%= f.input :does_recovery %>
+        <%= f.input :does_cleanup %>
       </div>
       <div class="small-12 medium-6 columns">
-        <%= f.input :does_something_else %>
+        <%= f.input :does_follow_up %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :does_minor_repairs %>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <%= f.input :does_rebuilding %>
       </div>
     </div>
 
     <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :does_coordination %>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <%= f.input :government %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :does_other_activity %>
+      </div>
       <div class="small-12 medium-6 columns">
         <%= f.input :not_an_org %>
       </div>
-      <div class="small-12 medium-6 columns">
-        <%= f.input :physical_presence %>
-      </div>
     </div>
+    <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :where_are_you_working, placeholder: "Cities/Counties" %>
+    </div>
+  </div>
     <div class="row">
       <div class="small-12 medium-6 columns">
         <%= f.input :publishable, label: "Publish Organization Profile" %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :accepted_terms, label: "Accept Terms of Service" %>
       </div>
     </div>
   </div>
