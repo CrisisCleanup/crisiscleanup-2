@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-  
+    Audit.create(user_id: current_user.id, action: "login")
     if resource.class == User && current_user.admin?
       '/admin/dashboard'
     else
