@@ -39,6 +39,7 @@ module Legacy
           :zip_code,
           :org_name,
           :work_type,
+          :status,
           :work_requested,
           :claimed_by,
           :data,
