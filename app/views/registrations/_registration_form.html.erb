@@ -5,37 +5,36 @@
   <div class="row">
     <div class="medium-6 columns">
       <%= f.input :legacy_events, collection: Legacy::LegacyEvent.all, label: false %>
-    </div>   
+    </div>
   </div>
-    <div class="contact_section">
-      <div class="row">
-         <h4 class="medium-12 columns">Primary Contacts</h4>
-      </div>
-      <div class="row">
-        <div class="medium-6 columns contact_form">
-          <%= f.simple_fields_for :legacy_contacts do |p| %>
-            <%= render 'legacy_contact_form', contact: p %>
-          <% end %>
-          <%= link_to_add_contact "Add Contact",f,:legacy_contacts %>
-        </div>   
+  <div class="contact_section">
+    <div class="row">
+      <h4 class="medium-12 columns">Primary Contacts</h4>
+    </div>
+    <div class="row">
+      <div class="medium-6 columns contact_form">
+        <%= f.simple_fields_for :legacy_contacts do |p| %>
+          <%= render 'legacy_contact_form', contact: p %>
+        <% end %>
+        <%= link_to_add_contact "Add Contact",f,:legacy_contacts %>
       </div>
     </div>
+  </div>
   <br>
   <div class="row">
-      <div class="small-12 medium-12 large-12 columns">
-    <h3>Organization Information</h3>
-    <p>Please use your local team name. E.g. "Team Rubicon Region 5" or "LDS Church - Plainview Stake" rather than "Team Rubicon" or "LDS Church"</p>
-        </div>
+    <div class="small-12 medium-12 large-12 columns">
+      <h3>Organization Information</h3>
+      <p>Please use your local team name. E.g. "Team Rubicon Region 5" or "LDS Church - Plainview Stake" rather than "Team Rubicon" or "LDS Church"</p>
+    </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
       <%= f.input :name, label:'Organization Name' %>
-    </div> 
+    </div>
     <div class="medium-6 columns">
       <%= f.input :email %>
-    </div>      
+    </div>
   </div>
-
   <div class="row">
     <div class="medium-6 columns">
       <%= f.input :address %>
@@ -52,13 +51,13 @@
       <%= f.input :zip_code %>
     </div>
   </div>
-  <div class="row">    
+  <div class="row">
     <div class="medium-6 columns">
       <%= f.input :referral %>
     </div>
-  <div class="medium-6 columns">
+    <div class="medium-6 columns">
       <%= f.input :url, label:'Website' %>
-  </div>      
+    </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
@@ -67,42 +66,71 @@
     <div class="medium-6 columns">
       <%= f.input :twitter %>
     </div>
-  </div> 
-  <div class="row">
-    <div class="medium-6 columns">
-      <%= f.input :facebook %>
-    </div>
-  </div>   
+  </div>
+  <h3>Roles</h3>
+
   <div class="boxes">
     <div class="row">
-      <div class="small-12 medium-6 columns">
-        <%= f.input :does_only_coordination %>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :review_other_organizations, label: "Review & Approve Participating Organizations: You are willing to review and approve organizations applying to participate in CrisisCleanup." %>
       </div>
-      <div class="small-12 medium-6 columns">
-        <%= f.input :does_only_sit_aware %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="small-12 medium-6 columns">
-        <%= f.input :does_recovery %>
-      </div>
-      <div class="small-12 medium-6 columns">
-        <%= f.input :does_something_else %>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_damage_assessment, label: "Damage Assessments: Your organization interacts directly with survivors via call-center, door-to-door, in a MARC, etc." %>
       </div>
     </div>
 
     <div class="row">
-      <div class="small-12 medium-6 columns">
-        <%= f.input :not_an_org %>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_cleanup, label: "Cleanup: Your organization interacts directly with survivors to do muck-outs, debris removal, tree cutting, etc." %>
       </div>
-      <div class="small-12 medium-6 columns">
-        <%= f.input :physical_presence %>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_follow_up, label: "Follow Up: Your organization contacts survivors to ensure all clients have been assisted via phone or in-person visits." %>
       </div>
     </div>
+
+
+    <div class="row">
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_minor_repairs, label: "Minor Repairs: Your organization visits survivors to replace drywall, flooring, or other repairs." %>
+      </div>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_rebuilding, label: "Rebuilding: Long Term Recovery Groups, Unmet Needs Committees, or organizations that do long-term or major rebuilding." %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_coordination, label: "Coordination: Your organization does NOT interact directly with survivors, but oversees or coordinates organizations that do." %>
+      </div>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :government, label: "Government: You represent a governmental entity, such as municipal, state, tribal or federal government, emergency management, etc." %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_other_activity, label: "Other Activity: Your organization does other disaster-related activity, such as donations management, case management, logistics, etc." %>
+      </div>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :not_an_org, label: "Not An Organization: Individuals, unaffiliated volunteers, meetup groups, clubs, etc." %>
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :where_are_you_working, label: "Where are you working?", placeholder: "Cities/Counties" %>
+    </div>
+  </div>
     <div class="row">
       <div class="small-12 medium-6 columns">
         <%= f.input :publishable, label: "Publish Organization Profile" %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :accepted_terms, label: "Accept Terms of Service" %>
       </div>
     </div>
   </div>
@@ -112,14 +140,3 @@
     </div>
   </div>
 <% end %>
-
-    
-                      
-
-                   
-            
-           
-                        
-     
-       
-     

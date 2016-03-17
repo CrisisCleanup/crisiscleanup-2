@@ -17,6 +17,7 @@ module Api
 
         render json: @sites
       end
+      binding.pry
     end
 
     def update_legacy_site_status
