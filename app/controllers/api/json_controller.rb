@@ -9,11 +9,13 @@ module Api
       if params["pin"]
         render json: @sites = Legacy::LegacySite.find(params["pin"])
       else
-        render json: @sites = Legacy::LegacySite.select("
+        @sites = Legacy::LegacySite.select("
           legacy_sites.*,
           legacy_organizations.name as org_name
         ").where(legacy_event_id: params[:legacy_event_id])
           .joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = legacy_sites.claimed_by")
+
+        render json: @sites
       end
     end
 
