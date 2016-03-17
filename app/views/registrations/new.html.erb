@@ -1,30 +1,31 @@
 <% content_for :title do %>
-    Crisis Cleanup - Sign up
+  Crisis Cleanup - Sign up
 <% end %>
 
-<% content_for :subheader do %> 
-<div class="row subheader">
-        <div class="small-12 medium-8 large-10 columns">
-            <h2>Organization Sign Up<h2>
-                <h4 class="basic">Organizations can fill in the information below and start using Crisis Cleanup today!</h4>
-                <hr class="medium"> 
-        </div>                
-        <div class="small-12 medium-4 large-2 columns" align="center">
-            <%= image_tag "characters/Team3-211.png", :class => "character" ,:alt => "worker dashboard"  %>
-        </div>    
-</div>    
+<% content_for :subheader do %>
+  <div class="row subheader">
+    <div class="small-12 medium-8 large-10 columns">
+      <h2>Organization Sign Up<h2>
+      <h4 class="basic">Organizations can fill in the information below and start using Crisis Cleanup today!</h4>
+      <hr class="medium">
+    </div>
+  <div class="row">
+    <div class="small-12 medium-4 large-2 columns" align="center">
+      <%= image_tag "characters/Team3-211.png", :class => "character" ,:alt => "worker dashboard"  %>
+    </div>
+  </div>
 <% end %>
-        
+
 <% content_for :main do %>
-	<div class="row">
-		<div class='small-12 medium-12 large-12 columns'>
-<ul>
-    <li><strong>First Time</strong>: Use this form to sign up your organization for the first time.</li>
-    <li><strong>Redeploy</strong>: If your organization has used Crisis Cleanup in the past and you'd like to join a new incident, <a href="/login">login</a>, then hover over "Dashboard" on the nav bar and click "Redeploy."</li>
-    <li><strong>Volunteer</strong>: If you are a volunteer, ask another member of your organization to send you an email invitation through the Dashboard.</li>
-    <li><strong>New incident</strong>: <a href="/new_incident">Request a new Incident</a></li>.
-</ul>
-	       <%= render 'registration_form', org: @org, url: '/register' %>
-        </div>
-</div>
-<%end%>
+  <div class="row">
+    <div class='small-12 medium-12 large-12 columns'>
+      <ul>
+        <li><strong>First Time</strong>: Use this form to sign up your organization for the first time.</li>
+        <li><strong>Redeploy</strong>: If your organization has used Crisis Cleanup in the past and you'd like to join a new incident, <a href="/login">login</a>, then hover over "Dashboard" on the nav bar and click "Redeploy."</li>
+        <li><strong>Volunteer</strong>: If you are a volunteer, ask another member of your organization to send you an email invitation through the Dashboard.</li>
+        <li><strong>New incident</strong>: <a href="/new_incident">Request a new Incident</a></li>
+      </ul>
+      <%= render 'registration_form', org: @org, url: '/register' %>
+    </div>
+  </div>
+<% end %>
