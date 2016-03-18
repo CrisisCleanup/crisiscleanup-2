@@ -10,7 +10,6 @@ module Api
           case_number,
           blurred_latitude,
           blurred_longitude,
-          address,
           city,
           state,
           zip_code,

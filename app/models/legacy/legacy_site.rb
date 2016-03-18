@@ -3,11 +3,10 @@ module Legacy
     # default_scope { order('case_number') }
     require 'csv'
 
-    STANDARD_SITE_VALUES = ["address", "blurred_latitude", "blurred_longitude", "case_number", "city", "claimed_by", "legacy_event_id", "latitude", "longitude", "name", "phone", "reported_by", "requested_at", "state", "status", "work_type", "data", "created_at", "updated_at", "appengine_key", "request_date"]
-    PERSONAL_FIELDS = ["id", "address", "case_number", "latitude", "longitude", "claimed_by", "phone", "name", "created_at", "updated_at", "appengine_key"]
-    CSV_HEADER_FIELDS = ["request_date", "case_number", "name", "address", "phone", "latitude", "longitude", "city", "state", "status", "work_type", "claimed_by", "reported_by" ]
+    # STANDARD_SITE_VALUES = ["address", "blurred_latitude", "blurred_longitude", "case_number", "city", "claimed_by", "legacy_event_id", "latitude", "longitude", "name", "phone", "reported_by", "requested_at", "state", "status", "work_type", "data", "created_at", "updated_at", "appengine_key", "request_date"]
+    # PERSONAL_FIELDS = ["id", "address", "case_number", "latitude", "longitude", "claimed_by", "phone", "name", "created_at", "updated_at", "appengine_key"]
+    # CSV_HEADER_FIELDS = ["request_date", "case_number", "name", "address", "phone", "latitude", "longitude", "city", "state", "status", "work_type", "claimed_by", "reported_by" ]
 
-    self.per_page = 500
     has_paper_trail
     # geocoded_by :full_street_address
     validates_presence_of :address, :blurred_latitude, :blurred_longitude, :case_number, :city, :latitude, :longitude, :name, :work_type, :status
@@ -129,26 +128,26 @@ module Legacy
       end
     end
 
-    def self.get_column_names(params)
-      @c = CSV_HEADER_FIELDS if params[:params][:type] == "deidentified"
+    # def self.get_column_names(params)
+    #   @c = CSV_HEADER_FIELDS if params[:params][:type] == "deidentified"
 
-      PERSONAL_FIELDS.each do |field|
-        @c.delete(field)
-      end
+    #   PERSONAL_FIELDS.each do |field|
+    #     @c.delete(field)
+    #   end
 
-      all.each do |site|
-        if site.data
-          site.data.each do |key, value|
-            @c << key
-          end
-        end
-      end
+    #   all.each do |site|
+    #     if site.data
+    #       site.data.each do |key, value|
+    #         @c << key
+    #       end
+    #     end
+    #   end
 
-      @c.delete("name_metaphone")
-      @c.delete("address_metaphone")
-      @c.delete("city_metaphone")
-      @c.flatten.uniq
-    end
+    #   @c.delete("name_metaphone")
+    #   @c.delete("address_metaphone")
+    #   @c.delete("city_metaphone")
+    #   @c.flatten.uniq
+    # end
 
     def self.site_to_hash site_attributes, orgs_hash = None
       if site_attributes["data"]
@@ -167,24 +166,24 @@ module Legacy
       site_attributes
     end
 
-    def self.hash_to_site hash_attributes, event_id=nil
-      data = {}
-      hash_attributes.each do |key, value|
-        unless STANDARD_SITE_VALUES.include? key
-          data[key] = value
-          hash_attributes.delete(key)
-        end
-      end
+    # def self.hash_to_site hash_attributes, event_id=nil
+    #   data = {}
+    #   hash_attributes.each do |key, value|
+    #     unless STANDARD_SITE_VALUES.include? key
+    #       data[key] = value
+    #       hash_attributes.delete(key)
+    #     end
+    #   end
 
-      ### TODO delete these when using real ids
-      # hash_attributes.delete("reported_by")
-      # hash_attributes.delete("claimed_by")
-      #########################################
+    #   ### TODO delete these when using real ids
+    #   # hash_attributes.delete("reported_by")
+    #   # hash_attributes.delete("claimed_by")
+    #   #########################################
 
-      hash_attributes['data'] = data
-      hash_attributes['legacy_event_id'] = event_id if event_id
-      hash_attributes
-    end
+    #   hash_attributes['data'] = data
+    #   hash_attributes['legacy_event_id'] = event_id if event_id
+    #   hash_attributes
+    # end
 
     def self.import(file, dup_check_method, dup_handler, event_id)
       header = []
