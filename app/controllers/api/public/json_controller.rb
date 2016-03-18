@@ -24,6 +24,21 @@ module Api
         # end
         render "api/public/json/map"
       end
+
+      def contacts
+        @contacts = Legacy::LegacyContact.select("
+          organizational_title,
+          legacy_organization_id,
+          is_primary,
+          phone,
+          appengine_key,
+          created_at,
+          updated_at,
+          title
+        ")
+
+        render json: @contacts
+      end
     end
   end
 end
