@@ -4,11 +4,11 @@ module Api
   class JsonController < ApplicationController
     include ApplicationHelper
     before_filter :check_user
-    respond_to :json
 
     def map
       if params["pin"]
-        render json: @sites = Legacy::LegacySite.find(params["pin"])
+        @sites = Legacy::LegacySite.find(params["pin"])
+        binding.pry
       else
         @sites = Legacy::LegacySite.select("
           legacy_sites.*,
