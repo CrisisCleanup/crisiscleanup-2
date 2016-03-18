@@ -46,7 +46,7 @@ module Api
           state,
           timestamp_login,
           timestamp_signup
-          ")
+          ").limit(200)
         render json: @organizations
       end
     end
