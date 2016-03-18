@@ -130,7 +130,7 @@
   <div>
     <div class="row">
       <div class="small-12 medium-6 columns">
-        <%= f.input :accepted_terms, label: "Accept Terms of Service", required: true %>
+        <%= f.input :accepted_terms, label: 'Accept our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.'.html_safe, required: true %>
       </div>
     </div>
   </div>
