@@ -74,10 +74,16 @@ class RegistrationsController < ApplicationController
       :admin_notes,
       :city,
       :deprecated,
-      :does_only_coordination,
-      :does_only_sit_aware,
-      :does_recovery,
-      :does_something_else,
+      :does_damage_assessment,
+      :does_intake_assessment,
+      :does_cleanup,
+      :does_follow_up,
+      :does_minor_repairs,
+      :does_rebuilding,
+      :does_coordination,
+      :governmen,
+      :does_other_activity,
+      :where_are_you_working,
       :email,
       :facebook,
       :is_active,
@@ -102,7 +108,8 @@ class RegistrationsController < ApplicationController
       :url,
       :voad_referral,
       :work_area,
-      :zip_code
+      :zip_code,
+      :accepted_terms
     )
   end
 end
