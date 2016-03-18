@@ -15,7 +15,7 @@ module Api
           status,
           claimed_by,
           work_type
-        ").where(legacy_event_id: params[:legacy_event_id])
+        ").where(legacy_event_id: params[:legacy_event_id]).limit(100)
 
         # @sites.each do |site|
         #   site.address.gsub!(/[0-9]+/, '')
