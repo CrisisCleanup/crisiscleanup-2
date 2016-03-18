@@ -7,7 +7,6 @@ module Api
 
       def map
         @sites = Legacy::LegacySite.select("
-          data,
           case_number,
           blurred_latitude,
           blurred_longitude,
@@ -23,7 +22,7 @@ module Api
         @sites.each do |site|
           site.address.gsub!(/[0-9]+/, '')
         end
-
+        binding.pry
         render json: @sites
       end
     end
