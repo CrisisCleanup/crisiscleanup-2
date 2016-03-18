@@ -73,11 +73,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     # TODO /import
-    get "/map" => "json#map", as: "json_map"
+    get "/map/:event_id/:limit/:page" => "json#map", as: "json_map"
     post "/update-site-status/:id" => "json#update_legacy_site_status"
     post "/claim-site/:id" => "json#claim_legacy_site"
     get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"
-    get "/public/map" => "public/json#map", as: "public_json_map"
+    get "/public/map/:event_id/:limit/:page" => "public/json#map", as: "public_json_map"
     get "/public/contacts" => "public/json#contacts", as: "public_json_contacts"
     post "/import" => "import#csv", as: "import_csv"
     get "/pdf/site" => "pdf#site", as: "pdf_site"

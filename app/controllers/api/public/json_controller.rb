@@ -5,6 +5,13 @@ module Api
       include ApplicationHelper
 
       def map
+        begin
+          limit = (Integer(params[:limit]) > 500) ? 500 : Integer(params[:limit])
+          page = (Integer(params[:page]) < 1) ? 1 : Integer(params[:page])
+        rescue ArgumentError
+          return
+        end
+        offset = (page - 1) * limit + 1
         @sites = Legacy::LegacySite.select("
           case_number,
           blurred_latitude,
@@ -15,7 +22,9 @@ module Api
           status,
           claimed_by,
           work_type
-        ").where(legacy_event_id: params[:legacy_event_id]).limit(100)
+        ").where(legacy_event_id: params[:event_id])
+          .limit(limit)
+          .offset(offset)
 
         # @sites.each do |site|
         #   site.address.gsub!(/[0-9]+/, '')
