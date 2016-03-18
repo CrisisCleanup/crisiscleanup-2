@@ -341,19 +341,19 @@ def import_appengine_emails
 			# get org
 			# determine a user
 			# remove second org from emails that don't require them (only 2 exist)
-		if key == "andy.n.gimma@gmail.com"
-			organization = Legacy::LegacyOrganization.find_by(appengine_key: value[0])
-			user = User.find_by(email: ADMIN_EMAIL)
-			list = InvitationList.new(key, user, organization.id)
-			if list.valid?
-				if list.ready.present?  
-					list.ready.each do |inv|
-						InvitationMailer.send_invitation(inv, "https://crisiscleanup.org").deliver_now
-		                RequestInvitation.invited!(inv.invitee_email)
-					end
+		organization = Legacy::LegacyOrganization.find_by(appengine_key: value[0])
+		user = User.find_by(email: ADMIN_EMAIL)
+
+		list = InvitationList.new(key, user, organization.id)
+		if list.valid?
+			if list.ready.present?  
+				list.ready.each do |inv|
+					InvitationMailer.send_invitation(inv, "https://crisiscleanup.org").deliver_now
+	                RequestInvitation.invited!(inv.invitee_email)
 				end
-		    end  
-		end
+			end
+	    end  
+		# end
 	end
 
 end
@@ -527,3 +527,4 @@ def identical_and_unique? appengine_hash, model_entity, pg_table
 	puts "[Success]-[Identical and Unique]" if success
 	success
 end
+
