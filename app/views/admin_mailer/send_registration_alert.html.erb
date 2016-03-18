@@ -6,22 +6,73 @@
   <body>
     <p>Dear Crisis Cleanup Administrator,</p>
     <p>The following group has applied to participate on Crisis Cleanup.  To review and verify, visit: <%= link_to edit_admin_legacy_organization_url(@org.id), edit_admin_legacy_organization_url(@org.id) %>.</p>
-    <p>Organization name: <%= @org.name %><br />
+    <p>Organization name: <strong><%= @org.name %></strong><br />
     Organization Website: <%= link_to @org.url, @org.url %><br />
-    Incident: <%= @org.legacy_events.last.name %>
+    Incident: <%= @org.legacy_events.last.name %><br />
+    Working in: <%= @org.where_are_you_working %>
     </p>
     <p><strong>Contacts:</strong></p>
     <% @org.legacy_contacts.each do |contact| %>
       <p>
         <%= contact.display_name %>
         <% if contact.title %>
-          <br><%= contact.title %>
+          , <%= contact.title %>
         <% end %>
         <% if contact.phone %>
-          <br><%= contact.phone %>
+          <br>Phone: <%= contact.phone %>
+        <% end %>
+        <% if contact.email %>
+          <br>Email: <%= contact.email %>
         <% end %>
       </p>
     <% end %>
+    <p><strong><%= @org.name %> Data</strong>:
+      <table>
+        <tr>
+          <th>Activity</th>
+          <th>Does</th>
+        </tr>
+        <tr>
+          <td>Review &amp; Approve Orgs</td>
+          <td><%= @org.review_other_organizations %></td>
+        </tr>
+        <tr>
+          <td>Damage Assessments</td>
+          <td><%= @org.does_damage_assessment %></td>
+        </tr>
+        <tr>
+          <td>Cleanup</td>
+          <td><%= @org.does_cleanup %></td>
+        </tr>
+        <tr>
+          <td>Follow-up</td>
+          <td><%= @org.does_follow_up %></td>
+        </tr>
+        <tr>
+          <td>Minor Repairs</td>
+          <td><%= @org.does_minor_repairs %></td>
+        </tr>
+        <tr>
+          <td>Rebuilding</td>
+          <td><%= @org.does_rebuilding %></td>
+        </tr>
+        <tr>
+          <td>Coordination &amp; Oversight</td>
+          <td><%= @org.does_coordination %></td>
+        </tr>
+        <tr>
+          <td>Government</td>
+          <td><%= @org.government %></td>
+        </tr>
+        <tr>
+          <td>Other Activity</td>
+          <td><%= @org.does_other_activity %></td>
+        </tr>
+        <tr>
+          <td>Not an Org</td>
+          <td><%= @org.not_an_org %></td>
+        </tr>
+    </p>
     <p>The approval process is two steps: Verification and Activation.  You, the administrator, verifies that this group is eligible to participate in Crisis Cleanup.  Once you verify this organization, the contact(s) will receive an email notification asking them to activate their account.</p>
     <p>The activation process may require the contact to answer a few easy questions about how Crisis Cleanup works. The purpose of activation is to make sure that at least one person in that organization has received a minimum amount of training. The questions are not designed to be hard; just to make them think.</p>
   </body>
