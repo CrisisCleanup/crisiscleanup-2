@@ -67,70 +67,70 @@
       <%= f.input :twitter %>
     </div>
   </div>
-  <h3>Roles</h3>
+  <h3>What Roles do Your Organization Fill?</h3>
 
   <div class="boxes">
     <div class="row">
       <div class="small-12 medium-12 columns">
-        <%= f.input :review_other_organizations, label: "Review & Approve Participating Organizations: You are willing to review and approve organizations applying to participate in CrisisCleanup." %>
+        <%= f.input :review_other_organizations, label: " <strong>Review & Approve Participating Organizations</strong>: You are willing to take a leadership role, reviewing and approving organizations to participate in CrisisCleanup." %>
       </div>
       <div class="small-12 medium-12 columns">
-        <%= f.input :does_damage_assessment, label: "Damage Assessments: Your organization interacts directly with survivors via call-center, door-to-door, in a MARC, etc." %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="small-12 medium-12 columns">
-        <%= f.input :does_cleanup, label: "Cleanup: Your organization interacts directly with survivors to do muck-outs, debris removal, tree cutting, etc." %>
-      </div>
-      <div class="small-12 medium-12 columns">
-        <%= f.input :does_follow_up, label: "Follow Up: Your organization contacts survivors to ensure all clients have been assisted via phone or in-person visits." %>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="small-12 medium-12 columns">
-        <%= f.input :does_minor_repairs, label: "Minor Repairs: Your organization visits survivors to replace drywall, flooring, or other repairs." %>
-      </div>
-      <div class="small-12 medium-12 columns">
-        <%= f.input :does_rebuilding, label: "Rebuilding: Long Term Recovery Groups, Unmet Needs Committees, or organizations that do long-term or major rebuilding." %>
+        <%= f.input :does_damage_assessment, label: " <strong>Damage Assessments</strong>: Your organization interacts directly with survivors via call-center, door-to-door, in a MARC, etc." %>
       </div>
     </div>
 
     <div class="row">
       <div class="small-12 medium-12 columns">
-        <%= f.input :does_coordination, label: "Coordination: Your organization does NOT interact directly with survivors, but oversees or coordinates organizations that do." %>
+        <%= f.input :does_cleanup, label: " <strong>Cleanup</strong>: Your organization interacts directly with survivors to do muck-outs, debris removal, tree cutting, etc." %>
       </div>
       <div class="small-12 medium-12 columns">
-        <%= f.input :government, label: "Government: You represent a governmental entity, such as municipal, state, tribal or federal government, emergency management, etc." %>
+        <%= f.input :does_follow_up, label: " <strong>Follow Up</strong>: Your organization contacts survivors to ensure all clients have been assisted via phone or in-person visits." %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_minor_repairs, label: " <strong>Minor Repairs</strong>: Your organization visits survivors to replace drywall, flooring, or other repairs." %>
+      </div>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_rebuilding, label: " <strong>Rebuilding</strong>: Long Term Recovery Groups, Unmet Needs Committees, or organizations that do long-term or major rebuilding." %>
       </div>
     </div>
 
     <div class="row">
       <div class="small-12 medium-12 columns">
-        <%= f.input :does_other_activity, label: "Other Activity: Your organization does other disaster-related activity, such as donations management, case management, logistics, etc." %>
+        <%= f.input :does_coordination, label: " <strong>Coordination</strong>: Your organization does NOT interact directly with survivors, but oversees or coordinates organizations that do." %>
       </div>
       <div class="small-12 medium-12 columns">
-        <%= f.input :not_an_org, label: "Not An Organization: Individuals, unaffiliated volunteers, meetup groups, clubs, etc." %>
+        <%= f.input :government, label: " <strong>Government</strong>: You represent a governmental entity, such as municipal, state, tribal or federal government, emergency management, agency, etc." %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_other_activity, label: " <strong>Other Activity: Your organization does other disaster-related activity, such as donations management, case management, logistics, for-profit contracting, etc." %>
+      </div>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :not_an_org, label: " <strong>Not An Organization</strong>: Individuals, unaffiliated volunteers, meetup groups, clubs, etc." %>
       </div>
     </div>
 
     <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :where_are_you_working, label: "Where are you working?", placeholder: "Cities/Counties" %>
+      <%= f.input :where_are_you_working, label: " Where are you working?", placeholder: "Cities/Counties" %>
     </div>
   </div>
     <div class="row">
       <div class="small-12 medium-6 columns">
-        <%= f.input :publishable, label: "Publish Organization Profile" %>
+        <%= f.input :publishable, label: " Publicly Publish Organization Profile?", checked: "checked" %>
       </div>
     </div>
   </div>
   <div>
     <div class="row">
       <div class="small-12 medium-6 columns">
-        <%= f.input :accepted_terms, label: "Accept Terms of Service" %>
+        <%= f.input :accepted_terms, required: true, label: "  <strong>I agree to the <a target='_blank' id='privacy_link' href='/terms'>Terms of Service</a> and <a target='_blank' id='privacy_link' href='/privacy'>Privacy Policy</a></strong>" %>
       </div>
     </div>
   </div>
