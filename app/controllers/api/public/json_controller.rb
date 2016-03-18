@@ -22,7 +22,7 @@ module Api
         # @sites.each do |site|
         #   site.address.gsub!(/[0-9]+/, '')
         # end
-        render json: {"finished": true}
+        render json: @sites
       end
     end
   end
