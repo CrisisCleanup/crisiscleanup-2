@@ -1,5 +1,4 @@
-require 'csv'
-
+# require 'csv'
 module Api
   module Public
     class JsonController < ApplicationController
@@ -16,7 +15,7 @@ module Api
           status,
           claimed_by,
           work_type
-        ").where(legacy_event_id: params[:legacy_event_id])
+        ").where(legacy_event_id: params[:legacy_event_id]).limit(100)
 
         # @sites.each do |site|
         #   site.address.gsub!(/[0-9]+/, '')
@@ -25,18 +24,30 @@ module Api
       end
 
       def contacts
-        @contacts = Legacy::LegacyContact.select("
-          organizational_title,
-          legacy_organization_id,
-          is_primary,
-          phone,
-          appengine_key,
+        # @contacts = Legacy::LegacyContact.select("
+        #   organizational_title,
+        #   legacy_organization_id,
+        #   is_primary,
+        #   phone,
+        #   appengine_key,
+        #   created_at,
+        #   updated_at,
+        #   title
+        # ").where(is_primary: true)
+
+        # render json: @contacts
+        @organizations = Legacy::LegacyOrganization.select("
+          city,
+          is_active,
           created_at,
           updated_at,
-          title
-        ").where(is_primary: true)
-
-        render json: @contacts
+          is_active,
+          is_admin,
+          state,
+          timestamp_login,
+          timestamp_signup
+          ").limit(200)
+        render json: @organizations
       end
     end
   end
