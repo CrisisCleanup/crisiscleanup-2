@@ -36,7 +36,17 @@ module Api
         # ").where(is_primary: true)
 
         # render json: @contacts
-        @organizations = Legacy::LegacyOrganization.all
+        @organizations = Legacy::LegacyOrganization.select("
+          city,
+          is_active,
+          created_at,
+          updated_at,
+          is_active,
+          is_admin,
+          state,
+          timestamp_login,
+          timestamp_signup
+          ")
         render json: @organizations
       end
     end
