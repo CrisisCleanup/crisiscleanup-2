@@ -23,31 +23,6 @@ module Legacy
     attr_accessor :autofill_disable
     attr_accessor :claim
 
-    def as_json(options = {})
-      super(
-        :only => [
-          :id,
-          :case_number,
-          :name,
-          :address,
-          :latitude,
-          :longitude,
-          :blurred_latitude,
-          :blurred_longitude,
-          :city,
-          :state,
-          :zip_code,
-          :org_name,
-          :work_type,
-          :status,
-          :work_requested,
-          :claimed_by,
-          :data,
-          :request_date
-        ]
-      )
-    end
-
     def full_street_address
       "#{self.address}, #{self.city}, #{self.state}"
     end

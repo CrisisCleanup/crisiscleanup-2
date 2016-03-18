@@ -47,6 +47,10 @@ gem 'geocoder'
 gem 'text'
 gem 'unicorn'
 
+# JSON
+gem 'rabl'
+gem 'oj'
+
 gem 'font-awesome-sass'
 
 # CircleCI test metadata formatters
