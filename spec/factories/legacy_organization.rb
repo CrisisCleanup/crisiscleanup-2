@@ -27,6 +27,7 @@ FactoryGirl.define do
     url Faker::Internet.url('example.com')
     work_area Faker::Lorem.sentence
     zip_code  Faker::Address.zip
+    accepted_terms true
   end
 end
 
