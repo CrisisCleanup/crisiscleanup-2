@@ -19,10 +19,10 @@ module Api
           work_type
         ").where(legacy_event_id: params[:legacy_event_id])
 
-        @sites.each do |site|
-          site.address.gsub!(/[0-9]+/, '')
-        end
-        render json: {"finished": true}
+        # @sites.each do |site|
+        #   site.address.gsub!(/[0-9]+/, '')
+        # end
+        render json: @sites
       end
     end
   end
