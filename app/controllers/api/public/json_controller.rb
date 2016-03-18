@@ -1,5 +1,4 @@
-require 'csv'
-
+# require 'csv'
 module Api
   module Public
     class JsonController < ApplicationController
@@ -25,18 +24,20 @@ module Api
       end
 
       def contacts
-        @contacts = Legacy::LegacyContact.select("
-          organizational_title,
-          legacy_organization_id,
-          is_primary,
-          phone,
-          appengine_key,
-          created_at,
-          updated_at,
-          title
-        ").where(is_primary: true)
+        # @contacts = Legacy::LegacyContact.select("
+        #   organizational_title,
+        #   legacy_organization_id,
+        #   is_primary,
+        #   phone,
+        #   appengine_key,
+        #   created_at,
+        #   updated_at,
+        #   title
+        # ").where(is_primary: true)
 
-        render json: @contacts
+        # render json: @contacts
+        @organizations = Legacy::LegacyOrganization.all
+        render json: @organizations
       end
     end
   end

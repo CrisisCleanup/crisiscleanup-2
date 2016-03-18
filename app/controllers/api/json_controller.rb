@@ -1,4 +1,4 @@
-require 'csv'
+# require 'csv'
 
 module Api
   class JsonController < ApplicationController
