@@ -35,7 +35,7 @@ module Api
           created_at,
           updated_at,
           title
-        ")
+        ").where(is_primary: true)
 
         render json: @contacts
       end
