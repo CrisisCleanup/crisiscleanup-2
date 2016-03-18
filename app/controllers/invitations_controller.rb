@@ -38,7 +38,8 @@ class InvitationsController < ApplicationController
       role: params["user"]["role"],
       mobile: params["user"]["mobile"],
       legacy_organization_id:inv.organization_id,
-      referring_user_id:inv.user_id
+      referring_user_id:inv.user_id,
+      accepted_terms: params["user"]["accepted_terms"]
     )
 
     if @user.save

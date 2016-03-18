@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   belongs_to :legacy_organization, :class_name => "Legacy::LegacyOrganization"
   belongs_to :reference, class_name: "User", foreign_key: "referring_user_id"
   validates_presence_of :legacy_organization_id, :if => :is_not_admin?
+  validates_presence_of :accepted_terms
+  before_save :set_terms_timestamp
   
   def invited_by
   	self.reference
@@ -34,5 +36,9 @@ class User < ActiveRecord::Base
       events.push(leo.legacy_event_id)
     end
     events
+  end
+
+  def set_terms_timestamp
+    self.accepted_terms_timestamp = DateTime.now
   end
 end
