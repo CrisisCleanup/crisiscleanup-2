@@ -190,25 +190,12 @@ CCMap.Map = function(params) {
     }
   }
 
-  function buildMarkers() {
-    $('.map-wrapper').append('<div class="loading"></div>');
-
-    if (this.public_map) {
-      route = "/api/public/map?legacy_event_id=" + this.event_id;
-      lat = "blurred_latitude";
-      lng = "blurred_longitude";
-    } else {
-      route = "/api/map?legacy_event_id=" + this.event_id;
-      lat = "latitude";
-      lng = "longitude";
-    }
-
-    $.ajax({
+  function getMarkers(route, page) {
+    return $.ajax({
       type: "GET",
       context: this,
-      url: route,
+      url: route + page,
       success: function(data) {
-        clearOverlays.call(this);
         if (data.length > 0) {
           data.forEach(function(obj, index) {
             var lat_lng = new google.maps.LatLng(parseFloat(obj[lat]), parseFloat(obj[lng]));
@@ -222,19 +209,44 @@ CCMap.Map = function(params) {
             allSites.push(site);
             activeMarkers.push(site);
           }, this);
-          setupSearch(allSites);
-          this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), markerClustererOptions);
-          this.map.fitBounds(this.markerBounds);
         } else {
-          // TODO: modal or something other than an alert box.
-          console.log("no reported incidents");
+          fetchingData = false;
         }
-        $('.loading').remove();
       },
       error: function() {
-        alert('500 error');
+        console.error('500 error in map site request');
       }
     });
+  }
+
+  function buildMarkers() {
+    // TODO: this isn't visible for some reason
+    $('.map-wrapper').append('<div class="loading"></div>');
+
+    if (this.public_map) {
+      route = "/api/public/map/" + this.event_id + "/500/";
+      lat = "blurred_latitude";
+      lng = "blurred_longitude";
+    } else {
+      route = "/api/map/" + this.event_id + "/200/";
+      lat = "latitude";
+      lng = "longitude";
+    }
+
+    clearOverlays.call(this);
+
+    pageLimit = 100; // TODO: get the exact count of sites for the event
+    ajaxCalls = [];
+    for (var page = 1; page < pageLimit; page++) {
+      ajaxCalls.push(getMarkers.call(this, route, page));
+    }
+
+    $.when.apply(this, ajaxCalls).done(function() {
+      setupSearch(allSites);
+      this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), markerClustererOptions);
+      this.map.fitBounds(this.markerBounds);
+      $('.loading').remove();
+    }.bind(this));
   }
 
   function clearOverlays() {

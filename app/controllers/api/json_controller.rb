@@ -8,13 +8,21 @@ module Api
     def map
       if params["pin"]
         @sites = Legacy::LegacySite.find(params["pin"])
-        binding.pry
       else
+        begin
+          limit = (Integer(params[:limit]) > 500) ? 500 : Integer(params[:limit])
+          page = (Integer(params[:page]) < 1) ? 1 : Integer(params[:page])
+        rescue ArgumentError
+          return
+        end
+        offset = (page - 1) * limit + 1
         @sites = Legacy::LegacySite.select("
           legacy_sites.*,
           legacy_organizations.name as org_name
-        ").where(legacy_event_id: params[:legacy_event_id])
+        ").where(legacy_event_id: params[:event_id])
           .joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = legacy_sites.claimed_by")
+          .limit(limit)
+          .offset(offset)
       end
     end
 
