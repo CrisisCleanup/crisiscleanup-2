@@ -29,9 +29,15 @@ CCMap.Form = function(params) {
   var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
   var dd  = date.getDate().toString();
   var dateStr = yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
-  form.elements['legacy_legacy_site_request_date'].value = dateStr;
+  if (form && form.elements['legacy_legacy_site_request_date']) {
+    form.elements['legacy_legacy_site_request_date'].value = dateStr;
+  }
 
   this.hydrate = function(ccsite) {
+    if (!form) {
+      return;
+    }
+
     // Update the form action to update the site
     form.action = '/worker/incident/' + event_id + '/edit/' + ccsite.site.id;
 
@@ -76,89 +82,97 @@ CCMap.Form = function(params) {
   };
 
   // Cancel
-  cancelBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    form.reset();
-    form.scrollTop = 0;
-    if (params.onCancel) {
-      params.onCancel();
-    }
-  });
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      form.reset();
+      form.scrollTop = 0;
+      if (params.onCancel) {
+        params.onCancel();
+      }
+    });
+  }
 
-  claimBtn.addEventListener('click', function(e) {
-    form.elements['legacy_legacy_site_claim'].value = true;
-  });
+  if (claimBtn) {
+    claimBtn.addEventListener('click', function(e) {
+      form.elements['legacy_legacy_site_claim'].value = true;
+    });
+  }
 
-  saveBtn.addEventListener('click', function(e) {
-    form.elements['legacy_legacy_site_claim'].value = false;
-  });
+  if (saveBtn) {
+    saveBtn.addEventListener('click', function(e) {
+      form.elements['legacy_legacy_site_claim'].value = false;
+    });
+  }
 
   // Submit
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    $('.error, .alert-box').remove();
-    var errorList = getErrors();
-    if (errorList.length == 0) {
-      var data = buildData(this);
-      $.ajax({
-        type: "POST",
-        url: this.action,
-        data: data,
-        success: function(data) {
-          if (data["id"] == undefined && data["updated"] == undefined) {
-            var html = "<div data-alert class='alert-box'>"+data+"<a href='#' class='close'>&times;</a></div>";
-            $('.close').click(function() {
-              $('form').prepend(html);
-              $('.alert-box').remove();
-            });
-          } else if (data["updated"] != undefined) {
-            // Successful save on the edit form
-            var nameStr = data.updated.case_number + " - " + data.updated.name;
-            var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
-            $('#alert-container').html(html);
-            form.reset();
-            form.scrollTop = 0;
-            if (params.onSave) {
-              params.onSave();
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      $('.error, .alert-box').remove();
+      var errorList = getErrors();
+      if (errorList.length == 0) {
+        var data = buildData(this);
+        $.ajax({
+          type: "POST",
+          url: this.action,
+          data: data,
+          success: function(data) {
+            if (data["id"] == undefined && data["updated"] == undefined) {
+              var html = "<div data-alert class='alert-box'>"+data+"<a href='#' class='close'>&times;</a></div>";
+              $('.close').click(function() {
+                $('form').prepend(html);
+                $('.alert-box').remove();
+              });
+            } else if (data["updated"] != undefined) {
+              // Successful save on the edit form
+              var nameStr = data.updated.case_number + " - " + data.updated.name;
+              var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
+              $('#alert-container').html(html);
+              form.reset();
+              form.scrollTop = 0;
+              if (params.onSave) {
+                params.onSave();
+              }
+
+              // update the site info
+              // TODO: Set up the legacy_organization association everywhere. name only.
+              if (data.updated.legacy_organization) {
+                data.updated.org_name = data.updated.legacy_organization.name
+              }
+              self.ccsite.site = data.updated;
+
+              // update the map marker
+              self.ccsite.marker.setIcon(self.ccsite.generateIconFilename());
+              var lat_lng = new google.maps.LatLng(parseFloat(self.ccsite.site.latitude), parseFloat(self.ccsite.site.longitude));
+              self.ccsite.marker.setPosition(lat_lng);
+
+              // update the infobox
+              self.ccsite.updateInfoboxHtml();
+            } else {
+              // Successful save on the new site form
+              var nameStr = data.case_number + " - " + data.name;
+              var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
+              $('#alert-container').html(html);
+              form.reset();
+              form.scrollTop = 0;
             }
-
-            // update the site info
-            // TODO: Set up the legacy_organization association everywhere. name only.
-            if (data.updated.legacy_organization) {
-              data.updated.org_name = data.updated.legacy_organization.name
-            }
-            self.ccsite.site = data.updated;
-
-            // update the map marker
-            self.ccsite.marker.setIcon(self.ccsite.generateIconFilename());
-            var lat_lng = new google.maps.LatLng(parseFloat(self.ccsite.site.latitude), parseFloat(self.ccsite.site.longitude));
-            self.ccsite.marker.setPosition(lat_lng);
-
-            // update the infobox
-            self.ccsite.updateInfoboxHtml();
-          } else {
-            // Successful save on the new site form
-            var nameStr = data.case_number + " - " + data.name;
-            var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
-            $('#alert-container').html(html);
-            form.reset();
             form.scrollTop = 0;
+          },
+          error: function(){
+            alert('500 error');
           }
-          form.scrollTop = 0;
-        },
-        error: function(){
-          alert('500 error');
-        }
-      });
-    } else {
-      $.each(errorList,function(i,v){
-        $(v).parent().append("<small class='error'>can't be blank</small>")
-      })
-    }
-    return false;
-  });
+        });
+      } else {
+        $.each(errorList,function(i,v){
+          $(v).parent().append("<small class='error'>can't be blank</small>")
+        })
+      }
+      return false;
+    });
+  }
 
   var getErrors = function(){
     var list = [];

@@ -1,14 +1,22 @@
 <div class='remote'>
-  <%= simple_form_for @site, url: url, remote: true, html: { autocomplete: 'off' } do |f| %>
-    <%= f.input :autofill_disable, as: :hidden, input_html: { autocomplete: false, style: 'display: none;' } %>
-    <%= f.input :claim, as: :hidden, input_html: { value: false } %>
-    <%= @form.html_safe %>
+  <% if @form %>
+    <%= simple_form_for @site, url: url, remote: true, html: { autocomplete: 'off' } do |f| %>
+      <%= f.input :autofill_disable, as: :hidden, input_html: { autocomplete: false, style: 'display: none;' } %>
+      <%= f.input :claim, as: :hidden, input_html: { value: false } %>
+      <%= @form.html_safe %>
+      <div class="row">
+        <div class="small-12 medium-12 large-12">
+          <%= link_to 'Cancel', '', class: 'button secondary', id: 'cancel-form-btn' %>
+          <%= f.button :submit, 'Claim & Save', id: 'claim-form-btn' %>
+          <%= f.button :submit, 'Save', id: 'save-form-btn' %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
     <div class="row">
-      <div class="small-12 medium-12 large-12">
-        <%= link_to 'Cancel', '', class: 'button secondary', id: 'cancel-form-btn' %>
-        <%= f.button :submit, 'Claim & Save', id: 'claim-form-btn' %>
-        <%= f.button :submit, 'Save', id: 'save-form-btn' %>
+      <div class="small-12 columns">
+        <p>A form for this event was not found.</p>
       </div>
     </div>
-  <%end%>
+  <% end %>
 </div>
