@@ -78,6 +78,7 @@ Rails.application.routes.draw do
     post "/claim-site/:id" => "json#claim_legacy_site"
     get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"
     get "/public/map/:event_id/:limit/:page" => "public/json#map", as: "public_json_map"
+    get "/count/:event_id" => "public/json#siteCount"
     get "/public/contacts" => "public/json#contacts", as: "public_json_contacts"
     post "/import" => "import#csv", as: "import_csv"
     get "/pdf/site" => "pdf#site", as: "pdf_site"

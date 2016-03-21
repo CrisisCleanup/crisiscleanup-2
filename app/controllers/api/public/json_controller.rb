@@ -32,6 +32,10 @@ module Api
         render "api/public/json/map"
       end
 
+      def siteCount
+        render json: Legacy::LegacySite.where({legacy_event_id: params[:event_id]}).count
+      end
+
       def contacts
         # @contacts = Legacy::LegacyContact.select("
         #   organizational_title,
