@@ -14,6 +14,7 @@ module Legacy
     # before_validation :create_blurred_geocoordinates
     before_validation :add_case_number
     before_save :calculate_metaphones
+    before_create :detect_duplicates
     belongs_to :legacy_event
     belongs_to :legacy_organization, foreign_key: :claimed_by
 
@@ -48,6 +49,20 @@ module Legacy
 
     def claimed_by_org
       LegacyOrganization.find(self.claimed_by)
+    end
+
+    def detect_duplicates
+      if Legacy::LegacySite.where({
+          name_metaphone: self.name_metaphone,
+          city_metaphone: self.city_metaphone,
+          county_metaphone: self.county_metaphone,
+          address_metaphone: self.address_metaphone
+        })
+        puts 'DUPLICATE SITE DETECTED'
+        return false
+      else
+        puts 'NO DUPLICATE SITES FOUND'
+      end
     end
 
     def reported_by_org
