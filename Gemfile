@@ -30,7 +30,7 @@ gem 'jquery-rails'
 # React - don't use jquery inside react components
 gem 'react-rails', '~> 1.6.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 gem 'validates_email_format_of'

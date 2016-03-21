@@ -274,8 +274,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -338,9 +336,11 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   text
-  turbolinks
   uglifier (>= 1.3.0)
   unicorn
   valid_attribute
   validates_email_format_of
   will_paginate (~> 3.0.6)
+
+BUNDLED WITH
+   1.11.2
