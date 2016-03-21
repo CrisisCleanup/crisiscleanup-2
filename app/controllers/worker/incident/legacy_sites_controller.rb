@@ -14,7 +14,9 @@ module Worker
       def form
         @body = 'map'
         @site = Legacy::LegacySite.new(legacy_event_id: params[:id])
-        @form = Form.find_by(legacy_event_id: params[:id]).html
+        if formObj = Form.find_by(legacy_event_id: params[:id])
+          @form = formObj.html
+        end
         @legacy_event = Legacy::LegacyEvent.find(params[:id])
       end
 
@@ -22,7 +24,9 @@ module Worker
         @body = 'map'
         @legacy_event = Legacy::LegacyEvent.find(params[:id])
         @site = Legacy::LegacySite.new(legacy_event_id: @legacy_event.id)
-        @form = Form.find_by(legacy_event_id: @legacy_event.id).html
+        if formObj = Form.find_by(legacy_event_id: @legacy_event.id)
+          @form = formObj.html
+        end
       end
 
       def print
