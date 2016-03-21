@@ -67,8 +67,8 @@ CCMap.Map = function(params) {
     scrollwheel: false
   }
   this.map = new google.maps.Map(this.canvas, this.options)
-  this.markerCluster;
   this.markerBounds = new google.maps.LatLngBounds();
+  this.markerClusterer = new MarkerClusterer(this.map, [], markerClustererOptions);
 
   this.map.addListener('click', function() {
     $('#filters-anchor').click();
@@ -209,8 +209,8 @@ CCMap.Map = function(params) {
             allSites.push(site);
             activeMarkers.push(site);
           }, this);
-        } else {
-          fetchingData = false;
+          this.map.fitBounds(this.markerBounds);
+          this.markerClusterer.addMarkers(activeMarkers.map(function(site) { return site.marker; }));
         }
       },
       error: function() {
@@ -222,31 +222,38 @@ CCMap.Map = function(params) {
   function buildMarkers() {
     // TODO: this isn't visible for some reason
     $('.map-wrapper').append('<div class="loading"></div>');
+    var PAGE_SIZE = 250;
 
     if (this.public_map) {
-      route = "/api/public/map/" + this.event_id + "/500/";
+      route = "/api/public/map/" + this.event_id + "/" + PAGE_SIZE + "/";
       lat = "blurred_latitude";
       lng = "blurred_longitude";
     } else {
-      route = "/api/map/" + this.event_id + "/200/";
+      route = "/api/map/" + this.event_id + "/" + PAGE_SIZE + "/";
       lat = "latitude";
       lng = "longitude";
     }
 
-    clearOverlays.call(this);
+    $.ajax({
+      url: '/api/count/' + this.event_id,
+      method: 'get',
+      context: this,
+      success: function(data) {
+        clearOverlays.call(this);
 
-    pageLimit = 100; // TODO: get the exact count of sites for the event
-    ajaxCalls = [];
-    for (var page = 1; page < pageLimit; page++) {
-      ajaxCalls.push(getMarkers.call(this, route, page));
-    }
+        pageLimit = Math.ceil(data / PAGE_SIZE);
+        ajaxCalls = [];
+        for (var page = 1; page <= pageLimit; page++) {
+          ajaxCalls.push(getMarkers.call(this, route, page));
+        }
 
-    $.when.apply(this, ajaxCalls).done(function() {
-      setupSearch(allSites);
-      this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), markerClustererOptions);
-      this.map.fitBounds(this.markerBounds);
-      $('.loading').remove();
-    }.bind(this));
+        $.when.apply(this, ajaxCalls).done(function() {
+          setupSearch(allSites);
+          $('.loading').remove();
+        }.bind(this));
+      }
+    });
+
   }
 
   function clearOverlays() {
@@ -254,15 +261,15 @@ CCMap.Map = function(params) {
       activeMarkers[i].marker.setMap(this.map);
     }
     activeMarkers = [];
-    if (typeof this.markerCluster !== 'undefined'){
-      this.markerCluster.clearMarkers();
+    if (typeof this.markerClusterer !== 'undefined') {
+      this.markerClusterer.clearMarkers();
     }
   }
 
   function populateMap() {
     clearOverlays.call(this);
     activeMarkers = filters.getFilteredSites(allSites);
-    this.markerCluster = new MarkerClusterer(this.map, activeMarkers.map(function(site) { return site.marker; }), markerClustererOptions);
+    this.markerClusterer.addMarkers(activeMarkers.map(function(site) { return site.marker; }));
   }
 
   // Address autocomplete
