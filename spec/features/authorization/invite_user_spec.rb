@@ -28,6 +28,7 @@ feature "Inviting a new user" do
       fill_in 'Name', :with => 'New User Name'
       fill_in 'user_password', :with => password
       fill_in 'user_password_confirmation', :with => password
+      check 'user_accepted_terms'
       click_button "Sign up"
     end
     expect(page).to have_content 'Worker Dashboard'

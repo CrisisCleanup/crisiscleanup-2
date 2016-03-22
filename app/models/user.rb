@@ -13,21 +13,23 @@ class User < ActiveRecord::Base
   validates_presence_of :legacy_organization_id, :if => :is_not_admin?
   validates_presence_of :accepted_terms
   before_save :set_terms_timestamp
-  
+
   def invited_by
-  	self.reference
+    self.reference
   end
 
   def is_not_admin?
-    !self.admin 
+    !self.admin
   end
+
   def org
     # this is where we'll add new orgs too
     self.legacy_organization
     # self.legacy_organization || self.organization
-  end 
+  end
+
   def self.todays_login_count
-  	count = User.where("DATE(last_sign_in_at) = ?", Date.today).count
+    count = User.where("DATE(last_sign_in_at) = ?", Date.today).count
   end
 
   def events
