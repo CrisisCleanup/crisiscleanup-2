@@ -51,7 +51,7 @@ hr {
     & .simple_form {
         max-height: 500px; /* fits viewport on standard laptop screen */
         overflow-y: scroll;
-        width: 90%;
+        width: 95%;
         margin-left: 5%;
         & .columns {
             padding-left: 0;
@@ -104,8 +104,15 @@ table {
     height: 100%;
     min-height:600px;
     background-color: $smoke;
-    margin-top: -3px;
 }
+
+.map-margin-fix {
+    margin-top: -41.6px;
+}
+
+.form-margin-fix {
+    margin-top: -32.6px;
+}    
     
 // infobox
 #map-infobox {
@@ -182,7 +189,9 @@ table {
         margin-left: 1%;
         height: 600px;
         background-color: $smoke;
-        margin-top: -41px;
+    }
+    .map-margin-fix, .form-margin-fix {
+        margin-top: -23.6px;
     }
 }
 

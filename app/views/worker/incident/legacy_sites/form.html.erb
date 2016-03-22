@@ -11,9 +11,9 @@
     <!-- do not remove spans -->
     <span class='m-id hidden'><%= @legacy_event.id %></span>
     <span class='m-pin hidden'>init</span>
-    <br>
     <div class='map-wrapper'>
-      <div id="worker-map-canvas" style="width: 100%; min-height: 600px; height: 100%; margin-top: -41px;"></div>
+      <div id="worker-map-canvas" class="form-margin-fix" style="width: 100%; min-height: 600px; height: 100%;"></div>
+      <%= image_tag "map_legend.png", :class => "legend"  %>
     </div>
   </div>
 <% end %>
