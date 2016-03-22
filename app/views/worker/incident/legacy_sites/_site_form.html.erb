@@ -4,6 +4,7 @@
       <%= f.input :autofill_disable, as: :hidden, input_html: { autocomplete: false, style: 'display: none;' } %>
       <%= f.input :claim, as: :hidden, input_html: { value: false } %>
       <%= @form.html_safe %>
+      <%= f.input :skip_duplicates, as: :boolean %>
       <div class="row">
         <div class="small-12 medium-12 large-12">
           <%= link_to 'Cancel', '', class: 'button secondary', id: 'cancel-form-btn' %>

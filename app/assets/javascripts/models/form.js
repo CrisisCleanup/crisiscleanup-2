@@ -120,7 +120,14 @@ CCMap.Form = function(params) {
           url: this.action,
           data: data,
           success: function(data) {
-            if (data["id"] == undefined && data["updated"] == undefined) {
+            if (data.errors) {
+              var errorList = $('<div>', { id: "error-list" });
+              data.errors.forEach(function(error) {
+                errorList.append('<p>' + error + '</p>');
+              });
+              var alertHtml = $('<div data-alert class="alert-box warning"><a href="#" class="close">&times;</a></div>').append(errorList); 
+              $('form').prepend(alertHtml);
+            } else if (data["id"] == undefined && data["updated"] == undefined) {
               var html = "<div data-alert class='alert-box'>"+data+"<a href='#' class='close'>&times;</a></div>";
               $('.close').click(function() {
                 $('form').prepend(html);
@@ -219,7 +226,8 @@ CCMap.Form = function(params) {
       "updated_at",
       "request_date",
       "appengine_key",
-      "work_requested"
+      "work_requested",
+      "skip_duplicates"
     ];
     // create the data object from all of the inputs that are not top level
     var inputs = form.elements;
@@ -232,7 +240,14 @@ CCMap.Form = function(params) {
         fieldName = fieldName[1];
         if (topLevelFields.indexOf(fieldName) > -1) {
           // Put it top level
-          postData.legacy_legacy_site[fieldName] = inputs[i].value;
+          // deal with the checkboxes...
+          if (inputs[i].type === 'checkbox') {
+            if (inputs[i].checked) {
+              postData.legacy_legacy_site[fieldName] = inputs[i].value;
+            }
+          } else {
+            postData.legacy_legacy_site[fieldName] = inputs[i].value;
+          }
         } else {
           // Put it in data
           // deal with the checkboxes...
