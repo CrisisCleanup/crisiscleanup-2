@@ -11,7 +11,7 @@ module Legacy
     # geocoded_by :full_street_address
     validates_presence_of :address, :blurred_latitude, :blurred_longitude, :case_number, :city, :latitude, :longitude, :name, :work_type, :status
     # before_validation :geocode, if: -> (obj) { obj.latitude.nil? or obj.longitude.nil? or obj.address_changed? }
-    # before_validation :create_blurred_geocoordinates
+    before_validation :create_blurred_geocoordinates
     before_validation :add_case_number
     before_save :calculate_metaphones
     before_create :detect_duplicates
@@ -22,6 +22,7 @@ module Legacy
     # So we can hide the autofill on this model's simple_form - I don't think this is actually working.
     attr_accessor :autofill_disable
     attr_accessor :claim
+    attr_accessor :skip_duplicates
 
     def full_street_address
       "#{self.address}, #{self.city}, #{self.state}"
@@ -52,16 +53,19 @@ module Legacy
     end
 
     def detect_duplicates
-      if Legacy::LegacySite.where({
-          name_metaphone: self.name_metaphone,
-          city_metaphone: self.city_metaphone,
-          county_metaphone: self.county_metaphone,
-          address_metaphone: self.address_metaphone
-        })
-        puts 'DUPLICATE SITE DETECTED'
-        return false
-      else
-        puts 'NO DUPLICATE SITES FOUND'
+      unless self.skip_duplicates.to_i == 1
+        dups = Legacy::LegacySite.where(
+            name_metaphone: self.name_metaphone,
+            city_metaphone: self.city_metaphone,
+            county_metaphone: self.county_metaphone,
+            address_metaphone: self.address_metaphone,
+            legacy_event_id: self.legacy_event_id
+          )
+        if dups.count > 0
+          case_numbers = dups.map { |dup| dup.case_number }
+          errors.add(:base, "Possible duplicate case #'s: #{case_numbers.join(', ')}")
+          return false
+        end
       end
     end
 

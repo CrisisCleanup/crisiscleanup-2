@@ -65,7 +65,7 @@ module Worker
           Legacy::LegacyEvent.find(current_user_event).legacy_sites << @site
           render json: @site
         else
-          render json: @site.errors.full_messages
+          render json: { errors: @site.errors.full_messages }
         end
 
       end
@@ -113,7 +113,7 @@ module Worker
           :address,:blurred_latitude,:blurred_longitude,
           :case_number,:city,:claimed_by,:county,:legacy_event_id,
           :latitude,:longitude,:name,:phone1,:phone2,:reported_by,
-          :request_date,:state,:status,:work_requested,:work_type,
+          :request_date,:skip_duplicates,:state,:status,:work_requested,:work_type,
           :data,:zip_code)
       end
     end

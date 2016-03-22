@@ -138,6 +138,7 @@ CCMap.Map = function(params) {
   zoomToMarker = zoomToMarker.bind(this);
 
   function setupSearch(siteList) {
+    window.siteList = siteList;
     var $searchBtn = $('#map-search-btn');
     // Initialize the search typeahead
     // TODO: this shouldn't be loaded or even rendered on every page.

@@ -16,6 +16,7 @@ module Api
           case_number,
           blurred_latitude,
           blurred_longitude,
+          address,
           city,
           state,
           zip_code,
@@ -26,9 +27,9 @@ module Api
           .limit(limit)
           .offset(offset)
 
-        # @sites.each do |site|
-        #   site.address.gsub!(/[0-9]+/, '')
-        # end
+        @sites.each do |site|
+          site.address.gsub!(/[0-9]+/, '')
+        end
         render "api/public/json/map"
       end
 
