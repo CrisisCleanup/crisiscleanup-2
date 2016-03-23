@@ -84,6 +84,7 @@ CCMap.Map = function(params) {
   });
 
   this.setEventId = function(event_id) {
+    $('#map-infobox').hide();
     this.event_id = event_id;
     // TODO: refactor this nonsense.
     if (this.form_map) {
@@ -220,9 +221,8 @@ CCMap.Map = function(params) {
   }
 
   function buildMarkers() {
-    // TODO: this isn't visible for some reason
     $('.map-wrapper').append('<div class="loading"></div>');
-    var PAGE_SIZE = 50;
+    var PAGE_SIZE = 1000;
 
     if (this.public_map) {
       route = "/api/public/map/" + this.event_id + "/" + PAGE_SIZE + "/";
