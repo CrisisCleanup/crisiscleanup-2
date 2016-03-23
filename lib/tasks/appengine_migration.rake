@@ -340,6 +340,7 @@ end
 
 def import_appengine_emails
 	emails = get_appengine_emails
+	begin
 	emails.each do |key, value|
 		# value.each do |v|
 			# get org
@@ -358,6 +359,8 @@ def import_appengine_emails
 			end
 	    end  
 		# end
+	end
+	rescue
 	end
 
 end
