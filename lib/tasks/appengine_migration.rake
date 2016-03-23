@@ -495,9 +495,9 @@ def get_appengine_entities(table_name)
 	count = 0
 	errors_count = 0
 	result_keys.each do |key|
-		if count == 10
-			return results
-		end
+		# if count == 10
+		# 	return results
+		# end
 		begin
 			count += 1
 			# if count > 10
