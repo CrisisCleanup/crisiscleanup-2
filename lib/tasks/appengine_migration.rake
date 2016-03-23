@@ -340,14 +340,16 @@ end
 
 def import_appengine_emails
 	emails = get_appengine_emails
+	begin
 	emails.each do |key, value|
 		# value.each do |v|
 			# get org
 			# determine a user
 			# remove second org from emails that don't require them (only 2 exist)
 		organization = Legacy::LegacyOrganization.find_by(appengine_key: value[0])
-		user = User.find_by(email: ADMIN_EMAIL)
-
+		user = User.second
+		if Invitation.find_by(invitee_email: key)
+		else
 		list = InvitationList.new(key, user, organization.id)
 		if list.valid?
 			if list.ready.present?  
@@ -357,7 +359,11 @@ def import_appengine_emails
 				end
 			end
 	    end  
+
+	end
 		# end
+	end
+	rescue
 	end
 
 end
