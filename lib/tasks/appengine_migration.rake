@@ -541,7 +541,7 @@ def appengine_import_missing appengine_table, relations, joins, deletions, pg_ta
     errors = false
 
     # entities = get_appengine_entities(appengine_table)
-    binding.pry
+    # binding.pry
     entities.each do |entity|
 	    	# sleep for heroku throttling
 	    unless Legacy::LegacySite.find_by(appengine_key: entity["appengine_key"])
