@@ -23,6 +23,7 @@ CCMap.Site = function(params) {
   this.ccmap = params.ccmap;
   this.site = params.site;
   this.updateInfoboxHtml = toInfoboxHtml.bind(this); // Gross. Calling this in form.js.
+  this.site_fetched = this.ccmap.public_map; // If it's a public_map set to true.
 
   // TODO: check if the file exists on the server or some other validation here.
   this.generateIconFilename = function() {
@@ -42,7 +43,7 @@ CCMap.Site = function(params) {
     icon: self.generateIconFilename.call(self)
   });
 
-  this.marker.addListener("click", function() {
+  function toggleInfobox() {
     if (this.ccmap.public_map) {
       toPublicInfoboxHtml.call(this);
     } else {
@@ -52,6 +53,24 @@ CCMap.Site = function(params) {
       $infobox.slideToggle();
     }
     this.ccmap.showFilters();
+  }
+
+  this.marker.addListener("click", function() {
+    // Call site endpoint here.
+    if (!this.site_fetched) {
+      $.ajax({
+        type: "GET",
+        context: this,
+        url: '/api/site/' + this.site.id,
+        success: function(data) {
+          this.site = data;
+          this.site_fetched = true;
+          toggleInfobox.call(this);
+        }
+      });
+    } else {
+      toggleInfobox.call(this);
+    }
   }.bind(this));
 
   /**

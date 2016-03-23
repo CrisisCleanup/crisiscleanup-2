@@ -10,19 +10,36 @@ module Api
         @sites = Legacy::LegacySite.find(params["pin"])
       else
         begin
-          limit = (Integer(params[:limit]) > 500) ? 500 : Integer(params[:limit])
+          limit = (Integer(params[:limit]) > 1000) ? 1000 : Integer(params[:limit])
           page = (Integer(params[:page]) < 1) ? 1 : Integer(params[:page])
         rescue ArgumentError
           return
         end
         offset = (page - 1) * limit + 1
         @sites = Legacy::LegacySite.select("
-          legacy_sites.*,
-          legacy_organizations.name as org_name
+          legacy_sites.id,
+          legacy_sites.latitude,
+          legacy_sites.longitude,
+          legacy_sites.work_type,
+          legacy_sites.status,
+          legacy_sites.claimed_by
         ").where(legacy_event_id: params[:event_id])
-          .joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = legacy_sites.claimed_by")
           .limit(limit)
           .offset(offset)
+      end
+    end
+
+    def site
+      if @site = Legacy::LegacySite.select("
+          legacy_sites.*,
+          legacy_organizations.name as org_name
+        ").where("legacy_sites.id = ?", params[:id].to_i)
+          .joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = legacy_sites.claimed_by")
+          .take
+
+        render json: @site
+      else
+        render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our system.' }
       end
     end
 
