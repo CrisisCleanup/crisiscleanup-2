@@ -22,6 +22,10 @@ ADMIN_EMAIL = "admin@ccu.org"
 namespace :appengine_migration do
 desc "imports"
 
+
+	task :get_missing_entities => :environment do
+		get_missing_entities
+	end
 	task :import_emails => :environment do
 		import_appengine_emails
 	end
@@ -421,15 +425,9 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
     		if pg_table == Legacy::LegacyOrganization and Legacy::LegacyOrganization.where(name: pg_entity.name).count > 0
     			pg_entity.name = pg_entity.name + "_#{Random.rand(100)}"
     		end
-
-    		if pg_table == Legacy::LegacyOrganization
-    			pg_entity.accepted_terms = true
-    		end
-
         	pg_entity.save
 
         	unless pg_entity.valid?
-        		binding.pry
         		raise "entity invalid + #{pg_entity.to_json}"
         		# TODO
         		# if error is name is already taken, get existing entity and set that as the pg entity
@@ -495,7 +493,7 @@ def get_appengine_entities(table_name)
 	count = 0
 	errors_count = 0
 	result_keys.each do |key|
-		# if count == 10
+		# if count == 1000
 		# 	return results
 		# end
 		begin
@@ -532,4 +530,156 @@ def identical_and_unique? appengine_hash, model_entity, pg_table
 	end
 	puts "[Success]-[Identical and Unique]" if success
 	success
+end
+
+
+def appengine_import_missing appengine_table, relations, joins, deletions, pg_table, entities
+    puts "import missing"
+
+    count = 0
+    errors_count = 0
+    errors = false
+
+    # entities = get_appengine_entities(appengine_table)
+    binding.pry
+    entities.each do |entity|
+	    	# sleep for heroku throttling
+	    unless Legacy::LegacySite.find_by(appengine_key: entity["appengine_key"])
+	    	sleep 0.1
+	    	#make these separate functions
+	    	#entity = add_joins entity if joins, etc
+	    	if joins
+	    		
+		    	joins_hash = {}
+		    	joins.each do |join|
+		    		joins_hash[join] = entity[join]
+		    	end
+		    end
+
+		    if deletions
+		    	deletions.each do |deletion|
+		    		entity.delete(deletion)
+		    	end
+		    end
+		    if relations
+		    	relations.each do |key, value|
+					relation = entity[key.to_s]
+					entity.delete(key.to_s)
+					# db_table = Legacy::LegacyOrganization if key == "organization"
+					# db_table = Legacy::LegacyEvent if key != "organization"
+					db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyOrganization, relation if relation and key.to_s != "legacy_event_id"
+					db_entity = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, relation if relation and key.to_s == "legacy_event_id"
+				    entity[value.to_s] = db_entity.id if db_entity
+		
+
+		    	end
+		    end
+		    entity = values_hash_for_sites entity if appengine_table == "site"
+
+	    	pg_entity = pg_table.new(entity)
+	    	if appengine_table == "site"
+		    	unless identical_and_unique? entity, pg_entity, Legacy::LegacySite
+		    		errors_count += 1
+		    		puts "[#appengine_table}-import]-[Errors count: #{errors_count}]"
+		    		next
+		    	end
+		    else
+		    	unless identical_and_unique? entity, pg_entity, Legacy::LegacyEvent
+		    		errors_count += 1
+		    		puts "[#appengine_table}-import]-[Errors count: #{errors_count}]"
+		    		next
+		    	end
+		    end
+	    	begin
+	    		pg_entity.created_at = DateTime.now if pg_entity.created_at.nil?
+	    		pg_entity.updated_at = DateTime.now if pg_entity.updated_at.nil?
+
+
+	    		if pg_table == Legacy::LegacyOrganization and Legacy::LegacyOrganization.where(name: pg_entity.name).count > 0
+	    			pg_entity.name = pg_entity.name + "_#{Random.rand(100)}"
+	    		end
+
+	    		if pg_table == Legacy::LegacyOrganization
+	    			pg_entity.accepted_terms = true
+	    		end
+
+	        	pg_entity.save
+
+	        	unless pg_entity.valid?
+	        		binding.pry
+	        		raise "entity invalid + #{pg_entity.to_json}"
+	        		# TODO
+	        		# if error is name is already taken, get existing entity and set that as the pg entity
+	        	end
+	        	if joins
+	        		joins_hash.each do |key, value|
+	        			if value.length == 1
+		        			event = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, value
+		        			puts "[#{appengine_table}-import]-[Error]-[Can't find event with id: #{value}]" if event.nil?
+		        			puts joins_hash if event.nil?
+		        			# unless pg_entity.valid? 
+			        		# 	binding.pry
+			        		# end
+			        		# if pg_entity.name.include? "Knights"
+			        		# 	binding.pry
+			        		# end
+		        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
+		        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]-[organization: #{pg_entity.name}]"
+		        		else
+		        			value.each do |val|
+			        			event = get_postgres_entity_from_appengine_key Legacy::LegacyEvent, val
+			        			puts "[#{appengine_table}-import]-[Error]-[Can't find event with id: #{val}]" if event.nil?
+			        			puts joins_hash if event.nil?
+			        			# unless pg_entity.valid? 
+				        		# 	binding.pry
+				        		# end
+				        		# count += 1
+				        		# if pg_entity.name.include? "Knights"
+				        		# 	binding.pry
+				        		# end
+			        			Legacy::LegacyOrganizationEvent.create(legacy_organization_id: pg_entity.id, legacy_event_id: event.id)
+			        			puts "[#{appengine_table}-import]-[Information]-[Join added for count number: #{count}]-[organization: #{pg_entity.name}]"
+		        			end
+		        		end
+	        		end
+	        	end
+
+	        	count += 1
+		    	unless count == pg_table.count
+		    		# binding.pry
+		    	end
+	        	puts "[#{appengine_table}-import]-[Information]-[Success count: #{count}]"
+	        rescue => e
+	        	errors_count += 1
+	        	# binding.pry
+	        	puts "[#{appengine_table}-import]-[Error]-[Database Error Message: #{e}]"
+	        	puts "[#{appengine_table}-import]-[Error]-[App engine key: #{entity['appengine_key']}]"
+	            puts "[#{appengine_table}-import]-[Errors count: #{errors_count}]"
+
+	    	end
+	    end
+    end    
+    puts "[#{appengine_table}-import]-[Information]-[Final success count: #{count}]"
+    puts "[#{appengine_table}-import]-[Information]-[Final errors count: #{errors_count}]"
+end
+
+def get_missing_entities()
+	table_name = 'site'
+	results = []
+	proxy = ENV['HTTP_PROXY']
+	client = HTTPClient.new(proxy)
+	count = 0
+
+	result_keys = get_keys_from_appengine "#{table_name}_keys"
+	missing_keys = []
+	result_keys.each do |key|
+		unless Legacy::LegacySite.find_by(appengine_key: key)
+			count += 1
+			puts "[#{table_name}-import]-[Information]-[getting #{count}]"
+			target = "http://#{URL}/api/migration?action=get_entity_by_key&table=#{table_name}&key=#{key}"
+			result = client.get_content(target)
+			results << JSON[result]
+		end
+	end
+	appengine_import_missing 'site', {legacy_event_id: "legacy_event_id", created_by: "created_by", reported_by: "reported_by", claimed_by: "claimed_by"}, nil, nil, Legacy::LegacySite, results
 end
