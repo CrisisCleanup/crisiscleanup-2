@@ -11,7 +11,7 @@ module Admin
 
     def new
       @user = User.new
-      @organizations = Legacy::LegacyOrganization.all
+      @organizations = Legacy::LegacyOrganization.select(:id, :name).order(:name)
     end
 
     def create
