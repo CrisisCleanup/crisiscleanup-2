@@ -222,7 +222,7 @@ CCMap.Map = function(params) {
   function buildMarkers() {
     // TODO: this isn't visible for some reason
     $('.map-wrapper').append('<div class="loading"></div>');
-    var PAGE_SIZE = 250;
+    var PAGE_SIZE = 50;
 
     if (this.public_map) {
       route = "/api/public/map/" + this.event_id + "/" + PAGE_SIZE + "/";
