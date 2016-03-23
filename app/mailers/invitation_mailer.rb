@@ -4,7 +4,7 @@ class InvitationMailer < ActionMailer::Base
     @user = User.find(inv.user_id)
     @email = inv.invitee_email
     @url = request + "/invitations/activate?token="+inv.token
-    mail(to: @email, subject: "#{@user.name} has invited you to join Crisis Cleanup")
+    mail(to: @email, subject: "Please Activate your New Crisis Cleanup Account")
   end
 
   def send_confirmation_alert(verified_by, new_user)

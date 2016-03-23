@@ -126,7 +126,7 @@ def get_appengine_emails()
 	results = []
 	proxy = ENV['HTTP_PROXY']
 	client = HTTPClient.new(proxy)
-	target = "http://#{URL}/admin-emails-handler"
+	target = "https://sandy-disaster-recovery.appspot.com/admin-emails-handler"
 	result = client.get_content(target)
 	JSON[result]
 end
@@ -347,8 +347,11 @@ def import_appengine_emails
 			# remove second org from emails that don't require them (only 2 exist)
 		# organization = Legacy::LegacyOrganization.find_by(appengine_key: value[0])
 		organization = Legacy::LegacyOrganization.first
-		user = User.find_by(email: ADMIN_EMAIL)
-		if value[0] == "test5@aarontitus.net"
+		# user = User.find_by(email: ADMIN_EMAIL)
+		user = User.first
+		if key == "test1@aarontitus.net"
+					# binding.pry
+
 			list = InvitationList.new(key, user, organization.id)
 			if list.valid?
 				if list.ready.present?  
