@@ -54,13 +54,22 @@ module Legacy
 
     def detect_duplicates
       unless self.skip_duplicates.to_i == 1
-        dups = Legacy::LegacySite.where(
-            name_metaphone: self.name_metaphone,
-            city_metaphone: self.city_metaphone,
-            county_metaphone: self.county_metaphone,
-            address_metaphone: self.address_metaphone,
-            legacy_event_id: self.legacy_event_id
-          )
+        # The AND query - delete this if it's after April OR you feel like it.
+        # dups = Legacy::LegacySite.where(
+        #     name_metaphone: self.name_metaphone,
+        #     city_metaphone: self.city_metaphone,
+        #     county_metaphone: self.county_metaphone,
+        #     address_metaphone: self.address_metaphone,
+        #     legacy_event_id: self.legacy_event_id
+        #   )
+        dups = Legacy::LegacySite
+                .where('legacy_event_id = ? AND (name_metaphone = ? OR city_metaphone = ? OR county_metaphone = ? OR address_metaphone = ?)',
+                  self.legacy_event_id,
+                  self.name_metaphone,
+                  self.city_metaphone,
+                  self.county_metaphone,
+                  self.address_metaphone
+                )
         if dups.count > 0
           case_numbers = dups.map { |dup| dup.case_number }
           errors.add(:base, "Possible duplicate case #'s: #{case_numbers.join(', ')}")
