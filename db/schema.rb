@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318184825) do
+ActiveRecord::Schema.define(version: 20160323080141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,10 @@ ActiveRecord::Schema.define(version: 20160318184825) do
     t.datetime "accepted_terms_timestamp"
     t.boolean  "review_other_organizations"
     t.boolean  "situational_awareness"
+    t.boolean  "does_recovery"
+    t.boolean  "does_only_coordination"
+    t.boolean  "does_only_sit_aware"
+    t.boolean  "does_something_else"
   end
 
   create_table "legacy_sites", force: :cascade do |t|
