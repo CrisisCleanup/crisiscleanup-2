@@ -4,6 +4,9 @@
 
 <% content_for :main do %>
 <h2>Log in</h2>
+<p>Welcome to the new Crisis Cleanup. You now <u>CHOOSE</u> your own password. You will no longer use your organizaton's password.</p>
+<p>If you have logged in any time in February or March 2016, you should receive an email on March 23, 2016 by about 2:30pm Eastern, with an activation link that will guide you through this process.<p>
+<p>If you have not received an email activation by this time, please click the "Help" button in the bottom right corner of this page.</p>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
