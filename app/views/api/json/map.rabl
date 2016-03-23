@@ -5,4 +5,10 @@ attributes :id,
           :longitude,
           :work_type,
           :status,
-          :claimed_by
+          :claimed_by,
+          :case_number,
+          :name,
+          :address,
+          :city,
+          :state,
+          :zip_code

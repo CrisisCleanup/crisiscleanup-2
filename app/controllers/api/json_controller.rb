@@ -15,14 +15,20 @@ module Api
         rescue ArgumentError
           return
         end
-        offset = (page - 1) * limit + 1
+        offset = (page - 1) * limit
         @sites = Legacy::LegacySite.select("
           legacy_sites.id,
           legacy_sites.latitude,
           legacy_sites.longitude,
           legacy_sites.work_type,
           legacy_sites.status,
-          legacy_sites.claimed_by
+          legacy_sites.claimed_by,
+          legacy_sites.case_number,
+          legacy_sites.name,
+          legacy_sites.address,
+          legacy_sites.city,
+          legacy_sites.state,
+          legacy_sites.zip_code
         ").where(legacy_event_id: params[:event_id])
           .limit(limit)
           .offset(offset)
