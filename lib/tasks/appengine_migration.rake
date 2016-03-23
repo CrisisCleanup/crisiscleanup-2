@@ -421,9 +421,15 @@ def appengine_import appengine_table, relations, joins, deletions, pg_table
     		if pg_table == Legacy::LegacyOrganization and Legacy::LegacyOrganization.where(name: pg_entity.name).count > 0
     			pg_entity.name = pg_entity.name + "_#{Random.rand(100)}"
     		end
+
+    		if pg_table == Legacy::LegacyOrganization
+    			pg_entity.accepted_terms = true
+    		end
+
         	pg_entity.save
 
         	unless pg_entity.valid?
+        		binding.pry
         		raise "entity invalid + #{pg_entity.to_json}"
         		# TODO
         		# if error is name is already taken, get existing entity and set that as the pg entity
@@ -489,9 +495,9 @@ def get_appengine_entities(table_name)
 	count = 0
 	errors_count = 0
 	result_keys.each do |key|
-		# if count == 1000
-		# 	return results
-		# end
+		if count == 10
+			return results
+		end
 		begin
 			count += 1
 			# if count > 10
@@ -527,4 +533,3 @@ def identical_and_unique? appengine_hash, model_entity, pg_table
 	puts "[Success]-[Identical and Unique]" if success
 	success
 end
-
