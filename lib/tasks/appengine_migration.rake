@@ -606,8 +606,9 @@ def appengine_import_missing appengine_table, relations, joins, deletions, pg_ta
 	        	pg_entity.save
 
 	        	unless pg_entity.valid?
-	        		binding.pry
-	        		raise "entity invalid + #{pg_entity.to_json}"
+	        		# binding.pry
+	        		errors = pg_entity.errors.to_s
+	        		raise "entity invalid + #{errors}"
 	        		# TODO
 	        		# if error is name is already taken, get existing entity and set that as the pg entity
 	        	end
