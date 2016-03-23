@@ -7,9 +7,9 @@
       <%= f.input :skip_duplicates, as: :boolean %>
       <div class="row">
         <div class="small-12 medium-12 large-12">
-          <%= link_to 'Cancel', '', class: 'button secondary', id: 'cancel-form-btn' %>
-          <%= f.button :submit, 'Claim & Save', id: 'claim-form-btn' %>
           <%= f.button :submit, 'Save', id: 'save-form-btn' %>
+          <%= f.button :submit, 'Claim & Save', id: 'claim-form-btn' %>
+          <%= link_to 'Cancel', '', class: 'button secondary', id: 'cancel-form-btn' %>
         </div>
       </div>
     <% end %>
