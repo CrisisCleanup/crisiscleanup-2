@@ -30,7 +30,7 @@ module Legacy
 
     def add_case_number
       if self.legacy_event_id && self.case_number.blank?
-        count = Legacy::LegacySite.where(legacy_event_id: self.legacy_event_id).count
+        count = Legacy::LegacySite.where(legacy_event_id: self.legacy_event_id).pluck(:case_number).map { |x| x[/\d+/].to_i }.max
         event_case_label = Legacy::LegacyEvent.find(self.legacy_event_id).case_label
         self.case_number = "#{event_case_label}#{count + 1}"
       end
@@ -63,12 +63,12 @@ module Legacy
         #     legacy_event_id: self.legacy_event_id
         #   )
         dups = Legacy::LegacySite
-                .where('legacy_event_id = ? AND (name_metaphone = ? OR city_metaphone = ? OR county_metaphone = ? OR address_metaphone = ?)',
+                .where('legacy_event_id = ? AND ((name_metaphone = ? OR address_metaphone = ?) AND city_metaphone = ? AND county_metaphone = ?)',
                   self.legacy_event_id,
                   self.name_metaphone,
+                  self.address_metaphone,
                   self.city_metaphone,
-                  self.county_metaphone,
-                  self.address_metaphone
+                  self.county_metaphone
                 )
         if dups.count > 0
           case_numbers = dups.map { |dup| dup.case_number }
