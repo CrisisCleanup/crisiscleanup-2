@@ -275,6 +275,12 @@ CCMap.Map = function(params) {
   // Address autocomplete
   function setupAddressAutocomplete() {
     var addressField = document.getElementById("legacy_legacy_site_address");
+    var city = document.getElementById("legacy_legacy_site_city");
+    var county = document.getElementById("legacy_legacy_site_county");
+    var state = document.getElementById("legacy_legacy_site_state");
+    var country = document.getElementById("legacy_legacy_site_country");
+    var zip = document.getElementById("legacy_legacy_site_zip_code");
+
     if (!addressField) { return; }
     var options = {};
     var addressAC = new google.maps.places.Autocomplete(addressField, options);
@@ -284,6 +290,38 @@ CCMap.Map = function(params) {
 
     google.maps.event.addListener(addressAC, 'place_changed', function() {
       var place = this.getPlace();
+      populateAddressFields.call(this, place);
+    });
+
+    city.addEventListener('change', geocodeQuery.bind(this));
+    state.addEventListener('change', geocodeQuery.bind(this));
+    zip.addEventListener('change', geocodeQuery.bind(this));
+
+    function geocodeQuery() {
+      var num_values = 0;
+      if (city.value !== "") { num_values++ };
+      if (state.value !== "") { num_values++ };
+      if (zip.value !== "") { num_values++ };
+
+      if (addressField.value !== "" && num_values > 1) {
+        var address = addressField.value + ",+" + city.value + ",+" + state.value + "+" + zip.value;
+        $.ajax({
+          method: 'get',
+          url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + address,
+          context: this,
+          success: function(data) {
+            if (data.status === "OK") {
+              populateAddressFields.call(this, data.results[0]);            
+            } else {
+              console.warning("Something went wrong with the geocoding query.");
+            }
+          }
+        });
+      }
+    }
+
+    function populateAddressFields(place) {
+      var updateZip = false;
 
       // populate the form with the returned place info
       for (var i = 0; i < place.address_components.length; i++) {
@@ -296,38 +334,33 @@ CCMap.Map = function(params) {
             addressField.value += " " + place.address_components[i].long_name;
             break;
           case 'locality':
-            var city = document.getElementById("legacy_legacy_site_city")
-            if (city) {
+            if (city && city.value === '') {
               city.value = place.address_components[i].long_name;
             }
             break;
           case 'administrative_area_level_2':
-            var county = document.getElementById("legacy_legacy_site_county")
-            if (county) {
+            if (county && county.value === '') {
               county.value = place.address_components[i].long_name;
             }
             break;
           case 'administrative_area_level_1':
-            var state = document.getElementById("legacy_legacy_site_state")
-            if (state) {
+            if (state && state.value === '') {
               state.value = place.address_components[i].long_name;
             }
             break;
           case 'country':
-            var country = document.getElementById("legacy_legacy_site_country")
-            if (country) {
+            if (country && country.value === '') {
               country.value = place.address_components[i].long_name;
             }
             break;
           case 'postal_code':
-            var zip = document.getElementById("legacy_legacy_site_zip_code")
-            if (zip) {
-             zip.value = place.address_components[i].long_name;
+            if (zip && zip.value === '') {
+              zip.value = place.address_components[i].long_name;
+              updateZip = true;
             }
             break;
           case 'postal_code_suffix':
-            var zip = document.getElementById("legacy_legacy_site_zip_code")
-            if (zip) {
+            if (zip && updateZip) {
               zip.value += "-" + place.address_components[i].long_name;
             }
             break;
@@ -341,7 +374,7 @@ CCMap.Map = function(params) {
       setLatLng(place.geometry.location);
 
       if (place.geometry.viewport) {
-        map.fitBounds(place.geometry.viewport);
+        map.fitBounds(new google.maps.LatLngBounds(place.geometry.viewport.southwest, place.geometry.viewport.northeast));
       } else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);
@@ -357,8 +390,7 @@ CCMap.Map = function(params) {
       marker.addListener('drag', function() {
         setLatLng(this.position);
       });
-
-    });
+    }
 
     // Takes a google marker position object. Seems to be called location sometimes as well.
     // Whatever. It's the marker attribute that has lat and lng methods on it.
@@ -366,8 +398,16 @@ CCMap.Map = function(params) {
       var latInput = document.getElementById('legacy_legacy_site_latitude');
       var lngInput = document.getElementById('legacy_legacy_site_longitude');
       if (latInput && lngInput) {
-        latInput.value = position.lat();
-        lngInput.value = position.lng();
+        // A little hacky
+        if (typeof position.lat === 'function') {
+          // This came in from the marker drag event
+          latInput.value = position.lat();
+          lngInput.value = position.lng();
+        } else {
+          // This came in from the geocode result
+          latInput.value = position.lat;
+          lngInput.value = position.lng;
+        }
       }
 
     }
