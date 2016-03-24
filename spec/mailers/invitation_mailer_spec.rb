@@ -12,7 +12,7 @@ RSpec.describe InvitationMailer do
     end
 
     it 'renders the subject' do
-      expect(@mail.subject).to eq("Please Activate your New Crisis Cleanup Account")
+      expect(@mail.subject).to eq("Frank has invited you to join Crisis Cleanup")
     end
 
     it 'renders the receiver email' do
