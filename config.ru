@@ -7,7 +7,7 @@ require 'unicorn/worker_killer'
 use Unicorn::WorkerKiller::MaxRequests, 3072, 4096
 
 # Max memory size (RSS) per worker
-use Unicorn::WorkerKiller::Oom, (400*(1024**2)), (500*(1024**2))
+use Unicorn::WorkerKiller::Oom, (300*(1024**2)), (350*(1024**2))
 
 require ::File.expand_path('../config/environment', __FILE__)
 run Rails.application
