@@ -9,12 +9,12 @@ module Worker
         # pass those ids to LegacyOrg.find(ids)
         org_ids = Legacy::LegacyOrganizationEvent.select("legacy_organization_id").where(legacy_event_id: current_user_event)
         @orgs = Legacy::LegacyOrganization.order("name").where(id: org_ids).where(org_verified: true).paginate(:page => params[:page])
-        @event_id = params[:id]
+        @event_id = current_user_event
       end
 
       def show
         @organization = Legacy::LegacyOrganization.find(params[:org_id])
-        @event_id = params[:id]
+        @event_id = current_user_event
       end
     end
   end
