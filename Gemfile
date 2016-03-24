@@ -57,6 +57,7 @@ gem 'font-awesome-sass'
 gem 'rspec_junit_formatter', '0.2.2'
 # gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
 
+gem 'unicorn-worker-killer'
 
 group :production do
   gem 'rack-timeout'
