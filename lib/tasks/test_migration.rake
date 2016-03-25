@@ -18,6 +18,7 @@ def get_appengine_entity_from_key table, appengine_key
 end
 
 def check_contact_organizations
+	rescue_ids = []
 	contacts_count = 0
 	no_organization_count = 0
 	success_count = 0
@@ -35,15 +36,17 @@ def check_contact_organizations
 					puts "no organization: #{no_organization_count}"
 					puts "success: #{success_count}"
 				elsif pg_organization.id == contact.legacy_organization_id
-					success_count +=1
+					success_count += 1
 					puts "success: #{success_count}"
 				else
 					error_count +=1
 					puts "error: #{error_count}"
 				end
-			rescue
+			rescue Exception => e
 				rescue_count +=1
+				rescue_ids << contact.id
 				puts "rescue: #{rescue_count}"
+				puts "caught exception #{e}"
 			end
 		end
 	end
@@ -53,4 +56,5 @@ def check_contact_organizations
 	puts "no_organization_count: #{no_organization_count}"
 	puts "errors_count: #{errors_count}"
 	puts "rescue_count: #{rescue_count}"
+	puts "rescue_ids: #{rescue_ids}"
 end
