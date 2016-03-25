@@ -51,7 +51,9 @@ module Worker
       # create
       def submit
         @site = Legacy::LegacySite.new(site_params)
+        @site.data = {}
         @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
+        binding.pry
 
         # Claimed_by toggle
         if params[:legacy_legacy_site][:claim] == "true"
