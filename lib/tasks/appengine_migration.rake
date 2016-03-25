@@ -280,31 +280,38 @@ def run_integrity_check_from_pg pg_entities, table, log_file #remove log file
 	puts "[#{table}-postgres_integrity_check]-[Information]-[Start #{table} integrity_check]"
 	count = 0
 	errors_count = 0
+	rescue_count = 0
 	pg_entities.each do |entity|
-		appengine_entity = get_appengine_entity_from_key table, entity.appengine_key
-		if table == "organization"
-			# check reference
-			appengine_entity.delete("incidents")
-		end
+		begin
+			appengine_entity = get_appengine_entity_from_key table, entity.appengine_key
+			if table == "organization"
+				# check reference
+				appengine_entity.delete("incidents")
+			end
 
-		if table == "contact"
-			# check reference
-			appengine_entity.delete("organization")
-		end
-		if table == "site"
-			# check references
-		end
-		if are_entities_identical? appengine_entity, entity
-			count += 1
-			# binding.pry
-			puts "[#{table}-postgres_integrity_check]-[Success]-[Count: #{count}]"
-		else
-			errors_count += 1
-			puts "[#{table}-postgres_integrity_check]-[Error]-[Error count: #{errors_count}]-[PG entity: #{entity.attributes}]"
+			if table == "contact"
+				# check reference
+				appengine_entity.delete("organization")
+			end
+			if table == "site"
+				# check references
+			end
+			if are_entities_identical? appengine_entity, entity
+				count += 1
+				# binding.pry
+				puts "[#{table}-postgres_integrity_check]-[Success]-[Count: #{count}]"
+			else
+				errors_count += 1
+				puts "[#{table}-postgres_integrity_check]-[Error]-[Error count: #{errors_count}]-[PG entity: #{entity.attributes}]"
+			end
+		rescue
+			rescue_count += 1
 		end
 	end
 	puts "[#{table}-postgres_integrity_check]-[Information]-[Final success count: #{count}]"
 	puts "[#{table}-postgres_integrity_check]-[Information]-[Final errors count: #{errors_count}]"
+	puts "[#{table}-postgres_integrity_check]-[Information]-[Final rescue count: #{rescue_count}]"
+
 end
 
 def values_hash_for_sites values_hash
