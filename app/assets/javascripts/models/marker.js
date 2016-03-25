@@ -267,7 +267,7 @@ CCMap.Site = function(params) {
       }
     }
     buttonRow.appendChild(buttonCell);
-    table.appendChild(buttonRow);
+    table.insertBefore(buttonRow, table.firstChild);
 
     $infobox.html(table);
   }
