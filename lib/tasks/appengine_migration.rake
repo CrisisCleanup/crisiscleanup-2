@@ -13,7 +13,7 @@ CCU_ERROR_LOGS = "CCU_error_logs.txt"
 
 STANDARD_SITE_VALUES = ["address", "blurred_latitude", "blurred_longitude","case_number", "city", "claimed_by", "legacy_event_id", "latitude", "longitude", "name", "phone", "reported_by", "requested_at", "state", "status", "work_type", "data", "created_at", "updated_at", "appengine_key", "request_date"]
 
-URL = "crisiscleanup.org"
+URL = "sandy-disaster-recovery.appspot.com"
 
 ADMIN_EMAIL = "admin@ccu.org"
 
