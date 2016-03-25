@@ -1,4 +1,4 @@
-<!--Christmas/ Southern Tornadoes Waiting List Form Last Updated: 2016-03-17 13:32:58. Heroku Format-->
+<!--Christmas/ Southern Tornadoes Waiting List Form Last Updated: 2016-03-23 04:39:15. Heroku Format-->
 <p><strong>Christmas/ Southern Tornadoes Waiting List</strong>: Enter property damage and needs. <u>No sensitive information!</u> Tell the client this information will be shared with many organizations to provide service as fast as possible, which may be several weeks. Service is not guaranteed.</p>
 
 <div class="row">
@@ -48,7 +48,7 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_address">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_address">Street Address</label>
+            <label class="" for="legacy_legacy_site_address">Street Address <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="For now, you must use a Google Suggested address, to populate the latitude and longitude."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="string optional" type="text" name="legacy_legacy_site[address]" id="legacy_legacy_site_address" />
@@ -58,10 +58,10 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_city">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_city">City</label>
+            <label class="" for="legacy_legacy_site_city">City <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_city').readOnly=false; document.getElementById('legacy_legacy_site_city').focus(); return false;">edit</a>)</small></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
-            <input class="string optional" type="text" name="legacy_legacy_site[city]" id="legacy_legacy_site_city" />
+            <input class="string optional" type="text" name="legacy_legacy_site[city]" id="legacy_legacy_site_city" readonly />
         </div>
     </div>
 </div>
@@ -78,20 +78,20 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_state">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_state">State</label>
+            <label class="" for="legacy_legacy_site_state">State <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_state').readOnly=false; document.getElementById('legacy_legacy_site_state').focus(); return false;">edit</a>)</small></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
-            <input class="string optional" type="text" name="legacy_legacy_site[state]" id="legacy_legacy_site_state" />
+            <input class="string optional" type="text" name="legacy_legacy_site[state]" id="legacy_legacy_site_state" readonly />
         </div>
     </div>
 </div>
 <div class="row">
     <div class="input string optional legacy_legacy_site_zip_code">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_zip_code">Zip Code</label>
+            <label class="" for="legacy_legacy_site_zip_code">Zip Code <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_zip_code').readOnly=false; document.getElementById('legacy_legacy_site_zip_code').focus(); return false;">edit</a>)</small></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
-            <input class="string optional" type="text" name="legacy_legacy_site[zip_code]" id="legacy_legacy_site_zip_code" />
+            <input class="string optional" type="text" name="legacy_legacy_site[zip_code]" id="legacy_legacy_site_zip_code" readonly />
         </div>
     </div>
 </div>
