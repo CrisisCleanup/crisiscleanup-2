@@ -18,6 +18,7 @@ def get_appengine_entity_from_key table, appengine_key
 end
 
 def check_contact_organizations
+	contacts_count = 0
 	no_organization_count = 0
 	success_count = 0
 	errors_count = 0
@@ -25,6 +26,7 @@ def check_contact_organizations
 	Legacy::LegacyContact.all.each do |contact|
 		unless contact.appengine_key.nil?
 			begin
+				contacts_count += 1
 				appengine_contact = get_appengine_entity_from_key("contact", contact.appengine_key)
 				pg_organization = Legacy::LegacyOrganization.find_by(appengine_key: appengine_contact["organization"])
 				if appengine_contact["organization"] == nil
@@ -40,13 +42,13 @@ def check_contact_organizations
 					puts "error: #{error_count}"
 				end
 			rescue
-				binding.pry
 				rescue_count +=1
 				puts "rescue: #{rescue_count}"
 			end
 		end
 	end
 	puts "Final contacts check"
+	puts "total contacts from appengine: #{contacts_count}"
 	puts "success_count: #{success_count}"
 	puts "no_organization_count: #{no_organization_count}"
 	puts "errors_count: #{errors_count}"
