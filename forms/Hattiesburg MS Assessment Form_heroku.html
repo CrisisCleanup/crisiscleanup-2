@@ -1,16 +1,16 @@
-<!--Form Last Updated: 2016-02-29 15:57:34. Heroku Format-->
+<!--Hattiesburg MS Tornado Waiting List Form Last Updated: 2016-03-23 04:39:16. Heroku Format-->
 <p><strong>Hattiesburg MS Tornado Waiting List</strong>: Enter property damage and needs. <u>No sensitive information!</u> Tell the client this information will be shared with many organizations to provide service as fast as possible, which may be several weeks. Service is not guaranteed.</p>
 
 <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h4>Property and Personal Information <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="<u>Crisis Cleanup is about property, not people.</u> <br /><strong>Never include SSNs, FEMA numbers, dates of birth, detailed medical information, etc.</strong>"><i class="fi-info"></i></span></h4>
+            <h4>Property and Personal Information <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="<u>Crisis Cleanup is about property, not people.</u> <br /><strong>Never include SSNs, FEMA numbers, dates of birth, detailed medical information, etc.</strong>"><i class="fa fa-question"></i></span></h4>
         </div>
 </div>
 <div class="unhide" id="property_info">
 <div class="row">
     <div class="input string optional legacy_legacy_site_name">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_name">Resident Name <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="This may be the primary contact, resident, or owner."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_name">Resident Name <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="This may be the primary contact, resident, or owner."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="string optional" type="text" name="legacy_legacy_site[name]" id="legacy_legacy_site_name" />
@@ -20,7 +20,7 @@
 <div class="row">
     <div class="input datetime-local optional legacy_legacy_site_request_date">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_request_date">Request Date</label><small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_request_date').readOnly=false; document.getElementById('legacy_legacy_site_request_date').focus(); return false;">edit</a>)</small>
+            <label class="" for="legacy_legacy_site_request_date">Request Date <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_request_date').readOnly=false; document.getElementById('legacy_legacy_site_request_date').focus(); return false;">edit</a>)</small></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="datetime-local optional" type="text" name="legacy_legacy_site[request_date]" id="legacy_legacy_site_request_date" readonly />
@@ -30,7 +30,7 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_address">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_address">Street Address</label>
+            <label class="" for="legacy_legacy_site_address">Street Address <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="For now, you must use a Google Suggested address, to populate the latitude and longitude."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="string optional" type="text" name="legacy_legacy_site[address]" id="legacy_legacy_site_address" />
@@ -40,17 +40,17 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_city">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_city">City</label>
+            <label class="" for="legacy_legacy_site_city">City <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_city').readOnly=false; document.getElementById('legacy_legacy_site_city').focus(); return false;">edit</a>)</small></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
-            <input class="string optional" type="text" name="legacy_legacy_site[city]" id="legacy_legacy_site_city" />
+            <input class="string optional" type="text" name="legacy_legacy_site[city]" id="legacy_legacy_site_city" readonly />
         </div>
     </div>
 </div>
 <div class="row">
     <div class="input string required legacy_legacy_site_county">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_county"><abbr title="required">*</abbr> County <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="County is used for reporting purposes. Please do not edit unless you are sure it is incorrect."><i class="fi-info"></i></span></label><small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_county').readOnly=false; document.getElementById('legacy_legacy_site_county').focus(); return false;">edit</a>)</small>
+            <label class="" for="legacy_legacy_site_county"><abbr title="required">*</abbr> County <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="County is used for reporting purposes. Please do not edit unless you are sure it is incorrect."><i class="fa fa-question"></i></span> <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_county').readOnly=false; document.getElementById('legacy_legacy_site_county').focus(); return false;">edit</a>)</small></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="string required" type="text" name="legacy_legacy_site[county]" id="legacy_legacy_site_county" readonly />
@@ -60,40 +60,34 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_state">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_state">State</label>
+            <label class="" for="legacy_legacy_site_state">State <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_state').readOnly=false; document.getElementById('legacy_legacy_site_state').focus(); return false;">edit</a>)</small></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
-            <input class="string optional" type="text" name="legacy_legacy_site[state]" id="legacy_legacy_site_state" />
+            <input class="string optional" type="text" name="legacy_legacy_site[state]" id="legacy_legacy_site_state" readonly />
         </div>
     </div>
 </div>
 <div class="row">
     <div class="input string optional legacy_legacy_site_zip_code">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_zip_code">Zip Code</label>
+            <label class="" for="legacy_legacy_site_zip_code">Zip Code <small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_zip_code').readOnly=false; document.getElementById('legacy_legacy_site_zip_code').focus(); return false;">edit</a>)</small></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
-            <input class="string optional" type="text" name="legacy_legacy_site[zip_code]" id="legacy_legacy_site_zip_code" />
+            <input class="string optional" type="text" name="legacy_legacy_site[zip_code]" id="legacy_legacy_site_zip_code" readonly />
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="input float required legacy_legacy_site_latitude">
-        <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_latitude"><abbr title="required">*</abbr> Lat.</label><small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_latitude').readOnly=false; document.getElementById('legacy_legacy_site_latitude').focus(); return false;">edit</a>)</small>
-        </div>
-        <div class="small-8 medium-8 large-8 columns">
-            <input class="float required" type="text" name="legacy_legacy_site[latitude]" id="legacy_legacy_site_latitude" readonly />
+    <div class="input float legacy_legacy_site_latitude">
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="float" type="hidden" name="legacy_legacy_site[latitude]" id="legacy_legacy_site_latitude" />
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="input float required legacy_legacy_site_longitude">
-        <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_longitude"><abbr title="required">*</abbr> Lon.</label><small>(<a href="#" onclick="document.getElementById('legacy_legacy_site_longitude').readOnly=false; document.getElementById('legacy_legacy_site_longitude').focus(); return false;">edit</a>)</small>
-        </div>
-        <div class="small-8 medium-8 large-8 columns">
-            <input class="float required" type="text" name="legacy_legacy_site[longitude]" id="legacy_legacy_site_longitude" readonly />
+    <div class="input float legacy_legacy_site_longitude">
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="float" type="hidden" name="legacy_legacy_site[longitude]" id="legacy_legacy_site_longitude" />
         </div>
     </div>
 </div>
@@ -110,7 +104,7 @@
 <div class="row">
     <div class="input string required legacy_legacy_site_phone1">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_phone1"><abbr title="required">*</abbr> Phone #s <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="At least one phone number is required. Call before helping."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_phone1"><abbr title="required">*</abbr> Phone #s <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="At least one phone number is required. Call before helping."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="string required" type="text" name="legacy_legacy_site[phone1]" id="legacy_legacy_site_phone1" />
@@ -138,9 +132,9 @@
     </div>
 </div>
 <div class="row">
-    <div class="input string optional legacy_legacy_site_work_type">
+    <div class="input string required legacy_legacy_site_work_type">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_work_type">Primary help needed <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Chooses the icon that appears on the map. If there is more than one type, choose the type that is most pressing."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_work_type"><abbr title="required">*</abbr> Primary help needed <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Chooses the icon that appears on the map. If there is more than one type, choose the type that is most pressing."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <select class="small-8 medium-8 large-8 columns" name="legacy_legacy_site[work_type]" id="legacy_legacy_site_work_type">
@@ -178,7 +172,7 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_work_without_resident">
         <div class="small-11 medium-11 large-11 columns">
-            <label class="" for="legacy_legacy_site_work_without_resident">Work without resident present? <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Note: Even if this is box is checked, it may not be a good idea to work without the resident present. Follow your organization's policy on this matter."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_work_without_resident">Work without resident present? <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Note: Even if this is box is checked, it may not be a good idea to work without the resident present. Follow your organization's policy on this matter."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-1 medium-1 large-1 columns">
             <input class="string optional" type="hidden" name="legacy_legacy_site[work_without_resident]" id="legacy_legacy_site_work_without_resident_h" value="n" />
@@ -200,7 +194,7 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_first_responder">
         <div class="small-11 medium-11 large-11 columns">
-            <label class="" for="legacy_legacy_site_first_responder">First Responder <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="First responders and their families are often the last to receive help."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_first_responder">First Responder <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="First responders and their families are often the last to receive help."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-1 medium-1 large-1 columns">
             <input class="string optional" type="hidden" name="legacy_legacy_site[first_responder]" id="legacy_legacy_site_first_responder_h" value="n" />
@@ -211,7 +205,7 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_older_than_60">
         <div class="small-11 medium-11 large-11 columns">
-            <label class="" for="legacy_legacy_site_older_than_60">Older than 60 <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Never include dates (or years) of birth in the notes."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_older_than_60">Older than 60 <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Never include dates (or years) of birth in the notes."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-1 medium-1 large-1 columns">
             <input class="string optional" type="hidden" name="legacy_legacy_site[older_than_60]" id="legacy_legacy_site_older_than_60_h" value="n" />
@@ -233,7 +227,7 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_special_needs">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_special_needs">Special needs <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Please only include special needs that are directly related to service, e.g. 'Wheelchair-bound,' or 'Has difficulty hearing&mdash;knock hard.'"><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_special_needs">Special needs <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Please only include special needs that are directly related to service, e.g. 'Wheelchair-bound,' or 'Has difficulty hearing&mdash;knock hard.'"><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <textarea class="string optional" name="legacy_legacy_site[special_needs]" id="legacy_legacy_site_special_needs"></textarea>
@@ -241,29 +235,21 @@
     </div>
 </div>
 <div class="row">
-   <div class="input range optional legacy_legacy_site_priority">
-       <div class="small-4 medium-4 large-4 columns">
-           <label class="" for="legacy_legacy_site_priority">Priority
-               <small>1=Low, 5=High</small>
-           </label>
-       </div>
-               <div class="small-2 medium-1 large-1 columns form_range_label">
-                   <span id="sliderOutput3"></span>
-               </div>
-       <div class="small-6 medium-7 large-7 columns">   
-       <div class="range-slider" data-slider data-options="display_selector: #sliderOutput3;  start: 1; end: 5; step: 1;">
-               <span class="range-slider-handle" role="slider" tabindex="0"></span>
-               <span class="range-slider-active-segment"></span>
-               <input type="hidden" class="range optional"></input>
-       </div>
-       </div>
-   </div>
+    <div class="input string optional legacy_legacy_site_priority">
+        <div class="small-11 medium-11 large-11 columns">
+            <label class="" for="legacy_legacy_site_priority">Priority</label>
+        </div>
+        <div class="small-1 medium-1 large-1 columns">
+            <input class="string optional" type="hidden" name="legacy_legacy_site[priority]" id="legacy_legacy_site_priority_h" value="n" />
+            <input class="string optional" type="checkbox" name="legacy_legacy_site[priority]" id="legacy_legacy_site_priority" value="y" />
+        </div>
+    </div>
 </div>
 </div> <!--property_info_end-->
 
 <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h4>Work <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Contact <a href="mailto:help@crisiscleanup.org">help@crisiscleanup.org</a> to request another question. Be sure to include the incident name."><i class="fi-info"></i></span></h4>
+            <h4>Work <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Contact <a href='mailto:help@crisiscleanup.org'>help@crisiscleanup.org</a> to request another question. Be sure to include the incident name."><i class="fa fa-question"></i></span></h4>
         </div>
 </div>
 <div class="unhide" id="work_info">
@@ -277,7 +263,7 @@
 <div class="row">
     <div class="input integer optional legacy_legacy_site_flood_height">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_flood_height">Height of Flood (feet) <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="For 6 inches, please use '0.5'"><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_flood_height">Height of Flood (feet) <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="For 6 inches, please use '0.5'"><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="integer optional" type="text" name="legacy_legacy_site[flood_height]" id="legacy_legacy_site_flood_height" />
@@ -395,12 +381,9 @@
 </div> <!--flood_damage_info_end-->
 
 <div class="row">
-        <div class="small-9 medium-7 large-7 columns">
+        <div class="small-12 medium-12 large-12 columns">
             <h5>Tree Work</h5>
         </div>
-  <div class="small-3 medium-5 large-5 columns">
-    <button type="button" onclick="document.getElementById('tree_info').style.display = 'block';" class="unhide">+</button><button type="button" onclick="document.getElementById('tree_info').style.display = 'none';" class="hide">-</button>
-  </div>
 </div>
 <div class="unhide" id="tree_info">
 <div class="row">
@@ -424,7 +407,7 @@
 <div class="row">
     <div class="input integer optional legacy_legacy_site_num_wide_trees">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_num_wide_trees">Number of trees wider than 18 inches <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Many chainsaws have 18-inch blades."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_num_wide_trees">Number of trees wider than 18 inches <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Many chainsaws have 18-inch blades."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <select class="small-8 medium-8 large-8 columns" name="legacy_legacy_site[num_wide_trees]" id="legacy_legacy_site_num_wide_trees">
@@ -442,12 +425,9 @@
 </div> <!--tree_info_end-->
 
 <div class="row">
-        <div class="small-9 medium-7 large-7 columns">
+        <div class="small-12 medium-12 large-12 columns">
             <h5>Wind-Related Work</h5>
         </div>
-  <div class="small-3 medium-5 large-5 columns">
-    <button type="button" onclick="document.getElementById('wind_info').style.display = 'block';" class="unhide">+</button><button type="button" onclick="document.getElementById('wind_info').style.display = 'none';" class="hide">-</button>
-  </div>
 </div>
 <div class="unhide" id="wind_info">
 <div class="row">
@@ -504,12 +484,9 @@
 </div> <!--work_info_end-->
 
 <div class="row">
-        <div class="small-9 medium-7 large-7 columns">
+        <div class="small-12 medium-12 large-12 columns">
             <h4>Hazards</h4>
         </div>
-  <div class="small-3 medium-5 large-5 columns">
-    <button type="button" onclick="document.getElementById('hazards_info').style.display = 'block';" class="unhide">+</button><button type="button" onclick="document.getElementById('hazards_info').style.display = 'none';" class="hide">-</button>
-  </div>
 </div>
 <div class="unhide" id="hazards_info">
 <div class="row">
@@ -564,17 +541,6 @@
 </div>
 <div class="unhide" id="claim_status_report_info">
 <div class="row">
-    <div class="input string optional legacy_legacy_site_claim_for_org">
-        <div class="small-11 medium-11 large-11 columns">
-            <label class="" for="legacy_legacy_site_claim_for_org">Claim</label>
-        </div>
-        <div class="small-1 medium-1 large-1 columns">
-            <input class="string optional" type="hidden" name="legacy_legacy_site[claim_for_org]" id="legacy_legacy_site_claim_for_org_h" value="n" />
-            <input class="string optional" type="checkbox" name="legacy_legacy_site[claim_for_org]" id="legacy_legacy_site_claim_for_org" value="y" />
-        </div>
-    </div>
-</div>
-<div class="row">
     <div class="input string optional legacy_legacy_site_status">
         <div class="small-4 medium-4 large-4 columns">
             <label class="" for="legacy_legacy_site_status">Current Status <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="<strong>Definitions</strong><br />
@@ -588,7 +554,7 @@
 <u>Closed, done by others</u>: Is completed, but the work was done by others. No further action necessary.<br />
 <u>Closed, no help wanted</u>: Was declined by owner. No help was wanted. No further action necessary.<br />
 <u>Closed, rejected</u>: Was rejected by the responding organization. Please note the reason for rejection.<br />
-<u>Closed, duplicate</u>: Was a duplicate. No further action necessary. Use this status instead of trying do delete a record."><i class="fi-info"></i></span></label>
+<u>Closed, duplicate</u>: Was a duplicate. No further action necessary. Use this status instead of trying do delete a record."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <select class="small-8 medium-8 large-8 columns" name="legacy_legacy_site[status]" id="legacy_legacy_site_status">
@@ -611,7 +577,7 @@
 <div class="row hide">
     <div class="input string optional legacy_legacy_site_assigned_to">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_assigned_to">Assigned To <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Name of the worker with primary responsibility for this request."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_assigned_to">Assigned To <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Name of the worker with primary responsibility for this request."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="string optional" type="text" name="legacy_legacy_site[assigned_to]" id="legacy_legacy_site_assigned_to" />
@@ -621,7 +587,7 @@
 <div class="row">
     <div class="input integer optional legacy_legacy_site_total_volunteers">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_total_volunteers">Volunteers <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Number of volunteers who participated in relief efforts."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_total_volunteers">Volunteers <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Number of volunteers who participated in relief efforts."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="integer optional" type="text" name="legacy_legacy_site[total_volunteers]" id="legacy_legacy_site_total_volunteers" />
@@ -631,7 +597,7 @@
 <div class="row">
     <div class="input float optional legacy_legacy_site_hours_worked_per_volunteer">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_hours_worked_per_volunteer">Hours per volunteer <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Number of hours volunteers worked on this request."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_hours_worked_per_volunteer">Hours per volunteer <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Number of hours volunteers worked on this request."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="float optional" type="text" name="legacy_legacy_site[hours_worked_per_volunteer]" id="legacy_legacy_site_hours_worked_per_volunteer" />
@@ -641,7 +607,7 @@
 <div class="row">
     <div class="input string optional legacy_legacy_site_initials_of_resident_present">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_initials_of_resident_present">Initials of resident present during work <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="This may help if there is ever a misunderstanding about the work performed."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_initials_of_resident_present">Initials of resident present during work <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="This may help if there is ever a misunderstanding about the work performed."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="string optional" type="text" name="legacy_legacy_site[initials_of_resident_present]" id="legacy_legacy_site_initials_of_resident_present" />
@@ -665,14 +631,14 @@
             <h4>Other Information</h4>
         </div>
   <div class="small-3 medium-5 large-5 columns">
-    <button type="button" onclick="document.getElementById('other_information_info').style.display = 'block';" class="unhide">+</button><button type="button" onclick="document.getElementById('other_information_info').style.display = 'none';" class="hide">-</button>
+    <button type="button" onclick="document.getElementById('other_information_info').style.display = 'block';" class="unhide_button">+</button><button type="button" onclick="document.getElementById('other_information_info').style.display = 'none';" class="hide_button">-</button>
   </div>
 </div>
 <div class="hide" id="other_information_info">
 <div class="row">
     <div class="input string optional legacy_legacy_site_prepared_by">
         <div class="small-4 medium-4 large-4 columns">
-            <label class="" for="legacy_legacy_site_prepared_by">Prepared by <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Name of person who created the work request."><i class="fi-info"></i></span></label>
+            <label class="" for="legacy_legacy_site_prepared_by">Prepared by <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Name of person who created the work request."><i class="fa fa-question"></i></span></label>
         </div>
         <div class="small-8 medium-8 large-8 columns">
             <input class="string optional" type="text" name="legacy_legacy_site[prepared_by]" id="legacy_legacy_site_prepared_by" />
