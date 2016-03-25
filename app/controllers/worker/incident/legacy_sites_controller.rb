@@ -5,8 +5,8 @@ module Worker
       before_filter :check_incident_permissions
 
       def index
-        @sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page]) unless params[:order]
-        @sites = Legacy::LegacySite.select_order(params[:order]).paginate(:page => params[:page]) if params[:order]
+        @sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page], :per_page => 200) unless params[:order]
+        @sites = Legacy::LegacySite.select_order(params[:order]).paginate(:page => params[:page], :per_page => 200) if params[:order]
         @sites = @sites.where(legacy_event_id: current_user_event)
         @event_id = params[:id]
       end
