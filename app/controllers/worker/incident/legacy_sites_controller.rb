@@ -60,8 +60,9 @@ module Worker
         end
 
         @site.legacy_event_id = current_user_event
+        @site.reported_by = current_user.legacy_organization_id
         @form =  Form.find_by(legacy_event_id: params[:id]).html
-
+        binding.pry
         if @site.save
           Legacy::LegacyEvent.find(current_user_event).legacy_sites << @site
           render json: @site
