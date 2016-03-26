@@ -30,15 +30,16 @@
               <label>
                 <select id="incident-chooser">
                   <% current_user.legacy_organization.legacy_events.each do |event| %>
-                  <option value="<%= event.id %>" <% if event.id.to_s == session[:current_user_event] %> selected <% end %>><%= event.name %></option>
+                  <option value="<%= event.id %>" <% if event.id.to_s == session[:current_user_event].to_s %> selected <% end %>><%= event.name %></option>
                   <% end %>
                 </select>
               </label>
         <% elsif current_user and current_user.admin %>
           <label>
-            <select id="incident-chooser">
+            <select id="incident-chooser" autocomplete="off">
               <% Legacy::LegacyEvent.all.order(:id).each do |event| %>
-              <option value="<%= event.id %>" <% if event.id.to_s == session[:current_user_event] %> selected <% end %>><%= event.name %></option>
+
+              <option value="<%= event.id %>" <% if event.id.to_s == session[:current_user_event].to_s %> selected <% end %>><%= event.name %></option>
               <% end %>
             </select>
           </label>
