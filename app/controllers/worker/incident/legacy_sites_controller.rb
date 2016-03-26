@@ -53,7 +53,6 @@ module Worker
         @site = Legacy::LegacySite.new(site_params)
         @site.data = {}
         @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
-        binding.pry
 
         # Claimed_by toggle
         if params[:legacy_legacy_site][:claim] == "true"
@@ -74,6 +73,9 @@ module Worker
 
       def update
         @site = Legacy::LegacySite.find(params["site_id"])
+        unless @site.data
+          @site.data = {}
+        end
         @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
 
         # Claimed_by toggle

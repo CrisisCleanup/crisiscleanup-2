@@ -31,6 +31,7 @@ module Legacy
     def add_case_number
       if self.legacy_event_id && self.case_number.blank?
         count = Legacy::LegacySite.where(legacy_event_id: self.legacy_event_id).pluck(:case_number).map { |x| x[/\d+/].to_i }.max
+        count = 0 if count.nil?
         event_case_label = Legacy::LegacyEvent.find(self.legacy_event_id).case_label
         self.case_number = "#{event_case_label}#{count + 1}"
       end
