@@ -303,7 +303,7 @@ CCMap.Map = function(params) {
       if (state.value !== "") { num_values++ };
       if (zip.value !== "") { num_values++ };
 
-      if (addressField.value !== "" && num_values > 1) {
+      if (addressField.value !== "" && num_values > 0) {
         var address = addressField.value + ",+" + city.value + ",+" + state.value + "+" + zip.value;
         $.ajax({
           method: 'get',
