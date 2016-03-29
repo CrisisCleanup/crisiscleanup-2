@@ -55,21 +55,39 @@ module Legacy
 
     def detect_duplicates
       unless self.skip_duplicates.to_i == 1
-        # The AND query - delete this if it's after April OR you feel like it.
-        # dups = Legacy::LegacySite.where(
-        #     name_metaphone: self.name_metaphone,
-        #     city_metaphone: self.city_metaphone,
-        #     county_metaphone: self.county_metaphone,
-        #     address_metaphone: self.address_metaphone,
-        #     legacy_event_id: self.legacy_event_id
-        #   )
+        # Lat/Lon OR Name Metaphone OR Phone OR (Street Number AND Address Metaphone AND (City Metaphone OR County Metaphone OR Zip))
         dups = Legacy::LegacySite
-                .where('legacy_event_id = ? AND ((name_metaphone = ? OR address_metaphone = ?) AND city_metaphone = ? AND county_metaphone = ?)',
-                  self.legacy_event_id,
-                  self.name_metaphone,
-                  self.address_metaphone,
-                  self.city_metaphone,
-                  self.county_metaphone
+                .where('legacy_event_id = :event_id
+                  AND (
+                    (
+                      ROUND(CAST("latitude" as NUMERIC),4) = ROUND(:latitude, 4)
+                        AND
+                      ROUND(CAST("longitude" as NUMERIC),4) = ROUND(:longitude, 4)
+                    )
+                    OR name_metaphone = :name
+                    OR (phone1 = :phone OR phone2 = :phone)
+                    OR (
+                      address LIKE :address_number
+                      AND address_metaphone = :address
+                      AND (
+                        city_metaphone = :city
+                        OR county_metaphone = :county
+                        OR zip_code = :zip
+                      )
+                    )
+                  )',
+                  {
+                    event_id: self.legacy_event_id,
+                    latitude: self.latitude,
+                    longitude: self.longitude,
+                    name: self.name_metaphone,
+                    phone: self.phone1,
+                    address_number: (/\d+/.match(self.address))[0] + '%',
+                    address: self.address_metaphone,
+                    city: self.city_metaphone,
+                    county: self.county_metaphone,
+                    zip: self.zip_code
+                  }
                 )
         if dups.count > 0
           case_numbers = dups.map { |dup| dup.case_number }
