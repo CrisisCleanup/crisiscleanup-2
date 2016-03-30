@@ -21,6 +21,7 @@ $(document).ready(function() {
     var ccmap = new CCMap.Map({
       elm: 'worker-map-canvas',
       event_id: id,
+      site_id: parseInt($('#site-id').html()),
       public_map: false,
       form_map: pathArray.indexOf('form') !== -1
     });

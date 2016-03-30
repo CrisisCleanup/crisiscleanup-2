@@ -9,6 +9,9 @@
 <% content_for :main do %>
   <div id="main" class="alt">
     <!-- do not remove spans -->
+    <% if params[:site_id] %>
+    <span id="site-id" class='hide'><%= params[:site_id] %></span>
+    <% end %>
     <span class='m-id hidden'><%= @legacy_event.id %></span>
     <span class='m-pin hidden'>all</span>
     <div class='map-wrapper'>
@@ -31,7 +34,7 @@
     </div>
     <div class="hide" id="form-view">
       <h4 id="form-header">Map Filters</h4>
-      <%= render 'site_form', url:worker_incident_path(@site.legacy_event.id) %>
+      <%= render 'site_form', url: worker_incident_path(@legacy_event.id) %>
     </div>
   </div>
 <% end %>

@@ -90,8 +90,14 @@ module Legacy
                   }
                 )
         if dups.count > 0
-          case_numbers = dups.map { |dup| dup.case_number }
-          errors.add(:base, "Possible duplicate case #'s: #{case_numbers.join(', ')}")
+          dups.each do |dup|
+            errors.add(:duplicates, {
+                id: dup.id,
+                case_number: dup.case_number,
+                event_id: dup.legacy_event_id,
+                address: dup.address
+              })
+          end
           return false
         end
       end

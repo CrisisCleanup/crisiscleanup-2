@@ -112,7 +112,11 @@ table {
 
 .form-margin-fix {
     margin-top: -32.6px;
-}    
+}
+
+#duplicates-list {
+    list-style: none;
+}
     
 // infobox
 #map-infobox {
