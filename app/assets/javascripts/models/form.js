@@ -124,7 +124,7 @@ CCMap.Form = function(params) {
               var duplicatesList = $('<ul>', { id: "duplicates-list" });
               data.duplicates.forEach(function(dup) {
                 duplicatesList.append(
-                  '<li><a href="/worker/incident/' + dup.event_id + '/edit/' + dup.id + '">'
+                  '<li><a href="/worker/incident/' + dup.event_id + '/edit/' + dup.id + '" target="_blank">'
                   + dup.case_number
                   + ': '
                   + dup.address
