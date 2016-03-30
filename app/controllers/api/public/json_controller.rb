@@ -26,6 +26,7 @@ module Api
         ").where(legacy_event_id: params[:event_id])
           .limit(limit)
           .offset(offset)
+          .order(:id)
 
         @sites.each do |site|
           site.address.gsub!(/[0-9]+/, '')

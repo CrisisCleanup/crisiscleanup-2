@@ -32,6 +32,7 @@ module Api
         ").where(legacy_event_id: params[:event_id])
           .limit(limit)
           .offset(offset)
+          .order(:id)
       end
     end
 

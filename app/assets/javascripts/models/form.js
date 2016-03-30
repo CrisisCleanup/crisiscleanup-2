@@ -120,7 +120,25 @@ CCMap.Form = function(params) {
           url: this.action,
           data: data,
           success: function(data) {
-            if (data.errors) {
+            if (data.duplicates) {
+              var duplicatesList = $('<ul>', { id: "duplicates-list" });
+              data.duplicates.forEach(function(dup) {
+                duplicatesList.append(
+                  '<li><a href="/worker/incident/' + dup.event_id + '/edit/' + dup.id + '" target="_blank">'
+                  + dup.case_number
+                  + ': '
+                  + dup.address
+                  + '</a></li>'
+                );
+              });
+              var alertHtml = $(
+                '<div data-alert class="alert-box info">'
+                + '<p><strong>Possible Duplicates</strong></p>'
+                + '<a href="#" class="close">&times;</a>'
+                + '</div>'
+              ).append(duplicatesList); 
+              $('form').prepend(alertHtml);
+            } else if (data.errors) {
               var errorList = $('<div>', { id: "error-list" });
               data.errors.forEach(function(error) {
                 errorList.append('<p>' + error + '</p>');

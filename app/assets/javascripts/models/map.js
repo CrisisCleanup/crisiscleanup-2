@@ -6,6 +6,7 @@ var CCMap = CCMap || {};
  * @param {Object} params - The configuration paramters
  * @param {string} params.elm - The id of the map div
  * @param {number} params.event_id - The id of the event
+ * @param {number=0} [params.site_id] - The id of the site for the edit form
  * @param {number=4} [params.zoom] - The initial zoom level of the map
  * @param {number=39} [params.lat] - Latitude of the initial map center
  * @param {number=-90} [params.lng] - Longitutde of the initial map center
@@ -55,6 +56,7 @@ CCMap.Map = function(params) {
 
   this.canvas = document.getElementById(params.elm);
   this.event_id = params.event_id;
+  this.site_id = typeof params.site_id !== 'undefined' ? params.site_id : 0;
   this.public_map = typeof params.public_map !== 'undefined' ? params.public_map : true;
   this.form_map = typeof params.form_map !== 'undefined' ? params.form_map : true;
   this.zoom = typeof params.zoom !== 'undefined' ? params.zoom : 4;
@@ -250,10 +252,24 @@ CCMap.Map = function(params) {
         $.when.apply(this, ajaxCalls).done(function() {
           setupSearch(allSites);
           $('.loading').remove();
+          if (this.site_id > 0) {
+            editSite.call(this);
+          }
         }.bind(this));
       }
     });
 
+  }
+
+  // zooms on in the marker of the site
+  // to edit and shows the form
+  function editSite() {
+    zoomToMarker(this.site_id);
+
+    var site = activeMarkers.find(function(obj) {
+      return obj.site.id === this.site_id;
+    }, this);
+    google.maps.event.trigger(site.marker, 'click');
   }
 
   function clearOverlays() {

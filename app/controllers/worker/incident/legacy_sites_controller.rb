@@ -66,7 +66,11 @@ module Worker
           Legacy::LegacyEvent.find(current_user_event).legacy_sites << @site
           render json: @site
         else
-          render json: { errors: @site.errors.full_messages }
+          if @site.errors.messages[:duplicates]
+            render json: { duplicates: @site.errors.messages[:duplicates] }
+          else
+            render json: { errors: @site.errors.full_messages }
+          end
         end
 
       end
