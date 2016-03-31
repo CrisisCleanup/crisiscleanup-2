@@ -140,9 +140,9 @@ CCMap.Site = function(params) {
     closeBtn.addEventListener('click', function() {
       $infobox.slideToggle();
     });
-    header.appendChild(closeBtn);
-    row.appendChild(header);
-    table.appendChild(row);
+    // header.appendChild(closeBtn);
+    // row.appendChild(header);
+    // table.appendChild(row);
 
     // Create an object of key value pairs to display
     var displayObj = {
@@ -267,6 +267,7 @@ CCMap.Site = function(params) {
       }
     }
     buttonRow.appendChild(buttonCell);
+    buttonRow.appendChild(closeBtn);
     table.insertBefore(buttonRow, table.firstChild);
 
     $infobox.html(table);
@@ -396,7 +397,7 @@ CCMap.Site = function(params) {
   }
 
   function print(event) {
-    var url = '/worker/incident/' + this.site.id + '/print';
+    var url = '/worker/incident/' + this.ccmap.event_id + '/print/' + this.site.id;
     var win = window.open(url, '_blank');
     win.focus();
   }

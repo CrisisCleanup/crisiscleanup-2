@@ -30,7 +30,7 @@ module Worker
       end
 
       def print
-        @site = Legacy::LegacySite.find(params[:id])
+        @site = Legacy::LegacySite.find(params[:site_id])
 
         if (@site.claimed_by)
           @claimed_by_org = Legacy::LegacyOrganization.find(@site.claimed_by)
