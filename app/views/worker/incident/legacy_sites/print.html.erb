@@ -159,7 +159,7 @@
         <p>Requested Date</p>
       </td>
       <td colspan="3" class="allBorders">
-        <p class="data"><%= @site.request_date.strftime('%F') %></p>
+        <p class="data"><%= @site.request_date.strftime('%F') if @site.request_date %></p>
       </td>
     </tr>
 
