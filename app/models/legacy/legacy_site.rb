@@ -14,6 +14,7 @@ module Legacy
     before_validation :create_blurred_geocoordinates
     before_validation :add_case_number
     before_save :calculate_metaphones
+    before_save :calculate_request_date
     before_create :detect_duplicates
     belongs_to :legacy_event
     belongs_to :legacy_organization, foreign_key: :claimed_by
@@ -42,6 +43,12 @@ module Legacy
       self.city_metaphone = Text::Metaphone.metaphone(self.city) unless self.city.nil? == true
       self.county_metaphone = Text::Metaphone.metaphone(self.county) unless self.county.nil? == true
       self.address_metaphone = Text::Metaphone.metaphone(self.address) unless self.address.nil? == true
+    end
+
+    def calculate_request_date
+      if self.request_date.blank?
+        self.request_date = Time.now
+      end
     end
 
     def create_blurred_geocoordinates
