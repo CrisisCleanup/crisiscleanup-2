@@ -37,7 +37,7 @@ class RegistrationsController < ApplicationController
       end
 
       @org.legacy_contacts.each do |contact|
-        InvitationMailer.send_contact_alert(contact, @org).deliver_now
+        InvitationMailer.send_registration_confirmation(contact.email, @org).deliver_now
       end
 
       redirect_to "/welcome"

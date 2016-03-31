@@ -49,7 +49,6 @@ module Admin
                 if list.ready.present?  
                     list.ready.each do |inv|
                         InvitationMailer.send_invitation(inv, request.base_url).deliver_now
-                        InvitationMailer.send_registration_confirmation(inv, request.base_url, org).deliver_now
                     end
                 end
             end 

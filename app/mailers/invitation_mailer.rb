@@ -31,12 +31,9 @@ class InvitationMailer < ActionMailer::Base
     mail(to: email, subject: "New Redeploy Request")
   end
 
-  def send_registration_confirmation(inv, request, org)
-    @user = User.find(inv.user_id)
-    @email = inv.invitee_email
-    @url = request + "/invitations/activate?token="+inv.token
+  def send_registration_confirmation(email, org)
     @org = org
-    mail(to: @email, subject: "Crisis Cleanup Application Received")
+    mail(to: email, subject: "Crisis Cleanup Application Received")
   end
 
   def send_contact_alert(contact, org)
