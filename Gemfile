@@ -51,6 +51,9 @@ gem 'unicorn'
 gem 'rabl'
 gem 'oj'
 
+# Memcached
+gem 'dalli'
+
 gem 'font-awesome-sass'
 
 # CircleCI test metadata formatters
