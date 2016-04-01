@@ -88,6 +88,7 @@ GEM
       sass-rails (<= 5.0.1)
       sprockets (< 2.13)
     connection_pool (2.2.0)
+    dalli (2.7.6)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     devise (3.4.1)
@@ -307,6 +308,7 @@ DEPENDENCIES
   capybara-email
   coffee-rails (~> 4.1.0)
   compass-rails
+  dalli
   database_cleaner
   devise
   dotenv-rails
@@ -346,3 +348,6 @@ DEPENDENCIES
   valid_attribute
   validates_email_format_of
   will_paginate (~> 3.0.6)
+
+BUNDLED WITH
+   1.11.2
