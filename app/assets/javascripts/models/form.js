@@ -41,6 +41,11 @@ CCMap.Form = function(params) {
     // Update the form action to update the site
     form.action = '/worker/incident/' + event_id + '/edit/' + ccsite.site.id;
 
+    // Change the Reset button label to "Cancel"
+    if (cancelBtn) {
+      $(cancelBtn).html("Cancel");
+    }
+
     // Set the site so it can be updated on save
     this.ccsite = ccsite;
 
@@ -81,7 +86,7 @@ CCMap.Form = function(params) {
     header.innerHTML = 'Edit Case ' + ccsite.site.case_number;
   };
 
-  // Cancel
+  // Cancel on edit form. Reset new form.
   if (cancelBtn) {
     cancelBtn.addEventListener('click', function(e) {
       e.preventDefault();
