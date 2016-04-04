@@ -46,6 +46,7 @@ gem 'paper_trail', '~> 4.0.0.rc'
 gem 'geocoder'
 gem 'text'
 gem 'unicorn'
+gem 'rack-handlers'
 
 # JSON
 gem 'rabl'

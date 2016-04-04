@@ -39,7 +39,7 @@ $(document).ready(function() {
       if (enabled) {
         enabled = false;
         $dlbtn.html('<i class="fa fa-spinner fa-spin"></i>');
-        window.location = "/worker/incident/" + event_id + "/download-sites";
+        window.location = "/worker/incident/" + event_id + "/download-sites.csv";
 
         // debounce of sorts
         setTimeout(function() {
