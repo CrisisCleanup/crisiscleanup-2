@@ -15,21 +15,5 @@ module Legacy
       CASE_LABELS[self.count % 22]
     end
 
-    def sites_to_csv
-      if legacy_sites.size > 0
-        CSV.generate(headers: true) do |csv|
-          # Generate the header
-          header = legacy_sites[0].attribute_names.select do |attr|
-            !["name_metaphone", "city_metaphone", "county_metaphone", "address_metaphone"].include? attr
-          end
-          csv << header
-
-          # Generate the data rows
-          legacy_sites.each do |site|
-            csv << site.attributes.values
-          end
-        end
-      end
-    end
   end
 end

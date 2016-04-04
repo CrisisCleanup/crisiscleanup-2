@@ -50,7 +50,7 @@ Rails.application.routes.draw do
 
     namespace :incident do
       # This should be an events (incident) controller
-      get "/:id/download-sites" => "legacy_events#download_sites", as: "event_sites_download"
+      get "/:event_id/download-sites" => "legacy_sites#csv"
 
       get "/:id/sites" => "legacy_sites#index", as: "legacy_sites_index"
       get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"

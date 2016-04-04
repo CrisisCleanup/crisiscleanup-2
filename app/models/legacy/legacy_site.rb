@@ -1,12 +1,5 @@
 module Legacy
   class LegacySite < ActiveRecord::Base
-    # default_scope { order('case_number') }
-    # require 'csv'
-
-    # STANDARD_SITE_VALUES = ["address", "blurred_latitude", "blurred_longitude", "case_number", "city", "claimed_by", "legacy_event_id", "latitude", "longitude", "name", "phone", "reported_by", "requested_at", "state", "status", "work_type", "data", "created_at", "updated_at", "appengine_key", "request_date"]
-    # PERSONAL_FIELDS = ["id", "address", "case_number", "latitude", "longitude", "claimed_by", "phone", "name", "created_at", "updated_at", "appengine_key"]
-    # CSV_HEADER_FIELDS = ["request_date", "case_number", "name", "address", "phone", "latitude", "longitude", "city", "state", "status", "work_type", "claimed_by", "reported_by" ]
-
     has_paper_trail
     # geocoded_by :full_street_address
     validates_presence_of :address, :blurred_latitude, :blurred_longitude, :case_number, :city, :latitude, :longitude, :name, :work_type, :status
@@ -18,6 +11,7 @@ module Legacy
     before_create :detect_duplicates
     belongs_to :legacy_event
     belongs_to :legacy_organization, foreign_key: :claimed_by
+    belongs_to :reporting_org, class_name: "Legacy::LegacyOrganization", foreign_key: :reported_by
 
     # These are just to get around simple_form junk. Remove them once simple_form is gone.
     # So we can hide the autofill on this model's simple_form - I don't think this is actually working.
@@ -114,6 +108,151 @@ module Legacy
       LegacyOrganization.find(self.reported_by)
     end
 
+    def self.csv_header
+      CSV::Row.new(
+        [
+          :event,
+          :case_number,
+          :address,
+          :city,
+          :county,
+          :state,
+          :zip_code,
+          :phone1,
+          :phone2,
+          :latitude,
+          :longitude,
+          :blurred_latitude,
+          :blurred_longitude,
+          :reported_by,
+          :claimed_by,
+          :request_date,
+          :status,
+          :work_type,
+          :work_requested,
+          :details
+        ],[
+          "Event",
+          "Case #",
+          "Address",
+          "City",
+          "County",
+          "State",
+          "Zip",
+          "Phone 1",
+          "Phone 2",
+          "Latitude",
+          "Longitude",
+          "Blurred Lat",
+          "Blurred Lng",
+          "Reported By",
+          "Claimed By",
+          "Requested Date",
+          "Status",
+          "Work Type",
+          "Work Requested",
+          "Details"
+        ],
+        true)
+    end
+
+    def to_csv_row
+      CSV::Row.new(
+        [
+          :event,
+          :case_number,
+          :address,
+          :city,
+          :county,
+          :state,
+          :zip_code,
+          :phone1,
+          :phone2,
+          :latitude,
+          :longitude,
+          :blurred_latitude,
+          :blurred_longitude,
+          :reported_by,
+          :claimed_by,
+          :request_date,
+          :status,
+          :work_type,
+          :work_requested,
+          :details
+        ],[
+          legacy_event.name,
+          case_number,
+          address,
+          city,
+          county,
+          state,
+          zip_code,
+          phone1,
+          phone2,
+          latitude,
+          longitude,
+          blurred_latitude,
+          blurred_longitude,
+          reporting_org.try(:name),
+          legacy_organization.try(:name),
+          request_date,
+          status,
+          work_type,
+          work_requested,
+          data.map do |datum|
+            next if [
+              "address_digits",
+              "address_metaphone",
+              "assigned_to",
+              "city_metaphone",
+              "claim_for_org",
+              "county",
+              "cross_street",
+              "damage_level",
+              "date_closed",
+              "do_not_work_before",
+              "event",
+              "event_name",
+              "habitable",
+              "hours_worked_per_volunteer",
+              "ignore_similar",
+              "initials_of_resident_present",
+              "inspected_by",
+              "landmark",
+              "member_of_assessing_organization",
+              "modified_by",
+              "name_metaphone",
+              "phone1",
+              "phone2",
+              "phone_normalised",
+              "prepared_by",
+              "priority",
+              "release_form",
+              "temporary_address",
+              "time_to_call",
+              "total_loss",
+              "total_volunteers",
+              "unrestrained_animals",
+              "work_requested",
+              "zip_code"
+            ].include? datum[0]
+            next if datum[1].blank?
+            next if datum[1] == "n"
+            next if datum[1] == "0"
+            datum[0].gsub("_", " ").humanize + ": " + datum[1].gsub("_", " ").humanize
+          end.compact.reject(&:blank?).join(", ")
+        ]
+      )
+    end
+
+    def self.find_in_batches(filters, batch_size, &block)
+      includes(:legacy_event, :legacy_organization, :reporting_org)
+      .where(filters)
+      .find_each(batch_size: batch_size) do |sites|
+        yield sites
+      end
+    end
+
     def self.statuses_by_event event_id
       distinct_attribute_by_event_id "status", event_id
     end
@@ -188,27 +327,6 @@ module Legacy
       end
     end
 
-    # def self.get_column_names(params)
-    #   @c = CSV_HEADER_FIELDS if params[:params][:type] == "deidentified"
-
-    #   PERSONAL_FIELDS.each do |field|
-    #     @c.delete(field)
-    #   end
-
-    #   all.each do |site|
-    #     if site.data
-    #       site.data.each do |key, value|
-    #         @c << key
-    #       end
-    #     end
-    #   end
-
-    #   @c.delete("name_metaphone")
-    #   @c.delete("address_metaphone")
-    #   @c.delete("city_metaphone")
-    #   @c.flatten.uniq
-    # end
-
     def self.site_to_hash site_attributes, orgs_hash = None
       if site_attributes["data"]
         site_attributes['data'].each do |key, value|
@@ -225,25 +343,6 @@ module Legacy
       end
       site_attributes
     end
-
-    # def self.hash_to_site hash_attributes, event_id=nil
-    #   data = {}
-    #   hash_attributes.each do |key, value|
-    #     unless STANDARD_SITE_VALUES.include? key
-    #       data[key] = value
-    #       hash_attributes.delete(key)
-    #     end
-    #   end
-
-    #   ### TODO delete these when using real ids
-    #   # hash_attributes.delete("reported_by")
-    #   # hash_attributes.delete("claimed_by")
-    #   #########################################
-
-    #   hash_attributes['data'] = data
-    #   hash_attributes['legacy_event_id'] = event_id if event_id
-    #   hash_attributes
-    # end
 
     def self.import(file, dup_check_method, dup_handler, event_id)
       header = []

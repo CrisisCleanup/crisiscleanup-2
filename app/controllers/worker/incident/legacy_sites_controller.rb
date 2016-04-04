@@ -115,7 +115,49 @@ module Worker
         @status_counts = Legacy::LegacySite.status_counts(@event.id)
       end
 
+      def csv
+        respond_to do |format|
+          format.csv { render_csv }
+        end
+      end
+
       private
+
+      def render_csv
+        set_file_headers
+        set_streaming_headers
+
+        response.status = 200
+
+        #setting the body to an enumerator, rails will iterate this enumerator
+        self.response_body = csv_lines
+      end
+
+
+      def set_file_headers
+        event = Legacy::LegacyEvent.find(params[:event_id])
+        file_name = "#{event.name}-#{Time.now.strftime('%F')}.csv"
+        headers["Content-Type"] = "text/csv"
+        headers["Content-disposition"] = "attachment; filename=\"#{file_name}\""
+      end
+
+
+      def set_streaming_headers
+        #nginx doc: Setting this to "no" will allow unbuffered responses suitable for Comet and HTTP streaming applications
+        headers['X-Accel-Buffering'] = 'no'
+
+        headers["Cache-Control"] ||= "no-cache"
+        headers.delete("Content-Length")
+      end
+
+      def csv_lines
+        Enumerator.new do |y|
+          y << Legacy::LegacySite.csv_header.to_s
+
+          Legacy::LegacySite.find_in_batches({legacy_event_id: params[:event_id]}, 200) { |site| y << site.to_csv_row.to_s }
+        end
+      end
+
       def site_params
         params.require(:legacy_legacy_site).permit(
           :address,:blurred_latitude,:blurred_longitude,
