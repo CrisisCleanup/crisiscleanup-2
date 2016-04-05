@@ -39,7 +39,7 @@
         <option value="date_desc">Date (Descending order)</option>
       </select>
       <a id="submit_sort_order" class="button">Submit</a>
-      <%= link_to "Download CSV", worker_incident_event_sites_download_path(@event_id), class: "button" %>
+      <%= link_to "Download CSV", worker_incident_sites_download_path(@event_id, format: :csv), class: "button" %>
     </form>
   </div>
 <% end %>
