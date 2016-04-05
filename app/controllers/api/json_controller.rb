@@ -28,7 +28,8 @@ module Api
           legacy_sites.address,
           legacy_sites.city,
           legacy_sites.state,
-          legacy_sites.zip_code
+          legacy_sites.zip_code,
+          legacy_sites.updated_at
         ").where(legacy_event_id: params[:event_id])
           .limit(limit)
           .offset(offset)

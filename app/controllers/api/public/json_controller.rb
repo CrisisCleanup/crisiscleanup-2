@@ -22,7 +22,8 @@ module Api
           zip_code,
           status,
           claimed_by,
-          work_type
+          work_type,
+          updated_at
         ").where(legacy_event_id: params[:event_id])
           .limit(limit)
           .offset(offset)

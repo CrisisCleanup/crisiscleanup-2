@@ -1,4 +1,5 @@
 collection @sites
+cache @sites
 
 attributes :id,
           :latitude,
