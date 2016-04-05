@@ -31,7 +31,9 @@
 </div>
 <div class="row">
 	<div class="small-12 medium-12 large-12 columns">
+        <% cache @cache_key do %>
 		<%= render 'table', orgs: @orgs %>
         <%= will_paginate @orgs %>
+        <% end %>
 	</div>
 </div>

@@ -12,25 +12,26 @@
   </thead>
   <tbody>
     <% orgs.each do |org| %>
-      <tr>
-        <td>
-          <a href=<%=edit_admin_legacy_organization_path(org.id)%>> 
-            <%= org.name %>
-          </a>
-        </td>
-        <td> <%= org.city %> </td>
-       
-        <td> <%= org.legacy_events.present? ? org.legacy_events.first.name : "Unassigned" %> </td>
-        <td>  
-          <% if org.org_verified %>
-            Verified
-          <% else %>
-           <%= link_to "Verify", "/admin/legacy_organizations/verify?id=#{org.id}",method: :post %>
-          <% end %>
-        </td>
-        <td><%= link_to 'Delete', admin_legacy_organization_path(org), method: :delete, :onclick => "return confirm('Are you sure you want to delete #{org.name}?')" %></td>   
+      <% cache(org) do %>
+        <tr>
+          <td>
+            <a href=<%=edit_admin_legacy_organization_path(org.id)%>>
+              <%= org.name %>
+            </a>
+          </td>
+          <td> <%= org.city %> </td>
 
-      </tr>
+          <td> <%= org.legacy_events.present? ? org.legacy_events.first.name : "Unassigned" %> </td>
+          <td>
+            <% if org.org_verified %>
+              Verified
+            <% else %>
+             <%= link_to "Verify", "/admin/legacy_organizations/verify?id=#{org.id}",method: :post %>
+            <% end %>
+          </td>
+          <td><%= link_to 'Delete', admin_legacy_organization_path(org), method: :delete, :onclick => "return confirm('Are you sure you want to delete #{org.name}?')" %></td>   
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
