@@ -158,8 +158,6 @@ module Legacy
 
     def to_csv_row
       begin
-      data = [] if data.nil?
-
       CSV::Row.new(
         [
           :event,
