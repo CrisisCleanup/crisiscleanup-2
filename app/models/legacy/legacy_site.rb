@@ -158,9 +158,6 @@ module Legacy
 
     def to_csv_row
       begin
-      if data.nil?
-        data = []
-      end
       CSV::Row.new(
         [
           :event,
@@ -247,9 +244,8 @@ module Legacy
           end.compact.reject(&:blank?).join(", ")
         ]
       )
-    rescue Exception => e
+    rescue
       puts case_number
-      puts e.message
     end
     end
 
