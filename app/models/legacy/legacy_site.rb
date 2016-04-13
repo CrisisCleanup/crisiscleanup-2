@@ -247,8 +247,9 @@ module Legacy
           end.compact.reject(&:blank?).join(", ")
         ]
       )
-    rescue
+    rescue Exception => e
       puts case_number
+      puts e.message
     end
     end
 
