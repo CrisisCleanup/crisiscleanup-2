@@ -109,7 +109,6 @@ module Legacy
     end
 
     def self.csv_header
-      data = [] if data.nil?
       CSV::Row.new(
         [
           :event,
@@ -158,6 +157,8 @@ module Legacy
     end
 
     def to_csv_row
+      data = [] if data.nil?
+
       begin
       CSV::Row.new(
         [
