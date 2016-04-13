@@ -109,6 +109,7 @@ module Legacy
     end
 
     def self.csv_header
+      data = [] if data.nil?
       CSV::Row.new(
         [
           :event,
