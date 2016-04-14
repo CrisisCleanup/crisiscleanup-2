@@ -109,8 +109,6 @@ module Worker
 
       def stats
         @event = Legacy::LegacyEvent.find(params[:id])
-        org_ids = Legacy::LegacyOrganizationEvent.where(legacy_event_id: @event.id)
-        @orgs = Legacy::LegacyOrganization.where(id: org_ids)
         @work_type_counts = Legacy::LegacySite.work_type_counts(@event.id)
         @status_counts = Legacy::LegacySite.status_counts(@event.id)
       end
