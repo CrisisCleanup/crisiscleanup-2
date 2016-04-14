@@ -190,6 +190,7 @@ CCMap.Form = function(params) {
               form.scrollTop = 0;
             }
             form.scrollTop = 0;
+            window.scrollTo(0,0);
           },
           error: function(){
             alert('500 error');
