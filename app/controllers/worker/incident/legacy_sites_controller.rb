@@ -135,7 +135,7 @@ module Worker
 
 
       def set_file_headers
-        event = Legacy::LegacyEvent.find(params[:event_id])
+        event = Legacy::LegacyEvent.find(params[:id])
         file_name = "#{event.name}-#{Time.now.strftime('%F')}.csv"
         headers["Content-Type"] = "text/csv"
         headers["Content-disposition"] = "attachment; filename=\"#{file_name}\""
@@ -154,7 +154,7 @@ module Worker
         Enumerator.new do |y|
           y << Legacy::LegacySite.csv_header.to_s
 
-          Legacy::LegacySite.find_in_batches({legacy_event_id: params[:event_id]}, 200) { |site| y << site.to_csv_row.to_s }
+          Legacy::LegacySite.find_in_batches({legacy_event_id: params[:id]}, 200) { |site| y << site.to_csv_row.to_s }
         end
       end
 
