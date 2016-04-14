@@ -157,7 +157,7 @@ module Legacy
     end
 
     def to_csv_row
-      begin
+      data ||= []
       CSV::Row.new(
         [
           :event,
@@ -244,10 +244,6 @@ module Legacy
           end.compact.reject(&:blank?).join(", ")
         ]
       )
-    rescue Exception => e
-      puts case_number
-      puts e.message
-    end
     end
 
     def self.find_in_batches(filters, batch_size, &block)
