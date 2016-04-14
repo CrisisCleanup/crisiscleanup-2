@@ -12,6 +12,11 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <style type="text/css"> /* Allows Google Suggest wrapping */
+    .pac-item {
+        white-space:pre-line;
+    }
+    </style>
 </head>
 <body class='<%= @body.present? ? @body : "worker-dashboard" %>'>
     <%= render 'layouts/menus/worker_dashboard_menu' %>
