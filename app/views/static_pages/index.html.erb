@@ -19,7 +19,7 @@
                         <option value="about">Just Curious</option>
                     </select>
                     <a href="#" class="button" id="lets-go-btn">Let's Go!</a>
-                    <button class="gray-block" onClick="parent.location='login'">Login</button>
+                    <%= link_to "Login", new_user_session_path, class: "gray-block button" %>
                 </form>
             </div>
         </div>
