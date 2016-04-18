@@ -47,3 +47,15 @@
 		<%end%>
 </div>
 <% end %>
+
+<% content_for :joyride do %>
+    <%= render 'joyride' %>
+    <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js' %>
+    <script type="text/javascript">
+        $(document).foundation('joyride', 'start', {
+            modal: false,
+            cookie_monster: false,
+            cookie_name: 'cc-joyride'
+        });
+    </script>
+<% end %>
