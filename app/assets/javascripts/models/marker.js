@@ -28,7 +28,7 @@ CCMap.Site = function(params) {
   // TODO: check if the file exists on the server or some other validation here.
   this.generateIconFilename = function() {
     var color;
-    if (this.site.claimed_by) {
+    if (this.site.claimed_by || /Closed/.test(this.site.status)) {
       color = CCMap.UnclaimedStatusColorMap[this.site.status];
     } else {
       color = "red";
