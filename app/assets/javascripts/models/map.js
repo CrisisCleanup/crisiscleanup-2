@@ -65,6 +65,7 @@ CCMap.Map = function(params) {
   this.options = {
     center: new google.maps.LatLng(this.latitude, this.longitude),
     zoom: this.zoom,
+    maxZoom: 18,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     scrollwheel: false
   }
@@ -261,7 +262,7 @@ CCMap.Map = function(params) {
 
   }
 
-  // zooms on in the marker of the site
+  // zooms in on the marker of the site
   // to edit and shows the form
   function editSite() {
     zoomToMarker(this.site_id);

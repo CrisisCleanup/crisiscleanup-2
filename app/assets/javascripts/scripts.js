@@ -19,10 +19,11 @@ $(document).ready(function() {
   // if a map is on the page get incident id
   if (worker_map !== 0) {
     event_id = typeof $('.m-id.hidden')[0] !== 'undefined' ? $('.m-id.hidden')[0].innerHTML : 'none';
+    var site_id = parseInt($('#site-id').html());
     var ccmap = new CCMap.Map({
       elm: 'worker-map-canvas',
       event_id: event_id,
-      site_id: parseInt($('#site-id').html()),
+      site_id: site_id,
       public_map: false,
       form_map: pathArray.indexOf('form') !== -1
     });
