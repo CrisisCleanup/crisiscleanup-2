@@ -253,6 +253,7 @@ module Legacy
     def self.find_in_batches(filters, batch_size, &block)
       includes(:legacy_event, :legacy_organization, :reporting_org)
       .where(filters)
+      .where("work_type NOT LIKE 'pda%'")
       .find_each(batch_size: batch_size) do |sites|
         yield sites
       end
