@@ -2,49 +2,49 @@
     Crisis Cleanup - Dashboard
 <% end %>
 
-<% content_for :subheader do %> 
+<% content_for :subheader do %>
 <div class="row subheader">
         <div class="small-12 medium-8 large-10 columns">
             <h2>Worker Dashboard<h2>
-                <hr class="medium"> 
-        </div>                
+                <hr class="medium">
+        </div>
         <div class="small-12 medium-4 large-2 columns" align="center">
             <%= image_tag "characters/House13.png", :class => "character" ,:alt => "worker dashboard"  %>
-        </div>    
-</div>    
+        </div>
+</div>
 <% end %>
-        
-<% content_for :main do %> 
+
+<% content_for :main do %>
 <div id="main" class="alt">
         <% unless current_user.admin %>
             <% unless current_user_event %>
                 <p>You're organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
             <% end %>
-    
+
     <div class="row">
           <h4>Invite Users By Email</h4>
           <%= render 'invite_form' %>
     </div>
-    <div class="row">    
+    <div class="row">
           <h4>Invite Users With Temporary Password</h4>
           <%= render 'temporary_password_form' %>
     </div>
-<!--     <div class="row">    
+<!--     <div class="row">
         <h4>Requested Invitations</h4>
             <%#= render 'request_invitation_table', users: @requested_invitations %>
     </div> -->
     <% end %>
-    </div>      
+    </div>
 <% end %>
 
-<% content_for :sidebar do %> 
+<% content_for :sidebar do %>
 <div id="sidebar">
     <h4>User Info</h4>
-		<% if @current_user.admin %>        
-			<p>I am: <strong><%= current_user.name %> (<%=current_user.email %>)</strong> and I am an Admin therefore I cannot invite people to an organization</p>
-		<% else %>
-		<p>I am: <strong><%=current_user.email %></strong> and I belong to <strong><%=current_user.legacy_organization.name %></strong></p>			
-		<%end%>
+    <% if @current_user.admin %>
+      <p>I am: <strong><%= current_user.name %> (<%=current_user.email %>)</strong> and I am an Admin therefore I cannot invite people to an organization</p>
+    <% else %>
+    <p>I am: <strong><%=current_user.email %></strong> and I belong to <strong><%=current_user.legacy_organization.name %></strong></p>
+    <%end%>
 </div>
 <% end %>
 
@@ -54,7 +54,7 @@
     <script type="text/javascript">
         $(document).foundation('joyride', 'start', {
             modal: false,
-            cookie_monster: false,
+            cookie_monster: true,
             cookie_name: 'cc-joyride'
         });
     </script>
