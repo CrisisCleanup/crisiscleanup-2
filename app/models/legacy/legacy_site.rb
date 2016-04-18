@@ -113,6 +113,7 @@ module Legacy
         [
           :event,
           :case_number,
+          :name,
           :address,
           :city,
           :county,
@@ -134,6 +135,7 @@ module Legacy
         ],[
           "Event",
           "Case #",
+          "Name",
           "Address",
           "City",
           "County",
@@ -162,6 +164,7 @@ module Legacy
         [
           :event,
           :case_number,
+          :name,
           :address,
           :city,
           :county,
@@ -183,6 +186,7 @@ module Legacy
         ],[
           legacy_event.name,
           case_number,
+          name,
           address,
           city,
           county,
