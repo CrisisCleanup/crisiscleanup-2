@@ -5,7 +5,7 @@ CCMap.UnclaimedStatusColorMap = {
   "Open, unassigned": "orange",
   "Open, assigned": "yellow",
   "Open, partially completed": "yellow",
-  "Open, partially completed": "yellow",
+  "Open, needs follow-up": "yellow",
   "Closed, completed": "green",
   "Closed, incomplete": "gray",
   "Closed, out of scope": "gray",
