@@ -35,7 +35,7 @@ hr {
         margin-left: 0;
     }
     & h4 {
-        /*margin-left: 13px;*/
+        margin-left: 13px;
         margin-top: 10px;
     }
     & input[type="checkbox"] + label, input[type="radio"] + label {
@@ -53,6 +53,9 @@ hr {
         overflow-y: scroll;
         width: 95%;
         margin-left: 5%;
+        & h4 {
+            margin-left: 0;
+        }
         & .columns {
             padding-left: 0;
             margin-bottom: 5px;
@@ -92,7 +95,7 @@ hr {
 // Google Maps Autocomplete
         & .pac-container {
             left: 0;
-            width: 26.5%!important;
+            width: 20%!important;
         }
         & .pac-item {
             height: 1.5rem;
@@ -136,7 +139,7 @@ table {
 }
 
 .form-margin-fix {
-    margin-top: -32.6px;
+    margin-top: -27px;
 }
 
 #duplicates-list {
