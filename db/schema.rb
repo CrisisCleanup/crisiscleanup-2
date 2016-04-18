@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323080141) do
+ActiveRecord::Schema.define(version: 20160418195257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 20160323080141) do
     t.string   "city_metaphone"
     t.string   "county_metaphone"
     t.string   "address_metaphone"
+    t.boolean  "pda",               default: false
   end
 
   add_index "legacy_sites", ["claimed_by"], name: "index_legacy_sites_on_claimed_by", using: :btree

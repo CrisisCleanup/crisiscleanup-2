@@ -152,7 +152,7 @@ module Worker
         Enumerator.new do |y|
           y << Legacy::LegacySite.csv_header.to_s
 
-          Legacy::LegacySite.find_in_batches({legacy_event_id: params[:id]}, 200) { |site| y << site.to_csv_row.to_s }
+          Legacy::LegacySite.find_in_batches({legacy_event_id: params[:id], pda: false}, 200) { |site| y << site.to_csv_row.to_s }
         end
       end
 
