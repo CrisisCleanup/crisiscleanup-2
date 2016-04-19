@@ -19,7 +19,7 @@ CCMap.Map = function(params) {
   var allSites = [];
   var activeMarkers = [];
   var markerClustererOptions = {
-    maxZoom: 15,
+    maxZoom: 11,
     styles: [
       {
         textColor: 'black',
