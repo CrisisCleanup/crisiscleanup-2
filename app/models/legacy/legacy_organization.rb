@@ -43,20 +43,26 @@ module Legacy
       name if contact
     end
 
-    def claimed_site_count
-      Legacy::LegacySite.where(claimed_by: self).count
+    def claimed_site_count event_id
+      Legacy::LegacySite.where({ claimed_by: self.id, legacy_event_id: event_id }).count
     end
 
-    def open_site_count
-      Legacy::LegacySite.open_by_organization self
+    def open_site_count event_id
+      Legacy::LegacySite
+        .where({ claimed_by: self.id, legacy_event_id: event_id })
+        .where("status LIKE 'Open%'")
+        .count
     end
 
-    def closed_site_count
-      Legacy::LegacySite.closed_by_organization self
+    def closed_site_count event_id
+      Legacy::LegacySite
+        .where({ claimed_by: self.id, legacy_event_id: event_id })
+        .where("status LIKE 'Closed%'")
+        .count
     end
 
-    def reported_site_count
-      Legacy::LegacySite.where(reported_by: self).count
+    def reported_site_count event_id
+      Legacy::LegacySite.where({ reported_by: self.id, legacy_event_id: event_id }).count
     end
   end
 end
