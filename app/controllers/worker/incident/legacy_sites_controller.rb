@@ -7,7 +7,7 @@ module Worker
       def index
         @sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page], :per_page => 200) unless params[:order]
         @sites = Legacy::LegacySite.select_order(params[:order]).paginate(:page => params[:page], :per_page => 200) if params[:order]
-        @sites = @sites.where(legacy_event_id: current_user_event)
+        @sites = @sites.where(legacy_event_id: current_user_event).where("work_type NOT LIKE 'pda%'")
         @event_id = params[:id]
       end
 
