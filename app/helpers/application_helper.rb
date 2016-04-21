@@ -19,23 +19,23 @@ module ApplicationHelper
     end
 
     def current_user_event(set_event = nil)
-        # set event with param
-        if set_event
-          session[:current_user_event] = set_event
+      # set event with param
+      if set_event
+        session[:current_user_event] = set_event
 
-        # admin can select event by params[:id]
-        elsif current_user and current_user.admin
-          session[:current_user_event] = session[:current_user_event] || request.params[:id] || 1
+      # admin can select event by params[:id]
+      elsif current_user and current_user.admin
+        session[:current_user_event] = session[:current_user_event] || request.params[:id] || 1
 
-        # if event is already set, return event
-        elsif session[:current_user_event]
-          session[:current_user_event]
-
-        # if no event is set for this session, get the first event for a user
-        else
-          session[:current_user_event] = current_user.legacy_organization.legacy_organization_events.first.legacy_event_id if current_user and current_user.legacy_organization.legacy_organization_events
-        end
+      # if event is already set, return event
+      elsif session[:current_user_event]
         session[:current_user_event]
+
+      # if no event is set for this session, get the first event for a user
+      elsif current_user and current_user.legacy_organization.legacy_events.size > 0
+        session[:current_user_event] = current_user.legacy_organization.legacy_events.order("created_at DESC").first.id
+      end
+      session[:current_user_event]
     end
 
     def check_incident_permissions

@@ -14,7 +14,8 @@ module Features
     def sign_in_with_user
       org = FactoryGirl.create(:legacy_organization)
       event = FactoryGirl.create(:legacy_event)
-      org_event = FactoryGirl.create(:legacy_organization_event, legacy_organization_id: org.id, legacy_event_id: 1)
+      org.legacy_events << event
+      #org_event = FactoryGirl.create(:legacy_organization_event, legacy_organization_id: org.id, legacy_event_id: 1)
 	    FactoryGirl.create(:user, email: "Gary@aol.com", password: "blue32blue32", legacy_organization_id: org.id)
 
       visit "/login"
