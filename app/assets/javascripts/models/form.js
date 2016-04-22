@@ -84,15 +84,22 @@ CCMap.Form = function(params) {
 
     // Update the form header title
     header.innerHTML = 'Edit Case ' + ccsite.site.case_number;
+
+    // Enable marker dragging and add the event to set the lat/lng
+    this.ccsite.marker.setDraggable(true);
   };
 
   // Cancel on edit form. Reset new form.
   if (cancelBtn) {
+    var self = this;
     cancelBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopImmediatePropagation();
       form.reset();
       form.scrollTop = 0;
+      // Disable the marker dragging and remove the drag event
+      self.ccsite.marker.setDraggable(false);
+
       if (params.onCancel) {
         params.onCancel();
       }
@@ -178,6 +185,9 @@ CCMap.Form = function(params) {
               self.ccsite.marker.setIcon(self.ccsite.generateIconFilename());
               var lat_lng = new google.maps.LatLng(parseFloat(self.ccsite.site.latitude), parseFloat(self.ccsite.site.longitude));
               self.ccsite.marker.setPosition(lat_lng);
+        
+              // Disable the marker dragging and remove the drag event
+              self.ccsite.marker.setDraggable(false);
 
               // update the infobox
               self.ccsite.updateInfoboxHtml();
@@ -203,6 +213,19 @@ CCMap.Form = function(params) {
       }
       return false;
     });
+  }
+
+  // Set site marker position, remove drag event, and disable dragging
+  var disableMarkerDragging = function() {
+    var lat_lng = new google.maps.LatLng(parseFloat(self.ccsite.site.latitude), parseFloat(self.ccsite.site.longitude));
+    self.ccsite.marker.setPosition(lat_lng);
+
+    self.ccsite.marker.setDraggable(false);
+  }
+
+  // Enable marker dragging and add drag event to update lat/lng
+  var enableMarkerDragging = function() {
+    self.ccsite.marker.setDraggable(true);
   }
 
   var getErrors = function(){

@@ -411,6 +411,7 @@ CCMap.Map = function(params) {
 
     // Takes a google marker position object. Seems to be called location sometimes as well.
     // Whatever. It's the marker attribute that has lat and lng methods on it.
+    // TODO: move this to the form.js. It's already there for marker dragging only.
     function setLatLng(position) {
       var latInput = document.getElementById('legacy_legacy_site_latitude');
       var lngInput = document.getElementById('legacy_legacy_site_longitude');
