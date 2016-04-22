@@ -193,7 +193,7 @@ CCMap.Form = function(params) {
             window.scrollTo(0,0);
           },
           error: function(){
-            alert('Server-side Error (400 or 500 error) on input form. Alert help@crisiscleanup.org.');
+            alert('Server-side Error (400 or 500). The server did not receive an expected piece of information. Make sure the address contains a street number.');
           }
         });
       } else {
