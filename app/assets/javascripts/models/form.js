@@ -86,7 +86,7 @@ CCMap.Form = function(params) {
     header.innerHTML = 'Edit Case ' + ccsite.site.case_number;
 
     // Enable marker dragging and add the event to set the lat/lng
-    this.ccsite.marker.setDraggable(true);
+    enableMarkerDragging();
   };
 
   // Cancel on edit form. Reset new form.
@@ -98,7 +98,7 @@ CCMap.Form = function(params) {
       form.reset();
       form.scrollTop = 0;
       // Disable the marker dragging and remove the drag event
-      self.ccsite.marker.setDraggable(false);
+      disableMarkerDragging();
 
       if (params.onCancel) {
         params.onCancel();
@@ -183,11 +183,9 @@ CCMap.Form = function(params) {
 
               // update the map marker
               self.ccsite.marker.setIcon(self.ccsite.generateIconFilename());
-              var lat_lng = new google.maps.LatLng(parseFloat(self.ccsite.site.latitude), parseFloat(self.ccsite.site.longitude));
-              self.ccsite.marker.setPosition(lat_lng);
         
               // Disable the marker dragging and remove the drag event
-              self.ccsite.marker.setDraggable(false);
+              disableMarkerDragging();
 
               // update the infobox
               self.ccsite.updateInfoboxHtml();
@@ -215,17 +213,39 @@ CCMap.Form = function(params) {
     });
   }
 
+  // Takes a google marker position object. Seems to be called location sometimes as well.
+  // Whatever. It's the marker attribute that has lat and lng methods on it.
+  var setLatLng = function() {
+    var position = this.position;
+    var latInput = document.getElementById('legacy_legacy_site_latitude');
+    var lngInput = document.getElementById('legacy_legacy_site_longitude');
+    if (latInput && lngInput) {
+      // A little hacky
+      if (typeof position.lat === 'function') {
+        // This came in from the marker drag event
+        latInput.value = position.lat();
+        lngInput.value = position.lng();
+      } else {
+        // This came in from the geocode result
+        latInput.value = position.lat;
+        lngInput.value = position.lng;
+      }
+    }
+  }
+
   // Set site marker position, remove drag event, and disable dragging
   var disableMarkerDragging = function() {
     var lat_lng = new google.maps.LatLng(parseFloat(self.ccsite.site.latitude), parseFloat(self.ccsite.site.longitude));
     self.ccsite.marker.setPosition(lat_lng);
 
     self.ccsite.marker.setDraggable(false);
+    self.markerListener.remove();
   }
 
   // Enable marker dragging and add drag event to update lat/lng
   var enableMarkerDragging = function() {
     self.ccsite.marker.setDraggable(true);
+    self.markerListener = self.ccsite.marker.addListener('drag', setLatLng);
   }
 
   var getErrors = function(){
