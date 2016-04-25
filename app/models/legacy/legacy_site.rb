@@ -56,6 +56,13 @@ module Legacy
 
     def detect_duplicates
       unless self.skip_duplicates.to_i == 1
+        # Check the address for a number
+        if matches = /\d+/.match(self.address)
+          address_number = matches[0] + '%'
+        else
+          address_number = 'xXx'
+        end
+
         # Lat/Lon OR Name Metaphone OR Phone OR (Street Number AND Address Metaphone AND (City Metaphone OR County Metaphone OR Zip))
         dups = Legacy::LegacySite
                 .where('legacy_event_id = :event_id
@@ -83,7 +90,7 @@ module Legacy
                     longitude: self.longitude,
                     name: self.name_metaphone,
                     phone: self.phone1,
-                    address_number: (/\d+/.match(self.address))[0] + '%',
+                    address_number: address_number,
                     address: self.address_metaphone,
                     city: self.city_metaphone,
                     county: self.county_metaphone,
