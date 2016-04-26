@@ -148,8 +148,32 @@ CCMap.Form = function(params) {
                 + '<p><strong>Possible Duplicates</strong></p>'
                 + '<a href="#" class="close">&times;</a>'
                 + '</div>'
-              ).append(duplicatesList); 
+              ).append(duplicatesList);
+
+              // Skip duplicates and ignore buttons
+              alertHtml.append($(
+                '<div class="row">'
+                + '<div class="small-12 medium-12 large-12">'
+                + '<a id="skip-and-save" class="button tiny">Skip Duplicates and Save</a>'
+                + '</div></div>'
+                + '<div class="row">'
+                + '<div class="small-12 medium-12 large-12">'
+                + '<a id="skip-and-claim" class="button tiny">Skip Duplicates and Claim</a>'
+                + '</div></div>'
+              ));
+
               $('form').prepend(alertHtml);
+
+              var skipDup = $('#legacy_legacy_site_skip_duplicates');
+              $('#skip-and-save').click(function() {
+                skipDup.prop('checked', true);
+                saveBtn.click();
+              });
+              $('#skip-and-claim').click(function() {
+                skipDup.prop('checked', true);
+                claimBtn.click();
+              });
+
             } else if (data.errors) {
               var errorList = $('<div>', { id: "error-list" });
               data.errors.forEach(function(error) {
