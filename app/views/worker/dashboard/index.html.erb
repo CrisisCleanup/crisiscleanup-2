@@ -33,6 +33,13 @@
         <h4>Requested Invitations</h4>
             <%#= render 'request_invitation_table', users: @requested_invitations %>
     </div> -->
+    <div class="row">
+        <%= render 'user_table' %>
+    </div>
+    <div class="row">
+        <%= render 'pending_invitations_table' %>
+    </div>
+
     <% end %>
     </div>
 <% end %>

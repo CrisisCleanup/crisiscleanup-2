@@ -1,0 +1,19 @@
+<h4>Organization Users</h4>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @users %>
+      <% @users.each do |user| %>
+        <tr>
+          <td> <%= user.name %> </td>
+          <td> <%= user.email %> </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

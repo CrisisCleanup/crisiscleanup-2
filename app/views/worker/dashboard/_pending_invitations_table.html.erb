@@ -1,0 +1,17 @@
+<h4>Pending Invitations</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @pending_invitations %>
+      <% @pending_invitations.each do |pending_invitation| %>
+        <tr>
+          <td> <%= pending_invitation.invitee_email %> </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
