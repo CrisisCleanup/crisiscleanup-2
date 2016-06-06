@@ -21,7 +21,7 @@
 <body class='<%= @body.present? ? @body : "worker-dashboard" %>'>
     <%= render 'layouts/menus/worker_dashboard_menu' %>
     <!-- alert menu -->
-    <%= render "layouts/menus/alert_menu" %>
+    <%= render (request.host =~ /-demo/) ? "layouts/menus/alert_menu_demo" : "layouts/menus/alert_menu" %>
     <%= yield %>
       
     <!-- subheader -->
