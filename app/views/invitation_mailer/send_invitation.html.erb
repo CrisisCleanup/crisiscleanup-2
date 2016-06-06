@@ -6,8 +6,8 @@
   <body>
     <p><%= @user.name %> (<%= @user.email %>) has invited you to join Crisis Cleanup to assist with community recovery efforts. Next steps:
       <ol>
-        <li>Watch this Mandatory Training Video: <a href="https://www.crisiscleanup.org/training">https://www.crisiscleanup.org/training</a>.</li>
-        <li>Click this link to activate: <a target='_blank' href=<%=@url%>><%=@url%></a>.</li>
+        <li>Watch this Mandatory Training Video: <%= link_to training_url, training_url %>.</li>
+        <li>Click this link to activate: <%= link_to @url, @url %>.</li>
         <li>Choose a password 8+ characters long, then log in. Click "Forgot Password" if you forget your password.</li>
         <li>After logging in, invite <em>all authorized members of your organization</em> to participate, from the Dashboard. They can update records and help more people.</li>
       </ol></p>
