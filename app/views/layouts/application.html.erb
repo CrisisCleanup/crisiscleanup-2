@@ -24,7 +24,7 @@
     </header>
 
     <!-- alert menu -->
-    <%= render (request.host =~ /-demo/) ? "layouts/menus/alert_menu_demo" : "layouts/menus/alert_menu" %>
+    <%= render (request.host =~ /demo/) ? "layouts/menus/alert_menu_demo" : "layouts/menus/alert_menu" %>
 
       <!-- subheader -->
     <%= yield :subheader %>
