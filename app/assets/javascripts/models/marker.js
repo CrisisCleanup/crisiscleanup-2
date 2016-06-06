@@ -144,9 +144,34 @@ CCMap.Site = function(params) {
     // row.appendChild(header);
     // table.appendChild(row);
 
+    // Case #
+    if (this.site.case_number) {
+      table.appendChild(
+        createTableRow(
+          document.createTextNode('Case #:'),
+          document.createTextNode(this.site.case_number)
+        )
+      );
+    }
+
+    // claimed by
+    if (this.site.claimed_by) {
+      var claimedLink = document.createElement('a');
+      var url = '/worker/incident/' + this.ccmap.event_id + '/organizations/' + this.site.claimed_by;
+      claimedLink.href = url;
+      claimedLink.target = "_blank";
+      claimedLink.appendChild(document.createTextNode(this.site.org_name));
+      table.appendChild(
+        createTableRow(
+          document.createTextNode('Claimed By:'),
+          claimedLink
+        )
+      );
+    }
+
+    // TODO: Get rid of this displayObj thing or refactor. It turned out to be a bad idea pretty quickly.
     // Create an object of key value pairs to display
     var displayObj = {
-      "Case #": this.site.case_number,
       "Name": this.site.name
     };
 
@@ -226,16 +251,6 @@ CCMap.Site = function(params) {
         statusDropdown
       )
     );
-
-    // claimed by
-    if (this.site.claimed_by) {
-      table.appendChild(
-        createTableRow(
-          document.createTextNode('Claimed By:'),
-          document.createTextNode(this.site.org_name)
-        )
-      );
-    }
 
     // action buttons
     // TODO: a button class would be cool here, so we could attach the click event callbacks and whatnot.
