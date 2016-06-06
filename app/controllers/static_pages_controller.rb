@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def index
+    render 'index_demo' if request.host =~ /-demo/
   end
   def about
       render :layout => 'application_sidebar'
@@ -15,6 +16,7 @@ class StaticPagesController < ApplicationController
   def signup
   end
   def new_incident
+    render 'new_incident_demo' if request.host =~ /-demo/
   end
   def request_incident
     @users = User.where(admin:true)
