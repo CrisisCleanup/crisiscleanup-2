@@ -43,15 +43,3 @@
 <% content_for :javascripts do %>
   <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 <% end %>
-
-<% content_for :joyride do %>
-    <%= render 'joyride_map' %>
-    <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js' %>
-    <script type="text/javascript">
-        $(document).foundation('joyride', 'start', {
-            modal: false,
-            cookie_monster: false,
-            cookie_name: 'cc-joyride'
-        });
-    </script>
-<% end %>
