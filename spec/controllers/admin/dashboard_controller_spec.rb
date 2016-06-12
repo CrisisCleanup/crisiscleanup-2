@@ -24,7 +24,6 @@ RSpec.describe Admin::DashboardController, :type => :controller do
 			it "returns organizations in alphabetical order" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				get :index
-				binding.pry
 				assigns(:orgs).map{|org| org.name}.should eq(['alpha','beta','gamma'])
 			end
 
