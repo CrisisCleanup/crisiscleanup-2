@@ -2,7 +2,11 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Title</th>
+      <th>Phone Number</th>
       <th>Email</th>
+      <th>Role</th>
+
       <th>Organization</th>
     </tr>
   </thead>
@@ -12,8 +16,17 @@
         <td> 
           <%= user.name %> 
         </td>
+        <td> 
+          <%= user.title %> 
+        </td>
+        <td> 
+          <%= user.mobile %> 
+        </td>
+        <td> 
+          <%= user.email %> 
+        </td>
         <td>
-            <%= user.email %>
+            <%= user.role %>
         </td>
         <td> 
           <%= user.legacy_organization.name %> 
