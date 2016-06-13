@@ -6,19 +6,19 @@
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :email %>
+      <%= f.input :title %>
     </div>
   </div>
   <% unless user.persisted? %>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :password %>
+      <%= f.input :role %>
     </div>
   </div>
-  <% end %>S
+  <% end %>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :admin %>
+      <%= f.input :mobile %>
     </div>
   </div>
   <div class="row">
@@ -27,9 +27,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="medium-12 columns">
-      <%= f.button :submit %>
-    </div>
+  	<div class="medium-12 columns">
+  		<%= f.button :submit %>
+  	</div>
   </div>
 <% end %>
 

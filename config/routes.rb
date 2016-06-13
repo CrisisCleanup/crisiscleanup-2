@@ -20,8 +20,11 @@ Rails.application.routes.draw do
   get "/contact" => 'static_pages#contact', as: "contact"
 
   resources :request_invitations, only: [:new, :create]
-  
-  resources :users
+    resources :users, only: [:edit, :update]
+
+  #get "/users/:id/edit" => 'users#edit'
+    #get "/users/:id" => 'users#show'
+
   
   namespace :admin do
     resources :dashboard, only: [:index]

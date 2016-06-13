@@ -1,0 +1,17 @@
+<% content_for :title do %>
+    Crisis Cleanup - Edit User
+<% end %>
+<% content_for :main do %>
+
+	<div class="row">
+	    <div class="small-12 medium-7 large-8 columns">
+	    <h2>Edit Legacy User</h2>
+	    </div>            
+	</div>
+	<div class="row">
+	<hr>  
+	    <div class="small-12 medium-12 large-12 columns">  
+		<%= render 'form', user: @user, url: user_path(@user.id)%>
+	    </div>
+	</div>
+<% end %>

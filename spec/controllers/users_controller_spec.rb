@@ -34,9 +34,22 @@ RSpec.describe UsersController, :type => :controller do
           it "changes the user's attributes" do
             @user = FactoryGirl.create :user
             allow(controller).to receive(:current_user).and_return(@user)
-            put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "ZZ")
-            @user.reload
-            @user.name.should eq("ZZ")
+            
+			put :update, id: @user, user: FactoryGirl.attributes_for(:user, mobile: "555-555-5555")
+			@user.reload
+
+			put :update, id: @user, user: FactoryGirl.attributes_for(:user, title: "Mr")
+			@user.reload
+
+
+			put :update, id: @user, user: FactoryGirl.attributes_for(:user, role: "Leader")
+			@user.reload
+
+
+			put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "Fred")
+			@user.reload
+			  
+            [@user.name, @user.mobile, @user.title, @user.role].should eq(["Fred", "555-555-5555", "Mr", "Leader"])
           end
 
           it "redirects the updated user" do
