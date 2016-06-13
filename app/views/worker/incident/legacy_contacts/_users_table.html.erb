@@ -32,5 +32,28 @@
           <%= user.legacy_organization.name %> 
         </td>
     <% end %>
+    <!-- contacts below users -->
+    <% contacts.each do |contact| %>
+      <tr>
+        <td> 
+          <%= link_to contact.display_name, worker_incident_legacy_contact_path(event_id, contact.id) %> 
+        </td>
+        <td> 
+          <%= contact.title %> 
+        </td>
+        <td> 
+          <%= contact.phone %> 
+        </td>
+        <td> 
+          <%= contact.email %> 
+        </td>
+        <td>
+          <%= 'Contact' %>
+        </td>
+        <td> 
+          <%= contact.legacy_organization.name %> 
+        </td>
+    <% end %>
+
   </tbody>
 </table>
