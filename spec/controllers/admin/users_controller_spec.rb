@@ -124,33 +124,24 @@ RSpec.describe Admin::UsersController, :type => :controller do
       end
     end
 
-    context "with current_user" do
-      context "edit current_user" do
-        it "renders the edit view with the current_user" do
-          allow(controller).to receive(:current_user).and_return(@user)
-          get :edit, id: @user
-          expect(should).to render_template :edit
-        end
-      end
-
-      context "without an admin user" do
-        it "redirects to login" do
-          allow(controller).to receive(:current_user).and_return(@user)
-          user = FactoryGirl.create :user
-          get :edit, id: user
-          expect(should).to redirect_to "/dashboard"
-        end
-      end
-
-      context "without a user" do
-        it "redirects to login" do
-          allow(controller).to receive(:current_user).and_return(nil)
-          user = FactoryGirl.create :user
-          get :edit, id: user
-          expect(should).to redirect_to "/login"
-        end
+    context "without an admin user" do
+      it "redirects to login" do
+        allow(controller).to receive(:current_user).and_return(@user)
+        user = FactoryGirl.create :user
+        get :edit, id: user
+        expect(should).to redirect_to "/dashboard"
       end
     end
+
+    context "without a user" do
+      it "redirects to login" do
+        allow(controller).to receive(:current_user).and_return(nil)
+        user = FactoryGirl.create :user
+        get :edit, id: user
+        expect(should).to redirect_to "/login"
+      end
+    end
+
   end
   describe "Put #update" do
     context "with an admin user" do
@@ -177,34 +168,6 @@ RSpec.describe Admin::UsersController, :type => :controller do
         end
       end
     end
-    context "with current_user" do
-      context "edit current_user" do
-        it "locates the correct user" do
-          @user = FactoryGirl.create :user
-          allow(controller).to receive(:current_user).and_return(@user)
-          put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "ZZ")
-          @user.reload
-          @user.name.should eq("ZZ")
-        end
-        context "with correct attributes" do
-          it "changes the user's attributes" do
-            @user = FactoryGirl.create :user
-            allow(controller).to receive(:current_user).and_return(@user)
-            put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "ZZ")
-            @user.reload
-            @user.name.should eq("ZZ")
-          end
-
-          it "redirects the updated user" do
-            @user = FactoryGirl.create :user
-            allow(controller).to receive(:current_user).and_return(@user)
-            put :update, id: @user, user: FactoryGirl.attributes_for(:user, case_label: "ZZ")
-            expect(response).to redirect_to "/dashboard"
-          end
-        end
-      end
-    end
-
 
     context "without an admin user" do
       it "redirects to login" do
