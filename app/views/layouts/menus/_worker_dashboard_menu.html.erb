@@ -61,6 +61,7 @@
                       <% end %>
                   </li>
                 <% else %>
+                 <li><%=link_to "Edit Profile", edit_user_path(current_user)%></li>
                   <li><%= link_to worker_incident_legacy_organization_path(current_user_event, current_user.legacy_organization.id) do %>
                       <i class="fa fa-home"></i> <%= current_user.legacy_organization.name %>
                       <% end %>
