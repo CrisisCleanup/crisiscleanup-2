@@ -4,14 +4,7 @@
 
 <% content_for :main do %>
 <h2>Log in</h2>
-<p>Welcome to the new Crisis Cleanup. You now <u>CHOOSE</u> your own password. If you don't have a password:</p>
-<p>
-	<ul>
-		<li><a href="/register">Register Your Org</a> for the first time.</li>
-		<li><a href="/volunteer">Volunteer</a> by requesting access from a fellow volunteer.</li>
-	</ul>
-<p>
-<p>Click "Help" if you are the primary contact for your organization, and do not have access to it. Be sure to include the name of your organization.</p>
+<p>Welcome to the new Crisis Cleanup!</p>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
@@ -23,6 +16,16 @@
     <%= f.button :submit, "Log in" %>
   </div>
 <% end %>
+
+<p>If you don't have a password:
+  <ul>
+    <li><a href="/register">Register Your Org</a> for the first time.</li>
+    <li><a href="/volunteer">Volunteer</a> by requesting access from a fellow volunteer.</li>
+    <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/requests/new">Contact Help</a> if you used to have access months ago.</li>
+    <li><a href="/password/new">Reset</a> your password.</li>
+    <li><a href="/worker/temporary_passwords/new">Use your Temporary Password</a> (if you have one)</li>
+  </ul>
+<p>
 
 <%= render "devise/shared/links" %>
 <br>
