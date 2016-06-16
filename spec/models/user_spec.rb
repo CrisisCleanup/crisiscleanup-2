@@ -19,6 +19,14 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "database columns" do
+    let(:frank) { User.new(name:'Frank', email:'frank@aol.com', password:'blue32blue32', accepted_terms: true) }
+    
+    it "should have a title string column" do
+      expect(frank).to have_db_column(:title).of_type(:string)
+    end
+  end 
+
   describe '.invitations and .invited_by' do
     org = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
     let(:frank) { User.create(name:'Frank', email:'frank@aol.com', password:'blue32blue32', legacy_organization_id:org.id, accepted_terms: true) }
