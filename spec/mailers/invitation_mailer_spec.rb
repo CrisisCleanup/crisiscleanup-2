@@ -8,11 +8,15 @@ RSpec.describe InvitationMailer do
       org = FactoryGirl.create :legacy_organization
       @frank = User.create( name:'Frank', email: 'Frank@aol.com', password: 'blue32blue32', legacy_organization_id: org.id, accepted_terms: true )
       @invitation = Invitation.create( user_id: @frank.id, invitee_email: 'Dhruv@aol.com', organization_id: org.id )
-      @mail = InvitationMailer.send_invitation(@invitation,"http://www.crisisCleanup.org")
+      @mail = InvitationMailer.send_invitation(@invitation,"http://www.#{Crisiscleanup::Application.config.URL}")
     end
 
     it 'renders the subject' do
       expect(@mail.subject).to eq("Frank has invited you to join Crisis Cleanup")
+    end
+
+    it 'renders the sender to be the global url variable' do
+      expect(@mail.from).to eq(["help@#{Crisiscleanup::Application.config.URL}"])
     end
 
     it 'renders the receiver email' do

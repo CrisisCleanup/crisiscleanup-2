@@ -1,9 +1,9 @@
 class InvitationMailer < ActionMailer::Base
-  default from: "help@crisiscleanup.org"
+  default from: "help@#{Crisiscleanup::Application.config.URL}"
   def send_invitation(inv, request)
     @user = User.find(inv.user_id)
     @email = inv.invitee_email
-    url = "https://www.crisiscleanup.org"
+    url = "https://www.#{Crisiscleanup::Application.config.URL}"
     @url = url + "/invitations/activate?token="+inv.token
     mail(to: @email, subject: "#{@user.name} has invited you to join Crisis Cleanup")
   end

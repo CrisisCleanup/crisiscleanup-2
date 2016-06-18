@@ -361,7 +361,7 @@ def import_appengine_emails
 			if list.valid?
 				if list.ready.present?  
 					list.ready.each do |inv|
-						InvitationMailer.send_invitation(inv, "https://crisiscleanup.org").deliver_now
+						InvitationMailer.send_invitation(inv, "https://#{Crisiscleanup::Application.config.URL}").deliver_now
 		                RequestInvitation.invited!(inv.invitee_email)
 					end
 				end
