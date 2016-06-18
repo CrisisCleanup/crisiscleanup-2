@@ -4,7 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>We have received your application to join Crisis Cleanup. While we always try to be faster, it may take up to 48 hours to approve your application. In the meantime, please watch this mandatory 8-minute training video: <a href="https://www.crisiscleanup.org/training">https://www.crisiscleanup.org/training</a>. When your organization has been approved, you will receive another email inviting you to activate your account.</p>
+    <p>We have received your application to join Crisis Cleanup. While we always try to be faster, it may take up to 48 hours to approve your application. In the meantime, please watch this mandatory 8-minute training video: <a href="https://www.<%= Crisiscleanup::Application.config.URL
+%>/training">https://www.<%= Crisiscleanup::Application.config.URL
+%>/training</a>. When your organization has been approved, you will receive another email inviting you to activate your account.</p>
 
     <p>Organization: <%= @org.name %><br />
     Incident: <%= @org.legacy_events.first.name %></p>
@@ -22,7 +24,9 @@
 
     <p>Instructions & Common Questions</p>
     <p>1. Help and FAQ: <a href="https://crisiscleanup.zendesk.com/hc/en-us">https://crisiscleanup.zendesk.com/hc/en-us</a><br />
-    <p>2. Training: <a href="https://www.crisiscleanup.org/training">https://www.crisiscleanup.org/training</a><br />
+    <p>2. Training: <a href="https://www.<%= Crisiscleanup::Application.config.URL
+%>/training">https://www.<%= Crisiscleanup::Application.config.URL
+%>/training</a><br />
     <p>3. Policies: <a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies">https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies</a></p>
 
     <p>Disclaimer: Remember that the system is free and run by volunteers. We're trying to improve it, so please report errors.</p>

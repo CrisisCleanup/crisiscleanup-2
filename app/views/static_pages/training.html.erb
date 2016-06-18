@@ -537,7 +537,8 @@
                 <p style="color:green; font-weight: bold;">Correct!</p>
             </div>
             <div id="explanation_18" style="display:none">
-                <p>We encourage each participating organization to download their work orders and run regular reports for county governments, OEMs, and other VOAD members. Please don't ask us to run reports for you. See the <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank>Help Article</a> and <a href="http://blog.crisiscleanup.org/2014/01/new-crisis-cleanup-features.html" target=_blank>Blog Post</a> on inter-organization stats/reports.</p>
+                <p>We encourage each participating organization to download their work orders and run regular reports for county governments, OEMs, and other VOAD members. Please don't ask us to run reports for you. See the <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank>Help Article</a> and <a href="http://blog.<%= Crisiscleanup::Application.config.URL
+%>/2014/01/new-crisis-cleanup-features.html" target=_blank>Blog Post</a> on inter-organization stats/reports.</p>
             </div>
         </div>
     </div>
@@ -559,10 +560,12 @@
         <ul>
             <li><a href="https://crisiscleanup.zendesk.com/hc/en-us">Helpdesk</a></li>
             <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200596493-Is-Crisis-Cleanup-a-Good-Fit-">Is Crisis Cleanup a Good Fit?</a> Factors that lead to successful deployments.</li>
-            <li><a href="http://demo.crisiscleanup.org/">Crisis Cleanup Demo Site</a></li>
+            <li><a href="http://demo.<%= Crisiscleanup::Application.config.URL
+%>/">Crisis Cleanup Demo Site</a></li>
             <li><a href="http://www.youtube.com/watch?v=tpMOgDr_KGI">Mandatory Training Video</a></li>
             <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation">Requirements for Participation</a></li>
-            <!--<li><a href="http://www.crisiscleanup.org/donate">Fundraiser</a></li>-->
+            <!--<li><a href="http://www.<%= Crisiscleanup::Application.config.URL
+%>/donate">Fundraiser</a></li>-->
         </ul>
         </div>
     </div>  

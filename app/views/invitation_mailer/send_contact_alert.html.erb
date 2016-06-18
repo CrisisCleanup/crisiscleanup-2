@@ -6,11 +6,13 @@
   <body>
     <p>We have received your application. You should receive an email within 48 hours with instructions on how to activate your account. For now, please watch: 
       <ul>
-        <li><a href="https://www.crisiscleanup.org/training">Mandatory Training Video</a> (8 mins)</li>
+        <li><a href="https://www.<%= Crisiscleanup::Application.config.URL
+%>/training">Mandatory Training Video</a> (8 mins)</li>
       </ul>
     </p>
     <p><strong>Remember that the system is free and run by volunteers. We're trying to improve it, but please be patient if you encounter an error.</strong></p>
     <p>If you do not hear back in 48 hours, please contact your team or organization leader, and ask them to verify your account by logging in and clicking on the "Dashboard." They should see your name on a list, ready to be verified.</p>
-    <p>If you still have no luck, or you are registering your organization for the first time, email help@crisiscleanup.org, and we'll see if we can help you.</p>
+    <p>If you still have no luck, or you are registering your organization for the first time, email help@<%= Crisiscleanup::Application.config.URL
+%>, and we'll see if we can help you.</p>
   </body>
 </html>

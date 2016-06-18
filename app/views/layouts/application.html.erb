@@ -55,13 +55,15 @@
                         <i class="fa fa-rocket"></i>
                         <h4>Crisis Cleanup Deployments</h4>
                         <p>Crisis Cleanup has been used in dozens of disasters across the world.</p>
-                        <a href="http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html">See All Crisis Cleanup Deployments</a>
+                        <a href="http://blog.<%= Crisiscleanup::Application.config.URL
+%>/2013/11/all-crisis-cleanup-incidents.html">See All Crisis Cleanup Deployments</a>
                     </div>
                     <div class="medium-4 columns">
                         <i class="fa fa-video-camera "></i>
                         <h4>Media Coverage</h4>
                         <p>Crisis Cleanup is primarily for relief agencies rather than the public (and therefore we don't seek the public spotlight), but occasionally you will see us in the news!</p>    
-                        <a href="http://blog.crisiscleanup.org/2013/07/crisis-cleanup-media-coverage.html">See Crisis Cleanup In The News</button></a>
+                        <a href="http://blog.<%= Crisiscleanup::Application.config.URL
+%>/2013/07/crisis-cleanup-media-coverage.html">See Crisis Cleanup In The News</button></a>
                     </div>
                 </div>
                     <div class="medium-4 columns">
@@ -78,8 +80,10 @@
                 <li><%= link_to "Home", root_path %> |</li>
                 <li><%= link_to "About", about_path %> |</li>
                 <li><a href="/public_map">Map</a> |</li>
-                <li><a href="http://blog.crisiscleanup.org/">Blog</a> |</li>
-                <li><a href="http://demo.crisiscleanup.org/">Demo</a> |</li>
+                <li><a href="http://blog.<%= Crisiscleanup::Application.config.URL
+%>/">Blog</a> |</li>
+                <li><a href="http://demo.<%= Crisiscleanup::Application.config.URL
+%>/">Demo</a> |</li>
                 <li><%= link_to "Training", training_path %> |</li>
                 <li><%= link_to "Contact", contact_path %> |</li>
                 <li><%= link_to "Terms", terms_path %> |</li>

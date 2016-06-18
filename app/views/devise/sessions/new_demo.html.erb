@@ -4,7 +4,8 @@
 
 <% content_for :main do %>
 <h2>Log in. Use:</h2>
-<h3>Email: test@crisiscleanup.org<br />
+<h3>Email: test@<%= Crisiscleanup::Application.config.URL
+%><br />
 	Password: littlegaggle984</h3>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">

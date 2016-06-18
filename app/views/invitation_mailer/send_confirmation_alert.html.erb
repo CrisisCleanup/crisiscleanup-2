@@ -5,8 +5,11 @@
   </head>
   <body>
     <p><%= @new_user.name %>,</p>
-    <p>Congratulations! <%= @verified_by.name %> (<%= @verified_by.email %>) from <%= @verified_by.legacy_organization.name %> has verified and activated our Crisis Cleanup account. Please log in here: <a target='_blank' href="http://crisiscleanup.org/login">http://crisiscleanup.org/login</a>.</p>
-    <p>If you haven't already, please watch the Mandatory 8-Minute Training Video here: <a href="https://www.crisiscleanup.org/training">https://www.youtube.com/watch?v=tpMOgDr_KGI</a>. This will answer all of your questions and get you into the field helping people right away.</p>
+    <p>Congratulations! <%= @verified_by.name %> (<%= @verified_by.email %>) from <%= @verified_by.legacy_organization.name %> has verified and activated our Crisis Cleanup account. Please log in here: <a target='_blank' href="http://<%= Crisiscleanup::Application.config.URL
+%>/login">http://<%= Crisiscleanup::Application.config.URL
+%>/login</a>.</p>
+    <p>If you haven't already, please watch the Mandatory 8-Minute Training Video here: <a href="https://www.<%= Crisiscleanup::Application.config.URL
+%>/training">https://www.youtube.com/watch?v=tpMOgDr_KGI</a>. This will answer all of your questions and get you into the field helping people right away.</p>
     <p><strong>-Crisis Cleanup Support Services</strong></p>
     <p>Twitter: <a href="https://twitter.com/CrisisCleanup">@CrisisCleanup</a><br />
     Help: <a href="https://crisiscleanup.zendesk.com/hc/">https://crisiscleanup.zendesk.com/hc/</a><br />

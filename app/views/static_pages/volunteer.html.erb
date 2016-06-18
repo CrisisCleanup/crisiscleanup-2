@@ -50,7 +50,8 @@
             <h5>But I just want to help! Can't I just join an organization through Crisis Cleanup?</h5>
             <p>Please apply directly to the organization of your choice. Don't try to affiliate through Crisis Cleanup. You need to be vetted and trained by the organization first. Applying here will only distract field volunteers from their primary mission of helping survivors.</p> 
             <h5>What should I do if I'm an Unaffiliated Volunteer?</h5>
-            <p>Volunteering as an SUV is hard. Our advice is to be <a href="http://blog.crisiscleanup.org/2015/06/be-patient-be-persistent-and-never-give.html">be patient, be persistent, and never give up hope.</a></p>
+            <p>Volunteering as an SUV is hard. Our advice is to be <a href="http://blog.<%= Crisiscleanup::Application.config.URL
+%>/2015/06/be-patient-be-persistent-and-never-give.html">be patient, be persistent, and never give up hope.</a></p>
         </div>
     </div>
 </div>
@@ -62,8 +63,10 @@
     <!--<a href="" class="button">Request an Invitation!</a>-->
     <p>Here is some advice you might find helpful as you try to volunteer:
         <ul>
-            <li><a href="http://blog.crisiscleanup.org/2015/08/the-root-of-volunteering-trust-and.html">The Root of Volunteering: Trust and Training</a></li>
-            <li><a href="http://blog.crisiscleanup.org/2015/06/be-patient-be-persistent-and-never-give.html">Be Patient. Be Persistent. And Never Give up Hope.</a></li>
+            <li><a href="http://blog.<%= Crisiscleanup::Application.config.URL
+%>/2015/08/the-root-of-volunteering-trust-and.html">The Root of Volunteering: Trust and Training</a></li>
+            <li><a href="http://blog.<%= Crisiscleanup::Application.config.URL
+%>/2015/06/be-patient-be-persistent-and-never-give.html">Be Patient. Be Persistent. And Never Give up Hope.</a></li>
         </ul>
     </p>
 </div>

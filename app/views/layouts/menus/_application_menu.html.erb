@@ -21,7 +21,8 @@
       <% else %>
         <li><%= nav_link "Map", public_map_path %></li>
       <% end %>
-      <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
+      <li><a href="http://blog.<%= Crisiscleanup::Application.config.URL
+%>/">Blog</a></li>
       <% unless current_user %>
       <li><%= nav_link "Sign Up", signup_path %></li> <!-- hide for verified user / admin -->
       <% end %>
