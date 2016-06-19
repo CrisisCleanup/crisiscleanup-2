@@ -43,7 +43,7 @@ class RegistrationsController < ApplicationController
       redirect_to "/welcome"
     else
       # with errors
-      flash[:alert] = "The organization name #{@org.name} or email #{@org.email} or contact email has already been taken. If you represent an organization that wishes to re-deploy to a new incident, click the 'Re-deploy' link below. If you are a volunteer who wishes to join a new organization, please use a different email address."
+      flash[:alert] = "The organization name #{@org.name} or email #{@org.email} or contact email has already been taken. Click for <a href='https://crisiscleanup.zendesk.com/hc/en-us/articles/221158507'>Details and Fixes</a>."
       render :new
     end
   end
