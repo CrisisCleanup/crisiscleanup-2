@@ -149,7 +149,7 @@ CCMap.Site = function(params) {
       table.appendChild(
         createTableRow(
           document.createTextNode('Case #:'),
-          document.createTextNode(this.site.case_number) + ' (Click Edit for Phone)'
+          document.createTextNode(this.site.case_number)
         )
       );
     }
