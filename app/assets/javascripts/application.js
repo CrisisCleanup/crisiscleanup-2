@@ -2,7 +2,6 @@
 // listed below.
 //
 // CHANGE THIS LINE TO RECOMPILE JAVASCRIPT, TO GET NEW ICONS TO LOAD. 2016-07-15 1:38 pm
-//
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
 // or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
 //
