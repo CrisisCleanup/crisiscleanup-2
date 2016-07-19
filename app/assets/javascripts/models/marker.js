@@ -144,24 +144,34 @@ CCMap.Site = function(params) {
     // row.appendChild(header);
     // table.appendChild(row);
 
-    // todo: combine this junk with the phone stuff
-    // Case #
+    // TODO: fix this with a templating library (Handlebars.js)
+    // Case number and phone numbers
+    var caseNumberPhoneArray = [];
     if (this.site.case_number) {
-      table.appendChild(
-        createTableRow(
-          document.createTextNode('Case & Phone #:'),
-          document.createTextNode(this.site.case_number)
-        )
-      );
+      caseNumberPhoneArray.push(this.site.case_number);
     }
 
-    // phone numbers appended to case # line
-    var phones = '';
     if (this.site.phone1) {
-        console.log(this.site.phone1);
-    } else if (this.site.data.phone1) {
-        console.log(this.site.data.phone1);
+      caseNumberPhoneArray.push(this.site.phone1);
+    } else if (this.site.data && this.site.data.phone1 && this.site.data.phone1 !== '') {
+      caseNumberPhoneArray.push(this.site.data.phone1);
     }
+
+    if (this.site.phone2) {
+      caseNumberPhoneArray.push(this.site.phone2);
+    } else if (this.site.data && this.site.data.phone1 && this.site.data.phone2 !== '') {
+      caseNumberPhoneArray.push(this.site.data.phone2);
+    }
+    var caseNumberPhoneStr = caseNumberPhoneArray.join(' : ');
+
+    // Build the case number/phone numbers row
+    table.appendChild(
+      createTableRow(
+        document.createTextNode('Case & Phone #:'),
+        document.createTextNode(caseNumberPhoneStr)
+      )
+    );
+    // End Case number and Phone numbers block
 
     // claimed by
     if (this.site.claimed_by) {
