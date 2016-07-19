@@ -144,14 +144,23 @@ CCMap.Site = function(params) {
     // row.appendChild(header);
     // table.appendChild(row);
 
+    // todo: combine this junk with the phone stuff
     // Case #
     if (this.site.case_number) {
       table.appendChild(
         createTableRow(
-          document.createTextNode('Case #:'),
+          document.createTextNode('Case & Phone #:'),
           document.createTextNode(this.site.case_number)
         )
       );
+    }
+
+    // phone numbers appended to case # line
+    var phones = '';
+    if (this.site.phone1) {
+        console.log(this.site.phone1);
+    } else if (this.site.data.phone1) {
+        console.log(this.site.data.phone1);
     }
 
     // claimed by
