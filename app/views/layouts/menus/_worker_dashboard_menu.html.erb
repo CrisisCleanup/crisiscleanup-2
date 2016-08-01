@@ -16,7 +16,7 @@
       <% if current_user_event %> <!-- DOUBLE CHECK - MAP / FORM LINKS NOT SHOWING UP ON ADMIN VIEW -->
         <li><%= link_to "Map", worker_incident_legacy_map_path(current_user_event) %></li>
         <li><%= link_to worker_incident_legacy_form_path(current_user_event) do %>
-          Intake<!--New <i class="fa fa-plus">--></i>
+          Intake <i class="fa fa-plus"></i>
           <% end %>    
       </li>
       <% end %>
