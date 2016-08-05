@@ -1,6 +1,8 @@
 var CCMap = CCMap || {};
 
-// build map with all of the pins clustered
+/*
+ * build map with all of the pins clustered
+ */
 CCMap.UnclaimedStatusColorMap = {
   "Open, unassigned": "orange",
   "Open, assigned": "yellow",
