@@ -3,7 +3,7 @@ CircleCi Test Status: Tests: [![Circle CI](https://circleci.com/gh/aarontitus/cr
 Crisis Cleanup
 ==============
 
-Crisis Cleanup is a web platform that connects disaster recovery organization volunteers with people who need help after a disaster. The Crisis Cleanup platform has been used to connected 50,000+ volunteers from 375+ organizations with 16,000 families in 18 states and 25 disasters in 4 countries.
+Crisis Cleanup is a web platform that connects disaster recovery organization volunteers with people who need help after a disaster. The Crisis Cleanup platform has been used to connected 50,000+ volunteers from 40+ organizations with 20,000 families in 26 states and 43 disasters in 5 countries.
 
 Crisis Cleanup works best in a collaborative environment where multiple voluntary organizations and agencies work together and coordinate efforts. Because these organizations do not take orders from one another, Crisis Cleanup is designed to facilitate Collaborative Accountability models of inter-agency interaction, rather than command-and-control operations, or or heirarchical accountability models of interaction. 
 
