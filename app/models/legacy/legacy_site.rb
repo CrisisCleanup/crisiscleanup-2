@@ -138,6 +138,10 @@ module Legacy
           :status,
           :work_type,
           :work_requested,
+          :hours_worked_per_volunteer,
+          :initials_of_resident_present,
+          :total_volunteers,
+          :status_notes,
           :details
         ],[
           "Event",
@@ -160,13 +164,16 @@ module Legacy
           "Status",
           "Work Type",
           "Work Requested",
+          "Hours Worked Per Volunteer",
+          "Initials Of Resident Present",
+          "Total Volunteers",
+          "Status Notes",
           "Details"
         ],
         true)
     end
 
     def to_csv_row
-      data ||= []
       CSV::Row.new(
         [
           :event,
@@ -189,6 +196,10 @@ module Legacy
           :status,
           :work_type,
           :work_requested,
+          :hours_worked_per_volunteer,
+          :initials_of_resident_present,
+          :total_volunteers,
+          :status_notes,
           :details
         ],[
           legacy_event.name,
@@ -211,48 +222,11 @@ module Legacy
           status,
           work_type,
           work_requested,
-          data.map do |datum|
-            next if [
-              "address_digits",
-              "address_metaphone",
-              "assigned_to",
-              "city_metaphone",
-              "claim_for_org",
-              "county",
-              "cross_street",
-              "damage_level",
-              "date_closed",
-              "do_not_work_before",
-              "event",
-              "event_name",
-              "habitable",
-              "hours_worked_per_volunteer",
-              "ignore_similar",
-              "initials_of_resident_present",
-              "inspected_by",
-              "landmark",
-              "member_of_assessing_organization",
-              "modified_by",
-              "name_metaphone",
-              "phone1",
-              "phone2",
-              "phone_normalised",
-              "prepared_by",
-              "priority",
-              "release_form",
-              "temporary_address",
-              "time_to_call",
-              "total_loss",
-              "total_volunteers",
-              "unrestrained_animals",
-              "work_requested",
-              "zip_code"
-            ].include? datum[0]
-            next if datum[1].blank?
-            next if datum[1] == "n"
-            next if datum[1] == "0"
-            datum[0].gsub("_", " ").humanize + ": " + datum[1].gsub("_", " ").humanize
-          end.compact.reject(&:blank?).join(", ")
+          data ? data['hours_worked_per_volunteer'].to_s : "",
+          data ? data['initials_of_resident_present'].to_s  : "",
+          data ? data['total_volunteers'].to_s : "",
+          data ? data['status_notes'].to_s  : "",
+          "details"
         ]
       )
     end
