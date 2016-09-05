@@ -65,15 +65,15 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
-  config.cache_store = :dalli_store,
-    (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-    {
-      :username => ENV["MEMCACHIER_USERNAME"],
-      :password => ENV["MEMCACHIER_PASSWORD"],
-      :failover => true,
-      :socket_timeout => 1.5,
-      :socket_failure_delay => 0.2
-    }
+  #config.cache_store = :dalli_store,
+  #  (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+  #  {
+  #    :username => ENV["MEMCACHIER_USERNAME"],
+  #    :password => ENV["MEMCACHIER_PASSWORD"],
+  #    :failover => true,
+  #    :socket_timeout => 1.5,
+  #    :socket_failure_delay => 0.2
+  #  }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -97,5 +97,5 @@ Rails.application.configure do
 
 end
 if ENV["MEMCACHEDCLOUD_SERVERS"]
-    config.cache_store = :dalli_store, ENV["MEMCACHEDCLOUD_SERVERS"].split(','), { :username => ENV["memcached-app38100693"], :password => ENV["memcached-app38100693"] }
+    config.cache_store = :dalli_store, ENV["MEMCACHEDCLOUD_SERVERS"].split(','), { :username => ENV["MEMCACHEDCLOUD_USERNAME"], :password => ENV["MEMCACHEDCLOUD_PASSWORD"] }
 end
