@@ -96,3 +96,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 end
+if ENV["MEMCACHEDCLOUD_SERVERS"]
+    config.cache_store = :dalli_store, ENV["MEMCACHEDCLOUD_SERVERS"].split(','), { :username => ENV["memcached-app38100693"], :password => ENV["memcached-app38100693"] }
+end
