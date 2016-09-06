@@ -15,10 +15,10 @@
       <li><%= nav_link "About", about_path %></li>    
       <% if current_user_event %> <!-- DOUBLE CHECK - MAP / FORM LINKS NOT SHOWING UP ON ADMIN VIEW -->
         <li><%= link_to "Map", worker_incident_legacy_map_path(current_user_event) %></li>
-        <li><!--<%= link_to worker_incident_legacy_form_path(current_user_event) do %>
+        <li><%= link_to worker_incident_legacy_form_path(current_user_event) do %>
           Intake <i class="fa fa-plus"></i>
-          <% end %>-->
-          <a href="https://togetherla.nationbuilder.com/gutcheckla" target="_blank">Intake (Temp)<i class="fa fa-plus"></i></a>
+          <% end %>
+          <i class="fa fa-plus"></i>
       </li>
       <% end %>
 
