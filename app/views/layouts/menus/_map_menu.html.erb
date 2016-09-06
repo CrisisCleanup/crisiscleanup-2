@@ -11,9 +11,10 @@
             <ul class="right">
                 <li class="active"><%= link_to "Home", root_path %></li>
                 <li><%= link_to "Map", incident_legacy_map_path(current_user_event) %></li>                
-                <li><%= link_to worker_incident_legacy_form_path(current_user_event) do %>
+                <li><!--<%= link_to worker_incident_legacy_form_path(current_user_event) do %>
                 Intake <i class="fa fa-plus"></i>
-                <% end %>
+                <% end %>-->
+                <a href="https://togetherla.nationbuilder.com/gutcheckla" target="_blank">Intake (Temp) <i class="fa fa-plus"></i></a>
                 </li>
 
                <% if current_user %> <!-- user verified only -->
