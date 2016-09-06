@@ -17,7 +17,6 @@
       <li><%= link_to worker_incident_legacy_form_path(current_user_event) do %>
           Intake <i class="fa fa-plus"></i>
           <% end %>
-          <i class="fa fa-plus"></i>
       </li>
       <% if current_user.admin %> <!-- user verified only -->
         <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
