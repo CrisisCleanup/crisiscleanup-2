@@ -309,7 +309,7 @@ CCMap.Map = function(params) {
       var place = this.getPlace();
       populateAddressFields.call(this, place);
     });
-    add.addEventListener('change', geocodeQuery.bind(this));
+    //add.addEventListener('change', geocodeQuery.bind(this));
     city.addEventListener('change', geocodeQuery.bind(this));
     state.addEventListener('change', geocodeQuery.bind(this));
     zip.addEventListener('change', geocodeQuery.bind(this));
