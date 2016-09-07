@@ -309,7 +309,7 @@ CCMap.Map = function(params) {
       var place = this.getPlace();
       populateAddressFields.call(this, place);
     });
-    //add.addEventListener('change', geocodeQuery.bind(this));
+
     city.addEventListener('change', geocodeQuery.bind(this));
     state.addEventListener('change', geocodeQuery.bind(this));
     zip.addEventListener('change', geocodeQuery.bind(this));
@@ -353,24 +353,17 @@ CCMap.Map = function(params) {
           case 'locality':
             if (city && city.value === '') {
               city.value = place.address_components[i].long_name;
-            }//else{
-            //  city.value = place.address_components[i].long_name;
-            //}
+            }
             break;
           case 'administrative_area_level_2':
             if (county && county.value === '') {
               county.value = place.address_components[i].long_name;
-            }//else{
-            //  county.value = place.address_components[i].long_name;
-            //}
+            }
             break;
           case 'administrative_area_level_1':
             if (state && state.value === '') {
               state.value = place.address_components[i].long_name;
-            } //else{
-            //  state.value = place.address_components[i].long_name;
-            //}
-            
+            }
             break;
           case 'country':
             if (country && country.value === '') {
@@ -380,19 +373,13 @@ CCMap.Map = function(params) {
           case 'postal_code':
             if (zip && zip.value === '') {
               zip.value = place.address_components[i].long_name;
-            //                updateZip = true;
-
-            //}else{
-            //  zip.value = place.address_components[i].long_name;
               updateZip = true;
             }
             break;
           case 'postal_code_suffix':
             if (zip && updateZip) {
               zip.value += "-" + place.address_components[i].long_name;
-            }//else{
-            //  zip.value += "-" + place.address_components[i].long_name;
-            //}
+            }
             break;
         }
       }
@@ -403,10 +390,9 @@ CCMap.Map = function(params) {
 
       setLatLng(place.geometry.location);
 
-      if (place.geometry.viewport) { //Added
-        map.fitBounds(new google.maps.LatLngBounds(place.geometry.viewport.southwest, place.geometry.viewport.northeast)); //Added
-      } else { //Added
-      //if (place.geometry.location) {
+      if (place.geometry.viewport) {
+        map.fitBounds(new google.maps.LatLngBounds(place.geometry.viewport.southwest, place.geometry.viewport.northeast));
+      } else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);
       }
