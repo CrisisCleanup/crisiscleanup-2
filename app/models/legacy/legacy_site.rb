@@ -143,6 +143,9 @@ module Legacy
           :initials_of_resident_present,
           :total_volunteers,
           :status_notes,
+          :residence_type,
+          :older_than_60,
+          :insured,
           :details
         ],[
           "Event",
@@ -170,6 +173,9 @@ module Legacy
           "Initials Of Resident Present",
           "Total Volunteers",
           "Status Notes",
+          "Residence Type",
+          "Older Than 60",
+          "Insured",
           "Details"
         ],
         true)
@@ -203,6 +209,9 @@ module Legacy
           :initials_of_resident_present,
           :total_volunteers,
           :status_notes,
+          :residence_type,
+          :older_than_60,
+          :insured,
           :details
         ],[
           legacy_event.name,
@@ -230,6 +239,9 @@ module Legacy
           data ? data['initials_of_resident_present'].to_s  : "",
           data ? data['total_volunteers'].to_s : "",
           data ? data['status_notes'].to_s  : "",
+          data ? data['residence_type'].to_s : "",
+          data ? data['older_than_60'].to_s : "",
+          data ? data['insured'].to_s : "",
           "details"
         ]
       )
