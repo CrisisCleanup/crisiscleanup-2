@@ -145,7 +145,7 @@ module Legacy
           :status_notes,
           :residence_type,
           :older_than_60,
-          :insured,
+          :first_responder,
           :details
         ],[
           "Event",
@@ -175,7 +175,7 @@ module Legacy
           "Status Notes",
           "Residence Type",
           "Older Than 60",
-          "Insured",
+          "First Responder",
           "Details"
         ],
         true)
@@ -211,7 +211,7 @@ module Legacy
           :status_notes,
           :residence_type,
           :older_than_60,
-          :insured,
+          :first_responder,
           :details
         ],[
           legacy_event.name,
@@ -241,7 +241,7 @@ module Legacy
           data ? data['status_notes'].to_s  : "",
           data ? data['residence_type'].to_s : "",
           data ? data['older_than_60'].to_s : "",
-          data ? data['insured'].to_s : "",
+          data ? data['first_responder'].to_s : "",
           "details"
         ]
       )
