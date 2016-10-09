@@ -145,7 +145,7 @@ module Legacy
           :status_notes,
           :residence_type,
           :older_than_60,
-          :insured,
+          :first_responder,
           :details
         ],[
           "Event",
@@ -168,14 +168,17 @@ module Legacy
           "Status",
           "Work Type",
           "Work Requested",
+          "Floors Affected",
           "Flood Height",
+          "Amount of Mold",
+          "Trees Down",
           "Hours Worked Per Volunteer",
           "Initials Of Resident Present",
           "Total Volunteers",
           "Status Notes",
           "Residence Type",
           "Older Than 60",
-          "Insured",
+          "First Responder",
           "Details"
         ],
         true)
@@ -204,14 +207,17 @@ module Legacy
           :status,
           :work_type,
           :work_requested,
+          :floors_affected,
           :flood_height,
+          :mold_amount,
+          :num_trees_down,
           :hours_worked_per_volunteer,
           :initials_of_resident_present,
           :total_volunteers,
           :status_notes,
           :residence_type,
           :older_than_60,
-          :insured,
+          :first_responder,
           :details
         ],[
           legacy_event.name,
@@ -234,14 +240,17 @@ module Legacy
           status,
           work_type,
           work_requested,
+          data ? data['floors_affected'].to_s : "",
           data ? data['flood_height'].to_s : "",
+          data ? data['mold_amount'].to_s : "",
+          data ? data['num_trees_down'].to_s : "",
           data ? data['hours_worked_per_volunteer'].to_s : "",
           data ? data['initials_of_resident_present'].to_s  : "",
           data ? data['total_volunteers'].to_s : "",
           data ? data['status_notes'].to_s  : "",
           data ? data['residence_type'].to_s : "",
           data ? data['older_than_60'].to_s : "",
-          data ? data['insured'].to_s : "",
+          data ? data['first_responder'].to_s : "",
           "details"
         ]
       )
