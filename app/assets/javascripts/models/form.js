@@ -225,7 +225,7 @@ CCMap.Form = function(params) {
             window.scrollTo(0,0);
           },
           error: function(){
-            alert('Server-side Error (400 or 500). The server did not receive an expected piece of information. Make sure the address contains a street number.');
+            alert('Server-side Error (400 or 500). The server did not receive an expected piece of information. This is usually a temporary error. Try refreshing or opening this page in a new window.'); //Make sure the address contains a street number.
           }
         });
       } else {
