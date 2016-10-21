@@ -15,7 +15,21 @@
                 Intake <i class="fa fa-plus"></i>
                 <% end %>
                 </li>
-
+      <li class="has-dropdown"><a href="#">Help</a>
+        <ul class="dropdown">
+          <li class="has-dropdown"><a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies" target="_blank">Policies</a>
+            <ul class="dropdown">
+              <li class='claiming_policy'><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/227036588-Work-Order-Case-Claiming-Policy" target="_blank">Claiming Policy</li>
+              <li class='client_data_policy'><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200819327-Client-Personal-Data-Collection-Policy" target="_blank">Client Data Policy</a></li>
+              <li class='participation_requirements'><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation" target="_blank">Participation Requirements</a></li>
+              <li class='good_fit'><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200596493-Is-Crisis-Cleanup-a-Good-Fit-" target="_blank">Is Crisis Cleanup a Good Fit?</a></li>
+            </ul>
+          </li>
+          <li class="training"><a href="https://www.crisiscleanup.org/training" target="_blank">Mandatory Training Video</a></li>
+          <li class="stats"><a href="https://crisiscleanup.zendesk.com/hc/en-us" target="_blank">Search Helpdesk</a></li>
+          <li class="trouble_ticket"><a href="https://crisiscleanup.zendesk.com/hc/en-us/requests/new" target="_blank">Submit Trouble Ticket</a></li>
+        </ul>
+      </li>
                <% if current_user %> <!-- user verified only -->
                 <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
                     <ul class="dropdown">
