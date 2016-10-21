@@ -1,5 +1,6 @@
 <% content_for :main do %>
 <h2>Sign up and activate account</h2>
+<p><strong>If you sign up once and it brings you back to this page (empty), <%= link_to "login here", new_user_session_path %>.</strong></p>
 
 <%= simple_form_for(User.new, url: invitations_activate_path+"?token=#{@invitation.token}") do |f| %>
   <%= f.error_notification %>
