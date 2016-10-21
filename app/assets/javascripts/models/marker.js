@@ -107,7 +107,7 @@ CCMap.Site = function(params) {
 
     var addressString = 'Address: ' + this.site.address + ', ' + this.site.city + ', ' + this.site.state;
     if (this.site.zip_code) {
-      addressString += '  ' + this.site.zip_code;
+      addressString += '  ' + this.site.zip_code.substring(0,5);
     }
     var addressText = document.createTextNode(addressString);
     var addressP = document.createElement('p')
