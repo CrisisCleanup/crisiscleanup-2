@@ -34,6 +34,9 @@
           </li>
           <li class="training"><a href="https://www.crisiscleanup.org/training" target="_blank">Mandatory Training Video</a></li>
           <li class="stats"><a href="https://crisiscleanup.zendesk.com/hc/en-us" target="_blank">Search Helpdesk</a></li>
+          <% if current_user %>
+          <li class="trouble_ticket"><a href="https://crisiscleanup.zendesk.com/hc/en-us/requests/new" target="_blank">Submit Trouble Ticket</a></li>
+          <% end %>
         </ul>
       </li>
       <% unless current_user %>
