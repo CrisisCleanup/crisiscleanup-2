@@ -249,7 +249,7 @@ CCMap.Site = function(params) {
       "Open, unassigned",
       "Open, assigned",
       "Open, partially completed",
-      "Open, partially completed",
+      "Open, needs follow-up",
       "Closed, completed",
       "Closed, incomplete",
       "Closed, out of scope",
