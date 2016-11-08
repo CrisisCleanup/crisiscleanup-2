@@ -260,6 +260,62 @@ module Legacy
       )
     end
 
+    def format_details
+      blacklist = [
+        'address_digits',
+        'address_metaphone',
+        'assigned_to',
+        'city_metaphone',
+        'claim_for_org',
+        'county',
+        'cross_street',
+        'damage_level',
+        'date_closed',
+        'do_not_work_before',
+        'event',
+        'event_name',
+        'habitable',
+        'hours_worked_per_volunteer',
+        'ignore_similar',
+        'initials_of_resident_present',
+        'inspected_by',
+        'landmark',
+        'member_of_assessing_organization',
+        'modified_by',
+        'name_metaphone',
+        'phone1', # This is being shown in its own field
+        'phone2', # This is being shown in its own field
+        'phone_normalised',
+        'prepared_by',
+        'priority',
+        'release_form',
+        'temporary_address',
+        'time_to_call',
+        'total_loss',
+        'total_volunteers',
+        'unrestrained_animals',
+        'work_requested', # This is being shown in its own field
+        'zip_code', # This is being shown in the address field
+        'floors_affected',
+        'flood_height',
+        'mold_amount',
+        'num_trees_down',
+        'hours_worked_per_volunteer',
+        'initials_of_resident_present',
+        'total_volunteers',
+        'status_notes',
+        'residence_type',
+        'older_than_60',
+        'first_responder'
+      ]
+      data.map do |label,value|
+        next if blacklist.include? label
+        next if value.nil? || value.empty? || value == 'n' || value == '0'
+
+        label.humanize + ": " + value
+      end.compact.join(', ')
+    end
+
     def self.find_in_batches(filters, batch_size, &block)
       includes(:legacy_event, :legacy_organization, :reporting_org)
       .where(filters)
