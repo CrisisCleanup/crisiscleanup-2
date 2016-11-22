@@ -255,7 +255,7 @@ module Legacy
           data ? data['residence_type'].to_s : "",
           data ? data['older_than_60'].to_s : "",
           data ? data['first_responder'].to_s : "",
-          "details"
+          format_details
         ]
       )
     end
@@ -308,12 +308,16 @@ module Legacy
         'older_than_60',
         'first_responder'
       ]
-      data.map do |label,value|
-        next if blacklist.include? label
-        next if value.nil? || value.empty? || value == 'n' || value == '0'
-
-        label.humanize + ": " + value
-      end.compact.join(', ')
+      begin
+        data.map do |label,value|
+          next if blacklist.include? label
+          next if value.nil? || value.empty? || value == 'n' || value == '0'
+  
+          label.humanize + ": " + value
+        end.compact.join(', ')
+      rescue
+        "[data error]"
+      end
     end
 
     def self.find_in_batches(filters, batch_size, &block)
