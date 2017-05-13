@@ -18,16 +18,18 @@
 <div id="main" class="alt">
         <% unless current_user.admin %>
             <% unless current_user_event %>
-                <p>Youre organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
+                <p>Your organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
             <% end %>
 
     <div class="row">
           <h4>Invite Teammates By Email</h4>
-          <%= render 'invite_form' %>
+          <%= render 'invite_form' %><br />
+          <em>Invite each person only once.</em>
     </div>
     <div class="row">
           <h4>Invite Teammates With Temporary Password</h4>
-          <%= render 'temporary_password_form' %>
+          <%= render 'temporary_password_form' %><br />
+          <em>Only do this in the field, e.g. on a bus.</em>
     </div>
 <!--     <div class="row">
         <h4>Requested Invitations</h4>
