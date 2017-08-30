@@ -8,7 +8,10 @@
             <div class="small-12 medium-6 large-6 columns">
                 <h3>Disaster relief without collaboration is like trying to win a soccer game with boxes on your head.</h3>
                 <h4>Luckily, Crisis Cleanup is here to help!</h4>
-                <h5>Start by telling us who you are:</h5>
+                <h5>If you are a relief organization, register here:</h5>
+                    <a href="/register" class="button" id="register-btn">Register</a>
+                    <%= link_to "Login", new_user_session_path, class: "gray-block button" %>
+                <h5>Learn More:</h5>
                 <form>
                     <select id="location-select">
                         <option value="" disabled selected="selected">Who are you? Choose one, then click "Let's Go!"</option>
@@ -18,8 +21,7 @@
                         <option value="survivor">Survivor</option>
                         <option value="about">Just Curious</option>
                     </select>
-                    <a href="#" class="button" id="lets-go-btn">Let's Go!</a>
-                    <%= link_to "Login", new_user_session_path, class: "gray-block button" %>
+                    <a href="#" class="button" id="lets-go-btn">Learn More</a>
                 </form>
             </div>
         </div>
