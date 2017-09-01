@@ -9,14 +9,6 @@ describe "Going to the signup page page", :type => :feature do
 end
 
 describe "Going to the signup page page", :type => :feature do
-  it "has a Use Temporary Password Link" do
-    visit '/signup'
-    click_link 'Use Password'
-    expect(page).to have_content 'Use a temporary password'
-  end
-end
-
-describe "Going to the signup page page", :type => :feature do
   it "has a Just Curious Link" do
     visit '/signup'
     click_link 'Learn More'

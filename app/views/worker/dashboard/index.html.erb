@@ -24,14 +24,17 @@
     <div class="row">
           <h4>Invite Teammates By Email</h4>
           <%= render 'invite_form' %><br />
-          <em>Invite each person only once.</em>
+          <p><strong>Yes</strong>: trustedperson@example.com, myteammate@gmail.com, myfriend@hotmail.com<br />
+          <strong>No</strong>: <strike>John Smith &lt;trustedperson@example.com&gt;; "Jones, Fran" (myteammate@gmail.com) &lt;myfriend@hotmail.com&gt;</strike></p>
+          <p>To improve accuracy and timely updates, Crisis Cleanup <strong>strongly recommends</strong> inviting two or more people per local team.</p>
+          <p><em>Note: Due to confusion, Temporary passwords are currently disabled. Please invite all volunteers by sending them an email, above.</em></p>
     </div>
-    <div class="row">
+<!--    <div class="row">
           <h4>Invite Teammates With Temporary Password</h4>
           <%= render 'temporary_password_form' %><br />
           <em>Only do this in the field, e.g. on a bus.</em>
     </div>
-<!--     <div class="row">
+     <div class="row">
         <h4>Requested Invitations</h4>
             <%#= render 'request_invitation_table', users: @requested_invitations %>
     </div> -->
