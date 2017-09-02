@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   include Legacy
 
+  has_paper_trail
+
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 

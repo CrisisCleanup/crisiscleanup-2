@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :assign_layout
   layout :assign_layout
+  before_action :set_paper_trail_whodunnit
 
   def assign_layout
         if admin_dashboard_mode

@@ -37,6 +37,56 @@ module Api
       end
     end
 
+    def site_history
+
+      if site = Legacy::LegacySite.find(params[:id])
+        versions = site.versions
+        m = Hash.new
+        versions.reverse.each do |version|
+          if !m.key?(version.user.name)
+            m[version.user.name] = {
+                versions: [],
+                user_info: version.user
+            }
+          end
+
+          v = { version_info: version }
+          current_version = version.next
+          previous_version = version
+          if current_version != nil && previous_version != nil
+            previous_site = previous_version.reify
+            current_site = current_version.reify
+
+            if ((!previous_site.respond_to?(:user_id) || previous_site.user_id.nil?) && !current_site.user_id.nil?)
+              v[:claimed] = true
+            end
+          else
+            # this is the latest version
+            if ((!previous_site.respond_to?(:user_id) || previous_site.user_id.nil?) && !site.user_id.nil?)
+              v[:claimed] = true
+            end
+          end
+
+          m[version.user.name][:versions] << v
+        end
+
+        resp = {history: m}
+        if site.user_id?
+          r = User.select("users.name as u_name,
+                           users.email as u_email,
+                           users.mobile as u_mobile,
+                           legacy_organizations.name as lg_name, legacy_organizations.id as lg_id")
+                  .joins(:legacy_organization).where("users.id= ?", site.user_id)
+          resp[:claimed_by_user] = r.first
+        else
+          resp[:claimed_by_user] = nil
+        end
+
+        render json: resp
+      end
+
+    end
+
     def site
       if @site = Legacy::LegacySite.select("
           legacy_sites.*,
@@ -75,10 +125,12 @@ module Api
         if site = Legacy::LegacySite.find(params[:id])
           if site.claimed_by == nil
             site.claimed_by = current_user.legacy_organization_id
+            site.user = current_user
             site.save
             render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status, org_name: site.claimed_by_org.name }
           elsif site.claimed_by == current_user.legacy_organization_id || current_user.admin
             site.claimed_by = nil
+            site.user = nil
             site.save
             render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
           else

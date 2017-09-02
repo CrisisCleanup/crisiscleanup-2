@@ -80,6 +80,7 @@ Rails.application.routes.draw do
     # TODO /import
     get "/map/:event_id/:limit/:page" => "json#map", as: "json_map"
     get "/site/:id" => "json#site", as: "json_site"
+    get "/site-history/:id" => "json#site_history", as: "json_site_history"
     post "/update-site-status/:id" => "json#update_legacy_site_status", as: "json_site_status"
     post "/claim-site/:id" => "json#claim_legacy_site"
     get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"
