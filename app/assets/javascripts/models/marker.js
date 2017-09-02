@@ -284,6 +284,8 @@ CCMap.Site = function(params) {
 
     actionButtons["Edit"] = edit.bind(this);
 
+    actionButtons["History"] = history.bind(this);
+
     if (this.site.claimed_by === InitialState.user.org_id || (InitialState.user.admin && this.site.claimed_by !== null)) {
       actionButtons['Unclaim'] = claim.bind(this);
     } else if (this.site.claimed_by === null) {
@@ -455,6 +457,15 @@ CCMap.Site = function(params) {
     form.hydrate(this);
 
     this.ccmap.showForm();
+  }
+
+  function history(event) {
+
+    if (historyVue != null) {
+      historyVue.loadHistoryData(this.site);
+    }
+
+    this.ccmap.showHistory();
   }
 
   // This should work like a toggle

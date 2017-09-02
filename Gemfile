@@ -29,6 +29,7 @@ gem 'devise'
 gem 'jquery-rails'
 # React - don't use jquery inside react components
 gem 'react-rails', '~> 1.6.0'
+gem 'vuejs-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -41,7 +42,7 @@ gem 'faker'
 
 gem 'will_paginate', '~> 3.0.6'
 
-gem 'paper_trail', '~> 4.0.0.rc'
+gem 'paper_trail', '~> 7.1.2'
 
 gem 'geocoder'
 gem 'text'

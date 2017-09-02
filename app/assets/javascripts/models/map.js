@@ -104,9 +104,11 @@ CCMap.Map = function(params) {
   this.showFilters = function() {
     var $filtersView = $('#filters-view');
     var $formView = $('#form-view');
+    var $historyView = $('#history-view');
 
     if ($filtersView.hasClass('hide')) {
       $formView.addClass('hide');
+      $historyView.addClass('hide');
       $filtersView.removeClass('hide');
     }
   }
@@ -117,12 +119,28 @@ CCMap.Map = function(params) {
 
     var $filtersView = $('#filters-view');
     var $formView = $('#form-view');
+    var $historyView = $('#history-view');
 
     if ($formView.hasClass('hide')) {
       $filtersView.addClass('hide');
+      $historyView.addClass('hide');
       $formView.removeClass('hide');
     }
   }
+
+  this.showHistory = function() {
+    $('#form-view .alert-box a.close').click();
+
+    var $filtersView = $('#filters-view');
+    var $formView = $('#form-view');
+    var $historyView = $('#history-view');
+
+    if ($historyView.hasClass('hide')) {
+      $filtersView.addClass('hide');
+      $formView.addClass('hide');
+      $historyView.removeClass('hide');
+    }
+  };
 
   function zoomToMarker(id) {
     var matchArray = $.grep(allSites, function(site) { return site.site.id === id; });

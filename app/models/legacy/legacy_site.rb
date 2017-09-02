@@ -12,6 +12,7 @@ module Legacy
     belongs_to :legacy_event
     belongs_to :legacy_organization, foreign_key: :claimed_by
     belongs_to :reporting_org, class_name: "Legacy::LegacyOrganization", foreign_key: :reported_by
+    belongs_to :user
 
     # These are just to get around simple_form junk. Remove them once simple_form is gone.
     # So we can hide the autofill on this model's simple_form - I don't think this is actually working.

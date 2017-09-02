@@ -1,0 +1,9 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: crisiscleanup
+      POSTGRES_PASSWORD: crisiscleanup
+    ports:
+      - '5432:5432'

@@ -15,14 +15,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require react
-//= require react_ujs
-//= require components
+
 //= require_tree ./plugins
 //= require ./worker/sites.js
 //= require ./scripts.js
 //= require images
-//= require_tree .
+//= require_tree ./admin
+//= require_tree ./models
+//= require_tree ./other
+//= require_tree ./static_pages
+//= require_tree ./worker
+
 
 $(document).ready(function(){
 	$(document).foundation();
