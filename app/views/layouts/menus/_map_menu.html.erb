@@ -43,10 +43,13 @@
                         Browse
                         <% end %>
                         </li>
+                        <li><%= link_to worker_incident_graphs_path(current_user_event) do %>Graphs<% end %>
+                        </li>
                         <li><%= link_to "Stats", root_path %></li>
                         <li><%= link_to "Redeploy", root_path %></li>
                     </ul>
-                </li> <!-- end user verified only -->   
+                </li> <!-- end user verified only -->
+                <% end %>
         <% if current_user.admin %> <!-- admin verified only -->
           <li class="has-dropdown"><%= link_to "Admin", admin_path%>
             <ul class="dropdown">
