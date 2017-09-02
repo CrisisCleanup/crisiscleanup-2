@@ -68,6 +68,13 @@ Rails.application.routes.draw do
       post "/:id/edit/:site_id" => "legacy_sites#update", as:"legacy_update_site"
       post "/:id/submit" => "legacy_sites#submit"
       get "/:id/stats" => "legacy_sites#stats", as: "stats"
+      get "/:id/graphs" => "legacy_sites#graphs", as: "graphs"
+      get "/:id/graphs_site0" => "legacy_sites#graphs_site0", as: "graphs_site0"
+      get "/:id/graphs_site1" => "legacy_sites#graphs_site1", as: "graphs_site1"
+      get "/:id/graphs_site2" => "legacy_sites#graphs_site2", as: "graphs_site2"
+      get "/:id/graphs_site3" => "legacy_sites#graphs_site3", as: "graphs_site3"
+      get "/:id/graphs_site4" => "legacy_sites#graphs_site4", as: "graphs_site4"
+
       get "/:id/print/:site_id" => "legacy_sites#print", as: "print"
     end
 

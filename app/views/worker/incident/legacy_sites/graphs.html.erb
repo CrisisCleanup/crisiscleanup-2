@@ -1,0 +1,29 @@
+<% content_for :title do %>
+    Crisis Cleanup - Graphs
+<% end %>
+
+<div class="row">
+  <div class="small-12 medium-12 large-12 columns">
+    <h2>Graphs</h2>
+  </div>
+  <div class="small-12 medium-12 large-6 columns">
+    <h5>Work Order Status (<%= @org_name %>)</h5>
+    <%= area_chart worker_incident_graphs_site0_path %>
+  </div>
+  <div class="small-12 medium-12 large-6 columns">
+    <h5>All Work Order Statuses (<%= @org_name %>)</h5>
+    <%= pie_chart worker_incident_graphs_site2_path %>
+  </div>
+  <div class="small-12 medium-12 large-4 columns">
+    <h5>Work Order Status (<%= @org_name %>)</h5>
+    <%= column_chart worker_incident_graphs_site3_path, stacked: true %>
+  </div>
+  <div class="small-12 medium-12 large-4 columns">
+    <h5>Invitations vs Users</h5>
+    <%= bar_chart worker_incident_graphs_site4_path, stacked: true %>
+  </div>
+  <div class="small-12 medium-12 large-4 columns">
+    <h5>Work Order Status (all organizations)</h5>
+    <%= column_chart worker_incident_graphs_site1_path, stacked: true %>
+  </div>
+</div>

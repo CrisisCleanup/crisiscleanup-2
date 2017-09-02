@@ -15,6 +15,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require Chart.bundle
+//= require chartkick
 
 //= require_tree ./plugins
 //= require ./worker/sites.js
