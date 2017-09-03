@@ -29,7 +29,9 @@
             <%= user.role %>
         </td>
         <td> 
-          <%= user.legacy_organization.name %> 
+          <%  if defined?(user) and user.legacy_organization.name.present? %>
+              <%= user.legacy_organization.name %>
+              <% end %>
         </td>
     <% end %>
     <!-- contacts below users -->
@@ -50,8 +52,10 @@
         <td>
           <%= 'Contact' %>
         </td>
-        <td> 
-          <%= contact.legacy_organization.name %> 
+        <td>
+          <%  if defined?(user) and user.legacy_organization.name.present? %>
+              <%= user.legacy_organization.name %>
+              <% end %>
         </td>
     <% end %>
 
