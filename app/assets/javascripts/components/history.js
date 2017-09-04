@@ -11,8 +11,12 @@ Vue.component('history-vue', {
   ],
   methods: {
     getPrettyTimestamp: function (val) {
-      var d = new Date(val);
-      return d.toLocaleString();
+      try {
+        var d = new Date(val);
+        return d.toLocaleString();
+      } catch(e) {
+        Raven.captureException(e);
+      }
     },
     convertEvent: function (val) {
       var newVal = "";
@@ -47,10 +51,10 @@ if (document.getElementById("history-data")) {
           that.historyData = response.body.history;
           that.claimedByUser = response.body.claimed_by_user;
           that.loading = false;
-
         }, function (error) {
           that.loading = false;
           that.hasError = true;
+          Raven.captureException(error.toString());
         });
       }
     }
