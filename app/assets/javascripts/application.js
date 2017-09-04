@@ -12,11 +12,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require foundation
-//= require Chart.bundle
-//= require chartkick
 
 //= require_tree ./plugins
 //= require ./worker/sites.js

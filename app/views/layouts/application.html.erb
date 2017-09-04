@@ -15,6 +15,10 @@
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "vendor" %>
+    <script src="https://cdn.ravenjs.com/3.17.0/vue/raven.min.js" crossorigin="anonymous"></script>
+    <script>Raven.config('https://f9ce996ce31047379f1ca6fc4e045d88@sentry.io/212347').install();
+    </script>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
