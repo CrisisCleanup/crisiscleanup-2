@@ -1,26 +1,31 @@
 # require 'rails_helper'
 
-# describe "View worker contacts", :type => :feature, :js => true do
-#   it "loads a page with the proper main header" do
-#   	sign_in_with_user
-#     visit '/dashboard'
-#     find('.has-dropdown').hover
-#     click_link "Contacts"
-#     expect(page).to have_content 'All Organizations'
-#     expect(page).to have_content 'My Organization'
-#   end
-# end
+describe "View worker contacts" do
+  it "loads a page with the proper main header" do
 
-# describe "View individual worker contact", :type => :feature, :js => true do
-#   it "loads a page with the proper main header" do
-#   	@contact = FactoryGirl.create(:legacy_contact)
+    email = sign_in_with_user
 
-#   	sign_in_with_user
-#     visit '/dashboard'
-#     find('.has-dropdown').hover
-#     click_link "Contacts"
-#     click_link "#{@contact.first_name}"
-#     expect(page).to have_content "#{@contact.first_name}"
-#     expect(page).to have_content "#{@contact.email}"
-#   end
-# end
+    page = Pages::WorkerContactPage.new
+    page.click_contacts_link
+
+    expect(page).to have_content 'All Organizations'
+    expect(page).to have_content 'My Organization'
+  end
+end
+
+describe "View individual worker contact" do
+  it "loads a page with the proper main header" do
+  	@contact = FactoryGirl.create(:legacy_contact)
+
+    email = sign_in_with_user
+
+    page = Pages::WorkerContactPage.new
+    page.click_contacts_link
+
+    save_and_open_page
+
+    # click_link "#{@contact.first_name}"
+    expect(page).to have_content "#{@contact.first_name}"
+    expect(page).to have_content "#{@contact.email}"
+  end
+end
