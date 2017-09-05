@@ -56,6 +56,7 @@
                 <li class="users"><a href=<%=admin_users_path%>>Users</a></li>
                 <li class="stats"><a href=<%=admin_stats_path%>>Stats</a></li>
                 <li class="import"><a href=<%=admin_csv_import_form_path%>>Import</a></li>
+                <li class="export"><%= link_to "Export", admin_export_path %></li>
                 <li class="has-dropdown"><a href="#">Legacy Models</a>
                     <ul class="dropdown">
                       <li class='legacy_events'><a href=<%=admin_legacy_events_path%>>Legacy Events</a></li>
