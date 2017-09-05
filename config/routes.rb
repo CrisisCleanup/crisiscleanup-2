@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     get "/stats/:id" => "stats#by_incident", as: "stats_by_incident"
     post '/legacy_organizations/verify' => "legacy_organizations#verify"
     get "/import" => "import#form", as: "csv_import_form"
+    get "/export" => "export#index", as: "export"
+    get "/export_kml/:id" => "export#export_kml", as: "export_kml", :defaults => { :format => :xml }
   end
 
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
