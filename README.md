@@ -1,9 +1,8 @@
-Crisis Cleanup
-==============
+# Crisis Cleanup
 
 Crisis Cleanup is a web platform that connects disaster recovery organization volunteers with people who need help after a disaster. The Crisis Cleanup platform has been used to connected 118,090 volunteers from 776 organizations with 27,696 households in 31 states and 69 disasters in 5 countries; a new disaster every two weeks.
 
-Crisis Cleanup works best in a collaborative environment where multiple voluntary organizations and agencies work together and coordinate efforts. Because these organizations do not take orders from one another, Crisis Cleanup is designed to facilitate Collaborative Accountability models of inter-agency interaction, rather than command-and-control operations, or or heirarchical accountability models of interaction. 
+Crisis Cleanup works best in a collaborative environment where multiple voluntary organizations and agencies work together and coordinate efforts. Because these organizations do not take orders from one another, Crisis Cleanup is designed to facilitate Collaborative Accountability models of inter-agency interaction, rather than command-and-control operations, or or heirarchical accountability models of interaction.
 
 This is the primary repository for the main Crisis Cleanup web application, a collaborative map-based coordination tool. This implementation is built with Ruby on Rails, a PostgreSQL database and run on the Heroku stack.
 
