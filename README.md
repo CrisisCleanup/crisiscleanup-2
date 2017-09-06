@@ -1,4 +1,6 @@
-# Crisis Cleanup
+<p align="center"><a href="https://www.crisiscleanup.org" target="_blank"><img width="100"src="https://www.crisiscleanup.org/assets/ccu-logo-balloons-2a4fa4ff9ee5ad03846e1d7bdb3cc71d.png"></a></p>
+
+# Crisis Cleanup [![Build Status](https://circleci.com/gh/CrisisCleanup/crisiscleanup.png?style=shield)](https://circleci.com/gh/crisiscleanup/crisiscleanup)
 
 Crisis Cleanup is a web platform that connects disaster recovery organization volunteers with people who need help after a disaster. The Crisis Cleanup platform has been used to connected 118,090 volunteers from 776 organizations with 27,696 households in 31 states and 69 disasters in 5 countries; a new disaster every two weeks.
 
