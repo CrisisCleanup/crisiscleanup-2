@@ -14,7 +14,7 @@
     <%= f.input :name, required: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
     <%= f.input :password_confirmation, required: true %>
-    <%= f.input :role, collection: ["Worker", "Team Leader", "Primary Contact"], prompt: "Select a role" %>
+    <!--<%= f.input :role, collection: ["Worker", "Team Leader", "Primary Contact"], prompt: "Select a role" %>-->
     <%= f.input :mobile, label: "Cell Phone" %>
     <%= f.input :accepted_terms, as: :boolean, label: raw("<strong>I agree to the <a target=\"_blank\" id=\"privacy_link\" href=\"/terms\">Terms of Service</a> and <a target=\"_blank\" id=\"privacy_link\" href=\"/privacy\">Privacy Policy</a></strong>") %>
   </div>

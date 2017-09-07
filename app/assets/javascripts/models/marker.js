@@ -277,10 +277,10 @@ CCMap.Site = function(params) {
     // TODO: a button class would be cool here, so we could attach the click event callbacks and whatnot.
     var actionButtons = {};
     if (this.site.claimed_by) {
-      actionButtons["Contact Organization"] = contactOrg.bind(this);
+      actionButtons["Contact Org"] = contactOrg.bind(this);
     }
 
-    actionButtons["Printer Friendly"] = print.bind(this);
+    actionButtons["Print"] = print.bind(this);
 
     actionButtons["Edit"] = edit.bind(this);
 
