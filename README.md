@@ -31,3 +31,9 @@ Find out more
  - Blog: http://blog.crisiscleanup.org/
  - Twitter: https://twitter.com/CrisisCleanup
  - Legacy (Google App Engine) Crisis Cleanup Github Repository: https://github.com/aarontitus/crisiscleanup-legacy
+
+
+## Supporters
+<img src="http://www.browserstack.com/images/layout/browserstack-logo-600x315.png" width="280"/>
+
+We would like to thank [BrowserStack](http://www.browserstack.com) for supporting CrisisCleanup by providing live and automated browser testing tools.
