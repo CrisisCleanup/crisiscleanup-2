@@ -1,6 +1,12 @@
 class StaticPagesController < ApplicationController
   def index
+    if current_user
+      redirect_to "/dashboard"
+    end
     render 'index_demo' if request.host =~ /demo/
+  end
+  def home
+    render 'index'
   end
   def about
       render :layout => 'application_sidebar'

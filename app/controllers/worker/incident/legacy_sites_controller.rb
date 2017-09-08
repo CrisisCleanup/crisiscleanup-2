@@ -4,11 +4,74 @@ module Worker
       include ApplicationHelper
       before_filter :check_incident_permissions
 
+      private
+
+      def get_sites(endpoint, is_mysite=false)
+
+        if params[:sort]
+          store = params[:sort]
+          sort = store.split("|")
+        end
+
+        if params[:filter]
+          @sites = Legacy::LegacySite
+            .where("legacy_event_id = ?", params[:id])
+          @sites = @sites.where("user_id = ?", current_user.id) if is_mysite
+          @sites = @sites.where("name LIKE ? OR address LIKE ? OR case_number LIKE ?", "%#{params[:filter]}%", "%#{params[:filter]}%", "%#{params[:filter]}"
+          ).where("work_type NOT LIKE 'pda%'")
+                      .order(params[:sort] ? "#{sort[0]} #{sort[1]}" : "case_number")
+                       .paginate(:page => params["page"], :per_page => 15)
+
+        else
+          @sites = Legacy::LegacySite.where(legacy_event_id: params[:id])
+             .where("legacy_event_id = ?", params[:id])
+          @sites = @sites.where("user_id = ?", current_user.id) if is_mysite
+          @sites = @sites.where("work_type NOT LIKE 'pda%'")
+                       .order(params[:sort] ? "#{sort[0]} #{sort[1]}" : "case_number")
+                       .paginate(:page => params["page"], :per_page => 15)
+        end
+
+        query = {
+            "total": @sites.total_entries,
+            "per_page": @sites.per_page,
+            "current_page": @sites.current_page,
+            "last_page": @sites.total_pages,
+            "next_page_url":"/worker/incident/#{params[:id]}/#{endpoint}.json?page=#{@sites.current_page + 1}",
+            "prev_page_url":"/worker/incident/#{params[:id]}/#{endpoint}.json?page=#{@sites.current_page == 1 ? 1 : @sites.current_page - 1}",
+            "from": @sites.offset + 1,
+            "to": @sites.offset + @sites.length,
+            "data": @sites
+        }
+      end
+
+      public
+
       def index
-        @sites = Legacy::LegacySite.order("case_number").paginate(:page => params[:page], :per_page => 200) unless params[:order]
-        @sites = Legacy::LegacySite.select_order(params[:order]).paginate(:page => params[:page], :per_page => 200) if params[:order]
-        @sites = @sites.where(legacy_event_id: current_user_event).where("work_type NOT LIKE 'pda%'")
         @event_id = params[:id]
+
+        if request.path_parameters[:format] == 'json'
+          query = get_sites('sites', false)
+
+        end
+
+        respond_to do |format|
+          format.html
+          format.json { render json: query }
+        end
+      end
+
+      def mysites
+        @event_id = params[:id]
+
+        if request.path_parameters[:format] == 'json'
+          query = get_sites('mysites', true)
+
+        end
+
+        respond_to do |format|
+            format.html
+            format.json { render json: query }
+        end
       end
 
       def form
@@ -18,6 +81,7 @@ module Worker
           @form = formObj.html
         end
         @legacy_event = Legacy::LegacyEvent.find(params[:id])
+        render :layout => 'old_worker_dashboard'
       end
 
       def map
@@ -27,6 +91,8 @@ module Worker
         if formObj = Form.find_by(legacy_event_id: @legacy_event.id)
           @form = formObj.html
         end
+
+        render :layout => 'old_worker_dashboard'
       end
 
       def print

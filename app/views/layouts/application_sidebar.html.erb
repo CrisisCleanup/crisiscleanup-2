@@ -2,40 +2,53 @@
 <html lang="en">
 <!-- Start of crisiscleanup Zendesk Widget script -->
 
-<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js","crisiscleanup.zendesk.com");
+<script>/*<![CDATA[*/
+window.zEmbed || function (e, t) {
+  var n, o, d, i, s, a = [], r = document.createElement("iframe");
+  window.zEmbed = function () {
+    a.push(arguments)
+  }, window.zE = window.zE || window.zEmbed, r.src = "javascript:false", r.title = "", r.role = "presentation", (r.frameElement || r).style.cssText = "display: none", d = document.getElementsByTagName("script"), d = d[d.length - 1], d.parentNode.insertBefore(r, d), i = r.contentWindow, s = i.document;
+  try {
+    o = s
+  } catch (c) {
+    n = document.domain, r.src = 'javascript:var d=document.open();d.domain="' + n + '";void(0);', o = s
+  }
+  o.open()._l = function () {
+    var o = this.createElement("script");
+    n && (this.domain = n), o.id = "js-iframe-async", o.src = e, this.t = +new Date, this.zendeskHost = t, this.zEQueue = a, this.body.appendChild(o)
+  }, o.write('<body onload="document._l();">'), o.close()
+}("https://assets.zendesk.com/embeddable_framework/main.js", "crisiscleanup.zendesk.com");
 /*]]>*/</script>
 
-<!-- End of crisiscleanup Zendesk Widget script -->    
-  <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Crisis Cleanup" %></title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Always-Ready Open Source Disaster Relief Mapping and Work Coordination • 29,689 helped • 70 disasters • 5 countries • 831 organizations • 155,836 volunteers • $41.6M impact • Free" />
-    <%= favicon_link_tag(source='favicon.ico', options={}) %>
+<!-- End of crisiscleanup Zendesk Widget script -->
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "Crisis Cleanup" %></title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Always-Ready Open Source Disaster Relief Mapping and Work Coordination • 29,689 helped • 70 disasters • 5 countries • 831 organizations • 155,836 volunteers • $41.6M impact • Free" />
+  <%= favicon_link_tag(source='favicon.ico', options={}) %>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "vendor" %>
-    <script src="https://cdn.ravenjs.com/3.17.0/vue/raven.min.js" crossorigin="anonymous"></script>
-    <script>Raven.config('https://10c81ccdb4ca40d39a1fafa02154e6c7@sentry.io/212434').install();
-    </script>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-  </head>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "vendor" %>
+  <script>Raven.config('https://10c81ccdb4ca40d39a1fafa02154e6c7@sentry.io/212434').install();</script>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
 
-  <body class='public'>
-    <header>
-      <%= render "layouts/menus/application_menu" %>
-    </header>
- 
-    <!-- alert menu -->
-    <%= render (request.host =~ /demo/) ? "layouts/menus/alert_menu_demo" : "layouts/menus/alert_menu" %>
+<body class='public'>
+<header>
+  <%= render "layouts/menus/application_menu" %>
+</header>
+
+<!-- alert menu -->
+<%= render (request.host =~ /demo/) ? "layouts/menus/alert_menu_demo" : "layouts/menus/alert_menu" %>
 
       <!-- subheader -->
     <%= yield :subheader %>
         
-    <div id="wrapper">
-            
+      <div class="row collapse">
+
         <!-- main content -->
         <%= yield :main %>        
         
@@ -81,7 +94,7 @@
     <div class="row collapse" id="copyright">
         <div class="small-12 medium-12 large-12 columns">
             <ul>
-                <li><%= link_to "Home", root_path %> |</li>
+                <li><%= link_to "Home", home_path %> |</li>
                 <li><%= link_to "About", about_path %> |</li>
                 <li><a href="/public_map">Map</a> |</li>
                 <li><a href="http://blog.crisiscleanup.org/">Blog</a> |</li>
@@ -101,27 +114,35 @@
         </div>  
     </div>
 
-    <!-- initial-state -->
-    <script type="text/javascript">
-      var InitialState = <%= raw initial_state.to_json %>
-    </script>
+<!-- initial-state -->
+<script type="text/javascript">
+  var InitialState =
+  <%= raw initial_state.to_json %>
+</script>
 
-    <!-- javascript libraries -->
-    <%= yield :javascripts %>
+<!-- javascript libraries -->
+<%= yield :javascripts %>
 
 
-    <%= javascript_include_tag "components" %>
+<%= javascript_include_tag "components" %>
 
-    <!-- Google Analytics -->    
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- Google Analytics -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-42924421-1', 'auto');
-      ga('send', 'pageview');
+  ga('create', 'UA-42924421-1', 'auto');
+  ga('send', 'pageview');
 
-    </script>       
-  </body>
+</script>
+</body>
 </html>

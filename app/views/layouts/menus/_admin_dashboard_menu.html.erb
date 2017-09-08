@@ -11,7 +11,7 @@
   <section class="top-bar-section">
     <!-- Left Nav Section -->
     <ul class="right">
-      <li><%= nav_link "Home", root_path %></li>
+      <li><%= nav_link "Home", home_path %></li>
       <li><%= nav_link "About", about_path %></li>    
       <li><%= nav_link "Map", worker_incident_legacy_map_path(current_user_event) %></li>
       <li><%= link_to worker_incident_legacy_form_path(current_user_event) do %>
@@ -42,6 +42,7 @@
         <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
           <ul class="dropdown">
             <li><%= link_to "Contacts", worker_incident_legacy_contacts_path(current_user_event) %></li>
+            <li><%= link_to "My Worksites", worker_incident_mysites_path(current_user_event) %></li>
             <li><%= link_to "Orgs", worker_incident_legacy_organizations_path(current_user_event) %></li>
             <li><%= link_to worker_incident_legacy_sites_index_path(current_user_event) do %>
                     Browse
