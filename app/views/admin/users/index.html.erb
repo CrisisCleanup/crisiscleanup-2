@@ -12,8 +12,43 @@
 <hr>    
 </div>
 <div class="row">
-	<div class="small-12 medium-12 large-12 columns">
-		<%= render 'table', users: @users %>
-        <%= will_paginate @users %>
-	</div>
+  <%= render 'templates/grid_base' %>
+  <script type="text/x-template" id="detail-row-template">
+    <div @click="onClick">
+      <dl>
+        <dt>ID:</dt>
+        <dd>{{rowData.id}}</dd>
+        <dt>Role:</dt>
+        <dd>{{rowData.role}}</dd>
+        <dt>Title:</dt>
+        <dd>{{rowData.title}}</dd>
+        <dt>Mobile:</dt>
+        <dd>{{rowData.mobile}}</dd>
+        <dt>Admin:</dt>
+        <dd>{{rowData.admin}}</dd>
+        <dt>Accept Terms:</dt>
+        <dd>{{rowData.accepted_terms}}</dd>
+        <dt>Accept Terms Timestamp:</dt>
+        <dd>{{rowData.accepted_terms_timestamp}}</dd>
+      </dl>
+    </div>
+  </script>
+  <div id="users-table">
+    <my-view-table
+    api-url="<%= admin_users_path(:format => :json) %>"
+    filter-placeholder="Name or Email"
+    :fields="fields"
+    :sort-order="sortOrder"
+    detail-row-component="detail-row"
+    >
+      <template slot="actions" scope="props">
+        <div class="custom-actions">
+          <button class="button tiny"
+                  @click="onAction('edit-item', props.rowData, props.rowIndex)">
+            Edit
+          </button>
+        </div>
+      </template>
+    </my-view-table>
+  </div>
 </div>

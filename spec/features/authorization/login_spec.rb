@@ -4,7 +4,7 @@ feature "Signing in" do
 
   scenario "as a worker with correct credentials" do
     sign_in_with_user
-    expect(page).to have_content 'Worker Dashboard'
+    expect(page).to have_content 'My Work Dashboard'
   end
 
   scenario "as an admin with correct credentials" do

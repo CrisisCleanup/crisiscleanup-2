@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, path:'',:path_names => {:sign_in => 'login', :sign_out => 'logout'}
   root 'static_pages#index'
-
+  get "/home" => "static_pages#home", as: "home"
   get "/about" => "static_pages#about", as: "about"
   get "/government" => "static_pages#government", as: "government"
   get "/voad" => "static_pages#voad", as: "voad"
@@ -45,12 +45,14 @@ Rails.application.routes.draw do
   end
 
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
+  get "/get-started" => 'worker/dashboard#get_started', as:"get_started"
   get "/redeploy_form" => 'worker/dashboard#redeploy_form', as: "redeploy_form"
   post "/redeploy_request" => 'worker/dashboard#redeploy_request', as: "redeploy_request"
 
   namespace :worker do
     get "/incident-chooser" => "dashboard#incident_chooser", as: "incident_chooser"
     get "/dashboard" => 'dashboard#index', as:"dashboard"
+    get "/get-started" => 'dashboard#get_started', as:"get_started"
     resource :invitation_lists, only: [:create]
     resources :temporary_passwords, only: [:create, :new]
     post "temporary_passwords/authorize" => "temporary_passwords#authorize", as: "authorize_temporary_password"
@@ -60,6 +62,7 @@ Rails.application.routes.draw do
       get "/:id/download-sites" => "legacy_sites#csv", as: "sites_download"
 
       get "/:id/sites" => "legacy_sites#index", as: "legacy_sites_index"
+      get "/:id/mysites" => "legacy_sites#mysites", as: "mysites"
       get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"
       get "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization"
       get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
@@ -70,12 +73,12 @@ Rails.application.routes.draw do
       post "/:id/edit/:site_id" => "legacy_sites#update", as:"legacy_update_site"
       post "/:id/submit" => "legacy_sites#submit"
       get "/:id/stats" => "legacy_sites#stats", as: "stats"
-      get "/:id/graphs" => "legacy_sites#graphs", as: "graphs"
-      get "/:id/graphs_site0" => "legacy_sites#graphs_site0", as: "graphs_site0"
-      get "/:id/graphs_site1" => "legacy_sites#graphs_site1", as: "graphs_site1"
-      get "/:id/graphs_site2" => "legacy_sites#graphs_site2", as: "graphs_site2"
-      get "/:id/graphs_site3" => "legacy_sites#graphs_site3", as: "graphs_site3"
-      get "/:id/graphs_site4" => "legacy_sites#graphs_site4", as: "graphs_site4"
+      get "/:id/graphs" => "graphs#index", as: "graphs"
+      get "/:id/graphs_site0" => "graphs#graphs_site0", as: "graphs_site0"
+      get "/:id/graphs_site1" => "graphs#graphs_site1", as: "graphs_site1"
+      get "/:id/graphs_site2" => "graphs#graphs_site2", as: "graphs_site2"
+      get "/:id/graphs_site3" => "graphs#graphs_site3", as: "graphs_site3"
+      get "/:id/graphs_site4" => "graphs#graphs_site4", as: "graphs_site4"
 
       get "/:id/print/:site_id" => "legacy_sites#print", as: "print"
     end
@@ -98,6 +101,8 @@ Rails.application.routes.draw do
     get "/public/contacts" => "public/json#contacts", as: "public_json_contacts"
     post "/import" => "import#csv", as: "import_csv"
     get "/pdf/site" => "pdf#site", as: "pdf_site"
+
+    post "/messages/send_sms" => "messages#send_sms", as: "send_sms"
   end
 
   # Organization Registrations

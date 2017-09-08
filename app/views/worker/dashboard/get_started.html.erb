@@ -1,0 +1,64 @@
+<% content_for :title do %>
+    Crisis Cleanup - Dashboard
+<% end %>
+
+<% content_for :subheader do %>
+    <div class="row">
+      <h2 class="center">Getting Started</h2>
+    </div>
+<% end %>
+
+<% content_for :main do %>
+
+    <div class="large-12 medium-12 center columns">
+        <ul class="accordion" data-accordion style="margin:0;">
+          <li class="accordion-navigation">
+            <a href="#panel1a"><h6 class="getting-started">1. Invite Teammates By Email</h6><span class="fa accordion-icon"></span></a>
+            <div id="panel1a" class="content active">
+              <div class="row">
+                <%= render 'invite_form' %><br/>
+                <p><strong>Yes</strong>:
+                  <span class="code">trustedperson@example.com, myteammate@gmail.com, myfriend@hotmail.com</span><br/>
+                  <strong>No</strong>:
+                  <span class="code">John Smith &lt;trustedperson@example.com&gt;; "Jones, Fran" (myteammate@gmail.com) &lt;myfriend@hotmail.com&gt;</span>
+                </p>
+                <p>To improve accuracy and timely updates, Crisis Cleanup <strong>strongly recommends</strong> inviting
+                  two
+                  or more people per local team.</p>
+              </div>
+
+            </div>
+          </li>
+          <li class="accordion-navigation">
+            <a href="#panel2a"><h6 class="getting-started">2. Select worksites on map</h6><span class="fa accordion-icon"></span></a>
+            <div id="panel2a" class="content">
+              Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat.
+            </div>
+          </li>
+          <li class="accordion-navigation">
+            <a href="#panel3a"><h6 class="getting-started">3. Use dashboard</h6><span class="fa accordion-icon"></span></a>
+            <div id="panel3a" class="content">
+              Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat.
+            </div>
+          </li>
+        </ul>
+    </div>
+
+
+<% end %>
+
+<% content_for :joyride do %>
+    <%= render 'joyride' %>
+    <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js' %>
+    <script type="text/javascript">
+      $(document).foundation('joyride', 'start', {
+        modal: false,
+        cookie_monster: true,
+        cookie_name: 'cc-joyride'
+      });
+    </script>
+<% end %>

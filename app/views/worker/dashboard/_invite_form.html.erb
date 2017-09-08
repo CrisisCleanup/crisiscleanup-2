@@ -1,8 +1,7 @@
 <%= form_tag worker_invitation_lists_path %>
-	<div class="small-12 medium-7 large-8 columns invite">
-	  <%= text_field_tag :email_addresses, nil, autocomplete: "off", placeholder: "Enter a List of Emails to Invite. Separate Email Addresses With Commas." %>
-	</div>     
-	<div class="small-12 medium-5 large-4 columns invite" id="invite-button">
-	  <%= submit_tag "Submit Invites", :onclick => "return confirm('Please confirm that you would like to invite these people to your organization.')", :class => "button" %>
-	</div>   
+<p style="font-size: 14px;">Enter a comma-separated list of email addresses to invite.  Each email addresses entered here will receive an email with instructions to create a new account and join your organization.</p>
+<%= text_field_tag :email_addresses, nil, autocomplete: "off", placeholder: "i.e. john@example.com, jane@example.com, steve@example.com" %>
+<div class="center" id="invite-button">
+  <%= submit_tag "Submit Invites", :onclick => "return confirm('Please confirm that you would like to invite these people to your organization.')", :class => "button center" %>
+</div>
 </form>

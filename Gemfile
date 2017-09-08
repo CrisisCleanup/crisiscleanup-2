@@ -66,6 +66,8 @@ gem 'rspec_junit_formatter', '0.2.2'
 
 gem 'unicorn-worker-killer'
 
+gem 'aws-sdk-sns', '~> 1'
+
 group :production do
   gem 'rack-timeout'
   gem 'newrelic_rpm'

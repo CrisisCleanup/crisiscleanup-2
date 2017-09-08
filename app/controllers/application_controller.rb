@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
         end
   end
 
+  def verified_request?
+    if request.content_type == "application/json"
+      true
+    else
+      super()
+    end
+  end
+
   def map_dashboard_mode
     self.env["REQUEST_URI"].include? "map" or self.env["REQUEST_URI"].include? "form" or self.env["REQUEST_URI"].include? "edit"
   end
