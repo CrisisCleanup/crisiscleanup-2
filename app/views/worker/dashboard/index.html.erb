@@ -136,16 +136,17 @@
                     <div class="medium-12 sm-centered lg-centered column">
                       <ul class="small-block-grid-3 text-center">
                         <li><%= link_to worker_incident_legacy_edit_site_path(current_user_event, site.id) do %>
-                              <i title="View on Map" class="fa fa-map fa-lg"></i>
+                              <i style="cursor: pointer;" data-tooltip aria-haspopup="true" title="View on Map" class="fa fa-map fa-lg"></i>
                           <% end %>
                         </li>
                         <li>
                           <a id="show-modal" @click="fireModal(<%= site.id %>)">
-                            <i title="Send SMS to Teammates" class="fa fa-mobile fa-2x">
+                            <i style="cursor: pointer;" data-tooltip aria-haspopup="true" title="Send SMS to Teammates" class="fa fa-mobile fa-2x">
+
                             </i>
                           </a>
                         <li><%= link_to worker_incident_print_path(current_user_event, site.id) do %>
-                              <i title="Print worksite" class="fa fa-print fa-lg"></i>
+                              <i style="cursor: pointer;" data-tooltip aria-haspopup="true" title="Print worksite" class="fa fa-print fa-lg"></i>
                           <% end %>
                         </li>
                       </ul>
