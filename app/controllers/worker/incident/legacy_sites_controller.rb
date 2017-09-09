@@ -17,7 +17,10 @@ module Worker
           @sites = Legacy::LegacySite
             .where("legacy_event_id = ?", params[:id])
           @sites = @sites.where("user_id = ?", current_user.id) if is_mysite
-          @sites = @sites.where("name LIKE ? OR address LIKE ? OR case_number LIKE ?", "%#{params[:filter]}%", "%#{params[:filter]}%", "%#{params[:filter]}"
+          @sites = @sites.where("lower(name) LIKE ? OR lower(address) LIKE ? OR lower(case_number) LIKE ? OR lower(city) LIKE ? OR lower(county) LIKE ? OR zip_code LIKE ?",
+                                "%#{params[:filter].downcase}%" , "%#{params[:filter].downcase}%",
+                                "%#{params[:filter].downcase}%", "%#{params[:filter].downcase}%",
+                                "%#{params[:filter].downcase}%", "%#{params[:filter].downcase}%"
           ).where("work_type NOT LIKE 'pda%'")
                       .order(params[:sort] ? "#{sort[0]} #{sort[1]}" : "case_number")
                        .paginate(:page => params["page"], :per_page => 15)
