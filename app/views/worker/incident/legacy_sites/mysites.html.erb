@@ -30,7 +30,7 @@
     <div id="myworksite-table">
       <my-view-table
       api-url="<%= worker_incident_mysites_path(@event_id, :format => :json) %>"
-      filter-placeholder="Case #, Name, Address"
+      filter-placeholder="Case Number, Name, Address, City, County, or Zip Code"
       :fields="fields"
       :sort-order="sortOrder"
       detail-row-component="detail-row"
