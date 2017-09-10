@@ -1,4 +1,4 @@
-require 'aws-sdk-sns/client'
+require 'aws-sdk'
 
 module Api
   class MessagesController < ApplicationController
