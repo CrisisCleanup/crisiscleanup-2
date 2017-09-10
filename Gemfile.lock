@@ -38,14 +38,13 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     arel (6.0.0)
-    aws-partitions (1.20.0)
-    aws-sdk-core (3.3.0)
-      aws-partitions (~> 1.0)
+    aws-sdk (2.10.42)
+      aws-sdk-resources (= 2.10.42)
+    aws-sdk-core (2.10.42)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-sns (1.0.0)
-      aws-sdk-core (~> 3)
-      aws-sigv4 (~> 1.0)
+    aws-sdk-resources (2.10.42)
+      aws-sdk-core (= 2.10.42)
     aws-sigv4 (1.0.2)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -97,6 +96,7 @@ GEM
       compass (~> 1.0.0)
       sass-rails (<= 5.0.1)
       sprockets (< 2.13)
+    concurrent-ruby (1.0.5)
     connection_pool (2.2.0)
     dalli (2.7.6)
     database_cleaner (1.5.1)
@@ -187,6 +187,8 @@ GEM
     rack (1.6.4)
     rack-handlers (0.7.2)
       rack
+    rack-protection (2.0.0)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rack-timeout (0.2.4)
@@ -232,6 +234,7 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
+    redis (3.3.3)
     request_store (1.3.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -273,6 +276,11 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    sidekiq (5.0.4)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.3, >= 3.3.3)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -316,7 +324,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk-sns (~> 1)
+  aws-sdk (~> 2.10)
   better_errors
   binding_of_caller
   capybara
@@ -358,6 +366,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   selenium-webdriver
   shoulda-matchers
+  sidekiq
   simple_form
   text
   uglifier (>= 1.3.0)

@@ -277,6 +277,27 @@ module Worker
 
       end
 
+
+      def request_csv
+        prefix = 'sites'
+        bucket_name = 'S3_CSV_BUCKET'
+
+        if params[:job_id]
+          s3_helper = S3Helper.new(bucket_name)
+          obj_name = "#{prefix}-#{params[:job_id]}.csv"
+          if (url = s3_helper.retrieve_s3_obj_url(obj_name))
+            render json: {status: 200, url: url}
+          else
+            render json: {status: 200, job_id: params[:job_id], message: "Still processing"}
+          end
+        else
+          event = Legacy::LegacyEvent.find(params[:id])
+          download_file_name = "#{event.name}-#{Time.now.strftime('%F')}.csv"
+          job = CsvGeneratorJob.perform_later('generate_sites', prefix, download_file_name, bucket_name, params[:id])
+          render json: {status: 200, job_id: job.job_id}
+        end
+      end
+
       def csv
         respond_to do |format|
           format.csv { render_csv }
@@ -312,14 +333,6 @@ module Worker
         headers.delete("Content-Length")
       end
 
-      def csv_lines
-        Enumerator.new do |y|
-          y << Legacy::LegacySite.csv_header.to_s
-
-          Legacy::LegacySite.find_in_batches({legacy_event_id: params[:id]}, 300) { |site| y << site.to_csv_row.to_s }
-        end
-      end
-
       def site_params
         params.require(:legacy_legacy_site).permit(
           :address,:blurred_latitude,:blurred_longitude,
@@ -328,6 +341,8 @@ module Worker
           :request_date,:skip_duplicates,:state,:status,:work_requested,:work_type,
           :data,:zip_code)
       end
+
+
     end
   end
 end
