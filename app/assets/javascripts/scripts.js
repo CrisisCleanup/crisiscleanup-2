@@ -35,19 +35,35 @@ $(document).ready(function() {
     // Setup the download-csv-button if it's present
     var $dlbtn = $('#download-csv-btn');
     if ($dlbtn) {
+      var jobId;
+      function requestCsv(){
+        $.ajax({
+          type: "GET",
+          url: "/worker/incident/" + event_id + "/download-sites.json?job_id=" + jobId,
+          success: function(response, status, xhr) {
+            if (response.status == 200 && response.hasOwnProperty('url')) {
+              window.location.replace(response.url);
+              enabled = true;
+              $dlbtn.html('CSV');
+            } else if (response.hasOwnProperty('message')) {
+              setTimeout(requestCsv, 5000);
+            } else {
+              setTimeout(requestCsv, 5000);
+            }
+          }
+        });
+      }
       var enabled = true;
       $dlbtn.click(function (e) {
         e.preventDefault();
         if (enabled) {
           enabled = false;
-          $dlbtn.html('<i class="fa fa-spinner fa-spin"></i>');
-          window.location = "/worker/incident/" + event_id + "/download-sites.csv";
+          $dlbtn.html('<span>Generating CSV, please wait . . . </span><i class="fa fa-spinner fa-spin"></i>');
 
-          // debounce of sorts
-          setTimeout(function () {
-            enabled = true;
-            $dlbtn.html('CSV');
-          }, 15000);
+          $.get("/worker/incident/" + event_id + "/download-sites", function(data) {
+            jobId = data.job_id;
+            requestCsv();
+          });
 
         }
       });
