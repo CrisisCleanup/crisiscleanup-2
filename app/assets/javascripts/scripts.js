@@ -32,6 +32,12 @@ $(document).ready(function() {
       ccmap.setEventId(event_id);
     }
 
+    var csvDownloadBtnText = "CSV";
+    if (!event_id || event_id === 'undefined') {
+      event_id = $('#incident-chooser').find(":selected").val();
+      csvDownloadBtnText = "Download CSV"
+    }
+
     // Setup the download-csv-button if it's present
     var $dlbtn = $('#download-csv-btn');
     if ($dlbtn) {
@@ -44,7 +50,7 @@ $(document).ready(function() {
             if (response.status == 200 && response.hasOwnProperty('url')) {
               window.location.replace(response.url);
               enabled = true;
-              $dlbtn.html('CSV');
+              $dlbtn.html(csvDownloadBtnText);
             } else if (response.hasOwnProperty('message')) {
               setTimeout(requestCsv, 5000);
             } else {
