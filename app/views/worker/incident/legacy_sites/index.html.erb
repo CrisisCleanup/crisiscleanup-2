@@ -56,6 +56,6 @@
 
 <% content_for :sidebar do %>
   <div class="small-12 medium-12 large-12 columns">
-      <%= link_to "Download CSV", worker_incident_sites_download_path(@event_id, format: :csv), class: "button" %>
+    <a href="#" class="button" id="download-csv-btn" style="margin-left: 13px;">Download CSV</a>
   </div>
 <% end %>
