@@ -3,7 +3,7 @@ require 'aws-sdk'
 module Api
   class MessagesController < ApplicationController
     include ApplicationHelper
-    before_filter :check_user
+    before_action :check_user
 
     def send_sms
 

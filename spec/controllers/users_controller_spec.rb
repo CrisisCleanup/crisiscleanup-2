@@ -14,7 +14,7 @@ RSpec.describe UsersController, :type => :controller do
       context "edit current_user" do
         it "renders the edit view with the current_user" do
           allow(controller).to receive(:current_user).and_return(@user)
-          get :edit, id: @user
+          get :edit, params: {id: @user}
           expect(should).to render_template :edit
         end
       end
@@ -26,7 +26,7 @@ RSpec.describe UsersController, :type => :controller do
         it "locates the correct user" do
           @user = FactoryGirl.create :user
           allow(controller).to receive(:current_user).and_return(@user)
-          put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "ZZ")
+          put :update, params: {id: @user, user: FactoryGirl.attributes_for(:user, name: "ZZ")}
           @user.reload
           @user.name.should eq("ZZ")
         end
@@ -35,18 +35,18 @@ RSpec.describe UsersController, :type => :controller do
             @user = FactoryGirl.create :user
             allow(controller).to receive(:current_user).and_return(@user)
             
-			put :update, id: @user, user: FactoryGirl.attributes_for(:user, mobile: "555-555-5555")
+			put :update, params: {id: @user, user: FactoryGirl.attributes_for(:user, mobile: "555-555-5555")}
 			@user.reload
 
-			put :update, id: @user, user: FactoryGirl.attributes_for(:user, title: "Mr")
-			@user.reload
-
-
-			put :update, id: @user, user: FactoryGirl.attributes_for(:user, role: "Leader")
+			put :update, params: {id: @user, user: FactoryGirl.attributes_for(:user, title: "Mr")}
 			@user.reload
 
 
-			put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "Fred")
+			put :update, params: {id: @user, user: FactoryGirl.attributes_for(:user, role: "Leader")}
+			@user.reload
+
+
+			put :update, params: {id: @user, user: FactoryGirl.attributes_for(:user, name: "Fred")}
 			@user.reload
 			  
             [@user.name, @user.mobile, @user.title, @user.role].should eq(["Fred", "555-555-5555", "Mr", "Leader"])
@@ -55,7 +55,7 @@ RSpec.describe UsersController, :type => :controller do
           it "redirects the updated user" do
             @user = FactoryGirl.create :user
             allow(controller).to receive(:current_user).and_return(@user)
-            put :update, id: @user, user: FactoryGirl.attributes_for(:user, case_label: "ZZ")
+            put :update, params: {id: @user, user: FactoryGirl.attributes_for(:user, case_label: "ZZ")}
             expect(response).to redirect_to "/dashboard"
           end
         end

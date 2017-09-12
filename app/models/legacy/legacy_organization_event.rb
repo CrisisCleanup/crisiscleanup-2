@@ -1,5 +1,5 @@
 module Legacy
-  class LegacyOrganizationEvent < ActiveRecord::Base
+  class LegacyOrganizationEvent < ApplicationRecord
 	belongs_to :legacy_event
 	belongs_to :legacy_organization
 	validates_uniqueness_of :legacy_event_id, scope: :legacy_organization_id

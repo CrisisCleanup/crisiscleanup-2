@@ -2,7 +2,7 @@ module Worker
   module Incident
     class GraphsController < ApplicationController
       include ApplicationHelper
-      before_filter :check_incident_permissions
+      before_action :check_incident_permissions
 
       def index
         @org_name = Legacy::LegacyOrganization.find(current_user.legacy_organization_id).name

@@ -114,14 +114,14 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			it "renders the edit view with the correct organization" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				organization = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
-				get :edit, id: organization
+				get :edit, params: {id: organization}
 				expect(should).to render_template :edit
 			end
 
 			it "assigns the requested organization to @organization" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				organization = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
-				get :edit, id: organization
+				get :edit, params: {id: organization}
 				expect(should).to render_template :edit
 			end
 		end
@@ -130,7 +130,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				organization = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
-				get :edit, id: organization
+				get :edit, params: {id: organization}
 				expect(should).to redirect_to "/dashboard"
 			end
 		end
@@ -139,7 +139,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(nil)
 				organization = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
-				get :edit, id: organization
+				get :edit, params: {id: organization}
 				expect(should).to redirect_to "/login"
 			end
 		end
@@ -150,14 +150,14 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			it "locates the correct organization" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				organization = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
-				put :update, id: organization, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization)
+				put :update, params: {id: organization, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization)}
 		      	assigns(:org).should eq(organization)  
 			end
 			context "with correct attributes" do
 				it "changes the organizations attributes" do
 					@organization = FactoryGirl.create(:legacy_organization, name: "ZZ", email: Faker::Internet.email)
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, id: @organization, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization, name: "ZZ")
+					put :update, params: {id: @organization, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization, name: "ZZ")}
 					@organization.reload
 					@organization.name.should eq("ZZ")
 				end
@@ -165,7 +165,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 				it "redirects the updated organization" do
 					@organization = FactoryGirl.create(:legacy_organization, name: "ZZ", email: Faker::Internet.email)
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, id: @organization, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization, case_label: "ZZ", name: Faker::Name.name, email: Faker::Internet.email)
+					put :update, params: {id: @organization, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization, case_label: "ZZ", name: Faker::Name.name, email: Faker::Internet.email)}
 					expect(response).to redirect_to :admin_legacy_organizations
 				end
 			end
@@ -175,7 +175,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				organization = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
-				put :update, id: organization
+				put :update, params: {id: organization}
 				expect(should).to redirect_to "/dashboard"
 			end
 		end
@@ -184,7 +184,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(nil)
 				organization = FactoryGirl.create(:legacy_organization, name: "ZZ", email: Faker::Internet.email)
-				post :create, id: organization
+				post :create, params: {id: organization}
 				expect(should).to redirect_to "/login"
 			end
 		end

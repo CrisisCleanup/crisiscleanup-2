@@ -1,5 +1,5 @@
 module Legacy
-  class LegacyEvent < ActiveRecord::Base
+  class LegacyEvent < ApplicationRecord
     default_scope { order('start_date DESC') }
     self.per_page = 500
     has_paper_trail
