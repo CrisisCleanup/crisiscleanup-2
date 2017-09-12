@@ -152,10 +152,12 @@ module Worker
         unless @site.data
           @site.data = {}
         end
-        @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
+        data = params[:legacy_legacy_site][:data].permit!
+        @site.data.merge! data if @site.data
 
         # Claimed_by toggle
-        if params[:legacy_legacy_site][:claim] == "true"
+        claim = params[:legacy_legacy_site][:claim]
+        if claim= "true"
           if @site.claimed_by == nil
             @site.claimed_by = current_user.legacy_organization_id
           elsif @site.claimed_by == current_user.legacy_organization_id || current_user.admin
