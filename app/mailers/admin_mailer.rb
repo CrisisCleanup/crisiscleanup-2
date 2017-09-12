@@ -1,4 +1,4 @@
-class AdminMailer < ActionMailer::Base
+class AdminMailer < ApplicationMailer
   default from: "help@crisiscleanup.org"
   def send_registration_alert(user, org)
     @user = user

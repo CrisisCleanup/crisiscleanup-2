@@ -1,4 +1,4 @@
-class RequestInvitation < ActiveRecord::Base
+class RequestInvitation < ApplicationRecord
 	belongs_to :legacy_organization
 	validates_presence_of :name, :email
 	validates_uniqueness_of :email

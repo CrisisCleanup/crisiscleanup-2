@@ -1,3 +1,3 @@
-class Audit < ActiveRecord::Base
+class Audit < ApplicationRecord
   belongs_to :user
 end

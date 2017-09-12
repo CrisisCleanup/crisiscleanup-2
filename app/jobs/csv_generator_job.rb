@@ -1,6 +1,6 @@
 require 'aws-sdk'
 
-class CsvGeneratorJob < ActiveJob::Base
+class CsvGeneratorJob < ApplicationJob
   queue_as :default
 
   def perform(generator_type, file_prefix, download_file_name, bucket_name, *args)
@@ -13,14 +13,17 @@ class CsvGeneratorJob < ActiveJob::Base
             generate_sites_csv(args[0]).each {|element| f.puts(element)}
         end
       end
-    rescue
+    rescue Exception => e
       logger.error("Could not generate #{file_basename}")
+      Sidekiq::Logging.logger.error("Could not generate #{file_basename}")
+      Sidekiq::Logging.logger.error(e.message)
     end
 
     begin
       S3Helper.new(bucket_name).upload_to_s3(file_basename, download_file_name, path)
     rescue
       logger.error("Could not upload #{file_basename} to S3!")
+      Sidekiq::Logging.logger.error("Could not upload #{file_basename} to S3!")
     ensure
       if File.file?(path)
         File.delete(path)

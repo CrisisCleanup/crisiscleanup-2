@@ -83,14 +83,14 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				mock_geocoding!
 				expect {
-					post :create, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id)
+					post :create, params: {legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id)}
 				}.to change(Legacy::LegacySite, :count).by(1)
 			end
 
 			it "redirects to the site index" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				mock_geocoding!
-				post :create, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id)
+				post :create, params: {legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id)}
 				response.should redirect_to :admin_legacy_sites
 			end
 		end
@@ -118,7 +118,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				mock_geocoding!
 				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
-				get :edit, id: site
+				get :edit, params: {id: site}
 				expect(should).to render_template :edit
 			end
 
@@ -126,7 +126,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				mock_geocoding!
 				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
-				get :edit, id: site
+				get :edit, params: {id: site}
 				expect(should).to render_template :edit
 			end
 		end
@@ -136,7 +136,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				mock_geocoding!
 				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
-				get :edit, id: site
+				get :edit, params: {id: site}
 				expect(should).to redirect_to "/dashboard"
 			end
 		end
@@ -146,7 +146,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(nil)
 				mock_geocoding!
 				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
-				get :edit, id: site
+				get :edit, params: {id: site}
 				expect(should).to redirect_to "/login"
 			end
 		end
@@ -158,7 +158,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				mock_geocoding!
 				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
-				put :update, id: site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id)
+				put :update, params: { id: site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id)}
 		      	assigns(:site).should eq(site)  
 			end
 			context "with correct attributes" do
@@ -166,7 +166,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 					mock_geocoding!
 					@site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, id: @site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, name: "ZZ", legacy_event_id: Legacy::LegacyEvent.first.id)
+					put :update, params: {id: @site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, name: "ZZ", legacy_event_id: Legacy::LegacyEvent.first.id)}
 					@site.reload
 					@site.name.should eq("ZZ")
 				end
@@ -175,7 +175,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 					mock_geocoding!
 					@site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, id: @site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, case_label: "ZZ", legacy_event_id: Legacy::LegacyEvent.first.id)
+					put :update, params: {id: @site, legacy_legacy_site: FactoryGirl.attributes_for(:legacy_site, case_label: "ZZ", legacy_event_id: Legacy::LegacyEvent.first.id)}
 					expect(response).to redirect_to :admin_legacy_sites
 				end
 			end
@@ -186,7 +186,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				mock_geocoding!
 				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
-				put :update, id: site
+				put :update, params: {id: site}
 				expect(should).to redirect_to "/dashboard"
 			end
 		end
@@ -196,7 +196,7 @@ RSpec.describe Admin::LegacySitesController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(nil)
 				mock_geocoding!
 				site = FactoryGirl.create :legacy_site, legacy_event_id: Legacy::LegacyEvent.first.id
-				post :create, id: site
+				post :create, params: {id: site}
 				expect(should).to redirect_to "/login"
 			end
 		end
