@@ -1,4 +1,4 @@
-class Form < ActiveRecord::Base
+class Form < ApplicationRecord
 	before_save :default_form_html
 	belongs_to :legacy_event, :class_name => "Legacy::LegacyEvent"
 	def self.default_html

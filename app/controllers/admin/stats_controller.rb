@@ -5,10 +5,10 @@ module Admin
 
     require 'csv'
 
-    before_filter :check_admin?
+    before_action :check_admin?
 
     # add logic to only allow ccu admins to access this
-    # before_filter :deny_access, :unless => :is_ccu_admin?
+    # before_action :deny_access, :unless => :is_ccu_admin?
 
     def index
       @orgs_count = Legacy::LegacyOrganization.count

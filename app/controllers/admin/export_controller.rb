@@ -1,7 +1,7 @@
 module Admin
   class ExportController < ApplicationController
     include ApplicationHelper
-    before_filter :check_admin?
+    before_action :check_admin?
 
     def export_kml
       @event = Legacy::LegacyEvent.find(params[:id])
