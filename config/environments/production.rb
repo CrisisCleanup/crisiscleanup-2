@@ -23,6 +23,7 @@ Rails.application.configure do
   :enable_starttls_auto => true
   }
   config.action_mailer.default_url_options = { :host => 'crisiscleanup.org' }
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
