@@ -1,0 +1,28 @@
+<% content_for :title do %>
+    Crisis Cleanup - My Organization
+<% end %>
+
+<% content_for :subheader do %>
+    <div class="row">
+      <h2 class="center">My Organization</h2>
+    </div>
+<% end %>
+
+<% content_for :main do %>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <h5 class="center" id="view-claimed-worksites">Users in My Organization</h5>
+        <%= will_paginate @users, :param_name => 'users_page' %>
+        <%= render 'user_table' %>
+      </div>
+
+      <div class="large-6 medium-6 columns">
+        <h5 class="center" id="view-claimed-worksites">Pending Invitations for My Organization</h5>
+        <%= will_paginate @pending_invitations, :param_name => 'pending_invite_page' %>
+        <%= render 'pending_invitations_table' %>
+      </div>
+
+    </div>
+<% end %>
+

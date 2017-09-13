@@ -187,6 +187,7 @@
           <div class="panel">
             <h5 class="center">Quick Links</h5>
             <ul class="inline-list">
+              <li><%= link_to "My Organization", worker_my_organization_path %></li>
               <li><%= link_to "Contacts", worker_incident_legacy_contacts_path(current_user_event) %></li>
               <li><%= link_to "Organizations", worker_incident_legacy_organizations_path(current_user_event) %></li>
               <li><%= link_to "Stats", worker_incident_stats_path(current_user_event) %></li>
