@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     resource :invitation_lists, only: [:create]
     resources :temporary_passwords, only: [:create, :new]
     post "temporary_passwords/authorize" => "temporary_passwords#authorize", as: "authorize_temporary_password"
+    get "/my-organization" => "my_organization#index", as: "my_organization"
 
     namespace :incident do
       # This should be an events (incident) controller

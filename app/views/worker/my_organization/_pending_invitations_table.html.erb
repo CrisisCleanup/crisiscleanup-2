@@ -1,9 +1,9 @@
-<h4>Pending Invitations</h4>
-<p><em>Note: Due to some known bugs, this table may not always be up to date.</em></p>
-<table>
+<table style="width: 100%;">
   <thead>
     <tr>
       <th>Email</th>
+      <th>Invited By</th>
+      <th>Expiration</th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +11,8 @@
       <% @pending_invitations.each do |pending_invitation| %>
         <tr>
           <td> <%= pending_invitation.invitee_email %> </td>
+          <td> <%= pending_invitation.user_name %> </td>
+          <td> <%= pending_invitation.expiration.strftime("%m/%d/%Y") if pending_invitation.expiration %> </td>
         </tr>
       <% end %>
     <% end %>
