@@ -18,7 +18,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: crisiscleanup_development
-  pool: 5
+  pool: ENV['DB_POOL'] || 5
   username:
   password:
 
@@ -47,7 +47,7 @@ test:
   adapter: postgresql
   encoding: unicode
   database: crisiscleanup_test
-  pool: 5
+  pool: ENV['DB_POOL'] || 5
   username:
   password:
 
@@ -55,6 +55,6 @@ production:
   adapter: postgresql
   encoding: unicode
   database: crisiscleanup_production
-  pool: 5
+  pool: ENV['DB_POOL'] || 5
   username:
   password:
