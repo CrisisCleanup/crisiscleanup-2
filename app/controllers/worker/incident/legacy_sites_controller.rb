@@ -126,6 +126,7 @@ module Worker
         # Claimed_by toggle
         if params[:legacy_legacy_site][:claim] == "true"
           @site.claimed_by = current_user.legacy_organization_id
+          @site.user_id = current_user.id
         end
 
         @site.legacy_event_id = current_user_event
@@ -155,8 +156,10 @@ module Worker
         if params[:legacy_legacy_site][:claim] == "true"
           if @site.claimed_by == nil
             @site.claimed_by = current_user.legacy_organization_id
+            @site.user_id = current_user.id
           elsif @site.claimed_by == current_user.legacy_organization_id || current_user.admin
             @site.claimed_by = nil
+            @site.user_id = nil
           end
         end
 
