@@ -25,7 +25,7 @@ module Api
           end
         end
       rescue
-        render json: {'status': 200, 'message': 'The phone numbers are invalid.'}
+        render json: {'status': 200, 'message': "error", 'message': 'The phone numbers are invalid.'}
       end
 
       render json: {'status': 200, 'message': "success", 'numbers': params['numbers']}
