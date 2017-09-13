@@ -1,10 +1,11 @@
-<h4>Organization Users</h4>
-<table>
+<table style="width: 100%;">
   <thead>
     <tr>
-      <th width="200">Name</th>
+      <th>Name</th>
+      <th>Role</th>
       <th>Email</th>
       <th>Phone</th>
+      <th>Last Signed In</th>
     </tr>
   </thead>
   <tbody>
@@ -12,8 +13,10 @@
       <% @users.each do |user| %>
         <tr>
           <td> <%= user.name %> </td>
+          <td> <%= user.role %> </td>
           <td> <%= user.email %> </td>
-          <td> <%= user.mobile %> </td>
+          <td> <%= number_to_phone(user.mobile) %> </td>
+          <td> <%= user.last_sign_in_at.strftime("%m/%d/%Y") if user.last_sign_in_at %> </td>
         </tr>
       <% end %>
     <% end %>
