@@ -2,7 +2,7 @@ module Worker
   module Incident
     class LegacyContactsController < ApplicationController
       include ApplicationHelper
-      before_action :check_incident_permissions
+      before_filter :check_incident_permissions
 
       def index
         org_ids = Legacy::LegacyOrganizationEvent.where(legacy_event_id: current_user_event).pluck(:legacy_organization_id)

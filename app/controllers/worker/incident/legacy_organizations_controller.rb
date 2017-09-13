@@ -2,7 +2,7 @@ module Worker
   module Incident
     class LegacyOrganizationsController < ApplicationController
       include ApplicationHelper
-      before_action :check_incident_permissions
+      before_filter :check_incident_permissions
 
       def index
         # search legacy_organization_event for legacy_organization_id: current_user_event

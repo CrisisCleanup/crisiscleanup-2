@@ -1,7 +1,5 @@
-require 'csv'
-
 module Legacy
-  class LegacySite < ApplicationRecord
+  class LegacySite < ActiveRecord::Base
     has_paper_trail
     # geocoded_by :full_street_address
     validates_presence_of :address, :blurred_latitude, :blurred_longitude, :case_number, :city, :latitude, :longitude, :name, :work_type, :status

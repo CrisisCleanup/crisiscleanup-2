@@ -9,15 +9,15 @@ class RegistrationsController < ApplicationController
 
   def create
     @org = Legacy::LegacyOrganization.new(org_params)
-    contacts = params["legacy_legacy_organization"]["legacy_contacts_attributes"].permit!
+    contacts = params["legacy_legacy_organization"]["legacy_contacts_attributes"]
     if contacts.present?
-      contacts.each do |k, c|
-        if c["_destroy"] == "false"
+      contacts.each do |c|
+        if c[1]["_destroy"] == "false"
           @org.legacy_contacts << Legacy::LegacyContact.new(
-            email: c["email"],
-            first_name: c["first_name"],
-            last_name: c["last_name"],
-            phone: c["phone"]
+            email: c[1]["email"],
+            first_name: c[1]["first_name"],
+            last_name: c[1]["last_name"],
+            phone: c[1]["phone"]
           )
         end
       end
@@ -51,9 +51,9 @@ class RegistrationsController < ApplicationController
 
   def check_user_emails params, org
     emails = [org.name]
-    list = params[:legacy_legacy_organization][:legacy_contacts_attributes].permit!
-    list.each do |k, v|
-      emails.append(v[:email])
+    list = params[:legacy_legacy_organization][:legacy_contacts_attributes]
+    list.each do |obj|
+      emails.append(obj[1][:email])
     end
     emails.each do |email|
 

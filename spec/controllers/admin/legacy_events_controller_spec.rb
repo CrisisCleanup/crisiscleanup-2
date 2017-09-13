@@ -81,13 +81,13 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "creates a new event" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				expect {
-					post :create, params: {legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event)}
+					post :create, legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event)
 				}.to change(Legacy::LegacyEvent, :count).by(1)
 			end
 
 			it "redirects to the event index" do
 				allow(controller).to receive(:current_user).and_return(@admin)
-				post :create, params: {legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event)}
+				post :create, legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event)
 				response.should redirect_to :admin_legacy_events
 			end
 		end
@@ -114,14 +114,14 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "renders the edit view with the correct event" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				event = FactoryGirl.create :legacy_event
-				get :edit, params: {id: event}
+				get :edit, id: event
 				expect(should).to render_template :edit
 			end
 
 			it "assigns the requested event to @event" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				event = FactoryGirl.create :legacy_event
-				get :edit, params: {id: event}
+				get :edit, id: event
 				expect(should).to render_template :edit
 			end
 		end
@@ -130,7 +130,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				event = FactoryGirl.create :legacy_event
-				get :edit, params: {id: event}
+				get :edit, id: event
 				expect(should).to redirect_to "/dashboard"
 			end
 		end
@@ -139,7 +139,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(nil)
 				event = FactoryGirl.create :legacy_event
-				get :edit, params: {id: event}
+				get :edit, id: event
 				expect(should).to redirect_to "/login"
 			end
 		end
@@ -150,14 +150,14 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "locates the correct event" do
 				allow(controller).to receive(:current_user).and_return(@admin)
 				event = FactoryGirl.create :legacy_event
-				put :update, params: {id: event, legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event)}
+				put :update, id: event, legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event)
 		      	assigns(:event).should eq(event)  
 			end
 			context "with correct attributes" do
 				it "changes the events attributes" do
 					@event = FactoryGirl.create :legacy_event
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, params: {id: @event, legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event, case_label: "ZZ")}
+					put :update, id: @event, legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event, case_label: "ZZ")
 					@event.reload
 					@event.case_label.should eq("ZZ")
 				end
@@ -165,7 +165,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 				it "redirects the updated event" do
 					@event = FactoryGirl.create :legacy_event
 					allow(controller).to receive(:current_user).and_return(@admin)
-					put :update, params: {id: @event, legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event, case_label: "ZZ")}
+					put :update, id: @event, legacy_legacy_event: FactoryGirl.attributes_for(:legacy_event, case_label: "ZZ")
 					expect(response).to redirect_to :admin_legacy_events
 				end
 			end
@@ -175,7 +175,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				event = FactoryGirl.create :legacy_event
-				put :update, params: {id: event}
+				put :update, id: event
 				expect(should).to redirect_to "/dashboard"
 			end
 		end
@@ -184,7 +184,7 @@ RSpec.describe Admin::LegacyEventsController, :type => :controller do
 			it "redirects to login" do
 				allow(controller).to receive(:current_user).and_return(nil)
 				event = FactoryGirl.create :legacy_event
-				post :create, params: {id: event}
+				post :create, id: event
 				expect(should).to redirect_to "/login"
 			end
 		end

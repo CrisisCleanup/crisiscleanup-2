@@ -2,7 +2,7 @@ module Worker
   module Incident
     class LegacySitesController < ApplicationController
       include ApplicationHelper
-      before_action :check_incident_permissions
+      before_filter :check_incident_permissions
 
       private
 
@@ -121,14 +121,11 @@ module Worker
       def submit
         @site = Legacy::LegacySite.new(site_params)
         @site.data = {}
-        data = params[:legacy_legacy_site][:data].permit!
-        @site.data.merge! data if @site.data
+        @site.data.merge! params[:legacy_legacy_site][:data] if @site.data
 
         # Claimed_by toggle
-        claim = params[:legacy_legacy_site][:claim]
-        if claim == "true"
+        if params[:legacy_legacy_site][:claim] == "true"
           @site.claimed_by = current_user.legacy_organization_id
-          @site.user_id = current_user.id
         end
 
         @site.legacy_event_id = current_user_event
@@ -337,12 +334,12 @@ module Worker
       end
 
       def site_params
-        params.require(:legacy_legacy_site).permit(:claim,
+        params.require(:legacy_legacy_site).permit(
           :address,:blurred_latitude,:blurred_longitude,
           :case_number,:city,:claimed_by,:county,:legacy_event_id,
           :latitude,:longitude,:name,:phone1,:phone2,:reported_by,
           :request_date,:skip_duplicates,:state,:status,:work_requested,:work_type,
-          :data,:zip_code,:utf8,:id)
+          :data,:zip_code)
       end
 
 

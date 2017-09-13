@@ -1,5 +1,5 @@
 module Legacy
-  class LegacyOrganization < ApplicationRecord
+  class LegacyOrganization < ActiveRecord::Base
     self.per_page = 500
     has_paper_trail
     has_many :legacy_organization_events

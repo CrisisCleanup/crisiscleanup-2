@@ -1,4 +1,4 @@
-class InvitationMailer < ApplicationMailer
+class InvitationMailer < ActionMailer::Base
   default from: "help@crisiscleanup.org"
   def send_invitation(inv, request)
     @user = User.find(inv.user_id)

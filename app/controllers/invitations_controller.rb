@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
   include ApplicationHelper
-  before_action :check_token
+  before_filter :check_token
 
   def activate
     @invitation = Invitation.select("invitations.*, legacy_organizations.name as org_name")

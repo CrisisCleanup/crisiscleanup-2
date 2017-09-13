@@ -1,5 +1,5 @@
 module Legacy
-  class LegacyContact < ApplicationRecord
+  class LegacyContact < ActiveRecord::Base
     self.per_page = 500
     has_paper_trail
     belongs_to :legacy_organization,

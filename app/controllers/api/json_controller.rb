@@ -3,7 +3,7 @@
 module Api
   class JsonController < ApplicationController
     include ApplicationHelper
-    before_action :check_user
+    before_filter :check_user
 
     def map
       if params["pin"]

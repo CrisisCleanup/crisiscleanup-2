@@ -81,13 +81,13 @@ RSpec.describe Admin::UsersController, :type => :controller do
       it "creates a new user" do
         allow(controller).to receive(:current_user).and_return(@admin)
         expect {
-          post :create, params: {user: FactoryGirl.attributes_for(:user)}
+          post :create, user: FactoryGirl.attributes_for(:user)
         }.to change(User, :count).by(1)
       end
 
       it "redirects to the user index" do
         allow(controller).to receive(:current_user).and_return(@admin)
-        post :create, params: {user: FactoryGirl.attributes_for(:user)}
+        post :create, user: FactoryGirl.attributes_for(:user)
         response.should redirect_to :admin_users
       end
     end
@@ -114,14 +114,14 @@ RSpec.describe Admin::UsersController, :type => :controller do
       it "renders the edit view with the correct user" do
         allow(controller).to receive(:current_user).and_return(@admin)
         user = FactoryGirl.create :user
-        get :edit, params: {id: user}
+        get :edit, id: user
         expect(should).to render_template :edit
       end
 
       it "assigns the requested user to @user" do
         allow(controller).to receive(:current_user).and_return(@admin)
         user = FactoryGirl.create :user
-        get :edit, params: {id: user}
+        get :edit, id: user
         expect(should).to render_template :edit
       end
     end
@@ -130,7 +130,7 @@ RSpec.describe Admin::UsersController, :type => :controller do
       it "redirects to login" do
         allow(controller).to receive(:current_user).and_return(@user)
         user = FactoryGirl.create :user
-        get :edit, params: {id: user}
+        get :edit, id: user
         expect(should).to redirect_to "/dashboard"
       end
     end
@@ -139,7 +139,7 @@ RSpec.describe Admin::UsersController, :type => :controller do
       it "redirects to login" do
         allow(controller).to receive(:current_user).and_return(nil)
         user = FactoryGirl.create :user
-        get :edit, params: {id: user}
+        get :edit, id: user
         expect(should).to redirect_to "/login"
       end
     end
@@ -150,14 +150,14 @@ RSpec.describe Admin::UsersController, :type => :controller do
       it "locates the correct user" do
         allow(controller).to receive(:current_user).and_return(@admin)
         user = FactoryGirl.create :user
-        put :update, params: {id: user, user: FactoryGirl.attributes_for(:user)}
+        put :update, id: user, user: FactoryGirl.attributes_for(:user)
             assigns(:user).should eq(user)  
       end
       context "with correct attributes" do
         it "changes the user's attributes" do
           @user = FactoryGirl.create :user
           allow(controller).to receive(:current_user).and_return(@admin)
-          put :update, params: {id: @user, user: FactoryGirl.attributes_for(:user, name: "ZZ")}
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "ZZ")
           @user.reload
           @user.name.should eq("ZZ")
         end
@@ -165,7 +165,7 @@ RSpec.describe Admin::UsersController, :type => :controller do
         it "redirects the updated user" do
           @user = FactoryGirl.create :user
           allow(controller).to receive(:current_user).and_return(@admin)
-          put :update, params: {id: @user, user: FactoryGirl.attributes_for(:user, case_label: "ZZ")}
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user, case_label: "ZZ")
           expect(response).to redirect_to "/admin/users"
         end
       end
@@ -175,7 +175,7 @@ RSpec.describe Admin::UsersController, :type => :controller do
       it "redirects to login" do
         allow(controller).to receive(:current_user).and_return(@user)
         user = FactoryGirl.create :user
-        put :update, params: {id: user}
+        put :update, id: user
         expect(should).to redirect_to "/dashboard"
       end
     end
@@ -184,7 +184,7 @@ RSpec.describe Admin::UsersController, :type => :controller do
       it "redirects to login" do
         allow(controller).to receive(:current_user).and_return(nil)
         user = FactoryGirl.create :user
-        post :create, params: {id: user}
+        post :create, id: user
         expect(should).to redirect_to "/login"
       end
     end
