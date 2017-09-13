@@ -103,15 +103,28 @@ module Api
 
     def update_legacy_site_status
       if params[:id]
-        if site = Legacy::LegacySite.find(params[:id])
-          if site.status == 'Open, unassigned' && site.claimed_by == nil
-            site.claimed_by = current_user.legacy_organization_id
-          end
-          site.status = params[:status] if params[:status]
-          site.save
-          render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
+        # Guard status types
+        status = [ "Open, unassigned", "Open, assigned",
+          "Open, partially completed", "Open, needs follow-up",
+          "Closed, completed", "Closed, incomplete",
+          "Closed, out of scope", "Closed, done by others",
+          "Closed, no help wanted", "Closed, rejected",
+          "Closed, duplicate"]
+        if not status.include?(params[:status])
+          render json: { status: 'error', msg: 'Not a site status type' }, status: 400
         else
-          render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our system.' }
+
+          if site = Legacy::LegacySite.find(params[:id])
+            if site.status == 'Open, unassigned' && site.claimed_by == nil
+              site.claimed_by = current_user.legacy_organization_id
+              site.user_id = current_user.id
+            end
+            site.status = params[:status] if params[:status]
+            site.save
+            render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
+          else
+            render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our system.' }
+          end
         end
       else
         render json: { status: 'error', msg: 'Site id is required.' }

@@ -102,6 +102,31 @@
       </transition>
     </script>
 
+    <script type="text/x-template" id="site-status-dropdown">
+      <div class="row collapse" style="margin-bottom:0;">
+        <div class="small-12 small-centered medium-12 medium-centered large-6 large-centered columns" style="margin-bottom:0;">
+          <select v-model="selected" @change="setSiteStatus()">
+            <option disabled value="">Please select one</option>
+            <option>Open, unassigned</option>
+            <option>Open, assigned</option>
+            <option>Open, partially completed</option>
+            <option>Open, needs follow-up</option>
+            <option>Closed, completed</option>
+            <option>Closed, incomplete</option>
+            <option>Closed, out of scope</option>
+            <option>Closed, done by others</option>
+            <option>Closed, no help wanted</option>
+            <option>Closed, rejected</option>
+            <option>Closed, duplicate</option>
+          </select>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/x-template" id="site-icon">
+      <i class="fa fa-home fa-2x" v-bind:style="{color: siteColor}"></i>
+    </script>
+
     <div class="row collapse">
       <div class="large-6 medium-6 columns">
         <div class="panel" id="claimed-worksites">
@@ -121,7 +146,8 @@
                 <div class="small-6 large-6 medium-6 columns left" data-equalizer-watch>
 
                   <div class="custom-panel text-center site-card" style="margin:0 2px;">
-                    <i class="fa fa-home fa-2x" style="color: #ffd21c;"></i>
+                    <site-icon :site-id="<%= site.id %>" :site-status="'<%= site.status %>'"></site-icon>
+
                     <h5><%= site.case_number %></h5>
                     <h5><%= site.name %></h5>
                     <p>
@@ -130,8 +156,7 @@
 
                     <p><%= site.address %></p>
                     <p><%= site.city %>, <%= site.state %>, <%= site.zip_code %></p>
-                    <p><%= site.status %></p>
-                    <br>
+                    <site-status-dropdown :site-id="<%= site.id %>" :site-status="'<%= site.status %>'"></site-status-dropdown>
 
                     <div class="medium-12 sm-centered lg-centered column">
                       <ul class="small-block-grid-3 text-center">
