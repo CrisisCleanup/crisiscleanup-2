@@ -6,7 +6,7 @@ module Api
 
       def map
         begin
-          limit = (Integer(params[:limit]) > 1000) ? 1000 : Integer(params[:limit])
+          limit = (Integer(params[:limit]) > 1000) ? 15000 : Integer(params[:limit])
           page = (Integer(params[:page]) < 1) ? 1 : Integer(params[:page])
         rescue ArgumentError
           return

@@ -10,7 +10,7 @@ module Api
         @sites = Legacy::LegacySite.find(params["pin"])
       else
         begin
-          limit = (Integer(params[:limit]) > 1000) ? 1000 : Integer(params[:limit])
+          limit = (Integer(params[:limit]) > 1000) ? 15000 : Integer(params[:limit])
           page = (Integer(params[:page]) < 1) ? 1 : Integer(params[:page])
         rescue ArgumentError
           return
@@ -28,12 +28,12 @@ module Api
           legacy_sites.address,
           legacy_sites.city,
           legacy_sites.state,
-          legacy_sites.zip_code,
-          legacy_sites.updated_at
+          legacy_sites.zip_code
         ").where(legacy_event_id: params[:event_id])
           .limit(limit)
           .offset(offset)
           .order(:id)
+        render :json => @sites.to_json()
       end
     end
 
