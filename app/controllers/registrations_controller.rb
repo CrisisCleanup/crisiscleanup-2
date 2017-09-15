@@ -56,8 +56,7 @@ class RegistrationsController < ApplicationController
       emails.append(obj[1][:email])
     end
     emails.each do |email|
-
-      if User.find_by(email: email)
+      if User.where("lower(email) = ?", email.downcase).first
         return false
       end
     end
