@@ -56,63 +56,69 @@ window.zEmbed || function (e, t) {
 </div>
 
 <footer align="center"><!--application.html.erb-->
-        <div class="row" id="footer_row">
-            <div class="medium-4 columns footer-logo">
-                <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home"  %></a>
-                <h5>Ready-to-Deploy Collaborative Disaster Relief Mapping and Coordination</h5>
-                <p>Crisis Cleanup is an <a href="https://github.com/CrisisCleanup/crisiscleanup">open source project</a></p>
-                <ul class="sms-icons">
-                    <li><a href="https://www.facebook.com/Crisis-Cleanup-437690172982553/"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="https://twitter.com/crisiscleanup"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="/contact"><i class="fa fa-envelope"></i></a></li>
-                </ul>
-            </div>
-            <div class="medium-8 columns">
-                <div class="row-collapse">
-                    <div class="medium-4 columns">
-                        <i class="fa fa-rocket"></i>
-                        <h4>Crisis Cleanup Deployments</h4>
-                        <p>Crisis Cleanup has been used in dozens of disasters across the world.</p>
-                        <a href="http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html">See All Crisis Cleanup Deployments</a>
-                    </div>
-                    <div class="medium-4 columns">
-                        <i class="fa fa-video-camera "></i>
-                        <h4>Media Coverage</h4>
-                        <p>Crisis Cleanup is primarily for relief agencies rather than the public (and therefore we don't seek the public spotlight), but occasionally you will see us in the news!</p>    
-                        <a href="http://blog.crisiscleanup.org/2013/07/crisis-cleanup-media-coverage.html">See Crisis Cleanup In The News</a>
-                    </div>
-                </div>
-                    <div class="medium-4 columns">
-                        <i class="fa fa-heart"></i>
-                        <h4>Want to help?</h4>
-                        <p>Crisis Cleanup is open source and powered mostly by dedicated volunteers. Support Crisis Cleanup with a <a href="http://bit.ly/CCUPatreon" target="_blank">monthly pledge</a>. If you are a Ruby / PostgreSQL programmer, check out the Crisis Cleanup <a href="https://github.com/aarontitus/crisiscleanup">Github repository</a> and contact us.</p>    
-                        <a href="https://www.patreon.com/crisiscleanup" target="_blank">Help Crisis Cleanup</a>
-                    </div>
-            </div>
-        </div>
-    </footer>
-    <div class="row collapse" id="copyright">
-        <div class="small-12 medium-12 large-12 columns">
-            <ul>
-                <li><%= link_to "Home", home_path %> |</li>
-                <li><%= link_to "About", about_path %> |</li>
-                <li><a href="/public_map">Map</a> |</li>
-                <li><a href="http://blog.crisiscleanup.org/">Blog</a> |</li>
-                <li><a href="https://crisiscleanup-demo.herokuapp.com/">Demo</a> |</li>
-                <li><%= link_to "Training", training_path %> |</li>
-                <li><%= link_to "Contact", contact_path %> |</li>
-                <li><%= link_to "Terms", terms_path %> |</li>
-                <li><%= link_to "Privacy", privacy_path %> |</li>
-                <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies">Policies</a> |</li>
-                <li><a href="/signup">Sign Up</a> |</li>
-                <% if current_user %>
-                  <li><%= link_to "Login", new_user_session_path %></li> 
-                <% else %>
-                  <li><%= link_to "Logout", destroy_user_session_path %></li>
-                <% end %>
-            </ul>
-        </div>  
+  <div class="row" id="footer_row">
+    <div class="medium-4 columns footer-logo">
+      <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home" %></a>
+      <h5>Ready-to-Deploy Collaborative Disaster Relief Mapping and Coordination</h5>
+      <p>Crisis Cleanup is an <a href="https://github.com/CrisisCleanup/crisiscleanup">open source project</a></p>
+      <ul class="sms-icons">
+        <li><a href="https://www.facebook.com/Crisis-Cleanup-437690172982553/"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="https://twitter.com/crisiscleanup"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="/contact"><i class="fa fa-envelope"></i></a></li>
+      </ul>
     </div>
+    <div class="medium-8 columns">
+      <div class="row-collapse">
+        <div class="medium-4 columns">
+          <i class="fa fa-rocket"></i>
+          <h4>Crisis Cleanup Deployments</h4>
+          <p>Crisis Cleanup has been used in dozens of disasters across the world.</p>
+          <a href="http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html">See All Crisis Cleanup
+            Deployments</a>
+        </div>
+        <div class="medium-4 columns">
+          <i class="fa fa-video-camera "></i>
+          <h4>Media Coverage</h4>
+          <p>Crisis Cleanup is primarily for relief agencies rather than the public (and therefore we don't seek the
+            public spotlight), but occasionally you will see us in the news!</p>
+          <a href="http://blog.crisiscleanup.org/2013/07/crisis-cleanup-media-coverage.html">See Crisis Cleanup In The
+            News</a>
+        </div>
+      </div>
+      <div class="medium-4 columns">
+        <i class="fa fa-heart"></i>
+        <h4>Want to help?</h4>
+        <p>Crisis Cleanup is open source and powered mostly by dedicated volunteers. Support Crisis Cleanup with a
+          <a href="http://bit.ly/CCUPatreon" target="_blank">monthly pledge</a>. If you are a Ruby / PostgreSQL
+          programmer, check out the Crisis Cleanup
+          <a href="https://github.com/aarontitus/crisiscleanup">Github repository</a> and contact us.</p>
+        <a href="https://www.patreon.com/crisiscleanup" target="_blank">Help Crisis Cleanup</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="row collapse" id="copyright">
+  <div class="small-12 medium-12 large-12 columns">
+    <ul>
+      <li><%= link_to "Home", home_path %> |</li>
+      <li><%= link_to "About", about_path %> |</li>
+      <li><a href="/public_map">Map</a> |</li>
+      <li><a href="http://blog.crisiscleanup.org/">Blog</a> |</li>
+      <li><a href="https://crisiscleanup-demo.herokuapp.com/">Demo</a> |</li>
+      <li><%= link_to "Training", training_path %> |</li>
+      <li><%= link_to "Contact", contact_path %> |</li>
+      <li><%= link_to "Terms", terms_path %> |</li>
+      <li><%= link_to "Privacy", privacy_path %> |</li>
+      <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies">Policies</a> |</li>
+      <li><a href="/signup">Sign Up</a> |</li>
+      <% if current_user %>
+          <li><%= link_to "Login", new_user_session_path %></li>
+      <% else %>
+          <li><%= link_to "Logout", destroy_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 <!-- initial-state -->
 <script type="text/javascript">
