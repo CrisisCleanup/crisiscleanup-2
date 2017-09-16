@@ -1,0 +1,249 @@
+<style>
+  .contrib-text {
+    color: white;
+  }
+
+  .donate-button {
+    padding: 0;
+    display: table;
+  }
+
+  .donate-button span {
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #1b84ce;
+    text-align: center;
+  }
+
+  .donate-box {
+    background: white;
+    height: 70px;
+    font-size: 12px;
+    color: black;
+    text-align: left;
+  }
+
+  .donate-box .donate-button {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+    float: left;
+    background: rgba(253, 202, 0, 1);
+    background: -moz-linear-gradient(left, rgba(253, 202, 0, 1) 0%, rgba(255, 220, 82, 1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(253, 202, 0, 1)), color-stop(100%, rgba(255, 220, 82, 1)));
+    background: -webkit-linear-gradient(left, rgba(253, 202, 0, 1) 0%, rgba(255, 220, 82, 1) 100%);
+    background: -o-linear-gradient(left, rgba(253, 202, 0, 1) 0%, rgba(255, 220, 82, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(253, 202, 0, 1) 0%, rgba(255, 220, 82, 1) 100%);
+    background: linear-gradient(to right, rgba(253, 202, 0, 1) 0%, rgba(255, 220, 82, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdca00', endColorstr='#ffdc52', GradientType=1);
+  }
+
+  .donate-box .donate-button:hover {
+    color: #606060;
+    background: rgba(255, 220, 82, 1);
+    background: -moz-linear-gradient(left, rgba(255, 220, 82, 1) 0%, rgba(253, 202, 0, 1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 220, 82, 1)), color-stop(100%, rgba(253, 202, 0, 1)));
+    background: -webkit-linear-gradient(left, rgba(255, 220, 82, 1) 0%, rgba(253, 202, 0, 1) 100%);
+    background: -o-linear-gradient(left, rgba(255, 220, 82, 1) 0%, rgba(253, 202, 0, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(255, 220, 82, 1) 0%, rgba(253, 202, 0, 1) 100%);
+    background: linear-gradient(to right, rgba(255, 220, 82, 1) 0%, rgba(253, 202, 0, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdc52', endColorstr='#fdca00', GradientType=1);
+  }
+
+  .donate-info {
+    margin-left: 75px;
+    padding: 15px;
+  }
+
+  .donate-info-img {
+  }
+
+  .donate-info-text {
+
+  }
+
+  .donate-footer h4 {
+    font-size: 1rem;
+  }
+
+  .contrib-text {
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  .donate-lead {
+    background-color: #222;
+  }
+
+  .donate-lead-text {
+    float: left;
+    margin-left: 10px;
+    padding-top: 30px;
+  }
+
+  .donate-lead-text h4, h6 {
+    margin: 0;
+    color: white !important;
+  }
+
+</style>
+<div class="row collapse">
+  <div class="small-12 medium-12 large-12 donate-lead" style="padding-top: 10px;">
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns info">
+        <div style="float:left">
+          <%= image_tag "contribute/logo-w.png", :alt => "logo" %>
+        </div>
+        <div class="donate-lead-text">
+          <h4>A FREE SERVICE TO THE PUBLIC</h4>
+          <h6>POWERED BY 3 KINDS OF DONATIONS</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row collapse">
+  <div class="small-12 medium-12 large-12 donate-footer" style="background-color: #222; padding-bottom: 10px;">
+    <div class="row">
+      <div class="small-12 medium-12 large-4 columns">
+        <div>
+          <p class="contrib-text"><strong>Time:</strong> Volunteer Organizations</p>
+        </div>
+        <div class="donate-box">
+          <a href="https://crisiscleanup-staging.herokuapp.com/register">
+            <div class="donate-button">
+              <span>JOIN</span>
+            </div>
+            <div class="animation donate-info">
+              <span id="participating-organizations-img" class="donate-info-img"></span>
+              <span id="participating-organizations-name" class="donante-info-text"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="small-12 medium-12 large-4 columns">
+        <div>
+          <p class="contrib-text"><strong>Funding:</strong> Financial Supporters </p>
+        </div>
+        <div class="donate-box">
+          <a href="http://bit.ly/CCUPatreon">
+            <div class="donate-button">
+              <span>DONATE</span>
+            </div>
+            <div class="animation donate-info">
+              <span id="financial-backers-img" class="donate-info-img"></span>
+              <span id="financial-backers-name" class="donate-info-text"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="small-12 medium-12 large-4 columns">
+        <div>
+          <p class="contrib-text"><strong>Development:</strong> Core Volunteer Team</p>
+        </div>
+        <div class="donate-box">
+          <a href="https://github.com/CrisisCleanup/crisiscleanup">
+            <div class="donate-button">
+              <span>BUILD</span>
+            </div>
+            <div class="animation donate-info">
+              <span id="volunteer-programmers-img" class="donate-info-img"></span>
+              <span id="volunteer-programmers-name" class="donate-info-text"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+  var volunteerProgrammers = [
+    {'name': 'Aaron Titus - Founder', 'picture': '<%= asset_path "contribute/images/4184619.jpeg" %>'},
+    {'name': 'Ross Arroyo - Operations Lead', 'picture': '<%= asset_path "contribute/images/699333.jpeg" %>'},
+    {'name': 'Tyler Sanders - Systems Engineering Lead', 'picture': '<%= asset_path "contribute/images/tyler.png" %>'},
+    {'name': 'Scott Golaszewski - Developer', 'picture': '<%= asset_path "contribute/images/505768.jpeg" %>'},
+    {'name': 'Andy Gimma - Developer', 'picture': '<%= asset_path "contribute/images/000000.jpg" %>'},
+    {'name': 'Zachary Straub - Designer', 'picture': '<%= asset_path "contribute/images/000000.jpg" %>'},
+    {'name': 'Dhruv Mehrotra - Developer', 'picture': '<%= asset_path "contribute/images/42718b7c07.jpg" %>'},
+    {'name': 'Mark Tregellas - AU', 'picture': '<%= asset_path "contribute/images/9af1dcb3f.jpg" %>'},
+    {'name': 'Chris Wood - Developer', 'picture': '<%= asset_path "contribute/images/d523ef4dab.jpg" %>'},
+    {'name': 'Jeremy Pack - Developer', 'picture': '<%= asset_path "contribute/images/7c99bbfc6491.jpg" %>'},
+    {'name': 'Bruce Christensen - Developer', 'picture': '<%= asset_path "contribute/images/032933cd9ab.jpg" %>'},
+    {'name': 'Rafael Martins - Developer', 'picture': '<%= asset_path "contribute/images/000000.jpg" %>'},
+    {'name': 'Andy Steere - Developer', 'picture': '<%= asset_path "contribute/images/000000.jpg" %>'},
+    {'name': 'Justin Wells - Developer', 'picture': '<%= asset_path "contribute/images/000000.jpg" %>'},
+    {'name': 'Hackengineer - Developer', 'picture': '<%= asset_path "contribute/images/000000.jpg" %>'},
+    {'name': 'Scott Silverstein - Developer', 'picture': '<%= asset_path "contribute/images/000000.jpg" %>'},
+    {'name': 'Hoostine - Developer', 'picture': '<%= asset_path "contribute/images/3902898.jpeg" %>'},
+    {'name': 'Nicolas Zanghi - Developer', 'picture': '<%= asset_path "contribute/images/000000.jpg" %>'},
+    {'name': 'Jimmy Arroyo - Developer', 'picture': '<%= asset_path "contribute/images/hipsterreed.png" %>'}];
+
+  var participatingOrganizations = [
+    {'name': 'American Red Cross', 'picture': '<%= asset_path "contribute/images/RC001.jpg" %>'},
+    {'name': 'City of Houston', 'picture': '<%= asset_path "contribute/images/CH001.jpg" %>'},
+    {'name': 'Volunteer Florida', 'picture': '<%= asset_path "contribute/images/VF001.jpg" %>'},
+    {'name': 'LDS Charities', 'picture': '<%= asset_path "contribute/images/LC001.jpg" %>'}
+  ];
+
+  var financialBackers = [
+    {'name': 'City of Houston', 'picture': '<%= asset_path "contribute/images/CH001.jpg" %>'},
+    {'name': 'ConnectFirst', 'picture': '<%= asset_path "contribute/images/CF001.jpg" %>'},
+    {'name': 'How To Prepare For Everything', 'picture': '<%= asset_path "contribute/images/HO001.jpg" %>'},
+    {'name': 'Vision Link', 'picture': '<%= asset_path "contribute/images/VL001.jpg" %>'},
+    {'name': 'UMCOR', 'picture': '<%= asset_path "contribute/images/UM001.jpg" %>'},
+    {'name': 'Volunteer Florida', 'picture': '<%= asset_path "contribute/images/VF001.jpg" %>'},
+    {'name': 'LDS Charities', 'picture': '<%= asset_path "contribute/images/LC001.jpg" %>'},
+    {'name': 'NJ 2-1-1 Partnership', 'picture': '<%= asset_path "contribute/images/NJ001.jpg" %>'},
+    {'name': 'ThinkSo', 'picture': '<%= asset_path "contribute/images/TS001.jpg" %>'},
+    {'name': 'SAHANA Software Foundation', 'picture': '<%= asset_path "contribute/images/SA001.jpg" %>'},
+    {'name': 'Gallery Furniture Houston Texas', 'picture': '<%= asset_path "contribute/images/GF001.jpg" %>'},
+    {'name': 'American Red Cross', 'picture': '<%= asset_path "contribute/images/RC001.jpg" %>'}
+  ];
+
+
+  function cycleArray(nameEl, imgEl, array, timeout) {
+    var i = -1;
+    var imgSize = 40;
+
+    (function f() {
+      i = (i + 1) % array.length;
+
+      // Elements to update
+      var nameElement = document.getElementById(nameEl);
+      var imgElement = document.getElementById(imgEl);
+
+      // Clearing elements for new data
+      nameElement.innerHTML = '';
+      imgElement.innerHTML = '';
+
+      // Updating images
+      var img = document.createElement('img');
+      img.src = array[i].picture;
+      img.width = imgSize;
+      img.height = imgSize;
+      $('#' + imgEl).append(img);
+
+      // Updating name
+      var name = document.createElement('span');
+      name.innerHTML = array[i].name;
+      $('#' + nameEl).append(name)
+
+      // Animations
+      $('#' + nameEl).fadeIn(200).delay(4600).fadeOut(200); // Fading in and out
+      $('#' + imgEl).fadeIn(200).delay(4600).fadeOut(200); // Fading in and out
+
+      setTimeout(f, timeout);
+    })();
+  }
+
+
+  cycleArray('participating-organizations-name', 'participating-organizations-img', participatingOrganizations, 5000);
+  cycleArray('volunteer-programmers-name', 'volunteer-programmers-img', volunteerProgrammers, 5000);
+  cycleArray('financial-backers-name', 'financial-backers-img', financialBackers, 5000);
+
+
+</script>
+
