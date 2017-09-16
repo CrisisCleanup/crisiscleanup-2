@@ -23,70 +23,21 @@
   <%= render "layouts/menus/application_menu" %>
 </header>
 
-<!-- alert menu -->
 <%= render (request.host =~ /demo/) ? "layouts/menus/alert_menu_demo" : "layouts/menus/alert_menu" %>
 
-<!-- subheader -->
 <%= yield :subheader %>
 
 <div class="row collapse" style="width: 96%;">
-  <!-- main content -->
-
-  <!-- main content -->
   <%= yield :main %>
-
 </div>
 
-<footer align="center"><!--application.html.erb-->
-  <div class="row" id="footer_row">
-    <div class="medium-4 columns footer-logo">
-      <a href="/"><%= image_tag "ccu-logo-white.png", :alt => "Crisis Cleanup Home" %></a>
-      <h5>Ready-to-Deploy Collaborative Disaster Relief Mapping and Coordination</h5>
-      <p>Crisis Cleanup is an <a href="https://github.com/CrisisCleanup/crisiscleanup">open source project</a></p>
-      <ul class="sms-icons">
-        <li><a href="https://www.facebook.com/Crisis-Cleanup-437690172982553/"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="https://twitter.com/crisiscleanup"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="/contact"><i class="fa fa-envelope"></i></a></li>
-      </ul>
-    </div>
-    <div class="medium-8 columns">
-      <div class="row-collapse">
-        <div class="medium-4 columns">
-          <i class="fa fa-rocket"></i>
-          <h4>Crisis Cleanup Deployments</h4>
-          <p>Crisis Cleanup has been used in dozens of disasters across the world.</p>
-          <a href="http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html">See All Crisis Cleanup
-            Deployments</a>
-        </div>
-        <div class="medium-4 columns">
-          <i class="fa fa-video-camera "></i>
-          <h4>Media Coverage</h4>
-          <p>Crisis Cleanup is primarily for relief agencies rather than the public (and therefore we don't seek the
-            public spotlight), but occasionally you will see us in the news!</p>
-          <a href="http://blog.crisiscleanup.org/2013/07/crisis-cleanup-media-coverage.html">See Crisis Cleanup In The
-            News</a>
-        </div>
-      </div>
-      <div class="medium-4 columns">
-        <i class="fa fa-heart"></i>
-        <h4>Want to help?</h4>
-        <p>Crisis Cleanup is open source and powered mostly by dedicated volunteers. Support Crisis Cleanup with a
-          <a href="http://bit.ly/CCUPatreon" target="_blank">monthly pledge</a>. If you are a Ruby / PostgreSQL
-          programmer, check out the Crisis Cleanup
-          <a href="https://github.com/aarontitus/crisiscleanup">Github repository</a> and contact us.</p>
-        <a href="https://www.patreon.com/crisiscleanup" target="_blank">Help Crisis Cleanup</a>
-      </div>
-    </div>
-  </div>
-</footer>
+<%= render 'layouts/large_footer' %>
 <%= render 'layouts/footer' %>
 
-<!-- initial-state -->
 <script type="text/javascript">
   var InitialState = <%= raw initial_state.to_json %>;
 </script>
 
-<!-- javascript libraries -->
 <%= yield :javascripts %>
 
 
