@@ -80,7 +80,7 @@ window.zEmbed || function (e, t) {
                         <i class="fa fa-video-camera "></i>
                         <h4>Media Coverage</h4>
                         <p>Crisis Cleanup is primarily for relief agencies rather than the public (and therefore we don't seek the public spotlight), but occasionally you will see us in the news!</p>    
-                        <a href="http://blog.crisiscleanup.org/2013/07/crisis-cleanup-media-coverage.html">See Crisis Cleanup In The News</button></a>
+                        <a href="http://blog.crisiscleanup.org/2013/07/crisis-cleanup-media-coverage.html">See Crisis Cleanup In The News</a>
                     </div>
                 </div>
                     <div class="medium-4 columns">
@@ -88,7 +88,8 @@ window.zEmbed || function (e, t) {
                         <h4>Want to help?</h4>
                         <p>Crisis Cleanup is open source and powered mostly by dedicated volunteers. Support Crisis Cleanup with a <a href="http://bit.ly/CCUPatreon" target="_blank">monthly pledge</a>. If you are a Ruby / PostgreSQL programmer, check out the Crisis Cleanup <a href="https://github.com/aarontitus/crisiscleanup">Github repository</a> and contact us.</p>    
                         <a href="https://www.patreon.com/crisiscleanup" target="_blank">Help Crisis Cleanup</a>
-                    </div>              
+                    </div>
+            </div>
         </div>
     </footer>
     <div class="row collapse" id="copyright">
@@ -116,8 +117,7 @@ window.zEmbed || function (e, t) {
 
 <!-- initial-state -->
 <script type="text/javascript">
-  var InitialState =
-  <%= raw initial_state.to_json %>
+  var InitialState = <%= raw initial_state.to_json %>;
 </script>
 
 <!-- javascript libraries -->
