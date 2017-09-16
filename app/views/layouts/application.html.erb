@@ -1,26 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Start of crisiscleanup Zendesk Widget script -->
 
-<script>/*<![CDATA[*/
-window.zEmbed || function (e, t) {
-  var n, o, d, i, s, a = [], r = document.createElement("iframe");
-  window.zEmbed = function () {
-    a.push(arguments)
-  }, window.zE = window.zE || window.zEmbed, r.src = "javascript:false", r.title = "", r.role = "presentation", (r.frameElement || r).style.cssText = "display: none", d = document.getElementsByTagName("script"), d = d[d.length - 1], d.parentNode.insertBefore(r, d), i = r.contentWindow, s = i.document;
-  try {
-    o = s
-  } catch (c) {
-    n = document.domain, r.src = 'javascript:var d=document.open();d.domain="' + n + '";void(0);', o = s
-  }
-  o.open()._l = function () {
-    var o = this.createElement("script");
-    n && (this.domain = n), o.id = "js-iframe-async", o.src = e, this.t = +new Date, this.zendeskHost = t, this.zEQueue = a, this.body.appendChild(o)
-  }, o.write('<body onload="document._l();">'), o.close()
-}("https://assets.zendesk.com/embeddable_framework/main.js", "crisiscleanup.zendesk.com");
-/*]]>*/</script>
+<%= render 'layouts/zendesk' %>
 
-<!-- End of crisiscleanup Zendesk Widget script -->
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Crisis Cleanup" %></title>
   <meta charset="utf-8"/>
@@ -97,28 +79,7 @@ window.zEmbed || function (e, t) {
     </div>
   </div>
 </footer>
-<div class="row collapse" id="copyright">
-  <div class="small-12 medium-12 large-12 columns">
-    <ul>
-      <li><%= link_to "Home", home_path %> |</li>
-      <li><%= link_to "About", about_path %> |</li>
-      <li><a href="/public_map">Map</a> |</li>
-      <li><a href="http://blog.crisiscleanup.org/">Blog</a> |</li>
-      <li><a href="https://crisiscleanup-demo.herokuapp.com/">Demo</a> |</li>
-      <li><%= link_to "Training", training_path %> |</li>
-      <li><%= link_to "Contact", contact_path %> |</li>
-      <li><%= link_to "Terms", terms_path %> |</li>
-      <li><%= link_to "Privacy", privacy_path %> |</li>
-      <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies">Policies</a> |</li>
-      <li><a href="/signup">Sign Up</a> |</li>
-      <% if current_user %>
-          <li><%= link_to "Login", new_user_session_path %></li>
-      <% else %>
-          <li><%= link_to "Logout", destroy_user_session_path %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<%= render 'layouts/footer' %>
 
 <!-- initial-state -->
 <script type="text/javascript">
@@ -131,23 +92,7 @@ window.zEmbed || function (e, t) {
 
 <%= javascript_include_tag "components" %>
 
-<!-- Google Analytics -->
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+<%= render 'layouts/analytics' %>
 
-  ga('create', 'UA-42924421-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </body>
 </html>
