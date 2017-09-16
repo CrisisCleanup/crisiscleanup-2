@@ -6,7 +6,6 @@
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Crisis Cleanup" %></title>
   <meta charset="utf-8"/>
-  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "vendor/modernizr" %>
@@ -22,32 +21,24 @@
 </head>
 <body class='<%= @body.present? ? @body : "worker-dashboard" %>'>
 <%= render 'layouts/menus/worker_dashboard_menu' %>
-<!-- alert menu -->
 <%= render (request.host =~ /demo/) ? "layouts/menus/alert_menu_demo" : "layouts/menus/alert_menu" %>
 <%= yield %>
 
-<!-- subheader -->
 <%= yield :subheader %>
 
 <div id="wrapper">
-  <!-- main content -->
   <%= yield :main %>
-
-  <!-- sidebar -->
   <%= yield :sidebar %>
-
 </div>
 <br>
 <footer align="center">
 </footer>
 <%= render 'layouts/footer' %>
 
-<!-- initial-state -->
 <script type="text/javascript">
   var InitialState = <%= raw initial_state.to_json %>;
 </script>
 
-<!-- javascript libraries -->
 <%= yield :javascripts %>
 
 <script>
