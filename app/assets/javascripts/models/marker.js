@@ -164,7 +164,7 @@ CCMap.Site = function(params) {
     }
     if (phone1) {
       var phone1tag = document.createElement('a');
-      phone1tag.appendChild(phone1);
+      phone1tag.appendChild(document.createTextNode(phone1));
       phone1tag.href = 'tel:' + phone1;
       table.appendChild(
         createTableRow(
@@ -183,7 +183,7 @@ CCMap.Site = function(params) {
     }
     if (phone2) {
       var phone2tag = document.createElement('a');
-      phone2tag.appendChild(phone2);
+      phone2tag.appendChild(document.createTextNode(phone2));
       phone2tag.href = 'tel:' + phone2;
       table.appendChild(
         createTableRow(
