@@ -147,33 +147,51 @@ CCMap.Site = function(params) {
     // table.appendChild(row);
 
     // TODO: fix this with a templating library (Handlebars.js)
-    // Case number and phone numbers
-    var caseNumberPhoneArray = [];
-    if (this.site.case_number) {
-      caseNumberPhoneArray.push(this.site.case_number);
-    }
-
-    if (this.site.phone1) {
-      caseNumberPhoneArray.push(this.site.phone1);
-    } else if (this.site.data && this.site.data.phone1 && this.site.data.phone1 !== '') {
-      caseNumberPhoneArray.push(this.site.data.phone1);
-    }
-
-    if (this.site.phone2) {
-      caseNumberPhoneArray.push(this.site.phone2);
-    } else if (this.site.data && this.site.data.phone1 && this.site.data.phone2 !== '') {
-      caseNumberPhoneArray.push(this.site.data.phone2);
-    }
-    var caseNumberPhoneStr = caseNumberPhoneArray.join(' : ');
-
-    // Build the case number/phone numbers row
+    // Case number
     table.appendChild(
       createTableRow(
-        document.createTextNode('Case & Phone #:'),
-        document.createTextNode(caseNumberPhoneStr)
+        document.createTextNode('Case Number'),
+        document.createTextNode(this.site.case_number)
       )
     );
-    // End Case number and Phone numbers block
+
+    // Phone 1
+    var phone1;
+    if (this.site.phone1) {
+      phone1 = this.site.phone1;
+    } else if (this.site.data && this.site.data.phone1 && this.site.data.phone1 !== '') {
+      phone1 = this.site.data.phone1;
+    }
+    if (phone1) {
+      var phone1tag = document.createElement('a');
+      phone1tag.appendChild(phone1);
+      phone1tag.href = 'tel:' + phone1;
+      table.appendChild(
+        createTableRow(
+          document.createTextNode('Phone 1'),
+          phone1tag
+        )
+      )
+    }
+
+    // Phone 2
+    var phone2;
+    if (this.site.phone2) {
+      phone2 = this.site.phone2;
+    } else if (this.site.data && this.site.data.phone2 && this.site.data.phone2 !== '') {
+      phone2 = this.site.data.phone2;
+    }
+    if (phone2) {
+      var phone2tag = document.createElement('a');
+      phone2tag.appendChild(phone2);
+      phone2tag.href = 'tel:' + phone2;
+      table.appendChild(
+        createTableRow(
+          document.createTextNode('Phone 2'),
+          phone2tag
+        )
+      )
+    }
 
     // claimed by
     if (this.site.claimed_by) {
