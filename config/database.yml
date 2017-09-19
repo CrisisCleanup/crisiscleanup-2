@@ -1,4 +1,4 @@
-development:
+development: &development
   adapter: postgresql
   encoding: unicode
   database: crisiscleanup_development
@@ -7,6 +7,10 @@ development:
   password: crisiscleanup
   host: localhost
   port: 5432
+
+docker:
+  <<: *development
+  host: postgres
 
 test:
   adapter: postgresql
