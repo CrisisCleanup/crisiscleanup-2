@@ -77,7 +77,7 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-group :development, :test do
+group :development, :test, :docker do
 
   gem 'letter_opener'
   gem 'dotenv-rails'
