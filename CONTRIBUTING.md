@@ -20,21 +20,40 @@
 2. `docker` and `docker-compose`
 
 ## Setup
+The development environment is containerized using Docker compose. This is the fastest way to get up and running with the correct version of Ruby/Rails. Ensure you have docker installed and running.
+
 1. Clone repo: `git clone git@github.com:CrisisCleanup/crisiscleanup.git`
-2. `cd crisiscleanup`
-3. `docker-compose up -d` (docker should be installed and running)
-4. API keys and environment variables
+1. `cd crisiscleanup`
+1. API keys and environment variables
 	- Google Maps API key - The map feature of CCU uses the Google Maps API.  Currently, the referrer URL settings do not allow for `localhost` to access the API with that key.  Replace the API key value in this file with your own API key: `app/assets/javascripts/plugins/google.js`
 	- AWS keys - Several features of CCU use the AWS S3 and SNS services.  The sample `.env.development.sample` file should be copied and name to `.env.development` personal AWS API keys entered.
-5. Data Migration - 
+1. Build the docker image (needed right after cloning and any time the Bundlefile, Bundlefile.lock, or Dockerfile changes)
+	- `docker-compose build`
+1. Data Migration
 	- Using seed data:
-		- `bin/rake db:setup` (creates and migrates)
+		- `docker-compose run --rm web bundle exec rake db:setup` (creates and migrates)
 	- Using a DB dumpfile:
-		- `bin/rake db:create`
+		- `docker-compose run --rm web bundle exec rake db:create`
 		- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U crisiscleanup -d crisiscleanup_development dev.dump` (PW: crisiscleanup)
-6. Server Start
-	- `bin/rails server`
-7. Testing 
-	- `RAILS_ENV=test bundle exec rspec`
-8. Cleanup
-	- `docker-compose down` (will destroy the database)
+1. Server Start
+	- `$ docker-compose up` (optionally add `-d` to run the app as a daemon in the background)
+1. Testing. Testing currently happens outside the docker container, but will by default access the database running in Docker.
+	- Create the test database
+		- `RAILS_ENV=test bundle exec rake db:setup`
+	- Run the test suite
+		- `RAILS_ENV=test bundle exec rspec`
+1. Cleanup
+	- To tear down (preserves data)
+		- `$ docker-compose down`
+	- To tear down including the volumes (database)
+		- `$ docker-compose down -v`
+
+### Running the Project Without Docker
+
+The project can be run without Docker.
+
+Dependencies:
+1. A postgres server on localhost with the default port.
+1. A redis server on localhost with the default port.
+
+Run the rails app normally (e.g. `bundle exec rails s -p 3000 -b '0.0.0.0'`).
