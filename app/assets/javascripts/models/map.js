@@ -346,7 +346,7 @@ CCMap.Map = function(params) {
           context: this,
           success: function(data) {
             if (data.status === "OK") {
-              populateAddressFields.call(this, data.results[0]);            
+              populateAddressFields.call(this, data.results[0]);
             } else {
               console.warning("Something went wrong with the geocoding query.");
             }
@@ -448,7 +448,7 @@ CCMap.Map = function(params) {
 
     }
   }
-  
+
   // Geolocation
   var defaultRandomLocation = {lat:31.4181, lng:73.0776};
   var myLocationMarker = new google.maps.Marker({
@@ -457,10 +457,9 @@ CCMap.Map = function(params) {
     position: defaultRandomLocation,
     visible: false
   });
-  function addLocationButton(map, marker)
-  {
+  function addLocationButton(map, marker) {
     var controlDiv = document.createElement('div');
-    
+
     var firstChild = document.createElement('button');
     firstChild.style.backgroundColor = '#fff';
     firstChild.style.border = 'none';
@@ -474,7 +473,7 @@ CCMap.Map = function(params) {
     firstChild.style.padding = '0px';
     firstChild.title = 'Your Location';
     controlDiv.appendChild(firstChild);
-    
+
     var secondChild = document.createElement('div');
     secondChild.style.margin = '5px';
     secondChild.style.width = '18px';
@@ -485,11 +484,11 @@ CCMap.Map = function(params) {
     secondChild.style.backgroundRepeat = 'no-repeat';
     secondChild.id = 'you_location_img';
     firstChild.appendChild(secondChild);
-    
+
     google.maps.event.addListener(map, 'dragend', function() {
       $('#you_location_img').css('background-position', '0px 0px');
     });
-    
+
     firstChild.addEventListener('click', function() {
       var imgX = '0';
       var animationInterval = setInterval(function(){
@@ -506,6 +505,8 @@ CCMap.Map = function(params) {
           map.setZoom(14);
           clearInterval(animationInterval);
           $('#you_location_img').css('background-position', '-144px 0px');
+        }, function() {
+          alert('There has been a problem detecting your location!  You may have geolocation deactivated in your browser or mobile device privacy settings.')
         });
       }
       else{
@@ -513,9 +514,11 @@ CCMap.Map = function(params) {
         $('#you_location_img').css('background-position', '0px 0px');
       }
     });
-    
+
     controlDiv.index = 1;
     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
   }
-  addLocationButton(this.map, myLocationMarker);
+  if (navigator.geolocation) {
+    addLocationButton(this.map, myLocationMarker);
+  }
 }
