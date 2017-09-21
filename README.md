@@ -2,14 +2,15 @@
 
 # Crisis Cleanup [![Build Status](https://circleci.com/gh/CrisisCleanup/crisiscleanup.png?style=shield)](https://circleci.com/gh/crisiscleanup/crisiscleanup)
 
-Crisis Cleanup
-==============
-
 Crisis Cleanup is a web platform that connects disaster recovery organization volunteers with people who need help after a disaster. The Crisis Cleanup platform has been used to connected 186,340 volunteers from 974 organizations with 40,874 households in 31 states and 70 disasters in 5 countries; a new disaster every two weeks.
 
 Crisis Cleanup works best in a collaborative environment where multiple voluntary organizations and agencies work together and coordinate efforts. Because these organizations do not take orders from one another, Crisis Cleanup is designed to facilitate Collaborative Accountability models of inter-agency interaction, rather than command-and-control operations, or or heirarchical accountability models of interaction. 
 
 This is the primary repository for the main Crisis Cleanup web application, a collaborative map-based coordination tool. This implementation is built with Ruby on Rails, a PostgreSQL database and run on the Heroku stack.
+
+## Contribute
+
+We welcome all contributors!  The primary technologies used here are Ruby/Rails, PostgreSQL, Webpack, VueJS, Google Maps APIs, and AWS APIs (S3, SNS).  Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
 Other Project Stats (As of 2017-09-20)
 -------------
