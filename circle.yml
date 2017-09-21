@@ -7,6 +7,10 @@ machine:
 dependencies:
   post:
     - bundle exec rake assets:precompile
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
 
 test:
   override:
