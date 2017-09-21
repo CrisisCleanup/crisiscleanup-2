@@ -14,6 +14,7 @@
 //
 
 //= require_tree ./plugins
+//= require scripts
 //= require images
 
 $(document).ready(function(){
