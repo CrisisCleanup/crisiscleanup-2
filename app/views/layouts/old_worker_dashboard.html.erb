@@ -10,6 +10,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "vendor/modernizr" %>
   <%= javascript_include_tag "vendor" %>
+  <%= javascript_include_tag "application" %>
 
   <%= csrf_meta_tags %>
   <style type="text/css"> /* Allows Google Suggest wrapping */
@@ -38,7 +39,6 @@
 
 <%= yield :javascripts %>
 
-<%= javascript_include_tag "application" %>
 <%= javascript_pack_tag 'application' %>
 <%= render 'layouts/analytics' %>
 

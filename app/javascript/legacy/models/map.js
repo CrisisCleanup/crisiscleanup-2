@@ -15,6 +15,7 @@
 import {Filters} from './filter';
 import Form from './form';
 import Site from './marker';
+import Raven from 'raven-js';
 
 export default function(params) {
   let $infobox = $('#map-infobox');
@@ -157,7 +158,7 @@ export default function(params) {
         marker.setAnimation(null);
       }, 6000);
     } else {
-      console.warn('Matching site not found.');
+      Raven.captureMessage("Matching site not found.", {level: 'warning'});
     }
   }
   zoomToMarker = zoomToMarker.bind(this);
@@ -221,7 +222,7 @@ export default function(params) {
       context: this,
       url: route + page,
       success: function(data) {
-        if (data.length > 0) {
+        if (data != null && data.length > 0) {
           if (route.indexOf('public') >= 0) {
             data.forEach(function(obj, index) {
               var lat_lng = new params.google.maps.LatLng(parseFloat(obj.blurred_latitude), parseFloat(obj.blurred_longitude));
@@ -254,10 +255,12 @@ export default function(params) {
 
           this.map.fitBounds(this.markerBounds);
           this.markerClusterer.addMarkers(activeMarkers.map(function(site) { return site.marker; }));
+        } else {
+          Raven.captureMessage("Something is wrong with the map data: " + data.constructor);
         }
       },
       error: function() {
-        console.error('500 error in map site request');
+        Raven.captureMessage("500 error in map site request");
       }
     });
   }
@@ -372,7 +375,7 @@ export default function(params) {
             if (data.status === "OK") {
               populateAddressFields.call(this, data.results[0]);
             } else {
-              console.warning("Something went wrong with the geocoding query.");
+              Raven.captureMessage("Something went wrong with the geocoding query.", {level: 'warning'});
             }
           }
         });
