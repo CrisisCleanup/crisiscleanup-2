@@ -5,8 +5,9 @@ machine:
       version: 8.2.0
 
 dependencies:
-  post:
-    - bundle exec rake assets:precompile
+# TODO: fix later
+#  post:
+#    - bundle exec rake assets:precompile
   override:
     - yarn
   cache_directories:
