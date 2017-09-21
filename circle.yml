@@ -1,6 +1,8 @@
 machine:
   ruby:
     version: ruby-2.2.5
+  node:
+      version: 8.2.0
 
 dependencies:
   post:
