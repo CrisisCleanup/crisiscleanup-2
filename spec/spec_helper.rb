@@ -18,6 +18,15 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require File.expand_path("../../lib/mock_geocoder", __FILE__)
 require File.expand_path("../support/features/session_helpers", __FILE__)
+require 'capybara/rspec'
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+# Capybara.default_driver = :selenium
+Capybara.default_driver = :chrome
+Capybara.javascript_driver = :chrome
 
 
 RSpec.configure do |config|
