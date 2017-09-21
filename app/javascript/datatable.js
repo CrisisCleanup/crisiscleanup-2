@@ -17,7 +17,7 @@ document.onreadystatechange = function () {
         components: {
           Datatable
         },
-        data: function () {
+        data () {
           return {
 
             fields: [
@@ -97,7 +97,7 @@ document.onreadystatechange = function () {
         components: {
           Datatable
         },
-        data: function () {
+        data () {
           return {
 
             fields: [
