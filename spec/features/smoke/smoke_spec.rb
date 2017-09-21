@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Smoke test" do
+feature "Smoke test", :js => true do
 
   scenario "public maps" do
     visit '/public_map'
