@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Going to the signup page page", :type => :feature do
+describe "Going to the signup page page", :type => :feature, :js => true do
   it "has a New Organization Link" do
     visit '/signup'
     click_link 'Register Here'
@@ -8,7 +8,7 @@ describe "Going to the signup page page", :type => :feature do
   end
 end
 
-describe "Going to the signup page page", :type => :feature do
+describe "Going to the signup page page", :type => :feature, :js => true do
   it "has a Just Curious Link" do
     visit '/signup'
     click_link 'Learn More'

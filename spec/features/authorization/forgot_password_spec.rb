@@ -1,19 +1,21 @@
 require 'rails_helper'
 
-feature "Signing in" do
-	background do
-		org = FactoryGirl.create(:legacy_organization)
-		org_event = FactoryGirl.create(:legacy_organization_event, legacy_organization_id: org.id)
-		FactoryGirl.create(:user, email: "Gary@aol.com", password: "blue32blue32", legacy_organization_id: org.id)
+describe "Signing in", :type => :feature, :js => true do
+	before do
+    org = FactoryGirl.create(:legacy_organization)
+    event = FactoryGirl.create(:legacy_event)
+    org.legacy_events << event
+    email = "Gary@aol.com"
+    FactoryGirl.create(:user, email: email, password: "blue32blue32", legacy_organization_id: org.id)
 	end
 
-	scenario "User clicks 'Forgot your password'" do
+	it "User clicks 'Forgot your password'" do
 	  visit '/login'
 	  click_link('Forgot your password')
 	  expect(page).to have_content 'Enter your email address below'
 	end
 
-	scenario "User enters correct password and clicks submit button" do
+	it "User enters correct password and clicks submit button" do
 		visit '/password/new'
 		within("#new_user") do
 			fill_in 'Email', :with => 'Gary@aol.com'
@@ -22,11 +24,7 @@ feature "Signing in" do
 		expect(page).to have_content 'You will receive an email with instructions'
 	end
 
-	# scenario "User clicks reset password link" do
-	# 	See here for more: https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
-	# end
-
-	scenario "User enters incorrect password and clicks submit button" do
+	it "User enters incorrect password and clicks submit button" do
 		visit '/password/new'
 		within("#new_user") do
 			fill_in 'Email', :with => 'incorrect@email.com'

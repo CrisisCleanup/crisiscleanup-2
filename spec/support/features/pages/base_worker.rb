@@ -5,14 +5,12 @@ module Pages
 
     def click_dashboard_link
       Capybara.match = :first
-      link = find(:xpath, "//a[contains(text(), 'Dashboard')]")
-      link.click
+      click_link "Dashboard"
     end
 
     def click_contacts_link
       Capybara.match = :first
-      link = find(:xpath, "//a[contains(text(), 'Contacts')]")
-      link.click
+      click_link "Contacts"
     end
 
   end

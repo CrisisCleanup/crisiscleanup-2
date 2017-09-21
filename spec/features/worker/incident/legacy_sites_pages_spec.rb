@@ -2,10 +2,6 @@ require 'rails_helper'
 
 describe "View worker contacts", :type => :feature, :js => true do
 
-  before(:all) do
-    page.driver.browser.manage.window.resize_to(1440, 900)
-  end
-
   it "loads a page with the proper main header" do
   	sign_in_with_user
     visit '/dashboard'
