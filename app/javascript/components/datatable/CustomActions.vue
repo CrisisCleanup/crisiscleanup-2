@@ -21,8 +21,7 @@
       }
     },
     methods: {
-      itemAction: function (action, data, index) {
-      }
+      itemAction (action, data, index) {}
     }
   }
 </script>

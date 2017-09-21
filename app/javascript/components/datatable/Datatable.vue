@@ -35,6 +35,9 @@
   import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
   import DatatableEventHub from '../events/DatatableEventHub';
   import FilterBar from './FilterBar';
+  import CustomActions from './CustomActions';
+  Vue.component('custom-actions', CustomActions);
+  Vue.component('filter-bar', FilterBar);
 
   export default {
     name: 'datatable',
@@ -82,8 +85,7 @@
         return self.onFilterReset()
       });
     },
-    render: function (h) {
-      var self = this;
+    render (h) {
       return h(
         'div', {class: {row: true}},
         [
@@ -97,7 +99,7 @@
       )
     },
     methods: {
-      renderVuetable: function (h) {
+      renderVuetable (h) {
         return h('div', {class: {row: true}}, [
           h(
             'vuetable',
@@ -123,7 +125,7 @@
           )
         ])
       },
-      renderPagination: function (h) {
+      renderPagination (h) {
         return h('div', {class: {row: true}}, [
             h('div', {class: {'small-12': true, 'columns': true}}, [
               h(
@@ -144,49 +146,36 @@
           ]
         )
       },
-      allcap: function (value) {
+      allcap (value) {
         return value.toUpperCase()
       },
-      genderLabel: function (value) {
+      genderLabel (value) {
         return value === 'M'
           ? '<span class="ui teal label"><i class="large man icon"></i>Male</span>'
           : '<span class="ui pink label"><i class="large woman icon"></i>Female</span>'
       },
-      formatNumber: function (value) {
+      formatNumber (value) {
         return accounting.formatNumber(value, 2)
       },
-      /*
-      formatDate: function (value, fmt) {
-        return (value == null)
-          ? ''
-          : moment(value, 'YYYY-MM-DD').format(fmt)
-      },
-      */
-      onPaginationData: function (paginationData) {
+      onPaginationData (paginationData) {
         this.$refs.pagination.setPaginationData(paginationData)
         this.$refs.paginationInfo.setPaginationData(paginationData)
       },
-      onChangePage: function (page) {
+      onChangePage (page) {
         this.$refs.vuetable.changePage(page)
       },
-      onAction: function (action, data, index) {
+      onAction (action, data, index) {
       },
-      onCellClicked: function (data, field, event) {
+      onCellClicked (data, field, event) {
         this.$refs.vuetable.toggleDetailRow(data.id)
       },
-      onFilterSet: function (filterText) {
-        var self = this;
-        this.appendParams.filter = filterText
-        Vue.nextTick(function () {
-          self.$refs.vuetable.refresh()
-        })
+      onFilterSet (filterText) {
+        this.appendParams.filter = filterText;
+        Vue.nextTick(() => { this.$refs.vuetable.refresh() })
       },
-      onFilterReset: function () {
-        var self = this;
-        delete this.appendParams.filter
-        Vue.nextTick(function () {
-          self.$refs.vuetable.refresh()
-        })
+      onFilterReset () {
+        delete this.appendParams.filter;
+        Vue.nextTick( () => this.$refs.vuetable.refresh() );
       }
     }
   }

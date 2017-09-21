@@ -18,16 +18,16 @@
     props: [
       'filterPlaceholder'
     ],
-    data: function () {
+    data () {
       return {
         filterText: ''
       }
     },
     methods: {
-      doFilter: function () {
+      doFilter () {
         DatatableEventHub.$emit('filter-set', this.filterText);
       },
-      resetFilter: function () {
+      resetFilter () {
         this.filterText = '';
         DatatableEventHub.$emit('filter-reset');
       }
