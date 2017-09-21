@@ -12,23 +12,15 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require foundation
-//= require Chart.bundle
-//= require chartkick
 
 //= require_tree ./plugins
-//= require ./worker/sites.js
-//= require ./scripts.js
+//= require scripts
 //= require images
-//= require_tree ./admin
-//= require_tree ./models
-//= require_tree ./other
-//= require_tree ./static_pages
-//= require_tree ./worker
-
 
 $(document).ready(function(){
-	$(document).foundation();
-})
+	$(document).foundation({
+    equalizer: {
+      equalize_on_stack: true,
+    }
+  });
+});

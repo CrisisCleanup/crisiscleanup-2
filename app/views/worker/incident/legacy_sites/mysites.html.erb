@@ -1,0 +1,34 @@
+<% content_for :title do %>
+    Crisis Cleanup - Browse Sites
+<% end %>
+
+<% content_for :subheader do %>
+    <div class="row subheader">
+      <div class="small-12 medium-8 large-10 columns">
+        <h2>My Claimed Worksites</h2>
+      </div>
+    </div>
+<% end %>
+
+<% content_for :main do %>
+
+    <div id="myworksite-table">
+      <datatable
+      api-url="<%= worker_incident_mysites_path(@event_id, :format => :json) %>"
+      filter-placeholder="Case Number, Name, Address, City, County, or Zip Code"
+      :fields="fields"
+      :sort-order="sortOrder"
+      detail-row-component="mysites-detail-row"
+      >
+        <template slot="actions" scope="props">
+          <div class="custom-actions">
+            <button class="button tiny"
+                    @click="onAction('edit-item', props.rowData, props.rowIndex)">
+              Edit
+            </button>
+          </div>
+        </template>
+      </datatable>
+    </div>
+
+<% end %>

@@ -28,6 +28,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+
 /* GLOBAL STYLES
    ----------------------------- */
 
@@ -36,6 +37,14 @@ html,
 body {
     width: 100%;
     height: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
 // header
@@ -401,6 +410,39 @@ footer {
     box-shadow: 0 2.5em 0 0;
   }
 }
-    
+
+.custom-panel {
+  @include panel(
+    // Sets the panel background color. Default: $panel-pg
+    $bg: white,
+      // Sets the panel padding amount. Default: $panel-padding
+    $padding: 10px,
+      // Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust
+    $adjust: true
+  )
+}
+
+.site-card > p {
+  font-size: 12px;
+  margin: 0px;
+}
+
+.getting-started {
+  color: #000000;
+}
+
+.accordion .accordion-navigation, .accordion dd {
+  margin: 5px !important;
+}
+
+//The accordion is closed
+.accordion-icon:before {
+  content: "\f0d7";
+}
+//The accordion is open
+.active .accordion-icon:before {
+  content: "\f0d8";
+}
+
 /*==================================================================================================*/
 

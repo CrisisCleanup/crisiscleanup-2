@@ -4,6 +4,8 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  config.middleware.use Rack::Deflater
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -97,4 +99,6 @@ Rails.application.configure do
   #if ENV["MEMCACHEDCLOUD_SERVERS"]
   #  config.cache_store = :dalli_store, ENV["MEMCACHEDCLOUD_SERVERS"].split(','), { :username => ENV["MEMCACHEDCLOUD_USERNAME"], :password => ENV["MEMCACHEDCLOUD_PASSWORD"] }
   #end
+
+  config.active_job.queue_adapter = :sidekiq
 end

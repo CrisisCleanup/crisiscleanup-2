@@ -4,9 +4,12 @@ module Worker
     before_filter :check_user
 
     def index
-      @requested_invitations = RequestInvitation.where(user_created: false, legacy_organization_id: current_user.legacy_organization_id).order(:name)
-      @pending_invitations  = Invitation.where(organization_id: current_user.legacy_organization_id, activated: false)
-      @users = User.where(legacy_organization_id: current_user.legacy_organization_id)
+      @sites = Legacy::LegacySite.where(legacy_event_id: current_user_event)
+      @sites = @sites.where("user_id = ?", current_user.id)
+
+    end
+
+    def get_started
     end
 
     def incident_chooser

@@ -31,6 +31,6 @@ feature "Inviting a new user" do
       check 'user_accepted_terms'
       click_button "Sign up"
     end
-    expect(page).to have_content 'Worker Dashboard'
+    expect(page).to have_content 'My Work Dashboard'
   end
 end

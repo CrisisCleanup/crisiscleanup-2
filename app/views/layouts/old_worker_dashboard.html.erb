@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<%= render 'layouts/zendesk' %>
+
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "Crisis Cleanup" %></title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "vendor" %>
+  <%= javascript_include_tag "application" %>
+
+  <%= csrf_meta_tags %>
+  <style type="text/css"> /* Allows Google Suggest wrapping */
+  .pac-item {
+    white-space: pre-line;
+  }
+  </style>
+</head>
+<body class='<%= @body.present? ? @body : "worker-dashboard" %>'>
+<%= render 'layouts/menus/worker_dashboard_menu' %>
+<%= render (request.host =~ /demo/) ? "layouts/menus/alert_menu_demo" : "layouts/menus/alert_menu" %>
+<%= yield %>
+
+<%= yield :subheader %>
+
+<div id="wrapper">
+  <%= yield :main %>
+  <%= yield :sidebar %>
+</div>
+<%= render 'layouts/contribute' %>
+<%= render 'layouts/footer' %>
+
+<script type="text/javascript">
+  var InitialState = <%= raw initial_state.to_json %>;
+</script>
+
+<%= yield :javascripts %>
+
+<%= javascript_pack_tag 'application' %>
+<%= render 'layouts/analytics' %>
+
+<%= yield :joyride %>
+</body>
+</html>

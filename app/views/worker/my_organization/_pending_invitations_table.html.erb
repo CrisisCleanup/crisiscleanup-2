@@ -1,0 +1,20 @@
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Invited By</th>
+      <th>Expiration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @pending_invitations %>
+      <% @pending_invitations.each do |pending_invitation| %>
+        <tr>
+          <td> <%= pending_invitation.invitee_email %> </td>
+          <td> <%= pending_invitation.user_name %> </td>
+          <td> <%= pending_invitation.expiration.strftime("%m/%d/%Y") if pending_invitation.expiration %> </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

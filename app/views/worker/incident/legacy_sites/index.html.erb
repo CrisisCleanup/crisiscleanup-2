@@ -9,38 +9,38 @@
         <hr class="medium">
         <p><em>Note: This list does not include Damage Assessments (DAs). To convert a DA to a work order, edit the DA on the map and change the "Primary Help Needed" to something like "Flood."</em></p>
     </div>
-    <div class="small-12 medium-4 large-2 columns" align="center">
+    <div class="small-12 medium-4 large-2 columns hide-for-small-only" align="center">
         <%= image_tag "characters/Houses Broken.png", :class => "character" ,:alt => "browse sites"  %>
     </div>              
 </div>
 <% end %>
 
 <% content_for :main do %>
-  <div id="main" class="alt">
-    <div class="row">
-      <%= render 'table', sites: @sites, event_id: @event_id %>
-      <%= will_paginate @sites %>
+    <div class="small-12 medium-12 large-12 columns">
+
+    <div id="myworksite-table">
+      <datatable
+      api-url="<%= worker_incident_legacy_sites_index_path(@event_id, :format => :json) %>"
+      filter-placeholder="Case Number, Name, Address, City, County, or Zip Code"
+      :fields="fields"
+      :sort-order="sortOrder"
+      detail-row-component="legacy-sites-detail-row"
+      >
+        <template slot="actions" scope="props">
+          <div class="custom-actions">
+            <button class="button tiny"
+                    @click="onAction('edit-item', props.rowData, props.rowIndex)">
+              Edit
+            </button>
+          </div>
+        </template>
+      </datatable>
     </div>
   </div>
 <% end %>
 
 <% content_for :sidebar do %>
-  <div id="sidebar">
-    <h4>Sites Filter</h4>
-    <p>Choose a way to order sites with the form below.</p>
-    <form>
-      <label for="sort_order"><strong> Order By:</strong></label>
-      <select id="sort_order" name="sort_order">
-        <option value="">Choose a sort order</option>
-        <option value="county">County</option>
-        <option value="state">State</option>
-        <option value="name_asc">Name (Ascending order)</option>
-        <option value="name_desc">Name (Descending order)</option>
-        <option value="date_asc">Date (Ascending order)</option>
-        <option value="date_desc">Date (Descending order)</option>
-      </select>
-      <a id="submit_sort_order" class="button">Submit</a>
-      <%= link_to "Download CSV", worker_incident_sites_download_path(@event_id, format: :csv), class: "button" %>
-    </form>
+  <div class="small-12 medium-12 large-12 columns">
+    <a href="#" class="button" id="download-csv-btn" style="margin-left: 13px;">Download CSV</a>
   </div>
 <% end %>

@@ -3,71 +3,205 @@
 <% end %>
 
 <% content_for :subheader do %>
-<div class="row subheader">
-        <div class="small-12 medium-8 large-10 columns">
-            <h2>Worker Dashboard<h2>
-                <hr class="medium">
-        </div>
-        <div class="small-12 medium-4 large-2 columns" align="center">
-            <%= image_tag "characters/House13.png", :class => "character" ,:alt => "worker dashboard"  %>
-        </div>
-</div>
+    <div class="row">
+      <h2 class="center">My Work Dashboard</h2>
+    </div>
 <% end %>
 
 <% content_for :main do %>
-<div id="main" class="alt">
-        <% unless current_user.admin %>
-            <% unless current_user_event %>
-                <p>Your organization isn't connected to an event. Use the admin panel to add an event to this organization.</p>
+
+    <style>
+      .modal-mask {
+        position: fixed;
+        z-index: 9998;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        display: table;
+        transition: opacity .3s ease;
+      }
+
+      .modal-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .modal-container {
+        width: 300px;
+        margin: 0px auto;
+        padding: 20px 30px;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+        transition: all .3s ease;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+
+      .modal-header h3 {
+        margin-top: 0;
+        color: #42b983;
+      }
+
+      .modal-body {
+        margin: 10px 0;
+        /*margin-bottom: 40px;*/
+      }
+
+      .modal-default-button {
+        float: right;
+      }
+
+      /*
+       * The following styles are auto-applied to elements with
+       * transition="modal" when their visibility is toggled
+       * by Vue.js.
+       *
+       * You can easily play with the modal transition by editing
+       * these styles.
+       */
+
+      .modal-enter {
+        opacity: 0;
+      }
+
+      .modal-leave-active {
+        opacity: 0;
+      }
+
+      .modal-enter .modal-container,
+      .modal-leave-active .modal-container {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    </style>
+
+    <div class="row collapse">
+      <div class="large-6 medium-6 columns">
+        <div class="panel" id="claimed-worksites">
+
+          <h5 class="center" id="view-claimed-worksites">My Claimed Worksites</h5>
+          <div class="row collapse" data-equalizer>
+            <% if @sites.count == 0 %>
+                <div class="small-12 large-12 medium-12 columns" data-equalizer-watch>
+                  <div data-alert class="alert-box warning">
+                    You have not yet claimed any worksites for your team. Please visit the
+                    map <%= link_to "HERE", worker_incident_legacy_map_path(current_user_event), :style => "font-size: larger; color: white;" %>
+                    to get started.</p>
+                  </div>
+                </div>
             <% end %>
+            <% @sites.each do |site| %>
+                <div class="small-6 large-6 medium-6 columns left" data-equalizer-watch>
 
-    <div class="row">
-          <h4>Invite Teammates By Email</h4>
-          <%= render 'invite_form' %><br />
-          <p><strong>Yes</strong>: <span class="code">trustedperson@example.com, myteammate@gmail.com, myfriend@hotmail.com</span><br />
-          <strong>No</strong>: <span class="code">John Smith &lt;trustedperson@example.com&gt;; "Jones, Fran" (myteammate@gmail.com) &lt;myfriend@hotmail.com&gt;</span></p>
-          <p>To improve accuracy and timely updates, Crisis Cleanup <strong>strongly recommends</strong> inviting two or more people per local team.</p>
-          <p><em>Note: Temporary passwords are currently disabled. Please invite all volunteers by sending them an email.</em></p>
-    </div>
-<!--    <div class="row">
-          <h4>Invite Teammates With Temporary Password</h4>
-          <%= render 'temporary_password_form' %><br />
-          <em>Only do this in the field, e.g. on a bus.</em>
-    </div>
-     <div class="row">
-        <h4>Requested Invitations</h4>
-            <%#= render 'request_invitation_table', users: @requested_invitations %>
-    </div> -->
-    <div class="row">
-        <%= render 'user_table' %>
-    </div>
-    <div class="row">
-        <%= render 'pending_invitations_table' %>
+                  <div class="custom-panel text-center site-card" style="margin:0 2px;">
+                    <site-icon :site-id="<%= site.id %>" :site-status="'<%= site.status %>'"></site-icon>
+
+                    <h5><%= site.case_number %></h5>
+                    <h5><%= site.name %></h5>
+                    <p>
+                      <a href="tel:<%= number_to_phone(site.phone1.scan(/\d/).join(''), area_code: true) %>"><%= number_to_phone(site.phone1.scan(/\d/).join(''), area_code: true) %></a>
+                    </p>
+
+                    <p><%= site.address %></p>
+                    <p><%= site.city %>, <%= site.state %>, <%= site.zip_code %></p>
+                    <site-status-dropdown :site-id="<%= site.id %>" :site-status="'<%= site.status %>'"></site-status-dropdown>
+
+                    <div class="medium-12 sm-centered lg-centered column">
+                      <ul class="small-block-grid-3 text-center">
+                        <li><%= link_to worker_incident_legacy_edit_site_path(current_user_event, site.id) do %>
+                              <i title="View on Map" class="fa fa-map fa-lg"></i>
+                          <% end %>
+                        </li>
+                        <li>
+                          <a id="show-modal" @click="fireModal(<%= site.id %>)">
+                            <i title="Send SMS to Teammates" class="fa fa-mobile fa-2x">
+                            </i>
+                          </a>
+                        <li><%= link_to worker_incident_print_path(current_user_event, site.id) do %>
+                              <i title="Print worksite" class="fa fa-print fa-lg"></i>
+                          <% end %>
+                        </li>
+                      </ul>
+                    </div>
+                    <p style="height: 35px;"></p>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+
+          <modal v-if="showModal" v-cloak>
+            <h5 slot="header">Send Worksite Info</h5>
+            <div slot="body">
+              <p>Send this worksite to your team members through SMS Text Messaging.</p>
+              <textarea v-model="smsNumbers" type="text" placeholder="ex. 123-456-7890, 111-111-1111"></textarea>
+              <ul class="button-group">
+                <li>
+                  <button v-on:click="sendMessage" class="button">Send</button>
+                </li>
+                <li>
+                  <button v-on:click="cancelSend" class="button">Cancel</button>
+                </li>
+              </ul>
+            </div>
+          </modal>
+        </div>
+      </div>
+
+      <div class="large-6 medium-6 columns">
+        <div class="small-12 medium-12 large-12 columns">
+          <div class="panel radius" id="invite-panel">
+            <h5 class="center">Invite Additional Teammates to CrisisCleanup</h5>
+            <%= render 'invite_form' %>
+          </div>
+        </div>
+
+
+        <div class="small-12 medium-12 large-12 columns">
+          <div class="panel">
+            <h5 class="center">Quick Links</h5>
+            <ul class="inline-list">
+              <li><%= link_to "My Organization", worker_my_organization_path %></li>
+              <li><%= link_to "Contacts", worker_incident_legacy_contacts_path(current_user_event) %></li>
+              <li><%= link_to "Organizations", worker_incident_legacy_organizations_path(current_user_event) %></li>
+              <li><%= link_to "Stats", worker_incident_stats_path(current_user_event) %></li>
+              <li><%= link_to worker_incident_graphs_path(current_user_event) do %>
+                    Graphs
+                <% end %></li>
+            </ul>
+          </div>
+        </div>
+
+
+        <h4 class="center">Metrics</h4>
+        <div class="small-12 medium-12 large-6 columns">
+          <h5 class="center">My Organization's Daily Progress</h5>
+          <%= area_chart worker_incident_graphs_site0_path(current_user_event) %>
+        </div>
+        <div class="small-12 medium-12 large-6 columns">
+          <h5 class="center">My Organization's Work Order Status</h5>
+          <%= pie_chart worker_incident_graphs_site2_path(current_user_event) %>
+        </div>
+        <div class="small-12 medium-12 large-6 columns">
+          <h5 class="center">All Organizations' Daily Progress</h5>
+          <%= column_chart worker_incident_graphs_site1_path(current_user_event), stacked: true %>
+        </div>
+
+      </div>
+
     </div>
 
-    <% end %>
-    </div>
-<% end %>
-
-<% content_for :sidebar do %>
-<div id="sidebar">
-    <h4>User Info</h4>
-    <% if @current_user.admin %>
-      <p>I am: <strong><%= current_user.name %> (<%=current_user.email %>)</strong> and I am an Admin therefore I cannot invite people to an organization</p>
-    <% else %>
-    <p>I am: <strong><%=current_user.email %></strong> and I belong to <strong><%=current_user.legacy_organization.name %></strong></p>
-    <%end%>
-</div>
 <% end %>
 
 <% content_for :joyride do %>
     <%= render 'joyride' %>
     <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js' %>
     <script type="text/javascript">
-        $(document).foundation('joyride', 'start', {
-            modal: false,
-            cookie_monster: true,
-            cookie_name: 'cc-joyride'
-        });
+      $(document).foundation('joyride', 'start', {
+        modal: false,
+        cookie_monster: true,
+        cookie_name: 'cc-joyride'
+      });
     </script>
 <% end %>

@@ -1,7 +1,7 @@
 # config/unicorn.rb
 
 # Allows the use of pry with unicorn in development.
-if ENV["RAILS_ENV"] == "development"
+if ENV["RAILS_ENV"] == "development" || ENV["RAILS_ENV"] == "docker"
   worker_processes 1
   timeout 10000
 else

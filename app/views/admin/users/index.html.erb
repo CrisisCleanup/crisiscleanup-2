@@ -12,8 +12,22 @@
 <hr>    
 </div>
 <div class="row">
-	<div class="small-12 medium-12 large-12 columns">
-		<%= render 'table', users: @users %>
-        <%= will_paginate @users %>
-	</div>
+  <div id="users-table">
+    <datatable
+    api-url="<%= admin_users_path(:format => :json) %>"
+    filter-placeholder="Name or Email"
+    :fields="fields"
+    :sort-order="sortOrder"
+    detail-row-component="users-detail-row"
+    >
+      <template slot="actions" scope="props">
+        <div class="custom-actions">
+          <button class="button tiny"
+                  @click="onAction('edit-item', props.rowData, props.rowIndex)">
+            Edit
+          </button>
+        </div>
+      </template>
+    </datatable>
+  </div>
 </div>

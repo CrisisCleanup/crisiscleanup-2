@@ -8,24 +8,83 @@
       <h2>Organization Sign Up<h2>
       <h4 class="basic">If you need help, please, please, please do NOT sign up here. You are in the wrong place, and we can't help. Call 800-451-1954 or 844-965-1386.</h4>
       <p>Organizations can fill in the information below and start using Crisis Cleanup today!</p>
-      <hr class="medium">
     </div>
-  <div class="row">
     <div class="small-12 medium-4 large-2 columns" align="center">
-      <%= image_tag "characters/Team3-211.png", :class => "character" ,:alt => "worker dashboard"  %>
+        <%= image_tag "characters/Multi Color 2.png", :class => "character" ,:alt => "about crisis cleanup"  %>
+        <%= image_tag "characters/Team3-211.png", :class => "character" ,:alt => "worker dashboard"  %>
     </div>
-  </div>
+    <hr class="medium">
 <% end %>
 
 <% content_for :main do %>
   <div class="row">
     <div class='small-12 medium-12 large-12 columns'>
-      <ul>
-        <li><strong>First Time</strong>: Use this form to sign up your organization for the first time.</li>
-        <li><strong>Redeploy</strong>: If your organization has used Crisis Cleanup in the past and you'd like to join a new incident, <a href="/login">login</a>, then hover over "Dashboard" on the nav bar and click "Redeploy."</li>
-        <li><strong>Volunteer</strong>: If you are a volunteer, ask another member of your organization to send you an email invitation through the Dashboard.</li>
-        <li><strong>New incident</strong>: <a href="/new_incident">Request a new Incident</a></li>
-      </ul>
+      <h2>Example Eligibility</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class='small-12 medium-6 large-6 columns'>
+      <table>
+        <tr>
+          <th>NOT ELIGIBLE</th>
+          <th>Instead, to this...</th>
+        </tr>
+        <tr>
+          <td>Individuals &amp; groups of friends</td>
+          <td>Please volunteer with a relief organization.</td>
+        </tr>
+        <tr>
+          <td>Survivors needing help</td>
+          <td>Call 800-451-1954 or 844-965-1386.</td>
+        </tr>
+        <tr>
+          <td>For-profit contractors</td>
+          <td>Volunteer with a relief organization.</td>
+        </tr>
+        <tr>
+          <td>Team Rubicon</td>
+          <td>Ask someone to invite you to the TRUSA account.</td>
+        </tr>
+        <tr>
+          <td>LDS Wards</td>
+          <td><b>Do NOT register here.</b> Instead, please ask someone from your stake to send you an invite link.</a>.</td>
+        </tr>
+        <tr>
+          <td>Existing Accounts</td>
+          <td>If you have an account, but just want access to a new incident, <a href="/login">login</a>, then hover over "Dashboard" on the nav bar and click "Redeploy."</td>
+        </tr>
+        <tr>
+          <td>Missed Requirements</td>
+          <td>If You do not meet the <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation" target="_blank">requirements</a>.</td>
+        </tr>
+      </table>
+    </div>
+    <div class='small-12 medium-6 large-6 columns'>
+      <table>
+        <tr>
+          <th>Please Apply!</th>
+        </tr>
+        <tr>
+          <td>Any oragnization that <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation" target="_blank">meets the requirements</a>.</td>
+        </tr>
+        <tr>
+          <td>Churches, service organizations, faith communities</td>
+        </tr>
+        <tr>
+          <td>Employers sponsoring employee cleanup</td>
+        </tr>
+        <tr>
+          <td>VOADs</td>
+        </tr>
+        <tr>
+          <td>LDS Stakes (Not wards)</td>
+        </tr>
+        <tr>
+          <td>Emergent organizations</td>
+        </tr>
+      </table>
+    </div>
+  </div>
       <%= render 'registration_form', org: @org, url: '/register' %>
     </div>
   </div>

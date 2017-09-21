@@ -66,12 +66,20 @@ gem 'rspec_junit_formatter', '0.2.2'
 
 gem 'unicorn-worker-killer'
 
+gem 'aws-sdk', '~> 2.10'
+# gem 'aws-sdk-sns', '~> 1'
+# gem 'aws-sdk-s3', '~> 1.2'
+
+gem 'sidekiq'
+
+gem 'webpacker', '~> 3.0'
+
 group :production do
   gem 'rack-timeout'
   gem 'newrelic_rpm'
 end
 
-group :development, :test do
+group :development, :test, :docker do
 
   gem 'letter_opener'
   gem 'dotenv-rails'
