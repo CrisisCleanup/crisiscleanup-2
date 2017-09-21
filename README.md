@@ -12,6 +12,8 @@ This is the primary repository for the main Crisis Cleanup web application, a co
 
 We welcome all contributors!  The primary technologies used here are Ruby/Rails, PostgreSQL, Webpack, VueJS, Google Maps APIs, and AWS APIs (S3, SNS).  Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
+You can also join us on our Slack channels - https://crisiscleanup.slack.com
+
 Other Project Stats (As of 2017-09-20)
 -------------
 
