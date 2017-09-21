@@ -17,25 +17,30 @@
 1. Ruby 2.2.5 (use rbenv or RVM) 
 	- with `bundler` gem installed i.e. `gem install bundler`
 2. `docker` and `docker-compose`
-3. `node/npm` (Also optionally `yarn`) (`nvm` recommended for `node` management)
+3. `node/npm` (Optionally, but preferred also install `yarn`)
 
 ## Setup
 1. Clone repo: `git clone git@github.com:CrisisCleanup/crisiscleanup.git`
 2. `cd crisiscleanup`
-3. `docker-compose up -d postgres redis` (docker should be installed and running)
-4. API keys and environment variables
+3. `bundle install`
+4. `docker-compose up -d postgres redis` (docker should be installed and running)
+5. API keys and environment variables
 	- Create your own `.env.development` in the repository base, based on `.env.development.sample`.
 	- (Required) You will need your own [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 	- (Optional) You will also need to use your own AWS API key if you need to develop SNS or S3 features.
-5. Data Migration - 
+6. Data Migration - 
 	- Using seed data:
 		- `bin/rake db:setup` (creates and migrates in one step)
 	- (OPTIONAL) Using a DB dumpfile:
 		- `bin/rake db:create`
 		- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U crisiscleanup -d crisiscleanup_development dev.dump` (PW: crisiscleanup)
-6. Server Start
-	- `bin/rails server`
-7. Testing 
+7. Use NPM or YARN to install node dependencies
+	- For `NPM`: `npm install`
+	- For `YARN`: `yarn` (preferred)
+8. Server Start
+	- `bin/rails server` - App should be available at `http://localhost:3000`
+9. Testing 
+	- `chromedriver` is required for now (use `homebrew` or place binary on `PATH`)
 	- `RAILS_ENV=test bundle exec rspec`
-8. Cleanup
-	- `docker-compose down` (will destroy the database)
+10. Cleanup
+	- `docker-compose down` (will destroy your local dev database)
