@@ -10,8 +10,6 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "vendor/modernizr" %>
   <%= javascript_include_tag "vendor" %>
-  <script>Raven.config('https://10c81ccdb4ca40d39a1fafa02154e6c7@sentry.io/212434').install();</script>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <style type="text/css"> /* Allows Google Suggest wrapping */
   .pac-item {
@@ -39,13 +37,10 @@
   var InitialState = <%= raw initial_state.to_json %>;
 </script>
 
+
 <%= yield :javascripts %>
-
-<script>
-  Vue.use(Vuetable);
-</script>
-
-<%= javascript_include_tag "components" %>
+<%= javascript_include_tag "application" %>
+<%= javascript_pack_tag 'application' %>
 
 <%= render 'layouts/analytics' %>
 
