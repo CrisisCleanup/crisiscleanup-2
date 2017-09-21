@@ -77,56 +77,6 @@
       }
     </style>
 
-    <!-- template for the modal component -->
-    <script type="text/x-template" id="modal-template">
-      <transition name="modal">
-        <div class="modal-mask">
-          <div class="modal-wrapper">
-            <div class="modal-container">
-
-              <div class="modal-header">
-                <slot name="header">
-                  default header
-                </slot>
-              </div>
-
-              <div class="modal-body">
-                <slot name="body">
-                  default body
-                </slot>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </transition>
-    </script>
-
-    <script type="text/x-template" id="site-status-dropdown">
-      <div class="row collapse" style="margin-bottom:0;">
-        <div class="small-12 small-centered medium-12 medium-centered large-6 large-centered columns" style="margin-bottom:0;">
-          <select v-model="selected" @change="setSiteStatus()">
-            <option disabled value="">Please select one</option>
-            <option>Open, unassigned</option>
-            <option>Open, assigned</option>
-            <option>Open, partially completed</option>
-            <option>Open, needs follow-up</option>
-            <option>Closed, completed</option>
-            <option>Closed, incomplete</option>
-            <option>Closed, out of scope</option>
-            <option>Closed, done by others</option>
-            <option>Closed, no help wanted</option>
-            <option>Closed, rejected</option>
-            <option>Closed, duplicate</option>
-          </select>
-        </div>
-      </div>
-    </script>
-
-    <script type="text/x-template" id="site-icon">
-      <i class="fa fa-home fa-2x" v-bind:style="{color: siteColor}"></i>
-    </script>
-
     <div class="row collapse">
       <div class="large-6 medium-6 columns">
         <div class="panel" id="claimed-worksites">

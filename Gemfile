@@ -72,6 +72,8 @@ gem 'aws-sdk', '~> 2.10'
 
 gem 'sidekiq'
 
+gem 'webpacker', '~> 3.0'
+
 group :production do
   gem 'rack-timeout'
   gem 'newrelic_rpm'

@@ -12,34 +12,13 @@
 <hr>    
 </div>
 <div class="row">
-  <%= render 'templates/grid_base' %>
-  <script type="text/x-template" id="detail-row-template">
-    <div @click="onClick">
-      <dl>
-        <dt>ID:</dt>
-        <dd>{{rowData.id}}</dd>
-        <dt>Role:</dt>
-        <dd>{{rowData.role}}</dd>
-        <dt>Title:</dt>
-        <dd>{{rowData.title}}</dd>
-        <dt>Mobile:</dt>
-        <dd>{{rowData.mobile}}</dd>
-        <dt>Admin:</dt>
-        <dd>{{rowData.admin}}</dd>
-        <dt>Accept Terms:</dt>
-        <dd>{{rowData.accepted_terms}}</dd>
-        <dt>Accept Terms Timestamp:</dt>
-        <dd>{{rowData.accepted_terms_timestamp}}</dd>
-      </dl>
-    </div>
-  </script>
   <div id="users-table">
-    <my-view-table
+    <datatable
     api-url="<%= admin_users_path(:format => :json) %>"
     filter-placeholder="Name or Email"
     :fields="fields"
     :sort-order="sortOrder"
-    detail-row-component="detail-row"
+    detail-row-component="users-detail-row"
     >
       <template slot="actions" scope="props">
         <div class="custom-actions">
@@ -49,6 +28,6 @@
           </button>
         </div>
       </template>
-    </my-view-table>
+    </datatable>
   </div>
 </div>

@@ -18,28 +18,13 @@
 <% content_for :main do %>
     <div class="small-12 medium-12 large-12 columns">
 
-    <%= render 'templates/grid_base' %>
-    <script type="text/x-template" id="detail-row-template">
-    <div @click="onClick">
-      <dl>
-        <dt>Name:</dt>
-        <dd>{{rowData.name}}</dd>
-        <dt>Address:</dt>
-        <dd>{{rowData.address}}</dd>
-        <dt>Phone 1:</dt>
-        <dd>{{rowData.phone1}}</dd>
-        <dt>Phone 2:</dt>
-        <dd>{{rowData.phone2}}</dd>
-      </dl>
-    </div>
-    </script>
     <div id="myworksite-table">
-      <my-view-table
+      <datatable
       api-url="<%= worker_incident_legacy_sites_index_path(@event_id, :format => :json) %>"
       filter-placeholder="Case Number, Name, Address, City, County, or Zip Code"
       :fields="fields"
       :sort-order="sortOrder"
-      detail-row-component="detail-row"
+      detail-row-component="legacy-sites-detail-row"
       >
         <template slot="actions" scope="props">
           <div class="custom-actions">
@@ -49,7 +34,7 @@
             </button>
           </div>
         </template>
-      </my-view-table>
+      </datatable>
     </div>
   </div>
 <% end %>

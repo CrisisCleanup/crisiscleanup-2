@@ -3,9 +3,3 @@
 //= require foundation
 //= require Chart.bundle
 //= require chartkick
-//= require vue
-//= require vue-resource
-//= require vuex
-//= require vuetable_2_full
-//= require raven
-//= require raven_vue
