@@ -39,3 +39,4 @@ Thumbs.db
 /node_modules
 .env.development
 Makefile
+/public/packs
