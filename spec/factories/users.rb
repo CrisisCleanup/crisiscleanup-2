@@ -6,6 +6,7 @@ FactoryGirl.define do
       accepted_terms true
       admin false
       legacy_organization_id 1
+      is_disabled false
     end
 
     factory :admin, class: User do
@@ -15,5 +16,6 @@ FactoryGirl.define do
       accepted_terms true
       admin true
       legacy_organization_id 1
+      is_disabled false
     end
 end

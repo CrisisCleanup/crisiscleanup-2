@@ -129,6 +129,11 @@ document.onreadystatechange = function () {
                 sortField: 'lg_name',
               },
               {
+                title: 'Is Disabled',
+                name: 'is_disabled',
+                sortField: 'is_disabled',
+              },
+              {
                 name: '__slot:actions',
                 title: 'Actions',
               }

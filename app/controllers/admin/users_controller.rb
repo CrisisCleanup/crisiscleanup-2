@@ -35,11 +35,11 @@ module Admin
     end
 
     def edit
-      @user = User.find(params[:id])
+      @user = User.unscoped.find(params[:id])
     end
 
     def update
-      @user = User.find(params[:id])
+      @user = User.unscoped.find(params[:id])
       if  @user.update_attributes(site_params)
         flash[:notice] = "User #{@user.name} successfully updated"
         redirect_to admin_users_path
@@ -54,7 +54,7 @@ module Admin
     def site_params
       params.require(:user).permit(
         :admin, :email, :name, :password,
-        :accepted_terms, :legacy_organization_id)
+        :accepted_terms, :legacy_organization_id, :is_disabled)
     end
 
     def get_users
@@ -65,17 +65,20 @@ module Admin
       end
 
       if params[:filter]
-        @users = User.joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = users.legacy_organization_id")
+        @users = User.unscoped
+                     .joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = users.legacy_organization_id")
                      .select('users.*, legacy_organizations.name as lg_name')
                      .where("users.name LIKE ? OR users.email LIKE ?", "%#{params[:filter]}%", "%#{params[:filter]}%")
                      .order(params[:sort] ? "#{sort[0]} #{sort[1]}" : "name")
                      .paginate(:page => params["page"], :per_page => 15)
 
       else
-        @users = User.joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = users.legacy_organization_id")
-        .select('users.*, legacy_organizations.name as lg_name')
-        .order(params[:sort] ? "#{sort[0]} #{sort[1]}" : "name")
-                     .paginate(:page => params["page"], :per_page => 15)
+        @users = User
+          .unscoped
+          .joins("LEFT OUTER JOIN legacy_organizations ON legacy_organizations.id = users.legacy_organization_id")
+          .select('users.*, legacy_organizations.name as lg_name')
+          .order(params[:sort] ? "#{sort[0]} #{sort[1]}" : "name")
+          .paginate(:page => params["page"], :per_page => 15)
       end
 
       query = {

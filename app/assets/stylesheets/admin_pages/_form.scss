@@ -31,3 +31,8 @@ label {
         margin: 0 0 10px 0;
     }
 }
+
+// Otherwise it gonna shift it to the right, because there's negative margin on .row .row
+#users-table .row {
+    margin: 0;
+}

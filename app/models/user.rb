@@ -16,6 +16,12 @@ class User < ActiveRecord::Base
   validates_presence_of :accepted_terms
   before_save :set_terms_timestamp
 
+  default_scope { active }
+
+  def self.active
+    where(is_disabled: false)
+  end
+
   def invited_by
     self.reference
   end

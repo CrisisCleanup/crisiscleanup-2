@@ -39,3 +39,6 @@ Thumbs.db
 /node_modules
 .env.development
 Makefile
+package-lock.json
+/public/packs
+.byebug_history

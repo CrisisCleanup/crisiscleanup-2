@@ -7,6 +7,14 @@ RSpec.describe User, type: :model do
     it { should belong_to :reference }
   end
 
+  describe "#is_disabled" do
+    it "should not fetch disabled users by default" do
+      user1 = FactoryGirl.create(:user, email: Faker::Internet.email)
+      user2 = FactoryGirl.create(:user, email: Faker::Internet.email, is_disabled: true)
+      expect(User.all).to eq([user1])
+    end
+  end
+
   describe "org validation" do
     let(:frank) { User.new(name:'Frank', email:'frank@aol.com', password:'blue32blue32', accepted_terms: true) }
     let(:dhruv) { User.new(name:'Dhruv', email:'Dhruv@aol.com', password:'blue32blue32', accepted_terms: true, admin:true) }
