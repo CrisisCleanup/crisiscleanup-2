@@ -1,7 +1,6 @@
 
 module Pages
   class WorkerContactPage < BaseWorkerPage
-    include Capybara::DSL
 
     def click_dashboard_link
       find('.has-dropdown').hover

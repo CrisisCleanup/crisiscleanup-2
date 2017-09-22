@@ -27,10 +27,17 @@ export default function(params) {
     return image_path('map_icons/' + this.site.work_type.replace(/\s+/g, '_') + '_' + color + '.png');
   }
 
+  let isMarkerOptimized = true;
+  if (process.env.NODE_ENV === "test") {
+    isMarkerOptimized = false
+  }
+
   this.marker = new google.maps.Marker({
     position: params.position,
     map: params.map,
-    icon: self.generateIconFilename.call(self)
+    title: params.site.case_number,
+    icon: self.generateIconFilename.call(self),
+    optimized: isMarkerOptimized
   });
 
   function toggleInfobox() {
@@ -139,7 +146,8 @@ export default function(params) {
     table.appendChild(
       createTableRow(
         document.createTextNode('Case Number'),
-        document.createTextNode(this.site.case_number)
+        document.createTextNode(this.site.case_number),
+        'caseNumber'
       )
     );
 
@@ -157,7 +165,8 @@ export default function(params) {
       table.appendChild(
         createTableRow(
           document.createTextNode('Phone 1'),
-          phone1tag
+          phone1tag,
+          "phone1"
         )
       )
     }
@@ -176,7 +185,8 @@ export default function(params) {
       table.appendChild(
         createTableRow(
           document.createTextNode('Phone 2'),
-          phone2tag
+          phone2tag,
+          "phone2"
         )
       )
     }
@@ -191,7 +201,8 @@ export default function(params) {
       table.appendChild(
         createTableRow(
           document.createTextNode('Claimed By:'),
-          claimedLink
+          claimedLink,
+          "claimedBy"
         )
       );
     }
@@ -242,7 +253,8 @@ export default function(params) {
         table.appendChild(
           createTableRow(
             document.createTextNode(key + ":"),
-            document.createTextNode(displayObj[key])
+            document.createTextNode(displayObj[key]),
+            key.toLowerCase()
           )
         );
       }
@@ -275,7 +287,8 @@ export default function(params) {
     table.appendChild(
       createTableRow(
         document.createTextNode('Status:'),
-        statusDropdown
+        statusDropdown,
+        'status'
       )
     );
 
@@ -305,6 +318,7 @@ export default function(params) {
       if (actionButtons.hasOwnProperty(key)) {
         var button = document.createElement('a');
         button.className = 'button tiny';
+        button.id = 'infobox-' + key.toLowerCase().replace(' ', '');
         button.appendChild(document.createTextNode(key));
         button.onclick = actionButtons[key];
         buttonCell.appendChild(button);
@@ -390,7 +404,7 @@ export default function(params) {
    *
    * @returns {HTMLElement} row - a tr with two td's
    */
-  function createTableRow(labelNode, valueNode) {
+  function createTableRow(labelNode, valueNode, id) {
     var row = document.createElement('div');
     row.className = 'row';
     var labelCell = document.createElement('div');
@@ -398,6 +412,7 @@ export default function(params) {
     var strongLabel = document.createElement('strong');
     var valueCell = document.createElement('div');
     valueCell.className = 'small-12 medium-9 large-9 columns';
+    valueCell.id = 'infobox-' + id;
     strongLabel.appendChild(labelNode);
     labelCell.appendChild(strongLabel);
     valueCell.appendChild(valueNode);
