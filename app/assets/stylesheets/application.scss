@@ -6,28 +6,30 @@
 @import "modules/color_blocks";
 @import "modules/buttons";
 @import "modules/nav_dropdown_mobile";
-
 .public {
-	@import "public_pages/static_pages";
+    @import "public_pages/static_pages";
     @import "public_pages/registration";
 }
-.worker-dashboard, .incident{
-	@import "incident_pages/user";
-	
-}    
-.admin-dashboard{
-	@import "admin_pages/dashboard";
-	@import "admin_pages/form";
+
+.worker-dashboard,
+.incident {
+    @import "incident_pages/user";
 }
+
+.admin-dashboard {
+    @import "admin_pages/dashboard";
+    @import "admin_pages/form";
+}
+
 .map {
-	@import "incident_pages/map";
-	@import "incident_pages/map_search";
+    @import "incident_pages/map";
+    @import "incident_pages/map_search";
 }
+
 @import "compass";
 @import 'foundation-icons';
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
 
 /* GLOBAL STYLES
    ----------------------------- */
@@ -40,11 +42,11 @@ body {
 }
 
 @media only screen and (max-width: 767px) {
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }
 
 // header
@@ -69,14 +71,16 @@ header {
 // foundation overrides for rows/columns
 .row {
     clear: both;
-    max-width: 100%!important; /* offsets default 62.5em default */
+    max-width: 100%!important;
+    /* offsets default 62.5em default */
 }
+
 .columns {
     margin-bottom: 10px;
 }
 
 // gray bar below nav for site-wide announcements
-.alert_menu { 
+.alert_menu {
     width: 100%;
     height: auto;
     border-style: solid;
@@ -92,23 +96,24 @@ header {
     text-align: left;
     & .alert_container {
         margin: 0;
-        padding: 0;   
+        padding: 0;
         text-align: left;
         & .alert-box {
             padding: 5px 25px 5px 10px;
             margin: 0;
             width: 95%;
-            & .alert {      
-                color: #fff; /* TEMP FIX */
+            & .alert {
+                color: #fff;
+                /* TEMP FIX */
             }
             & a:link {
-                color: rgba(255,255,255,.5);
+                color: rgba(255, 255, 255, .5);
             }
             & a:hover {
-                color:#fff;
+                color: #fff;
             }
             & .subtext {
-                color: rgba(255,255,255,.5);
+                color: rgba(255, 255, 255, .5);
             }
         }
         & p {
@@ -118,12 +123,12 @@ header {
         & form {
             width: 100%;
         }
-        & label {        
+        & label {
             margin: 0;
         }
         & select {
             margin: 0;
-            display:inline-block!important;
+            display: inline-block!important;
         }
         & .custom-dropdown-area {
             display: none;
@@ -132,8 +137,7 @@ header {
 }
 
 // sign-in notification
-p.notice { 
-}
+p.notice {}
 
 //page title and subtitle section
 .subheader {
@@ -145,37 +149,39 @@ p.notice {
 }
 
 // map requirements
-.map-wrapper{
-	position:relative;
+.map-wrapper {
+    position: relative;
 }
 
 .loading {
-	background-image: image-url('loading.gif');
-	height: 25%;
-	width: 25%;
-	z-index: 100;
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	opacity: .6;
-	position: absolute;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	top: 40%;
-	border-radius: 300px;
+    background-image: image-url('loading.gif');
+    height: 25%;
+    width: 25%;
+    z-index: 100;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: .6;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 40%;
+    border-radius: 300px;
 }
 
 // form section hide/show
-.hide_button, .unhide_button {
-	float: right;
-	margin: 0 0 0 5px;
-	padding: 5px 10px 5px 10px;
+.hide_button,
+.unhide_button {
+    float: right;
+    margin: 0 0 0 5px;
+    padding: 5px 10px 5px 10px;
 }
 
 // tabs
-.tabs dd.active a, .tabs .tab-title.active a {
+.tabs dd.active a,
+.tabs .tab-title.active a {
     background: $royal;
     color: #fff;
 }
@@ -189,18 +195,55 @@ p.notice {
 }
 
 // legend 
-.legend {
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  margin-top: -214px;
-  background-color: #ffffff;
-  padding: 0px;
-  max-width: 200px;
-  border-top: 2px solid #5c5c5c;    
-  border-right: 2px solid #5c5c5c;    
+#legend_popout {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    margin-top: -214px;
+    background-color: #ffffff;
+    padding: 0px;
+    max-width: 200px;
+    border-top: 2px solid #5c5c5c;
+    border-right: 2px solid #5c5c5c;
+    transition: 1s;
 }
 
+#legend_open {
+    z-index: 2;
+    left: 0;
+    margin-top: -210px;
+    padding: 0;
+    width: 20px;
+    position: absolute;
+    z-index: 1;
+}
+
+#legend_close {
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    position: absolute;
+    right: 0;
+    height: auto;
+    color: black;
+    background-color: white;
+}
+
+#legend_close:hover {
+    color: #1b84ce;
+}
+
+// .legend {
+//   z-index: 2;
+//   position: absolute;
+//   left: 0;
+//   margin-top: -214px;
+//   background-color: #ffffff;
+//   padding: 0px;
+//   max-width: 200px;
+//   border-top: 2px solid #5c5c5c;    
+//   border-right: 2px solid #5c5c5c;    
+// }
 // generate random temporary password 
 .temporary_password {
     color: #43AC6A;
@@ -211,15 +254,15 @@ p.notice {
 .registration_form_template input {
     width: 370px;
 }
-.registration_form_template .button {    
+
+.registration_form_template .button {
     width: auto;
 }
-
 
 // footer
 footer {
     background: $coal;
-    clear:both;
+    clear: both;
     height: auto;
     width: 100%;
     & #footer_row {
@@ -252,27 +295,27 @@ footer {
             & i:hover {
                 background: $coal;
                 color: $goldenrod;
-            }            
+            }
         }
     }
-        & img {
+    & img {
         width: 65%;
         height: auto;
         margin: 3% 0 5px 0;
     }
     & .medium-8 .medium-4.columns {
-        border-left: 1px solid rgba(255,255,255,.2);
+        border-left: 1px solid rgba(255, 255, 255, .2);
         height: 350px;
         margin-bottom: 0;
         & h4 {
-        color: rgba(255,255,255,.8);
-        margin-top: 10px;
+            color: rgba(255, 255, 255, .8);
+            margin-top: 10px;
         }
         & p {
-            color: rgba(255,255,255,.5);
+            color: rgba(255, 255, 255, .5);
             font-size: 14px;
             & span {
-                color: rgba(255,255,255,.75);
+                color: rgba(255, 255, 255, .75);
             }
         }
         & i {
@@ -280,7 +323,8 @@ footer {
             font-size: 50px;
             margin-top: 20px;
         }
-        & a:link, a:visited {
+        & a:link,
+        a:visited {
             color: #1b84ce;
         }
         & a:hover {
@@ -294,7 +338,7 @@ footer {
     color: #fff;
     max-width: 100rem;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,.2);
+    border-top: 1px solid rgba(255, 255, 255, .2);
     padding: 15px 0 10px 0;
     & .columns p {
         margin: 0;
@@ -323,11 +367,13 @@ footer {
         padding: 0 0.9375rem;
     }
 }
+
 @media screen and (max-width: 752px) {
     .alert_menu .alert_container .alert-box {
         width: 100%;
     }
 }
+
 @media screen and (min-width: 641px) and (max-width: 1024px) {
     footer {
         & .medium-8 .medium-4.columns {
@@ -341,108 +387,113 @@ footer {
         }
     }
 }
-@media screen and (max-width: 640px) { // foundation breakpoint for phone/phablet
+
+@media screen and (max-width: 640px) {
+    // foundation breakpoint for phone/phablet
     footer {
         & .medium-8 .medium-4.columns {
             border-left: none;
-            border-top: 1px solid rgba(255,255,255,.2);
+            border-top: 1px solid rgba(255, 255, 255, .2);
             height: auto;
             padding-bottom: 20px;
         }
     }
 }
 
-
 .loader,
 .loader:before,
 .loader:after {
-  border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation: load7 1.8s infinite ease-in-out;
-  animation: load7 1.8s infinite ease-in-out;
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation: load7 1.8s infinite ease-in-out;
+    animation: load7 1.8s infinite ease-in-out;
 }
+
 .loader {
-  color: #353536;
-  font-size: 10px;
-  margin: 80px auto;
-  position: relative;
-  text-indent: -9999em;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
+    color: #353536;
+    font-size: 10px;
+    margin: 80px auto;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
 }
+
 .loader:before,
 .loader:after {
-  content: '';
-  position: absolute;
-  top: 0;
+    content: '';
+    position: absolute;
+    top: 0;
 }
+
 .loader:before {
-  left: -3.5em;
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+    left: -3.5em;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
 }
+
 .loader:after {
-  left: 3.5em;
+    left: 3.5em;
 }
+
 @-webkit-keyframes load7 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 2.5em 0 -1.3em;
-  }
-  40% {
-    box-shadow: 0 2.5em 0 0;
-  }
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 2.5em 0 -1.3em;
+    }
+    40% {
+        box-shadow: 0 2.5em 0 0;
+    }
 }
+
 @keyframes load7 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 2.5em 0 -1.3em;
-  }
-  40% {
-    box-shadow: 0 2.5em 0 0;
-  }
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 2.5em 0 -1.3em;
+    }
+    40% {
+        box-shadow: 0 2.5em 0 0;
+    }
 }
 
 .custom-panel {
-  @include panel(
-    // Sets the panel background color. Default: $panel-pg
-    $bg: white,
-      // Sets the panel padding amount. Default: $panel-padding
-    $padding: 10px,
-      // Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust
-    $adjust: true
-  )
+    @include panel( // Sets the panel background color. Default: $panel-pg
+    $bg: white, // Sets the panel padding amount. Default: $panel-padding
+    $padding: 10px, // Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust
+    $adjust: true)
 }
 
-.site-card > p {
-  font-size: 12px;
-  margin: 0px;
+.site-card>p {
+    font-size: 12px;
+    margin: 0px;
 }
 
 .getting-started {
-  color: #000000;
+    color: #000000;
 }
 
-.accordion .accordion-navigation, .accordion dd {
-  margin: 5px !important;
+.accordion .accordion-navigation,
+.accordion dd {
+    margin: 5px !important;
 }
 
 //The accordion is closed
 .accordion-icon:before {
-  content: "\f0d7";
+    content: "\f0d7";
 }
+
 //The accordion is open
 .active .accordion-icon:before {
-  content: "\f0d8";
+    content: "\f0d8";
 }
 
-/*==================================================================================================*/
 
+/*==================================================================================================*/
