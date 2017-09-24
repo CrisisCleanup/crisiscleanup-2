@@ -3,6 +3,7 @@
 ## Developer Pull Request Process
 1. Github issue created or assigned. 
 2. Feature branch is created based on the latest from the `master` branch.
+   * Developer forks the repository if (s)he isn't part of the core team and thus does not have permission to commit to the main CrisisCleanup repo. 
 3. Local development and testing is performed **including** writing unit and functional tests for new features and bugs.
 4. Create a pull request into the `master` branch.  Add reviewers and comments. (will trigger CircleCI)
 5. Reviewers will then approve the PR, provide feedback, and then merge into the `staging` environment.
@@ -21,6 +22,7 @@
 
 ## Setup
 1. Clone repo: `git clone git@github.com:CrisisCleanup/crisiscleanup.git`
+   * Clone fork, if applicable, instead of main repo.
 2. `cd crisiscleanup`
 3. `bundle install`
 4. `docker-compose up -d postgres redis` (docker should be installed and running)
@@ -31,6 +33,8 @@
 6. Data Migration - 
 	- Using seed data:
 		- `bin/rake db:setup` (creates and migrates in one step)
+	        - (Mac/HomeBrew) If you encounter an error about byebug and readline, you can work around it by symlinking readline:    
+	        `ln -s /usr/local/opt/readline/lib/libreadline.dylib /usr/local/opt/readline/lib/libreadline.6.dylib`
 	- (OPTIONAL) Using a DB dumpfile:
 		- `bin/rake db:create`
 		- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U crisiscleanup -d crisiscleanup_development dev.dump` (PW: crisiscleanup)
