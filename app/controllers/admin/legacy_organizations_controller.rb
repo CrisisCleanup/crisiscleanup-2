@@ -5,7 +5,7 @@
     # add logic to only allow ccu admins to access this
     # before_filter :deny_access, :unless => :is_ccu_admin?
     def index
-      @orgs = Legacy::LegacyOrganization.order("name").paginate(:page => params[:page])
+      @orgs = Legacy::LegacyOrganization.order("name").paginate(:page => params[:page], :per_page => 50)
       @orgs = @orgs.where(org_verified: true) if params[:verified] == "True"
       @orgs = @orgs.where(org_verified: false) if params[:verified] == "False"
       @orgs = @orgs.where(is_active: true) if params[:active] == "True"
