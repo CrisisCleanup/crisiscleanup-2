@@ -1,7 +1,6 @@
 Vue.filter('phone', function (phone) {
-  return phone.replace(.,''); //Temporarily hide phone number until we can re-train phone center staff
-  //replace(/[^0-9]/g, '')
-    //.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+  return phone.replace(/[^0-9]/g, '')
+    .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
 });
 
 import Vue from 'vue';
