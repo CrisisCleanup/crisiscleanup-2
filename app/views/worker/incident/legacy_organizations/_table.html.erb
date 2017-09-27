@@ -18,7 +18,7 @@
           </a>
         </td>
         <td> <%= org.email %> </td>
-        <td> <!--<%= org.phone %>--> Temporarily <a href="http://blog.crisiscleanup.org/2017/09/internal-phone-numbers-hidden.html" target="_blank">Hidden</a></td>
+        <td> Temporarily <a href="http://blog.crisiscleanup.org/2017/09/internal-phone-numbers-hidden.html" target="_blank">Hidden</a></td>
         <td> <%= org.url %> </td>
         <td> <a href="<%=worker_incident_legacy_contact_path(event_id, org.primary_contact_id(org.id)) if org.primary_contact_id(org.id)%>"><%= org.primary_contact_name(org.id) %></a> </td>
         <td>
