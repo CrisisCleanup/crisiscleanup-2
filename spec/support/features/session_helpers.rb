@@ -17,13 +17,13 @@ module Features
       org.legacy_events << event
       #org_event = FactoryGirl.create(:legacy_organization_event, legacy_organization_id: org.id, legacy_event_id: 1)
       email = "Gary@aol.com"
-	    FactoryGirl.create(:user, email: email, password: "blue32blue32", legacy_organization_id: org.id)
+	    user = FactoryGirl.create(:user, email: email, password: "blue32blue32", legacy_organization_id: org.id)
 
       visit "/login"
       fill_in 'Email', with: email
       fill_in 'Password', with: "blue32blue32"
       click_button 'Log in'
-      email
+      user
     end
 
     def sign_in_with(email, password)
@@ -31,11 +31,6 @@ module Features
       fill_in 'Email', with: email
       fill_in 'Password', with: password
       click_button 'Log in'
-    end
-
-    def send_invites(email_addresses)
-    	fill_in 'email_addresses', with: email_addresses
-    	click_button 'Submit Invites'
     end
 
     def create_incident
