@@ -3,7 +3,7 @@
         <div class="row">
             <div v-if="claimedByUser" class="small-12 medium-12 large-12 columns">
                 <b>Claimed By: </b><a
-                    :href="'mailto:' + claimedByUser.u_email">{{claimedByUser.u_name}}</a>, {{claimedByUser.u_mobile | phone}}
+                    :href="'mailto:' + claimedByUser.u_email">{{claimedByUser.u_name}}</a>
                 <br/>
                 <b>Organization: </b><a
                     :href="'<%= worker_incident_legacy_organizations_path %>/' + claimedByUser.lg_id">{{claimedByUser.lg_name}}</a>

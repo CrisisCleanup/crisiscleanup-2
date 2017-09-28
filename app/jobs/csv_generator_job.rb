@@ -10,7 +10,7 @@ class CsvGeneratorJob < ActiveJob::Base
       File.open(path, "w+") do |f|
         case generator_type
           when "generate_sites"
-            generate_sites_csv(args[0]).each {|element| f.puts(element)}
+            generate_sites_csv(args[0], args[1]).each {|element| f.puts(element)}
         end
       end
     rescue
@@ -31,11 +31,18 @@ class CsvGeneratorJob < ActiveJob::Base
 
   private
 
-  def generate_sites_csv(legacy_event_id)
+  def generate_sites_csv(legacy_event_id, org_id)
     Enumerator.new do |y|
       y << Legacy::LegacySite.csv_header.to_s
 
-      Legacy::LegacySite.find_in_batches({legacy_event_id: legacy_event_id}, 300) {|site| y << site.to_csv_row.to_s}
+      Legacy::LegacySite.find_in_batches_claimed_reported(["legacy_event_id = ? AND (claimed_by = ? OR reported_by = ?)", legacy_event_id, org_id, org_id], 500) {
+          |site| y << site.to_csv_row.to_s
+      }
+
+      Legacy::LegacySite.find_in_batches_claimed_reported(["legacy_event_id = ? AND NOT (claimed_by = ? OR reported_by = ?)", legacy_event_id, org_id, org_id], 500) {
+          |site| y << site.redacted_to_csv_row.to_s
+      }
+
     end
   end
 end

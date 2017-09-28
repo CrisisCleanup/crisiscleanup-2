@@ -2,6 +2,14 @@ require 'rails_helper'
 
 describe "Signing in", :type => :feature, :js => true do
 
+  # before do
+    # require "#{Rails.root}/db/seeds.rb"
+  # end
+  # it "with base user" do
+  #   sign_in_with("demo@crisiscleanup.org", "password")
+  #   expect(page).to have_content 'My Work Dashboard'
+  # end
+
   it "as a worker with correct credentials" do
     sign_in_with_user
     expect(page).to have_content 'My Work Dashboard'
