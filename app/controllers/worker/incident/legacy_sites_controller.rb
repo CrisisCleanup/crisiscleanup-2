@@ -296,7 +296,8 @@ module Worker
         else
           event = Legacy::LegacyEvent.find(params[:id])
           download_file_name = "#{event.name}-#{Time.now.strftime('%F')}.csv"
-          job = CsvGeneratorJob.perform_later('generate_sites', prefix, download_file_name, bucket_name, params[:id])
+          org_id = current_user.legacy_organization_id
+          job = CsvGeneratorJob.perform_later('generate_sites', prefix, download_file_name, bucket_name, params[:id], org_id)
           render json: {status: 200, job_id: job.job_id}
         end
       end

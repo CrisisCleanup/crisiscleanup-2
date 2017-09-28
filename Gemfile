@@ -93,8 +93,8 @@ group :development, :test, :docker do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  gem 'pry-byebug'
-  gem 'pry-stack_explorer'
+  gem 'pry'
+  gem 'poltergeist'
 end
 
 # Use ActiveModel has_secure_password

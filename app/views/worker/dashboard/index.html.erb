@@ -159,14 +159,14 @@
 
 
         <div class="small-12 medium-12 large-12 columns">
-          <div class="panel">
+          <div id="quick-links" class="panel">
             <h5 class="center">Quick Links</h5>
             <ul class="inline-list">
-              <li><%= link_to "My Organization", worker_my_organization_path %></li>
-              <li><%= link_to "Contacts", worker_incident_legacy_contacts_path(current_user_event) %></li>
-              <li><%= link_to "Organizations", worker_incident_legacy_organizations_path(current_user_event) %></li>
-              <li><%= link_to "Stats", worker_incident_stats_path(current_user_event) %></li>
-              <li><%= link_to worker_incident_graphs_path(current_user_event) do %>
+              <li><%= link_to "My Organization", worker_my_organization_path, :id => 'my-org-quick-link' %></li>
+              <li><%= link_to "Contacts", worker_incident_legacy_contacts_path(current_user_event), :id => 'contacts-quick-link' %></li>
+              <li><%= link_to "Organizations", worker_incident_legacy_organizations_path(current_user_event), :id => 'org-quick-link' %></li>
+              <li><%= link_to "Stats", worker_incident_stats_path(current_user_event), :id => 'stats-quick-link' %></li>
+              <li><%= link_to worker_incident_graphs_path(current_user_event), :id => 'graphs-quick-link' do %>
                     Graphs
                 <% end %></li>
             </ul>
@@ -175,15 +175,15 @@
 
 
         <h4 class="center">Metrics</h4>
-        <div class="small-12 medium-12 large-6 columns">
+        <div id="graph-daily-progress" class="small-12 medium-12 large-6 columns">
           <h5 class="center">My Organization's Daily Progress</h5>
           <%= area_chart worker_incident_graphs_site0_path(current_user_event) %>
         </div>
-        <div class="small-12 medium-12 large-6 columns">
+        <div id="graph-work-order-status" class="small-12 medium-12 large-6 columns">
           <h5 class="center">My Organization's Work Order Status</h5>
           <%= pie_chart worker_incident_graphs_site2_path(current_user_event) %>
         </div>
-        <div class="small-12 medium-12 large-6 columns">
+        <div id="graph-all-org-progress" class="small-12 medium-12 large-6 columns">
           <h5 class="center">All Organizations' Daily Progress</h5>
           <%= column_chart worker_incident_graphs_site1_path(current_user_event), stacked: true %>
         </div>
