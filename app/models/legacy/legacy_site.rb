@@ -261,6 +261,80 @@ module Legacy
       )
     end
 
+    def redacted_to_csv_row
+      CSV::Row.new(
+          [
+              :event,
+              :case_number,
+              :name,
+              :address,
+              :city,
+              :county,
+              :state,
+              :zip_code,
+              :phone1,
+              :phone2,
+              :latitude,
+              :longitude,
+              :blurred_latitude,
+              :blurred_longitude,
+              :reported_by,
+              :claimed_by,
+              :request_date,
+              :updated_at,
+              :status,
+              :work_type,
+              :work_requested,
+              :floors_affected,
+              :flood_height,
+              :mold_amount,
+              :num_trees_down,
+              :hours_worked_per_volunteer,
+              :initials_of_resident_present,
+              :total_volunteers,
+              :status_notes,
+              :residence_type,
+              :older_than_60,
+              :first_responder,
+              :details
+          ],[
+              legacy_event.name,
+              case_number,
+              "To see this name, claim the work order: http://bit.ly/csvclaim",
+              address.gsub(/\d/, 'X'),
+              city,
+              county,
+              state,
+              zip_code,
+              "To see this phone number, claim the work order: http://bit.ly/csvclaim",
+              "To see this phone number, claim the work order: http://bit.ly/csvclaim",
+              "To see this location, claim the work order: http://bit.ly/csvclaim",
+              "To see this location, claim the work order: http://bit.ly/csvclaim",
+              blurred_latitude,
+              blurred_longitude,
+              reporting_org.try(:name),
+              legacy_organization.try(:name),
+              request_date,
+              updated_at,
+              status,
+              work_type,
+              work_requested,
+              data ? data['floors_affected'].to_s : "",
+              data ? data['flood_height'].to_s : "",
+              data ? data['mold_amount'].to_s : "",
+              data ? data['num_trees_down'].to_s : "",
+              data ? data['hours_worked_per_volunteer'].to_s : "",
+              data ? data['initials_of_resident_present'].to_s  : "",
+              data ? data['total_volunteers'].to_s : "",
+              data ? data['status_notes'].to_s  : "",
+              data ? data['residence_type'].to_s : "",
+              data ? data['older_than_60'].to_s : "",
+              data ? data['first_responder'].to_s : "",
+              format_details
+          ]
+      )
+    end
+
     def format_details
       blacklist = [
         'address_digits',
@@ -328,6 +402,16 @@ module Legacy
       .find_each(batch_size: batch_size) do |sites|
         yield sites
       end
+    end
+
+    def self.find_in_batches_claimed_reported(*filters, batch_size, &block)
+      includes(:legacy_event, :legacy_organization, :reporting_org)
+      .where(*filters)
+      .where("work_type NOT LIKE 'pda%'")
+      .find_each(batch_size: batch_size) do |sites|
+        yield sites
+      end
+
     end
 
     def self.statuses_by_event event_id
