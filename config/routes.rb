@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get "/import" => "import#form", as: "csv_import_form"
     get "/export" => "export#index", as: "export"
     get "/export_kml/:id" => "export#export_kml", as: "export_kml", :defaults => { :format => :xml }
+    get "settings" => "settings#index", as: "settings"
   end
 
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
