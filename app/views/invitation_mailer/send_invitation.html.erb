@@ -1,34 +1,737 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p><%= @user.name %> (<%= @user.email %>) has invited you to join Crisis Cleanup to assist with community recovery efforts. Do not reply to this email. Next steps:
-      <ol>
-        <li>Watch this Mandatory Training Video: <%= link_to training_url, training_url %>.</li>
-        <li>Click this <strong>ACTIVATION LINK</strong>: <%= link_to @url, @url %>. <strong>DO NOT FORWARD THIS EMAIL</strong>. (If the link has trouble, try adding "www." before "crisiscleanup.org")</li>
-        <li>Type your name, choose a password 8+ characters long, then log in. Click "Forgot Password" if you forget your password.</li>
-        <li>After logging in, invite <em>all authorized members of your organization</em> to participate, from the Dashboard. They can update records and help more people. <u>Do not forward this email.</u> To invite others: <a href="https://youtu.be/3wumEh8wcak?t=71">https://youtu.be/3wumEh8wcak?t=71</a>.</li>
-        <li>Only claim work orders that you can complete in 1-6 days. Do not claim large numbers of work orders in an area unless you can complete them all within six days. Unclaim if you cannot complete.</li>
-      </ol></p>
-    <p>Crisis Cleanup helps organizations coordinate debris removal, muckout, and cleanup work. Crisis Cleanup is about <em>property</em>, not <em>people</em>. Never store sensitive personal information, like SSNs or FEMA numbers in Crisis Cleanup.</p>
-    <p>Any organization can enter a work request into Crisis Cleanup, and any organization with capacity can claim it and go to work. When everyone uses the system, tens of thousands of volunteers from hundreds of organizations go straight to work, and each organization knows where the others are working.</p>
-    <p>If you received this email in error, you may ignore it. We won't send you any more email if you don't activate.</p>
-    <p>Crisis Cleanup has been used by 974 organizations and 186,340 volunteers to coordinate 70 disaster relief efforts. Volunteers have worked 2.5 Million hours, saving 40,874 households $232.6 Million in 31 states and 5 countries. <strong>As a volunteer, you will save your neighbors an average of $1,248.</strong></p>
-    <p><strong>-Crisis Cleanup Support Services</strong></p>
-    <p>Twitter: <a href="https://twitter.com/CrisisCleanup">@CrisisCleanup</a><br />
-    Help: <a href="https://crisiscleanup.zendesk.com/hc/">https://crisiscleanup.zendesk.com/hc/</a><br />
-    <a href="http://bit.ly/CrisisCleanup">http://bit.ly/CrisisCleanup</a><br />
-    <small><em>Crisis Cleanup is a free, open source Collaborative Disaster Recovery Mapping tool.</em></small>
-
-    <hr />
-    <a href="http://bit.ly/CCUPatreon" target="_blank"><img src="http://www.aarontitus.net/crisiscleanup/CCU_Two_Pins_75x75.png" height="75" alt="Crisis Cleanup: Patreon" align="left" border="0"></a> Crisis Cleanup depends upon support from people like you. Please consider supporting Crisis Cleanup with a small <a href="http://bit.ly/CCUPatreon" target="_blank">monthly donation</a> to cover server costs, development, and improvments for future disasters. We support a new disaster <em>every two weeks</em>, for the last five years.</p>
+<head>
+<title>Crisis Cleanup Activation Email</title>
 <!--
-    <p><a href="http://h2prep.me/emailfooter" target="_blank"><img src="http://aarontitus.net/crisiscleanup/h2prep_logo.jpg" height="75" alt="How to Prepare for Everything" align="left" border="0"></a> Hey, down here! Disaster relief volunteers receive 20% off <a href="http://h2prep.me/emailfooter" target="_blank"><em>How to Prepare for Everything</em></a>. Prepare with one simple change: Prepare for <em>disruptions</em>, not disasters. It doesn't matter what caused the power outage, just prepare for the power outage! Preparing for a few disruptions will prepare you for any disaster. Use coupon code, <u>volunteer17</u>.</p>
-    <p><strong>Prepare for disruptions.<br />
-    Prepare together.<br />
-    Prepare for everything.</strong></p>
--->
-  </body>
+    An email present from your friends at Litmus (@litmusapp)
+
+    Email is surprisingly hard. While this has been thoroughly tested, your mileage may vary.
+    It's highly recommended that you test using a service like Litmus (http://litmus.com) and your own devices.
+
+    Enjoy!
+ -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style type="text/css">
+    /* CLIENT-SPECIFIC STYLES */
+    body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+    table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+    img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+
+    /* RESET STYLES */
+    img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+    table{border-collapse: collapse !important;}
+    body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+
+    /* iOS BLUE LINKS */
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+    }
+
+    /* MOBILE STYLES */
+    @media screen and (max-width: 525px) {
+
+        /* ALLOWS FOR FLUID TABLES */
+        .wrapper {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+
+        /* ADJUSTS LAYOUT OF LOGO IMAGE */
+        .logo img {
+          margin: 0 auto !important;
+        }
+
+        /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
+        .mobile-hide {
+          display: none !important;
+        }
+
+        .img-max {
+          max-width: 100% !important;
+          width: 100% !important;
+          height: auto !important;
+        }
+
+        /* FULL-WIDTH TABLES */
+        .responsive-table {
+          width: 100% !important;
+        }
+
+        /* UTILITY CLASSES FOR ADJUSTING PADDING ON MOBILE */
+        .padding {
+          padding: 10px 5% 15px 5% !important;
+        }
+
+        .padding-meta {
+          padding: 30px 5% 0px 5% !important;
+          text-align: center;
+        }
+
+        .no-padding {
+          padding: 0 !important;
+        }
+
+        .section-padding {
+          padding: 50px 15px 50px 15px !important;
+        }
+
+        /* ADJUST BUTTONS ON MOBILE */
+        .mobile-button-container {
+            margin: 0 auto;
+            width: 100% !important;
+        }
+
+        .mobile-button {
+            padding: 15px !important;
+            border: 0 !important;
+            font-size: 16px !important;
+            display: block !important;
+        }
+
+    }
+
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+</style>
+</head>
+<body style="margin: 0 !important; padding: 0 !important;">
+
+<!-- HIDDEN PREHEADER TEXT -->
+<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+    <%= @user.name %> has invited you to help neighbors clean up. Get instant access to a map of people who need help.
+</div>
+
+<!-- HEADER -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td bgcolor="#333333" align="center">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+            <tr>
+            <td align="center" valign="top" width="500">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="wrapper">
+                <tr>
+                    <td align="center" valign="top" style="padding: 15px 0;" class="logo">
+                        <a href="https://www.crisiscleanup.org/" target="_blank">
+                            <img alt="Crisis Cleanup Logo" src="http://www.aarontitus.net/crisiscleanup/CCU_Logo_Invert_Web_155x87.png" width="155" height="87" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ffffff" align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+            <tr>
+            <td align="center" valign="top" width="500">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
+                <tr>
+                    <td>
+                        <!-- HERO IMAGE -->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="padding" align="center">
+                                    <a href="https://www.crisiscleanup.org" target="_blank">
+                                        <img src="http://www.aarontitus.net/crisiscleanup/workers.png" width="345" height="279" border="0" alt="Volunteer through Crisis Cleanup" style="display: block; color: #666666;  font-family: Helvetica, arial, sans-serif; font-size: 16px;" class="img-max">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- COPY -->
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="center" style="font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding">You are only two steps away from helping your neighbors!</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding"><%= @user.name %> (<%= @user.email %>) has invited you to help clean up after the recent disaster. Activating will give you instant access to a live map of people who need help.</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <!-- BULLETPROOF BUTTON -->
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="center" style="padding-top: 25px;" class="padding">
+                                                <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                    <tr>
+                                                       <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><%= link_to "Mandatory Training Video (8.5 mins)", training_url, {:style=>'font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;', :class => "mobile-button"} %></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>&nbsp;<br /></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><%= link_to "Activate Your Account &rarr;", @url, {:style=>'font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;', :class => "mobile-button"} %></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#E6E9ED" align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+            <tr>
+            <td align="center" valign="top" width="500">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 20px; max-width: 500px;" class="responsive-table">
+                <!-- TITLE -->
+                <tr>
+                    <td align="center" style="padding: 0 0 10px 0; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">Things you Need to Know</td>
+                </tr>
+                <!-- BEGIN ITEM -->
+                <tr>
+                    <td align="center" height="100%" valign="top" width="100%" colspan="2">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                        <tr>
+                        <td align="center" valign="top" width="500">
+                        <![endif]-->
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:500;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:115px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
+                                            <tr>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td align="left" valign="top" width="385">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:385px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+
+                                                <td style="padding: 40px 0 0 0;" class="no-padding">
+                                                    <!-- ARTICLE -->
+                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 13px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #aaaaaa;" class="padding-meta">Security</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Choose Your Own Password</td>
+                                                        </tr>
+                                                        <tr>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">Passwords need to be 8+ characters. Choose your own; don't share accounts.<br />Click "<a href="https://www.crisiscleanup.org/password/new" target="_blank">Forgot Password</a>" to reset your password. If the activation button does not work, copy and paste this link: <%= link_to @url, @url %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding:0 0 45px 25px;" align="left" class="padding">
+                                                                <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                                    <tr>
+                                                                        <td align="center">
+                                                                            <!-- BULLETPROOF BUTTON -->
+                                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                                <tr>
+                                                                                    <td align="left">
+                                                                                        <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                                                            <tr>
+                                                                                                <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="https://www.crisiscleanup.org/terms/" target="_blank" style="font-size: 15px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 10px 20px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">Full Terms &rarr;</a></td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+ 
+                <!-- END OF ITEM -->
+                <!-- BEGIN ITEM -->
+                <tr>
+                    <td align="center" height="100%" valign="top" width="100%" colspan="2">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                        <tr>
+                        <td align="center" valign="top" width="500">
+                        <![endif]-->
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:500;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:115px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
+                                            <tr>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td align="left" valign="top" width="385">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:385px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+
+                                                <td style="padding: 40px 0 0 0;" class="no-padding">
+                                                    <!-- ARTICLE -->
+                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 13px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #aaaaaa;" class="padding-meta">Paperwork</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Don't be a Loner!</td>
+                                                        </tr>
+                                                        <tr>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">Invite <em>all team leaders</em> from the Dashboard. You'll be sorry if you don't, because you will have to update all of the paperwork yourself.<br /> <u>This email is just for you. Do not forward it.</u></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding:0 0 45px 25px;" align="left" class="padding">
+                                                                <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                                    <tr>
+                                                                        <td align="center">
+                                                                            <!-- BULLETPROOF BUTTON -->
+                                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                                <tr>
+                                                                                    <td align="left">
+                                                                                        <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                                                            <tr>
+                                                                                                <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="https://youtu.be/3wumEh8wcak?t=71" target="_blank" style="font-size: 15px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 10px 20px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">See How &rarr;</a></a></td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+ 
+                <!-- END OF ITEM -->
+                <!-- BEGIN ITEM -->
+                <tr>
+                    <td align="center" height="100%" valign="top" width="100%" colspan="2">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                        <tr>
+                        <td align="center" valign="top" width="500">
+                        <![endif]-->
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:500;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:115px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
+                                            <tr>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td align="left" valign="top" width="385">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:385px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+
+                                                <td style="padding: 40px 0 0 0;" class="no-padding">
+                                                    <!-- ARTICLE -->
+                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 13px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #aaaaaa;" class="padding-meta">Workflow</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">What do I do now?</td>
+                                                        </tr>
+                                                        <tr>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">As directed by your organization, log in, and go to work. Remember the Crisis Cleanup C's when performing work: <strong>Call, Claim, Confirm, Check/Assess, Clean, Close Out</strong>.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding:0 0 45px 25px;" align="left" class="padding">
+                                                                <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                                    <tr>
+                                                                        <td align="center">
+                                                                            <!-- BULLETPROOF BUTTON -->
+                                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                                <tr>
+                                                                                    <td align="left">
+                                                                                        <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                                                            <tr>
+                                                                                                <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/227036588-Work-Order-Case-Claiming-Policy" target="_blank" style="font-size: 15px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 10px 20px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">Read More &rarr;</a></td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+ 
+                <!-- END OF ITEM -->
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#F5F7FA" align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+            <tr>
+            <td align="center" valign="top" width="500">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
+                <tr>
+                    <td>
+                        <!-- TITLE SECTION AND COPY -->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="center" style="font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333;" class="padding">Other Important Stuff</td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="padding: 20px 0 20px 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">Policies and other things you should know.</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" height="100%" valign="top" width="100%">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                        <tr>
+                        <td align="center" valign="top" width="500">
+                        <![endif]-->
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:500px;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;" class="padding">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                                    <tr>
+                                    <td align="left" valign="top" width="240">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:50%; min-width:240px; vertical-align:top; width:100%;" class="wrapper">
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:240px;" class="wrapper">
+                                            <tr>
+                                                <td align="center" valign="top">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                      <tr>
+                                                            <td style="padding: 20px 0 30px 0;">
+                                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                    <tr>
+                                                                        <td align="center" style="padding: 15px 0 0 0; font-family: Arial, sans-serif; color: #333333; font-size: 20px;" bgcolor="#F5F7FA">Property, not People</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="center" style="padding: 5px 0 0 0; font-family: Arial, sans-serif; color: #666666; font-size: 14px; line-height: 20px;" bgcolor="#F5F7FA">Crisis Cleanup helps organizations coordinate debris removal, muckout, and cleanup work. Crisis Cleanup is about <em>property</em>, not <em>people</em>. Never store sensitive personal information, like SSNs or FEMA numbers in Crisis Cleanup.</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="center" style="padding: 5px 0 0 0; font-family: Arial, sans-serif; color: #666666; font-size: 14px; line-height: 20px;" bgcolor="#F5F7FA"><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200819327-Client-Personal-Data-Collection-Policy" style="color: #256F9C; text-decoration: none;" target="_blank">Client Personal Data Policy &rarr;</a></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                  <td width="20" style="font-size: 1px;">&nbsp;</td>
+                                    <td align="right" valign="top" width="240">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:50%; min-width:240px; vertical-align:top; width:100%;" class="wrapper">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td>
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:240px; float: right;" class="wrapper">
+                                                        <tr>
+                                                            <td align="center" valign="top">
+
+                                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                    <tr>
+                                                                        <td style="padding: 20px 0 30px 0;">
+                                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td align="center" style="padding: 15px 0 0 0; font-family: Arial, sans-serif; color: #333333; font-size: 20px;" bgcolor="#F5F7FA">Kinda Like Craigslist</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="center" style="padding: 5px 0 0 0; font-family: Arial, sans-serif; color: #666666; font-size: 14px; line-height: 20px;" bgcolor="#F5F7FA">Any organization can enter a work request into Crisis Cleanup, and any organization with capacity can claim it and go to work. When everyone uses the system, tens of thousands of volunteers from hundreds of organizations go straight to work, and each organization knows where the others are working.</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="center" style="padding: 5px 0 0 0; font-family: Arial, sans-serif; color: #666666; font-size: 14px; line-height: 20px;" bgcolor="#F5F7FA"><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200596493-Is-Crisis-Cleanup-a-Good-Fit-" style="color: #256F9C; text-decoration: none;" target="_blank">Factors for Success &rarr;</a></td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" height="100%" valign="top" width="100%">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                        <tr>
+                        <td align="center" valign="top" width="500">
+                        <![endif]-->
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:500px;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;" class="padding">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                                    <tr>
+                                    <td align="left" valign="top" width="240">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:50%; min-width:240px; vertical-align:top; width:100%;" class="wrapper">
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:240px;" class="wrapper">
+                                            <tr>
+                                                <td align="center" valign="top">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td style="padding: 20px 0 30px 0;">
+                                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="center" style="padding: 15px 0 0 0; font-family: Arial, sans-serif; color: #333333; font-size: 20px;" bgcolor="#F5F7FA">A New Disaster Every Two Weeks</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="center" style="padding: 5px 0 0 0; font-family: Arial, sans-serif; color: #666666; font-size: 14px; line-height: 20px;" bgcolor="#F5F7FA">Crisis Cleanup has been used by 1,029 organizations and 188,990 volunteers to coordinate 70 disaster relief efforts. Volunteers have worked 2.7 Million hours, saving 44,917 households $255.8 Million in 31 states and 5 countries. <strong>As a volunteer, you will save your neighbors an average of $1,354.</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="center" style="padding: 5px 0 0 0; font-family: Arial, sans-serif; color: #666666; font-size: 14px; line-height: 20px;" bgcolor="#F5F7FA"><a href="https://www.crisiscleanup.org/about" style="color: #256F9C; text-decoration: none;" target="_blank">Learn More &rarr;</a></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td width="20" style="font-size: 1px;">&nbsp;</td>
+                                    <td align="right" valign="top" width="240">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:50%; min-width:240px; vertical-align:top; width:100%;" class="wrapper">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td class="mso-right">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:240px; float: right;" class="wrapper">
+                                                        <tr>
+                                                            <td align="center" valign="top">
+
+                                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                    <tr>
+                                                                        <td style="padding: 20px 0 30px 0;">
+                                                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td align="center" style="padding: 15px 0 0 0; font-family: Arial, sans-serif; color: #333333; font-size: 20px;" bgcolor="#F5F7FA">Just $1 Helps</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="center" style="padding: 5px 0 0 0; font-family: Arial, sans-serif; color: #666666; font-size: 14px; line-height: 20px;" bgcolor="#F5F7FA">Crisis Cleanup depends upon support from people like you. Please consider supporting Crisis Cleanup with a small <a href="http://bit.ly/CCUPatreon" target="_blank">monthly donation</a> to cover server costs, development, and improvments for future disasters. We support a new disaster <em>every two weeks</em>, for the last five years.</strong>
+                                                                                  </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                  <td align="center" style="padding: 5px 0 0 0; font-family: Arial, sans-serif; color: #666666; font-size: 14px; line-height: 20px;" bgcolor="#F5F7FA"><a href="http://bit.ly/CCUPatreon" style="color: #256F9C; text-decoration: none;" target="_blank">Donate $1 &rarr;</a></td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ffffff" align="center" style="padding: 20px 0px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+            <tr>
+            <td align="center" valign="top" width="500">
+            <![endif]-->
+            <!-- UNSUBSCRIBE COPY -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 500px;" class="responsive-table">
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                        <a href="https://www.crisiscleanup.org/contact" target="_blank">Contact Crisis Cleanup</a>
+                        <br />
+                        You are receiving this email because <%= @user.name %> invited you to join <a href="https://www.crisiscleanup.org" target="_blank">Crisis Cleanup</a>. If you received this email in error, you may ignore it.
+                        <span style="font-family: Arial, sans-serif; font-size: 12px; color: #444444;">
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+</table>
+</body>
 </html>
