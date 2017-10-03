@@ -35,11 +35,11 @@ class CsvGeneratorJob < ActiveJob::Base
     Enumerator.new do |y|
       y << Legacy::LegacySite.csv_header.to_s
 
-      Legacy::LegacySite.find_in_batches_claimed_reported(["legacy_event_id = ? AND (claimed_by = ? OR reported_by = ?)", legacy_event_id, org_id, org_id], 500) {
+      Legacy::LegacySite.find_in_batches_claimed_reported(["legacy_event_id = ? AND (claimed_by = ? OR reported_by = ?)", legacy_event_id, org_id, org_id], 300) {
           |site| y << site.to_csv_row.to_s
       }
 
-      Legacy::LegacySite.find_in_batches_claimed_reported(["legacy_event_id = ? AND NOT (claimed_by = ? OR reported_by = ?)", legacy_event_id, org_id, org_id], 500) {
+      Legacy::LegacySite.find_in_batches_claimed_reported(["(legacy_event_id = ?) AND ((NOT claimed_by = ?) OR (NOT reported_by = ?))", legacy_event_id, org_id, org_id], 300) {
           |site| y << site.redacted_to_csv_row.to_s
       }
 
