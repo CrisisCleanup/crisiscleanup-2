@@ -113,4 +113,9 @@ module ApplicationHelper
       }
     end
   end
+
+  def recaptcha_configured?
+    ENV.has_key?('RECAPTCHA_SECRET_KEY') && ENV.has_key?('RECAPTCHA_SITE_KEY')
+  end
+
 end

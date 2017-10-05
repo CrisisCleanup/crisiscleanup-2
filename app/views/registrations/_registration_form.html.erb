@@ -134,6 +134,23 @@
       </div>
     </div>
   </div>
+
+  <% if recaptcha_configured? %>
+    <% if @org.errors.has_key? :captcha %>
+      <div class="row">
+        <div class="small-12 columns">
+          <span class="alert"><%= @org.errors[:captcha][0] %></span>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <%= recaptcha_tags %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="row">
     <div class="medium-12 columns">
       <%= f.button :submit, "Sign Up" %>

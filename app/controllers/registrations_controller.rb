@@ -1,4 +1,6 @@
 class RegistrationsController < ApplicationController
+  include ApplicationHelper
+
   def welcome
   end
 
@@ -28,8 +30,13 @@ class RegistrationsController < ApplicationController
       return
     end
 
-
     if @org.valid?
+      if recaptcha_configured? && !verify_recaptcha(model: @org, attribute: 'captcha')
+        flash[:alert] = "reCAPTCHA verification failed, please try again."
+        render :new
+        return
+      end
+
       @org.legacy_events << Legacy::LegacyEvent.find(params['legacy_legacy_organization']['legacy_events'])
       @org.save
       User.where(admin:true).each do |u|
