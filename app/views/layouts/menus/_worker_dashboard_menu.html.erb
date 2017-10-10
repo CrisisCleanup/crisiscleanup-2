@@ -11,10 +11,10 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul id="worker-nav-list" class="right">
-      <li><%= link_to "Home", home_path %></li>
-      <li><%= nav_link "About", about_path %></li>    
+      <li><%= link_to t('nav_1'), home_path %></li>
+      <li><%= nav_link t('nav_2'), about_path %></li>
       <% if current_user_event %> <!-- DOUBLE CHECK - MAP / FORM LINKS NOT SHOWING UP ON ADMIN VIEW -->
-        <li><%= link_to "Map", worker_incident_legacy_map_path(current_user_event) %></li>
+        <li><%= link_to t('nav_3'), worker_incident_legacy_map_path(current_user_event) %></li>
         <li><%= link_to worker_incident_legacy_form_path(current_user_event) do %>
           Intake <i class="fa fa-plus"></i>
           <% end %>
