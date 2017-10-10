@@ -5,8 +5,8 @@
 <% content_for :subheader do %>
 <div class="row subheader">
     <div class="small-12 medium-8 large-10 columns">
-        <h2>Volunteers</h2>
-        <h4 class="basic">Thank you for helping your community</h4>
+        <h2><%= t('vol_1') %> </h2>
+        <h4 class="basic"><%= t('vol_2') %></h4>
         <hr class="medium">
     </div>
     <div class="small-12 medium-4 large-2 columns" align="center">
@@ -19,41 +19,41 @@
 <div id="main" class="alt">
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h3>You must join an organization to use Crisis Cleanup</h3>
-            <p>Crisis Cleanup is for relief organizations and their volunteers; not for individual volunteers. Join an organization first, and then you can be invited to participate.</p>
-            <h3>Affiliated vs. Unaffiliated Volunteers</h3>
-            <p><strong>Thank you for helping your neighbors.</strong> Always remember to respect the dignity of those you serve by listening to their needs and wishes.</p>
-            <p><strong>Affliated Volunteers</strong> are already volunteering with an organization that uses Crisis Cleanup. Otherwise, you are an <strong>Unaffiliated Volunteer</strong> <em>(sometimes called "Spontaneous Unaffilated Volunteers," "SUVs," "Community Volunteers," or "Event-based Volunteers")</em>. This includes people who <em>want</em> to volunteer with an organization, but haven't yet.</p>
-            <p>Your community needs you whether you are affiliated or unaffiliated. However, only affiliated volunteers can use Crisis Cleanup.</p>
-            <h4>To Join as an Affiliated Volunteer</h4>
-            <p>First, complete the <a href="/training">Training</a>.</p>
-            <p>If you are <u>already affiliated</u> with an organization using Crisis Cleanup, there are two ways to join:
+            <h3><%= t('vol_3') %></h3>
+            <p><%= t('vol_4') %></p>
+            <h3><%= t('vol_5') %></h3>
+            <p><strong><%= t('vol_6') %></strong> <%= t('vol_7') %></p>
+            <p><strong><%= t('vol_8') %></strong> <%= t('vol_9') %> <strong><%= t('vol_10') %></strong> <em><%= t('vol_11') %></em><%= t('vol_12') %> <em><%= t('vol_13') %></em> <%= t('vol_14') %></p>
+            <p><%= t('vol_15') %></p>
+            <h4><%= t('vol_16') %></h4>
+            <p><%= t('vol_17') %> <a href="/training"><%= t('vol_18') %></a>.</p>
+            <p><%= t('vol_19') %> <u><%= t('vol_20') %></u> <%= t('vol_21') %>
                 <ol>
-                    <li><strong>Ask for an Email Invitation</strong><br /> <%= image_tag "screenshots/invite_users_email.png", :alt => "Invite Users via Email", :width => "400"  %>
+                    <li><strong><%= t('vol_22') %></strong><br /> <%= image_tag "screenshots/invite_users_email.png", :alt => "Invite Users via Email", :width => "400"  %>
                         <ul>
-                            <li>Contact <strong>anyone</strong> in your organization who has already logged in to Crisis Cleanup. Tell them to log in and click "Dashboard."</li>
-                            <li>They should see a field that says, "Invite Users By Email."</li>
-                            <li>Ask them to type your email and click "Submit Invites."</li>
+                            <li><%= t('vol_23') %> <strong><%= t('vol_24') %></strong> <%= t('vol_25') %></li>
+                            <li><%= t('vol_26') %></li>
+                            <li><%= t('vol_27') %></li>
                         </ul>
                     </li>
-                    <li><strong>Ask for a Temporary Password</strong><br /> <%= image_tag "screenshots/invite_users_temp_password.png", :alt => "Invite Users using a Temporary Password", :width => "400"  %>
+                    <li><strong><%= t('vol_28') %></strong><br /> <%= image_tag "screenshots/invite_users_temp_password.png", :alt => "Invite Users using a Temporary Password", :width => "400"  %>
                         <ul>
-                            <li>This option is a little more complex. Invitation by email is easier. Use this option if you are in the field (e.g. on a bus).</li>
-                            <li>Contact <strong>anyone</strong> in your organization who has already logged in to Crisis Cleanup. Tell them to log in and click "Dashboard."</li>
-                            <li>Click "Generate Random Password." They should give the password to you. It's good for 30 minutes.</li>
-                            <li><a href="/login">Login</a>, and click, "<a href="/worker/temporary_passwords/new">I have a temporary password</a>." Enter your email and temporary password.</li>
+                            <li><%= t('vol_29') %></li>
+                            <li><%= t('vol_30') %> <strong><%= t('vol_31') %></strong> <%= t('vol_32') %></li>
+                            <li><%= t('vol_33') %></li>
+                            <li><a href="/login"><%= t('vol_34') %></a><%= t('vol_35') %><a href="/worker/temporary_passwords/new"><%= t('vol_36') %></a><%= t('vol_37') %></li>
                         </ul>
                     </li>
                     <!--<li><a href="" class="button">Request an Invitation!</a></li>-->
                 </ol>
             </p>
-            <h4>What to do as an Unaffiliated Volunteer</h4>
-            <h5>Why won't you let unaffiliated volunteers join?</h5>
-            <p>To protect disaster survivors, only volunteers from trusted organizations are allowed to join.</p>
-            <h5>But I just want to help! Can't I just join an organization through Crisis Cleanup?</h5>
-            <p>Unfortunately not. Please apply directly to the organization of your choice. Don't try to affiliate through Crisis Cleanup. You need to be vetted and trained by the organization first. Applying here will only distract field volunteers from their primary mission of helping survivors.</p> 
-            <h5>What should I do if I'm an Unaffiliated Volunteer?</h5>
-            <p>Volunteering as an SUV is hard. Our advice is to be <a href="http://blog.crisiscleanup.org/2015/06/be-patient-be-persistent-and-never-give.html">be patient, be persistent, and never give up hope.</a></p>
+            <h4><%= t('vol_38') %></h4>
+            <h5><%= t('vol_39') %></h5>
+            <p><%= t('vol_40') %></p>
+            <h5><%= t('vol_41') %></h5>
+            <p><%= t('vol_42') %></p> 
+            <h5><%= t('vol_43') %></h5>
+            <p><%= t('vol_44') %> <a href="http://blog.crisiscleanup.org/2015/06/be-patient-be-persistent-and-never-give.html"><%= t('vol_45') %></a></p>
         </div>
     </div>
 </div>
@@ -61,13 +61,13 @@
 
 <% content_for :sidebar do %>
 <div id="sidebar">
-    <h4>Thank you!</h4>
+    <h4><%= t('vol_46') %></h4>
     <!--<a href="" class="button">Request an Invitation!</a>-->
-    <p>Here is some advice you might find helpful as you try to volunteer:
+    <p><%= t('vol_47') %>
         <ul>
-            <li><a href="http://blog.crisiscleanup.org/2015/08/the-root-of-volunteering-trust-and.html">The Root of Volunteering: Trust and Training</a>.</li>
-            <li><a href="http://blog.crisiscleanup.org/2015/06/be-patient-be-persistent-and-never-give.html">Be Patient. Be Persistent. And Never Give up Hope.</a></li>
-            <li>Read <a href="http://h2prep.me/ccu"><em>How to Prepare for Everything</em></a>.</li>
+            <li><a href="http://blog.crisiscleanup.org/2015/08/the-root-of-volunteering-trust-and.html"><%= t('vol_48') %></a>.</li>
+            <li><a href="http://blog.crisiscleanup.org/2015/06/be-patient-be-persistent-and-never-give.html"><%= t('vol_49') %></a></li>
+            <li><%= t('vol_50') %> <a href="http://h2prep.me/ccu"><em><%= t('vol_51') %></em></a>.</li>
         </ul>
     </p>
 </div>
