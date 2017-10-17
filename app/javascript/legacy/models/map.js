@@ -12,20 +12,28 @@
  * @param {boolean=true} [params.form_map] - Whether or not it's a form map
  */
 
-import {Filters} from './filter';
+import {
+  Filters
+} from './filter';
 import Form from './form';
 import Site from './marker';
 import Raven from 'raven-js';
 
-export default function(params) {
+export default function (params) {
   let $infobox = $('#map-infobox');
+
+  $('#legend_open').click(function () {
+    document.getElementById('legend_popout').style.width = '100%';
+  })
+  $('#legend_close').click(function () {
+    document.getElementById('legend_popout').style.width = '0';
+  })
 
   let allSites = [];
   let activeMarkers = [];
   const markerClustererOptions = {
     maxZoom: 11,
-    styles: [
-      {
+    styles: [{
         textColor: 'black',
         url: image_path('map_icons/m1.png'),
         height: 53,
@@ -77,7 +85,7 @@ export default function(params) {
   this.markerBounds = new params.google.maps.LatLngBounds();
   this.markerClusterer = new MarkerClusterer(this.map, [], markerClustererOptions);
 
-  this.map.addListener('click', function() {
+  this.map.addListener('click', function () {
     $('#filters-anchor').click();
     $infobox.hide();
     this.showFilters();
@@ -90,7 +98,7 @@ export default function(params) {
     onUpdate: populateMap.bind(this)
   });
 
-  this.setEventId = function(event_id) {
+  this.setEventId = function (event_id) {
     $('#map-infobox').hide();
     this.event_id = event_id;
     // TODO: refactor this nonsense.
@@ -105,7 +113,7 @@ export default function(params) {
     }
   };
 
-  this.showFilters = function() {
+  this.showFilters = function () {
     let $filtersView = $('#filters-view');
     let $formView = $('#form-view');
     let $historyView = $('#history-view');
@@ -117,7 +125,7 @@ export default function(params) {
     }
   };
 
-  this.showForm = function() {
+  this.showForm = function () {
     // Hacky way to hide the form alert box between edits.
     let $formView = $('#form-view');
     $formView.find('.alert-box a.close').click();
@@ -132,7 +140,7 @@ export default function(params) {
     }
   };
 
-  this.showHistory = function() {
+  this.showHistory = function () {
     let $formView = $('#form-view');
     $formView.find('.alert-box a.close').click();
 
@@ -147,18 +155,22 @@ export default function(params) {
   };
 
   function zoomToMarker(id) {
-    let matchArray = $.grep(allSites, function(site) { return site.site.id === id; });
+    let matchArray = $.grep(allSites, function (site) {
+      return site.site.id === id;
+    });
     if (matchArray.length > 0) {
       let marker = matchArray[0].marker;
       this.map.setZoom(17);
       this.map.setCenter(marker.getPosition());
       marker.setAnimation(params.google.maps.Animation.BOUNCE);
       // Stop the animation after awhile
-      setTimeout(function() {
+      setTimeout(function () {
         marker.setAnimation(null);
       }, 6000);
     } else {
-      Raven.captureMessage("Matching site not found.", {level: 'warning'});
+      Raven.captureMessage("Matching site not found.", {
+        level: 'warning'
+      });
     }
   }
   zoomToMarker = zoomToMarker.bind(this);
@@ -169,14 +181,14 @@ export default function(params) {
     // TODO: this shouldn't be loaded or even rendered on every page.
     if ($searchBtn) {
       var siteBh = new Bloodhound({
-        datumTokenizer: function(obj) {
+        datumTokenizer: function (obj) {
           return Bloodhound.tokenizers.whitespace(obj.siteStr);
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        identify: function(obj) {
+        identify: function (obj) {
           return obj.id;
         },
-        local: siteList.map(function(site) {
+        local: siteList.map(function (site) {
           var siteStr = site.site.case_number + ': ';
           siteStr += ' ' + site.site.name;
           siteStr += ' ' + site.site.address;
@@ -210,7 +222,7 @@ export default function(params) {
       };
 
       $searchBtn.typeahead(searchOpts, sourceOpts);
-      $searchBtn.bind('typeahead:select', function(event, selection) {
+      $searchBtn.bind('typeahead:select', function (event, selection) {
         zoomToMarker(selection.id);
       });
     }
@@ -221,10 +233,10 @@ export default function(params) {
       type: "GET",
       context: this,
       url: route + page,
-      success: function(data) {
+      success: function (data) {
         if (data != null && data.length > 0) {
           if (route.indexOf('public') >= 0) {
-            data.forEach(function(obj, index) {
+            data.forEach(function (obj, index) {
               var lat_lng = new params.google.maps.LatLng(parseFloat(obj.blurred_latitude), parseFloat(obj.blurred_longitude));
               this.markerBounds.extend(lat_lng);
               var site = new Site({
@@ -238,7 +250,7 @@ export default function(params) {
             }, this);
 
           } else {
-            data.forEach(function(obj, index) {
+            data.forEach(function (obj, index) {
               var lat_lng = new params.google.maps.LatLng(parseFloat(obj.latitude), parseFloat(obj.longitude));
               this.markerBounds.extend(lat_lng);
               var site = new Site({
@@ -254,12 +266,14 @@ export default function(params) {
           }
 
           this.map.fitBounds(this.markerBounds);
-          this.markerClusterer.addMarkers(activeMarkers.map(function(site) { return site.marker; }));
+          this.markerClusterer.addMarkers(activeMarkers.map(function (site) {
+            return site.marker;
+          }));
         } else {
           Raven.captureMessage("Something is wrong with the map data: " + data.constructor);
         }
       },
-      error: function() {
+      error: function () {
         Raven.captureMessage("500 error in map site request");
       }
     });
@@ -286,7 +300,7 @@ export default function(params) {
       url: '/api/count/' + this.event_id,
       method: 'get',
       context: this,
-      success: function(data) {
+      success: function (data) {
         clearOverlays.call(this);
 
         let pageLimit = Math.ceil(data / PAGE_SIZE);
@@ -295,7 +309,7 @@ export default function(params) {
           ajaxCalls.push(getMarkers.call(this, route, page));
         }
 
-        $.when.apply(this, ajaxCalls).done(function() {
+        $.when.apply(this, ajaxCalls).done(function () {
           setupSearch(allSites);
           $('.loading').remove();
           if (this.site_id > 0) {
@@ -312,7 +326,7 @@ export default function(params) {
   function editSite() {
     zoomToMarker(this.site_id);
 
-    var site = activeMarkers.find(function(obj) {
+    var site = activeMarkers.find(function (obj) {
       return obj.site.id === this.site_id;
     }, this);
     params.google.maps.event.trigger(site.marker, 'click');
@@ -331,7 +345,9 @@ export default function(params) {
   function populateMap() {
     clearOverlays.call(this);
     activeMarkers = filters.getFilteredSites(allSites);
-    this.markerClusterer.addMarkers(activeMarkers.map(function(site) { return site.marker; }));
+    this.markerClusterer.addMarkers(activeMarkers.map(function (site) {
+      return site.marker;
+    }));
   }
 
   // Address autocomplete
@@ -343,14 +359,16 @@ export default function(params) {
     var country = document.getElementById("legacy_legacy_site_country");
     var zip = document.getElementById("legacy_legacy_site_zip_code");
 
-    if (!addressField) { return; }
+    if (!addressField) {
+      return;
+    }
     var options = {};
     var addressAC = new params.google.maps.places.Autocomplete(addressField, options);
     var map = this.map;
 
     addressAC.bindTo('bounds', map);
 
-    params.google.maps.event.addListener(addressAC, 'place_changed', function() {
+    params.google.maps.event.addListener(addressAC, 'place_changed', function () {
       var place = this.getPlace();
       populateAddressFields.call(this, place);
     });
@@ -361,9 +379,15 @@ export default function(params) {
 
     function geocodeQuery() {
       var num_values = 0;
-      if (city.value !== "") { num_values++ };
-      if (state.value !== "") { num_values++ };
-      if (zip.value !== "") { num_values++ };
+      if (city.value !== "") {
+        num_values++
+      };
+      if (state.value !== "") {
+        num_values++
+      };
+      if (zip.value !== "") {
+        num_values++
+      };
 
       if (addressField.value !== "" && num_values > 0) {
         var address = addressField.value + ",+" + city.value + ",+" + state.value + "+" + zip.value;
@@ -371,11 +395,13 @@ export default function(params) {
           method: 'get',
           url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + address,
           context: this,
-          success: function(data) {
+          success: function (data) {
             if (data.status === "OK") {
               populateAddressFields.call(this, data.results[0]);
             } else {
-              Raven.captureMessage("Something went wrong with the geocoding query.", {level: 'warning'});
+              Raven.captureMessage("Something went wrong with the geocoding query.", {
+                level: 'warning'
+              });
             }
           }
         });
@@ -449,7 +475,7 @@ export default function(params) {
         map: map
       });
 
-      marker.addListener('drag', function() {
+      marker.addListener('drag', function () {
         setLatLng(this.position);
       });
     }
@@ -477,13 +503,17 @@ export default function(params) {
   }
 
   // Geolocation
-  var defaultRandomLocation = {lat:31.4181, lng:73.0776};
+  var defaultRandomLocation = {
+    lat: 31.4181,
+    lng: 73.0776
+  };
   var myLocationMarker = new params.google.maps.Marker({
     map: this.map,
     animation: params.google.maps.Animation.DROP,
     position: defaultRandomLocation,
     visible: false
   });
+
   function addLocationButton(map, marker) {
     var controlDiv = document.createElement('div');
 
@@ -512,19 +542,19 @@ export default function(params) {
     secondChild.id = 'you_location_img';
     firstChild.appendChild(secondChild);
 
-    params.google.maps.event.addListener(map, 'dragend', function() {
+    params.google.maps.event.addListener(map, 'dragend', function () {
       $('#you_location_img').css('background-position', '0px 0px');
     });
 
-    firstChild.addEventListener('click', function() {
+    firstChild.addEventListener('click', function () {
       var imgX = '0';
-      var animationInterval = setInterval(function(){
-        if(imgX == '-18') imgX = '0';
+      var animationInterval = setInterval(function () {
+        if (imgX == '-18') imgX = '0';
         else imgX = '-18';
-        $('#you_location_img').css('background-position', imgX+'px 0px');
+        $('#you_location_img').css('background-position', imgX + 'px 0px');
       }, 500);
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
           var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           marker.setPosition(latlng);
           marker.setVisible(true);
@@ -532,11 +562,10 @@ export default function(params) {
           map.setZoom(14);
           clearInterval(animationInterval);
           $('#you_location_img').css('background-position', '-144px 0px');
-        }, function() {
+        }, function () {
           alert('There has been a problem detecting your location!  You may have geolocation deactivated in your browser or mobile device privacy settings.')
         });
-      }
-      else{
+      } else {
         clearInterval(animationInterval);
         $('#you_location_img').css('background-position', '0px 0px');
       }
