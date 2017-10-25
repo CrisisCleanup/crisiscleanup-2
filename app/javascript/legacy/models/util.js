@@ -28,13 +28,14 @@ export function setMarkerLatLng(position) {
   }
 }
 
-export function addMarker(map, position) {
+export function addMarker(map, position, zoomLevel) {
   let marker = new google.maps.Marker({
     draggable: true,
     position: position,
     map: map
   });
   map.setCenter(position);
+  map.setZoom(zoomLevel);
   marker.addListener('drag', function() {
     setMarkerLatLng(this.position);
   });
@@ -51,11 +52,21 @@ export function disableAddressFields() {
   $("#legacy_legacy_site_zip_code").prop('disabled', true).val('UNKNOWN');
 }
 
-export function detectLocation(cb) {
+export function resetAddressFields() {
+  $("#legacy_legacy_site_address").prop('disabled', false).val('');
+  $("#legacy_legacy_site_city").prop('disabled', false).val('');
+  $("#legacy_legacy_site_county").prop('disabled', false).val('');
+  $("#legacy_legacy_site_state").prop('disabled', false).val('');
+  $("#legacy_legacy_site_country").prop('disabled', false).val('');
+  $("#legacy_legacy_site_zip_code").prop('disabled', false).val('');
+}
+
+export function detectLocation(cb, errorCb) {
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       cb(position);
     }, function () {
+      errorCb();
       alert('There has been a problem detecting your location!  You may have geolocation deactivated in your browser or mobile device privacy settings.')
     });
   }
