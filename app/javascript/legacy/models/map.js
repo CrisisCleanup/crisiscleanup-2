@@ -436,7 +436,7 @@ export default function(params) {
       setLatLng(place.geometry.location);
 
       if (place.geometry.viewport) {
-        map.fitBounds(new params.google.maps.LatLngBounds(place.geometry.viewport.southwest, place.geometry.viewport.northeast));
+        map.fitBounds(place.geometry.viewport);
       } else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);
