@@ -1,4 +1,4 @@
-import {detectLocation, addMarker, setMarkerLatLng, disableAddressFields} from './util';
+import {detectLocation, addMarker, setMarkerLatLng, disableAddressFields, resetAddressFields} from './util';
 
 /**
  * Initialize the site form - requires jQuery
@@ -19,12 +19,14 @@ export default function(params) {
   var saveBtn = document.getElementById('save-form-btn');
   var detectLocationBtn = document.getElementById('legacy_legacy_site_detect');
   var dropPinBtn = document.getElementById('legacy_legacy_site_droppin');
+  var resetAddressBtn = $('legacy_legacy_site_resetaddressfields');
 
   if (!params.event_id) {
     console.error('CCMap.Form requires an event_id');
     return;
   }
   var event_id = params.event_id;
+  let getAutocompleteTrackingMarker = params.getAutocompleteTrackingMarker;
 
   // Autopopulate the request_date field if empty (hydrate should overwrite this on edit forms)
   var date = new Date;
@@ -40,6 +42,13 @@ export default function(params) {
     if (!form) {
       return;
     }
+
+    if (resetAddressBtn) {
+      resetAddressBtn.unbind('click');
+      $("#legacy_legacy_site_droppin").prop('disabled', true);
+      $("#legacy_legacy_site_detect").prop('disabled', true);
+    }
+
 
     // Update the form action to update the site
     form.action = '/worker/incident/' + event_id + '/edit/' + ccsite.site.id;
@@ -90,19 +99,35 @@ export default function(params) {
 
     // Enable marker dragging and add the event to set the lat/lng
     enableMarkerDragging();
+
   };
 
+  function resetTrackingMarkers() {
+    if (trackingMarker) {
+      trackingMarker.setMap(null);
+    }
+    if (getAutocompleteTrackingMarker && getAutocompleteTrackingMarker()) {
+      getAutocompleteTrackingMarker().setMap(null);
+    }
+  }
+
   let trackingMarker = null;
+
+  if (resetAddressBtn) {
+    resetAddressBtn.on('click', (e) => {
+      e.preventDefault();
+      resetTrackingMarkers();
+      resetAddressFields();
+    });
+  }
 
   this.prep = function(map) {
 
     if (dropPinBtn) {
       dropPinBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        if (trackingMarker) {
-          trackingMarker.setMap(null);
-        }
-        trackingMarker = addMarker(map, map.getCenter());
+        resetTrackingMarkers();
+        trackingMarker = addMarker(map, map.getCenter(), 10);
         disableAddressFields();
       });
     }
@@ -112,9 +137,7 @@ export default function(params) {
 
       detectLocationBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        if (trackingMarker) {
-          trackingMarker.setMap(null);
-        }
+        resetTrackingMarkers();
 
         function blinking(elm) {
           timer = setInterval(blink, 10);
@@ -125,7 +148,6 @@ export default function(params) {
           }
         }
 
-        $(detectLocationBtn).html('<span>Detecting Location</span>');
         blinking($(detectLocationBtn));
         disableAddressFields();
 
@@ -133,14 +155,15 @@ export default function(params) {
 
           clearInterval(timer);
           setMarkerLatLng(position);
-          $(detectLocationBtn).html('<span>Detect Location</span>');
 
           let lat_lng = new google.maps.LatLng(
             position.coords.latitude,
             position.coords.longitude
           );
 
-          trackingMarker = addMarker(map, lat_lng)
+          trackingMarker = addMarker(map, lat_lng, 10)
+        }, function() {
+          clearInterval(timer);
         });
       });
     }
@@ -277,9 +300,7 @@ export default function(params) {
               $('#alert-container').html(html);
               form.reset();
               form.scrollTop = 0;
-              if (trackingMarker) {
-                trackingMarker.setMap(null);
-              }
+              resetTrackingMarkers();
             }
             form.scrollTop = 0;
             window.scrollTo(0,0);

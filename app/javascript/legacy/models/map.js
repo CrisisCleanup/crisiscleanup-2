@@ -84,6 +84,13 @@ export default function(params) {
     this.showFilters();
   }.bind(this));
 
+  let self = this;
+  self.autocompleteTrackingMarker = null;
+
+  function getAutocompleteTrackingMarker() {
+    return self.autocompleteTrackingMarker;
+  }
+
   // Setting this up this way just in case we end up with dynamic filters per incident.
   // Eventually, it could require a filters[] param, for example.
   // This could also end up in the setEventId method.
@@ -98,7 +105,8 @@ export default function(params) {
     if (this.form_map) {
       setupAddressAutocomplete.call(this);
       let form = new Form({
-        event_id: this.event_id
+        event_id: this.event_id,
+        getAutocompleteTrackingMarker: getAutocompleteTrackingMarker
       });
       form.prep(this.map);
     } else {
@@ -438,20 +446,20 @@ export default function(params) {
       setLatLng(place.geometry.location);
 
       if (place.geometry.viewport) {
-        map.fitBounds(new params.google.maps.LatLngBounds(place.geometry.viewport.southwest, place.geometry.viewport.northeast));
+        map.fitBounds(place.geometry.viewport);
       } else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);
       }
 
       // Set the position of the marker using the place ID and location.
-      var marker = new params.google.maps.Marker({
+      self.autocompleteTrackingMarker = new params.google.maps.Marker({
         draggable: true,
         position: place.geometry.location,
         map: map
       });
 
-      marker.addListener('drag', function() {
+      self.autocompleteTrackingMarker.addListener('drag', function() {
         setLatLng(this.position);
       });
     }
