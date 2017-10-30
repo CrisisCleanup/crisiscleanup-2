@@ -1,6 +1,6 @@
 <%= simple_form_for org, url: url do |f| %>
   <div class="row">
-    <h4 class="medium-12 columns">Choose a Disaster</h4>
+    <h4 class="medium-12 columns"><%= t('registration_34')%></h4>
   </div>
   <div class="row">
     <div class="medium-6 columns">
@@ -9,134 +9,134 @@
   </div>
   <div class="contact_section">
     <div class="row">
-      <h4 class="medium-12 columns">Primary Contacts</h4>
+      <h4 class="medium-12 columns"><%= t('registration_35')%></h4>
     </div>
     <div class="row">
       <div class="medium-6 columns contact_form">
         <%= f.simple_fields_for :legacy_contacts do |p| %>
           <%= render 'legacy_contact_form', contact: p %>
         <% end %>
-        <%= link_to_add_contact "Add Contact",f,:legacy_contacts %>
+        <%= link_to_add_contact t('registration_40'),f,:legacy_contacts %>
       </div>
     </div>
   </div>
   <br>
   <div class="row">
     <div class="small-12 medium-12 large-12 columns">
-      <h3>Organization Information</h3>
-      <p><strong>Please use your local team name. E.g. "American Red Cross-TX Chapter" or "LDS Church-Plainview Stake" rather than "American Red Cross" or "LDS Church".</strong></p>
+      <h3><%= t('registration_35')%></h3>
+      <p><strong><%= t('registration_36')%></strong></p>
     </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :name, label:'Organization Name' %>
+      <%= f.input :name, label:t('registration_41')  %>
     </div>
     <div class="medium-6 columns">
-      <%= f.input :email %>
+      <%= f.input :email, label: t('registration_42') %>
     </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :address %>
+      <%= f.input :address, label: t('registration_43') %>
     </div>
     <div class="medium-6 columns">
-      <%= f.input :city %>
+      <%= f.input :city, label: t('registration_44') %>
     </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :state %>
+      <%= f.input :state, label: t('registration_45') %>
     </div>
     <div class="medium-6 columns">
-      <%= f.input :zip_code %>
+      <%= f.input :zip_code, label: t('registration_46') %>
     </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :referral %>
+      <%= f.input :referral, label: t('registration_47') %>
     </div>
     <div class="medium-6 columns">
-      <%= f.input :url, label:'Website' %>
+      <%= f.input :url, label: t('registration_48') %>
     </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :facebook %>
+      <%= f.input :facebook, label: t('registration_49') %>
     </div>
     <div class="medium-6 columns">
-      <%= f.input :twitter %>
+      <%= f.input :twitter, label: t('registration_50') %>
     </div>
   </div>
-  <h3>What Roles do Your Organization Fill?</h3>
+  <h3><%= t('registration_38')%></h3>
 
   <div class="boxes">
     <div class="row">
       <div class="small-12 medium-12 columns">
-        <%= f.input :review_other_organizations, label: "<strong>Review & Approve Participating Organizations</strong>: You are willing to take a leadership role, reviewing and approving organizations to participate in CrisisCleanup.".html_safe %>
+        <%= f.input :review_other_organizations, label: t('registration_51') .html_safe %>
       </div>
       <div class="small-12 medium-12 columns">
-        <%= f.input :does_damage_assessment, label: "<strong>Damage Assessments</strong>: Your organization interacts directly with survivors via call-center, door-to-door, in a MARC, etc.".html_safe %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="small-12 medium-12 columns">
-        <%= f.input :does_cleanup, label: "<strong>Cleanup</strong>: Your organization interacts directly with survivors to do muck-outs, debris removal, tree cutting, etc.".html_safe %>
-      </div>
-      <div class="small-12 medium-12 columns">
-        <%= f.input :does_follow_up, label: "<strong>Follow Up</strong>: Your organization contacts survivors to ensure all clients have been assisted via phone or in-person visits.".html_safe %>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="small-12 medium-12 columns">
-        <%= f.input :does_minor_repairs, label: "<strong>Minor Repairs</strong>: Your organization visits survivors to replace drywall, flooring, or other repairs.".html_safe %>
-      </div>
-      <div class="small-12 medium-12 columns">
-        <%= f.input :does_rebuilding, label: "<strong>Rebuilding</strong>: Long Term Recovery Groups, Unmet Needs Committees, or organizations that do long-term or major rebuilding.".html_safe %>
+        <%= f.input :does_damage_assessment, label: t('registration_51') .html_safe %>
       </div>
     </div>
 
     <div class="row">
       <div class="small-12 medium-12 columns">
-        <%= f.input :does_coordination, label: "<strong>Coordination</strong>: Your organization does NOT interact directly with survivors, but oversees or coordinates organizations that do.".html_safe %>
+        <%= f.input :does_cleanup, label: t('registration_52').html_safe %>
       </div>
       <div class="small-12 medium-12 columns">
-        <%= f.input :government, label: "<strong>Government</strong>: You represent a governmental entity, such as municipal, state, tribal or federal government, emergency management, agency, etc.".html_safe %>
+        <%= f.input :does_follow_up, label: t('registration_53').html_safe %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_minor_repairs, label: t('registration_54').html_safe %>
+      </div>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_rebuilding, label: t('registration_55') .html_safe %>
       </div>
     </div>
 
     <div class="row">
       <div class="small-12 medium-12 columns">
-        <%= f.input :does_other_activity, label: " <strong>Other Activity:</strong> Your organization does other disaster-related activity, such as donations management, case management, logistics, for-profit contracting, etc.".html_safe %>
+        <%= f.input :does_coordination, label: t('registration_56').html_safe %>
       </div>
       <div class="small-12 medium-12 columns">
-        <%= f.input :not_an_org, label: " <strong>Not An Organization</strong>: Individuals, unaffiliated volunteers, meetup groups, clubs, etc.".html_safe %>
+        <%= f.input :government, label: t('registration_57').html_safe %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-12 columns">
+        <%= f.input :does_other_activity, label: t('registration_58').html_safe %>
+      </div>
+      <div class="small-12 medium-12 columns">
+        <%= f.input :not_an_org, label: t('registration_59').html_safe %>
       </div>
     </div>
 
     <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :where_are_you_working, label: "<strong>Where are you working?</strong>".html_safe, placeholder: "Cities/Counties" %>
+      <%= f.input :where_are_you_working, label: t('registration_60').html_safe, placeholder: "Cities/Counties" %>
     </div>
   </div>
     <div class="row">
       <div class="small-12 medium-6 columns">
-        <%= f.input :publishable, label: "<strong>Publicly Publish Organization Profile?</strong>".html_safe, checked: "checked" %>
+        <%= f.input :publishable, label: t('registration_61').html_safe, checked: "checked" %>
       </div>
     </div>
   </div>
   <div>
     <div class="row">
       <div class="small-12 medium-6 columns">
-        <%= f.input :accepted_terms, label: "<strong>I agree to the <a target='_blank' id='privacy_link' href='/terms'>Terms of Service</a> and <a target='_blank' id='privacy_link' href='/privacy'>Privacy Policy</a></strong>".html_safe, required: true %>
+        <%= f.input :accepted_terms, label: t('registration_63') .html_safe, required: true %>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="medium-12 columns">
-      <%= f.button :submit, "Sign Up" %>
+      <%= f.button :submit, t('registration_62') %>
     </div>
   </div>
 <% end %>

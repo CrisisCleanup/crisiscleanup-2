@@ -10,19 +10,19 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li><%= nav_link "Home", home_path %></li>
-      <li><%= nav_link "About", about_path %></li>    
+      <li><%= nav_link t('nav_1'), home_path %></li>
+      <li><%= nav_link t('nav_2'), about_path %></li>
       <% if current_user %>
-        <li><%= nav_link "Map", worker_incident_legacy_map_path(current_user_event) %></li>
+        <li><%= nav_link t('nav_3'), worker_incident_legacy_map_path(current_user_event) %></li>
         <li><%= link_to worker_incident_legacy_form_path(current_user_event) do %>
-          Intake <i class="fa fa-plus"></i>
+          <%= t('nav_4') %><i class="fa fa-plus"></i>
           <% end %>
         </li>
       <% else %>
-        <li><%= nav_link "Map", public_map_path %></li>
+        <li><%= nav_link t('nav_3'), public_map_path %></li>
       <% end %>
-      <li><a href="http://blog.crisiscleanup.org/">Blog</a></li>
-      <li class="has-dropdown"><a href="#">Help</a>
+      <li><a href="http://blog.crisiscleanup.org/"><%= t('nav_5') %></a></li>
+      <li class="has-dropdown"><a href="#"><%= t('nav_6') %></a>
         <ul class="dropdown">
           <li class="has-dropdown"><a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies" target="_blank">Policies</a>
             <ul class="dropdown">
@@ -42,28 +42,28 @@
         </ul>
       </li>
       <% unless current_user %>
-      <li><%= nav_link "Sign Up", signup_path %></li> <!-- hide for verified user / admin -->
+      <li><%= nav_link t('nav_7'), signup_path %></li> <!-- hide for verified user / admin -->
       <% end %>
       <% if current_user %> <!-- user verified only -->
-        <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
+        <li class="has-dropdown"><%= link_to t('nav_8'), worker_dashboard_path %>
           <ul class="dropdown">
-            <li><%= link_to "My Worksites", worker_incident_mysites_path(current_user_event) %></li>
-            <li><%= link_to "My Organization", worker_my_organization_path %></li>
-            <li><%= link_to "Contacts", worker_incident_legacy_contacts_path(current_user_event) %></li>
-            <li><%= link_to "Orgs", worker_incident_legacy_organizations_path(current_user_event) %></li>
+            <li><%= link_to t('nav_8_1'), worker_incident_mysites_path(current_user_event) %></li>
+            <li><%= link_to t('nav_8_2'), worker_my_organization_path %></li>
+            <li><%= link_to t('nav_8_3'), worker_incident_legacy_contacts_path(current_user_event) %></li>
+            <li><%= link_to t('nav_8_4'), worker_incident_legacy_organizations_path(current_user_event) %></li>
             <li><%= link_to worker_incident_legacy_sites_index_path(current_user_event) do %>
-                    Browse
+                    <%= t('nav_8_5') %>
                     <% end %>
             </li>
             <li><%= link_to worker_incident_graphs_path(current_user_event) do %>
-                    Graphs
+                  <%= t('nav_8_6') %>
                     <% end %>
             </li>
-            <li><%= link_to "Stats", worker_incident_stats_path(current_user_event) %></li>
+            <li><%= link_to t('nav_8_7'), worker_incident_stats_path(current_user_event) %></li>
           </ul>
         </li>
         <% if current_user.admin %> <!-- admin verified only -->
-          <li class="has-dropdown"><%= link_to "Admin", admin_path%>
+          <li class="has-dropdown"><%= link_to t('nav_9'), admin_path%>
             <ul class="dropdown">
               <li class="users"><%= link_to "Users", admin_users_path %></li>
               <li class="stats"><%= link_to "Stats", admin_stats_path %></li>
@@ -96,13 +96,13 @@
                   </li>
                 <% end %>
                 <li><%= link_to destroy_user_session_path, :method => :delete do %>
-                    <i class="fa fa-sign-out"></i> Logout
+                    <i class="fa fa-sign-out"></i> <%= t('nav_10') %>
                     <% end %>
                 </li>
             </ul>
         </li>          
         <% else %>
-            <li><%= nav_link "Login", new_user_session_path %></li>
+            <li><%= nav_link t('nav_11'), new_user_session_path %></li>
         <% end %> <!-- end user verified only -->
     </ul>
   </section>

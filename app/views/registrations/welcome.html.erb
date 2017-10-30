@@ -4,9 +4,9 @@
 
 
 <% content_for :main do %>
-	<h2>Welcome to CrisisCleanup</h2>
-	<p>We have received your application. Once verified, you will receive an email with instructions on how to activate your account. In the meantime, please watch this 8-minute <a href="/training">Mandatory Training Video</a> <em>(We promise, it's worth your time)</em>.</p>
-	<p><strong>Remember that the system is free and run by volunteers. We're trying to improve it, but please be patient if you encounter an error.</strong></p>
-	<p>If you do not hear back in 48 hours, please contact your team or organization leader, and ask them to verify your account by logging in and clicking on the "Dashboard." They should see your name on a list, ready to be verified.</p>
-	<p>If you still have no luck, email <a href="mailto:help@crisiscleanup.org">help@crisiscleanup.org</a>, and we'll see if we can help you.</p>
+	<h2><%= t('registration_69') %></h2>
+	<p><%= t('registration_70')%> <a href="/training"><%= t('registration_71')%></a> <%= t('registration_72')%></p>
+	<p><strong><%= t('registration_73')%></strong></p>
+	<p><%= t('registration_74')%></p>
+	<p><%= t('registration_75')%> <a href="mailto:help@crisiscleanup.org"><%= t('registration_76')%></a><%= t('registration_77')%></p>
 <%end%>

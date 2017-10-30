@@ -12,7 +12,7 @@
                 <li class="active"><%= link_to "Home", root_path %></li>
                 <li><%= link_to "Map", incident_legacy_map_path(current_user_event) %></li>                
                 <li><%= link_to worker_incident_legacy_form_path(current_user_event) do %>
-                Intake <i class="fa fa-plus"></i>
+                <%= t('nav_4') %> <i class="fa fa-plus"></i>
                 <% end %>
                 </li>
       <li class="has-dropdown"><a href="#">Help</a>
@@ -35,19 +35,19 @@
         </ul>
       </li>
                <% if current_user %> <!-- user verified only -->
-                <li class="has-dropdown"><%= link_to "Dashboard", worker_dashboard_path %>
+                <li class="has-dropdown"><%= link_to t('nav_8'), worker_dashboard_path %>
                     <ul class="dropdown">
-                        <li><%= link_to "My Worksites", worker_incident_mysites_path(current_user_event) %></li>
-                        <li><%= link_to "My Organization", worker_my_organization_path %></li>
-                        <li><%= link_to "Contacts", root_path %></li>
-                        <li><%= link_to "Orgs", root_path %></li>
+                        <li><%= link_to t('nav_8_1'), worker_incident_mysites_path(current_user_event) %></li>
+                        <li><%= link_to t('nav_8_2'), worker_my_organization_path %></li>
+                        <li><%= link_to t('nav_8_3'), root_path %></li>
+                        <li><%= link_to t('nav_8_4'), root_path %></li>
                         <li><%= link_to worker_incident_legacy_sites_index_path(current_user_event) do %>
-                        Browse
+                        <%= t('nav_8_5') %>
                         <% end %>
                         </li>
-                        <li><%= link_to worker_incident_graphs_path(current_user_event) do %>Graphs<% end %>
+                        <li><%= link_to worker_incident_graphs_path(current_user_event) do %><%= t('nav_8_6') %><% end %>
                         </li>
-                        <li><%= link_to "Stats", root_path %></li>
+                        <li><%= link_to t('nav_8_7'), root_path %></li>
                         <li><%= link_to "Redeploy", root_path %></li>
                     </ul>
                 </li> <!-- end user verified only -->

@@ -6,7 +6,7 @@
 <div class="row subheader">
     <div class="small-12 medium-8 large-10 columns">
         <h2>Survivors</h2>
-        <h4 class="basic">Never Give up Hope</h4>
+        <h4 class="basic"><%= t('surivor_1') %></h4>
         <hr class="medium">
     </div>
     <div class="small-12 medium-4 large-2 columns" align="center">
@@ -19,18 +19,18 @@
 <div id="main" class="alt">
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-        <h3>What is Crisis Cleanup?</h3>
-        <p>A coordination website for relief agencies, but <strong>not the public</strong>.</p>
-        <h5>Can I ask for help through Crisis Cleanup?</h5>
-        <p>No. But you can call 1-800-451-1954 or 844-965-1386 to be placed on a list. Otherwise, contact relief agencies directly. <strong>We don't have a way for the public to ask for help through the site.</strong></p>
-        <h5>Can I view Crisis Cleanup Data?</h5>
-        <p>No. We want to protect you and your neighbors. So we can't let the public see names, addresses, and phone numbers. Only trusted relief agencies access Crisis Cleanup. You can see a <a href="/public_map">public map</a> with anonymous information in your neighborhood.</p>
-        <h5>How do I know if Relief Agencies are Using Crisis Cleanup?</h5>
-        <p>Just ask! If your case is in Crisis Cleanup, we can't guarantee you'll be helped, but you won't be forgotten. You can ask for your Crisis Cleanup case number, which is a letter and a number, like, "A417" or "R5208."</p>
-        <h5>What can I do?</h5>
-        <p><strong>Be patient</strong>: The road to recovery will take longer than you think, and longer than it should. You will need to fill out dozens of nearly identical forms for dozens of agencies and insurance companies. Most of the time, it will seem as though your work is to no avail. Be as patient as you can. The disaster has left a permanent impression in your life and the life of your family. Seek a new normal, even as you let go of some cherished aspects of your former life and lifestyle.</p>
-        <p><strong>Be persistent</strong>: Though exhausting, you must be your own advocate. Surround yourself with a good support system in your church or community.</p>
-        <p><strong>Never give up hope</strong>: Remember that you are a normal person reacting to an abnormal event. Seek the counsel and advice of trusted friends, family, counselors, case managers, even attorneys who can guide you through the baffling maze of spiritual, emotional, physical, and legal pitfalls that await. Celebrate your spiritual, emotional and family victories—large and small—when they come.</p>
+        <h3><%= t('surivor_2') %></h3>
+        <p><%= t('surivor_3') %> <strong><%= t('surivor_4') %></strong>.</p>
+        <h5><%= t('surivor_5') %></h5>
+        <p><%= t('surivor_6') %> <strong><%= t('surivor_7') %></strong></p>
+        <h5><%= t('surivor_8') %></h5>
+        <p><%= t('surivor_9') %> <a href="/public_map"><%= t('surivor_10') %></a> <%= t('surivor_11') %></p>
+        <h5><%= t('surivor_12') %></h5>
+        <p><%= t('surivor_13') %> </p>
+        <h5><%= t('surivor_14') %> </h5>
+        <p><strong><%= t('surivor_15') %></strong>: <%= t('surivor_16') %></p>
+        <p><strong><%= t('surivor_17') %></strong>: <%= t('surivor_18') %></p>
+        <p><strong><%= t('surivor_19') %></strong>: <%= t('surivor_20') %></p>
     </div>
 </div>
 </div>    
@@ -38,13 +38,13 @@
 
 <% content_for :sidebar do %>
 <div id="sidebar">
-    <h4>Never Give Up Hope</h4>
-    <p>Here are some resources for survivors:
+    <h4><%= t('surivor_21') %></h4>
+    <p><%= t('surivor_22') %>:
         <ul>
-            <li><a href="https://www.fema.gov/individual-disaster-assistance">FEMA</a></li>
-            <li><a href="https://www.disasterassistance.gov/">DisasterAssistance.gov</a></li>
-            <li><a href="http://blog.crisiscleanup.org/2015/06/be-patient-be-persistent-and-never-give.html">Be Patient. Be Persistent. And Never Give up Hope.</a></li>
-            <li><a href="http://aircharitynetwork.org/home/request-a-flight/">Request a free flight out of your area.</a></li>
+            <li><a href="https://www.fema.gov/individual-disaster-assistance"><%= t('surivor_23') %></a></li>
+            <li><a href="https://www.disasterassistance.gov/"><%= t('surivor_24') %></a></li>
+            <li><a href="http://blog.crisiscleanup.org/2015/06/be-patient-be-persistent-and-never-give.html"><%= t('surivor_25') %></a></li>
+            <li><a href="http://aircharitynetwork.org/home/request-a-flight/"><%= t('surivor_26') %></a></li>
         </ul>
     </p>
 </div>

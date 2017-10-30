@@ -1,18 +1,18 @@
 <div class="contact">
   <div class="row">
     <div class="medium-6 columns">
-      <%= contact.input :first_name %>
+      <%= contact.input :first_name, label: t('registration_64') %>
     </div>
     <div class="medium-6 columns">
-      <%= contact.input :last_name %>
+      <%= contact.input :last_name, label: t('registration_65') %>
     </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <%= contact.input :email %>
+      <%= contact.input :email, label: t('registration_66')%>
     </div>
     <div class="medium-6 columns">
-      <%= contact.input :phone, label: "Phone (No office numbers, please)" %>
+      <%= contact.input :phone, label: t('registration_67') %>
     </div>
   </div>
 <!--
@@ -23,5 +23,5 @@
   </div>
 -->
   <%= contact.input :_destroy, as: :hidden %>
-  <%= link_to "Remove Contact", '#', class:"remove_fields" %>
+  <%= link_to t('registration_68'), '#', class:"remove_fields" %>
 </div>
