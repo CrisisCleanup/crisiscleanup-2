@@ -24,19 +24,4 @@ describe "Worker incident form page", :type => :feature, :js => true do
     expect(page).to have_selector('#legacy_legacy_site_phone1 + small', visible: true)
   end
 
-  it "allows user to complete and submit form for new site" do
-    @p.fill_out_form(@site)
-    @p.save_form
-
-    expect(page).to have_selector('#alert-container', visible: true)
-
-    visit "/worker/incident/1/sites"
-
-    expect(page).to have_content(@site.name)
-
-    site = Legacy::LegacySite.find(1)
-    expect(site.name).to eq(@site.name)
-    expect(site.phone1).to eq(@site.phone1)
-  end
-
 end
