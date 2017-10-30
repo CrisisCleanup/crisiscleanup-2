@@ -138,6 +138,7 @@ GEM
     groupdate (3.2.0)
       activesupport (>= 3)
     hike (1.2.3)
+    http_accept_language (2.1.1)
     httpclient (2.6.0.1)
     i18n (0.7.0)
     jbuilder (2.3.1)
@@ -350,6 +351,7 @@ DEPENDENCIES
   foundation-rails
   geocoder
   groupdate
+  http_accept_language
   httpclient
   jbuilder (~> 2.0)
   jquery-rails
