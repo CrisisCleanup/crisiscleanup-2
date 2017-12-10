@@ -1,3 +1,4 @@
+import {detectLocation, addMarker, setMarkerLatLng, disableAddressFields} from './util';
 
 /**
  * Initialize the site form - requires jQuery
@@ -16,6 +17,9 @@ export default function(params) {
   var cancelBtn = document.getElementById('cancel-form-btn');
   var claimBtn = document.getElementById('claim-form-btn');
   var saveBtn = document.getElementById('save-form-btn');
+  var detectLocationBtn = document.getElementById('legacy_legacy_site_detect');
+  var dropPinBtn = document.getElementById('legacy_legacy_site_droppin');
+
   if (!params.event_id) {
     console.error('CCMap.Form requires an event_id');
     return;
@@ -86,6 +90,60 @@ export default function(params) {
 
     // Enable marker dragging and add the event to set the lat/lng
     enableMarkerDragging();
+  };
+
+  this.prep = function(map) {
+
+    let trackingMarker = null;
+
+    if (dropPinBtn) {
+      dropPinBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (trackingMarker) {
+          trackingMarker.setMap(null);
+        }
+        trackingMarker = addMarker(map, map.getCenter());
+        disableAddressFields();
+      });
+    }
+
+    if (detectLocationBtn) {
+      let timer;
+
+      detectLocationBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (trackingMarker) {
+          trackingMarker.setMap(null);
+        }
+
+        function blinking(elm) {
+          timer = setInterval(blink, 10);
+          function blink() {
+            elm.fadeOut(800, 'linear', function() {
+              elm.fadeIn(800, 'linear');
+            });
+          }
+        }
+
+        $(detectLocationBtn).html('<span>Detecting Location</span>');
+        blinking($(detectLocationBtn));
+        disableAddressFields();
+
+        detectLocation((position) => {
+
+          clearInterval(timer);
+          setMarkerLatLng(position);
+          $(detectLocationBtn).html('<span>Detect Location</span>');
+
+          let lat_lng = new google.maps.LatLng(
+            position.coords.latitude,
+            position.coords.longitude
+          );
+
+          trackingMarker = addMarker(map, lat_lng)
+        });
+      });
+    }
   };
 
   // Cancel on edit form. Reset new form.
