@@ -35,7 +35,6 @@ export function addMarker(map, position) {
     map: map
   });
   map.setCenter(position);
-  map.setZoom(14);
   marker.addListener('drag', function() {
     setMarkerLatLng(this.position);
   });
