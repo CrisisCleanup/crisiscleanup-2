@@ -92,9 +92,9 @@ export default function(params) {
     enableMarkerDragging();
   };
 
-  this.prep = function(map) {
+  let trackingMarker = null;
 
-    let trackingMarker = null;
+  this.prep = function(map) {
 
     if (dropPinBtn) {
       dropPinBtn.addEventListener('click', (e) => {
@@ -277,6 +277,9 @@ export default function(params) {
               $('#alert-container').html(html);
               form.reset();
               form.scrollTop = 0;
+              if (trackingMarker) {
+                trackingMarker.setMap(null);
+              }
             }
             form.scrollTop = 0;
             window.scrollTo(0,0);
