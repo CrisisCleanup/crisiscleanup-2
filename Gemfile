@@ -73,6 +73,7 @@ gem 'aws-sdk', '~> 2.10'
 gem 'sidekiq'
 
 gem 'webpacker', '~> 3.0'
+gem 'http_accept_language'
 
 group :production do
   gem 'rack-timeout'

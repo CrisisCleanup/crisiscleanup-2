@@ -5,9 +5,9 @@
 <% content_for :subheader do %>
   <div class="row subheader">
     <div class="small-12 medium-8 large-10 columns">
-      <h2>Organization Sign Up<h2>
-      <h4 class="basic">If you need help, please, please, please do NOT sign up here. You are in the wrong place, and we can't help. Call 800-451-1954 or 844-965-1386.</h4>
-      <p>Organizations can fill in the information below and start using Crisis Cleanup today!</p>
+      <h2><%= t('registration_1') %><h2>
+      <h4 class="basic"><%= t('registration_2')%></h4>
+      <p><%= t('registration_3')%></p>
     </div>
     <div class="small-12 medium-4 large-2 columns" align="center">
         <%= image_tag "characters/Multi Color 2.png", :class => "character" ,:alt => "about crisis cleanup"  %>
@@ -19,68 +19,68 @@
 <% content_for :main do %>
   <div class="row">
     <div class='small-12 medium-12 large-12 columns'>
-      <h2>Example Eligibility</h2>
+      <h2><%= t('registration_4')%></h2>
     </div>
   </div>
   <div class="row">
     <div class='small-12 medium-6 large-6 columns'>
       <table>
         <tr>
-          <th>NOT ELIGIBLE</th>
-          <th>Instead, to this...</th>
+          <th><%= t('registration_5') %></th>
+          <th><%= t('registration_6')%></th>
         </tr>
         <tr>
-          <td>Individuals &amp; groups of friends</td>
-          <td>Please volunteer with a relief organization.</td>
+          <td><%= t('registration_7')%> &amp;<%= t('registration_8')%></td>
+          <td><%= t('registration_9')%></td>
         </tr>
         <tr>
-          <td>Survivors needing help</td>
-          <td>Call 800-451-1954 or 844-965-1386.</td>
+          <td><%= t('registration_10')%></td>
+          <td><%= t('registration_11')%></td>
         </tr>
         <tr>
-          <td>For-profit contractors</td>
-          <td>Volunteer with a relief organization.</td>
+          <td><%= t('registration_12')%></td>
+          <td><%= t('registration_13')%></td>
         </tr>
         <tr>
-          <td>Team Rubicon</td>
-          <td>Ask someone to invite you to the TRUSA account.</td>
+          <td><%= t('registration_14')%></td>
+          <td><%= t('registration_15')%></td>
         </tr>
         <tr>
-          <td>LDS Wards</td>
-          <td><b>Do NOT register here.</b> Instead, please ask someone from your stake to send you an invite link.</a>.</td>
+          <td><%= t('registration_16')%></td>
+          <td><b><%= t('registration_17')%></b> <%= t('registration_18')%></a>.</td>
         </tr>
         <tr>
-          <td>Existing Accounts</td>
-          <td>If you have an account, but just want access to a new incident, <a href="/login">login</a>, then hover over "Dashboard" on the nav bar and click "Redeploy."</td>
+          <td><%= t('registration_19')%></td>
+          <td><%= t('registration_20')%> <a href="/login"><%= t('registration_21')%></a><%= t('registration_22')%></td>
         </tr>
         <tr>
-          <td>Missed Requirements</td>
-          <td>If You do not meet the <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation" target="_blank">requirements</a>.</td>
+          <td><%= t('registration_23')%></td>
+          <td><%= t('registration_24')%><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation" target="_blank"><%= t('registration_25')%></a>.</td>
         </tr>
       </table>
     </div>
     <div class='small-12 medium-6 large-6 columns'>
       <table>
         <tr>
-          <th>Please Apply!</th>
+          <th><%= t('registration_26')%></th>
         </tr>
         <tr>
-          <td>Any oragnization that <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation" target="_blank">meets the requirements</a>.</td>
+          <td><% t('registration_27')%> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation" target="_blank"><%= t('registration_28')%></a>.</td>
         </tr>
         <tr>
-          <td>Churches, service organizations, faith communities</td>
+          <td><%= t('registration_29')%></td>
         </tr>
         <tr>
-          <td>Employers sponsoring employee cleanup</td>
+          <td><%= t('registration_30')%></td>
         </tr>
         <tr>
-          <td>VOADs</td>
+          <td><%= t('registration_31')%></td>
         </tr>
         <tr>
-          <td>LDS Stakes (Not wards)</td>
+          <td><%= t('registration_32')%></td>
         </tr>
         <tr>
-          <td>Emergent organizations</td>
+          <td><%= t('registration_33')%></td>
         </tr>
       </table>
     </div>

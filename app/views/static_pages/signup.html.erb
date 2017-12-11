@@ -5,10 +5,10 @@
 <% content_for :subheader do %> 
 <div class="row subheader">
         <div class="small-12 medium-8 large-10 columns">
-            <h2>Signup For Crisis Cleanup<h2>
-                <h4 class="basic">If you need help, please, please, please do NOT sign up here. You are in the wrong place, and we can't help. Call 800-451-1954 or 844-965-1386.</h4>
-                <p>Crisis Cleanup is a free, award-winning, ready-to-use, open source application that connects disaster recovery organizations with the people who need help.</p>
-                <hr class="medium"> 
+            <h2><%= t('register_1') %></h2>
+                <h4 class="basic"><%= t('register_2') %></h4>
+                <p><%= t('register_3') %></p>
+                <hr class="medium"/>
         </div>                
         <div class="small-12 medium-4 large-2 columns" align="center">
             <%= image_tag "characters/Checkmark.png", :class => "character" ,:alt => "worker dashboard"  %>
@@ -21,45 +21,23 @@
     <div class="row">
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "characters/Team3-211.png", :class => "character" ,:alt => "worker dashboard"  %>
-                <h3 >New Organization</h3>
-                <p>First time here? Sign up to collaborate with other qualified cleanup releif organizations.</p>
-                <a href="<%= register_path %>" class="button">Register Here</a>
+                <h3 ><%= t('register_4') %></h3>
+                <p><%= t('register_5') %></p>
+                <a href="<%= register_path %>" class="button"><%= t('register_6') %></a>
             </div> 
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "characters/Workers Shovel Hammer-Team1.png", :class => "character" ,:alt => "worker dashboard"  %>
-                <h3>Redeploy Your Organization</h3>
-                <p>Has your organization used Crisis Cleanup before? Click here to join another incident.</p>
-                <a href="<%= redeploy_path %>" class="button">Redeploy Now</a>
+                <h3><%= t('register_7') %></h3>
+                <p><%= t('register_8') %></p>
+                <a href="<%= redeploy_path %>" class="button"><%= t('register_9') %></a>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "characters/Two Soccer Players Running Toward One Another-Right.png", :class => "character" ,:alt => "worker dashboard"  %>
-                <h3>Just Curious</h3>
-                <p>Want to learn more about Crisis Cleanup, play with the demo, or request a presentation?</p>
-                <a href="<%= about_path %>" class="button">Learn More</a>
+                <h3><%= t('register_10') %></h3>
+                <p><%= t('register_11') %></p>
+                <a href="<%= about_path %>" class="button"><%= t('register_12') %></a>
             </div>     
         </div>
-<!--
-        <div class="row">
-            <div class="columns small-12 medium-12 large-4" align="center">
-                <%= image_tag "characters/Tornado.png", :class => "character" ,:alt => "worker dashboard"  %>
-                <h3>New Incident</h3>
-                <p>Would you like to use Crisis Cleanup for a recent disaster? Just ask! We're happy to help.</p>
-                <a href="<%= new_incident_path %>" class="button">Register Now</a>
-            </div> 
-            <div class="columns small-12 medium-12 large-4" align="center">
-                <%= image_tag "characters/Smart Phone.png", :class => "character" ,:alt => "worker dashboard"  %>
-                <h3>Temporary Password</h3>
-                <p>Did a team leader give you a temporary password? Use it to get started!</p>
-                <a href="<%= new_worker_temporary_password_path %>" class="button">Use Password</a>
-            </div>
-            <div class="columns small-12 medium-12 large-4" align="center">
-                <%= image_tag "characters/Shovel Guy.png", :class => "character" ,:alt => "worker dashboard"  %>
-                <h3>New Volunteer</h3>        
-                <p>Are you a volunteer? Join your organization if it is already using Crisis Cleanup.</p>
-                <a href="<%= volunteer_path %>" class="button">Request Invitation</a>
-            </div>
-        </div>
--->
 </div>
 <% end %>
 

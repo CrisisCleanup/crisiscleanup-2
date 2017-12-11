@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :assign_layout
   layout :assign_layout
   before_action :set_paper_trail_whodunnit
+  before_filter :set_locale
 
   def assign_layout
         if admin_dashboard_mode
@@ -40,5 +41,11 @@ class ApplicationController < ActionController::Base
     else
       '/dashboard'
     end
+  end
+
+  private
+
+  def set_locale
+    I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
   end
 end

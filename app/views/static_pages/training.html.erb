@@ -5,8 +5,8 @@
 <% content_for :subheader do %>
 <div class="row subheader">
     <div class="small-12 medium-8 large-10 columns">
-        <h2>Crisis Cleanup Training</h2>
-        <h4 class="basic">Please Take a Minute to Complete a Short Training</h4>
+        <h2><%= t('training_1') %></h2>
+        <h4 class="basic"><%= t('training_2') %></h4>
     </div>
     <div class="small-12 medium-4 large-2 columns" align="center">
         <%= image_tag "characters/Clipboard Guy3.png", :class => "character" ,:alt => "about crisis cleanup"  %>
@@ -19,43 +19,43 @@
 <div id="main" class="alt">
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h3>Mandatory Training Video</h3>
+            <h3><%= t('training_3') %></h3>
             <iframe class="about-intro" width="" height="400" src="https://www.youtube.com/embed/3wumEh8wcak" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h3>Test Your Crisis Cleanup Knowledge!</h3>
-            <p>Take this quick poll to see how much you understand about Crisis Cleanup.</p>
+            <h3><%= t('training_4') %></h3>
+            <p><%= t('training_5') %></p>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>1. You can use Crisis Cleanup to do donations management, case management, logistics, etc.</h5>
+            <h5>1. <%= t('training_6') %></h5>
             <form>
                 <label for="answer_1_1">
-                    <input type="radio" name="answer_1" id="answer_1_1" onclick="document.getElementById('no_1').style.display = 'none'; document.getElementById('yes_1').style.display = 'block'; document.getElementById('explanation_1').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_1" id="answer_1_1" onclick="document.getElementById('no_1').style.display = 'none'; document.getElementById('yes_1').style.display = 'block'; document.getElementById('explanation_1').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
                 <label for="answer_1_2">
-                    <input type="radio" name="answer_1" id="answer_1_2" onclick="document.getElementById('no_1').style.display = 'block'; document.getElementById('yes_1').style.display = 'none'; document.getElementById('explanation_1').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_1" id="answer_1_2" onclick="document.getElementById('no_1').style.display = 'block'; document.getElementById('yes_1').style.display = 'none'; document.getElementById('explanation_1').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
 
             </form>
             <div id="no_1" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_1" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_1" style="display:none">
-                <p>Crisis Cleanup is a collaborative work order management system; it is not "The One App to Rule them All." Crisis Cleanup is designed to coordinate large numbers of volunteers to large numbers of locations to perform property cleanup and remediation work. Donations management, case management, volunteer management, assets management, logistics, etc. are each a vital part of disaster recovery, but outside the scope of Crisis Cleanup.</p>
+                <p><%= t('training_7') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>2. How much does Crisis Cleanup cost?</h5>
+            <h5>2. <%= t('training_8') %></h5>
             <form>
                 <label for="answer_2_2">
                     <input type="radio" name="answer_2" id="answer_2_2" onclick="document.getElementById('no_2').style.display = 'block'; document.getElementById('yes_2').style.display = 'none'; document.getElementById('explanation_2').style.display = 'block';"> An arm and a leg.</label>
@@ -71,67 +71,67 @@
                 </input>
             </form>
             <div id="no_2" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_2" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_2" style="display:none">
-                <p>Crisis Cleanup is currently free to disaster recovery organizations.</p>
+                <p><%= t('training_9') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>3. Crisis Cleanup should be used primarily by field workers.</h5>
+            <h5>3. <%= t('training_10') %></h5>
             <form>
                 <label for="answer_3_2">
-                    <input type="radio" name="answer_3" id="answer_3_2" onclick="document.getElementById('no_3').style.display = 'block'; document.getElementById('yes_3').style.display = 'none'; document.getElementById('explanation_3').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_3" id="answer_3_2" onclick="document.getElementById('no_3').style.display = 'block'; document.getElementById('yes_3').style.display = 'none'; document.getElementById('explanation_3').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
                 <label for="answer_3_1">
-                    <input type="radio" name="answer_3" id="answer_3_1" onclick="document.getElementById('no_3').style.display = 'none'; document.getElementById('yes_3').style.display = 'block'; document.getElementById('explanation_3').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_3" id="answer_3_1" onclick="document.getElementById('no_3').style.display = 'none'; document.getElementById('yes_3').style.display = 'block'; document.getElementById('explanation_3').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
 
 
             </form>
             <div id="no_3" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_3" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_3" style="display:none">
-                <p>Field work powers the Crisis Cleanup database. Crisis Cleanup was designed to optimize efforts of team leaders and field workers. Although the system is a useful coordination and management tool, the life blood of Crisis Cleanup is the field worker. Crisis Cleanup assists workers to plan, prioritize, and execute property remediation activities. As a result, if the system is not actively used in the field, it is also useless as a coordination and management tool.</p>
+                <p><%= t('training_11') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>4. Your organization is responsible for keeping client information confidential.</h5>
+            <h5>4. <%= t('training_12') %></h5>
             <form>
                 <label for="answer_4_1">
-                    <input type="radio" name="answer_4" id="answer_4_1" onclick="document.getElementById('no_4').style.display = 'none'; document.getElementById('yes_4').style.display = 'block'; document.getElementById('explanation_4').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_4" id="answer_4_1" onclick="document.getElementById('no_4').style.display = 'none'; document.getElementById('yes_4').style.display = 'block'; document.getElementById('explanation_4').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
                 <label for="answer_4_2">
-                    <input type="radio" name="answer_4" id="answer_4_2" onclick="document.getElementById('no_4').style.display = 'block'; document.getElementById('yes_4').style.display = 'none'; document.getElementById('explanation_4').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_4" id="answer_4_2" onclick="document.getElementById('no_4').style.display = 'block'; document.getElementById('yes_4').style.display = 'none'; document.getElementById('explanation_4').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
 
 
             </form>
             <div id="no_4" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_4" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_4" style="display:none">
-                <p>Although Crisis Cleanup should have no confidential personal information, it contains some contact information. Please keep all client information confidential.</p>
+                <p><%= t('training_13') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>5. When must you claim a work order? <a href="https://www.youtube.com/watch?feature=player_detailpage&v=yCxI5YHyX5k#t=134" target=_blank><small>Hint</small></a></h5>
+            <h5>5. <%= t('training_14') %> <a href="https://www.youtube.com/watch?feature=player_detailpage&v=yCxI5YHyX5k#t=134" target=_blank><small><%= ('training_hint') %></small></a></h5>
             <form>
                 <label for="answer_5_2">
                     <input type="radio" name="answer_5" id="answer_5_2" onclick="document.getElementById('no_5').style.display = 'block'; document.getElementById('yes_5').style.display = 'none'; document.getElementById('explanation_5').style.display = 'block';"> Every time you perform an assessment.</label>
@@ -147,347 +147,347 @@
                 </input>
             </form>
             <div id="no_5" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_5" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_5" style="display:none">
-                <p>Crisis Cleanup utilizes a "Craigslist" philosophy to disaster recovery. Organizations that know of a need enter the information, and organizations with capacity claim the work orders at their convenience. We certainly encourage coordination with other voluntary organizations, state, and county government officials, but Crisis Cleanup will never force you to perform work. You're in charge. See <a href="https://www.youtube.com/watch?feature=player_detailpage&v=yCxI5YHyX5k#t=134" target=_blank>Intro Video</a>.</p>
+                <p><%= t('training_16') %> <a href="https://www.youtube.com/watch?feature=player_detailpage&v=yCxI5YHyX5k#t=134" target=_blank><%= t('training_17') %></a>.</p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>6. Always store as much sensitive personal information in Crisis Clean up as possible. <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200819327-Client-Personal-Data-Collection-Policy" target=_blank><small>Hint</small></a></h5>
+            <h5>6. <%= t('training_18') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200819327-Client-Personal-Data-Collection-Policy" target=_blank><small<%= ('training_hint') %>/small></a></h5>
             <form>
                 <label for="answer_6_1">
-                    <input type="radio" name="answer_6" id="answer_6_1" onclick="document.getElementById('no_6').style.display = 'none'; document.getElementById('yes_6').style.display = 'block'; document.getElementById('explanation_6').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_6" id="answer_6_1" onclick="document.getElementById('no_6').style.display = 'none'; document.getElementById('yes_6').style.display = 'block'; document.getElementById('explanation_6').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
                 <label for="answer_6_2">
-                    <input type="radio" name="answer_6" id="answer_6_2" onclick="document.getElementById('no_6').style.display = 'block'; document.getElementById('yes_6').style.display = 'none'; document.getElementById('explanation_6').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_6" id="answer_6_2" onclick="document.getElementById('no_6').style.display = 'block'; document.getElementById('yes_6').style.display = 'none'; document.getElementById('explanation_6').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
 
 
             </form>
             <div id="no_6" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_6" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_6" style="display:none">
-                <p>False! Under no circumstance should you store sensitive personal information in Crisis Cleanup. Only store information directly relevant to organizing workers or prioritizing work orders. NEVER store medical information, social security numbers, rent information, FEMA numbers, etc. See <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200819327-Client-Personal-Data-Collection-Policy" target=_blank>Client Data Collection Policy</a>
+                <p><%= t('training_19') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200819327-Client-Personal-Data-Collection-Policy" target=_blank><%= t('training_20') %></a>
                 </p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>7. What kind of organizations may participate? <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation#requirements" target=_blank><small>Hint</small></a></h5>
+            <h5>7. <%= t('training_21') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation#requirements" target=_blank><small<%= ('training_hint') %>/small></a></h5>
             <form>
                 <label for="answer_7_2">
-                    <input type="radio" name="answer_7" id="answer_7_2" onclick="document.getElementById('no_7').style.display = 'block'; document.getElementById('yes_7').style.display = 'none'; document.getElementById('explanation_7').style.display = 'block';"> Only organizations approved by the state government.</label>
+                    <input type="radio" name="answer_7" id="answer_7_2" onclick="document.getElementById('no_7').style.display = 'block'; document.getElementById('yes_7').style.display = 'none'; document.getElementById('explanation_7').style.display = 'block';"> <%= t('training_22') %></label>
                 </input>
                 <label for="answer_7_3">
-                    <input type="radio" name="answer_7" id="answer_7_3" onclick="document.getElementById('no_7').style.display = 'block'; document.getElementById('yes_7').style.display = 'none'; document.getElementById('explanation_7').style.display = 'block';"> Only members of a state, national, or county VOAD.</label>
+                    <input type="radio" name="answer_7" id="answer_7_3" onclick="document.getElementById('no_7').style.display = 'block'; document.getElementById('yes_7').style.display = 'none'; document.getElementById('explanation_7').style.display = 'block';"> <%= t('training_23') %></label>
                 </input>
                 <label for="answer_7_4">
-                    <input type="radio" name="answer_7" id="answer_7_4" onclick="document.getElementById('no_7').style.display = 'block'; document.getElementById('yes_7').style.display = 'none'; document.getElementById('explanation_7').style.display = 'block';"> Unaffiliated individuals and volunteers.</label>
+                    <input type="radio" name="answer_7" id="answer_7_4" onclick="document.getElementById('no_7').style.display = 'block'; document.getElementById('yes_7').style.display = 'none'; document.getElementById('explanation_7').style.display = 'block';"> <%= t('training_24') %></label>
                 </input>
                 <label for="answer_7_1">
-                    <input type="radio" name="answer_7" id="answer_7_1" onclick="document.getElementById('no_7').style.display = 'none'; document.getElementById('yes_7').style.display = 'block'; document.getElementById('explanation_7').style.display = 'block';"> Any reputable non-profit recovery organization that interacts directly with survivors in cleanup efforts.</label>
+                    <input type="radio" name="answer_7" id="answer_7_1" onclick="document.getElementById('no_7').style.display = 'none'; document.getElementById('yes_7').style.display = 'block'; document.getElementById('explanation_7').style.display = 'block';"> <%= t('training_25') %></label>
                 </input>
             </form>
             <div id="no_7" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_7" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_7" style="display:none">
-                <p>Crisis Cleanup has a bias for inclusion, but only reputable organizations that interact directly with survivors in cleanup efforts may participate. Individual volunteers may not access Crisis Cleanup. See <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation#requirements" target=_blank>Requirements for Participation</a>.</p>
+                <p><%= t('training_26') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation#requirements" target=_blank><%= t('training_27') %></a>.</p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>8. You are responsible for updating completed or partially completed work orders. <a href="http://youtu.be/tpMOgDr_KGI?t=3m23s" target=_blank><small>Hint</small></a></h5>
+            <h5>8. <%= t('training_28') %> <a href="http://youtu.be/tpMOgDr_KGI?t=3m23s" target=_blank><small<%= ('training_hint') %>/small></a></h5>
             <form>
                 <label for="answer_8_2">
-                    <input type="radio" name="answer_8" id="answer_8_2" onclick="document.getElementById('no_8').style.display = 'block'; document.getElementById('yes_8').style.display = 'none'; document.getElementById('explanation_8').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_8" id="answer_8_2" onclick="document.getElementById('no_8').style.display = 'block'; document.getElementById('yes_8').style.display = 'none'; document.getElementById('explanation_8').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
                 <label for="answer_8_1">
-                    <input type="radio" name="answer_8" id="answer_8_1" onclick="document.getElementById('no_8').style.display = 'none'; document.getElementById('yes_8').style.display = 'block'; document.getElementById('explanation_8').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_8" id="answer_8_1" onclick="document.getElementById('no_8').style.display = 'none'; document.getElementById('yes_8').style.display = 'block'; document.getElementById('explanation_8').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
 
 
             </form>
             <div id="no_8" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_8" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_8" style="display:none">
-                <p>Crisis Cleanup utilizes a decentralized "Craigslist" approach to disaster recovery. No single centralized organization is in charge, so we expect you to clean up after yourself. Please be sure to update the status to "Closed" when the work order is completed. Managing the work load will be much easier if you permit all of your team leaders to update Crisis Cleanup themselves.</p>
+                <p><%= t('training_29') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>9. Who is in charge of Crisis Cleanup?</h5>
+            <h5>9. <%= t('training_30') %></h5>
             <form>
                 <label for="answer_9_2">
-                    <input type="radio" name="answer_9" id="answer_9_2" onclick="document.getElementById('no_9').style.display = 'block'; document.getElementById('yes_9').style.display = 'none'; document.getElementById('explanation_9').style.display = 'block';"> The state, county, or local government.</label>
+                    <input type="radio" name="answer_9" id="answer_9_2" onclick="document.getElementById('no_9').style.display = 'block'; document.getElementById('yes_9').style.display = 'none'; document.getElementById('explanation_9').style.display = 'block';"> <%= t('training_31') %></label>
                 </input>
                 <label for="answer_9_3">
-                    <input type="radio" name="answer_9" id="answer_9_3" onclick="document.getElementById('no_9').style.display = 'block'; document.getElementById('yes_9').style.display = 'none'; document.getElementById('explanation_9').style.display = 'block';"> National or State VOADs.</label>
+                    <input type="radio" name="answer_9" id="answer_9_3" onclick="document.getElementById('no_9').style.display = 'block'; document.getElementById('yes_9').style.display = 'none'; document.getElementById('explanation_9').style.display = 'block';"> <%= t('training_32') %></label>
                 </input>
                 <label for="answer_9_1">
                     <input type="radio" name="answer_9" id="answer_9_1" onclick="document.getElementById('no_9').style.display = 'none'; document.getElementById('yes_9').style.display = 'block'; document.getElementById('explanation_9').style.display = 'block';"> You.</label>
                 </input>
                 <label for="answer_9_4">
-                    <input type="radio" name="answer_9" id="answer_9_4" onclick="document.getElementById('no_9').style.display = 'block'; document.getElementById('yes_9').style.display = 'none'; document.getElementById('explanation_9').style.display = 'block';"> <a href="https://www.youtube.com/watch?feature=player_detailpage&v=KAWoP1kncRE#t=45" target=_blank>This guy</a>. (Hint: Wrong answer :-)</label>
+                    <input type="radio" name="answer_9" id="answer_9_4" onclick="document.getElementById('no_9').style.display = 'block'; document.getElementById('yes_9').style.display = 'none'; document.getElementById('explanation_9').style.display = 'block';"> <a href="https://www.youtube.com/watch?feature=player_detailpage&v=KAWoP1kncRE#t=45" target=_blank><%= t('training_33') %></a>. (<%= t('training_34')%> :-)</label>
                 </input>
             </form>
             <div id="no_9" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_9" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_9" style="display:none">
-                <p>Crisis Cleanup works a lot like Craigslist--Craig keeps the servers running, but the community is in charge of powering the system. Although you may report to county and state governments and other organizations in real life, no single organization is in charge of Crisis Cleanup. Everybody works together toward a common goal. Crisis Cleanup operates on the principle of Collaborative Accountability: When interdependent, co-equal partners pressure and assist one another to accomplish a goal. See <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200596493-Is-Crisis-Cleanup-a-Good-Fit-" target=_blank>Is Crisis Cleanup a Good Fit?</a>
+                <p><%= t('training_35') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200596493-Is-Crisis-Cleanup-a-Good-Fit-" target=_blank><%= t('training_36') %></a>
                 </p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>10. You may unclaim a work order if you do not have the resources to perform the work. <a href="https://www.youtube.com/watch?v=tpMOgDr_KGI&feature=player_embedded#t=432" target=_blank><small>Hint</small></a></h5>
+            <h5>10. <%= t('training_37') %> <a href="https://www.youtube.com/watch?v=tpMOgDr_KGI&feature=player_embedded#t=432" target=_blank><small<%= ('training_hint') %>/small></a></h5>
             <form>
                 <label for="answer_10_2">
-                    <input type="radio" name="answer_10" id="answer_10_2" onclick="document.getElementById('no_10').style.display = 'block'; document.getElementById('yes_10').style.display = 'none'; document.getElementById('explanation_10').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_10" id="answer_10_2" onclick="document.getElementById('no_10').style.display = 'block'; document.getElementById('yes_10').style.display = 'none'; document.getElementById('explanation_10').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
                 <label for="answer_10_1">
-                    <input type="radio" name="answer_10" id="answer_10_1" onclick="document.getElementById('no_10').style.display = 'none'; document.getElementById('yes_10').style.display = 'block'; document.getElementById('explanation_10').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_10" id="answer_10_1" onclick="document.getElementById('no_10').style.display = 'none'; document.getElementById('yes_10').style.display = 'block'; document.getElementById('explanation_10').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
 
 
             </form>
             <div id="no_10" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_10" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_10" style="display:none">
-                <p>Only claim work orders you can complete within <strong>six days</strong>. If you do not have the capacity to complete a work order, please unclaim it so that other organizations can perform the work. See <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/227036588-Work-Order-Case-Claiming-Policy">Work Order/ Case Claiming Policy</a> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200798753-Mandatory-Training-Video" target=_blank>Mandatory Training Video</a>.</p>
+                <p><%= t('training_38') %> <strong><%= t('training_39') %></strong>. <%= t('training_40') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/227036588-Work-Order-Case-Claiming-Policy"><%= t('training_41') %></a> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200798753-Mandatory-Training-Video" target=_blank><%= t('training_42') %></a>.</p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>11. All participating organizations can see what all of the other organizations are doing.</h5>
+            <h5>11. <%= t('training_43') %></h5>
             <form>
                 <label for="answer_11_1">
-                    <input type="radio" name="answer_11" id="answer_11_1" onclick="document.getElementById('no_11').style.display = 'none'; document.getElementById('yes_11').style.display = 'block'; document.getElementById('explanation_11').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_11" id="answer_11_1" onclick="document.getElementById('no_11').style.display = 'none'; document.getElementById('yes_11').style.display = 'block'; document.getElementById('explanation_11').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
                 <label for="answer_11_2">
-                    <input type="radio" name="answer_11" id="answer_11_2" onclick="document.getElementById('no_11').style.display = 'block'; document.getElementById('yes_11').style.display = 'none'; document.getElementById('explanation_11').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_11" id="answer_11_2" onclick="document.getElementById('no_11').style.display = 'block'; document.getElementById('yes_11').style.display = 'none'; document.getElementById('explanation_11').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
 
 
             </form>
             <div id="no_11" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_11" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_11" style="display:none">
-                <p>Crisis Cleanup makes coordination not only required, but easy. Every participating organization can see what the others are doing, significantly improving coordination and communication.</p>
+                <p><%= t('training_44') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>12. Who may enter work orders?</h5>
+            <h5>12. <%= t('training_45') %> </h5>
             <form>
                 <label for="answer_12_2">
-                    <input type="radio" name="answer_12" id="answer_12_2" onclick="document.getElementById('no_12').style.display = 'block'; document.getElementById('yes_12').style.display = 'none'; document.getElementById('explanation_12').style.display = 'block';"> Any member of the public.</label>
+                    <input type="radio" name="answer_12" id="answer_12_2" onclick="document.getElementById('no_12').style.display = 'block'; document.getElementById('yes_12').style.display = 'none'; document.getElementById('explanation_12').style.display = 'block';"> <%= t('training_46') %></label>
                 </input>
                 <label for="answer_12_1">
-                    <input type="radio" name="answer_12" id="answer_12_1" onclick="document.getElementById('no_12').style.display = 'none'; document.getElementById('yes_12').style.display = 'block'; document.getElementById('explanation_12').style.display = 'block';"> Any participating organization, including your own.</label>
+                    <input type="radio" name="answer_12" id="answer_12_1" onclick="document.getElementById('no_12').style.display = 'none'; document.getElementById('yes_12').style.display = 'block'; document.getElementById('explanation_12').style.display = 'block';"> <%= t('training_47') %></label>
                 </input>
                 <label for="answer_12_3">
-                    <input type="radio" name="answer_12" id="answer_12_3" onclick="document.getElementById('no_12').style.display = 'block'; document.getElementById('yes_12').style.display = 'none'; document.getElementById('explanation_12').style.display = 'block';"> Only 2-1-1 or other authorized call-in centers.</label>
+                    <input type="radio" name="answer_12" id="answer_12_3" onclick="document.getElementById('no_12').style.display = 'block'; document.getElementById('yes_12').style.display = 'none'; document.getElementById('explanation_12').style.display = 'block';"> <%= t('training_48') %></label>
                 </input>
                 <label for="answer_12_4">
-                    <input type="radio" name="answer_12" id="answer_12_4" onclick="document.getElementById('no_12').style.display = 'block'; document.getElementById('yes_12').style.display = 'none'; document.getElementById('explanation_12').style.display = 'block';"> Only your state VOAD or system administrator.</label>
+                    <input type="radio" name="answer_12" id="answer_12_4" onclick="document.getElementById('no_12').style.display = 'block'; document.getElementById('yes_12').style.display = 'none'; document.getElementById('explanation_12').style.display = 'block';"> <%= t('training_49') %></label>
                 </input>
             </form>
             <div id="no_12" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_12" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_12" style="display:none">
-                <p>To preserve confidentiality, only reputable organizations that interact directly with survivors in cleanup efforts may participate in Crisis Cleanup. Any participating organization may perform assessments and enter work orders into the system. While Crisis Cleanup may accept preliminary damage assessment information from the public sometime in the future, it does not currently.</p>
+                <p><%= t('training_50') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>13. What should you do if a fellow relief organization doesn't do a work order they've claimed?</h5>
+            <h5>13. <%= t('training_51') %></h5>
             <form>
                 <label for="answer_13_2">
-                    <input type="radio" name="answer_13" id="answer_13_2" onclick="document.getElementById('no_13').style.display = 'block'; document.getElementById('yes_13').style.display = 'none'; document.getElementById('explanation_13').style.display = 'block';"> Fill out a trouble ticket.</label>
+                    <input type="radio" name="answer_13" id="answer_13_2" onclick="document.getElementById('no_13').style.display = 'block'; document.getElementById('yes_13').style.display = 'none'; document.getElementById('explanation_13').style.display = 'block';"><%= t('training_52') %></label>
                 </input>
                 <label for="answer_13_3">
-                    <input type="radio" name="answer_13" id="answer_13_3" onclick="document.getElementById('no_13').style.display = 'block'; document.getElementById('yes_13').style.display = 'none'; document.getElementById('explanation_13').style.display = 'block';"> Nothing.</label>
+                    <input type="radio" name="answer_13" id="answer_13_3" onclick="document.getElementById('no_13').style.display = 'block'; document.getElementById('yes_13').style.display = 'none'; document.getElementById('explanation_13').style.display = 'block';"> <%= t('training_53') %></label>
                 </input>
                 <label for="answer_13_4">
-                    <input type="radio" name="answer_13" id="answer_13_4" onclick="document.getElementById('no_13').style.display = 'block'; document.getElementById('yes_13').style.display = 'none'; document.getElementById('explanation_13').style.display = 'block';"> Break their kneecaps.</label>
+                    <input type="radio" name="answer_13" id="answer_13_4" onclick="document.getElementById('no_13').style.display = 'block'; document.getElementById('yes_13').style.display = 'none'; document.getElementById('explanation_13').style.display = 'block';"> <%= t('training_54') %></label>
                 </input>
                 <label for="answer_13_1">
-                    <input type="radio" name="answer_13" id="answer_13_1" onclick="document.getElementById('no_13').style.display = 'none'; document.getElementById('yes_13').style.display = 'block'; document.getElementById('explanation_13').style.display = 'block';"> Contact that organization to see how you can help, and find out what's going on.</label>
+                    <input type="radio" name="answer_13" id="answer_13_1" onclick="document.getElementById('no_13').style.display = 'none'; document.getElementById('yes_13').style.display = 'block'; document.getElementById('explanation_13').style.display = 'block';"> <%= t('training_55') %></label>
                 </input>
             </form>
             <div id="no_13" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_13" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_13" style="display:none">
-                <p>In every disaster some organizations claim work orders they can't fulfill, or fail to complete necessary paperwork. Technology won't solve that problem, but Crisis Cleanup does allow you to see the problem for the first time. And because you can see the problem, you can fix the problem by leveraging relationships and supporting fellow relief agencies.</p>
+                <p><%= t('training_56') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>14. It is possible to download a copy of all work orders. <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank><small>Hint</small></a></h5>
+            <h5>14. <%= t('training_57') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank><small<%= ('training_hint') %>/small></a></h5>
             <form>
                 <label for="answer_14_1">
-                    <input type="radio" name="answer_14" id="answer_14_1" onclick="document.getElementById('no_14').style.display = 'none'; document.getElementById('yes_14').style.display = 'block'; document.getElementById('explanation_14').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_14" id="answer_14_1" onclick="document.getElementById('no_14').style.display = 'none'; document.getElementById('yes_14').style.display = 'block'; document.getElementById('explanation_14').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
                 <label for="answer_14_2">
-                    <input type="radio" name="answer_14" id="answer_14_2" onclick="document.getElementById('no_14').style.display = 'block'; document.getElementById('yes_14').style.display = 'none'; document.getElementById('explanation_14').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_14" id="answer_14_2" onclick="document.getElementById('no_14').style.display = 'block'; document.getElementById('yes_14').style.display = 'none'; document.getElementById('explanation_14').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
 
 
             </form>
             <div id="no_14" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_14" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_14" style="display:none">
-                <p>You can always <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank>download a CSV</a> or Excel file with all work orders, for your records and to run reports.</p>
+                <p><%= t('training_58') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank><%= t('training_59') %></a> <%= t('training_60') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>15. Each user is responsible to keep his/her own passwords secure.</h5>
+            <h5>15. <%= t('training_61') %></h5>
             <form>
                 <label for="answer_15_1">
-                    <input type="radio" name="answer_15" id="answer_15_1" onclick="document.getElementById('no_15').style.display = 'none'; document.getElementById('yes_15').style.display = 'block'; document.getElementById('explanation_15').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_15" id="answer_15_1" onclick="document.getElementById('no_15').style.display = 'none'; document.getElementById('yes_15').style.display = 'block'; document.getElementById('explanation_15').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
                 <label for="answer_15_2">
-                    <input type="radio" name="answer_15" id="answer_15_2" onclick="document.getElementById('no_15').style.display = 'block'; document.getElementById('yes_15').style.display = 'none'; document.getElementById('explanation_15').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_15" id="answer_15_2" onclick="document.getElementById('no_15').style.display = 'block'; document.getElementById('yes_15').style.display = 'none'; document.getElementById('explanation_15').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
 
 
             </form>
             <div id="no_15" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_15" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_15" style="display:none">
-                <p>Please visit the <a href="/password/new">Reset Password</a> page if your password has been compromised.</p>
+                <p><%= t('training_62') %> <a href="/password/new"><%= t('training_63') %></a> <%= t('training_64') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>16. You may use Crisis Cleanup for case management.</h5>
+            <h5>16. <%= t('training_65') %></h5>
             <form>
                 <label for="answer_16_1">
-                    <input type="radio" name="answer_16" id="answer_16_1" onclick="document.getElementById('no_16').style.display = 'none'; document.getElementById('yes_16').style.display = 'block'; document.getElementById('explanation_16').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_16" id="answer_16_1" onclick="document.getElementById('no_16').style.display = 'none'; document.getElementById('yes_16').style.display = 'block'; document.getElementById('explanation_16').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
                 <label for="answer_16_2">
-                    <input type="radio" name="answer_16" id="answer_16_2" onclick="document.getElementById('no_16').style.display = 'block'; document.getElementById('yes_16').style.display = 'none'; document.getElementById('explanation_16').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_16" id="answer_16_2" onclick="document.getElementById('no_16').style.display = 'block'; document.getElementById('yes_16').style.display = 'none'; document.getElementById('explanation_16').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
 
 
             </form>
             <div id="no_16" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_16" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_16" style="display:none">
-                <p>Crisis Cleanup is designed for multi-agency, collaborative work order management. It is not designed to store sensitive personal information or be used for case management. See <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200798753-Mandatory-Training-Video" target=_blank>Training Video</a> and <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200819327-Client-Personal-Data-Collection-Policy" target=_blank>Client Data Collection Policy</a>.</p>
+                <p><%= t('training_66') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200798753-Mandatory-Training-Video" target=_blank><%= t('training_67') %></a> <%= t('training_68') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200819327-Client-Personal-Data-Collection-Policy" target=_blank><%= t('training_69') %></a>.</p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>17. Each organization should have one primary user.</h5>
+            <h5>17. <%= t('training_70') %></h5>
             <form>
                 <label for="answer_17_1">
-                    <input type="radio" name="answer_17" id="answer_17_1" onclick="document.getElementById('no_17').style.display = 'none'; document.getElementById('yes_17').style.display = 'block'; document.getElementById('explanation_17').style.display = 'block';"> False</label>
+                    <input type="radio" name="answer_17" id="answer_17_1" onclick="document.getElementById('no_17').style.display = 'none'; document.getElementById('yes_17').style.display = 'block'; document.getElementById('explanation_17').style.display = 'block';"<%= ('training_f') %>/label>
                 </input>
                 <label for="answer_17_2">
-                    <input type="radio" name="answer_17" id="answer_17_2" onclick="document.getElementById('no_17').style.display = 'block'; document.getElementById('yes_17').style.display = 'none'; document.getElementById('explanation_17').style.display = 'block';"> True</label>
+                    <input type="radio" name="answer_17" id="answer_17_2" onclick="document.getElementById('no_17').style.display = 'block'; document.getElementById('yes_17').style.display = 'none'; document.getElementById('explanation_17').style.display = 'block';"<%= ('training_t') %>/label>
                 </input>
 
 
             </form>
             <div id="no_17" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_17" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_17" style="display:none">
-                <p>Crisis Cleanup is designed for volunteer leaders on the ground. After you log in, invite all members of your team to Crisis Cleanup from the Dashboard.</p>
+                <p><%= t('training_71') %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>18. What is the easiest way to get a list of work orders and run reports? <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank><small>Hint</small></a></h5>
+            <h5>18. <%= t('training_72') %> <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank><small<%= ('training_hint') %>/small></a></h5>
             <form>
                 <label for="answer_18_2">
-                    <input type="radio" name="answer_18" id="answer_18_2" onclick="document.getElementById('no_18').style.display = 'block'; document.getElementById('yes_18').style.display = 'none'; document.getElementById('explanation_18').style.display = 'block';"> Email Crisis Cleanup and ask us to run a special report.</label>
+                    <input type="radio" name="answer_18" id="answer_18_2" onclick="document.getElementById('no_18').style.display = 'block'; document.getElementById('yes_18').style.display = 'none'; document.getElementById('explanation_18').style.display = 'block';"> <%= t('training_73') %></label>
                 </input>
                 <label for="answer_18_1">
-                    <input type="radio" name="answer_18" id="answer_18_1" onclick="document.getElementById('no_18').style.display = 'none'; document.getElementById('yes_18').style.display = 'block'; document.getElementById('explanation_18').style.display = 'block';"> Download a CSV or Excel file with all of the work orders, so you can create your own reports.</label>
+                    <input type="radio" name="answer_18" id="answer_18_1" onclick="document.getElementById('no_18').style.display = 'none'; document.getElementById('yes_18').style.display = 'block'; document.getElementById('explanation_18').style.display = 'block';"> <%= t('training_74') %></label>
                 </input>
                 <label for="answer_18_3">
-                    <input type="radio" name="answer_18" id="answer_18_3" onclick="document.getElementById('no_18').style.display = 'block'; document.getElementById('yes_18').style.display = 'none'; document.getElementById('explanation_18').style.display = 'block';"> Copy each work order from the screen with a pen and paper.</label>
+                    <input type="radio" name="answer_18" id="answer_18_3" onclick="document.getElementById('no_18').style.display = 'block'; document.getElementById('yes_18').style.display = 'none'; document.getElementById('explanation_18').style.display = 'block';"> <%= t('training_75') %></label>
                 </input>
                 <label for="answer_18_4">
-                    <input type="radio" name="answer_18" id="answer_18_4" onclick="document.getElementById('no_18').style.display = 'block'; document.getElementById('yes_18').style.display = 'none'; document.getElementById('explanation_18').style.display = 'block';"> Print each work order, one by one. Then hire highly trained orangutanes to analyze the data.</label>
+                    <input type="radio" name="answer_18" id="answer_18_4" onclick="document.getElementById('no_18').style.display = 'block'; document.getElementById('yes_18').style.display = 'none'; document.getElementById('explanation_18').style.display = 'block';"> <%= t('training_76') %></label>
                 </input>
             </form>
             <div id="no_18" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"><%= t('train_i') %>/p>
             </div>
             <div id="yes_18" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"><%= t('train_c') %>/p>
             </div>
             <div id="explanation_18" style="display:none">
-                <p>We encourage each participating organization to download their work orders and run regular reports for county governments, OEMs, and other VOAD members. Please don't ask us to run reports for you. See the <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank>Help Article</a> and <a href="http://blog.crisiscleanup.org/2014/01/new-crisis-cleanup-features.html" target=_blank>Blog Post</a> on inter-organization stats/reports.</p>
+                <p>We encourage each participating orgCrisis Cleanup works a lot like Craigslist--Craig keeps the servers running, but the community is in charge of powering the system. Although you may report to county and state governments and other organizations in real life, no single organization is in charge of Crisis Cleanup. Everybody works together toward a common goal. Crisis Cleanup operates on the principle of Collaborative Accountability: When interdependent, co-equal partners pressure and assist one another to accomplish a goal. Seeanization to download their work orders and run regular reports for county governments, OEMs, and other VOAD members. Please don't ask us to run reports for you. See the <a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603027-How-do-I-download-an-Excel-or-CSV-copy-of-the-data-" target=_blank>Help Article</a> and <a href="http://blog.crisiscleanup.org/2014/01/new-crisis-cleanup-features.html" target=_blank>Blog Post</a> on inter-organization stats/reports.</p>
             </div>
         </div>
     </div>
@@ -501,7 +501,7 @@
 
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>19. How many work orders should you claim at one time? <small><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/227036588-Work-Order-Case-Claiming-Policy">Hint</a></small></h5>
+            <h5>19. How many work orders should you claim at one time? <small><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/227036588-Work-Order-Case-Claiming-Policy"<%= ('training_hint') %>/a></small></h5>
             <form>
                 <label for="answer_19_2">
                     <input type="radio" name="answer_19" id="answer_19_2" onclick="document.getElementById('no_19').style.display = 'block'; document.getElementById('yes_19').style.display = 'none'; document.getElementById('explanation_19').style.display = 'block';"> As many as you can.</label>
@@ -517,10 +517,10 @@
                 </input>
             </form>
             <div id="no_19" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_19" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_19" style="display:none">
                 <p>In general, only claim work orders/cases that you can complete in a few days. Never claim work orders/cases more than six days in advance. Never claim large numbers of work orders/cases in an area unless you intend to complete them all within six days at the most. Unclaim work orders/cases right away if you cannot complete them. Often there are multiple relief organizations who are available to help; claiming work orders weeks in advance delays service and cause volunteers to wait for no good reason.</p>
@@ -545,10 +545,10 @@
                 </input>
             </form>
             <div id="no_20" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_20" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_20" style="display:none">
                 <p>Claim the work order to decrease the likelihood of duplication. Ensure that the resident is present before driving there, and that they still need help. Arrive self-contained. When you are done, mark the work order closed.</p>
@@ -557,7 +557,7 @@
     </div>
     <div class="row">
         <div class="small-12 medium-12 large-12 columns">
-            <h5>21. How many people from your organization should you invite? <small><a href="https://youtu.be/3wumEh8wcak?t=72">Hint</a></small></h5>
+            <h5>21. How many people from your organization should you invite? <small><a href="https://youtu.be/3wumEh8wcak?t=72"<%= ('training_hint') %>/a></small></h5>
             <form>
                 <label for="answer_21_2">
                     <input type="radio" name="answer_21" id="answer_21_2" onclick="document.getElementById('no_21').style.display = 'block'; document.getElementById('yes_21').style.display = 'none'; document.getElementById('explanation_21').style.display = 'block';"> No more than one or two people per organization.</label>
@@ -573,10 +573,10 @@
                 </input>
             </form>
             <div id="no_21" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_21" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_21" style="display:none">
                 <p>You should invite as many trusted volunteers and staff as possible to ensure that work order information is updated, and that volunteers can quickly and effectively organize. On one hand, experience has shown that organizations with few users are never able to update work orders. On the other hand, you should never invite untrusted members of the public.</p>
@@ -601,10 +601,10 @@
                 </input>
             </form>
             <div id="no_22" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
-            </div>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
+            </div>Crisis Cleanup works a lot like Craigslist--Craig keeps the servers running, but the community is in charge of powering the system. Although you may report to county and state governments and other organizations in real life, no single organization is in charge of Crisis Cleanup. Everybody works together toward a common goal. Crisis Cleanup operates on the principle of Collaborative Accountability: When interdependent, co-equal partners pressure and assist one another to accomplish a goal. See
             <div id="yes_22" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_22" style="display:none">
                 <p>Many jurisdictions will not carry away trash unless it is bagged, sorted, and placed on a public right-of-way (like the street or sidewalk).</p>
@@ -623,10 +623,10 @@
                 </input>
             </form>
             <div id="no_23" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_23" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_23" style="display:none">
                 <p>If you started working before using Crisis Cleanup, be sure to add the work orders for a few reasons: 1. It will decrease the likelihood of duplication. 2. This list will be available to long-term recovery groups who can help the survivor for months or years to come. 3. It feels good to see a lot done on the map.</p>
@@ -651,10 +651,10 @@
                 </input>
             </form>
             <div id="no_24" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_24" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_24" style="display:none">
                 <p>Crisis Cleanup fails at the point of centralization. If you try to be in charge of another organization (e.g. a sister church), their volunteers will waste a lot of time, the paperwork will get lost, and you will be overworked with trying to track them down and get their reports. Just let them log in themselves.</p>
@@ -679,10 +679,10 @@
                 </input>
             </form>
             <div id="no_25" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_25" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_25" style="display:none">
                 <p>Water can seep up 18-24 inches above the visible water line. When you remove drywall, please cut it on a straight line at 4 or 8 feet, even if there was only 3 inches of water. When drywall is replaced, workers always replace entire sheets, which are 4x8 feet. Using just a hammer leaves jagged edges that will need to be trimmed later. Beware of live electrical wires inside of walls. Remove drywall screws if you can. When possible, leave a note explaining what your organization did. Help residents know that mold remediation takes several weeks, and they should not replace drywall immediately.</p>
@@ -707,10 +707,10 @@
                 </input>
             </form>
             <div id="no_26" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_26" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_26" style="display:none">
                 <p>Be patient with colleagues from other organizations, and know they are doing the best they can. They want to help, just like you.</p>
@@ -729,10 +729,10 @@
                 </input>
             </form>
             <div id="no_27" style="display:none">
-                <p style="color:red; font-weight: bold;">Incorrect.</p>
+                <p style="color:red; font-weight: bold;"<%= t('train_i') %>/p>
             </div>
             <div id="yes_27" style="display:none">
-                <p style="color:green; font-weight: bold;">Correct!</p>
+                <p style="color:green; font-weight: bold;"<%= t('train_c') %>/p>
             </div>
             <div id="explanation_27" style="display:none">
                 <p>To move an icon, click edit, drag it to the correct location, and click "Save."</p>
