@@ -1,9 +1,9 @@
 # Contributing
 
 ## Developer Pull Request Process
-1. Github issue created or assigned. 
+1. Github issue created or assigned.
 2. Feature branch is created based on the latest from the `master` branch.
-   * Developer forks the repository if (s)he isn't part of the core team and thus does not have permission to commit to the main CrisisCleanup repo. 
+   * Developer forks the repository if (s)he isn't part of the core team and thus does not have permission to commit to the main CrisisCleanup repo.
 3. Local development and testing is performed **including** writing unit and functional tests for new features and bugs.
 4. Create a pull request into the `master` branch.  Add reviewers and comments. (will trigger CircleCI)
 5. Reviewers will then approve the PR, provide feedback, and then merge into the `staging` environment.
@@ -15,7 +15,7 @@
 4. Smoke testing in `production` environment
 
 ## Pre-Reqs
-1. Ruby 2.2.5 (use rbenv or RVM) 
+1. Ruby 2.2.5 (use rbenv or RVM)
 	- with `bundler` gem installed i.e. `gem install bundler`
 2. `docker` and `docker-compose`
 3. `node/npm` (Optionally, but preferred also install `yarn`)
@@ -30,7 +30,7 @@
 	- Create your own `.env.development` in the repository base, based on `.env.development.sample`.
 	- (Required) You will need your own [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 	- (Optional) You will also need to use your own AWS API key if you need to develop SNS or S3 features.
-6. Data Migration - 
+6. Data Migration -
 	- Using seed data:
 		- `bin/rake db:setup` (creates and migrates in one step)
 	        - (Mac/HomeBrew) If you encounter an error about byebug and readline, you can work around it by symlinking readline:    
@@ -43,7 +43,8 @@
 	- For `YARN`: `yarn` (preferred)
 8. Server Start
 	- `bin/rails server` - App should be available at `http://localhost:3000`
-9. Testing 
+        - You can login using the default user `admin@example.com` with password `password`
+9. Testing
 	- `chromedriver` is required for now (use `homebrew` or place binary on `PATH`)
 	- `RAILS_ENV=test bundle exec rspec`
 10. Cleanup
