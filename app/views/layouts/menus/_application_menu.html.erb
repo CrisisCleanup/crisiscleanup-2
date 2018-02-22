@@ -48,6 +48,7 @@
         <li class="has-dropdown"><%= link_to t('nav_8'), worker_dashboard_path %>
           <ul class="dropdown">
             <li><%= link_to t('nav_8_1'), worker_incident_mysites_path(current_user_event) %></li>
+            <li><a href="https://www.crisiscleanup.org/redeploy_form">Redeploy/Join Incident</a></li>
             <li><%= link_to t('nav_8_2'), worker_my_organization_path %></li>
             <li><%= link_to t('nav_8_3'), worker_incident_legacy_contacts_path(current_user_event) %></li>
             <li><%= link_to t('nav_8_4'), worker_incident_legacy_organizations_path(current_user_event) %></li>
