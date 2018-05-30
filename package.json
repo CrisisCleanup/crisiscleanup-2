@@ -21,7 +21,7 @@
     "webpack-merge": "^4.1.0"
   },
   "engines": {
-    "node": ">=8.9.x",
+    "node": "8.9.x",
     "yarn": ">=0.25.2"
   }
 }
