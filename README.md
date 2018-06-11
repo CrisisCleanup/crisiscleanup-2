@@ -6,7 +6,7 @@ Crisis Cleanup is a web platform that connects disaster recovery organization vo
 
 Crisis Cleanup works best in a collaborative environment where multiple voluntary organizations and agencies work together and coordinate efforts. Because these organizations do not take orders from one another, Crisis Cleanup is designed to facilitate Collaborative Accountability models of inter-agency interaction, rather than command-and-control operations, or or heirarchical accountability models of interaction. 
 
-This is the primary repository for the main Crisis Cleanup web application, a collaborative map-based coordination tool. This implementation is built with Ruby on Rails, a PostgreSQL database and run on the Heroku stack.
+This is the repository for the main Crisis Cleanup web application, a collaborative map-based coordination tool. This implementation is built with Ruby on Rails, a PostgreSQL database and run on the Heroku stack. A newer version of Crisis Cleanup is under development, written in Python and Vue.js, located at: https://github.com/CrisisCleanup/crisiscleanup-web
 
 ## Contribute
 
