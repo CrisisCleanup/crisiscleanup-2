@@ -1,12 +1,11 @@
 ENV['RAILS_ENV'] ||= 'test'
-#require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 require 'valid_attribute'
-require "selenium/webdriver"
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -23,21 +22,25 @@ def resize_window(width, height)
   end
 end
 
-Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+drive = "phantom"
+if drive == "chromedriver"
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+
+  Capybara.default_driver = :chrome
+  Capybara.javascript_driver = :chrome
+elsif drive == "phantom"
+  Capybara.register_driver :poltergeist do |app|
+    options = {
+        :screen_size => [1440, 900]
+    }
+    Capybara::Poltergeist::Driver.new(app, options)
+  end
+
+  Capybara.default_driver = :poltergeist
+  Capybara.javascript_driver = :poltergeist
 end
-
-Capybara.register_driver :headless_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w(headless disable-gpu) }
-  )
-
-  Capybara::Selenium::Driver.new app,
-    browser: :chrome,
-    desired_capabilities: capabilities
-end
-
-Capybara.default_driver = :headless_chrome
 
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
