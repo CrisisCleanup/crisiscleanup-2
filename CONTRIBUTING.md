@@ -63,8 +63,8 @@
 6. Access web at `http://localhost:8080`
 
 ### Docker - Testing
-1. `docker-compose exec web bash -c "RAILS_ENV=test bin/rake db:create"`
-2. `docker-compose exec web bash -c "RAILS_ENV=test bundle exec rspec"`
+1. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:create"`
+2. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bundle exec rspec"`
 3. 
 
 
