@@ -37,7 +37,7 @@
 	        `ln -s /usr/local/opt/readline/lib/libreadline.dylib /usr/local/opt/readline/lib/libreadline.6.dylib`
 	- (OPTIONAL) Using a DB dumpfile:
 		- `bin/rake db:create`
-		- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U crisiscleanup -d crisiscleanup_development dev.dump` (PW: crisiscleanup)
+		- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d postgres dev.dump` (PW: crisiscleanup)
 7. Use NPM or YARN to install node dependencies
 	- For `NPM`: `npm install`
 	- For `YARN`: `yarn` (preferred)
@@ -65,3 +65,11 @@
 ### Docker - Testing
 1. `docker-compose exec web bash -c "RAILS_ENV=test bin/rake db:create"`
 2. `docker-compose exec web bash -c "RAILS_ENV=test bundle exec rspec"`
+3. 
+
+
+- `bin/rake db:create`
+- `docker cp ./dev.dump crisiscleanup_postgres_1:/tmp`
+- `dc exec postgres bash`
+- `cd /tmp`
+- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d postgres dev.dump`
