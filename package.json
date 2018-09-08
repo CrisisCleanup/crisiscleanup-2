@@ -19,8 +19,5 @@
     "vue-template-compiler": "^2.4.4",
     "webpack-dev-server": "^2.8.2",
     "webpack-merge": "^4.1.0"
-  },
-  "engines": {
-    "yarn": ">=0.25.2"
   }
 }
