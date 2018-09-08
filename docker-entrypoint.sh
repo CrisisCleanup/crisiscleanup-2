@@ -6,4 +6,8 @@ if [ -f tmp/pids/server.pid ]; then
   rm tmp/pids/server.pid
 fi
 
-exec bundle exec "$@"
+# bundle check # || bundle install --binstubs="$BUNDLE_BIN"
+
+bin/rake db:setup
+
+exec "$@"

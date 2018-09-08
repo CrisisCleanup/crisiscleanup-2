@@ -38,5 +38,6 @@ Thumbs.db
 /public/packs-test
 /node_modules
 .env.development
+.env.docker
 Makefile
 /public/packs
