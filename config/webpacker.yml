@@ -38,6 +38,16 @@ development:
     port: 3035
     hmr: false
     https: false
+    
+docker:
+  <<: *default
+  compile: true
+
+  dev_server:
+    host: localhost
+    port: 3035
+    hmr: false
+    https: false 
 
 test:
   <<: *default

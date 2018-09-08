@@ -1,15 +1,16 @@
 development: &development
   adapter: postgresql
   encoding: unicode
-  database: crisiscleanup_development
+  database: postgres
   pool: 5
-  username: crisiscleanup
+  username: postgres
   password: crisiscleanup
   host: localhost
   port: 5432
 
 docker:
   <<: *development
+  database: postgres
   host: postgres
 
 test:
@@ -17,9 +18,9 @@ test:
   encoding: unicode
   database: crisiscleanup_test
   pool: 5
-  username: crisiscleanup
+  username: postgres
   password: crisiscleanup
-  host: localhost
+  host: <%= ENV['POSTGRES_HOST'] ||= 'localhost' %>
   port: 5432
 
 production:
