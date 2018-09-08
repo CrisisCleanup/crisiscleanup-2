@@ -1,4 +1,4 @@
-ruby "2.2.5"
+ruby "2.4.4"
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -39,6 +39,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'validates_email_format_of'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'json', '>= 1.8.6'
 
 gem 'faker'
 
