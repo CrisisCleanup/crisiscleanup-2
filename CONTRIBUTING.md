@@ -37,7 +37,7 @@
 	        `ln -s /usr/local/opt/readline/lib/libreadline.dylib /usr/local/opt/readline/lib/libreadline.6.dylib`
 	- (OPTIONAL) Using a DB dumpfile:
 		- `bin/rake db:create`
-		- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U crisiscleanup -d crisiscleanup_development dev.dump` (PW: crisiscleanup)
+		- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d postgres dev.dump` (PW: crisiscleanup)
 7. Use NPM or YARN to install node dependencies
 	- For `NPM`: `npm install`
 	- For `YARN`: `yarn` (preferred)
@@ -47,4 +47,29 @@
 	- `chromedriver` is required for now (use `homebrew` or place binary on `PATH`)
 	- `RAILS_ENV=test bundle exec rspec`
 10. Cleanup
-	- `docker-compose down` (will destroy your local dev database)
+	- `docker-compose down -v` (will destroy your local dev database)
+
+
+## Setup - Docker
+1. Clone repo: `git clone git@github.com:CrisisCleanup/crisiscleanup.git`
+   * Clone fork, if applicable, instead of main repo.
+2. `cd crisiscleanup`
+3. API keys and environment variables
+	- Create your own `.env.docker` in the repository base, based on `.env.docker.sample`.
+	- (Required) You will need your own [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
+	- (Optional) You will also need to use your own AWS API key if you need to develop SNS or S3 features.
+4. `docker-compose build`
+5. `docker-compose up -d`
+6. Access web at `http://localhost:8080`
+
+### Docker - Testing
+1. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:create"`
+2. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bundle exec rspec"`
+3. 
+
+
+- `bin/rake db:create`
+- `docker cp ./dev.dump crisiscleanup_postgres_1:/tmp`
+- `dc exec postgres bash`
+- `cd /tmp`
+- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d postgres dev.dump`
