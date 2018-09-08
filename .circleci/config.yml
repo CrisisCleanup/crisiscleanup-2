@@ -4,50 +4,48 @@ jobs:
     working_directory: ~/CrisisCleanup/crisiscleanup
     parallelism: 2
     shell: /bin/bash --login
-    # CircleCI 2.0 does not support environment variables that refer to each other the same way as 1.0 did.
-    # If any of these refer to each other, rewrite them so that they don't or see https://circleci.com/docs/2.0/env-vars/#interpolating-environment-variables-to-set-other-environment-variables .
     environment:
       CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
       CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
     docker:
-    - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
-      command: /sbin/init
+    - image: circleci/ruby:2.4.4-node-browsers
+    - image: circleci/postgres:9.6.2-alpine
+      environment:
+        POSTGRES_DB: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: crisiscleanup       
     steps:
     - checkout
-    - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-    - run:
-        working_directory: ~/CrisisCleanup/crisiscleanup
-        command: rm -f CrisisCleanup/crisiscleanup/.rvmrc; echo ruby-2.2.5 > CrisisCleanup/crisiscleanup/.ruby-version; rvm use ruby-2.2.5 --default
-    - run:
-        working_directory: ~/CrisisCleanup/crisiscleanup
-        command: nvm install 8.2.0 && nvm alias default 8.2.0
-    - restore_cache:
-        keys:
-        # This branch if available
-        - v1-dep-{{ .Branch }}-
-        # Default branch if not
-        - v1-dep-master-
-        # Any branch if there are none on the default branch - this should be unnecessary if you have your default branch configured correctly
-        - v1-dep-
-    - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-    - run: npm
+    # - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+    # Restore bundle cache
+    - type: cache-restore
+      key: myapp-bundle-{{ checksum "Gemfile.lock" }}
+
+    # Restore yarn cache
+    - type: cache-restore
+      key: myapp-yarn-{{ checksum "yarn.lock" }}
+    
+    # Install gem dependencies
+    - run: bundle install --path vendor/bundle
+    # bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+
+    # Install Javascript dependencies
+    - run: bin/yarn install
+    
     - run: bundle exec rake assets:precompile
-    - save_cache:
-        key: v1-dep-{{ .Branch }}-{{ epoch }}
-        paths:
+
+    # Store bundle cache
+    - type: cache-save
+      key: myapp-bundle-{{ checksum "Gemfile.lock" }}
+      paths:
         - vendor/bundle
-        - ~/.bundle
-        - ~/.cache/yarn
-    # The following line was run implicitly in your 1.0 builds based on what CircleCI inferred about the structure of your project. In 2.0 you need to be explicit about which commands should be run. In some cases you can discard inferred commands if they are not relevant to your project.
-    - run: |-
-        mkdir -p config && echo 'test:
-          adapter: postgresql
-          encoding: unicode
-          database: circle_ruby_test
-          pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-          username: ubuntu
-          host: localhost
-        ' > config/database.yml
+
+    # Store yarn cache
+    - type: cache-save
+      key: myapp-yarn-{{ checksum "yarn.lock" }}
+      paths:
+        - ~/.yarn-cache    
+        
     - run:
         command: bundle exec rake db:create db:schema:load --trace
         environment:
