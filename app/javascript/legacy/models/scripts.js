@@ -1,12 +1,11 @@
 import CCMap from '.'
-
-var GoogleMapsApiLoader = require('google-maps-api-loader');
+import Raven from 'raven-js';
+const GoogleMapsApiLoader = require('google-maps-api-loader');
 
 $(document).ready(function () {
   // try {
   var path = $(location).attr('pathname');
   var pathArray = path.split('/');
-  var page = pathArray[2];
   var worker_map = $('#worker-map-canvas').length
   var event_id;
 
@@ -31,7 +30,7 @@ $(document).ready(function () {
         // TODO: remove this once the worker map instantiation is setting the event correctly.
         ccmap.setEventId(event_id);
       }, function (err) {
-        console.error(err);
+        Raven.captureMessage(err);
       });
   }
 
@@ -46,11 +45,11 @@ $(document).ready(function () {
   if ($dlbtn) {
     var jobId;
 
-    function requestCsv() {
+    const requestCsv = () => {
       $.ajax({
         type: "GET",
         url: "/worker/incident/" + event_id + "/download-sites.json?job_id=" + jobId,
-        success: function (response, status, xhr) {
+        success: function (response) {
           if (response.status == 200 && response.hasOwnProperty('url')) {
             window.location.replace(response.url);
             enabled = true;

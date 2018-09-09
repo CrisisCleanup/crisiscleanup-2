@@ -8,6 +8,6 @@ fi
 
 # bundle check # || bundle install --binstubs="$BUNDLE_BIN"
 
-bin/rake db:setup
+# bin/rake db:setup
 
 exec "$@"

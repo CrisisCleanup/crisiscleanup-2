@@ -1,48 +1,51 @@
 
 import Vue from 'vue';
+import Raven from 'raven-js';
 import modal from './components/modal';
 import SiteStatusDropdown from './components/dashboard/SiteStatusDropdown';
 import SiteIcon from './components/dashboard/SiteIcon.vue';
 
-if (document.getElementById("claimed-worksites")) {
-  var workerDashboardVue = new Vue({
+if (document.getElementById('claimed-worksites')) {
+  new Vue({
     el: '#claimed-worksites',
     propsData: {
-      siteId: null
+      siteId: null,
     },
     components: {
       modal,
       SiteStatusDropdown,
-      SiteIcon
+      SiteIcon,
     },
     data: {
       showModal: false,
-      smsNumbers: ''
+      smsNumbers: '',
     },
     methods: {
-      fireModal: function (siteId) {
+      fireModal(siteId) {
         this.siteId = siteId;
         this.showModal = true;
       },
-      cancelSend: function () {
+      cancelSend() {
         this.smsNumbers = '';
         this.showModal = false;
       },
 
-      sendMessage: function () {
-        var that = this;
-        this.$http.post('/api/messages/send_sms.json',
-          JSON.stringify({type: 'site-info', siteId: this.siteId, numbers: this.smsNumbers}),
+      sendMessage() {
+        const that = this;
+        this.$http.post(
+          '/api/messages/send_sms.json',
+          JSON.stringify({ type: 'site-info', siteId: this.siteId, numbers: this.smsNumbers }),
           {
-            headers: {'content-type': 'application/json'}
-          }).then(function (response) {
+            headers: { 'content-type': 'application/json' },
+          },
+        ).then(function () {
           that.smsNumbers = '';
           this.showModal = false;
-        }, function (error) {
+        }, (error) => {
           that.hasError = true;
           Raven.captureException(error.toString());
         });
-      }
-    }
+      },
+    },
   });
 }

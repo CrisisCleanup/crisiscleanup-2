@@ -1,10 +1,11 @@
+import Raven from 'raven-js';
+import Vue from 'vue';
+import HistoryVue from './components/history/HistoryVue'
+
 Vue.filter('phone', function (phone) {
   return phone.replace(/[^0-9]/g, '')
     .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
 });
-
-import Vue from 'vue';
-import HistoryVue from './components/history/HistoryVue'
 
 if (document.getElementById("history-data")) {
   var historyVueManager = new Vue({

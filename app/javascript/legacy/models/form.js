@@ -1,4 +1,6 @@
+/* global google */
 import {detectLocation, addMarker, setMarkerLatLng, disableAddressFields, resetAddressFields} from './util';
+import Raven from 'raven-js';
 
 /**
  * Initialize the site form - requires jQuery
@@ -22,7 +24,7 @@ export default function(params) {
   var resetAddressBtn = $('legacy_legacy_site_resetaddressfields');
 
   if (!params.event_id) {
-    console.error('CCMap.Form requires an event_id');
+    Raven.captureMessage('CCMap.Form requires an eventId');
     return;
   }
   var event_id = params.event_id;
@@ -62,14 +64,14 @@ export default function(params) {
     this.ccsite = ccsite;
 
     // Loop over the site attribues and populate the corresponding inputs if they exist
-    for (var field in ccsite.site) {
+    for (let field in ccsite.site) {
       if (ccsite.site.hasOwnProperty(field) && typeof form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
         form.elements['legacy_legacy_site[' + field + ']'].value = ccsite.site[field];
       }
     }
 
     // Loop over the site.data attribues and populate the corresponding inputs if they exist
-    for (var field in ccsite.site.data) {
+    for (let field in ccsite.site.data) {
       if (ccsite.site.data.hasOwnProperty(field) && typeof form.elements['legacy_legacy_site[' + field + ']'] !== 'undefined') {
         var input = form.elements['legacy_legacy_site[' + field + ']'];
         // Deal with checkboxes. I'm honestly at a loss how to do this a better way.
@@ -83,7 +85,7 @@ export default function(params) {
     }
 
     // Update or hide the claim/unclaim submit button
-    if (InitialState.user.admin || ccsite.site.claimed_by === InitialState.user.org_id || !ccsite.site.claimed_by) {
+    if (window.InitialState.user.admin || ccsite.site.claimed_by === window.InitialState.user.org_id || !ccsite.site.claimed_by) {
       $(claimBtn).show();
       if (ccsite.site.claimed_by) {
         claimBtn.value = 'Unclaim & Save';
@@ -171,7 +173,6 @@ export default function(params) {
 
   // Cancel on edit form. Reset new form.
   if (cancelBtn) {
-    var self = this;
     cancelBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopImmediatePropagation();
@@ -187,13 +188,13 @@ export default function(params) {
   }
 
   if (claimBtn) {
-    claimBtn.addEventListener('click', function(e) {
+    claimBtn.addEventListener('click', function() {
       form.elements['legacy_legacy_site_claim'].value = true;
     });
   }
 
   if (saveBtn) {
-    saveBtn.addEventListener('click', function(e) {
+    saveBtn.addEventListener('click', function() {
       form.elements['legacy_legacy_site_claim'].value = false;
     });
   }
@@ -259,7 +260,7 @@ export default function(params) {
               data.errors.forEach(function(error) {
                 errorList.append('<p>' + error + '</p>');
               });
-              var alertHtml = $('<div data-alert class="alert-box warning"><a href="#" class="close">&times;</a></div>').append(errorList); 
+              let alertHtml = $('<div data-alert class="alert-box warning"><a href="#" class="close">&times;</a></div>').append(errorList); 
               $('form').prepend(alertHtml);
             } else if (data["id"] == undefined && data["updated"] == undefined) {
               var html = "<div data-alert class='alert-box'>"+data+"<a href='#' class='close'>&times;</a></div>";
@@ -270,7 +271,7 @@ export default function(params) {
             } else if (data["updated"] != undefined) {
               // Successful save on the edit form
               var nameStr = data.updated.case_number + " - " + data.updated.name;
-              var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
+              let html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
               $('#alert-container').html(html);
               form.reset();
               form.scrollTop = 0;
@@ -295,8 +296,8 @@ export default function(params) {
               self.ccsite.updateInfoboxHtml();
             } else {
               // Successful save on the new site form
-              var nameStr = data.case_number + " - " + data.name;
-              var html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
+              let nameStr = data.case_number + " - " + data.name;
+              let html = "<div data-alert class='alert-box'>" + nameStr + " was successfully saved<a href='#' class='close'>&times;</a></div>";
               $('#alert-container').html(html);
               form.reset();
               form.scrollTop = 0;
