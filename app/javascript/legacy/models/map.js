@@ -28,31 +28,31 @@ export default function(params) {
     styles: [
       {
         textColor: 'black',
-        url: image_path('map_icons/m1.png'),
+        url: window.image_path('map_icons/m1.png'),
         height: 53,
         width: 52
       },
       {
         textColor: 'black',
-        url: image_path('map_icons/m2.png'),
+        url: window.image_path('map_icons/m2.png'),
         height: 56,
         width: 55
       },
       {
         textColor: 'black',
-        url: image_path('map_icons/m3.png'),
+        url: window.image_path('map_icons/m3.png'),
         height: 66,
         width: 65
       },
       {
         textColor: 'black',
-        url: image_path('map_icons/m4.png'),
+        url: window.image_path('map_icons/m4.png'),
         height: 78,
         width: 77
       },
       {
         textColor: 'black',
-        url: image_path('map_icons/m5.png'),
+        url: window.image_path('map_icons/m5.png'),
         height: 90,
         width: 89
       }
@@ -76,7 +76,7 @@ export default function(params) {
   }
   this.map = new params.google.maps.Map(this.canvas, this.options);
   this.markerBounds = new params.google.maps.LatLngBounds();
-  this.markerClusterer = new MarkerClusterer(this.map, [], markerClustererOptions);
+  this.markerClusterer = new window.MarkerClusterer(this.map, [], markerClustererOptions);
 
   this.map.addListener('click', function() {
     $('#filters-anchor').click();
@@ -156,7 +156,7 @@ export default function(params) {
     }
   };
 
-  function zoomToMarker(id) {
+  function zoomToMarkerLocal(id) {
     let matchArray = $.grep(allSites, function(site) { return site.site.id === id; });
     if (matchArray.length > 0) {
       let marker = matchArray[0].marker;
@@ -171,18 +171,18 @@ export default function(params) {
       Raven.captureMessage("Matching site not found.", {level: 'warning'});
     }
   }
-  zoomToMarker = zoomToMarker.bind(this);
+  let zoomToMarker = zoomToMarkerLocal.bind(this);
 
   function setupSearch(siteList) {
     let $searchBtn = $('#map-search-btn');
     // Initialize the search typeahead
     // TODO: this shouldn't be loaded or even rendered on every page.
     if ($searchBtn) {
-      var siteBh = new Bloodhound({
+      var siteBh = new window.Bloodhound({
         datumTokenizer: function(obj) {
-          return Bloodhound.tokenizers.whitespace(obj.siteStr);
+          return window.Bloodhound.tokenizers.whitespace(obj.siteStr);
         },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: window.Bloodhound.tokenizers.whitespace,
         identify: function(obj) {
           return obj.id;
         },
@@ -234,7 +234,7 @@ export default function(params) {
       success: function(data) {
         if (data != null && data.length > 0) {
           if (route.indexOf('public') >= 0) {
-            data.forEach(function(obj, index) {
+            data.forEach(function(obj) {
               var lat_lng = new params.google.maps.LatLng(parseFloat(obj.blurred_latitude), parseFloat(obj.blurred_longitude));
               this.markerBounds.extend(lat_lng);
               var site = new Site({
@@ -248,7 +248,7 @@ export default function(params) {
             }, this);
 
           } else {
-            data.forEach(function(obj, index) {
+            data.forEach(function(obj) {
               var lat_lng = new params.google.maps.LatLng(parseFloat(obj.latitude), parseFloat(obj.longitude));
               this.markerBounds.extend(lat_lng);
               var site = new Site({
@@ -280,16 +280,10 @@ export default function(params) {
     var PAGE_SIZE = 15000;
 
     let route = "";
-    let lat = "";
-    let lng = "";
     if (this.public_map) {
       route = "/api/public/map/" + this.event_id + "/" + PAGE_SIZE + "/";
-      lat = "blurred_latitude";
-      lng = "blurred_longitude";
     } else {
       route = "/api/map/" + this.event_id + "/" + PAGE_SIZE + "/";
-      lat = "latitude";
-      lng = "longitude";
     }
 
     $.ajax({
@@ -371,9 +365,9 @@ export default function(params) {
 
     function geocodeQuery() {
       var num_values = 0;
-      if (city.value !== "") { num_values++ };
-      if (state.value !== "") { num_values++ };
-      if (zip.value !== "") { num_values++ };
+      if (city.value !== "") { num_values++ }
+      if (state.value !== "") { num_values++ }
+      if (zip.value !== "") { num_values++ }
 
       if (addressField.value !== "" && num_values > 0) {
         var address = addressField.value + ",+" + city.value + ",+" + state.value + "+" + zip.value;

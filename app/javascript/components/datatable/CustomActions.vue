@@ -21,7 +21,7 @@
       }
     },
     methods: {
-      itemAction (action, data, index) {}
+      itemAction () {}
     }
   }
 </script>

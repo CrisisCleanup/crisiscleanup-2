@@ -1,3 +1,4 @@
+import Raven from 'raven-js';
 import CCMap from '../models'
 
 var GoogleMapsApiLoader = require('google-maps-api-loader');
@@ -23,7 +24,7 @@ $(document).ready(function () {
             ccmap.setEventId(event_id);
           });
         }, function (err) {
-          console.error(err);
+          Raven.captureMessage(err); 
         });
     }
   }
