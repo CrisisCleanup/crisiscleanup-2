@@ -21,6 +21,7 @@
 </template>
 <script>
   import DashboardEventHub from '../events/DashboardEventHub'
+  import Raven from 'raven-js'
   export default {
     name: 'site-status-dropdown',
     props: [
@@ -29,7 +30,7 @@
     ],
     methods: {
       setSiteStatus: function () {
-        this.$http.post('/api/update-site-status/' + this.siteId, {status: this.selected}).then(function (response) {
+        this.$http.post('/api/update-site-status/' + this.siteId, {status: this.selected}).then(function () {
           DashboardEventHub.$emit('site-status-selected', [this.siteId, this.selected]);
         }, function (error) {
           Raven.captureException(error.toString());

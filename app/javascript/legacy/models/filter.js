@@ -43,12 +43,10 @@ export function Filter(params) {
 export function Filters(params) {
   var userOrgId;
   var userOrgName;
-  var userAdmin;
   // TODO: Update this mess once we get lodash in here.
-  if (InitialState) {
-    userOrgId = InitialState.user.org_id;
-    userOrgName = InitialState.user.org_name;
-    userAdmin = InitialState.user.admin;
+  if (window.InitialState) {
+    userOrgId = window.InitialState.user.org_id;
+    userOrgName = window.InitialState.user.org_name;
   }
   var onUpdate = params.onUpdate;
   var filterParams = [
@@ -159,7 +157,7 @@ export function Filters(params) {
           passes = false;
           break;
         }
-      };
+      }
 
       if (passes) {
         sites.push(site);

@@ -7,7 +7,7 @@
       ascendingIcon: 'fi-arrow-up',
       descendingIcon: 'fi-arrow-down',
       handleIcon: 'fi-plus',
-      renderIcon: function (classes, options) {
+      renderIcon: function (classes) {
         return ' <i class="' + classes.join(' ') + '">  </i> ';
       }
     },
@@ -23,7 +23,7 @@
         next: "fi-arrow-right",
         last: ""
       },
-      renderIcon: function (classes, options) {
+      renderIcon: function (classes) {
         return '<i class="' + classes.join(' ') + '">  </i>';
       }
     }
@@ -81,7 +81,7 @@
       DatatableEventHub.$on('filter-set', function (eventData) {
         return self.onFilterSet(eventData)
       });
-      DatatableEventHub.$on('filter-reset', function (e) {
+      DatatableEventHub.$on('filter-reset', function () {
         return self.onFilterReset()
       });
     },
@@ -154,9 +154,6 @@
           ? '<span class="ui teal label"><i class="large man icon"></i>Male</span>'
           : '<span class="ui pink label"><i class="large woman icon"></i>Female</span>'
       },
-      formatNumber (value) {
-        return accounting.formatNumber(value, 2)
-      },
       onPaginationData (paginationData) {
         this.$refs.pagination.setPaginationData(paginationData)
         this.$refs.paginationInfo.setPaginationData(paginationData)
@@ -164,9 +161,9 @@
       onChangePage (page) {
         this.$refs.vuetable.changePage(page)
       },
-      onAction (action, data, index) {
+      onAction () {
       },
-      onCellClicked (data, field, event) {
+      onCellClicked (data) {
         this.$refs.vuetable.toggleDetailRow(data.id)
       },
       onFilterSet (filterText) {
