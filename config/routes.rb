@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/administrator', as: 'rails_admin'
   devise_for :users, path:'',:path_names => {:sign_in => 'login', :sign_out => 'logout'}
   root 'static_pages#index'
   get "/home" => "static_pages#home", as: "home"
