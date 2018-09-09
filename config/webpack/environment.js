@@ -13,6 +13,7 @@ dotenvFiles.forEach((dotenvFile) => {
 
 environment.plugins.prepend('Environment', new webpack.EnvironmentPlugin(JSON.parse(JSON.stringify(process.env))));
 
+/*
 environment.loaders.prepend('', {
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
@@ -21,6 +22,7 @@ environment.loaders.prepend('', {
     formatter: require('eslint-friendly-formatter')
   }
 });
+*/
 
 environment.loaders.prepend('vue', {
   test: /\.vue$/,
