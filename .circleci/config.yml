@@ -55,8 +55,8 @@ jobs:
     # - run: bundle exec rake assets:precompile
     
     - run: 
-      name: ESLint
-      command: bin/webpack
+        name: ESLint
+        command: bin/webpack
 
     - run:
         name: Wait for DB
