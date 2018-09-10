@@ -2,15 +2,6 @@ require 'rails_helper'
 
 feature "Smoke test", :js => true do
 
-  scenario "public maps" do
-    visit '/public_map'
-    maps_page = Pages::Maps.new
-
-    create_incident
-
-    maps_page.select_incident(1)
-  end
-
   scenario "test navigation" do
     sign_in_with_admin
 

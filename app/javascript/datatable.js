@@ -83,7 +83,7 @@ document.onreadystatechange = function () {
           }
         },
         methods: {
-          onAction: function (action, data, index) {
+          onAction: function (action, data) {
             window.location.href = "/worker/incident/" + data.legacy_event_id + "/edit/" + data.id;
           },
         }
@@ -148,7 +148,7 @@ document.onreadystatechange = function () {
           }
         },
         methods: {
-          onAction: function (action, data, index) {
+          onAction: function (action, data) {
             window.location.href = "/admin/users/" + data.id + "/edit";
           },
         }

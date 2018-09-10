@@ -31,7 +31,7 @@
       }
     },
     methods: {
-      onClick: function (event) {
+      onClick: function () {
       }
     }
   }

@@ -1,10 +1,13 @@
 FactoryGirl.define do
+  lat = Faker::Address.latitude
+  lng = Faker::Address.longitude
+
   factory :legacy_site, :class => Legacy::LegacySite do
     address Faker::Address.street_address
-    latitude Faker::Address.latitude
-    longitude Faker::Address.longitude
-    blurred_latitude Faker::Address.latitude
-    blurred_longitude Faker::Address.longitude
+    latitude lat
+    longitude lng
+    blurred_latitude lat #+ rand(-0.0187..0.0187)
+    blurred_longitude lng #+ rand(-0.0187..0.0187)
     case_number Faker::Code.isbn
     city Faker::Address.city
     county Faker::Lorem.word
@@ -14,20 +17,24 @@ FactoryGirl.define do
     reported_by 1
     request_date DateTime.now.to_date
     state Faker::Address.state
+    zip_code Faker::Address.zip_code
+    data {{
+        email: Faker::Internet.email
+    }}
     status [
       "Open, unassigned",
-      "Open, assigned",
-      "Open, partially completed",
-      "Open, needs follow-up",
-      "Closed, completed",
-      "Closed, incompleted",
-      "Closed, out of scope",
-      "Closed, done by others",
-      "Closed, no help wanted",
-      "Closed, rejected",
-      "Closed, duplicate"
+      # "Open, assigned",
+      # "Open, partially completed",
+      # "Open, needs follow-up",
+      # "Closed, completed",
+      # "Closed, incompleted",
+      # "Closed, out of scope",
+      # "Closed, done by others",
+      # "Closed, no help wanted",
+      # "Closed, rejected",
+      # "Closed, duplicate"
     ].sample
-    work_type ["Flood","Debris Removal","Trees","Tornado","Tarp","Damage Report","Other"].sample
+    work_type ["Muck Out","Trees","Tarp","Debris","Mold Remediation","Rebuild","Other"].sample
   end
 end
 

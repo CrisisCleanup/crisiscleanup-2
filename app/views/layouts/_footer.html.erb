@@ -1,21 +1,21 @@
 <div class="row collapse" id="copyright">
   <div class="small-12 medium-12 large-12 columns">
     <ul>
-      <li><%= link_to "Home", home_path %> |</li>
-      <li><%= link_to "About", about_path %> |</li>
-      <li><a href="/public_map">Map</a> |</li>
-      <li><a href="http://blog.crisiscleanup.org/">Blog</a> |</li>
-      <li><a href="https://crisiscleanup-demo.herokuapp.com/">Demo</a> |</li>
-      <li><%= link_to "Training", training_path %> |</li>
-      <li><%= link_to "Contact", contact_path %> |</li>
-      <li><%= link_to "Terms", terms_path %> |</li>
-      <li><%= link_to "Privacy", privacy_path %> |</li>
-      <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies">Policies</a> |</li>
-      <li><a href="/signup">Sign Up</a> |</li>
+      <li><%= link_to t('sm_footer_1'), home_path %> |</li>
+      <li><%= link_to t('sm_footer_2'), about_path %> |</li>
+      <li><a href="/public_map"><%= t('sm_footer_3') %></a> |</li>
+      <li><a href="http://blog.crisiscleanup.org/"><%= t('sm_footer_4') %></a> |</li>
+      <li><a href="https://crisiscleanup-demo.herokuapp.com/"><%= t('sm_footer_5') %></a> |</li>
+      <li><%= link_to t('sm_footer_6'), training_path %> |</li>
+      <li><%= link_to t('sm_footer_7'), contact_path %> |</li>
+      <li><%= link_to t('sm_footer_8'), terms_path %> |</li>
+      <li><%= link_to t('sm_footer_9'), privacy_path %> |</li>
+      <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies"><%= t('sm_footer_10') %></a> |</li>
+      <li><a href="/signup"><%= t('sm_footer_11') %></a> |</li>
       <% if current_user %>
-          <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to t('sm_footer_12'), new_user_session_path %></li>
       <% else %>
-          <li><%= link_to "Logout", destroy_user_session_path %></li>
+          <li><%= link_to t('sm_footer_13'), destroy_user_session_path %></li>
       <% end %>
     </ul>
   </div>

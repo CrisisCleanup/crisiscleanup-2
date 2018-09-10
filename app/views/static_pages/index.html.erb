@@ -6,23 +6,23 @@
     <header class="splash-image">
         <div class="splash-image-cta-section">
             <div class="small-12 medium-6 large-6 columns">
-                <h3>Disaster relief without collaboration is like trying to win a soccer game with boxes on your head.</h3>
-                <h4>Luckily, Crisis Cleanup is here to help!</h4>
-                <h5>If you are a relief organization, register here:</h5>
-                    <a href="/register" class="button" id="register-btn">Register</a>
-                    <%= link_to "Login", new_user_session_path, class: "gray-block button" %>
-                <h5>Learn More:</h5>
+                <h3><%= t('home_p1') %></h3>
+                <h4><%= t('home_p2') %></h4>
+                <h5><%= t('home_p3') %></h5>
+                    <a href="/register" class="button" id="register-btn"><%= t('home_register_btn') %></a>
+                    <%= link_to t('home_login_btn'), new_user_session_path, class: "gray-block button" %>
+                <h5><%= t('home_p4') %></h5>
                 <form>
                     <select id="location-select">
-                        <option value="" disabled selected="selected">Who are you? Choose one, then click "Let's Go!"</option>
-                        <option value="voad">VOAD/ Relief Organization</option>
-                        <option value="government">Government</option>
-                        <option value="volunteer">Volunteer</option>
-                        <option value="survivor">Survivor</option>
-                        <option value="about">Just Curious</option>
+                        <option value="" disabled selected="selected"><%= t('home_dd_opt_1') %></option>
+                        <option value="voad"><%= t('home_dd_opt_2') %></option>
+                        <option value="government"><%= t('home_dd_opt_3') %></option>
+                        <option value="volunteer"><%= t('home_dd_opt_4') %></option>
+                        <option value="survivor"><%= t('home_dd_opt_5') %></option>
+                        <option value="about"><%= t('home_dd_opt_6') %></option>
                     </select>
-                    <a href="#" class="button" id="lets-go-btn">Learn More</a>
-                    <a href="http://bit.ly/CCUPatreon" class="button" id="support-ccu">Support Crisis Cleanup</a>
+                    <a href="#" class="button" id="lets-go-btn"><%= t('home_learnmore_btn') %></a>
+                    <a href="http://bit.ly/CCUPatreon" class="button success" id="support-ccu"><%= t('home_supportccu_btn') %></a>
                 </form>
             </div>
         </div>
@@ -32,45 +32,45 @@
 <% content_for :main do %>
 <div id="main">
     <div class="row home_coordinated_disasters">
-        <h2 align="center">70 Disasters Coordinated</h2> <!--(Updated 9/7/2017)-->
-        <p align="center">Ready Now: Multi-Agency Disaster Relief Coordination</p>
+        <h2 align="center">103 Disasters Coordinated</h2> <!--(Updated 9/6/2018) <%= t('home_main_1') %>-->
+        <p align="center"><%= t('home_main_2') %></p>
         <hr class="medium">
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/tornado-red.png", :alt => "dallas tornadoes"  %>
-                <h3 class="red-block">Dallas Tornadoes</h3>
-                <p>Crisis Cleanup helped dozens of relief agencies in the Dallas area assist survivors.<br /><br /><br /></p>
+                <h3 class="red-block"><%= t('home_main_3') %></h3>
+                <p><%= t('home_main_4') %><br /><br /><br /></p>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/hurricane-yellow.png", :alt => "hurricane sandy"  %>
-                <h3 class="mustard-block">Hurricane Sandy</h3>
-                <p>Our first major incident, more than 120 organizations and 30,000 volunteers used Crisis Cleanup to assist more than 5,000 families.<br /><br /></p>
+                <h3 class="mustard-block"><%= t('home_main_5') %></h3>
+                <p><%= t('home_main_6') %><br /><br /></p>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/flood-blue.png", :alt => "tx / ok floods"  %>
-                <h3 class="blue-block">TX / OK Floods</h3>
-                <p>The Texas-Oklahoma floods devastated Wimberly, TX and other small towns. Crisis Cleanup was the coordination system of record for community relief efforts.</p>
+                <h3 class="blue-block"><%= t('home_main_7') %></h3>
+                <p><%= t('home_main_8') %></p>
             </div>
         </div>
         <div class="row home_coordinated_disasters">
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/snowflake-green.png", :alt => "boston snowflakes"  %>
-                <h3 class="green-block">Boston Snowstorm</h3>
-                <p>The Boston snowstorm of 2015 paralyzed the city. When volunteers by the hundreds helped their neighbors, Crisis Cleanup helped them coordinate their efforts.</p>
+                <h3 class="green-block"><%= t('home_main_9') %></h3>
+                <p><%= t('home_main_10') %></p>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/fire-black.png", :alt => "black forest fires"  %>
-                <h3 class="black-block">Black Forest Fires</h3>
-                <p>Crisis Cleanup was used extensively during the Colorado Black Forest Fires.<br /><br /><br /></p>
+                <h3 class="black-block"><%= t('home_main_11') %></h3>
+                <p><%= t('home_main_12') %><br /><br /><br /></p>
             </div>
             <div class="columns small-12 medium-12 large-4" align="center">
                 <%= image_tag "icons/wind-orange.png", :alt => "south nj dericho storms"  %>
-                <h3 class="orange-block">S. NJ Dericho Storms</h3>
-                <p>More than 700 volunteers helped several hundred elderly residents remove downed trees in Southern New Jersey. Crisis Cleanup drastically improved efficiency and coordination.</p>
+                <h3 class="orange-block"><%= t('home_main_13') %></h3>
+                <p><%= t('home_main_14') %></p>
             </div>
         </div>
     <div class="row">
         <div class="columns small-12 medium-8 large-10">
-            <h3>Crisis Cleanup is a free, award-winning, ready-to-use, open source application that connects disaster recovery organizations with the people who need help.</h3>
+            <h3><%= t('home_main_15') %></h3>
                 <hr class="medium">
         </div>
         <div class="columns small-12 medium-4 large-2" align="center">
@@ -79,29 +79,29 @@
     </div>
     <div class="row">
         <div class="columns small-12 medium-8 large-8">
-            <h4 class="basic">How do you direct 30,000 volunteers from 100 organizations to 5,000 locations across a 500-mile arc in 8 weeks?</h4>
-            <h5>You don't. You let them organize themselves.</h5>
-            <p>Crisis Cleanup empowers relief organizations to instantly coordinate response efforts in real time, redirecting thousands of volunteers from to waiting lines to survivors' basements.</p>
+            <h4 class="basic"><%= t('home_main_16') %></h4>
+            <h5><%= t('home_main_17') %></h5>
+            <p><%= t('home_main_18') %></p>
 
-            <p>Crisis Cleanup was developed by and for field volunteers, team leaders, canvassers, and the people who work one-on-one with survivors whose homes have been affected by flood, tornadoes, earthquakes, wind, fire, or other disaster. Crisis Cleanup can respond to a new disaster the same day, permitting relief organizations to instantly coordinate efforts.</p>
+            <p><%= t('home_main_19') %></p>
 
-            <p>Crisis Cleanup implements a "Craigslist" philosophy to recovery efforts– organizations that are aware of work orders enter them into the system, and organizations with capacity to help can claim and perform the work. The system is not public, but it is open and transparent among participating organizations. No centralized organization is "in charge." This non-threatening approach minimizes duplication and maximizes communication, coordination, and efficiency.</p>
+            <p><%= t('home_main_20') %></p>
 
-            <p>While entering a client into Crisis Cleanup does not guarantee that he or she will be served, it guarantees visibility and maximizes the chances for assistance, while helping relief organizations prioritize their limited resources.</p>
+            <p><%= t('home_main_21') %></p>
 
         </div>
         <div class="sideblock">
             <div class="columns small-12 medium-4 large-4 black-block">
-                <h4>Disaster relief organizations may join as long as they:</h4> 
+                <h4><%= t('home_bb_1') %>:</h4>
                  <iframe class="index-intro" width="" height="" src="https://www.youtube.com/embed/BJdjbtpVLOM" frameborder="0" allowfullscreen></iframe>
                 <ol class="join white">
-                    <li>Have a physical presence in the area</li>
-                    <li>Interact directly with survivors</li>
-                    <li>Perform property assessments or remediation</li>
-                    <li>Are reputable (e.g. are a VOAD member or come recommended by a VOAD).</li>
-                    <li>Committed to open data and collaboration. Crisis Cleanup is open-source and free of charge.</li>
+                    <li><%= t('home_bb_2') %></li>
+                    <li><%= t('home_bb_3') %></li>
+                    <li><%= t('home_bb_4') %></li>
+                    <li><%= t('home_bb_5') %></li>
+                    <li><%= t('home_bb_6') %></li>
                 </ol>
-                <a href="/signup" class="button expand">Sound like you? Sign up!</a>
+                <a href="/signup" class="button expand"><%= t('home_bb_7') %></a>
             </div>
         </div>
     </div>
@@ -109,7 +109,7 @@
 <hr>
 <div class="row">
     <div class="large-12 columns">
-        <h3 class="center">Organizations Using Crisis Cleanup</h3>
+        <h3 class="center"><%= t('home_main_22') %></h3>
         <ul class="small-block-grid-3 medium-block-grid-6 large-block-grid-6">
             <li><%= image_tag "red-cross.jpg", :alt => "American Red Cross"  %></li>
             <li><%= image_tag "voad.jpg", :alt => "National Voluntary Organizations Active in Disaster"  %></li>

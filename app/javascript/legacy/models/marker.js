@@ -1,6 +1,7 @@
 /*
  * build map with all of the pins clustered
  */
+/* global google */
 import Form from './form';
 import UnclaimedStatusColorMap from './UnclaimedStatusColorMap';
 import historyVueManager from '../../history';
@@ -24,13 +25,20 @@ export default function(params) {
       color = "red";
     }
     // this is the key sent to the image_path function in app/assets/javascripts/images.js.erb
-    return image_path('map_icons/' + this.site.work_type.replace(/\s+/g, '_') + '_' + color + '.png');
+    return window.image_path('map_icons/' + this.site.work_type.replace(/\s+/g, '_') + '_' + color + '.png');
+  }
+
+  let isMarkerOptimized = true;
+  if (process.env.NODE_ENV === "test") {
+    isMarkerOptimized = false
   }
 
   this.marker = new google.maps.Marker({
     position: params.position,
     map: params.map,
-    icon: self.generateIconFilename.call(self)
+    title: params.site.case_number,
+    icon: self.generateIconFilename.call(self),
+    optimized: isMarkerOptimized
   });
 
   function toggleInfobox() {
@@ -139,7 +147,8 @@ export default function(params) {
     table.appendChild(
       createTableRow(
         document.createTextNode('Case Number'),
-        document.createTextNode(this.site.case_number)
+        document.createTextNode(this.site.case_number),
+        'caseNumber'
       )
     );
 
@@ -157,7 +166,8 @@ export default function(params) {
       table.appendChild(
         createTableRow(
           document.createTextNode('Phone 1'),
-          phone1tag
+          phone1tag,
+          "phone1"
         )
       )
     }
@@ -176,7 +186,8 @@ export default function(params) {
       table.appendChild(
         createTableRow(
           document.createTextNode('Phone 2'),
-          phone2tag
+          phone2tag,
+          "phone2"
         )
       )
     }
@@ -191,7 +202,8 @@ export default function(params) {
       table.appendChild(
         createTableRow(
           document.createTextNode('Claimed By:'),
-          claimedLink
+          claimedLink,
+          "claimedBy"
         )
       );
     }
@@ -242,7 +254,8 @@ export default function(params) {
         table.appendChild(
           createTableRow(
             document.createTextNode(key + ":"),
-            document.createTextNode(displayObj[key])
+            document.createTextNode(displayObj[key]),
+            key.toLowerCase()
           )
         );
       }
@@ -275,7 +288,8 @@ export default function(params) {
     table.appendChild(
       createTableRow(
         document.createTextNode('Status:'),
-        statusDropdown
+        statusDropdown,
+        'status'
       )
     );
 
@@ -292,7 +306,7 @@ export default function(params) {
 
     actionButtons["History"] = history.bind(this);
 
-    if (this.site.claimed_by === InitialState.user.org_id || (InitialState.user.admin && this.site.claimed_by !== null)) {
+    if (this.site.claimed_by === window.InitialState.user.org_id || (window.InitialState.user.admin && this.site.claimed_by !== null)) {
       actionButtons['Unclaim'] = claim.bind(this);
     } else if (this.site.claimed_by === null) {
       actionButtons['Claim'] = claim.bind(this);
@@ -301,10 +315,11 @@ export default function(params) {
     buttonRow.className = 'row';
     var buttonCell = document.createElement('div');
     buttonCell.className = 'small-12 medium-9 medium-offset-3 large-9 large-offset-3 columns';
-    for (var key in actionButtons) {
+    for (let key in actionButtons) {
       if (actionButtons.hasOwnProperty(key)) {
         var button = document.createElement('a');
         button.className = 'button tiny';
+        button.id = 'infobox-' + key.toLowerCase().replace(' ', '');
         button.appendChild(document.createTextNode(key));
         button.onclick = actionButtons[key];
         buttonCell.appendChild(button);
@@ -390,7 +405,7 @@ export default function(params) {
    *
    * @returns {HTMLElement} row - a tr with two td's
    */
-  function createTableRow(labelNode, valueNode) {
+  function createTableRow(labelNode, valueNode, id) {
     var row = document.createElement('div');
     row.className = 'row';
     var labelCell = document.createElement('div');
@@ -398,6 +413,7 @@ export default function(params) {
     var strongLabel = document.createElement('strong');
     var valueCell = document.createElement('div');
     valueCell.className = 'small-12 medium-9 large-9 columns';
+    valueCell.id = 'infobox-' + id;
     strongLabel.appendChild(labelNode);
     labelCell.appendChild(strongLabel);
     valueCell.appendChild(valueNode);
@@ -426,12 +442,12 @@ export default function(params) {
           toInfoboxHtml.call(this);
         }
       },
-      error: function(data) {
+      error: function() {
       }
     });
   }
 
-  function contactOrg(event) {
+  function contactOrg() {
     if (this.site.claimed_by) {
       var url = '/worker/incident/' + this.ccmap.event_id + '/organizations/' + this.site.claimed_by;
       var win = window.open(url, '_blank');
@@ -439,13 +455,13 @@ export default function(params) {
     }
   }
 
-  function print(event) {
+  function print() {
     var url = '/worker/incident/' + this.ccmap.event_id + '/print/' + this.site.id;
     var win = window.open(url, '_blank');
     win.focus();
   }
 
-  function edit(event) {
+  function edit() {
     $infobox.slideToggle();
     var form = new Form({
       event_id: this.ccmap.event_id,
@@ -464,7 +480,7 @@ export default function(params) {
     this.ccmap.showForm();
   }
 
-  function history(event) {
+  function history() {
 
     if (historyVueManager != null) {
       historyVueManager.loadHistoryData(this.site);
@@ -474,7 +490,7 @@ export default function(params) {
   }
 
   // This should work like a toggle
-  function claim(event) {
+  function claim() {
     $.ajax({
       url: '/api/claim-site/' + this.site.id,
       type: "POST",
@@ -491,7 +507,7 @@ export default function(params) {
           toInfoboxHtml.call(this);
         }
       },
-      error: function(data) {
+      error: function() {
       }
     });
   }
