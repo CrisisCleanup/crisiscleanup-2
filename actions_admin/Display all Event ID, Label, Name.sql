@@ -1,0 +1,1 @@
+﻿SELECT id, case_label, name FROM legacy_events ORDER BY id DESC;
