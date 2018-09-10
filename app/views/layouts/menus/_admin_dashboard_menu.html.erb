@@ -58,6 +58,7 @@
         </li> 
           <li class="has-dropdown"><%= link_to "Admin", admin_path %>
             <ul class="dropdown">
+              <li class="stats"><%= link_to "Rails Admin", rails_admin.dashboard_path %></li>
               <li class="users"><%= link_to "Users", admin_users_path %></li>
               <li class="stats"><%= link_to "Stats", admin_stats_path %></li>
               <li class="import"><%= link_to "Import", admin_csv_import_form_path %></li>
