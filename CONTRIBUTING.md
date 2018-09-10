@@ -20,6 +20,11 @@
 2. `docker` and `docker-compose`
 3. `node/npm` (Optionally, but preferred also install `yarn`)
 
+### Macs
+1. [Homebrew](https://brew.sh)
+1. Command-line tools - either install Xcode or run `xcode-select --install` from a terminal
+1. Postgres headers (for `pg` gem installation) - `brew install postgres`
+
 ## Setup
 1. Clone repo: `git clone git@github.com:CrisisCleanup/crisiscleanup.git`
    * Clone fork, if applicable, instead of main repo.
@@ -43,6 +48,9 @@
 	- For `YARN`: `yarn` (preferred)
 8. Server Start
 	- `bin/rails server` - App should be available at `http://localhost:3000`
+		- Default credentials:
+			- Admin user: `admin@example.com` with password `password`
+			- Primary Contact user: `demo@crisiscleanup.org` with password `password`
 9. Testing 
 	- `chromedriver` is required for now (use `homebrew` or place binary on `PATH`)
 	- `RAILS_ENV=test bundle exec rspec`
