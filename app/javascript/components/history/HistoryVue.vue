@@ -9,7 +9,7 @@
                     :href="'<%= worker_incident_legacy_organizations_path %>/' + claimedByUser.lg_id">{{claimedByUser.lg_name}}</a>
             </div>
         </div>
-        <div class="row" style="margin: 10px 0px;" v-for="user in siteHistory">
+        <div class="row" style="margin: 10px 0px;" v-for="user in siteHistory" :key="user.id">
             <div class="small-12 medium-12 large-12 columns">
                 <div class="row">
                     <div class="small-12 medium-12 large-12 columns">
@@ -17,7 +17,7 @@
                         made {{user.versions.length}} edit<span v-if="user.versions.length > 1">s</span>.
                     </div>
                 </div>
-                <div class="row" v-for="version in user.versions">
+                <div class="row" v-for="version in user.versions" :key="version.id">
                     <div class="small-11 medium-11 large-11 small-offset-1 medium-offset-1 large-offset-1 columns"
                          style='font-size: smaller;'>
                         <b>*</b>{{getPrettyTimestamp(version.version_info.created_at)}}: {{convertEvent(version.version_info.event)}}
@@ -29,6 +29,8 @@
     </div>
 </template>
 <script>
+  import Raven from 'raven-js';
+  
   export default {
     props: [
       'siteHistory',

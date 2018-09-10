@@ -16,6 +16,7 @@ import {Filters} from './filter';
 import Form from './form';
 import Site from './marker';
 import Raven from 'raven-js';
+import {addLocationButton} from "./util";
 
 export default function(params) {
   let $infobox = $('#map-infobox');
@@ -27,31 +28,31 @@ export default function(params) {
     styles: [
       {
         textColor: 'black',
-        url: image_path('map_icons/m1.png'),
+        url: window.image_path('map_icons/m1.png'),
         height: 53,
         width: 52
       },
       {
         textColor: 'black',
-        url: image_path('map_icons/m2.png'),
+        url: window.image_path('map_icons/m2.png'),
         height: 56,
         width: 55
       },
       {
         textColor: 'black',
-        url: image_path('map_icons/m3.png'),
+        url: window.image_path('map_icons/m3.png'),
         height: 66,
         width: 65
       },
       {
         textColor: 'black',
-        url: image_path('map_icons/m4.png'),
+        url: window.image_path('map_icons/m4.png'),
         height: 78,
         width: 77
       },
       {
         textColor: 'black',
-        url: image_path('map_icons/m5.png'),
+        url: window.image_path('map_icons/m5.png'),
         height: 90,
         width: 89
       }
@@ -75,13 +76,20 @@ export default function(params) {
   }
   this.map = new params.google.maps.Map(this.canvas, this.options);
   this.markerBounds = new params.google.maps.LatLngBounds();
-  this.markerClusterer = new MarkerClusterer(this.map, [], markerClustererOptions);
+  this.markerClusterer = new window.MarkerClusterer(this.map, [], markerClustererOptions);
 
   this.map.addListener('click', function() {
     $('#filters-anchor').click();
     $infobox.hide();
     this.showFilters();
   }.bind(this));
+
+  let self = this;
+  self.autocompleteTrackingMarker = null;
+
+  function getAutocompleteTrackingMarker() {
+    return self.autocompleteTrackingMarker;
+  }
 
   // Setting this up this way just in case we end up with dynamic filters per incident.
   // Eventually, it could require a filters[] param, for example.
@@ -96,9 +104,11 @@ export default function(params) {
     // TODO: refactor this nonsense.
     if (this.form_map) {
       setupAddressAutocomplete.call(this);
-      new Form({
-        event_id: this.event_id
+      let form = new Form({
+        event_id: this.event_id,
+        getAutocompleteTrackingMarker: getAutocompleteTrackingMarker
       });
+      form.prep(this.map);
     } else {
       $infobox.empty();
       buildMarkers.call(this);
@@ -146,7 +156,7 @@ export default function(params) {
     }
   };
 
-  function zoomToMarker(id) {
+  function zoomToMarkerLocal(id) {
     let matchArray = $.grep(allSites, function(site) { return site.site.id === id; });
     if (matchArray.length > 0) {
       let marker = matchArray[0].marker;
@@ -161,18 +171,18 @@ export default function(params) {
       Raven.captureMessage("Matching site not found.", {level: 'warning'});
     }
   }
-  zoomToMarker = zoomToMarker.bind(this);
+  let zoomToMarker = zoomToMarkerLocal.bind(this);
 
   function setupSearch(siteList) {
     let $searchBtn = $('#map-search-btn');
     // Initialize the search typeahead
     // TODO: this shouldn't be loaded or even rendered on every page.
     if ($searchBtn) {
-      var siteBh = new Bloodhound({
+      var siteBh = new window.Bloodhound({
         datumTokenizer: function(obj) {
-          return Bloodhound.tokenizers.whitespace(obj.siteStr);
+          return window.Bloodhound.tokenizers.whitespace(obj.siteStr);
         },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: window.Bloodhound.tokenizers.whitespace,
         identify: function(obj) {
           return obj.id;
         },
@@ -224,7 +234,7 @@ export default function(params) {
       success: function(data) {
         if (data != null && data.length > 0) {
           if (route.indexOf('public') >= 0) {
-            data.forEach(function(obj, index) {
+            data.forEach(function(obj) {
               var lat_lng = new params.google.maps.LatLng(parseFloat(obj.blurred_latitude), parseFloat(obj.blurred_longitude));
               this.markerBounds.extend(lat_lng);
               var site = new Site({
@@ -238,7 +248,7 @@ export default function(params) {
             }, this);
 
           } else {
-            data.forEach(function(obj, index) {
+            data.forEach(function(obj) {
               var lat_lng = new params.google.maps.LatLng(parseFloat(obj.latitude), parseFloat(obj.longitude));
               this.markerBounds.extend(lat_lng);
               var site = new Site({
@@ -270,16 +280,10 @@ export default function(params) {
     var PAGE_SIZE = 15000;
 
     let route = "";
-    let lat = "";
-    let lng = "";
     if (this.public_map) {
       route = "/api/public/map/" + this.event_id + "/" + PAGE_SIZE + "/";
-      lat = "blurred_latitude";
-      lng = "blurred_longitude";
     } else {
       route = "/api/map/" + this.event_id + "/" + PAGE_SIZE + "/";
-      lat = "latitude";
-      lng = "longitude";
     }
 
     $.ajax({
@@ -361,9 +365,9 @@ export default function(params) {
 
     function geocodeQuery() {
       var num_values = 0;
-      if (city.value !== "") { num_values++ };
-      if (state.value !== "") { num_values++ };
-      if (zip.value !== "") { num_values++ };
+      if (city.value !== "") { num_values++ }
+      if (state.value !== "") { num_values++ }
+      if (zip.value !== "") { num_values++ }
 
       if (addressField.value !== "" && num_values > 0) {
         var address = addressField.value + ",+" + city.value + ",+" + state.value + "+" + zip.value;
@@ -436,20 +440,20 @@ export default function(params) {
       setLatLng(place.geometry.location);
 
       if (place.geometry.viewport) {
-        map.fitBounds(new params.google.maps.LatLngBounds(place.geometry.viewport.southwest, place.geometry.viewport.northeast));
+        map.fitBounds(place.geometry.viewport);
       } else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);
       }
 
       // Set the position of the marker using the place ID and location.
-      var marker = new params.google.maps.Marker({
+      self.autocompleteTrackingMarker = new params.google.maps.Marker({
         draggable: true,
         position: place.geometry.location,
         map: map
       });
 
-      marker.addListener('drag', function() {
+      self.autocompleteTrackingMarker.addListener('drag', function() {
         setLatLng(this.position);
       });
     }
@@ -484,68 +488,8 @@ export default function(params) {
     position: defaultRandomLocation,
     visible: false
   });
-  function addLocationButton(map, marker) {
-    var controlDiv = document.createElement('div');
 
-    var firstChild = document.createElement('button');
-    firstChild.style.backgroundColor = '#fff';
-    firstChild.style.border = 'none';
-    firstChild.style.outline = 'none';
-    firstChild.style.width = '28px';
-    firstChild.style.height = '28px';
-    firstChild.style.borderRadius = '2px';
-    firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
-    firstChild.style.cursor = 'pointer';
-    firstChild.style.marginRight = '10px';
-    firstChild.style.padding = '0px';
-    firstChild.title = 'Your Location';
-    controlDiv.appendChild(firstChild);
-
-    var secondChild = document.createElement('div');
-    secondChild.style.margin = '5px';
-    secondChild.style.width = '18px';
-    secondChild.style.height = '18px';
-    secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-1x.png)';
-    secondChild.style.backgroundSize = '180px 18px';
-    secondChild.style.backgroundPosition = '0px 0px';
-    secondChild.style.backgroundRepeat = 'no-repeat';
-    secondChild.id = 'you_location_img';
-    firstChild.appendChild(secondChild);
-
-    params.google.maps.event.addListener(map, 'dragend', function() {
-      $('#you_location_img').css('background-position', '0px 0px');
-    });
-
-    firstChild.addEventListener('click', function() {
-      var imgX = '0';
-      var animationInterval = setInterval(function(){
-        if(imgX == '-18') imgX = '0';
-        else imgX = '-18';
-        $('#you_location_img').css('background-position', imgX+'px 0px');
-      }, 500);
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-          marker.setPosition(latlng);
-          marker.setVisible(true);
-          map.setCenter(latlng);
-          map.setZoom(14);
-          clearInterval(animationInterval);
-          $('#you_location_img').css('background-position', '-144px 0px');
-        }, function() {
-          alert('There has been a problem detecting your location!  You may have geolocation deactivated in your browser or mobile device privacy settings.')
-        });
-      }
-      else{
-        clearInterval(animationInterval);
-        $('#you_location_img').css('background-position', '0px 0px');
-      }
-    });
-
-    controlDiv.index = 1;
-    map.controls[params.google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
-  }
   if (navigator.geolocation) {
-    addLocationButton(this.map, myLocationMarker);
+    addLocationButton(this.map, myLocationMarker, params);
   }
 }

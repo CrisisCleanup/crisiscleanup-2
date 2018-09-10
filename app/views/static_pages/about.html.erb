@@ -5,11 +5,10 @@
 <% content_for :subheader do %>
     <div class="row subheader">
       <div class="small-12 medium-8 large-10 columns">
-        <h2>The People and Philosophies of Crisis Cleanup</h2>
-        <h4 class="basic">We are building a new kind of system. Who's in charge? You are.</h4>
+        <h2><%= t('about_1')%></h2>
+        <h4 class="basic"><%= t('about_2')%></h4>
         <hr class="medium">
-        <p><strong>Mission: To help voluntary relief organizations help more people by enabling collaborative disaster
-          recovery.</strong></p>
+        <p><strong><%= t('about_3')%></strong></p>
       </div>
       <div class="small-12 medium-4 large-2 columns" align="center">
         <%= image_tag "characters/Multi Color 2.png", :class => "character", :alt => "about crisis cleanup" %>
@@ -22,62 +21,44 @@
       <div class="row">
         <div class="small-12 medium-12 large-12 columns">
           <iframe class="about-intro" width="" height="" src="https://www.youtube.com/embed/yCxI5YHyX5k" frameborder="0" allowfullscreen></iframe>
-          <p>Crisis Cleanup helps relief organizations help more people.</p>
-          <p>Crisis Cleanup is a collaborative disaster work order management platform. It improves coordination,
-            decreases duplication of efforts, enhances efficiency, and improves the volunteer experience. Crisis Cleanup
-            works best when a large number of voluntary organizations with a lot of volunteers, work together to help a
-            large number of people over a wide area, all at the same time.</p>
-          <p>Crisis Cleanup helps with the "4Cs" of disaster recovery:
-            <em>Communication, Coordination, Collaboration, and Cooperation,</em> as well as Competition. Crisis Cleanup
-            does <strong>not</strong> create the "4Rs" of disaster recovery: Relationships, Resources, Roles, and
-            Responsibilities. It cannot fix relationships, create resources, or dictate who does what.</p>
-          <p>Crisis Cleanup is for collaborative work order management; not volunteer, donations or case management. To
-            protect clients, <strong>Crisis Cleanup is about property, not people.</strong></p>
+          <p><%= t('about_4')%></p>
+          <p><%= t('about_5')%></p>
+          <p><%= t('about_9')%>
+            <em><%= t('about_10')%></em> <%= t('about_11')%> <strong><%= t('about_12')%></strong><%= t('about_13')%></p>
+          <p><%= t('about_14')%><strong><%= t('about_15')%></strong></p>
 
-          <h5 class="basic">Crisis Cleanup embraces and supports the interests of disaster survivors by providing
-            transparent, collaborative, and privacy-enhancing open source technology to assist those who directly
-            interact with and help survivors.</h5>
-          <p>Crisis Cleanup is an open source project and operates through the fiduciary agent Crisis Cleanup, LLC based
-            out of New Jersey. We are currently looking for a non-profit fiscal agent. Other organizations sponsor
-            implementations of Crisis Cleanup in Australia, India, the Philippines, and elsewhere.</p>
+          <h5 class="basic"><%= t('about_6')%></h5>
+          <p><%= t('about_7')%></p>
 
-          <h4>Foundational Philosophies:</h4>
+          <h4><%= t('about_8')%></h4>
           <ul>
-            <li>The right way to do things is however it gets done, locally.</li>
-            <li>Technology should enhance, not replace, inter-organization relationships.</li>
-            <li>There is no pyramid, and you're not on top. Voluntary organizations are co-equal, sovereign and
-              interdependent; no single organization is in charge.
+            <li><%= t('about_16')%></li>
+            <li><%= t('about_17')%></li>
+            <li><%= t('about_18')%>
             </li>
-            <li>Collaboration and communication should be not only convenient, but required.</li>
-            <li>There is no such thing as the “One App to Rule them All.” The system should not try to do things it was
-              not intended to do.
+            <li><%= t('about_19')%></li>
+            <li><%= t('about_20')%>
             </li>
-            <li>The system tracks property, not people. Consequently, strict personal information minimization policies
-              are in place.
+            <li><%= t('about_21')%>
             </li>
           </ul>
-          <p><strong>Crisis Cleanup's real innovation is the ability to coordinate tens of thousands of volunteers from
-            hundreds of organizations to thousands of sites after a disaster in a non-hierarchical collaborative
-            environment</strong>. Crisis Cleanup proves that it is possible to create a near frictionless technological
-            platform where inter-organization Cooperation, Communication, Coordination, and Collaboration is not only
-            convenient, but required.</p>
-          <h3>Testimonials</h3>
+          <p><strong><%= t('about_22')%></strong><%= t('about_23')%></p>
+          <h3><%= t('about_24')%></h3>
           <iframe class="about-intro" width="" height="" src="https://www.youtube.com/embed/yhfWOPoY5hk" frameborder="0" allowfullscreen></iframe>
-          <h3>Helpful Links</h3>
+          <h3><%= t('about_25')%></h3>
           <ul>
-            <li><a href="https://crisiscleanup-demo.herokuapp.com/">Crisis Cleanup Demo Site</a></li>
-            <li><a href="/training">Mandatory Training Video</a></li>
-            <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation">Requirements
-              for Participation</a></li>
-            <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200596493-Is-Crisis-Cleanup-a-Good-Fit-">Is
-              Crisis Cleanup a Good Fit?</a> Factors that lead to successful deployments.
+            <li><a href="https://crisiscleanup-demo.herokuapp.com/"><%= t('about_26')%></a></li>
+            <li><a href="/training"><%= t('about_27')%></a></li>
+            <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200603007-Requirements-for-Participation"><%= t('about_28') %></a></li>
+            <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/articles/200596493-Is-Crisis-Cleanup-a-Good-Fit-">
+              <%= t('about_29') %></a> <%= t('about_30')%>
             </li>
             <!--<li><a href="http://www.crisiscleanup.org/donate">Fundraiser</a></li>-->
-            <li><a href="https://crisiscleanup.zendesk.com/hc/en-us">Helpdesk</a></li>
+            <li><a href="https://crisiscleanup.zendesk.com/hc/en-us"><% t('about_31') %></a></li>
           </ul>
-          <h3>The Crisis Cleanup Story</h3>
-          <p>Aaron Titus, Founder and Executive Director of Crisis Cleanup, tells the story of Crisis Cleanup in his recent book, <a href="http://h2prep.me/amazon" target="_blank"><em>How to Prepare for Everything</em></a> (<a href="http://h2prep.me/amazon" target="_blank">Amazon</a>, <a href="http://h2prep.me/signed" target="_blank">Autographed</a>). You may download a complementary excerpt here: <a href="http://h2prep.me/epliogue" target="_blank">Epilogue: Crisis Cleanup</a>.</p>
-          <h3>The People of Crisis Cleanup</h3>
+          <h3><%= t('about_32') %></h3>
+          <p><%= t('about_33')%><a href="http://h2prep.me/amazon" target="_blank"><em><%= t('about_34')%></em></a> (<a href="http://h2prep.me/signed" target="_blank"></a><%= t('about_36') %><a href="http://h2prep.me/epliogue" target="_blank"><%= t('about_37')%></a>.</p>
+          <h3><%= t('about_38') %></h3>
           <div class="row">
             <div class="large-3 medium-6 small-6 columns team">
               <%= image_tag "headshots/aarontitus.jpg", :alt => "Aaron Titus" %>
@@ -85,23 +66,23 @@
 <br><br>
 He helped organize the Mormon Helping Hands responses for Hurricane Irene in 2011, the New Jersey 'Derecho' thunderstorms and Hurricane Sandy in 2012. He is a recipient of the New Jersey Governor's Jefferson Award for public service."><i class="fi-info"></i></span>
               <p><strong>Aaron Titus</strong><br>
-                Director </p>
+                <%= t('about_39') %></p>
             </div>
             <div class="large-3 medium-6 small-6 columns team">
               <%= image_tag "headshots/rossarroyo.jpeg", :alt => "Ross Arroyo" %>
               <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="<a href='https://www.linkedin.com/in/ross-arroyo-363b224' style='color:#ffcc44'>Ross Arroyo</a>"><i class="fi-info"></i></span>
-              <p><strong>Ross Arroyo</strong><br> Operations Lead</p>
+              <p><strong>Ross Arroyo</strong><br> <%= t('about_40')%></p>
             </div>
             <div class="large-3 medium-6 small-6 columns team">
               <%= image_tag "headshots/tylersanders.png", :alt => "Tyler Sanders" %>
               <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="<a href='https://www.linkedin.com/in/tylersanders1' style='color:#ffcc44'>Tyler Sanders</a>"><i class="fi-info"></i></span>
-              <p><strong>Tyler Sanders</strong><br>Engineering Lead</p>
+              <p><strong>Tyler Sanders</strong><br> <%= t('about_41') %></p>
             </div>
             <div class="large-3 medium-6 small-6 columns team">
               <%= image_tag "headshots/andygimma.jpg", :alt => "Andy Gimma" %>
               <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="<a href='https://twitter.com/AndyGimma' style='color:#ffcc44'>Andy Gimma</a> is an Android, Python, Google App Engine, Ruby, open source and open data programmer, with an emphasis is in non-hierarchical organizing structures. He likes Russian literature, Kenzaburo Oe, and avoiding the beaten path."><i class="fi-info"></i></span>
               <p><strong>Andy Gimma</strong><br>
-                Developer</p>
+                <%= t('about_developer') %></p>
             </div>
           </div>
           <div class="row">
@@ -111,7 +92,7 @@ He helped organize the Mormon Helping Hands responses for Hurricane Irene in 201
 <br><br>
 Zachary currently runs a locally-owned microbusines, <a href='http://straubcreative.nationbuilder.com' style='color:#ffcc44'>Straub Creative Company</a> out of San Francisco, California."><i class="fi-info"></i></span>
               <p><strong>Zachary Straub</strong><br>
-                Designer</p>
+                <%= t('about_designer') %></p>
             </div>
             <div class="large-3 medium-6 small-6 columns team">
               <%= image_tag "headshots/dhruvmehrotra.jpg", :alt => "Dhruv Mehrotra" %>
@@ -119,7 +100,7 @@ Zachary currently runs a locally-owned microbusines, <a href='http://straubcreat
 <br><br>
 Dhruv's specialties include Javascript, Node, Ruby, Rails, CSS3, HTML5."><i class="fi-info"></i></span>
               <p><strong>Dhruv Mehrotra</strong><br>
-                Developer</p>
+                <%= t('about_developer') %></p>
             </div>
             <div class="large-3 medium-6 small-6 columns team">
               <%= image_tag "headshots/marktregellas.jpg", :alt => "Mark Tregellas" %>
@@ -127,13 +108,13 @@ Dhruv's specialties include Javascript, Node, Ruby, Rails, CSS3, HTML5."><i clas
 <br><br>
 Mark has a passion for Community Based Disaster Recovery and has launched platforms including <a href='https://mallacootaau.recovers.org/' style='color:#ffcc44'>Mallacoota Recovers</a> and <a href='http://www.dove.org.au/' style='color:#ffcc44'>DOVE</a>."><i class="fi-info"></i></span>
               <p><strong>Mark Tregellas</strong><br>
-                Manager (AU)</p>
+                <%= t('about_42') %></p>
             </div>
             <div class="large-3 medium-6 small-6 columns team">
               <%= image_tag "headshots/chriswood.jpg", :alt => "Chris Wood" %>
               <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="<a href='https://twitter.com/cpwood' style='color:#ffcc44'>Chris Wood</a> is a freelance software developer and startup-ponderer based in London. Though his modesty would never allow him to admit it, Chris is an incredibly proficient Python & GAE programmer. Chris was a major contributor to the project through 2015."><i class="fi-info"></i></span>
               <p><strong>Chris Wood</strong><br>
-                Developer</p>
+                <%= t('about_developer') %></p>
             </div>
           </div>
 
@@ -144,7 +125,7 @@ Mark has a passion for Community Based Disaster Recovery and has launched platfo
 
 Jeremy was the primary developer of the first major deployment of Crisis Cleanup (Hurricane Sandy)."><i class="fi-info"></i></span>
               <p><strong>Jeremy Pack</strong><br>
-                Developer</p>
+                <%= t('about_developer') %></p>
             </div>
             <div class="large-3 medium-6 small-6 columns team">
               <%= image_tag "headshots/brucechristensen.jpg", :alt => "Bruce Christensen" %>
@@ -152,86 +133,82 @@ Jeremy was the primary developer of the first major deployment of Crisis Cleanup
 
 Bruce was a major developer of the first major deployment of Crisis Cleanup (Hurricane Sandy)."><i class="fi-info"></i></span>
               <p><strong>Bruce Christensen</strong><br>
-                Developer</p>
+                <%= t('about_developer') %></p>
             </div>
           </div>
         </div>
-        <h4>Major Supporters</h4>
-        <p>We recognize Crisis Cleanup's financial and in-kind supporters with gratitude. Support does not necessarily
-          imply endorsement. They include:</p>
+        <h4><%= t('about_43') %></h4>
+        <p><%= t('about_44') %></p>
         <div class="row">
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/arc_logo.jpg", :alt => "The American Red Cross" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="The American Red Cross provided Crisis Cleanup with initial development funding after Hurricane Sandy in 2012."><i class="fi-info"></i></span>
-            <p><strong><a href="http://www.redcross.org/" target="_blank">The American Red Cross</a></strong></p>
+            <p><strong><a href="http://www.redcross.org/" target="_blank"> <%= t('about_45') %></a></strong></p>
           </div>
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/houston_logo.png", :alt => "The City of Houston" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="The City of Houston, through the Housing and Community Development Department, graciously provided funding for a major upgrade to Crisis Cleanup in 2015/2016."><i class="fi-info"></i></span>
-            <p><strong><a href="http://www.houstontx.gov/housing/" target="_blank">The City of Houston</a></strong>
+            <p><strong><a href="http://www.houstontx.gov/housing/" target="_blank"><%= t('about_46') %></a></strong>
             </p>
           </div>
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/visionlink_logo.jpg", :alt => "VisionLink" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="VisionLink, a Boulder-based software company, provided two years' of in-kind support from 2014 to 2016."><i class="fi-info"></i></span>
-            <p><strong><a href="http://visionlink.org/" target="_blank">VisionLink</a></strong></p>
+            <p><strong><a href="http://visionlink.org/" target="_blank"><%= t('about_47') %></a></strong></p>
           </div>
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/ldscharities_logo.jpg", :alt => "LDS Charities" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="We are grateful for LDS Charties' support."><i class="fi-info"></i></span>
-            <p><strong><a href="https://www.ldscharities.org/" target="_blank">LDS Charities</a></strong></p>
+            <p><strong><a href="https://www.ldscharities.org/" target="_blank"><%= t('about_48') %></a></strong></p>
           </div>
         </div>
         <div class="row">
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/connectfirst_logo.png", :alt => "ConnectFirst" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="ConnectFirst, a Boulder-based telelphony company, has provided thousands of hours of in-kind telephony support."><i class="fi-info"></i></span>
-            <p><strong><a href="http://www.connectfirst.com/" target="_blank">ConnectFirst</a></strong></p>
+            <p><strong><a href="http://www.connectfirst.com/" target="_blank"><%= t('about_49') %></a></strong></p>
           </div>
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/umcor_logo.jpg", :alt => "UMCOR" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="UMCOR provided important financial support at a critical time."><i class="fi-info"></i></span>
-            <p><strong><a href="https://www.umcor.org/" target="_blank">UMCOR</a></strong></p>
+            <p><strong><a href="https://www.umcor.org/" target="_blank"><%= t('about_50') %></a></strong></p>
           </div>
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/volunteer_florida_logo.jpg", :alt => "Volunteer Florida" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Volunteer Florida provided important financial support at a critical time."><i class="fi-info"></i></span>
-            <p><strong><a href="https://www.volunteerflorida.org/" target="_blank">Volunteer Florida</a></strong></p>
+            <p><strong><a href="https://www.volunteerflorida.org/" target="_blank"><%= t('about_51') %></a></strong></p>
           </div>
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/h2prep_logo.jpg", :alt => "How to Prepare for Everything" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Sales of <em>How to Prepare for Everything</em> support development of Crisis Cleanup."><i class="fi-info"></i></span>
-            <p><strong><a href="http://h2prep.me/ccu" target="_blank">How to Prepare for Everything</a></strong></p>
+            <p><strong><a href="http://h2prep.me/ccu" target="_blank"><%= t('about_52') %></a></strong></p>
           </div>
         </div>
         <div class="row">
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/nj211_logo.jpg", :alt => "NJ 2-1-1" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="NJ 2-1-1 served as Crisis Cleanup's fiscal agent for several years after Hurricane Sandy."><i class="fi-info"></i></span>
-            <p><strong><a href="http://www.nj211.org/" target="_blank">NJ 2-1-1</a></strong></p>
+            <p><strong><a href="http://www.nj211.org/" target="_blank"><%= t('about_53') %></a></strong></p>
           </div>
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/thinkso_logo.png", :alt => "ThinkSo" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="ThinkSo developed the Crisis Cleanup 'pins' brand."><i class="fi-info"></i></span>
-            <p><strong><a href="https://thinkso.com/" target="_blank">ThinkSo</a></strong></p>
+            <p><strong><a href="https://thinkso.com/" target="_blank"><%= t('about_54') %></a></strong></p>
           </div>
           <div class="large-3 medium-6 small-6 columns team">
             <%= image_tag "supporters/sahana_logo.jpg", :alt => "Sahana Software Foundation" %>
             <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="We are gratful for the partnership of the Sahana Foundation."><i class="fi-info"></i></span>
-            <p><strong><a href="https://sahanafoundation.org" target="_blank">Sahana Software Foundation</a></strong>
+            <p><strong><a href="https://sahanafoundation.org" target="_blank"><%= t('about_55') %></a></strong>
             </p>
           </div>
         </div>
 
-        <h4>Other Contributors</h4>
-        <p>Thanks to the 150,000+ volunteers who give life to Crisis Cleanup by helping their neighbors after
-          disasters.</p>
-        <p><a href="http://www.nicolaszanghi.com/">Nicolas Zanghi</a> redesigned the Crisis Cleanup interface for the
-          <a href="http://www.iom.int/">IOM</a>'s implementation of Crisis Cleanup for the Philippines. Thanks also to
-          <a href="https://www.linkedin.com/pub/karissa-phelps/44/563/73a">Karissa Phelps</a> who designed our map
-          icons, <a href="http://www.shekhardesigner.com/">Shekhar Sharma</a> for use of a previous CSS template, and
-          <a href="https://github.com/CrisisCleanup/crisiscleanup/watchers">many other developers</a> who have
-          contributed to this project.</p>
+        <h4><%= t('about_56') %></h4>
+        <p><%= t('about_57') %></p>
+        <p><a href="http://www.nicolaszanghi.com/">Nicolas Zanghi</a> <%= t('about_58')%>
+          <a href="http://www.iom.int/">IOM</a>'s <%= t('about_59')%>
+          <a href="https://www.linkedin.com/pub/karissa-phelps/44/563/73a">Karissa Phelps</a> <%= t('about_60')%> <a href="http://www.shekhardesigner.com/">Shekhar Sharma</a> <%= t('about_61')%>
+          <a href="https://github.com/CrisisCleanup/crisiscleanup/watchers"><%= t('about_62')%></a> <%= t('about_63') %></p>
 
       </div>
     </div>
@@ -239,33 +216,30 @@ Bruce was a major developer of the first major deployment of Crisis Cleanup (Hur
 
 <% content_for :sidebar do %>
     <div id="sidebar">
-      <h4>Real Innovation</h4>
-      <p>The real innovation of this system is the ability to coordinate tens of thousands of volunteers from dozens of
-        organizations to thousands of sites after a disaster. Crisis Cleanup proves that it is possible to create a near
-        frictionless technological platform where inter-organization Cooperation, Communication, Coordination, and
-        Collaboration is not only convenient, but required.
+      <h4><%= t('about_64') %></h4>
+      <p><%= t('about_65') %>
       </p>
-      <h4>Impact and Return on Investment (ROI)</h4>
-      <p>Crisis Cleanup is not-for-profit, which means we don't measure ROI in dollars, but in community impact. Impact
-        measurements include:</p>
+      <h4><%= t('about_66') %></h4>
+      <p><%= t('about_67') %></p>
       <ul>
-    <li><strong>70</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="See <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html'>http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html</a>"><i class="fi-info"></i></span> Number of disasters from <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html' target=_blank>July 2012</a> to 9/29/2017.</li>
-    <li><strong>31</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="See <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html'>http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html</a>"><i class="fi-info"></i></span> <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html' target=_blank>States</a> in which Crisis Cleanup has been used.</li>
-    <li><strong>5</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="See <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html'>http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html</a>"><i class="fi-info"></i></span> Countries that have used Crisis Cleanup.</li>
-    <li><strong>1,029</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Number of activated organizations in the database. (Updated 9/29/2017)."><i class="fi-info"></i></span> Number of relief organizations that have used Crisis Cleanup, worldwide.</li>
+    <li><strong>103</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="See <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html'>http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html</a>"><i class="fi-info"></i></span> Number of disasters from <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html' target=_blank>July 2012</a> to 9/6/2018.</li>
+    <li><strong>39</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="See <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html'>http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html</a>"><i class="fi-info"></i></span> <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html' target=_blank>States</a> in which Crisis Cleanup has been used.</li>
+    <li><strong>6</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="See <a href='http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html'>http://blog.crisiscleanup.org/2013/11/all-crisis-cleanup-incidents.html</a>"><i class="fi-info"></i></span> Countries that have used Crisis Cleanup.</li>
+    <li><strong>1,222</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Number of activated organizations in the database. (Updated 9/6/2018)."><i class="fi-info"></i></span> Number of relief organizations that have used Crisis Cleanup.</li>
     <li><strong>25%</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Examples:<br/><strong>Re-engagement</strong>: Volunteers from a local church spend a week cleaning up 12 homes in a neighborhood. As far as they can see, there is nothing more to do, and are about to demobilize. They join Crisis Cleanup and see that there are thousands of other homes that need help. They re-engage for several more weeks, helping dozens more families. <u>Improved efficiency: 100%-300%</u><br/><br /><strong>Assessments w/ Crisis Cleanup</strong>: 2-3 volunteers knock doors. One assessment takes 15-45 minutes, or 30-135 volunteer minutes.<br /><strong>Assessments w/out Crisis Cleanup</strong>: A survivor calls the Crisis Cleanup hotline. The assessment takes 7 minutes. <u>Improved efficiency: 76%-98%</u>.<br /><br /><strong>Deployment without Crisis Cleanup</strong>: Team of 10 drives 30 mins to a command center or VRC. They wait for 90 minutes to check in and get paper work orders. Then, they drive 45 mins to assigned location. They have wasted 27.5 volunteer-hours in travel and overhead.<br /><strong>Deployment with Crisis Cleanup</strong>: The team leader logs into the system on a Wednesday. He or she claims a few work orders, calls the home owner and arranges a time to meet on the weekend. Team of 10 skips the line and goes straight to work. They only spend 7.5 volunteer-hours in travel before working. After they are done, they log in, update the map, and claims a nearby work order. Combined, the team saves 20-50 volunteer-hours more each day helping people, instead of traveling. <u>Improves efficiency by 25%-60%</u>."><i class="fi-info"></i></span> Increase in volunteer efficiency through re-engagement and elimination of time spent on travel, coordination, collaboration, and management.</li>
-    <li><strong>44,917</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="The number of work orders that were reported completed, or likely completed. (Updated 9/29/2017)."><i class="fi-info"></i></span> Households assisted, worldwide.</li>
-    <li><strong>11,229</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="The improved efficiency (25%) of the total number of homes (44,917). (Updated 9/29/2017)."><i class="fi-info"></i></span> Households that could not have been helped without Crisis Cleanup.</li>
-    <li><strong>23</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Volunteers using Crisis Cleanup helped 44,917 homes in 1,899 days. (Updated 9/29/2017)."><i class="fi-info"></i></span> Households assisted every day since 7/18/2012.</li>
-    <li><strong>188,990</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Calculated by estimating the number of volunteers per organization: 500 for LDS stakes and 25 for all other organizations. (Updated 9/29/2017)."><i class="fi-info"></i></span> Volunteers who have used or relied on Crisis Cleanup.</li>
-    <li><strong>2.7 Million</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Based on experience, we estimate 60 hours per work order, on average. Multiplied by 44,917 homes helped."><i class="fi-info"></i></span> Number of volunteer hours facilitated.</li>
-    <li><strong>674,000</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="25% of 2.7 Million"><i class="fi-info"></i></span> Volunteer hours to survivors enabled by Crisis Cleanup that would have otherwise been wasted in management, travel, and overhead.</li>
-    <li><strong>$255.8 Million</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Calculated on a work-order-by-work-order basis, based upon the status (e.g., open, closed, partially complete), and the commercial value of the service rendered. Includes only work done by organizations using Crisis Cleanup. Total value reported by organizations in and out of Crisis Cleanup is $382.5 Million. (Updated 9/29/2017)."><i class="fi-info"></i></span> Minimum total market value of services to survivors.</li>
-    <li><strong>$1,354</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="The commercial value each volunteer gives to his/her community, on average ($255.8 Million/188,985 volunteers)."><i class="fi-info"></i></span> Value of each cleanup volunteer to his/her community.</li>
-    <li><strong>$64.0 Million</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="25% of $255.8 Million"><i class="fi-info"></i></span> Additional market value of services to survivors that would have otherwise been wasted in travel, management, overhead, and standing in lines.</li>
-    <li><strong>$33,682</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Crisis Cleanup has created $64.0 Million of value in 1,899 days. (Updated 9/29/2017)."><i class="fi-info"></i></span> Money Crisis Cleanup has saved survivors every single day since July 18, 2012.</li>
-    <li><strong>$8,516</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Total commercial value of all work done ($382.5 Million), divided by the total number of homes helped (44,917). (Updated 9/29/2017)."><i class="fi-info"></i></span> Average commercial value of service to each homeowner.</li>
-    <li><strong>$233</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Market value of services provided ($64.0 Million) due <em>only</em> to improved efficiency, divided by the total amount of money invested in Crisis Cleanup development ($274,000). (Updated 9/29/2017)."><i class="fi-info"></i></span> Return on investment to survivors, for every $1 invested in Crisis Cleanup.</li>
+    <li><strong>57,708</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="The number of work orders that were reported completed, or likely completed. (Updated 9/6/2018)."><i class="fi-info"></i></span> Households assisted.</li>
+    <li><strong>14,427</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="The improved efficiency (25%) of the total number of homes (57,708). (Updated 9/6/2018)."><i class="fi-info"></i></span> Households that could not have been helped without Crisis Cleanup.</li>
+    <li><strong>25</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Volunteers using Crisis Cleanup helped 57,708 homes in 2,241 days. (Updated 9/6/2018)."><i class="fi-info"></i></span> Households assisted every day since 7/18/2012.</li>
+    <li><strong>334,160</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Calculated by estimating the number of volunteers per organization: 750 for LDS stakes and 25 for all other organizations, with a 10% turnover in subsequent deployments. (Updated 9/6/2018)."><i class="fi-info"></i></span> Volunteers who have used or relied on Crisis Cleanup.</li>
+    <li><strong>3.5 Million</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Based on experience, we estimate 60 hours per work order, on average. Multiplied by 57,708 homes helped."><i class="fi-info"></i></span> Number of volunteer hours facilitated.</li>
+    <li><strong>866,000</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="25% of 3.5 Million"><i class="fi-info"></i></span> Volunteer hours that would have otherwise been wasted in management, travel, and overhead without Crisis Cleanup.</li>
+    <li><strong>$402.8 Million</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Calculated on a work-order-by-work-order basis, based upon the status (e.g., open, closed, partially complete), and the commercial value of the service rendered. Includes only work done by organizations using Crisis Cleanup. (Updated 9/6/2018)."><i class="fi-info"></i></span> Minimum total market value of services to survivors.</li>
+    <li><strong>$598.4 Million</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Calculated on a work-order-by-work-order basis, based upon the status (e.g., open, closed, partially complete), and the commercial value of the service rendered. Includes documented work done by any relief organization or others. (Updated 9/6/2018)."><i class="fi-info"></i></span> Total recorded market value of services, including work "done by others."</li>
+    <li><strong>$1205</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="The commercial value each volunteer gives to his/her community, on average ($402.8 Million/334,161 volunteers)."><i class="fi-info"></i></span> Value of each cleanup volunteer to his/her community.</li>
+    <li><strong>$100.7 Million</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="25% of $402.8 Million"><i class="fi-info"></i></span> Market value of services to survivors that would have otherwise been wasted in travel, management, overhead, and standing in lines.</li>
+    <li><strong>$44,935</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Crisis Cleanup has created $100.7 Million of value in 2,241 days. However, Crisis Cleanup partners have created $402.8 Million of value in that same time, or $179,741 of value every day. But even that is nothing compared to the $598.4 Million of total documented service, or $267,033 per day. Volunteers are the heart of community resilience. (Updated 9/6/2018)."><i class="fi-info"></i></span> Money Crisis Cleanup has saved survivors every single day since July 18, 2012.</li>
+    <li><strong>$10,370</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Total commercial value of all work done ($598.4 Million), divided by the total number of homes helped (57,708). (Updated 9/6/2018)."><i class="fi-info"></i></span> Average commercial value of service to each homeowner.</li>
+    <li><strong>$240</strong>:  <span data-tooltip aria-haspopup="true" class="has-tip tip-bottom" title="Market value of services provided ($100.7 Million) due <em>only</em> to improved efficiency, divided by the total amount of money invested in Crisis Cleanup development ($419,000). (Updated 9/6/2018)."><i class="fi-info"></i></span> Return on investment to survivors, for every $1 invested in Crisis Cleanup.</li>
       </ul>
     </div>
 <% end %>

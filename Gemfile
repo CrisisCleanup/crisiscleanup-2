@@ -1,8 +1,8 @@
-ruby "2.2.5"
+ruby "2.4.4"
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.10'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 
@@ -40,6 +40,8 @@ gem 'validates_email_format_of'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'json', '>= 1.8.6'
+
 gem 'faker'
 
 gem 'will_paginate', '~> 3.0.6'
@@ -73,6 +75,9 @@ gem 'aws-sdk', '~> 2.10'
 gem 'sidekiq'
 
 gem 'webpacker', '~> 3.0'
+gem 'http_accept_language'
+
+gem 'rails_admin', '~> 1.3'
 
 group :production do
   gem 'rack-timeout'

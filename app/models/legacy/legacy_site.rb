@@ -67,6 +67,7 @@ module Legacy
         # Lat/Lon OR Name Metaphone OR Phone OR (Street Number AND Address Metaphone AND (City Metaphone OR County Metaphone OR Zip))
         dups = Legacy::LegacySite
                 .where('legacy_event_id = :event_id
+                  AND (address NOT LIKE \'UNKNOWN\')
                   AND (
                     (
                       ROUND(CAST("latitude" as NUMERIC),4) = ROUND(:latitude, 4)
