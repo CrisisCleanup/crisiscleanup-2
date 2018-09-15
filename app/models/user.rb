@@ -21,23 +21,13 @@ class User < ActiveRecord::Base
       field :id
       field :name
       field :legacy_organization
-      field :legacy_organization_id
       field :mobile
       field :email
       field :referring_user_id
-      field :referring_user
       field :created_at
       field :last_sign_in_at
     end
     
-  end
-  
-  def legacy_organization_id
-      self.legacy_organization.id
-  end 
-  
-  def referring_user
-      self.referring_user_id
   end
   
   def invited_by
