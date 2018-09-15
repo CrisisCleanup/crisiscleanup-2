@@ -95,7 +95,8 @@ export default function(params) {
   // Eventually, it could require a filters[] param, for example.
   // This could also end up in the setEventId method.
   let filters = new Filters({
-    onUpdate: populateMap.bind(this)
+    onUpdate: populateMap.bind(this),
+    workTypes: document.getElementById('legacy_legacy_site_work_type')
   });
 
   this.setEventId = function(event_id) {
