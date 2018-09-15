@@ -19,7 +19,70 @@ module Legacy
     attr_accessor :autofill_disable
     attr_accessor :claim
     attr_accessor :skip_duplicates
-
+    
+    rails_admin do
+      list do
+        field :id
+        field :legacy_event
+        field :case_number
+        field :name
+        field :address
+        field :city
+        field :county
+        field :state
+        field :zip_code
+        field :phone1
+        field :phone2
+        field :latitude
+        field :longitude
+        field :blurred_latitude
+        field :blurred_longitude
+        field :reported_by
+        field :legacy_organization
+        field :request_date
+        field :updated_at
+        field :status
+        field :work_type
+        field :work_requested
+        field :flood_height
+        field :num_trees_down
+        field :residence_type
+        field :status_notes
+        field :older_than_60
+        field :mold_amount
+        field :total_volunteers
+      end
+      
+    end
+    
+    def flood_height
+        self.data["flood_height_select"]
+    end
+    
+    def num_trees_down
+        self.data["num_trees_down"]
+    end   
+    
+    def residence_type
+        self.data["residence_type"]
+    end   
+    
+    def status_notes
+        self.data["status_notes"]
+    end      
+    
+    def older_than_60
+        self.data["older_than_60"]
+    end     
+    
+    def mold_amount
+        self.data["mold_amount"]
+    end         
+    
+    def total_volunteers
+        self.data["total_volunteers"]
+    end         
+    
     def full_street_address
       "#{self.address}, #{self.city}, #{self.state}"
     end
