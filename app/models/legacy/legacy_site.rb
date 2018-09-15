@@ -19,7 +19,34 @@ module Legacy
     attr_accessor :autofill_disable
     attr_accessor :claim
     attr_accessor :skip_duplicates
-
+    
+    rails_admin do
+      list do
+        field :id
+        field :legacy_event
+        field :case_number
+        field :name
+        field :address
+        field :city
+        field :county
+        field :state
+        field :zip_code
+        field :phone1
+        field :phone2
+        field :latitude
+        field :longitude
+        field :blurred_latitude
+        field :blurred_longitude
+        field :reported_by
+        field :legacy_organization
+        field :request_date
+        field :updated_at
+        field :status
+        field :work_type
+        field :work_requested
+      end
+    end
+    
     def full_street_address
       "#{self.address}, #{self.city}, #{self.state}"
     end
