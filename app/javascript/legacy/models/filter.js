@@ -49,6 +49,23 @@ export function Filters(params) {
     userOrgName = window.InitialState.user.org_name;
   }
   var onUpdate = params.onUpdate;
+  
+  let workTypeFilters = [];
+  for (let i = 0; i < params.workTypes.length; i++) {
+    let wt = params.workTypes[i];
+    if (wt.label === '--Choose One--') {
+      continue
+    }
+    workTypeFilters.push({
+      id: wt.label,
+      label: wt.label,
+      condition: function(site) {
+        return site.site.work_type === wt.value;
+      }     
+    });
+      
+  }
+  
   var filterParams = [
     {
       id: "claimed-by",
@@ -84,42 +101,18 @@ export function Filters(params) {
       condition: function(site) {
         return /Closed/.test(site.site.status)
       }
-    },
-    {
-      id: "flood-damage",
-      label: "Primary problem is flood damage",
-      condition: function(site) {
-        return site.site.work_type === "Flood";
-      }
-    },
-    {
-      id: "trees",
-      label: "Primary problem is trees",
-      condition: function(site) {
-        return site.site.work_type === "Trees";
-      }
-    },
-    {
-      id: "debris",
-      label: "Debris removal",
-      condition: function(site) {
-        return /Debris/.test(site.site.work_type);
-      }
-    },
-    {
-      id: "other",
-      label: "Other",
-      condition: function(site) {
-        return /^(?!Debris|Trees|Flood).*$/.test(site.site.work_type);
-      }
     }
   ];
+  
+  filterParams = filterParams.concat(workTypeFilters)
+  
   var filters = [];
   var activeFilters = [];
   var filterList = document.getElementById('map-filters');
   if (filterList) {
     renderFilters.call(this);
   }
+  
 
   function renderFilters() {
     filterParams.forEach(function(filter) {
