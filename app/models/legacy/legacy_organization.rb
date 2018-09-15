@@ -12,12 +12,31 @@ module Legacy
     validates_presence_of :name
     validates_presence_of :accepted_terms
     
+    rails_admin do
+      list do
+        field :id
+        field :name
+        field :email
+        field :where_are_you_working
+        field :url
+        field :not_an_org
+        field :does_damage_assessment
+        field :does_cleanup
+        field :does_follow_up
+        field :does_rebuilding
+        field :does_coordination
+        field :does_only_sit_aware
+        field :does_something_else
+        field :does_other_activity
+        field :government
+      end
+    end
 
     validates_uniqueness_of :name
 
     accepts_nested_attributes_for :legacy_contacts, allow_destroy: true
     before_save :set_terms_timestamp
-
+    
     def set_terms_timestamp
       self.accepted_terms_timestamp = DateTime.now
     end
