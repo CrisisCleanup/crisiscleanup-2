@@ -18,12 +18,22 @@ class User < ActiveRecord::Base
   
   rails_admin do
     list do
-      field :id
+      field :id do
+        formatted_value do
+          path = bindings[:view].show_path(model_name: 'User', id: bindings[:object].id)
+          bindings[:view].link_to(bindings[:object].id, path)
+        end
+      end
       field :name
       field :legacy_organization
       field :mobile
       field :email
-      field :referring_user_id
+      field :referring_user do
+        formatted_value do
+          path = bindings[:view].show_path(model_name: 'User', id: bindings[:object].referring_user_id)
+          bindings[:view].link_to(bindings[:object].referring_user_id, path)
+        end
+      end     
       field :created_at
       field :last_sign_in_at
     end
