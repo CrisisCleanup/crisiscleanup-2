@@ -22,7 +22,12 @@ module Legacy
     
     rails_admin do
       list do
-        field :id
+        field :id do
+          formatted_value do
+            path = bindings[:view].show_path(model_name: 'legacy~legacy_site', id: bindings[:object].id)
+            bindings[:view].link_to(bindings[:object].id, path)
+          end
+        end
         field :legacy_event
         field :case_number
         field :name
