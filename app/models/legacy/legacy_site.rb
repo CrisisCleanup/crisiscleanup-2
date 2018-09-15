@@ -44,8 +44,44 @@ module Legacy
         field :status
         field :work_type
         field :work_requested
+        field :flood_height
+        field :num_trees_down
+        field :residence_type
+        field :status_notes
+        field :older_than_60
+        field :mold_amount
+        field :total_volunteers
       end
+      
     end
+    
+    def flood_height
+        self.data["flood_height_select"]
+    end
+    
+    def num_trees_down
+        self.data["num_trees_down"]
+    end   
+    
+    def residence_type
+        self.data["residence_type"]
+    end   
+    
+    def status_notes
+        self.data["status_notes"]
+    end      
+    
+    def older_than_60
+        self.data["older_than_60"]
+    end     
+    
+    def mold_amount
+        self.data["mold_amount"]
+    end         
+    
+    def total_volunteers
+        self.data["total_volunteers"]
+    end         
     
     def full_street_address
       "#{self.address}, #{self.city}, #{self.state}"
