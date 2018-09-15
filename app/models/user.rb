@@ -15,7 +15,31 @@ class User < ActiveRecord::Base
   validates_presence_of :legacy_organization_id, :if => :is_not_admin?
   validates_presence_of :accepted_terms
   before_save :set_terms_timestamp
-
+  
+  rails_admin do
+    list do
+      field :id
+      field :name
+      field :legacy_organization
+      field :legacy_organization_id
+      field :mobile
+      field :email
+      field :referring_user_id
+      field :referring_user
+      field :created_at
+      field :last_sign_in_at
+    end
+    
+  end
+  
+  def legacy_organization_id
+      self.legacy_organization.id
+  end 
+  
+  def referring_user
+      self.referring_user_id
+  end
+  
   def invited_by
     self.reference
   end
