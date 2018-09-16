@@ -28,6 +28,7 @@ import 'legacy/models/scripts'
 import 'legacy/other/incident_chooser';
 import 'legacy/other/invitation_form';
 import 'legacy/other/registration_form';
+import 'legacy/other/organization_contacts';
 
 // Admin
 import 'legacy/admin/form';
