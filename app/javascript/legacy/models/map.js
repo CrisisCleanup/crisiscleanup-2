@@ -96,7 +96,8 @@ export default function(params) {
   // This could also end up in the setEventId method.
   let filters = new Filters({
     onUpdate: populateMap.bind(this),
-    workTypes: document.getElementById('legacy_legacy_site_work_type')
+    workTypes: document.getElementById('legacy_legacy_site_work_type'),
+    isPublicMap: this.public_map
   });
 
   this.setEventId = function(event_id) {
