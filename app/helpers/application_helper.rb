@@ -77,6 +77,17 @@ module ApplicationHelper
       end
       link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
     end
+    
+    def link_to_add_my_org_contact(name, f, contacts)
+      legacy_contact = Legacy::LegacyContact.new
+      contacts << legacy_contact
+      puts contacts
+      id = legacy_contact.object_id
+      fields = f.fields_for(:new_contacts, legacy_contact, child_index: id) do |builder|
+        render(:legacy_contacts.to_s.singularize + "_form", con: builder)
+      end
+      link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+    end   
 
     def check_user_emails emails
       used_emails = []

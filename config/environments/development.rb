@@ -8,6 +8,7 @@ Rails.application.configure do
   
   config.reload_classes_only_on_change = false
 
+  config.active_record.logger = nil
   # Do not eager load code on boot.
   config.eager_load = false
 

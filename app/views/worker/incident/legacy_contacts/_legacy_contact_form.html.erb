@@ -1,0 +1,24 @@
+<div class="panel radius contact">
+  <div class="row">
+  	<div class="medium-6 columns">
+      <label>First Name</label>
+  		<%= con.text_field :first_name %>
+  	</div>
+    <div class="medium-6 columns">
+      <label>Last Name</label>
+      <%= con.text_field :last_name %>
+    </div>
+  </div>     
+  <div class="row">
+    <div class="medium-6 columns">
+      <label>Email</label>
+      <%= con.text_field :email %>
+    </div>
+   	<div class="medium-6 columns">
+      <label>Phone Number</label>
+  		<%= con.text_field :phone %>
+  	</div>     
+  </div>
+  <%= con.hidden_field :_destroy %>
+  <%= link_to t('registration_68'), '#', class:"remove_fields" %>
+</div>

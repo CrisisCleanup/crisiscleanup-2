@@ -1,0 +1,33 @@
+<% content_for :title do %>
+    Crisis Cleanup - Contacts
+<% end %>
+
+
+<% content_for :subheader do %> 
+<div class="row subheader">
+    <div class="small-12 medium-8 large-10 columns">
+        <h2>Update Primary Contacts</h2>
+    </div>   
+</div>    
+<% end %>
+
+<% content_for :main do %> 
+  <%= form_for 'edit' do |f| %>
+    <div class="my_org_contacts_form">
+      <% @contacts.each do |contact| %>
+        <%= f.fields_for "contacts[]", contact do |con| %>
+          <%= render 'legacy_contact_form', con: con %>
+        <% end %>
+      <% end %>
+      
+    <%= link_to_add_my_org_contact "Add New Primary Contact", f, @contacts %>
+    <hr>
+    <div class="actions">
+      <%= submit_tag "Save", :class => 'button' %>
+      <%= button_tag "Cancel", :class => 'button' %>
+    </div>     
+    </div>
+
+  <% end %>
+<% end %>
+    
