@@ -50,21 +50,7 @@ export function Filters(params) {
   }
   var onUpdate = params.onUpdate;
   
-  let workTypeFilters = [];
-  for (let i = 0; i < params.workTypes.length; i++) {
-    let wt = params.workTypes[i];
-    if (wt.label === '--Choose One--') {
-      continue
-    }
-    workTypeFilters.push({
-      id: wt.label,
-      label: wt.label,
-      condition: function(site) {
-        return site.site.work_type === wt.value;
-      }     
-    });
-      
-  }
+
   
   var filterParams = [
     {
@@ -104,7 +90,24 @@ export function Filters(params) {
     }
   ];
   
-  filterParams = filterParams.concat(workTypeFilters)
+  if (!params.isPublicMap) {
+    let workTypeFilters = [];
+    for (let i = 0; i < params.workTypes.length; i++) {
+      let wt = params.workTypes[i];
+      if (wt.label === '--Choose One--') {
+        continue
+      }
+      workTypeFilters.push({
+        id: wt.label,
+        label: wt.label,
+        condition: function(site) {
+          return site.site.work_type === wt.value;
+        }     
+      });
+    }
+    filterParams = filterParams.concat(workTypeFilters)
+  }  
+  
   
   var filters = [];
   var activeFilters = [];
