@@ -90,7 +90,6 @@ export function Filters(params) {
     }
   ];
   
-  console.log(params.isPublicMap)
   if (!params.isPublicMap) {
     let workTypeFilters = [];
     for (let i = 0; i < params.workTypes.length; i++) {
