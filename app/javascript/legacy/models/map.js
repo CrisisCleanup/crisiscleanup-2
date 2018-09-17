@@ -383,6 +383,9 @@ export default function(params) {
             } else {
               Raven.captureMessage("Something went wrong with the geocoding query.", {level: 'warning'});
             }
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+              Raven.captureMessage(`Something went wrong with the geocoding query: ${thrownError} \r\n ${xhr.statusText} \r\n ${xhr.responseText}` , {level: 'warning'});
           }
         });
       }
