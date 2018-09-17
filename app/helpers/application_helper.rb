@@ -11,6 +11,13 @@ module ApplicationHelper
             redirect_to "/dashboard"
         end
     end
+    
+    def check_is_user
+      user_id = request.params[:id].to_i
+      if user_id != current_user.id
+        redirect_to '/dashboard'
+      end
+    end   
 
     def check_user
       if !current_user.present?
