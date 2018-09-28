@@ -1,32 +1,26 @@
 <%= form_tag("/admin/group-mailer", method: "post") do |f| %>
   <div class="margin-top row">
-  	<div class="medium-10 columns">
+  	<div class="medium-8 columns">
   	  <label>TO Email List (comma-separated):</label>
   		<%= text_area_tag(:to_emails, "", size: "50x3") %>
   	</div>
   </div>
   <div class="row">
-  	<div class="medium-10 columns">
-  	  <label>CC Email List (comma-separated):</label>
-  		<%= text_field_tag(:cc_emails) %>
-  	</div>
-  </div> 
-  <div class="row">
-  	<div class="medium-10 columns">
+  	<div class="medium-8 columns">
   	  <label>From:</label>
   		<%= text_field_tag(:from) %>
   	</div>
   </div>  
   <div class="row">
-  	<div class="medium-10 columns">
+  	<div class="medium-8 columns">
   	  <label>Subject:</label>
   		<%= text_field_tag(:subject) %>
   	</div>
   </div>   
   <div class="row">
-  	<div class="medium-10 columns">
+  	<div class="medium-8 columns">
   	  <label>Message body</label>
-  		<%= text_area_tag(:body, "Hi, nice site", size: "50x20") %>
+  		<%= text_area_tag(:body, "", size: "50x20") %>
   	</div>
   </div>  
   <div class="row">

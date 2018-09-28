@@ -2,7 +2,7 @@ class GroupMailer < ActionMailer::Base
   
   default from: "help@crisiscleanup.org"
   
-  def send_group_email(to_email_list, cc_email_list, from_email, subject, message_body)
+  def send_group_email(to_email_list, from_email, subject, message_body)
     
     headers["X-SMTPAPI"] = { :to => to_email_list }.to_json
 
