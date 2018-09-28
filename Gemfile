@@ -79,6 +79,8 @@ gem 'http_accept_language'
 
 gem 'rails_admin', '~> 1.3'
 
+gem 'tinymce-rails'
+
 group :production do
   gem 'rack-timeout'
   gem 'newrelic_rpm'

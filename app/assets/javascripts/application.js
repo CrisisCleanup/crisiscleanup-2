@@ -16,6 +16,7 @@
 //= require_tree ./plugins
 //= require scripts
 //= require images
+//= require tinymce
 
 $(document).ready(function(){
 	$(document).foundation({

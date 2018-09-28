@@ -20,7 +20,7 @@
   <div class="row">
   	<div class="medium-8 columns">
   	  <label>Message body</label>
-  		<%= text_area_tag(:body, "", size: "50x20") %>
+  		<%= text_area_tag :body, "", :class => "tinymce", :rows => 50, :cols => 20 %>
   	</div>
   </div>  
   <div class="row">
@@ -29,4 +29,5 @@
   	</div>
   </div>
 
+<%= tinymce %>
 <% end %>
