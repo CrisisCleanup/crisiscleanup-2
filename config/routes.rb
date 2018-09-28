@@ -44,6 +44,8 @@ Rails.application.routes.draw do
     get "/export" => "export#index", as: "export"
     get "/export_kml/:id" => "export#export_kml", as: "export_kml", :defaults => { :format => :xml }
     get "settings" => "settings#index", as: "settings"
+    get "/group-mailer" => "group_mailer#index", as: "group_mailer_index"
+    post "/group-mailer" => "group_mailer#email", as: "group_mailer_email"
   end
 
   get "/dashboard" => 'worker/dashboard#index', as:"dashboard"
