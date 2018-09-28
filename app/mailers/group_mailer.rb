@@ -6,7 +6,7 @@ class GroupMailer < ActionMailer::Base
     
     headers["X-SMTPAPI"] = { :to => to_email_list }.to_json
 
-    mail(to: "ignored@example.com", body: message_body, content_type: "text/html", subject: subject)
+    mail(to: "ignored@example.com", from: from_email, body: message_body, content_type: "text/html", subject: subject)
   end
 
 end
