@@ -1,3 +1,4 @@
+relative_urls: false
 toolbar:
   - styleselect | bold italic | undo redo
   - image | link
