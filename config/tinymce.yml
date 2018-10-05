@@ -1,4 +1,6 @@
 relative_urls: false
+remove_script_host: false
+document_base_url: "https://www.crisiscleanup.org/"
 toolbar:
   - styleselect | bold italic | undo redo
   - image | link
