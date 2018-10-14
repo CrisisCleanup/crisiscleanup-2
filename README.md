@@ -10,7 +10,8 @@ This is the repository for the main Crisis Cleanup web application, a collaborat
 
 ## Contribute
 
-Join us on our Slack channels - https://crisiscleanup.slack.com
+- Join us on our Slack channels - https://crisiscleanup.slack.com
+- View the [Contributing Document](./CONTRIBUTING.md) for developers and testers.
 
 Other Project Stats (As of 2018-10-09)
 -------------
