@@ -31,6 +31,11 @@
 1. `docker-compose build`
 1. `docker-compose up -d`
 1. Access web app at `http://localhost:8080`
+1. Web container will hot-reload with code changes
+
+### Useful commands
+1. `docker-compose stop web && docker-compose rm web && docker-compose build --no-cache web && docker-compose up -d web` - Stop, remove, clean build, and re-deploy web container only
+1. `docker-compose down -v` - Take down entire app including postgres data volumes
 
 ### Docker - Testing
 1. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:create"`
