@@ -1,4 +1,4 @@
-<p align="center"><a href="https://www.crisiscleanup.org" target="_blank"><img width="100"src="https://www.crisiscleanup.org/assets/ccu-logo-balloons-2a4fa4ff9ee5ad03846e1d7bdb3cc71d.png"></a></p>
+<p align="center"><a href="https://www.crisiscleanup.org" target="_blank"><img width="100"src="https://www.crisiscleanup.org/assets/ccu-logo-balloons-353e457afd4f92da5df63e398a3688da.png"></a></p>
 
 # Crisis Cleanup [![Build Status](https://circleci.com/gh/CrisisCleanup/crisiscleanup.png?style=shield)](https://circleci.com/gh/crisiscleanup/crisiscleanup)
 
