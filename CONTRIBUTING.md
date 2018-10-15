@@ -36,9 +36,12 @@
 1. Web container will hot-reload with code changes
 
 ### Useful commands
-1. `docker-compose stop web && docker-compose rm web && docker-compose build --no-cache web && docker-compose up -d web` - Stop, remove, clean build, and re-deploy web container only
-1. `docker-compose down -v` - Take down entire app including postgres data volumes
-1. `docker-compose restart web` - Restart web container manually
+- `docker-compose up -d` - Start all containers
+- `docker-compose stop` - Stop all containers
+- `docker-compose restart web` - Restart web container manually
+- `docker-compose stop web && docker-compose rm web && docker-compose build --no-cache web && docker-compose up -d web` - Stop, remove, clean build, and re-deploy web container only
+- `docker-compose down -v` - Take down entire app including postgres data volumes
+- `docker-compose exec web bash -c "RAILS_ENV=docker bin/rake db:setup"` - Run seed migrations
 
 ### Docker - Testing
 1. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:create"`
