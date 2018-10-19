@@ -18,6 +18,7 @@ Vue.use(VueResource);
 import 'dashboard'
 import 'history'
 import 'datatable'
+import 'worksite'
 
 // Map
 import 'legacy/models/cluster'

@@ -154,6 +154,26 @@ module Api
         render json: { status: 'error', msg: 'Site id is required.' }
       end
     end
+    
+    def incidents
+      render json: { incidents: Legacy::LegacyEvent.select('id,name') }
+    end
+    
+    def move_worksite_to_incident
+      puts params
+      
+      worksiteId = params[:worksiteId]
+      incidentId = params[:incidentId]
+      
+      if site = Legacy::LegacySite.find(worksiteId)
+        if incident = Legacy::LegacyEvent.find(incidentId)
+          site.legacy_event_id = incidentId
+          site.save!
+        end
+      end
+      
+      render json: { status: 'success', msg: 'Site moved to incident.' }
+    end
 
   end
 end

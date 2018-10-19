@@ -121,14 +121,16 @@ export default function(params) {
     let $filtersView = $('#filters-view');
     let $formView = $('#form-view');
     let $historyView = $('#history-view');
+    let $moveWorksiteView = $('#move-worksite-view');
 
     if ($filtersView.hasClass('hide')) {
       $formView.addClass('hide');
       $historyView.addClass('hide');
+      $moveWorksiteView.addClass('hide');
       $filtersView.removeClass('hide');
     }
   };
-
+  
   this.showForm = function() {
     // Hacky way to hide the form alert box between edits.
     let $formView = $('#form-view');
@@ -136,10 +138,12 @@ export default function(params) {
 
     let $filtersView = $('#filters-view');
     let $historyView = $('#history-view');
+    let $moveWorksiteView = $('#move-worksite-view');
 
     if ($formView.hasClass('hide')) {
       $filtersView.addClass('hide');
       $historyView.addClass('hide');
+      $moveWorksiteView.addClass('hide');
       $formView.removeClass('hide');
     }
   };
@@ -150,13 +154,31 @@ export default function(params) {
 
     let $filtersView = $('#filters-view');
     let $historyView = $('#history-view');
+    let $moveWorksiteView = $('#move-worksite-view');
 
     if ($historyView.hasClass('hide')) {
       $filtersView.addClass('hide');
       $formView.addClass('hide');
+      $moveWorksiteView.addClass('hide');
       $historyView.removeClass('hide');
     }
   };
+  
+  this.showMoveWorksite = function() {
+    let $formView = $('#form-view');
+    $formView.find('.alert-box a.close').click();
+
+    let $filtersView = $('#filters-view');
+    let $historyView = $('#history-view');
+    let $moveWorksiteView = $('#move-worksite-view');
+
+    if ($moveWorksiteView.hasClass('hide')) {
+      $filtersView.addClass('hide');
+      $formView.addClass('hide');
+      $historyView.addClass('hide');
+      $moveWorksiteView.removeClass('hide');
+    }
+  };  
 
   function zoomToMarkerLocal(id) {
     let matchArray = $.grep(allSites, function(site) { return site.site.id === id; });
