@@ -51,12 +51,25 @@
         this.alertBoxStyle.alert = alertStyle;
       },
       parseUrl() {
-        const uri = new URL(this.pinUrl);
-        const splitUri = uri.pathname.split('/');
-        const coordinates = splitUri[4].split(',');
+        let coordinates = null;
+        
+        try {
+          let uri = new URL(this.pinUrl);
+          let splitUri = uri.pathname.match(/@.+z/g);
+          coordinates = splitUri[0].split(',');
+        } catch (error) {
+          this.actionMessage = "ERROR: \n Could not parse given pin URL."
+          this.setAlertStyle(false, false, true);
+          this.showMessage = true;           
+          setTimeout(() => {
+            this.showMessage = false;           
+          }, 10000);         
+          Raven.captureException(error.toString());
+        }
+        
         const latitude = parseFloat(coordinates[0].replace('@', ''));
         const longitude = parseFloat(coordinates[1]);
-        const zoomLevel = parseFloat(coordinates[2].replace('z', ''));
+        const zoomLevel = parseFloat(coordinates[2].replace('z', ''));       
         
         if (zoomLevel < 20) {
           this.actionMessage = "ERROR: \nThe map link provided was not zoomed-in close enough when captured. Please zoom in as far as you can, re-copy the link, and paste again."
