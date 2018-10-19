@@ -102,6 +102,7 @@ Rails.application.routes.draw do
     get "/site-history/:id" => "json#site_history", as: "json_site_history"
     get "/incidents" => "json#incidents", as: "json_incidents"
     post "/move-worksite-to-incident" => "json#move_worksite_to_incident", as: "json_move_worksite_to_incident"
+    post "/relocate-worksite-pin" => "json#relocate_worksite_pin", as: "json_relocate_worksite_pin"
     post "/update-site-status/:id" => "json#update_legacy_site_status", as: "json_site_status"
     post "/claim-site/:id" => "json#claim_legacy_site"
     get "/spreadsheets/sites" => "spreadsheets#sites", as: "sites_spreadsheet"

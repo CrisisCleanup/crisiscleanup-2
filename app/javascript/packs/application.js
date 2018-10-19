@@ -19,6 +19,7 @@ import 'dashboard'
 import 'history'
 import 'datatable'
 import 'worksite'
+import 'worksite_pin'
 
 // Map
 import 'legacy/models/cluster'

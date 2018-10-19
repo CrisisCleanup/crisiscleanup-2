@@ -116,17 +116,19 @@ export default function(params) {
       buildMarkers.call(this);
     }
   };
-
+  
   this.showFilters = function() {
     let $filtersView = $('#filters-view');
     let $formView = $('#form-view');
     let $historyView = $('#history-view');
     let $moveWorksiteView = $('#move-worksite-view');
+    let $wrongLocationView = $('#wrong-location-view');
 
     if ($filtersView.hasClass('hide')) {
       $formView.addClass('hide');
       $historyView.addClass('hide');
       $moveWorksiteView.addClass('hide');
+      $wrongLocationView.addClass('hide');
       $filtersView.removeClass('hide');
     }
   };
@@ -139,11 +141,13 @@ export default function(params) {
     let $filtersView = $('#filters-view');
     let $historyView = $('#history-view');
     let $moveWorksiteView = $('#move-worksite-view');
+    let $wrongLocationView = $('#wrong-location-view');
 
     if ($formView.hasClass('hide')) {
       $filtersView.addClass('hide');
       $historyView.addClass('hide');
       $moveWorksiteView.addClass('hide');
+      $wrongLocationView.addClass('hide');
       $formView.removeClass('hide');
     }
   };
@@ -155,6 +159,7 @@ export default function(params) {
     let $filtersView = $('#filters-view');
     let $historyView = $('#history-view');
     let $moveWorksiteView = $('#move-worksite-view');
+    let $wrongLocationView = $('#wrong-location-view');
 
     if ($historyView.hasClass('hide')) {
       $filtersView.addClass('hide');
@@ -171,14 +176,34 @@ export default function(params) {
     let $filtersView = $('#filters-view');
     let $historyView = $('#history-view');
     let $moveWorksiteView = $('#move-worksite-view');
+    let $wrongLocationView = $('#wrong-location-view');
 
     if ($moveWorksiteView.hasClass('hide')) {
       $filtersView.addClass('hide');
       $formView.addClass('hide');
       $historyView.addClass('hide');
+      $wrongLocationView.addClass('hide');
       $moveWorksiteView.removeClass('hide');
     }
   };  
+  
+  this.showWrongLocation = function() {
+    let $formView = $('#form-view');
+    $formView.find('.alert-box a.close').click();
+
+    let $filtersView = $('#filters-view');
+    let $historyView = $('#history-view');
+    let $moveWorksiteView = $('#move-worksite-view');
+    let $wrongLocationView = $('#wrong-location-view');
+
+    if ($wrongLocationView.hasClass('hide')) {
+      $filtersView.addClass('hide');
+      $formView.addClass('hide');
+      $historyView.addClass('hide');
+      $moveWorksiteView.addClass('hide');
+      $wrongLocationView.removeClass('hide');
+    }
+  }; 
 
   function zoomToMarkerLocal(id) {
     let matchArray = $.grep(allSites, function(site) { return site.site.id === id; });
