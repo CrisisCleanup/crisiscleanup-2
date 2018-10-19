@@ -37,7 +37,7 @@
     ],
     data() {
       return {
-        selectedIncident: {},
+        selectedIncident: null,
         actionMessage: '',
         showMessage: false,
         moveBtnText: 'Move',
@@ -69,14 +69,16 @@
             this.resetVerifier();
             setTimeout(() => {
               this.showMessage = false;
-            }, 10000);
+              this.selectedIncident = null;
+            }, 5000);
           }, function (error) {
             this.actionMessage = 'Failed to move worksite to the selected incident.';
             this.showMessage = true;
             this.resetVerifier();
             setTimeout(() => {
               this.showMessage = false;
-            }, 10000);         
+              this.selectedIncident = null;
+            }, 5000);         
             Raven.captureException(error.toString());
           });       
         }
