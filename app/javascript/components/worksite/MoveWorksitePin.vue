@@ -86,7 +86,7 @@
             zoomLevel: zoomLevel
           }
           this.$http.post('/api/relocate-worksite-pin', payload).then(() => {
-            this.actionMessage = `You have successfully relocated the worksite's pin.`;
+            this.actionMessage = `You have successfully relocated the worksite's pin. Refresh to see the changes.`;
             this.setAlertStyle(false, true, false);
             this.showMessage = true;
             $('#map-infobox').hide();

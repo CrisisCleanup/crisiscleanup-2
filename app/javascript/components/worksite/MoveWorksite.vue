@@ -50,7 +50,7 @@
         };
         this.$http.post('/api/move-worksite-to-incident', payload).then(() => {
           const incident = this.incidents.find(x => x.id === this.selectedIncident)
-          this.actionMessage = `You have successfully moved the selected worksite to the ${incident.name} incident.`;
+          this.actionMessage = `You have successfully moved the selected worksite to the ${incident.name} incident. Refresh to see the changes.`;
           this.showMessage = true;
           $('#map-infobox').hide();
           setTimeout(() => {
