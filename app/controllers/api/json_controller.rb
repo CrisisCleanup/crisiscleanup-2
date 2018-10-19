@@ -166,11 +166,16 @@ module Api
       
       if site = Legacy::LegacySite.find(worksiteId)
         if incident = Legacy::LegacyEvent.find(incidentId)
-          site.legacy_event_id = incidentId
-          site.case_number = nil
-          site.claimed_by = nil
-          site.user_id = nil
-          site.save!
+          # Verify it is not the same incident ID
+          if site.legacy_event_id != incidentId
+            site.legacy_event_id = incidentId
+            site.case_number = nil
+            site.claimed_by = nil
+            site.user_id = nil
+            site.save!
+          else
+            render json: { status: 'error', msg: 'Not allowed to to move this site to its current incident again.' }
+          end
         end
       end
       
