@@ -58,6 +58,22 @@
         <history-vue v-show="!loading" :site-history="historyData" :claimed-by-user="claimedByUser"></history-vue>
       </div>
     </div>
+    <div class="hide" id="move-worksite-view">
+      <div id="move-worksite-data">
+        <h4>Move Worksite To New Incident</h4>
+        <div v-show="hasError" class="row">
+          <div class="small-12 medium-12 large-12 columns">
+            <b>Error</b>
+          </div>
+        </div>
+        <div v-show="loading" class="row">
+          <div class="small-12 medium-12 large-12 columns">
+            <div class="loader"></div>
+          </div>
+        </div>
+        <move-worksite v-show="!loading" :incidents="incidents" :worksite-id="worksiteId"></move-worksite>
+      </div>
+    </div>    
   </div>
 <% end %>
 

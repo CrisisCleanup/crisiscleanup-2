@@ -5,6 +5,7 @@
 import Form from './form';
 import UnclaimedStatusColorMap from './UnclaimedStatusColorMap';
 import historyVueManager from '../../history';
+import moveWorksiteVueManager from '../../worksite';
 
 export default function(params) {
   var $infobox = $('#map-infobox');
@@ -305,6 +306,8 @@ export default function(params) {
     actionButtons["Edit"] = edit.bind(this);
 
     actionButtons["History"] = history.bind(this);
+    
+    actionButtons["Move to new incident"] = moveToNewIncident.bind(this);
 
     if (this.site.claimed_by === window.InitialState.user.org_id || (window.InitialState.user.admin && this.site.claimed_by !== null)) {
       actionButtons['Unclaim'] = claim.bind(this);
@@ -487,6 +490,15 @@ export default function(params) {
     }
 
     this.ccmap.showHistory();
+  }
+  
+  function moveToNewIncident() {
+    
+    if (moveWorksiteVueManager != null) {
+      moveWorksiteVueManager.loadData(this.site);
+    }   
+    
+    this.ccmap.showMoveWorksite();
   }
 
   // This should work like a toggle
