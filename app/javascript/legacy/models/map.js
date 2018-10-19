@@ -165,6 +165,7 @@ export default function(params) {
       $filtersView.addClass('hide');
       $formView.addClass('hide');
       $moveWorksiteView.addClass('hide');
+      $wrongLocationView.addClass('hide');
       $historyView.removeClass('hide');
     }
   };
