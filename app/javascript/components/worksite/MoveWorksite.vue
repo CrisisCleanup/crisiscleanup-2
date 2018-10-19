@@ -10,7 +10,10 @@
                           {{ option.name }}
                         </option>
                       </select>
-                      <button @click="move" class="button primary medium">Move</button>
+                      <button v-show="!isVerifying" @click="move(true, false)" class="button primary">{{moveBtnText}}</button>
+                      <p v-show="isVerifying">Are you sure you want to move this worksite to the selected incident?</p>
+                      <button v-show="isVerifying" @click="move(false, true)" class="button success">Yes</button>
+                      <button v-show="isVerifying" @click="move(false, false)" class="button alert">No</button>
                     </div>
                 </div>
                 <div v-show="showMessage" class="row">
@@ -36,34 +39,47 @@
       return {
         selectedIncident: {},
         actionMessage: '',
-        showMessage: false
+        showMessage: false,
+        moveBtnText: 'Move',
+        isVerifying: false,
+        isVerified: false
       }
     },
     beforeDestroy() {
       this.showMessage = false;
     },
     methods: {
-      move: function () {
-        let payload = {
-          worksiteId: this.worksiteId,
-          incidentId: this.selectedIncident
-        };
-        this.$http.post('/api/move-worksite-to-incident', payload).then(() => {
-          const incident = this.incidents.find(x => x.id === this.selectedIncident)
-          this.actionMessage = `You have successfully moved the selected worksite to the ${incident.name} incident. Refresh to see the changes.`;
-          this.showMessage = true;
-          $('#map-infobox').hide();
-          setTimeout(() => {
-            this.showMessage = false;
-          }, 10000);
-        }, function (error) {
-          this.actionMessage = 'Failed to move worksite to the selected incident.';
-          this.showMessage = true;
-          setTimeout(() => {
-            this.showMessage = false;
-          }, 10000);         
-          Raven.captureException(error.toString());
-        });       
+      resetVerifier: function() {
+        this.isVerified = false;
+        this.isVerifying = false;
+      },
+      move: function (isVerifying, isVerified) {
+        this.isVerifying = isVerifying;
+        this.isVerified = isVerified;
+        if (this.isVerified) {
+          let payload = {
+            worksiteId: this.worksiteId,
+            incidentId: this.selectedIncident
+          };
+          this.$http.post('/api/move-worksite-to-incident', payload).then(() => {
+            const incident = this.incidents.find(x => x.id === this.selectedIncident)
+            this.actionMessage = `You have successfully moved the selected worksite to the ${incident.name} incident. Refresh to see the changes.`;
+            this.showMessage = true;
+            $('#map-infobox').hide();
+            this.resetVerifier();
+            setTimeout(() => {
+              this.showMessage = false;
+            }, 10000);
+          }, function (error) {
+            this.actionMessage = 'Failed to move worksite to the selected incident.';
+            this.showMessage = true;
+            this.resetVerifier();
+            setTimeout(() => {
+              this.showMessage = false;
+            }, 10000);         
+            Raven.captureException(error.toString());
+          });       
+        }
       }
     }
   }
