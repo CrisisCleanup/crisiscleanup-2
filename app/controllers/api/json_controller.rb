@@ -173,13 +173,14 @@ module Api
             site.claimed_by = nil
             site.user_id = nil
             site.save!
+            return render json: { status: 'success', msg: 'Site moved to incident.' }
           else
-            render json: { status: 'error', msg: 'Not allowed to to move this site to its current incident again.' }
+            return render json: { status: 'error', msg: 'Not allowed to to move this site to its current incident again.' }
           end
         end
+      else 
+        return render json: { status: 'error', msg: 'Could not find worksite.' }
       end
-      
-      render json: { status: 'success', msg: 'Site moved to incident.' }
     end
     
     def relocate_worksite_pin
@@ -190,7 +191,7 @@ module Api
       zoomLevel = params[:zoomLevel]
       
       if zoomLevel < 20
-        render json: { status: 'error', msg: 'Zoom level must be 20 or greater.' }
+        return render json: { status: 'error', msg: 'Zoom level must be 20 or greater.' }
       end
       
       if site = Legacy::LegacySite.find(worksiteId)
@@ -199,9 +200,11 @@ module Api
         site.blurred_latitude = nil
         site.blurred_longitude = nil
         site.save!
+        return render json: { status: 'success', msg: 'Worksite pin relocated.' }
+      else
+        return render json: { status: 'error', msg: 'Could not find worksite.' }
       end
       
-      render json: { status: 'success', msg: 'Worksite pin relocated.' }
     end
 
   end
