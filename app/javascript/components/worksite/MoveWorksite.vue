@@ -79,7 +79,7 @@
               this.showMessage = false;
               this.selectedIncident = null;
             }, 5000);         
-            Raven.captureException(error.toString());
+            Raven.captureException(error);
           });       
         }
       }

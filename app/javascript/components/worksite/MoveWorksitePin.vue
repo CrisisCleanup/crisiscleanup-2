@@ -100,7 +100,7 @@
             setTimeout(() => {
               this.showMessage = false;
             }, 10000);         
-            Raven.captureException(error.toString());
+            Raven.captureException(error);
           }); 
         }
       }
