@@ -1,4 +1,3 @@
-import Raven from 'raven-js';
 import Vue from 'vue';
 import MoveWorksitePin from './components/worksite/MoveWorksitePin'
 
