@@ -10,22 +10,26 @@ if (document.getElementById("move-worksite-data")) {
     },
     data: {
       incidents: [],
+      currentIncidentId: null,
       worksiteId: null,
       loading: false,
       hasError: false
     },
     methods: {
       loadData: function (site) {
-        var that = this;
         this.loading = true;
-        that.worksiteId = site.id;
-        this.$http.get('/api/incidents').then(function (response) {
-          that.incidents = response.body.incidents;
-          that.loading = false;
-
-        }, function (error) {
-          that.loading = false;
-          that.hasError = true;
+        this.worksiteId = site.id;
+        this.currentIncidentId = site.legacy_event_id;
+        this.$http.get('/api/incidents').then((response) => {
+          let incidents = response.body.incidents;
+          incidents.splice(incidents.findIndex((i) => {
+              return i.id === this.currentIncidentId;
+          }), 1);
+          this.incidents = incidents;
+          this.loading = false;
+        }, (error) => {
+          this.loading = false;
+          this.hasError = true;
           Raven.captureException(error.toString());
         });
       }      
