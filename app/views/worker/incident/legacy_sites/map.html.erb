@@ -74,6 +74,22 @@
         <move-worksite v-show="!loading" :incidents="incidents" :worksite-id="worksiteId"></move-worksite>
       </div>
     </div>    
+    <div class="hide" id="wrong-location-view">
+      <div id="wrong-location-data">
+        <h4>Move Worksite Pin</h4>
+        <div v-show="hasError" class="row">
+          <div class="small-12 medium-12 large-12 columns">
+            <b>Error</b>
+          </div>
+        </div>
+        <div v-show="loading" class="row">
+          <div class="small-12 medium-12 large-12 columns">
+            <div class="loader"></div>
+          </div>
+        </div>
+        <move-worksite-pin v-show="!loading" :worksite-id="worksiteId"></move-worksite-pin>
+      </div>
+    </div>
   </div>
 <% end %>
 

@@ -176,6 +176,28 @@ module Api
       
       render json: { status: 'success', msg: 'Site moved to incident.' }
     end
+    
+    def relocate_worksite_pin
+      
+      worksiteId = params[:worksiteId]
+      longitude = params[:longitude]
+      latitude = params[:latitude]
+      zoomLevel = params[:zoomLevel]
+      
+      if zoomLevel < 20
+        render json: { status: 'error', msg: 'Zoom level must be 20 or greater.' }
+      end
+      
+      if site = Legacy::LegacySite.find(worksiteId)
+        site.latitude = latitude
+        site.longitude = longitude
+        site.blurred_latitude = nil
+        site.blurred_longitude = nil
+        site.save!
+      end
+      
+      render json: { status: 'success', msg: 'Worksite pin relocated.' }
+    end
 
   end
 end
