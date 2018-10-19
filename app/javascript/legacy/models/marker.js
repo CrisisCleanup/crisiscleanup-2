@@ -299,23 +299,23 @@ export default function(params) {
     // TODO: a button class would be cool here, so we could attach the click event callbacks and whatnot.
     var actionButtons = {};
     if (this.site.claimed_by) {
-      actionButtons["Contact Org"] = contactOrg.bind(this);
+      actionButtons["Contact Org"] = {cb: contactOrg.bind(this), style: 'fa fa-sitemap', title: 'Contact this Organization'};
     }
 
-    actionButtons["Print"] = print.bind(this);
+    actionButtons["Print"] = {cb: print.bind(this), style: 'fa fa-print', title: 'Print'};
 
-    actionButtons["Edit"] = edit.bind(this);
+    actionButtons["Edit"] = {cb: edit.bind(this), style: 'fa fa-edit', title: 'Edit'};
 
-    actionButtons["History"] = history.bind(this);
+    actionButtons["History"] = {cb: history.bind(this), style: 'fa fa-history', title: "History"};
     
-    actionButtons["Move To New Incident"] = moveToNewIncident.bind(this);
+    actionButtons["Move To New Incident"] = {cb: moveToNewIncident.bind(this), style: 'fa fa-arrow-right', title: 'Move to New Incident'};
     
-    actionButtons["Wrong Location"] = wrongLocation.bind(this);
+    actionButtons["Wrong Location"] = {cb: wrongLocation.bind(this), style: 'fa fa-map-pin', title: 'Wrong Location'};
 
     if (this.site.claimed_by === window.InitialState.user.org_id || (window.InitialState.user.admin && this.site.claimed_by !== null)) {
-      actionButtons['Unclaim'] = claim.bind(this);
+      actionButtons['Unclaim'] = {cb: claim.bind(this), style: '', title: 'Unclaim'};
     } else if (this.site.claimed_by === null) {
-      actionButtons['Claim'] = claim.bind(this);
+      actionButtons['Claim'] = {cb: claim.bind(this), style: '', title: 'Claim'};
     }
     var buttonRow = document.createElement('div');
     buttonRow.className = 'row';
@@ -324,10 +324,13 @@ export default function(params) {
     for (let key in actionButtons) {
       if (actionButtons.hasOwnProperty(key)) {
         var button = document.createElement('a');
-        button.className = 'button tiny';
+        button.className = `button tiny ${actionButtons[key].style}`;
         button.id = 'infobox-' + key.toLowerCase().replace(' ', '');
-        button.appendChild(document.createTextNode(key));
-        button.onclick = actionButtons[key];
+        button.title = actionButtons[key].title;
+        if (key === 'Claim' || key === 'Unclaim') {
+          button.appendChild(document.createTextNode(key));
+        }
+        button.onclick = actionButtons[key].cb;
         buttonCell.appendChild(button);
       }
     }
