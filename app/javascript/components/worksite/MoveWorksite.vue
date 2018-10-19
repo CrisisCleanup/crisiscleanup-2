@@ -6,7 +6,7 @@
                     <div class="small-12 medium-12 large-12 columns">
                       <label>Incident: </label>
                       <select v-model="selectedIncident">
-                        <option v-for="option in incidents" v-bind:value="option.id">
+                        <option v-for="option in incidents" v-bind:value="option.id" :key="option.id">
                           {{ option.name }}
                         </option>
                       </select>
@@ -48,10 +48,8 @@
           worksiteId: this.worksiteId,
           incidentId: this.selectedIncident
         };
-        this.$http.post('/api/move-worksite-to-incident', payload).then((response) => {
-          console.log(this.selectedIncident);
+        this.$http.post('/api/move-worksite-to-incident', payload).then(() => {
           const incident = this.incidents.find(x => x.id === this.selectedIncident)
-          console.log(incident);
           this.actionMessage = `You have successfully moved the selected worksite to the ${incident.name} incident.`;
           this.showMessage = true;
           $('#map-infobox').hide();
