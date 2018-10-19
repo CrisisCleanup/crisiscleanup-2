@@ -160,7 +160,6 @@ module Api
     end
     
     def move_worksite_to_incident
-      puts params
       
       worksiteId = params[:worksiteId]
       incidentId = params[:incidentId]
@@ -168,6 +167,9 @@ module Api
       if site = Legacy::LegacySite.find(worksiteId)
         if incident = Legacy::LegacyEvent.find(incidentId)
           site.legacy_event_id = incidentId
+          site.case_number = nil
+          site.claimed_by = nil
+          site.user_id = nil
           site.save!
         end
       end
