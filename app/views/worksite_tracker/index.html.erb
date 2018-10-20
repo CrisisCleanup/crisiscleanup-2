@@ -1,0 +1,67 @@
+<% content_for :title do %>
+    Crisis Cleanup - Worksite Tracker
+<% end %>
+
+<% content_for :subheader do %>
+   
+<% end %>
+
+<% content_for :main do %>
+<div id="main">
+    <div class="row home_coordinated_disasters">
+        <div class="row">
+            <div class="columns small-12 medium-12 large-4" align="center">
+                <h1>Thanks for helping!</h1>
+                 <div class="custom-panel text-center site-card" style="margin:0 2px;">
+                    <h5><%= @site.case_number %></h5>
+                    <h5><%= @site.name %></h5>
+                    <p><%= @site.address %></p>
+                    <p><%= @site.city %>, <%= @site.state %>, <%= @site.zip_code %></p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 medium-8 large-8">
+            <%= form_tag("/admin/group-mailer", method: "post") do |f| %>
+              <div class="margin-top row">
+              	<div class="medium-8 columns">
+              	  <label>Work Order Status:</label>
+                  <%= select_tag(:status, options_for_select([['Please Select One', 1], ['Open, unassigned', 2]])) %>
+              	</div>
+              </div>
+             <div class="row">
+              	<div class="medium-8 columns">
+              	  <label>Notes:</label>
+              		<%= text_area_tag(:notes) %>
+              	</div>
+              </div>                
+              <div class="row">
+              	<div class="medium-8 columns">
+              	  <label>Your Email:</label>
+              		<%= text_field_tag(:email) %>
+              	</div>
+              </div>  
+              <div class="row">
+              	<div class="medium-8 columns">
+              	  <label>Your Organization:</label>
+              		<%= text_field_tag(:organization_name) %>
+              	</div>
+              </div>   
+              <div class="row">
+              	<div class="medium-6 columns">
+              		<%= submit_tag("Submit", class: "button") %>
+              	</div>
+              </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="hide"><%= request.host %></div>
+<% end %>
+
+
+<% content_for :javascripts do %>
+<% end %>

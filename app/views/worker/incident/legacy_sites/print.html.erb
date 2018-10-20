@@ -47,6 +47,9 @@
       color: white;
       font-weight: bold;
     }
+    .message {
+      font-size: 16px;
+    }
     .white {
       color: white;
     }
@@ -104,6 +107,11 @@
         <h1>Work Order and Assessment: <%= @site.case_number %></h1>
       </td>
     </tr>
+    <tr>
+      <td colspan="28" class="blackBackground">
+        <p class="whiteSubtitle message">PLEASE VISIT <%= @token.token_url %> TO REPORT CASE STATUS</p>
+      </td>
+    </tr>   
     <tr>
       <td colspan="28" class="blackBackground">
         <p class="whiteSubtitle">When finished, report the case #, volunteers, hours worked, and initials of resident present during work</p>
