@@ -15,7 +15,6 @@ class WorksiteTrackerController < ApplicationController
     ]
     @print_token = PrintToken.select('*').where(token: params[:token])
       .where('token_expiration > ?', DateTime.now).first
-    puts "###### #{@print_token}"
     if @print_token
       @site = Legacy::LegacySite.find_by_id(@print_token.legacy_site_id)
       @token = "/z/#{params[:token]}"
