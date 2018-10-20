@@ -15,9 +15,13 @@ class WorksiteTrackerController < ApplicationController
     ]
     @print_token = PrintToken.select('*').where(token: params[:token])
       .where('token_expiration > ?', DateTime.now).first
-    @site = Legacy::LegacySite.find_by_id(@print_token.legacy_site_id)
-    @token = "/z/#{params[:token]}"
-    render 'index'
+    puts "###### #{@print_token}"
+    if @print_token
+      @site = Legacy::LegacySite.find_by_id(@print_token.legacy_site_id)
+      @token = "/z/#{params[:token]}"
+      return render 'index'
+    end
+    return render 'errors/not_found', status: 404
   end
   
   def submit
@@ -34,7 +38,7 @@ class WorksiteTrackerController < ApplicationController
           "Closed, no help wanted", "Closed, rejected",
           "Closed, duplicate"]
         if not status.include?(params[:status])
-          render status: 404
+          return render 'errors/not_found', status: 404
         else
           if site = Legacy::LegacySite.find(@print_token.legacy_site_id)
             site.status = params[:status] if params[:status]
@@ -51,16 +55,16 @@ class WorksiteTrackerController < ApplicationController
             end
             @print_token.save!
             
-            render 'thanks'
+            return render 'thanks'
           else
-            render status: 500
+            return render 'errors/server_error', status: 500
           end
         end
       else
-        render status: 500
+        return render 'errors/server_error', status: 500
       end
     else
-      render status: 404
+      return render 'errors/not_found', status: 404
     end
   end
 end
