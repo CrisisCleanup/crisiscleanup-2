@@ -44,6 +44,14 @@ class WorksiteTrackerController < ApplicationController
             @legacy_site.status = params[:status] if params[:status]
             updater = ""
             
+            if !params[:num_volunteers].blank?
+              @legacy_site.data["total_volunteers"] = params[:num_volunteers]
+            end           
+            
+            if !params[:volunteer_hours].blank?
+              @legacy_site.data["hours_worked_per_volunteer"] = params[:volunteer_hours]
+            end           
+            
             if !params[:email].blank?
               updater += "REPORTED BY: #{params[:email]}\n"
               @print_token.reporting_email = params[:email]
