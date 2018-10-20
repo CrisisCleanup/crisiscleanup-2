@@ -8,14 +8,14 @@
 
 <% content_for :main do %>
 <div id="main">
-    <div class="row home_coordinated_disasters">
+    <div class="row">
         <div class="row">
             <div class="columns small-12 medium-12 large-4" align="center">
-                <h1>Thanks for helping!</h1>
+                <h1>Thanks for helping:</h1>
                  <div class="custom-panel text-center site-card" style="margin:0 2px;">
                     <h5><%= @site.case_number %></h5>
                     <h5><%= @site.name %></h5>
-                    <p><%= @site.address %></p>
+                    <p><%= @site.address.gsub(/[0-9]/,'X') %></p>
                     <p><%= @site.city %>, <%= @site.state %>, <%= @site.zip_code %></p>
                   </div>
                 </div>
@@ -24,17 +24,20 @@
     </div>
     <div class="row">
         <div class="small-12 medium-8 large-8">
-            <%= form_tag("/admin/group-mailer", method: "post") do |f| %>
+            <div class="columns small-12" align="center">
+                <p>Please report the work order status, along with with your email and organization name.</p>
+            </div>
+            <%= form_tag(@token_path, method: "post") do |f| %>
               <div class="margin-top row">
               	<div class="medium-8 columns">
               	  <label>Work Order Status:</label>
-                  <%= select_tag(:status, options_for_select([['Please Select One', 1], ['Open, unassigned', 2]])) %>
+                  <%= select_tag(:status, options_for_select(@statuses, @site.status)) %>
               	</div>
               </div>
              <div class="row">
               	<div class="medium-8 columns">
               	  <label>Notes:</label>
-              		<%= text_area_tag(:notes) %>
+              		<%= text_area_tag(:status_notes, @site.data[:status_notes]) %>
               	</div>
               </div>                
               <div class="row">
