@@ -42,6 +42,11 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 9pt;
     }
+    .blackSubtitle {
+      text-align: center;
+      color: black;
+      font-weight: bold;
+    }   
     .whiteSubtitle {
       text-align: center;
       color: white;
@@ -108,8 +113,8 @@
       </td>
     </tr>
     <tr>
-      <td colspan="28" class="blackBackground">
-        <p class="whiteSubtitle message">PLEASE VISIT <%= @token.token_url %> TO REPORT CASE STATUS</p>
+      <td colspan="28" class="whiteBackground">
+        <p class="blackSubtitle message">PLEASE VISIT <%= @token.token_url %> TO REPORT CASE STATUS</p>
       </td>
     </tr>   
     <tr>

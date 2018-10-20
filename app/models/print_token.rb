@@ -6,7 +6,7 @@ class PrintToken < ActiveRecord::Base
   before_create :add_expiration   
   
   def token_url
-    return "https://www.crisiscleanup.org/z/#{self.token}".html_safe
+    return "crisiscleanup.org/z/#{self.token}".html_safe
   end 
     
   protected
