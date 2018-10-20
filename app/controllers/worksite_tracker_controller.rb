@@ -42,17 +42,21 @@ class WorksiteTrackerController < ApplicationController
         else
           if site = Legacy::LegacySite.find(@print_token.legacy_site_id)
             site.status = params[:status] if params[:status]
-            if params[:status_notes]
-              site.data[:status_notes] = params[:status_notes]
-            end
-            site.save!
+            updater = ''
             
             if params[:email]
+              updater += "REPORTED BY: #{params[:email]}\n"
               @print_token.reporting_email = params[:email]
             end
             if params[:organization_name]
+              updater += "REPORTED BY ORGANIZATION: #{params[:organization_name]}\n"
               @print_token.reporting_org_name = params[:organization_name]
             end
+            
+            if params[:status_notes]
+              site.data[:status_notes] = "#{params[:status_notes]}\n#{updater}"
+            end           
+            site.save!
             @print_token.save!
             
             return render 'thanks'
