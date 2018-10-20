@@ -40,8 +40,8 @@ class WorksiteTrackerController < ApplicationController
         if not status.include?(params[:status])
           return render 'errors/not_found', status: 404
         else
-          if site = Legacy::LegacySite.find(@print_token.legacy_site_id)
-            site.status = params[:status] if params[:status]
+          if @legacy_site = Legacy::LegacySite.find_by_id(@print_token.legacy_site_id)
+            @legacy_site.status = params[:status] if params[:status]
             updater = ""
             
             if !params[:email].blank?
@@ -53,10 +53,14 @@ class WorksiteTrackerController < ApplicationController
               @print_token.reporting_org_name = params[:organization_name]
             end
             updater += "ON: #{Time.now.strftime("%m/%d/%Y")}\n"
-            if params[:status_notes]
-              site.data[:status_notes] = "#{params[:status_notes]}\n#{updater}"
+            
+            # @legacy_site.data_will_change!
+            
+            if !params[:status_notes].blank?
+              notes = "#{params[:status_notes]}\n#{updater}"
+              @legacy_site.data["status_notes"] = notes
             end           
-            site.save!
+            @legacy_site.save!
             @print_token.save!
             
             return render 'thanks'
