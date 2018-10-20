@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/administrator', as: 'rails_admin'
   devise_for :users, path:'',:path_names => {:sign_in => 'login', :sign_out => 'logout'}
   root 'static_pages#index'
+  get "/z/:token", to: "worksite_tracker#index", as: "worksite_tracker"
+  post "/z/:token", to: "worksite_tracker#submit", as: "worksite_tracker_post"
   get "/home" => "static_pages#home", as: "home"
   get "/about" => "static_pages#about", as: "about"
   get "/government" => "static_pages#government", as: "government"

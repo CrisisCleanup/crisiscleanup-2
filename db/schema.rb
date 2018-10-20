@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901011220) do
+ActiveRecord::Schema.define(version: 20181020035607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,6 +191,21 @@ ActiveRecord::Schema.define(version: 20170901011220) do
   add_index "legacy_sites", ["claimed_by"], name: "index_legacy_sites_on_claimed_by", using: :btree
   add_index "legacy_sites", ["legacy_event_id"], name: "index_legacy_sites_on_legacy_event_id", using: :btree
   add_index "legacy_sites", ["reported_by"], name: "index_legacy_sites_on_reported_by", using: :btree
+
+  create_table "print_tokens", force: :cascade do |t|
+    t.integer  "legacy_site_id"
+    t.integer  "printing_org_id"
+    t.integer  "printing_user_id"
+    t.string   "token"
+    t.datetime "last_visted"
+    t.string   "reporting_email"
+    t.string   "reporting_org_name"
+    t.string   "reporting_phone"
+    t.string   "reporting_name"
+    t.datetime "token_expiration"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "request_invitations", force: :cascade do |t|
     t.string   "name"

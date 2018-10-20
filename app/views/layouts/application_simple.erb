@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "Crisis Cleanup" %></title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Always-Ready Open Source Disaster Relief Mapping and Work Coordination • 62,136 helped • 107 disasters • 6 countries • 1,326 organizations • 406,747 volunteers • $104.8M impact • Free" />
+  <%= favicon_link_tag(source='favicon.ico', options={}) %>
+
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "vendor" %>
+  <%= javascript_include_tag "application" %>
+
+  <%= csrf_meta_tags %>
+</head>
+
+<body class='public' data-no-turbolink="true">
+<header>
+  <%= render "layouts/menus/application_menu" %>
+</header>
+
+<%= yield :subheader %>
+
+<div class="row collapse" style="width: 96%;">
+  <%= yield :main %>
+</div>
+<%= render 'layouts/large_footer' %>
+<%= render 'layouts/footer' %>
+
+<script type="text/javascript">
+  var InitialState = <%= raw initial_state.to_json %>;
+</script>
+<%= javascript_pack_tag 'application' %>
+<%= yield :javascripts %>
+
+
+<%= render 'layouts/analytics' %>
+
+</body>
+</html>
