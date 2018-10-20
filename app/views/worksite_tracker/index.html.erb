@@ -14,7 +14,7 @@
                 <h2>Thank you for helping!</h2>
                  <div class="custom-panel text-center site-card" style="margin:0 2px;">
                     <h5><%= @site.case_number %></h5>
-                    <h5><%= @site.name %></h5>
+                    <h5><%= @site.name.split(' ')[0] %></h5>
                     <p><%= @site.address.gsub(/[0-9]/,'X') %></p>
                     <p><%= @site.city %>, <%= @site.state %>, <%= @site.zip_code %></p>
                   </div>
