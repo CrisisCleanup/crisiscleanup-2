@@ -19,6 +19,7 @@ class WorksiteTrackerController < ApplicationController
     if @print_token
       @site = Legacy::LegacySite.find_by_id(@print_token.legacy_site_id)
       @token = "/z/#{params[:token]}"
+      @status_notes = @site.data[:status_notes]
       return render 'index'
     end
     return render 'errors/not_found', status: 404
