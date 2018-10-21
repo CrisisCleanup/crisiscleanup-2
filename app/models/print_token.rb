@@ -8,6 +8,10 @@ class PrintToken < ActiveRecord::Base
   def token_url
     return "crisiscleanup.org/z/#{self.token}".html_safe
   end 
+  
+  def full_token_url
+    return "https://www.crisiscleanup.org/z/#{self.token}".html_safe
+  end  
     
   protected
   def generate_token
