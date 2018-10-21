@@ -23,8 +23,10 @@
       margin-left: 5pt;
     }  
     h1 {
-      text-align: center;
+      /*text-align: center;*/
+      
       margin-bottom: 0;
+      padding-bottom: 0;
       line-height: normal;
       font-weight: bold;
       font-family: Arial, Helvetica, sans-serif;
@@ -45,7 +47,7 @@
     .blackSubtitle {
       text-align: center;
       color: black;
-      font-weight: bold;
+      /*font-weight: bold;*/
     }   
     .whiteSubtitle {
       text-align: center;
@@ -102,19 +104,36 @@
       height: 0;
       padding: 0;
     }
+    .qrcode {
+      float: right;
+      padding-right: 3px;
+      padding-top: 3px;
+    }
+    .order-header {
+      text-align: center;
+      vertical-align: bottom;
+    }
   </style>
 </head>
 <body>
   <div class="WorkOrderPage">
     <table class="mainTable">
-     <tbody><tr>
-      <td colspan="28">
+     <tbody>
+    <tr>
+      <td colspan="26" class="order-header" >
         <h1>Work Order and Assessment: <%= @site.case_number %></h1>
+        <scan class="blackSubtitle message">PLEASE REPORT CASE STATUS BY SCANNING THE QR CODE</scan>
+        <br>
+        <span class="blackSubtitle message"> OR VISITING <strong><%= @token.token_url %></strong></span>
+      </td>
+      <td colspan="2" class="order-header">
+        <span class="qrcode"><%= raw @qrcode.as_svg(offset: 0, color: '000', shape_rendering: 'crispEdges', module_size: 2) %></span>
       </td>
     </tr>
     <tr>
-      <td colspan="28" class="whiteBackground">
-        <p class="blackSubtitle message">PLEASE VISIT <%= @token.token_url %> TO REPORT CASE STATUS</p>
+      <td colspan="26" class="whiteBackground">
+      </td>
+      <td colspan="2">
       </td>
     </tr>   
     <tr>
@@ -780,6 +799,5 @@
 </tbody>
 </table>
 </div>
-<hr>
 </body>
 </html>

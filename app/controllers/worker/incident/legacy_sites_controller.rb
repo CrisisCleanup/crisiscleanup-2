@@ -107,6 +107,8 @@ module Worker
           printing_user_id: current_user.id,
           printing_org_id: current_user.legacy_organization_id
         )
+        
+        @qrcode = generate_qr(@token.full_token_url)
 
         if (@site.claimed_by)
           @claimed_by_org = Legacy::LegacyOrganization.find(@site.claimed_by)
