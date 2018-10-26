@@ -2,6 +2,7 @@ module Worker
   module Incident
     class LegacySitesController < ApplicationController
       include ApplicationHelper
+      include WorksiteTrackerHelper
       before_filter :check_incident_permissions
 
       private
@@ -100,6 +101,14 @@ module Worker
 
       def print
         @site = Legacy::LegacySite.find(params[:site_id])
+        
+        @token = PrintToken.create(
+          legacy_site_id: @site.id,
+          printing_user_id: current_user.id,
+          printing_org_id: current_user.legacy_organization_id
+        )
+        
+        @qrcode = generate_qr(@token.full_token_url)
 
         if (@site.claimed_by)
           @claimed_by_org = Legacy::LegacyOrganization.find(@site.claimed_by)

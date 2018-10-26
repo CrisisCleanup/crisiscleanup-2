@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%= render 'layouts/zendesk' %>
-
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Crisis Cleanup" %></title>
   <meta charset="utf-8"/>
@@ -22,8 +20,6 @@
 <header>
   <%= render "layouts/menus/application_menu" %>
 </header>
-
-<%= render (request.host =~ /demo/) ? "layouts/menus/alert_menu_demo" : "layouts/menus/alert_menu" %>
 
 <%= yield :subheader %>
 

@@ -81,6 +81,8 @@ gem 'rails_admin', '~> 1.3'
 
 gem 'tinymce-rails'
 
+gem 'rqrcode'
+
 group :production do
   gem 'rack-timeout'
   gem 'newrelic_rpm'

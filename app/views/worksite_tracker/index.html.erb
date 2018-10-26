@@ -1,0 +1,65 @@
+<% content_for :title do %>
+    Crisis Cleanup - Worksite Tracker
+<% end %>
+
+<% content_for :subheader do %>
+   
+<% end %>
+
+<% content_for :main do %>
+<style>
+    
+</style>
+<div id="main">
+    <div class="row">
+        <div class="row">
+            <div class="columns small-12 medium-12 large-4" align="center">
+                <h2>Thank you for helping!</h2>
+                 <div class="custom-panel text-center site-card" style="margin:0 2px;">
+                    <h5><%= @site.case_number %></h5>
+                    <h5><%= @site.name.split(' ')[0] %></h5>
+                    <p><%= @site.address.gsub(/[0-9]/,'X') %></p>
+                    <p><%= @site.city %>, <%= @site.state %>, <%= @site.zip_code %></p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 medium-8 large-8">
+            <div class="medium-8" align="center">
+                <p style="font-size: 12px;">Please report the following info, along with with your email and organization name and <strong>SUBMIT</strong> below.</p>
+            </div>
+            <%= form_tag(@token_path, method: "post") do |f| %>
+              <div class="row">
+              	<div class="medium-8 ">
+              	  <label><strong>Work Order Status:</strong></label>
+                  <%= select_tag(:status, options_for_select(@statuses, @site.status)) %>
+              	  <label><strong>Status Notes:</strong></label>
+              	  <%= text_area_tag(:status_notes, @site.data["status_notes"], size: "10") %>                 
+              	  <label><strong>Number of Volunteers In Your Group:</strong></label>
+            	  <%= text_field_tag(:num_volunteers) %>             	  
+              	  <label><strong>Estimated Work Hours Per Volunteer:</strong></label>
+            	  <%= text_field_tag(:volunteer_hours) %>             	             	  
+              	  <label><strong>Your Email:</strong></label>
+            	  <%= text_field_tag(:email) %>             	             	  
+              	  <label><strong>Your Organization's Name:</strong></label>
+            	  <%= text_field_tag(:organization_name) %>           	  
+                  <div class="row">
+                   <div class="medium-8" align="center">
+              	  <%= submit_tag("Submit", class: "button expand small") %>
+                   </div>
+                  </div>           	  
+              	</div>
+              </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="hide"><%= request.host %></div>
+<% end %>
+
+
+<% content_for :javascripts do %>
+<% end %>

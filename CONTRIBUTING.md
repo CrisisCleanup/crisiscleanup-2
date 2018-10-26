@@ -2,30 +2,65 @@
 
 ## Developer Pull Request Process
 1. Github issue created or assigned. 
-2. Feature branch is created based on the latest from the `master` branch.
+1. Feature branch is created based on the latest from the `master` branch.
    * Developer forks the repository if (s)he isn't part of the core team and thus does not have permission to commit to the main CrisisCleanup repo. 
-3. Local development and testing is performed **including** writing unit and functional tests for new features and bugs.
-4. Create a pull request into the `master` branch.  Add reviewers and comments. (will trigger CircleCI)
-5. Reviewers will then approve the PR, provide feedback, and then merge into the `staging` environment.
+1. Local development and testing is performed **including** writing unit and functional tests for new features and bugs.
+1. Create a pull request into the `master` branch.  Add reviewers and comments. (will trigger CircleCI)
+1. Reviewers will then approve the PR, provide feedback, and then merge into the `staging` environment.
 
 ## Reviewers and Testers
 1. Reviewer triggers a staging environment deployment
-2. Testers verify PR/issue in the staging environment.
-3. All parties approve developer PR.  Reviewer merges and closes PR into master and triggers a production deployment.
-4. Smoke testing in `production` environment
+1. Testers verify PR/issue in the staging environment.
+1. All parties approve developer PR.  Reviewer merges and closes PR into master and triggers a production deployment.
+1. Smoke testing in `production` environment
 
-## Pre-Reqs
+## Docker-based Development Environment (ideal)
+
+### Pre-reqs
+1. `docker 1.17+` and `docker-compose 1.22+`
+
+### Setup
+1. Clone repo: `git clone git@github.com:CrisisCleanup/crisiscleanup.git`
+   * Clone fork, if applicable, instead of main repo.
+1. `cd crisiscleanup`
+1. API keys and environment variables
+	- Create your own `.env.docker` in the repository base, based on `.env.development.sample`.
+	    - i.e. `cp .env.docker.sample .env.docker` and replace the values in `.env.docker`
+	- (Required) You will need your own [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
+	- (Optional) You will also need to use your own AWS API key if you need to develop SNS or S3 features.
+1. `docker-compose build`
+1. `docker-compose up -d`
+1. `docker-compose exec web bash -c "yarn install"` - Install yarn dependencies manually
+1. `docker-compose exec web bash -c "RAILS_ENV=docker bin/rake db:setup"` - Run seed migrations
+1. Access web app at `http://localhost:8080`
+1. Web container will hot-reload with code changes
+
+### Useful commands
+- `docker-compose up -d` - Start all containers
+- `docker-compose stop` - Stop all containers
+- `docker-compose restart web` - Restart web container manually
+- `docker-compose stop web && docker-compose rm web && docker-compose build --no-cache web && docker-compose up -d web` - Stop, remove, clean build, and re-deploy web container only
+- `docker-compose down -v` - Take down entire app including postgres data volumes
+- `docker-compose exec web bash -c "RAILS_ENV=docker bin/rake db:setup"` - Run seed migrations
+
+### Docker - Testing
+1. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:create"`
+2. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bundle exec rspec"`
+
+## Local (outside of docker) Environment
+
+### Pre-Reqs
 1. Ruby 2.2.5 (use rbenv or RVM) 
 	- with `bundler` gem installed i.e. `gem install bundler`
-2. `docker` and `docker-compose`
-3. `node/npm` (Optionally, but preferred also install `yarn`)
+1. `docker` and `docker-compose`
+1. `node/npm` (Optionally, but preferred also install `yarn`)
 
 ### Macs
 1. [Homebrew](https://brew.sh)
 1. Command-line tools - either install Xcode or run `xcode-select --install` from a terminal
 1. Postgres headers (for `pg` gem installation) - `brew install postgres`
 
-## Setup
+### Setup
 1. Clone repo: `git clone git@github.com:CrisisCleanup/crisiscleanup.git`
    * Clone fork, if applicable, instead of main repo.
 2. `cd crisiscleanup`
@@ -56,28 +91,3 @@
 	- `RAILS_ENV=test bundle exec rspec`
 10. Cleanup
 	- `docker-compose down -v` (will destroy your local dev database)
-
-
-## Setup - Docker
-1. Clone repo: `git clone git@github.com:CrisisCleanup/crisiscleanup.git`
-   * Clone fork, if applicable, instead of main repo.
-2. `cd crisiscleanup`
-3. API keys and environment variables
-	- Create your own `.env.docker` in the repository base, based on `.env.docker.sample`.
-	- (Required) You will need your own [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
-	- (Optional) You will also need to use your own AWS API key if you need to develop SNS or S3 features.
-4. `docker-compose build`
-5. `docker-compose up -d`
-6. Access web at `http://localhost:8080`
-
-### Docker - Testing
-1. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:create"`
-2. `docker-compose exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bundle exec rspec"`
-3. 
-
-
-- `bin/rake db:create`
-- `docker cp ./dev.dump crisiscleanup_postgres_1:/tmp`
-- `dc exec postgres bash`
-- `cd /tmp`
-- `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d postgres dev.dump`

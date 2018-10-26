@@ -25,7 +25,7 @@ services:
     ports: ['8080:3000']     
     entrypoint: /app/docker-entrypoint.sh
     env_file: 
-      - .env.development
+      - .env.docker
     environment:
       RAILS_ENV: docker
     volumes:

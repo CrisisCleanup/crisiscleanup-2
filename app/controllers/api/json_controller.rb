@@ -154,6 +154,58 @@ module Api
         render json: { status: 'error', msg: 'Site id is required.' }
       end
     end
+    
+    def incidents
+      render json: { incidents: Legacy::LegacyEvent.select('id,name') }
+    end
+    
+    def move_worksite_to_incident
+      
+      worksiteId = params[:worksiteId]
+      incidentId = params[:incidentId]
+      
+      if site = Legacy::LegacySite.find(worksiteId)
+        if incident = Legacy::LegacyEvent.find(incidentId)
+          # Verify it is not the same incident ID
+          if site.legacy_event_id != incidentId
+            site.legacy_event_id = incidentId
+            site.case_number = nil
+            site.claimed_by = nil
+            site.user_id = nil
+            site.save!
+            return render json: { status: 'success', msg: 'Site moved to incident.' }
+          else
+            return render json: { status: 'error', msg: 'Not allowed to to move this site to its current incident again.' }
+          end
+        end
+      else 
+        return render json: { status: 'error', msg: 'Could not find worksite.' }
+      end
+    end
+    
+    def relocate_worksite_pin
+      
+      worksiteId = params[:worksiteId]
+      longitude = params[:longitude]
+      latitude = params[:latitude]
+      zoomLevel = params[:zoomLevel]
+      
+      if zoomLevel < 20
+        return render json: { status: 'error', msg: 'Zoom level must be 20 or greater.' }
+      end
+      
+      if site = Legacy::LegacySite.find(worksiteId)
+        site.latitude = latitude
+        site.longitude = longitude
+        site.blurred_latitude = nil
+        site.blurred_longitude = nil
+        site.save!
+        return render json: { status: 'success', msg: 'Worksite pin relocated.' }
+      else
+        return render json: { status: 'error', msg: 'Could not find worksite.' }
+      end
+      
+    end
 
   end
 end

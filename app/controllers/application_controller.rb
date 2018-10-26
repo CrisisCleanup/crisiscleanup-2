@@ -8,11 +8,13 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
   def assign_layout
-        if admin_dashboard_mode
-            'admin_dashboard'
-        elsif worker_dashboard_mode
-            'worker_dashboard'      
-        end
+    if admin_dashboard_mode
+        'admin_dashboard'
+    elsif worker_dashboard_mode
+        'worker_dashboard'      
+    elsif app_simple_mode
+        'application_simple'
+    end
   end
 
   def verified_request?
@@ -31,6 +33,9 @@ class ApplicationController < ActionController::Base
   end
   def worker_dashboard_mode
     self.class.parent == Worker || self.class.parent.parent == Worker
+  end
+  def app_simple_mode
+    self.class == WorksiteTrackerController
   end
 
 
