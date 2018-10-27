@@ -216,7 +216,7 @@ export default function(params) {
       // Stop the animation after awhile
       setTimeout(function() {
         marker.setAnimation(null);
-      }, 6000);
+      }, 1000);
     } else {
       Raven.captureMessage("Matching site not found.", {level: 'warning'});
     }
