@@ -1,8 +1,8 @@
 <%= form_tag(phone_phone_dashboard_update_path, method: "post") do |f| %>
 <div class="row">
   <div class="large-12 ">
-    <label><strong>Phone Status:</strong></label>
-  	<%= select_tag(:phone_status_id, options_for_select(@phone_statuses)) %>
+    <label><strong>Call Status:</strong></label>
+  	<%= select_tag(:phone_status_id, options_for_select(@phone_statuses), id: "call-dashboard-phone-status-select") %>
   	<% if @site %>
 	    <label><strong>Work Order Status:</strong></label>
 	  	<%= select_tag(:work_order_status, options_for_select(@statuses, @site.status)) %>
@@ -14,7 +14,8 @@
 	<%= hidden_field_tag(:phone_outbound_status_id, phone_outbound_status_id) %>
 	<div class="row">
 	  <div class="small-12" align="center">
-	    <%= submit_tag("Save and Close", class: "button expand") %>
+	    <%= submit_tag("Call Complete - Next Call", class: "button", id: "call-dashboard-submit-btn") %>
+	    <button type="reset" id="call-dashboard-cancel-btn" class="button info">Reset</button>
 	  </div>
   </div>
 </div>
