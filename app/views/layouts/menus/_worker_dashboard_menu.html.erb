@@ -39,6 +39,11 @@
           <% end %>
         </ul>
       </li>
+      <% if current_user %>
+        <% if current_user.is_caller || current_user.admin %>
+          <li><%= nav_link t('nav_12'), phone_phone_dashboard_path %></li>
+        <% end %>     
+      <% end %>
       <% if current_user %> <!-- user verified only -->
         <li class="has-dropdown"><%= link_to t('nav_8'), worker_dashboard_path %>
           <ul class="dropdown">
