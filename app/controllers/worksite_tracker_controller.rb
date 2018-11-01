@@ -45,7 +45,7 @@ class WorksiteTrackerController < ApplicationController
             updater = ""
             
             if !params[:num_volunteers].blank?
-              @legacy_site.data["total_volunteers"] = params[:num_volunteers]
+              @legacy_site.data["total_volunteers"] = params[:cnum_volunteers]
             end           
             
             if !params[:volunteer_hours].blank?
