@@ -76,7 +76,7 @@
               </div>             
               <br />
             <!--<button class="button">Call Now</button>-->
-            <% if @site.legacy_event_id %>
+            <% if @site.present? %>
               <%= link_to "Open Edit Form", worker_incident_legacy_edit_site_path(@site.legacy_event_id, @site.id), class: 'button', target: :_blank %>
             <% else %>
               <%= link_to "Open Intake Form", worker_incident_legacy_form_path(current_user_event), class: 'button', target: :_blank %>
