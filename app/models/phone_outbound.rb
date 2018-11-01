@@ -30,10 +30,10 @@ class PhoneOutbound < ActiveRecord::Base
         AND outbound_id IS NOT NULL)
       AND (DATE_PART('day', NOW() - case_updated_at) > 5
         OR DATE_PART('day', NOW() - case_updated_at) IS NULL)
-      AND phone_outbound.dnis2 IS NOT NULL
       AND phone_outbound.call_type = 'callback'
       AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)", 
       current_user_id).order(:call_type, :inbound_at, :case_updated_at).first
   end
+ # AND phone_outbound.dnis2 IS NOT NULL
 
 end

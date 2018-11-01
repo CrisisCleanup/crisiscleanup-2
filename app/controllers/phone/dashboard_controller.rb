@@ -3,6 +3,22 @@ module Phone
     include ApplicationHelper
     before_filter :check_user
     
+    private
+    
+    def update_completion_for_partially_completed_calls(phone_outbound, dnis, selected_phone_status)
+      outbound_records = PhoneOutbound.where("id = ? OR dnis1 = ? OR dnis2 = ?
+        AND created_at >= (SELECT created_at AS target_created_at FROM phone_outbound WHERE id = ?)", 
+        phone_outbound.id, dnis, dnis, phone_outbound.id)
+         
+      new_completion = selected_phone_status.completion
+      outbound_records.each do |record| 
+        record.update(completion: record.completion + new_completion)
+        record.save!
+      end
+    end   
+    
+    public
+    
     def index
       if params.has_key?(:phone_outbound_status_id)
         phone_outbound_status = PhoneOutboundStatus.find_by_id(params[:phone_outbound_status_id])
@@ -29,11 +45,9 @@ module Phone
           phone_outbound_status.save!
           
           # update completion for partially completed outbound phones
-          self.update_completion_for_partially_completed_calls(
-            selected_phone_status.phone_outbound,
-            params[:selected_dnis],
-            selected_phone_status
-          )         
+          if phone_outbound_status.phone_outbound.present?
+            update_completion_for_partially_completed_calls(phone_outbound_status.phone_outbound, params[:selected_dnis], selected_phone_status)         
+          end
         else
           phone_outbound_status.phone_status = selected_phone_status
           phone_outbound_status.save!
@@ -71,17 +85,5 @@ module Phone
     
   end
   
-  private
-  
-  def update_completion_for_partially_completed_calls(phone_outbound, dnis, selected_phone_status)
-    outbound_records = PhoneOutbound.where("id = ? OR dnis1 = ? OR dnis2 = ?
-      AND created_at >= (SELECT created_at AS target_created_at FROM phone_outbound WHERE id = ?)", 
-      phone_outbound.id, dnis, dnis, outbound_id)
-       
-    new_completion = selected_phone_status.completion
-    outbound_records.each do |record| 
-      record.update(completion: record.completion + new_completion)
-      record.save!
-    end
-  end
+
 end
