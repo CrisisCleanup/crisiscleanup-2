@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
       end
       field :name
       field :legacy_organization
+      field :allow_caller_access
       field :mobile
       field :email
       field :referring_user do
@@ -38,6 +39,10 @@ class User < ActiveRecord::Base
       field :last_sign_in_at
     end
     
+  end
+  
+  def is_caller
+    self.allow_caller_access
   end
   
   def invited_by

@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181020035607) do
+ActiveRecord::Schema.define(version: 20181101021655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+  enable_extension "pg_stat_statements"
 
   create_table "audits", force: :cascade do |t|
     t.integer "user_id"
@@ -192,6 +193,46 @@ ActiveRecord::Schema.define(version: 20181020035607) do
   add_index "legacy_sites", ["legacy_event_id"], name: "index_legacy_sites_on_legacy_event_id", using: :btree
   add_index "legacy_sites", ["reported_by"], name: "index_legacy_sites_on_reported_by", using: :btree
 
+  create_table "phone_area_codes", primary_key: "code", force: :cascade do |t|
+    t.integer  "id",         default: "nextval('phone_area_codes_id_seq'::regclass)", null: false
+    t.datetime "created_at", default: "now()"
+    t.string   "location"
+    t.string   "state"
+  end
+
+  create_table "phone_outbound", force: :cascade do |t|
+    t.integer  "dnis1",           limit: 8
+    t.integer  "dnis2",           limit: 8
+    t.integer  "dnis1_area_code"
+    t.integer  "dnis2_area_code"
+    t.datetime "inbound_at"
+    t.datetime "case_updated_at"
+    t.datetime "updated_at"
+    t.datetime "created_at",                default: "now()"
+    t.string   "vm_link"
+    t.integer  "worksite_id"
+    t.string   "call_type"
+    t.float    "completion"
+  end
+
+  create_table "phone_outbound_status", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",                   default: "now()"
+    t.integer  "outbound_id"
+    t.integer  "status_id"
+    t.integer  "dnis",               limit: 8
+    t.integer  "uii",                limit: 8
+    t.float    "completion"
+    t.datetime "do_not_call_before"
+  end
+
+  create_table "phone_status", force: :cascade do |t|
+    t.string   "status"
+    t.float    "completion"
+    t.integer  "try_again_delay"
+    t.datetime "created_at",      default: "now()"
+  end
+
   create_table "print_tokens", force: :cascade do |t|
     t.integer  "legacy_site_id"
     t.integer  "printing_org_id"
@@ -248,6 +289,7 @@ ActiveRecord::Schema.define(version: 20181020035607) do
     t.boolean  "accepted_terms"
     t.datetime "accepted_terms_timestamp"
     t.string   "title"
+    t.boolean  "allow_caller_access"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -264,4 +306,20 @@ ActiveRecord::Schema.define(version: 20181020035607) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  create_table "worksite_work_types", force: :cascade do |t|
+    t.string  "work_type_key",    limit: 60, null: false
+    t.string  "file_prefix",      limit: 60
+    t.string  "name_t",           limit: 60
+    t.string  "description_t",    limit: 60
+    t.integer "commercial_value"
+    t.date    "last_updated"
+    t.date    "depreciated_date"
+  end
+
+  add_index "worksite_work_types", ["work_type_key"], name: "worktype_name_unique", unique: true, using: :btree
+
+  add_foreign_key "phone_outbound", "legacy_sites", column: "worksite_id", name: "worksite_id_fk"
+  add_foreign_key "phone_outbound_status", "phone_outbound", column: "outbound_id", name: "outbound_id_fk"
+  add_foreign_key "phone_outbound_status", "phone_status", column: "status_id", name: "status_id"
+  add_foreign_key "phone_outbound_status", "users", name: "user_id_fk"
 end
