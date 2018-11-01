@@ -1,0 +1,21 @@
+<%= form_tag(phone_phone_dashboard_update_path, method: "post") do |f| %>
+<div class="row">
+  <div class="large-12 ">
+    <label><strong>Phone Status:</strong></label>
+  	<%= select_tag(:phone_status_id, options_for_select(@phone_statuses)) %>
+  	<% if @site %>
+	    <label><strong>Work Order Status:</strong></label>
+	  	<%= select_tag(:work_order_status, options_for_select(@statuses, @site.status)) %>
+	    <label><strong>Status Notes:</strong></label>
+	    <%= text_area_tag(:status_notes, '', size: "30x10") %>                 
+		<% end %>
+    <label><strong>Phone Number Used:</strong></label>
+  	<%= select_tag(:selected_dnis, options_for_select(@available_dnis)) %>
+	<%= hidden_field_tag(:phone_outbound_status_id, phone_outbound_status_id) %>
+	<div class="row">
+	  <div class="small-12" align="center">
+	    <%= submit_tag("Save and Close", class: "button expand") %>
+	  </div>
+  </div>
+</div>
+<% end %>

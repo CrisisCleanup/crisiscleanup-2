@@ -131,4 +131,20 @@ module ApplicationHelper
       }
     end
   end
+  
+  def worksite_statuses
+    return [
+      ['Open, unassigned', 'Open, unassigned'],
+      ['Open, assigned', 'Open, assigned'],
+      ['Open, partially completed', 'Open, partially completed'],
+      ['Open, needs follow-up', 'Open, needs follow-up'],
+      ['Closed, completed', 'Closed, completed'],
+      ['Closed, incomplete', 'Closed, incomplete'],
+      ['Closed, out of scope', 'Closed, out of scope'],
+      ['Closed, done by others', 'Closed, done by others'],
+      ['Closed, no help wanted', 'Closed, no help wanted'],
+      ['Closed, rejected', 'Closed, rejected'],
+      ['Closed, duplicate', 'Closed, duplicate']
+    ]      
+  end
 end

@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   #get "/users/:id/edit" => 'users#edit'
     #get "/users/:id" => 'users#show'
 
+  namespace :phone do
+    get "/dashboard" => 'dashboard#index', as: "phone_dashboard"
+    post "/dashboard" => 'dashboard#index', as: "phone_dashboard_update"
+  end
   
   namespace :admin do
     resources :dashboard, only: [:index]

@@ -1,0 +1,98 @@
+<% content_for :title do %>
+    Crisis Cleanup - Call Dashboard
+<% end %>
+
+<% content_for :subheader do %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2 class="center">Call Dashboard</h2>
+      </div>
+    </div>
+<% end %>
+
+<% content_for :main do %>
+
+      <div class="large-6 medium-6 columns">
+          <!--<h5 class="center" id="view-claimed-worksites">Next Individual to Call</h5>-->
+          
+            <div class="panel" style="background: white;">
+              <div class="row">
+                <div class="small-12 large-6 columns">
+                  <h3>Next Call:</h3>
+                  <h2><a href="tel:<%= number_to_phone(@locked_call.dnis1, area_code: true) %>"><%= number_to_phone(@locked_call.dnis1, area_code: true) %></a></h2>
+                  <% if @locked_call.dnis2 %>
+                    <h3><a href="tel:<%= number_to_phone(@locked_call.dnis2, area_code: true) %>"><%= number_to_phone(@locked_call.dnis2, area_code: true) %></a></h3>
+                  <% end %>                 
+                </div>
+                <div class="small-12 large-6 columns">
+                  <div class="right">
+                    <span class="label radius primary right" style="font-size: 25px;"><%= @locked_call.call_type.capitalize %></span>
+                  </div>
+                </div>               
+              </div>
+
+              <table style="width: 100%;">
+                <tbody>
+                  <tr>
+                    <td><span class="label radius secondary">Call Type</span></td>
+                    <td><%= @locked_call.call_type.capitalize %></td>
+                  </tr>                                                                                     
+                
+                  <% if @site %>
+                    <tr>
+                      <td><span class="label radius secondary">Name</span></td>
+                      <td><%= @site.name %></td>
+                    </tr>                                                                    
+                    <tr>
+                      <td><span class="label radius secondary">Case Number</span></td>
+                      <td><%= @site.case_number %></td>
+                    </tr>                                                                                       
+                    <tr>
+                      <td><span class="label radius secondary">Address</span></td>
+                      <td><%= @site.address %>, <%= @site.city %>, <%= @site.state %></td>
+                    </tr>                                                                                     
+                     <tr>
+                      <td><span class="label radius secondary">Status</span></td>
+                      <td><%= @site.status %></td>
+                    </tr>                                                                                                      
+                  <% end %>
+                  <tr>
+                    <td><span class="label radius secondary">Caller Location</span></td>
+                    <td><%= @locked_call.location %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="label radius secondary">Case Last Update At</span></td>
+                    <td><%= @locked_call.case_updated_at %></td>
+                  </tr>                                                   
+                  <tr>
+                    <td><span class="label radius secondary">Inbound At</span></td>
+                    <td><%= @locked_call.inbound_at %></td>
+                  </tr>                 
+                </tbody>
+              </table>
+              <h4>Completion: </h4>
+              <div class="progress small-12 large-12 success radius">
+                <span class="meter" style="width: <%= @locked_call.completion %>%"></span>
+              </div>             
+              <br />
+            <!--<button class="button">Call Now</button>-->
+            <% if @site.legacy_event_id %>
+              <%= link_to "Open Edit Form", worker_incident_legacy_edit_site_path(@site.legacy_event_id, @site.id), class: 'button', target: :_blank %>
+            <% else %>
+              <%= link_to "Open Intake Form", worker_incident_legacy_form_path(current_user_event), class: 'button', target: :_blank %>
+            <% end %>
+          </div>
+      </div>
+
+      <div class="large-6 medium-6 columns">
+        <div class="row">
+          <div class="large-12 columns">
+          <div class="panel" style="background: white;">
+              <%= render 'form', phone_outbound_status_id: @locked_call.phone_outbound_status_id %>
+              </div>
+            </div>  
+          </div>
+      </div>
+
+<% end %>
+
