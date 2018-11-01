@@ -1,6 +1,7 @@
 module Phone
   class DashboardController < ApplicationController
     include ApplicationHelper
+    include ActionView::Helpers::NumberHelper
     before_filter :check_user
     
     private
@@ -42,7 +43,11 @@ module Phone
           phone_outbound_status.dnis = phone_outbound_status.phone_outbound.dnis1
           # phone_outbound_status.uii = ''
           phone_outbound_status.phone_status = selected_phone_status
-          phone_outbound_status.save!
+          if phone_outbound_status.save!
+            flash[:notice] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} successfully saved!"
+          else
+            flash[:alert] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} not saved!"
+          end         
           
           # update completion for partially completed outbound phones
           if phone_outbound_status.phone_outbound.present?
@@ -50,13 +55,17 @@ module Phone
           end
         else
           phone_outbound_status.phone_status = selected_phone_status
-          phone_outbound_status.save!
+          if phone_outbound_status.save!
+            flash[:notice] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} successfully saved!"
+          else
+            flash[:alert] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} not saved!"
+          end
         end
       end     
       
       # Populate drop-downs
       @statuses = worksite_statuses()
-      @phone_statuses = PhoneStatus.all.map { |ps| [ps.status, ps.id]}
+      @phone_statuses = [["-- Choose One --", 0]] + PhoneStatus.all.map { |ps| [ps.status, ps.id]}
       
       # check for incomplete calls by user
       @locked_call = PhoneOutbound.get_locked_call_for_user(current_user.id)

@@ -11,6 +11,43 @@
 <% end %>
 
 <% content_for :main do %>
+<style>
+
+.quick-flash {
+  -moz-animation: flash 2s ease-out;
+  -moz-animation-iteration-count: 1;
+
+  -webkit-animation: flash 2s ease-out;
+  -webkit-animation-iteration-count: 1;
+
+  -ms-animation: flash 2s ease-out;
+  -ms-animation-iteration-count: 1;
+}
+
+@keyframes flash {
+    0% { background-color: transparent; }
+    50% { background-color: #fbf8b2; }
+    100% { background-color: transparent; }
+}
+
+@-webkit-keyframes flash {
+    0% { background-color: transparent; }
+    50% { background-color: #fbf8b2; }
+    100% { background-color: transparent; }
+}
+
+@-moz-keyframes flash {
+    0% { background-color: transparent; }
+    50% { background-color: #fbf8b2; }
+    100% { background-color: transparent; }
+}
+
+@-ms-keyframes flash {
+    0% { background-color: transparent; }
+    50% { background-color: #fbf8b2; }
+    100% { background-color: transparent; }
+}
+</style>
 
       <div class="large-6 medium-6 columns">
           <!--<h5 class="center" id="view-claimed-worksites">Next Individual to Call</h5>-->
@@ -18,15 +55,15 @@
             <div class="panel" style="background: white;">
               <div class="row">
                 <div class="small-12 large-6 columns">
-                  <h3>Next Call:</h3>
-                  <h2><a href="tel:<%= number_to_phone(@locked_call.dnis1, area_code: true) %>"><%= number_to_phone(@locked_call.dnis1, area_code: true) %></a></h2>
+                  <h3 class="call-dashboard-blink">Next Call:</h3>
+                  <h2 class="call-dashboard-blink"><a href="tel:<%= number_to_phone(@locked_call.dnis1, area_code: true) %>"><%= number_to_phone(@locked_call.dnis1, area_code: true) %></a></h2>
                   <% if @locked_call.dnis2 %>
-                    <h3><a href="tel:<%= number_to_phone(@locked_call.dnis2, area_code: true) %>"><%= number_to_phone(@locked_call.dnis2, area_code: true) %></a></h3>
+                    <h3 class="call-dashboard-blink"><a href="tel:<%= number_to_phone(@locked_call.dnis2, area_code: true) %>"><%= number_to_phone(@locked_call.dnis2, area_code: true) %></a></h3>
                   <% end %>                 
                 </div>
                 <div class="small-12 large-6 columns">
                   <div class="right">
-                    <span class="label radius primary right" style="font-size: 25px;"><%= @locked_call.call_type.capitalize %></span>
+                    <span class="label radius secondary right" style="font-size: 25px;"><%= @locked_call.call_type.capitalize %></span>
                   </div>
                 </div>               
               </div>
@@ -34,40 +71,40 @@
               <table style="width: 100%;">
                 <tbody>
                   <tr>
-                    <td><span class="label radius secondary">Call Type</span></td>
+                    <td class="call-dashboard-blink">Call Type</td>
                     <td><%= @locked_call.call_type.capitalize %></td>
                   </tr>                                                                                     
                 
                   <% if @site %>
                     <tr>
-                      <td><span class="label radius secondary">Name</span></td>
+                      <td class="call-dashboard-blink">Name</td>
                       <td><%= @site.name %></td>
                     </tr>                                                                    
                     <tr>
-                      <td><span class="label radius secondary">Case Number</span></td>
+                      <td class="call-dashboard-blink">Case Number</td>
                       <td><%= @site.case_number %></td>
                     </tr>                                                                                       
                     <tr>
-                      <td><span class="label radius secondary">Address</span></td>
+                      <td class="call-dashboard-blink">Address</td>
                       <td><%= @site.address %>, <%= @site.city %>, <%= @site.state %></td>
                     </tr>                                                                                     
                      <tr>
-                      <td><span class="label radius secondary">Status</span></td>
+                      <td class="call-dashboard-blink">Status</td>
                       <td><%= @site.status %></td>
                     </tr>                                                                                                      
                   <% end %>
                   <tr>
-                    <td><span class="label radius secondary">Caller Location</span></td>
+                    <td class="call-dashboard-blink">Caller Location</td>
                     <td><%= @locked_call.location %></td>
                   </tr>
                   <tr>
-                    <td><span class="label radius secondary">Case Last Update At</span></td>
+                    <td class="call-dashboard-blink">Call Received</td>
+                    <td><%= ((Time.now - @locked_call.inbound_at)/(60*60*24)).to_i %> days ago</td>
+                  </tr>                                  
+                  <tr>
+                    <td class="call-dashboard-blink">Case Last Updated</td>
                     <td><%= @locked_call.case_updated_at %></td>
                   </tr>                                                   
-                  <tr>
-                    <td><span class="label radius secondary">Inbound At</span></td>
-                    <td><%= @locked_call.inbound_at %></td>
-                  </tr>                 
                 </tbody>
               </table>
               <h4>Completion: </h4>
@@ -96,3 +133,24 @@
 
 <% end %>
 
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+      $(".call-dashboard-blink").addClass('quick-flash');
+      
+      setTimeout(function(){
+        $('#alert-container').fadeOut();
+      }, 6000);     
+      
+      $('#call-dashboard-submit-btn').on('click', function(e) {
+        var selectedValue = $("#call-dashboard-phone-status-select option:selected").val();
+        if (selectedValue < 1) {
+          e.preventDefault();
+          alert('You must select a phone status!');
+        }
+      });     
+    });
+
+  </script>
+<% end %>
