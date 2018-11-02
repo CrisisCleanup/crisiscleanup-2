@@ -36,7 +36,7 @@ class PhoneOutbound < ActiveRecord::Base
       AND (DATE_PART('day', NOW() - case_updated_at) > 5
         OR DATE_PART('day', NOW() - case_updated_at) IS NULL)
       AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)", 
-      current_user_id).order("random()", :call_type, :inbound_at, :case_updated_at).first
+      current_user_id).order(:call_type, :inbound_at, :case_updated_at).first
   end
       
   def self.remaining_callbacks
