@@ -39,3 +39,5 @@ import 'legacy/admin/legacy_organization_form';
 // Static
 import 'legacy/static_pages/index';
 import 'legacy/static_pages/public_map';
+
+import 'call'

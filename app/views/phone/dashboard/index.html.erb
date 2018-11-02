@@ -6,6 +6,15 @@
     <div class="row">
       <div class="large-12 columns">
         <h2 class="center">Call Dashboard</h2>
+         <div align="center">
+            Remaining Callbacks: <%= @remaining_callbacks %>
+            Remaining Calldowns: <%= @remaining_calldowns %>
+        </div>       
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 large-5 large-centered columns">
+
       </div>
     </div>
 <% end %>
@@ -54,28 +63,31 @@
           
             <div class="panel" style="background: white;">
               <div class="row">
-                <div class="small-12 large-9 columns">
+                <div class="small-12 large-12 columns">
                   <h3 class="call-dashboard-blink">Next Call:</h3>
                   <div class="row collapse">
-                    <div class="large-8 columns" style="margin:0;">
-                      <h2 class="call-dashboard-blink"><a id="call-dashboard-phone1" data-number="<%=@locked_call.dnis2%>" href="tel:<%= number_to_phone(@locked_call.dnis1, area_code: true) %>"><%= number_to_phone(@locked_call.dnis1, area_code: true) %></a></h2>
+                    <div class="large-6 columns" style="margin:0;">
+                      <h2 class="call-dashboard-blink"><a href="tel:<%= number_to_phone(@locked_call.dnis1, area_code: true) %>"><%= number_to_phone(@locked_call.dnis1, area_code: true) %></a></h2>
                     </div>
-                    <div class="large-4 columns" style="margin:0;">
-                      <span><button style="margin-top: 3px;" class="button radius tiny secondary" id="call-dashboard-phone1-btn">Copy</button></span>
+                    <div class="large-6 columns" style="margin:0;">
+                      <span>
+                        <button style="margin-top: 3px;" class="button radius tiny secondary" 
+                          data-clipboard-text="<%=@locked_call.dnis1%>" id="call-dashboard-phone1-btn">Copy</button>
+                      </span>
                     </div>
                   </div>
                   <% if @locked_call.dnis2 %>
                   <div class="row collapse">
                     <div class="large-6 columns" style="margin:0;">
-                      <h3 class="call-dashboard-blink"><a id="call-dashboard-phone2" data-number="<%=@locked_call.dnis2%>" href="tel:<%= number_to_phone(@locked_call.dnis2, area_code: true) %>"><%= number_to_phone(@locked_call.dnis2, area_code: true) %></a></h3>
+                      <h3 class="call-dashboard-blink"><a href="tel:<%= number_to_phone(@locked_call.dnis2, area_code: true) %>"><%= number_to_phone(@locked_call.dnis2, area_code: true) %></a></h3>
                     </div>
                     <div class="large-6 columns" style="margin:0;">
-                      <span><button class="button radius tiny secondary" id="call-dashboard-phone2-btn">Copy</button></span>
+                      <span><button class="button radius tiny secondary"
+                          data-clipboard-text="<%=@locked_call.dnis2%>" id="call-dashboard-phone2-btn">Copy</button>
                     </div>
                   </div>                 
                   <% end %>                 
                 </div>
-
               </div>
 
               <table style="width: 100%;">
@@ -139,42 +151,4 @@
           </div>
       </div>
 
-<% end %>
-
-<% content_for :javascripts do %>
-  <script type="text/javascript">
-
-    $(document).ready(function() {
-      $(".call-dashboard-blink").addClass('quick-flash');
-      
-      setTimeout(function(){
-        $('#alert-container').fadeOut();
-      }, 6000);     
-      
-      $('#call-dashboard-submit-btn').on('click', function(e) {
-        var selectedValue = $("#call-dashboard-phone-status-select option:selected").val();
-        if (selectedValue < 1) {
-          e.preventDefault();
-          alert('You must select a phone status!');
-        }
-      });     
-      
-      function copyToClipboard(element) {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($(element).data('number')).select();
-        document.execCommand("copy");
-        $temp.remove();
-      }
-
-      $('#call-dashboard-phone1-btn').on('click', function(e) {
-        copyToClipboard('#call-dashboard-phone1');
-      });
-      
-      $('#call-dashboard-phone2-btn').on('click', function(e) {
-        copyToClipboard('#call-dashboard-phone2');
-      });     
-    });
-
-  </script>
 <% end %>

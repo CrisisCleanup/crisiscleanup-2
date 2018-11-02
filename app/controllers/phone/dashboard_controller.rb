@@ -67,6 +67,9 @@ module Phone
       @statuses = worksite_statuses()
       @phone_statuses = [["-- Choose One --", 0]] + PhoneStatus.all.map { |ps| [ps.status, ps.id]}
       
+      @remaining_callbacks = PhoneOutbound.remaining_callbacks()
+      @remaining_calldowns = PhoneOutbound.remaining_calldowns()
+      
       # check for incomplete calls by user
       @locked_call = PhoneOutbound.get_locked_call_for_user(current_user.id)
           
