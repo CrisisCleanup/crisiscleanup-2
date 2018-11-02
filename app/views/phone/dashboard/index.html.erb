@@ -54,18 +54,28 @@
           
             <div class="panel" style="background: white;">
               <div class="row">
-                <div class="small-12 large-6 columns">
+                <div class="small-12 large-9 columns">
                   <h3 class="call-dashboard-blink">Next Call:</h3>
-                  <h2 class="call-dashboard-blink"><a href="tel:<%= number_to_phone(@locked_call.dnis1, area_code: true) %>"><%= number_to_phone(@locked_call.dnis1, area_code: true) %></a></h2>
+                  <div class="row collapse">
+                    <div class="large-8 columns" style="margin:0;">
+                      <h2 class="call-dashboard-blink"><a id="call-dashboard-phone1" data-number="<%=@locked_call.dnis2%>" href="tel:<%= number_to_phone(@locked_call.dnis1, area_code: true) %>"><%= number_to_phone(@locked_call.dnis1, area_code: true) %></a></h2>
+                    </div>
+                    <div class="large-4 columns" style="margin:0;">
+                      <span><button style="margin-top: 3px;" class="button radius tiny secondary" id="call-dashboard-phone1-btn">Copy</button></span>
+                    </div>
+                  </div>
                   <% if @locked_call.dnis2 %>
-                    <h3 class="call-dashboard-blink"><a href="tel:<%= number_to_phone(@locked_call.dnis2, area_code: true) %>"><%= number_to_phone(@locked_call.dnis2, area_code: true) %></a></h3>
+                  <div class="row collapse">
+                    <div class="large-6 columns" style="margin:0;">
+                      <h3 class="call-dashboard-blink"><a id="call-dashboard-phone2" data-number="<%=@locked_call.dnis2%>" href="tel:<%= number_to_phone(@locked_call.dnis2, area_code: true) %>"><%= number_to_phone(@locked_call.dnis2, area_code: true) %></a></h3>
+                    </div>
+                    <div class="large-6 columns" style="margin:0;">
+                      <span><button class="button radius tiny secondary" id="call-dashboard-phone2-btn">Copy</button></span>
+                    </div>
+                  </div>                 
                   <% end %>                 
                 </div>
-                <div class="small-12 large-6 columns">
-                  <div class="right">
-                    <span class="label radius secondary right" style="font-size: 25px;"><%= @locked_call.call_type.capitalize %></span>
-                  </div>
-                </div>               
+
               </div>
 
               <table style="width: 100%;">
@@ -109,10 +119,6 @@
                   </tr>                                                   
                 </tbody>
               </table>
-              <h4>Completion: </h4>
-              <div class="progress small-12 large-12 success radius">
-                <span class="meter" style="width: <%= @locked_call.completion %>%"></span>
-              </div>             
               <br />
             <!--<button class="button">Call Now</button>-->
             <% if @site.present? %>
@@ -151,6 +157,22 @@
           e.preventDefault();
           alert('You must select a phone status!');
         }
+      });     
+      
+      function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).data('number')).select();
+        document.execCommand("copy");
+        $temp.remove();
+      }
+
+      $('#call-dashboard-phone1-btn').on('click', function(e) {
+        copyToClipboard('#call-dashboard-phone1');
+      });
+      
+      $('#call-dashboard-phone2-btn').on('click', function(e) {
+        copyToClipboard('#call-dashboard-phone2');
       });     
     });
 
