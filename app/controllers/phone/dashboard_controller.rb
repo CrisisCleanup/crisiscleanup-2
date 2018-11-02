@@ -27,10 +27,10 @@ module Phone
         
         # Phone is complete
         if @legacy_site = phone_outbound_status.phone_outbound.legacy_site 
-          @legacy_site.status = params[:work_order_status] if params[:work_order_status]
           if !params[:status_notes].blank?
+            existing_notes = @legacy_site.data["status_notes"]
             notes = params[:status_notes]
-            @legacy_site.data["status_notes"] = notes
+            @legacy_site.data["status_notes"] = "#{existing_notes}\n#{notes}"
           end  
           @legacy_site.save!
         end              

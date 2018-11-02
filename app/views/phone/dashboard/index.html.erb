@@ -125,10 +125,12 @@
                     <td><%= ((Time.now - @locked_call.inbound_at)/(60*60*24)).to_i %> days ago</td>
                   </tr>                                  
                   <% end %>
+                  <% if @locked_call.case_updated_at %>
                   <tr>
                     <td class="call-dashboard-blink">Case Last Updated</td>
-                    <td><%= @locked_call.case_updated_at %></td>
+                    <td><%= ((Time.now - @locked_call.case_updated_at)/(60*60*24)).to_i %> days ago</td>
                   </tr>                                                   
+                  <% end %>
                 </tbody>
               </table>
               <br />
