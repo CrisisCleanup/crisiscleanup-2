@@ -33,6 +33,6 @@ class PhoneOutbound < ActiveRecord::Base
       AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)", 
       current_user_id).order("random()", :call_type, :inbound_at, :case_updated_at).first
   end
- # AND phone_outbound.dnis2 IS NOT NULL
+      # AND phone_outbound.dnis2 IS NOT NULL
 
 end
