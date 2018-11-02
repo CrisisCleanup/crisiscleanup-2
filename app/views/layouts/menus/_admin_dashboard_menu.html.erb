@@ -38,7 +38,7 @@
         </ul>
       </li>
       <% if current_user %>
-        <% if current_user.is_caller || current_user.admin %>
+        <% if current_user.legacy_organization.is_caller || current_user.admin %>
           <li><%= nav_link t('nav_12'), phone_phone_dashboard_path %></li>
         <% end %>     
       <% end %>

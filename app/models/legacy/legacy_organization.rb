@@ -22,6 +22,7 @@ module Legacy
         end       
         field :name
         field :email
+        field :allow_caller_access
         field :where_are_you_working
         field :url
         field :not_an_org
@@ -53,6 +54,10 @@ module Legacy
         false
       end
     end
+    
+    def is_caller
+      self.allow_caller_access
+    end 
 
     def primary_contact_id(organization_id)
       contact = Legacy::LegacyOrganization.find(organization_id).legacy_contacts.find_by(is_primary: true)
