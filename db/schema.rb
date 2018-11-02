@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181101021655) do
+ActiveRecord::Schema.define(version: 20181102203757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20181101021655) do
     t.boolean  "does_only_coordination"
     t.boolean  "does_only_sit_aware"
     t.boolean  "does_something_else"
+    t.boolean  "allow_caller_access"
   end
 
   create_table "legacy_sites", force: :cascade do |t|
