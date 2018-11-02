@@ -4,8 +4,6 @@
     <label><strong>Call Status:</strong></label>
   	<%= select_tag(:phone_status_id, options_for_select(@phone_statuses), id: "call-dashboard-phone-status-select") %>
   	<% if @site %>
-	    <label><strong>Work Order Status:</strong></label>
-	  	<%= select_tag(:work_order_status, options_for_select(@statuses, @site.status)) %>
 	    <label><strong>Status Notes:</strong></label>
 	    <%= text_area_tag(:status_notes, '', size: "30x10") %>                 
 		<% end %>
