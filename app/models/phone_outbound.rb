@@ -20,6 +20,11 @@ class PhoneOutbound < ActiveRecord::Base
           user_id: current_user_id, status_id: [false, nil])).order(:created_at).first    
   end
   
+  ####
+  # For Testing
+  # AND phone_outbound.dnis2 IS NOT NULL
+  # current_user_id).order("random()", :call_type, :inbound_at, :case_updated_at).first 
+  
   def self.select_next_phone_outbound_for_user(current_user_id)
     return self.where("phone_outbound.id NOT IN 
       (
@@ -33,6 +38,33 @@ class PhoneOutbound < ActiveRecord::Base
       AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)", 
       current_user_id).order("random()", :call_type, :inbound_at, :case_updated_at).first
   end
-      # AND phone_outbound.dnis2 IS NOT NULL
-
+      
+  def self.remaining_callbacks
+    return self.where("phone_outbound.id NOT IN (
+    SELECT outbound_id FROM phone_outbound_status
+      WHERE user_id IS NOT NULL
+      AND (do_not_call_before > NOW()
+        OR do_not_call_before IS NULL)
+      AND outbound_id IS NOT NULL)
+    AND (DATE_PART('day', NOW() - case_updated_at) > 5
+      OR DATE_PART('day', NOW() - case_updated_at) IS NULL)
+    AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)
+    AND call_type = 'callback'  
+    ").count
+  end
+  
+  def self.remaining_calldowns
+    return self.where("phone_outbound.id NOT IN (
+    SELECT outbound_id FROM phone_outbound_status
+      WHERE user_id IS NOT NULL
+      AND (do_not_call_before > NOW()
+        OR do_not_call_before IS NULL)
+      AND outbound_id IS NOT NULL)
+    AND (DATE_PART('day', NOW() - case_updated_at) > 5
+      OR DATE_PART('day', NOW() - case_updated_at) IS NULL)
+    AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)
+    AND call_type = 'calldown'  
+    ").count
+  end  
+  
 end
