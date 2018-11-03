@@ -62,6 +62,11 @@ module Phone
           else
             flash[:alert] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} not saved!"
           end
+          
+          # update completion for partially completed outbound phones
+          if phone_outbound_status.phone_outbound.present?
+            update_completion_for_partially_completed_calls(phone_outbound_status.phone_outbound, params[:selected_dnis], selected_phone_status)         
+          end         
         end
       end     
       
