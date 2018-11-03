@@ -13,7 +13,7 @@
 	<div class="row">
 	  <div class="small-12" align="center">
 	    <%= submit_tag("Call Complete - Next Call", class: "button", id: "call-dashboard-submit-btn") %>
-	    <button type="reset" id="call-dashboard-cancel-btn" class="button info">Cancel</button>
+      <%= link_to "Cancel", phone_phone_dashboard_cancel_path(phone_outbound_status_id: phone_outbound_status_id), class: "button warning" %></h5>
 	  </div>
   </div>
 </div>

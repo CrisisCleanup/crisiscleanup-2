@@ -102,6 +102,13 @@ module Phone
         
     end
     
+    def cancel
+      if params.has_key?(:phone_outbound_status_id)
+        PhoneOutboundStatus.find_by_id(params[:phone_outbound_status_id]).destroy();
+      end
+      return redirect_to worker_dashboard_path
+    end
+    
   end
   
 

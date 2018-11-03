@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   namespace :phone do
     get "/dashboard" => 'dashboard#index', as: "phone_dashboard"
     post "/dashboard" => 'dashboard#index', as: "phone_dashboard_update"
+    get "/cancel" => 'dashboard#cancel', as: "phone_dashboard_cancel"
   end
   
   namespace :admin do
