@@ -26,14 +26,16 @@ module Phone
         selected_phone_status = PhoneStatus.find_by_id(params[:phone_status_id])
         
         # Phone is complete
-        if @legacy_site = phone_outbound_status.phone_outbound.legacy_site 
-          if !params[:status_notes].blank?
-            existing_notes = @legacy_site.data["status_notes"]
-            notes = params[:status_notes]
-            @legacy_site.data["status_notes"] = "#{existing_notes}\n#{notes}"
-          end  
-          @legacy_site.save!
-        end              
+        if !phone_outbound_status.nil?
+          if @legacy_site = phone_outbound_status.phone_outbound.legacy_site 
+            if !params[:status_notes].blank?
+              existing_notes = @legacy_site.data["status_notes"]
+              notes = params[:status_notes]
+              @legacy_site.data["status_notes"] = "#{existing_notes}\n#{notes}"
+            end  
+            @legacy_site.save!
+          end              
+        end
         
         # Check if phone status has completion less than 1
         if selected_phone_status.completion < 1.00
