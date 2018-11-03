@@ -13,6 +13,8 @@ class WorksiteTrackerController < ApplicationController
       ['Closed, rejected', 'Closed, rejected'],
       ['Closed, duplicate', 'Closed, duplicate']
     ]
+    @is_logged_in = !current_user.nil?
+    
     @print_token = PrintToken.select('*').where(token: params[:token])
       .where('token_expiration > ?', DateTime.now).first
     if @print_token
@@ -21,6 +23,7 @@ class WorksiteTrackerController < ApplicationController
       @status_notes = @site.data[:status_notes]
       return render 'index'
     end
+
     return render 'errors/not_found', status: 404
   end
   
