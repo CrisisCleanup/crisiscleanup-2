@@ -8,6 +8,7 @@ import historyVueManager from '../../history';
 import moveWorksiteVueManager from '../../worksite';
 import wrongLocationVueManager from '../../worksite_pin';
 
+
 export default function(params) {
   var $infobox = $('#map-infobox');
 
@@ -484,6 +485,12 @@ export default function(params) {
     form.hydrate(this);
 
     this.ccmap.showForm();
+    
+    if (typeof window.orientation !== 'undefined') { 
+      window.location.hash = "#dummyview";
+      window.location.hash = "#sidebar";     
+    }
+    
   }
 
   function history() {

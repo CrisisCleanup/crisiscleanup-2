@@ -226,10 +226,17 @@ table {
         clear: both;
         display: block;
         padding: 10px 0 10px 0;
-        background-color: gainsboro;
+        border: none;
+        background-color: white;
+        
+        & .simple_form {
+            overflow-y: visible !important;
+            height: auto !important;
+        }
     }
     #map-infobox {
         width: 100%;
+        height: auto !important;
         left: 0;
     }
     #copyright .right {

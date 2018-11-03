@@ -272,6 +272,8 @@ export default function(params) {
       $searchBtn.typeahead(searchOpts, sourceOpts);
       $searchBtn.bind('typeahead:select', function(event, selection) {
         zoomToMarker(selection.id);
+        // infobox popup
+        
       });
     }
   }
