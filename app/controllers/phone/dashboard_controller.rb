@@ -54,6 +54,8 @@ module Phone
             update_completion_for_partially_completed_calls(phone_outbound_status.phone_outbound, params[:selected_dnis], selected_phone_status)         
           end
         else
+          phone_outbound_status.completion = selected_phone_status.completion
+          phone_outbound_status.dnis = phone_outbound_status.phone_outbound.dnis1
           phone_outbound_status.phone_status = selected_phone_status
           if phone_outbound_status.save!
             flash[:notice] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} successfully saved!"
