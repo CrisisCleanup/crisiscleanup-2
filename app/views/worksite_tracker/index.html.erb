@@ -67,7 +67,7 @@ $('#worksite-tracker-case-num').on('click', function(e) {
   var isLoggedIn = $('#input-logged-in').text();
   console.log(isLoggedIn);
   if (isLoggedIn != 'true') {
-    e.preventDefault() 
+    e.preventDefault();
     alert('Please log-in to use the map.');
   }
 });
