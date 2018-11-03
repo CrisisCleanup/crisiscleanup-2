@@ -29,14 +29,12 @@ class PhoneOutbound < ActiveRecord::Base
     return self.where("phone_outbound.id NOT IN 
       (
         SELECT outbound_id FROM phone_outbound_status
-        WHERE (user_id = ? AND user_id IS NOT NULL) 
-        AND (do_not_call_before > NOW() 
+        WHERE (do_not_call_before > NOW() 
           OR do_not_call_before IS NULL)
         AND outbound_id IS NOT NULL)
       AND (DATE_PART('day', NOW() - case_updated_at) > 5
         OR DATE_PART('day', NOW() - case_updated_at) IS NULL)
-      AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)", 
-      current_user_id).order(:call_type, :inbound_at, :case_updated_at).first
+      AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)").order(:call_type, :inbound_at, :case_updated_at).first
   end
       
   def self.remaining_callbacks
