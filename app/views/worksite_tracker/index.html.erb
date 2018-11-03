@@ -16,7 +16,7 @@
             <div class="columns small-12 medium-12 large-4" align="center">
                 <h2>Thank you for helping!</h2>
                  <div class="custom-panel text-center site-card" style="margin:0 2px;">
-                    <h5><%= @site.case_number %></h5>
+                    <h5><%= link_to "#{@site.case_number}", worker_incident_legacy_edit_site_path(@site.legacy_event_id, @site.id), id: "worksite-tracker-case-num" %></h5>
                     <h5><%= @site.name.split(' ')[0] %></h5>
                     <p><%= @site.address.gsub(/[0-9]/,'X') %></p>
                     <p><%= @site.city %>, <%= @site.state %>, <%= @site.zip_code %></p>
@@ -58,8 +58,18 @@
 </div>
 
 <div class="hide"><%= request.host %></div>
+<div id="input-logged-in" class="hide"><%= @is_logged_in %></div>
 <% end %>
 
-
 <% content_for :javascripts do %>
+<script style="text/javascript">
+$('#worksite-tracker-case-num').on('click', function(e) {
+  var isLoggedIn = $('#input-logged-in').text();
+  console.log(isLoggedIn);
+  if (isLoggedIn != 'true') {
+    e.preventDefault() 
+    alert('Please log-in to use the map.');
+  }
+});
+</script>
 <% end %>
