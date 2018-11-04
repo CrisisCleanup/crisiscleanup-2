@@ -52,11 +52,9 @@ module Phone
         if selected_phone_status.completion < 1.00
           phone_outbound_status.completion = selected_phone_status.completion
           phone_outbound_status.do_not_call_before = Time.now + selected_phone_status.try_again_delay
-          # TODO: dynamic dnis1 or dnis2 - present to user for selection
           phone_outbound_status.dnis = phone_outbound_status.phone_outbound.dnis1
-          # phone_outbound_status.uii = ''
           phone_outbound_status.phone_status = selected_phone_status
-          if phone_outbound_status.save!
+          if phone_outbound_status.save
             flash[:notice] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} successfully saved!"
           else
             flash[:alert] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} not saved!"
@@ -70,7 +68,7 @@ module Phone
           phone_outbound_status.completion = selected_phone_status.completion
           phone_outbound_status.dnis = phone_outbound_status.phone_outbound.dnis1
           phone_outbound_status.phone_status = selected_phone_status
-          if phone_outbound_status.save!
+          if phone_outbound_status.save
             flash[:notice] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} successfully saved!"
           else
             flash[:alert] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} not saved!"
