@@ -51,7 +51,8 @@ module Phone
         end
         
         # Check if phone status has completion less than 1
-        if selected_phone_status.completion < 1.00
+        if ((selected_phone_status.completion < 1.00) && (phone_outbound_status.phone_outbound.completion < 1.00))
+          logger.warn("2.5 - #{phone_outbound_status.inspect}")
           phone_outbound_status.completion = selected_phone_status.completion
           phone_outbound_status.do_not_call_before = Time.now + selected_phone_status.try_again_delay
           phone_outbound_status.dnis = phone_outbound_status.phone_outbound.dnis1
@@ -70,6 +71,7 @@ module Phone
           phone_outbound_status.completion = selected_phone_status.completion
           phone_outbound_status.dnis = phone_outbound_status.phone_outbound.dnis1
           phone_outbound_status.phone_status = selected_phone_status
+          logger.warn("2.5 - #{phone_outbound_status.inspect}")
           if phone_outbound_status.save
             logger.warn("3 - #{phone_outbound_status.inspect}")
             flash[:notice] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} successfully saved!"
