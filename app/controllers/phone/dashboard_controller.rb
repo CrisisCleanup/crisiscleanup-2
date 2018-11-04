@@ -18,6 +18,17 @@ module Phone
       end
     end   
     
+    def update_completion_for_completed_calls(phone_outbound, dnis, selected_phone_status)
+       outbound_records = PhoneOutbound.where("id = ? OR dnis1 = ? OR dnis2 = ?
+        AND created_at >= (SELECT created_at AS target_created_at FROM phone_outbound WHERE id = ?)", 
+        phone_outbound.id, dnis, dnis, phone_outbound.id)
+         
+      outbound_records.each do |record| 
+        record.update(completion: 1.00)
+        record.save!
+      end     
+    end
+    
     public
     
     def index
@@ -65,9 +76,8 @@ module Phone
             flash[:alert] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} not saved!"
           end
           
-          # update completion for partially completed outbound phones
           if phone_outbound_status.phone_outbound.present?
-            update_completion_for_partially_completed_calls(phone_outbound_status.phone_outbound, params[:selected_dnis], selected_phone_status)         
+            update_completion_for_completed_calls(phone_outbound_status.phone_outbound, params[:selected_dnis], selected_phone_status)         
           end         
         end
       end     
