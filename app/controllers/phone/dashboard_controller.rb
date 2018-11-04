@@ -32,6 +32,7 @@ module Phone
     public
     
     def index
+      logger.warn("DEBUGPARAMS: #{params}")
       if params.has_key?(:phone_outbound_status_id)
         phone_outbound_status = PhoneOutboundStatus.find_by_id(params[:phone_outbound_status_id])
         selected_phone_status = PhoneStatus.find_by_id(params[:phone_status_id])
