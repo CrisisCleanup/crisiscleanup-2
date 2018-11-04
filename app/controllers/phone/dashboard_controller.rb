@@ -35,8 +35,8 @@ module Phone
       if params.has_key?(:phone_outbound_status_id)
         phone_outbound_status = PhoneOutboundStatus.find_by_id(params[:phone_outbound_status_id])
         selected_phone_status = PhoneStatus.find_by_id(params[:phone_status_id])
-        logger.info("1 - #{phone_outbound_status.inspect}")
-        logger.info("2 - #{selected_phone_status.inspect}")
+        logger.warn("1 - #{phone_outbound_status.inspect}")
+        logger.warn("2 - #{selected_phone_status.inspect}")
         
         # Phone is complete
         if !phone_outbound_status.nil?
@@ -71,10 +71,10 @@ module Phone
           phone_outbound_status.dnis = phone_outbound_status.phone_outbound.dnis1
           phone_outbound_status.phone_status = selected_phone_status
           if phone_outbound_status.save
-            logger.info("3 - #{phone_outbound_status.inspect}")
+            logger.warn("3 - #{phone_outbound_status.inspect}")
             flash[:notice] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} successfully saved!"
           else
-            logger.info("4 - #{phone_outbound_status.inspect}")
+            logger.warn("4 - #{phone_outbound_status.inspect}")
             flash[:alert] = "Call info for #{number_to_phone(params[:selected_dnis], area_code: true)} not saved!"
           end
           
@@ -93,12 +93,12 @@ module Phone
       
       # check for incomplete calls by user
       @locked_call = PhoneOutbound.get_locked_call_for_user(current_user.id)
-      logger.info("5 - #{locked_call.inspect}")
+      logger.warn("5 - #{@locked_call.inspect}")
           
       if !@locked_call
       
         phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id)
-        logger.info("6 - #{locked_call.inspect}")
+        logger.warn("6 - #{@locked_call.inspect}")
         
         PhoneOutboundStatus.create(
           user_id: current_user.id,
@@ -106,7 +106,7 @@ module Phone
         )
         
         @locked_call = PhoneOutbound.get_locked_call_for_user(current_user.id)
-        logger.info("7 - #{locked_call.inspect}")
+        logger.warn("7 - #{@locked_call.inspect}")
       end
       
       @available_dnis = []
