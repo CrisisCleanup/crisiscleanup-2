@@ -52,7 +52,7 @@ module Phone
         end
         
         # Check if phone status has completion less than 1
-        if ((selected_phone_status.completion < 1.00) && (phone_outbound_status.phone_outbound.completion < 1.00))
+        if ((selected_phone_status.completion < 1.00))
           logger.warn("2.1 - #{phone_outbound_status.inspect}")
           phone_outbound_status.completion = selected_phone_status.completion
           phone_outbound_status.do_not_call_before = Time.now + selected_phone_status.try_again_delay
@@ -99,6 +99,7 @@ module Phone
       # check for incomplete calls by user
       @locked_call = PhoneOutbound.get_locked_call_for_user(current_user.id)
       logger.warn("5 - #{@locked_call.inspect}")
+
           
       if !@locked_call
       
@@ -113,6 +114,9 @@ module Phone
         @locked_call = PhoneOutbound.get_locked_call_for_user(current_user.id)
         logger.warn("7 - #{@locked_call.inspect}")
       end
+      
+      @locked_call_current_phone_outbound_status = PhoneOutboundStatus.get_latest_for_outbound_id(@locked_call.id)
+      logger.warn("5.1 - #{@locked_call_current_phone_outbound_status.inspect}")     
       
       @available_dnis = []
       @available_dnis << [@locked_call.dnis1, @locked_call.dnis1] if @locked_call.dnis1

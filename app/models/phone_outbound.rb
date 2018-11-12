@@ -4,7 +4,6 @@ class PhoneOutbound < ActiveRecord::Base
     
   def self.get_locked_call_for_user(current_user_id)
     return self.joins("LEFT OUTER JOIN phone_area_codes ON phone_area_codes.code = phone_outbound.dnis1_area_code")
-          .joins("LEFT OUTER JOIN phone_outbound_status ON phone_outbound_status.outbound_id = phone_outbound.id")
         .select('phone_outbound.id,
                  phone_outbound.dnis1,
                  phone_outbound.dnis2,
@@ -14,8 +13,7 @@ class PhoneOutbound < ActiveRecord::Base
                  phone_outbound.vm_link,
                  phone_outbound.worksite_id,
                  phone_outbound.call_type,
-                 phone_outbound.completion,
-                 phone_outbound_status.id as phone_outbound_status_id')
+                 phone_outbound.completion')
         .where(id: PhoneOutboundStatus.select('outbound_id').where(
           user_id: current_user_id, status_id: [false, nil])).order(:created_at).first    
   end
