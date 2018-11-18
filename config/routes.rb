@@ -77,6 +77,7 @@ Rails.application.routes.draw do
       get "/:id/mysites" => "legacy_sites#mysites", as: "mysites"
       get "/:id/organizations" => "legacy_organizations#index", as: "legacy_organizations"
       get "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization"
+      post "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization_caller"
       get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
       get "/:id/contacts/edit" => "legacy_contacts#edit", as: "legacy_contact_edit"
       post "/:id/contacts/edit" => "legacy_contacts#edit", as: "legacy_contact_update"     
