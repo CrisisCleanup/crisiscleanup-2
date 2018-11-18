@@ -16,6 +16,21 @@
 
 <% content_for :main do %> 
 <div id="main" class="alt">
+    <% if @user_is_member %>
+    <div class="row">
+        <div class="large-6 columns">
+            <div style="border: 1px solid black; padding: 5px;">
+                <%= form_tag(worker_incident_legacy_organization_path, method: "post") do %>
+                <h5>Allow my organization to have access to the caller system:</h5>
+                <div class="switch round">
+                  <%= check_box_tag(:caller_access, "yes", @organization.allow_caller_access, id: "switch1", onClick: "this.form.submit()") %>
+                  <label for="switch1"></label>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <% end %>
     <div class="row">
         <%= render 'show_table', organization: @organization %>       
     </div>
