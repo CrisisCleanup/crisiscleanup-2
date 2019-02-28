@@ -10,7 +10,7 @@ default: &default
   # ['app/assets', 'engine/foo/app/assets']
   resolved_paths: []
 
-  # Reload manifest.json on all requests so we reload latest compiled packs
+  # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
 
   extensions:
@@ -38,7 +38,7 @@ development:
     port: 3035
     hmr: false
     https: false
-    
+
 docker:
   <<: *default
   compile: true
@@ -47,7 +47,7 @@ docker:
     host: localhost
     port: 3035
     hmr: false
-    https: false 
+    https: false
 
 test:
   <<: *default

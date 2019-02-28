@@ -23,7 +23,7 @@ common: &default_settings
 
   # Logging level for log/newrelic_agent.log
   log_level: info
-  
+
   browser_monitoring:
     auto_instrument: false
 

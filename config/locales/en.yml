@@ -170,8 +170,7 @@ en:
   registration_49: "Facebook"
   registration_50: "Twitter"
   registration_51: "<strong>Review & Approve Participating Organizations</strong>: You are willing to take a leadership role, reviewing and approving organizations to participate in CrisisCleanup."
-  registration__51: "<strong>Damage Assessments</strong>: Your organization interacts directly with survivors via call-center, door-to-door, in a MARC, etc."
-  registration_52:  "<strong>Cleanup</strong>: Your organization interacts directly with survivors to do muck-outs, debris removal, tree cutting, etc."
+  registration_52: "<strong>Cleanup</strong>: Your organization interacts directly with survivors to do muck-outs, debris removal, tree cutting, etc."
   registration_53: "<strong>Follow Up</strong>: Your organization contacts survivors to ensure all clients have been assisted via phone or in-person visits."
   registration_54: "<strong>Minor Repairs</strong>: Your organization visits survivors to replace drywall, flooring, or other repairs."
   regsitration_55: "<strong>Rebuilding</strong>: Long Term Recovery Groups, Unmet Needs Committees, or organizations that do long-term or major rebuilding."
@@ -208,7 +207,7 @@ en:
   about_12: "not"
   about_13: "create the \"4Rs\" of disaster recovery: Relationships, Resources, Roles, and Responsibilities. It cannot fix relationships, create resources, or dictate who does what."
   about_6: "Crisis Cleanup embraces and supports the interests of disaster survivors by providing transparent, collaborative, and privacy-enhancing open source technology to assist those who directly interact with and help survivors."
-  about_7: "Crisis Cleanup is an open source project and operates through the fiduciary agent Crisis Cleanup, LLC based out of Colorado. We are planning to become a certified B ("Beneficial") Corporation. Other organizations sponsor implementations of Crisis Cleanup in Australia, India, the Philippines, and elsewhere."
+  about_7: "Crisis Cleanup is an open source project and operates through the fiduciary agent Crisis Cleanup, LLC based out of Colorado. We are planning to become a certified B (\"Beneficial\") Corporation. Other organizations sponsor implementations of Crisis Cleanup in Australia, India, the Philippines, and elsewhere."
   about_8: "Foundational Philosophies:"
   about_14: "Crisis Cleanup is for collaborative work order management; not volunteer, donations or case management. To protect clients, "
   about_15: "Crisis Cleanup is about property, not people."
@@ -238,8 +237,8 @@ en:
   about_39: "Executive Director "
   about_40: "Director of Operations"
   about_41: "Engineering Lead"
-  about_developer: "Developer"  #This value can be reused
-  about_designer: "Designer"    #This Value can be reused
+  about_developer: "Developer"  # This value can be reused
+  about_designer: "Designer"    # This value can be reused
   about_42: "Manager (AU)"
   about_43: "Major Supporters"
   about_44: "We recognize Crisis Cleanup's financial and in-kind supporters with gratitude. Support does not necessarily imply endorsement. They include:"
@@ -281,7 +280,7 @@ en:
   about_80: "Number of volunteer hours facilitated."
   about_81: "Volunteer hours that would have otherwise been wasted in management, travel, and overhead without Crisis Cleanup."
   about_82: "Minimum total market value of services to survivors."
-  about_million: "Million" #reuseable value
+  about_million: "Million"  # reuseable value
   about_83: "Total recorded market value of services, including work \"done by others.\""
   about_84: "Value of each cleanup volunteer to his/her community."
   about_85: "Market value of services to survivors that would have otherwise been wasted in travel, management, overhead, and standing in lines."
@@ -419,7 +418,7 @@ en:
   map_4: "Choose an incident from the dropdown below, and the map will populate live work orders from our system."
   map_5: "Note: Personal information is hidden, and the location has been randomized to about 1/4 mile."
   map_6: "Select Incident"
-  map_7 : "Choose Incident"
+  map_7: "Choose Incident"
   redeploy_1: "Redeploy to a new incident"
   redeploy_2: "Already a Crisis Cleanup user? To redeploy to a new incident,"
   redeploy_3: "sign in"
@@ -482,7 +481,7 @@ en:
   terms_30: "Company"
   terms_31: ", \"we\", \"us\", or \"our\": Means Crisis Cleanup LLC, a New Jersey Limited Liability Corporation."
   terms_32: "Website:"
-  terms_32: "Means the website located at"
+  terms_33: "Means the website located at"
   terms_34: ", including all subdomains and other domains related to the Service, operated or powered by us."
   terms_35: "Service:"
   terms_36: "Means all current and future services provided on the Website as described herein or otherwise offered at the Website, or through another medium, such as a smart phone app; including, but not limited to work order, canvassing, and damage mapping, and tools to assist cleanup and rebuilding after an Incident."
@@ -545,7 +544,7 @@ en:
   terms_93: "By You."
   terms_94: "You agree to indemnify, defend, and hold harmless the Company and its officers, directors, employees, agents, contractors, successors and assigns, from any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses (including but not limited to attorneys’ fees and court costs) arising from: (i) your use of the Services and access to the Website; (ii) your violation of any term of these Terms and Conditions; (iii) the violation by you, or anyone using Your Materials, of any third party right, including without limitation any copyright, property, or privacy right; (iv) fraud or misrepresentation by you; (iv) any claim arising from your organization's assistance to a Client or (v) any claim that your use of the Service caused damage to a third party. This defense and indemnification obligation shall survive these Terms and Conditions and your use of the Services and Website."
   terms_95: "Procedures."
-#   terms_96: "A party seeking indemnification hereunder (the \"Indemnitee\") shall promptly notify the other party (the \"Indemnitor\") upon knowledge of the likelihood of any action or proceeding, and on receipt of notice of the commencement or threatened commencement of any action or proceeding that may be subject to indemnification hereunder. The Indemnitor shall have sole control over the defense and settlement of such claim, provided that the Indemnitee (a) shall be entitled to participate in the defense of such claim and to employ counsel at its own expense to assist in the handling of such claim and (b) shall reasonably cooperate with Indemnitor in the defense or settlement of such claim."
+  # terms_96: "A party seeking indemnification hereunder (the \"Indemnitee\") shall promptly notify the other party (the \"Indemnitor\") upon knowledge of the likelihood of any action or proceeding, and on receipt of notice of the commencement or threatened commencement of any action or proceeding that may be subject to indemnification hereunder. The Indemnitor shall have sole control over the defense and settlement of such claim, provided that the Indemnitee (a) shall be entitled to participate in the defense of such claim and to employ counsel at its own expense to assist in the handling of such claim and (b) shall reasonably cooperate with Indemnitor in the defense or settlement of such claim."
   terms_97: "Limitations on Liability"
   terms_98: "The Company’s liability to you for any recoverable losses or damages arising under, or in connection with, these Terms and Conditions and your use of this Service or of the Website shall be limited, to extent applicable, to the actual, direct damages incurred by you, in an amount not to exceed the total revenue received by the Company resulting from your use of the Service provided hereunder during the most recently preceding 12-month period, or $1,000, whichever is greater. The Company shall not be liable for: (i) damages caused by your failure to perform your responsibilities imposed by law or this agreement; (ii) claims or demands of third parties; (iii) any lost or corrupted data; or (iv) any lost profits, loss of business, loss of use, lost savings, or other consequential, special, incidental, indirect, exemplary, or punitive damages, even if the Company has been advised of the possibility of such damages."
   terms_99: "To the maximum extent permitted by law, the Company disclaims liability for any loss or damages, whether direct, indirect, special, incidental, or consequential (even if the Company has been advised of the possibility of such damages) arising out of (i) your use of the Website and Services or your inability to do so, (ii) your reliance on any content provided on the Service or through the Services provided thereunder, (iii) goods and services in any way associated with this Service, (iv) unexpected or adverse tax consequences as a result of using the Services, and/or (v) damages caused by malicious hackers or crackers."

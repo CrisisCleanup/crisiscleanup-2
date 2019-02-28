@@ -22,9 +22,9 @@ services:
         # bundle exec unicorn -p 3000 -c ./config/unicorn.rb
         bundle exec rails server -e development -b 0.0.0.0 -p 3000
         "
-    ports: ['8080:3000']     
+    ports: ['8080:3000']
     entrypoint: /app/docker-entrypoint.sh
-    env_file: 
+    env_file:
       - .env.docker
     environment:
       RAILS_ENV: docker

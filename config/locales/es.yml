@@ -169,7 +169,7 @@ es:
   registration_49: "Facebook"
   registration_50: "Gorjeo"
   registration_51: "<strong>Revisar y Aprobar Organizaciones Participantes</strong>: Usted está dispuesto a asumir un papel de liderazgo, revisando y aprobando las organizaciones para participar en CrisisCleanup."
-  registration_52:  "<strong>Limpiar</strong>: Su organización interactúa directamente con los supervivientes para hacer saltos, eliminación de escombros, corte de árboles, etc."
+  registration_52: "<strong>Limpiar</strong>: Su organización interactúa directamente con los supervivientes para hacer saltos, eliminación de escombros, corte de árboles, etc."
   registration_53: "<strong>Seguir</strong>: Su organización contacta a los supervivientes para asegurarse de que todos los clientes han sido atendidos por teléfono o en visitas personales."
   registration_54: "<strong>Reparaciones menores</strong>: Su organización visita a sobrevivientes para reemplazar paneles de yeso, pisos u otras reparaciones."
   registration_55: "<strong>Reconstrucción</strong>: Grupos de Recuperación a Largo Plazo, Comités de Necesidades No Cubiertos u organizaciones que realizan reconstrucción a largo plazo o mayor."
@@ -235,8 +235,8 @@ es:
   about_39: "Director ejecutivo"
   about_40: "director de operaciones"
   about_41: "Ingeniería de plomo"
-  about_developer: "Desarrollador"  #This Value can be reused
-  about_designer: "Diseñador"       #This Vaue can be reused
+  about_developer: "Desarrollador"  # This value can be reused
+  about_designer: "Diseñador"       # This value can be reused
   about_42: "Gerente (AU)"
   about_43: "Los principales partidarios"
   about_44: "Reconocemos los partidarios financieros y en especie de Crisis Cleanup con gratitud. El apoyo no necesariamente implican respaldo. Incluyen:"
@@ -278,7 +278,7 @@ es:
   about_80: "Número de horas voluntarias facilitadas."
   about_81: "Horas de voluntariado que de lo contrario habrían sido desperdiciados en administración, viajes y gastos generales sin la Limpieza de Crisis."
   about_82: "Valor total de mercado mínimo de los servicios a los sobrevivientes."
-  about_million: "millones" #reuseable value"
+  about_million: "millones"  # reuseable value
   about_83: "El valor total de mercado registrado de los servicios, incluido el trabajo \"hecho por otros\"."
   about_84: "Valor de cada voluntario de limpieza en su comunidad."
   about_85: "El valor de mercado de los servicios a los sobrevivientes que de otro modo habrían sido desperdiciados en viajes, administración, gastos generales y permanentes en líneas."
@@ -628,7 +628,7 @@ es:
   vol_17: "Primero, complete el"
   vol_18: "Formación"
   vol_19: "Si usted es"
-  vol_22: "ya afiliado"
+  vol_20: "ya afiliado"
   vol_21: "con una organización que usa Crisis Cleanup, hay dos formas de unirse:"
   vol_22: "Solicite una invitación por correo electrónico"
   vol_23: "Contacto"
