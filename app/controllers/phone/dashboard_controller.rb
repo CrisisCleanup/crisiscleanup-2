@@ -32,6 +32,7 @@ module Phone
     public
     
     def index
+      
       logger.warn("DEBUGPARAMS: #{params}")
       if params.has_key?(:phone_outbound_status_id)
         phone_outbound_status = PhoneOutboundStatus.find_by_id(params[:phone_outbound_status_id])
@@ -105,6 +106,10 @@ module Phone
       
         phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id)
         logger.warn("6 - #{@locked_call.inspect}")
+        
+        if phone_outbound.nil?
+          return render :done
+        end 
         
         PhoneOutboundStatus.create(
           user_id: current_user.id,
