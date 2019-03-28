@@ -1,4 +1,7 @@
 <% content_for :main do %>
 	<h2>500 error</h2>
-	<p>Oops, something broke. Please <%= link_to "Start Over", root_path %>.</p>
+  <p>It's not you. It's us.</p>
+  <p>If you got this error while returning calls, we're aware of the error and we're trying to fix it. We know this error happens when we run out of return calls (which is a good problem to have). It also seems to be happening when the system <em>thinks</em> that there are more calls. We're researching the issue now. Bear with us.</p>
+  <p>In the meantime, don't worry; you didn't break anything. It's our fault. Check back once or twice a day as we add new missed calls to the queue. And above all, thank you for your service!</p>
+	<p>You may <%= link_to "Start Over", root_path %>, if you'd like.</p>
 <% end %>
