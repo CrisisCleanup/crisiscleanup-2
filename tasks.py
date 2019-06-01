@@ -97,6 +97,14 @@ def rebuild_db(c, nocache=False):
     c.run(cmd, pty=True)
     c.run('./migrate_real_data.sh', pty=True)   
     
+@task(help = {})
+def migrate_db(c):
+    """
+    Migrate DB
+    """
+    print('MIGRATING DB')
+    c.run('docker-compose exec web bash -c "RAILS_ENV=docker bin/rake db:migrate"', pty=True)
+    
 @task(help = {
     'nocache': NOCACHE_ARG_HELP
 })

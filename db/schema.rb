@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181102203757) do
+ActiveRecord::Schema.define(version: 20190601160913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 20181102203757) do
     t.boolean  "does_only_sit_aware"
     t.boolean  "does_something_else"
     t.boolean  "allow_caller_access"
+    t.string   "call_state_filter"
   end
 
   create_table "legacy_sites", force: :cascade do |t|
@@ -199,6 +200,32 @@ ActiveRecord::Schema.define(version: 20181102203757) do
     t.datetime "created_at", default: "now()"
     t.string   "location"
     t.string   "state"
+  end
+
+  create_table "phone_dnis", force: :cascade do |t|
+    t.integer  "dnis",        limit: 8
+    t.string   "last_action"
+    t.integer  "num_calls"
+    t.integer  "area_code"
+    t.string   "state"
+    t.datetime "created_at",            default: "now()"
+    t.datetime "updated_at",            default: "now()"
+    t.datetime "last_call"
+  end
+
+  create_table "phone_logs", force: :cascade do |t|
+    t.integer  "dnis_id"
+    t.integer  "ani",          limit: 8
+    t.datetime "time_call"
+    t.integer  "duration"
+    t.string   "action"
+    t.integer  "caller_input"
+    t.string   "vm_url"
+    t.string   "session_id",   limit: 32
+    t.string   "ip"
+    t.integer  "area_code"
+    t.datetime "created_at",              default: "now()"
+    t.datetime "updated_at",              default: "now()"
   end
 
   create_table "phone_outbound", force: :cascade do |t|
@@ -319,6 +346,7 @@ ActiveRecord::Schema.define(version: 20181102203757) do
 
   add_index "worksite_work_types", ["work_type_key"], name: "worktype_name_unique", unique: true, using: :btree
 
+  add_foreign_key "phone_logs", "phone_dnis", column: "dnis_id", name: "dnis_fkey"
   add_foreign_key "phone_outbound", "legacy_sites", column: "worksite_id", name: "worksite_id_fk"
   add_foreign_key "phone_outbound_status", "phone_outbound", column: "outbound_id", name: "outbound_id_fk"
   add_foreign_key "phone_outbound_status", "phone_status", column: "status_id", name: "status_id"

@@ -13,6 +13,7 @@ module Worker
       end
 
       def show
+        @state_list = get_state_list()
         @organization = Legacy::LegacyOrganization.find(params[:org_id])
         if @organization 
           @user_is_member = (params[:org_id].to_i == current_user.legacy_organization_id)
@@ -22,6 +23,9 @@ module Worker
             else 
               @organization.allow_caller_access = false
             end            
+            if params[:state_to_filter]
+              @organization.call_state_filter = params[:state_to_filter]
+            end
             @organization.save!
             @event_id = current_user_event
             return redirect_to :back
