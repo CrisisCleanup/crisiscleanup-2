@@ -25,8 +25,8 @@ class PhoneOutbound < ActiveRecord::Base
   # AND phone_outbound.dnis2 IS NOT NULL
   # current_user_id).order("random()", :call_type, :inbound_at, :case_updated_at).first 
   
-  def self.select_next_phone_outbound_for_user(current_user_id, call_state_filter)
-    return self.where("phone_outbound.id NOT IN 
+  def self.select_next_phone_outbound_for_user(current_user_id)
+    return  self.where("phone_outbound.id NOT IN 
       (
         SELECT outbound_id FROM phone_outbound_status
         WHERE (do_not_call_before > NOW()  OR do_not_call_before IS NULL)
@@ -38,7 +38,29 @@ class PhoneOutbound < ActiveRecord::Base
       ) 
       AND (
         phone_outbound.completion < 1 OR phone_outbound.completion IS NULL
-      )").where(":call_state_filter = (SELECT state FROM legacy_sites WHERE legacy_sites.id = phone_outbound.worksite_id)", {call_state_filter: call_state_filter}).order(:call_type, :inbound_at, :case_updated_at).first
+        
+      )").order(:call_type, :inbound_at, :case_updated_at).first
+  end
+  
+   def self.select_next_phone_outbound_for_user_with_state_filter(current_user_id, call_state_filter)
+    return self.joins('INNER JOIN phone_area_codes ON phone_area_codes.code = phone_outbound.dnis1_area_code')
+    .where("phone_outbound.id NOT IN 
+      (
+        SELECT outbound_id FROM phone_outbound_status
+        WHERE (do_not_call_before > NOW()  OR do_not_call_before IS NULL)
+        AND outbound_id IS NOT NULL
+      )
+      AND (
+        DATE_PART('day', NOW() - case_updated_at) > 5
+        OR DATE_PART('day', NOW() - case_updated_at) IS NULL
+      ) 
+      AND (
+        phone_outbound.completion < 1 OR phone_outbound.completion IS NULL
+        
+      )")
+      .where("phone_outbound.dnis1_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter) 
+      OR phone_outbound.dnis2_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter)", {call_state_filter: call_state_filter})
+      .order(:call_type, :inbound_at, :case_updated_at).first
   end
       
   def self.remaining_callbacks

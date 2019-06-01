@@ -111,11 +111,11 @@ module Phone
         current_state_filter = current_user.legacy_organization.call_state_filter
         if !current_state_filter == 'None' || !current_state_filter.nil?
           logger.warn("6 - #{@current_state_filter.inspect}")
-          phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id, current_state_filter)
+          phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user_with_state_filter(current_user.id, current_state_filter)
+        else
+          phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id)
         end
-        
-        # phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id)
-        # logger.warn("6 - #{@locked_call.inspect}")
+        logger.warn("6 - #{@locked_call.inspect}")
         
         if phone_outbound.nil?
           return render :done
