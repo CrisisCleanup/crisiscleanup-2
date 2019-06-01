@@ -128,7 +128,7 @@ def logs(c, name, env='dev'):
     """
     Docker-compose - Print service container logs for a given service and environment.
     """
-    cmd = "{0} -f docker-compose.{1}.yml logs -f {2}".format(BASE_COMPOSE_CMD, env, name)
+    cmd = "{0} -f docker-compose.{1}.yml logs --tail=500 -f {2}".format(BASE_COMPOSE_CMD, env, name)
     c.run(cmd)
     
 @task(help = {

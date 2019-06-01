@@ -102,10 +102,20 @@ module Phone
       logger.warn("5 - #{@locked_call.inspect}")
 
           
+      #############################
+      # Get a new call off the queue
+      #############################
       if !@locked_call
       
-        phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id)
-        logger.warn("6 - #{@locked_call.inspect}")
+        # Check for state filters
+        current_state_filter = current_user.legacy_organization.call_state_filter
+        if !current_state_filter == 'None' || !current_state_filter.nil?
+          logger.warn("6 - #{@current_state_filter.inspect}")
+          phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id, current_state_filter)
+        end
+        
+        # phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id)
+        # logger.warn("6 - #{@locked_call.inspect}")
         
         if phone_outbound.nil?
           return render :done
