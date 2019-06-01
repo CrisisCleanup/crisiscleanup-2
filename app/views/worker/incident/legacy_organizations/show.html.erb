@@ -21,7 +21,7 @@
         <div class="large-6 columns">
             <div style="border: 1px solid black; padding: 5px;">
                 <%= form_tag(worker_incident_legacy_organization_path, method: "post") do %>
-                <h5>All My Organization to Make Return Calls:</h5>
+                <h5>Allow My Organization to Make Return Calls:</h5>
                 <div class="switch round">
                   <%= check_box_tag(:caller_access, "yes", @organization.allow_caller_access, id: "switch1", onClick: "this.form.submit()") %>
                   <label for="switch1"></label>
