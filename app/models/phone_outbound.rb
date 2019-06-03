@@ -2,7 +2,8 @@ class PhoneOutbound < ActiveRecord::Base
   self.table_name = 'phone_outbound'
   belongs_to :legacy_site, class_name: "Legacy::LegacySite", foreign_key: "worksite_id"
   
-  ActiveRecord::Base.logger = Logger.new(STDOUT)
+  # Uncomment to debug SQL queries
+  # ActiveRecord::Base.logger = Logger.new(STDOUT)
     
   def self.get_locked_call_for_user(current_user_id)
     return self.joins("LEFT OUTER JOIN phone_area_codes ON phone_area_codes.code = phone_outbound.dnis1_area_code")

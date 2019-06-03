@@ -1,4 +1,5 @@
 from invoke import task
+import time
 
 ENV = 'dev'
 ENVS = ['dev']
@@ -92,10 +93,11 @@ def rebuild_db(c, nocache=False):
     c.run('docker-compose down -v')
     rebuild_svc(c, 'redis', 'dev', nocache)
     rebuild_svc(c, 'postgres', 'dev', nocache)    
-    up_svc(c, 'web', 'dev')       
-    cmd = 'docker-compose exec web bash -c "RAILS_ENV=docker bin/rake db:setup"'
-    c.run(cmd, pty=True)
+    rebuild_svc(c, 'web', 'dev')
+    time.sleep(15)
     c.run('./migrate_real_data.sh', pty=True)   
+    cmd = 'docker-compose exec web bash -c "RAILS_ENV=docker bin/rake db:migrate"'
+    c.run(cmd, pty=True)
     
 @task(help = {})
 def migrate_db(c):
