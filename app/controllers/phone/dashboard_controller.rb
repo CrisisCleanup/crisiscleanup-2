@@ -110,7 +110,7 @@ module Phone
         # Check for state filters
         current_state_filter = current_user.legacy_organization.call_state_filter
         logger.warn("6.1 - #{current_state_filter}")
-        if current_state_filter != 'None' || !current_state_filter.nil?
+        if !current_state_filter.nil? && current_state_filter != 'None'
           phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user_with_state_filter(current_user.id, current_state_filter)
           logger.warn("6.2 - New PhoneOutbound WITH state filter")
         else
