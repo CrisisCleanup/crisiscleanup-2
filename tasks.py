@@ -67,6 +67,18 @@ def up_svc(c, name, env='dev'):
     print('UP {0} WITH ENV: {1}'.format(name, env))
     cmd = "{0} -f docker-compose.{1}.yml up -d {2}".format(BASE_COMPOSE_CMD, env, name)
     c.run(cmd)
+    
+@task(help = {
+    'name': NAME_ARG_HELP,
+    'env': ENV_ARG_HELP
+})
+def restart_svc(c, name, env='dev'):
+    """
+    Restart service
+    """
+    print('RESTARTING {0} WITH ENV: {1}'.format(name, env))
+    cmd = "{0} -f docker-compose.{1}.yml restart {2}".format(BASE_COMPOSE_CMD, env, name)
+    c.run(cmd)   
 
 @task(help = {
     'name': NAME_ARG_HELP,
@@ -170,3 +182,33 @@ def execute(c, name, env='dev'):
     """
     cmd = "{0} -f docker-compose.{1}.yml exec {2} bash".format(BASE_COMPOSE_CMD, env, name)
     c.run(cmd, pty=True)   
+    
+@task(help = {})
+def rebuild_test_db(c, env='dev'):
+    """
+    Build test database
+    """
+    cmd = '{0} -f docker-compose.{1}.yml exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:create"'.format(BASE_COMPOSE_CMD, env)
+    c.run(cmd, pty=True)      
+    
+@task(help = {})
+def rspec(c, env='dev', rebuild_test_db=False):
+    """
+    Run rspec tests
+    """
+    if rebuild_test_db:
+        rebuild_test_db(env)
+    cmd = '{0} -f docker-compose.{1}.yml exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bundle exec rspec"'.format(BASE_COMPOSE_CMD, env)
+    c.run(cmd, pty=True)      
+    
+@task(help = {
+    'path': 'Path to spec - e.g. spec/controllers/phone'
+})
+def rspec_specific(c, path, env='dev', rebuild_test_db=False):
+    """
+    Run specific rspec tests
+    """
+    if rebuild_test_db:
+        rebuild_test_db(env)
+    cmd = '{0} -f docker-compose.{1}.yml exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bundle exec rspec {2}"'.format(BASE_COMPOSE_CMD, env, path)
+    c.run(cmd, pty=True)    
