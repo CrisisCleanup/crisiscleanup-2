@@ -21,11 +21,13 @@
         <div class="large-6 columns">
             <div style="border: 1px solid black; padding: 5px;">
                 <%= form_tag(worker_incident_legacy_organization_path, method: "post") do %>
-                <h5>Make Return Calls:</h5>
+                <h5>Allow My Organization to Make Return Calls:</h5>
                 <div class="switch round">
                   <%= check_box_tag(:caller_access, "yes", @organization.allow_caller_access, id: "switch1", onClick: "this.form.submit()") %>
                   <label for="switch1"></label>
                 </div>
+                <h5>State to Filter Calls By: </h5>
+		        <%= select_tag("state_to_filter", options_for_select(@state_list, @organization.call_state_filter), onChange: "this.form.submit()") %>
                 <% end %>
             </div>
         </div>
