@@ -1,0 +1,2071 @@
+---
+phone_area_code_1:
+  id: '1'
+  code: '201'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Jersey: Bayonne, Bergenfield, Cliffside Park'
+  state: New Jersey
+phone_area_code_2:
+  id: '2'
+  code: '202'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Washington, DC: Washington'
+  state: Washington, DC
+phone_area_code_3:
+  id: '3'
+  code: '203'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Connecticut: Bridgeport, Danbury, East Haven'
+  state: Connecticut
+phone_area_code_4:
+  id: '4'
+  code: '205'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Alabama: Alabaster, Bessemer, Birmingham'
+  state: Alabama
+phone_area_code_5:
+  id: '5'
+  code: '206'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Washington: Bainbridge Island, Burien, Des Moines'
+  state: Washington
+phone_area_code_6:
+  id: '6'
+  code: '207'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Maine: Auburn, Augusta, Bangor'
+  state: Maine
+phone_area_code_7:
+  id: '7'
+  code: '208'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Idaho: Boise City, Caldwell, Coeur D''alene'
+  state: Idaho
+phone_area_code_8:
+  id: '8'
+  code: '209'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Atwater, Ceres, Lodi'
+  state: California
+phone_area_code_9:
+  id: '9'
+  code: '210'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: San Antonio'
+  state: Texas
+phone_area_code_10:
+  id: '10'
+  code: '212'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Manhattan, New York City'
+  state: New York
+phone_area_code_11:
+  id: '11'
+  code: '213'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Los Angeles'
+  state: California
+phone_area_code_12:
+  id: '12'
+  code: '214'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Allen, Arlington, Carrollton'
+  state: Texas
+phone_area_code_13:
+  id: '13'
+  code: '215'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Levittown, Philadelphia'
+  state: Pennsylvania
+phone_area_code_14:
+  id: '14'
+  code: '216'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Brook Park, Cleveland, Cleveland Heights'
+  state: Ohio
+phone_area_code_15:
+  id: '15'
+  code: '217'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Champaign, Charleston, Danville'
+  state: Illinois
+phone_area_code_16:
+  id: '16'
+  code: '218'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Minnesota: Andover, Duluth, Moorhead'
+  state: Minnesota
+phone_area_code_17:
+  id: '17'
+  code: '219'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Indiana: East Chicago, Gary, Hammond'
+  state: Indiana
+phone_area_code_18:
+  id: '18'
+  code: '224'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Algonquin, Arlington Heights, Buffalo Grove'
+  state: Illinois
+phone_area_code_19:
+  id: '19'
+  code: '225'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Louisiana: Baton Rouge'
+  state: Louisiana
+phone_area_code_20:
+  id: '20'
+  code: '228'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Mississippi: Biloxi, Gulfport, Pascagoula'
+  state: Mississippi
+phone_area_code_21:
+  id: '21'
+  code: '229'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Georgia: Albany, Valdosta'
+  state: Georgia
+phone_area_code_22:
+  id: '22'
+  code: '231'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Muskegon, Norton Shores, Shelby'
+  state: Michigan
+phone_area_code_23:
+  id: '23'
+  code: '234'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Akron, Alliance, Austintown'
+  state: Ohio
+phone_area_code_24:
+  id: '24'
+  code: '239'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Bonita Springs, Cape Coral, Fort Myers'
+  state: Florida
+phone_area_code_25:
+  id: '25'
+  code: '240'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Maryland: Aspen Hill, Bethesda, Bowie'
+  state: Maryland
+phone_area_code_26:
+  id: '26'
+  code: '248'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Bloomfield, Farmington Hills, Ferndale'
+  state: Michigan
+phone_area_code_27:
+  id: '27'
+  code: '251'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Alabama: Mobile, Prichard'
+  state: Alabama
+phone_area_code_28:
+  id: '28'
+  code: '252'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'North Carolina: Greenville, Havelock, Kinston'
+  state: North Carolina
+phone_area_code_29:
+  id: '29'
+  code: '253'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Washington: Auburn, East Hill-meridian, Federal Way'
+  state: Washington
+phone_area_code_30:
+  id: '30'
+  code: '254'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Copperas Cove, Fort Hood, Killeen'
+  state: Texas
+phone_area_code_31:
+  id: '31'
+  code: '256'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Alabama: Anniston, Decatur, Florence'
+  state: Alabama
+phone_area_code_32:
+  id: '32'
+  code: '260'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Indiana: Fort Wayne'
+  state: Indiana
+phone_area_code_33:
+  id: '33'
+  code: '262'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Wisconsin: Brookfield, Caledonia, Kenosha'
+  state: Wisconsin
+phone_area_code_34:
+  id: '34'
+  code: '267'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Levittown, Philadelphia'
+  state: Pennsylvania
+phone_area_code_35:
+  id: '35'
+  code: '269'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Battle Creek, Kalamazoo, Portage'
+  state: Michigan
+phone_area_code_36:
+  id: '36'
+  code: '270'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Kentucky: Bowling Green, Elizabethtown, Henderson'
+  state: Kentucky
+phone_area_code_37:
+  id: '37'
+  code: '272'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Back Mountain, Hazleton, Scranton'
+  state: Pennsylvania
+phone_area_code_38:
+  id: '38'
+  code: '276'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Virginia: Richmond'
+  state: Virginia
+phone_area_code_39:
+  id: '39'
+  code: '281'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Alvin, Atascocita, Baytown'
+  state: Texas
+phone_area_code_40:
+  id: '40'
+  code: '301'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Maryland: Aspen Hill, Bethesda, Bowie'
+  state: Maryland
+phone_area_code_41:
+  id: '41'
+  code: '302'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Delaware: Dover, Newark, Wilmington'
+  state: Delaware
+phone_area_code_42:
+  id: '42'
+  code: '303'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Colorado: Arvada, Aurora, Boulder'
+  state: Colorado
+phone_area_code_43:
+  id: '43'
+  code: '304'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'West Virginia: Charleston, Huntington, Morgantown'
+  state: West Virginia
+phone_area_code_44:
+  id: '44'
+  code: '305'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Aventura, Carol City, Coral Gables'
+  state: Florida
+phone_area_code_45:
+  id: '45'
+  code: '307'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Wyoming: Casper, Cheyenne, Gillette'
+  state: Wyoming
+phone_area_code_46:
+  id: '46'
+  code: '308'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Nebraska: Grand Island, Kearney, North Platte'
+  state: Nebraska
+phone_area_code_47:
+  id: '47'
+  code: '309'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Bloomington, East Moline, East Peoria'
+  state: Illinois
+phone_area_code_48:
+  id: '48'
+  code: '310'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Beverly Hills, Carson, Culver City'
+  state: California
+phone_area_code_49:
+  id: '49'
+  code: '312'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Chicago'
+  state: Illinois
+phone_area_code_50:
+  id: '50'
+  code: '313'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Allen Park, Dearborn, Dearborn Heights'
+  state: Michigan
+phone_area_code_51:
+  id: '51'
+  code: '314'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Missouri: Affton, Ferguson, Florissant'
+  state: Missouri
+phone_area_code_52:
+  id: '52'
+  code: '315'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Auburn, Rome, Syracuse'
+  state: New York
+phone_area_code_53:
+  id: '53'
+  code: '316'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Kansas: Wichita'
+  state: Kansas
+phone_area_code_54:
+  id: '54'
+  code: '317'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Indiana: Carmel, Fishers, Greenwood'
+  state: Indiana
+phone_area_code_55:
+  id: '55'
+  code: '318'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Louisiana: Alexandria, Bossier City, Monroe'
+  state: Louisiana
+phone_area_code_56:
+  id: '56'
+  code: '319'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Iowa: Burlington, Cedar Falls, Cedar Rapids'
+  state: Iowa
+phone_area_code_57:
+  id: '57'
+  code: '320'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Minnesota: St. Cloud'
+  state: Minnesota
+phone_area_code_58:
+  id: '58'
+  code: '321'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Altamonte Springs, Apopka, Casselberry'
+  state: Florida
+phone_area_code_59:
+  id: '59'
+  code: '323'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Bell, Bell Gardens, Cudahy'
+  state: California
+phone_area_code_60:
+  id: '60'
+  code: '325'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Abilene, San Angelo'
+  state: Texas
+phone_area_code_61:
+  id: '61'
+  code: '330'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Akron, Alliance, Austintown'
+  state: Ohio
+phone_area_code_62:
+  id: '62'
+  code: '331'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Addison, Aurora, Bartlett'
+  state: Illinois
+phone_area_code_63:
+  id: '63'
+  code: '334'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Alabama: Auburn, Dothan, Enterprise'
+  state: Alabama
+phone_area_code_64:
+  id: '64'
+  code: '336'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'North Carolina: Asheboro, Burlington, Greensboro'
+  state: North Carolina
+phone_area_code_65:
+  id: '65'
+  code: '337'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Louisiana: Lafayette, Lake Charles, New Iberia'
+  state: Louisiana
+phone_area_code_66:
+  id: '66'
+  code: '339'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Massachusetts: Arlington, Braintree, Burlington'
+  state: Massachusetts
+phone_area_code_67:
+  id: '67'
+  code: '340'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Virgin Islands: Charlotte Amalie'
+  state: Virgin Islands
+phone_area_code_68:
+  id: '68'
+  code: '346'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Alvin, Atascocita, Baytown'
+  state: Texas
+phone_area_code_69:
+  id: '69'
+  code: '347'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Bronx, Brooklyn, New York City'
+  state: New York
+phone_area_code_70:
+  id: '70'
+  code: '351'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Massachusetts: Beverly, Chelmsford, Danvers'
+  state: Massachusetts
+phone_area_code_71:
+  id: '71'
+  code: '352'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Gainesville, Oakland Park, Ocala'
+  state: Florida
+phone_area_code_72:
+  id: '72'
+  code: '360'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Washington: Bellingham, Bremerton, Lacey'
+  state: Washington
+phone_area_code_73:
+  id: '73'
+  code: '361'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Corpus Christi, Kingsville, Victoria'
+  state: Texas
+phone_area_code_74:
+  id: '74'
+  code: '385'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Utah
+  state: Utah
+phone_area_code_75:
+  id: '75'
+  code: '386'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Daytona Beach, De Land, Deltona'
+  state: Florida
+phone_area_code_76:
+  id: '76'
+  code: '401'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Rhode Island: Bristol, Cranston, East Providence'
+  state: Rhode Island
+phone_area_code_77:
+  id: '77'
+  code: '402'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Nebraska: Bellevue, Columbus, Fremont'
+  state: Nebraska
+phone_area_code_78:
+  id: '78'
+  code: '404'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Georgia: Atlanta, Candler-mcafee, College Park'
+  state: Georgia
+phone_area_code_79:
+  id: '79'
+  code: '405'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Oklahoma: Bethany, Del City, Edmond'
+  state: Oklahoma
+phone_area_code_80:
+  id: '80'
+  code: '406'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Montana: Billings, Bozeman, Butte-silver Bow'
+  state: Montana
+phone_area_code_81:
+  id: '81'
+  code: '407'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Altamonte Springs, Apopka, Casselberry'
+  state: Florida
+phone_area_code_82:
+  id: '82'
+  code: '408'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Campbell, Gilroy, Los Gatos'
+  state: California
+phone_area_code_83:
+  id: '83'
+  code: '409'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Beaumont, Galveston, Port Arthur'
+  state: Texas
+phone_area_code_84:
+  id: '84'
+  code: '410'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Maryland: Annapolis, Arbutus, Arnold'
+  state: Maryland
+phone_area_code_85:
+  id: '85'
+  code: '412'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Bethel Park, Mccandless, Mckeesport'
+  state: Pennsylvania
+phone_area_code_86:
+  id: '86'
+  code: '413'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Massachusetts: Agawam, Chicopee, Holyoke'
+  state: Massachusetts
+phone_area_code_87:
+  id: '87'
+  code: '414'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Wisconsin: Franklin, Greenfield, Milwaukee'
+  state: Wisconsin
+phone_area_code_88:
+  id: '88'
+  code: '415'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Novato, San Anselmo, San Francisco'
+  state: California
+phone_area_code_89:
+  id: '89'
+  code: '417'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Missouri: Joplin, Springfield'
+  state: Missouri
+phone_area_code_90:
+  id: '90'
+  code: '419'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Ashland, Bowling Green, Findlay'
+  state: Ohio
+phone_area_code_91:
+  id: '91'
+  code: '423'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Tennessee: Bristol, Chattanooga, Cleveland'
+  state: Tennessee
+phone_area_code_92:
+  id: '92'
+  code: '424'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Beverly Hills, Carson, Culver City'
+  state: California
+phone_area_code_93:
+  id: '93'
+  code: '425'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Washington: Bellevue, Bothell, Cascade-fairwood'
+  state: Washington
+phone_area_code_94:
+  id: '94'
+  code: '430'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Texas
+  state: Texas
+phone_area_code_95:
+  id: '95'
+  code: '432'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Big Spring, Midland, Odessa'
+  state: Texas
+phone_area_code_96:
+  id: '96'
+  code: '434'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Virginia: Charlottesville, Danville, Lynchburg'
+  state: Virginia
+phone_area_code_97:
+  id: '97'
+  code: '435'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Utah: Cedar City, Logan, St. George'
+  state: Utah
+phone_area_code_98:
+  id: '98'
+  code: '440'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Ashtabula, Eastlake, Elyria'
+  state: Ohio
+phone_area_code_99:
+  id: '99'
+  code: '442'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: California
+  state: California
+phone_area_code_100:
+  id: '100'
+  code: '443'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Maryland: Annapolis, Arbutus, Arnold'
+  state: Maryland
+phone_area_code_101:
+  id: '101'
+  code: '458'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Oregon
+  state: Oregon
+phone_area_code_102:
+  id: '102'
+  code: '469'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Allen, Carrollton, Cedar Hill'
+  state: Texas
+phone_area_code_103:
+  id: '103'
+  code: '470'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Georgia
+  state: Georgia
+phone_area_code_104:
+  id: '104'
+  code: '475'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Connecticut
+  state: Connecticut
+phone_area_code_105:
+  id: '105'
+  code: '478'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Georgia: Macon, Warner Robins'
+  state: Georgia
+phone_area_code_106:
+  id: '106'
+  code: '479'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Arkansas: Fayetteville, Fort Smith, Rogers'
+  state: Arkansas
+phone_area_code_107:
+  id: '107'
+  code: '480'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Arizona: Apache Junction, Chandler, Fountain Hills'
+  state: Arizona
+phone_area_code_108:
+  id: '108'
+  code: '484'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Allentown, Bethlehem, Chester'
+  state: Pennsylvania
+phone_area_code_109:
+  id: '109'
+  code: '501'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Arkansas: Benton, Conway, Hot Springs'
+  state: Arkansas
+phone_area_code_110:
+  id: '110'
+  code: '502'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Kentucky: Frankfort, Louisville'
+  state: Kentucky
+phone_area_code_111:
+  id: '111'
+  code: '503'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Oregon: Aloha, Beaverton, Gresham'
+  state: Oregon
+phone_area_code_112:
+  id: '112'
+  code: '504'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Louisiana: Chalmette, Harvey, Kenner'
+  state: Louisiana
+phone_area_code_113:
+  id: '113'
+  code: '505'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Mexico: Albuquerque, Farmington, Gallup'
+  state: New Mexico
+phone_area_code_114:
+  id: '114'
+  code: '507'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Minnesota: Austin, Faribault, Mankato'
+  state: Minnesota
+phone_area_code_115:
+  id: '115'
+  code: '508'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Massachusetts: Attleboro, Barnstable Town, Brockton'
+  state: Massachusetts
+phone_area_code_116:
+  id: '116'
+  code: '509'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Washington: Kennewick, Opportunity, Pasco'
+  state: Washington
+phone_area_code_117:
+  id: '117'
+  code: '510'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Alameda, Berkeley, Castro Valley'
+  state: California
+phone_area_code_118:
+  id: '118'
+  code: '512'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Austin, Cedar Park, Georgetown'
+  state: Texas
+phone_area_code_119:
+  id: '119'
+  code: '513'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Cincinnati, Fairfield, Hamilton'
+  state: Ohio
+phone_area_code_120:
+  id: '120'
+  code: '515'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Iowa: Ames, Ankeny, Des Moines'
+  state: Iowa
+phone_area_code_121:
+  id: '121'
+  code: '516'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Baldwin, East Meadow, Elmont'
+  state: New York
+phone_area_code_122:
+  id: '122'
+  code: '517'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Adrian, Clinton, East Lansing'
+  state: Michigan
+phone_area_code_123:
+  id: '123'
+  code: '518'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Albany, Rotterdam, Saratoga Springs'
+  state: New York
+phone_area_code_124:
+  id: '124'
+  code: '520'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Arizona: Casa Adobes, Casa Grande, Catalina Foothills'
+  state: Arizona
+phone_area_code_125:
+  id: '125'
+  code: '530'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Chico, Davis, Paradise'
+  state: California
+phone_area_code_126:
+  id: '126'
+  code: '531'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Nebraska
+  state: Nebraska
+phone_area_code_127:
+  id: '127'
+  code: '534'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Wisconsin
+  state: Wisconsin
+phone_area_code_128:
+  id: '128'
+  code: '539'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Oklahoma: Bartlesville, Broken Arrow, Muskogee'
+  state: Oklahoma
+phone_area_code_129:
+  id: '129'
+  code: '540'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Virginia: Blacksburg, Cave Spring, Harrisonburg'
+  state: Virginia
+phone_area_code_130:
+  id: '130'
+  code: '541'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Oregon: Albany, Bend, Corvallis'
+  state: Oregon
+phone_area_code_131:
+  id: '131'
+  code: '551'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Jersey: Bayonne, Bergenfield, Cliffside Park'
+  state: New Jersey
+phone_area_code_132:
+  id: '132'
+  code: '559'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Clovis, Fresno, Hanford'
+  state: California
+phone_area_code_133:
+  id: '133'
+  code: '561'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Boca Del Mar, Boca Raton, Boynton Beach'
+  state: Florida
+phone_area_code_134:
+  id: '134'
+  code: '562'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Bellflower, Cerritos, Downey'
+  state: California
+phone_area_code_135:
+  id: '135'
+  code: '563'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Iowa: Bettendorf, Clinton, Davenport'
+  state: Iowa
+phone_area_code_136:
+  id: '136'
+  code: '567'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Ashland, Bowling Green, Findlay'
+  state: Ohio
+phone_area_code_137:
+  id: '137'
+  code: '570'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Back Mountain, Hazleton, Scranton'
+  state: Pennsylvania
+phone_area_code_138:
+  id: '138'
+  code: '571'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Virginia: Alexandria, Annandale, Arlington'
+  state: Virginia
+phone_area_code_139:
+  id: '139'
+  code: '573'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Missouri: Cape Girardeau, Columbia, Jefferson City'
+  state: Missouri
+phone_area_code_140:
+  id: '140'
+  code: '574'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Indiana: Elkhart, Goshen, Granger'
+  state: Indiana
+phone_area_code_141:
+  id: '141'
+  code: '575'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Mexico: Alamogordo, Carlsbad, Clovis'
+  state: New Mexico
+phone_area_code_142:
+  id: '142'
+  code: '580'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Oklahoma: Altus, Ardmore, Duncan'
+  state: Oklahoma
+phone_area_code_143:
+  id: '143'
+  code: '585'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Brighton, Irondequoit, Rochester'
+  state: New York
+phone_area_code_144:
+  id: '144'
+  code: '586'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Clinton, Eastpointe, Harrison'
+  state: Michigan
+phone_area_code_145:
+  id: '145'
+  code: '601'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Mississippi: Clinton, Hattiesburg, Jackson'
+  state: Mississippi
+phone_area_code_146:
+  id: '146'
+  code: '602'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Arizona: Phoenix'
+  state: Arizona
+phone_area_code_147:
+  id: '147'
+  code: '603'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Hampshire: Concord, Derry, Dover'
+  state: New Hampshire
+phone_area_code_148:
+  id: '148'
+  code: '605'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'South Dakota: Aberdeen, Pierre, Rapid City'
+  state: South Dakota
+phone_area_code_149:
+  id: '149'
+  code: '606'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Kentucky: Ashland'
+  state: Kentucky
+phone_area_code_150:
+  id: '150'
+  code: '607'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Binghamton, Elmira, Ithaca'
+  state: New York
+phone_area_code_151:
+  id: '151'
+  code: '608'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Wisconsin: Beloit, Fitchburg, Janesville'
+  state: Wisconsin
+phone_area_code_152:
+  id: '152'
+  code: '609'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Jersey: Atlantic City, Ewing, Mercerville-hamilton Square'
+  state: New Jersey
+phone_area_code_153:
+  id: '153'
+  code: '610'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Allentown, Bethlehem, Chester'
+  state: Pennsylvania
+phone_area_code_154:
+  id: '154'
+  code: '612'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Minnesota: Crystal, Golden Valley, Minneapolis'
+  state: Minnesota
+phone_area_code_155:
+  id: '155'
+  code: '614'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Columbus, Dublin, Gahanna'
+  state: Ohio
+phone_area_code_156:
+  id: '156'
+  code: '615'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Tennessee: Brentwood, Franklin, Gallatin'
+  state: Tennessee
+phone_area_code_157:
+  id: '157'
+  code: '616'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Forest Hills, Grand Rapids, Holland'
+  state: Michigan
+phone_area_code_158:
+  id: '158'
+  code: '617'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Massachusetts: Belmont, Boston, Brookline'
+  state: Massachusetts
+phone_area_code_159:
+  id: '159'
+  code: '618'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Alton, Belleville, Carbondale'
+  state: Illinois
+phone_area_code_160:
+  id: '160'
+  code: '619'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Chula Vista, Coronado, El Cajon'
+  state: California
+phone_area_code_161:
+  id: '161'
+  code: '620'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Kansas: Dodge City, Emporia, Garden City'
+  state: Kansas
+phone_area_code_162:
+  id: '162'
+  code: '623'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Arizona: Avondale, Glendale, Peoria'
+  state: Arizona
+phone_area_code_163:
+  id: '163'
+  code: '626'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Alhambra, Altadena, Arcadia'
+  state: California
+phone_area_code_164:
+  id: '164'
+  code: '630'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Addison, Aurora, Bartlett'
+  state: Illinois
+phone_area_code_165:
+  id: '165'
+  code: '631'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Bay Shore, Brentwood, Centereach'
+  state: New York
+phone_area_code_166:
+  id: '166'
+  code: '636'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Missouri: Ballwin, Chesterfield, O''fallon'
+  state: Missouri
+phone_area_code_167:
+  id: '167'
+  code: '641'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Iowa: Marshalltown, Mason City, Ottumwa'
+  state: Iowa
+phone_area_code_168:
+  id: '168'
+  code: '646'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Manhattan, New York City'
+  state: New York
+phone_area_code_169:
+  id: '169'
+  code: '650'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Belmont, Burlingame, Daly City'
+  state: California
+phone_area_code_170:
+  id: '170'
+  code: '651'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Minnesota: Apple Valley, Cottage Grove, Eagan'
+  state: Minnesota
+phone_area_code_171:
+  id: '171'
+  code: '657'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Anaheim, Brea, Buena Park'
+  state: California
+phone_area_code_172:
+  id: '172'
+  code: '660'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Missouri: Sedalia'
+  state: Missouri
+phone_area_code_173:
+  id: '173'
+  code: '661'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Bakersfield, Delano, Lancaster'
+  state: California
+phone_area_code_174:
+  id: '174'
+  code: '662'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Mississippi: Clarksdale, Columbus, Greenville'
+  state: Mississippi
+phone_area_code_175:
+  id: '175'
+  code: '667'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Maryland: Annapolis, Arbutus, Arnold'
+  state: Maryland
+phone_area_code_176:
+  id: '176'
+  code: '669'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Campbell, Gilroy, Los Gatos'
+  state: California
+phone_area_code_177:
+  id: '177'
+  code: '670'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Northern Mariana Islands: Saipan'
+  state: Northern Mariana Islands
+phone_area_code_178:
+  id: '178'
+  code: '671'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Guam: Hagatna'
+  state: Guam
+phone_area_code_179:
+  id: '179'
+  code: '678'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Georgia: Alpharetta, Atlanta, Candler-mcafee'
+  state: Georgia
+phone_area_code_180:
+  id: '180'
+  code: '681'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: West Virginia
+  state: West Virginia
+phone_area_code_181:
+  id: '181'
+  code: '682'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Arlington, Bedford, Benbrook'
+  state: Texas
+phone_area_code_182:
+  id: '182'
+  code: '684'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'American Samoa: Pago'
+  state: American Samoa
+phone_area_code_183:
+  id: '183'
+  code: '701'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'North Dakota: Bismarck, Fargo, Grand Forks'
+  state: North Dakota
+phone_area_code_184:
+  id: '184'
+  code: '702'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Nevada: Henderson, Las Vegas, North Las Vegas'
+  state: Nevada
+phone_area_code_185:
+  id: '185'
+  code: '703'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Virginia: Alexandria, Annandale, Arlington'
+  state: Virginia
+phone_area_code_186:
+  id: '186'
+  code: '704'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'North Carolina: Charlotte, Concord, Gastonia'
+  state: North Carolina
+phone_area_code_187:
+  id: '187'
+  code: '706'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Georgia: Athens, Augusta, Columbus'
+  state: Georgia
+phone_area_code_188:
+  id: '188'
+  code: '707'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Benicia, Eureka, Fairfield'
+  state: California
+phone_area_code_189:
+  id: '189'
+  code: '708'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Bellwood, Berwyn, Blue Island'
+  state: Illinois
+phone_area_code_190:
+  id: '190'
+  code: '712'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Iowa: Council Bluffs, Sioux City'
+  state: Iowa
+phone_area_code_191:
+  id: '191'
+  code: '713'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Alvin, Atascocita, Baytown'
+  state: Texas
+phone_area_code_192:
+  id: '192'
+  code: '714'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Anaheim, Brea, Buena Park'
+  state: California
+phone_area_code_193:
+  id: '193'
+  code: '715'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Wisconsin: Eau Claire, Stevens Point, Superior'
+  state: Wisconsin
+phone_area_code_194:
+  id: '194'
+  code: '716'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Buffalo, Cheektowaga, Jamestown'
+  state: New York
+phone_area_code_195:
+  id: '195'
+  code: '717'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Harrisburg, Lancaster, Lebanon'
+  state: Pennsylvania
+phone_area_code_196:
+  id: '196'
+  code: '718'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Bronx, Brooklyn, New York City'
+  state: New York
+phone_area_code_197:
+  id: '197'
+  code: '719'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Colorado: Colorado Springs, Pueblo, Security-widefield'
+  state: Colorado
+phone_area_code_198:
+  id: '198'
+  code: '720'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Colorado: Arvada, Aurora, Boulder'
+  state: Colorado
+phone_area_code_199:
+  id: '199'
+  code: '724'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Mccandless, Monroeville, New Castle'
+  state: Pennsylvania
+phone_area_code_200:
+  id: '200'
+  code: '725'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Nevada: Henderson, Las Vegas, North Las Vegas'
+  state: Nevada
+phone_area_code_201:
+  id: '201'
+  code: '727'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Bayonet Point, Clearwater, Dunedin'
+  state: Florida
+phone_area_code_202:
+  id: '202'
+  code: '731'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Tennessee: Jackson'
+  state: Tennessee
+phone_area_code_203:
+  id: '203'
+  code: '732'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Jersey: Brick, Carteret, East Brunswick'
+  state: New Jersey
+phone_area_code_204:
+  id: '204'
+  code: '734'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Ann Arbor, Canton, Garden City'
+  state: Michigan
+phone_area_code_205:
+  id: '205'
+  code: '737'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Austin, Cedar Park, Georgetown'
+  state: Texas
+phone_area_code_206:
+  id: '206'
+  code: '740'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Athens, Chillicothe, Delaware'
+  state: Ohio
+phone_area_code_207:
+  id: '207'
+  code: '747'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: California
+  state: California
+phone_area_code_208:
+  id: '208'
+  code: '754'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Coconut Creek, Cooper City, Coral Springs'
+  state: Florida
+phone_area_code_209:
+  id: '209'
+  code: '757'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Virginia: Chesapeake, Hampton, Newport News'
+  state: Virginia
+phone_area_code_210:
+  id: '210'
+  code: '760'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Apple Valley, Barstow, Brawley'
+  state: California
+phone_area_code_211:
+  id: '211'
+  code: '762'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Georgia: Athens, Augusta, Columbus'
+  state: Georgia
+phone_area_code_212:
+  id: '212'
+  code: '763'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Minnesota: Blaine, Brooklyn Center, Brooklyn Park'
+  state: Minnesota
+phone_area_code_213:
+  id: '213'
+  code: '765'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Indiana: Anderson, Kokomo, Lafayette'
+  state: Indiana
+phone_area_code_214:
+  id: '214'
+  code: '769'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Mississippi: Clinton, Hattiesburg, Jackson'
+  state: Mississippi
+phone_area_code_215:
+  id: '215'
+  code: '770'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Georgia: Alpharetta, Atlanta, College Park'
+  state: Georgia
+phone_area_code_216:
+  id: '216'
+  code: '772'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Fort Pierce, Palm City, Port St. Lucie'
+  state: Florida
+phone_area_code_217:
+  id: '217'
+  code: '773'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Chicago'
+  state: Illinois
+phone_area_code_218:
+  id: '218'
+  code: '774'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Massachusetts: Attleboro, Barnstable Town, Brockton'
+  state: Massachusetts
+phone_area_code_219:
+  id: '219'
+  code: '775'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Nevada: Carson City, Pahrump, Reno'
+  state: Nevada
+phone_area_code_220:
+  id: '220'
+  code: '779'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Belvidere, Crystal Lake, De Kalb'
+  state: Illinois
+phone_area_code_221:
+  id: '221'
+  code: '781'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Massachusetts: Arlington, Braintree, Burlington'
+  state: Massachusetts
+phone_area_code_222:
+  id: '222'
+  code: '785'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Kansas: Hays, Lawrence, Manhattan'
+  state: Kansas
+phone_area_code_223:
+  id: '223'
+  code: '786'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Aventura, Carol City, Coral Gables'
+  state: Florida
+phone_area_code_224:
+  id: '224'
+  code: '787'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Puerto Rico: San Juan'
+  state: Puerto Rico
+phone_area_code_225:
+  id: '225'
+  code: '801'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Utah: American Fork, Bountiful, Clearfield'
+  state: Utah
+phone_area_code_226:
+  id: '226'
+  code: '802'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Vermont: Burlington, Montpelier'
+  state: Vermont
+phone_area_code_227:
+  id: '227'
+  code: '803'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'South Carolina: Aiken, Columbia, Rock Hill'
+  state: South Carolina
+phone_area_code_228:
+  id: '228'
+  code: '804'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Virginia: Hopewell, Mechanicsville, Petersburg'
+  state: Virginia
+phone_area_code_229:
+  id: '229'
+  code: '805'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Atascadero, Camarillo, El Paso De Robles'
+  state: California
+phone_area_code_230:
+  id: '230'
+  code: '806'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Amarillo, Lubbock, Plainview'
+  state: Texas
+phone_area_code_231:
+  id: '231'
+  code: '808'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Hawaii: Hilo, Honolulu, Kahului'
+  state: Hawaii
+phone_area_code_232:
+  id: '232'
+  code: '810'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Burton, Flint, Port Huron'
+  state: Michigan
+phone_area_code_233:
+  id: '233'
+  code: '812'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Indiana: Bloomington, Clarksville, Columbus'
+  state: Indiana
+phone_area_code_234:
+  id: '234'
+  code: '813'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Brandon, Citrus Park, Egypt Lake'
+  state: Florida
+phone_area_code_235:
+  id: '235'
+  code: '814'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Altoona, Erie, Johnstown'
+  state: Pennsylvania
+phone_area_code_236:
+  id: '236'
+  code: '815'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Belvidere, Crystal Lake, De Kalb'
+  state: Illinois
+phone_area_code_237:
+  id: '237'
+  code: '816'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Missouri: Belton, Blue Springs, Gladstone'
+  state: Missouri
+phone_area_code_238:
+  id: '238'
+  code: '817'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Arlington, Bedford, Benbrook'
+  state: Texas
+phone_area_code_239:
+  id: '239'
+  code: '818'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Agoura Hills, Burbank, Calabasas'
+  state: California
+phone_area_code_240:
+  id: '240'
+  code: '828'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'North Carolina: Asheville, Hickory'
+  state: North Carolina
+phone_area_code_241:
+  id: '241'
+  code: '830'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Del Rio, Eagle Pass, Kerrville'
+  state: Texas
+phone_area_code_242:
+  id: '242'
+  code: '831'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Hollister, Marina, Monterey'
+  state: California
+phone_area_code_243:
+  id: '243'
+  code: '832'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Alvin, Atascocita, Baytown'
+  state: Texas
+phone_area_code_244:
+  id: '244'
+  code: '843'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'South Carolina: Charleston, Florence, Goose Creek'
+  state: South Carolina
+phone_area_code_245:
+  id: '245'
+  code: '845'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Kingston, Middletown, New City'
+  state: New York
+phone_area_code_246:
+  id: '246'
+  code: '847'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Illinois: Algonquin, Arlington Heights, Buffalo Grove'
+  state: Illinois
+phone_area_code_247:
+  id: '247'
+  code: '848'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Jersey: Brick, Carteret, East Brunswick'
+  state: New Jersey
+phone_area_code_248:
+  id: '248'
+  code: '850'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Bellview, Brent, Ferry Pass'
+  state: Florida
+phone_area_code_249:
+  id: '249'
+  code: '856'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Jersey: Bridgeton, Camden, Cherry Hill'
+  state: New Jersey
+phone_area_code_250:
+  id: '250'
+  code: '857'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Massachusetts: Belmont, Boston, Brookline'
+  state: Massachusetts
+phone_area_code_251:
+  id: '251'
+  code: '858'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Poway'
+  state: California
+phone_area_code_252:
+  id: '252'
+  code: '859'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Kentucky: Covington, Florence, Lexington'
+  state: Kentucky
+phone_area_code_253:
+  id: '253'
+  code: '860'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Connecticut: Bristol, Central Manchester, East Hartford'
+  state: Connecticut
+phone_area_code_254:
+  id: '254'
+  code: '862'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Jersey: Belleville, Bloomfield, Clifton'
+  state: New Jersey
+phone_area_code_255:
+  id: '255'
+  code: '863'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Lakeland, Winter Haven'
+  state: Florida
+phone_area_code_256:
+  id: '256'
+  code: '864'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'South Carolina: Anderson, Greenville, Greenwood'
+  state: South Carolina
+phone_area_code_257:
+  id: '257'
+  code: '865'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Tennessee: Knoxville, Maryville, Oak Ridge'
+  state: Tennessee
+phone_area_code_258:
+  id: '258'
+  code: '870'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Arkansas: El Dorado, Jonesboro, Paragould'
+  state: Arkansas
+phone_area_code_259:
+  id: '259'
+  code: '872'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Illinois
+  state: Illinois
+phone_area_code_260:
+  id: '260'
+  code: '878'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Pennsylvania: Bethel Park, Mccandless, Mckeesport'
+  state: Pennsylvania
+phone_area_code_261:
+  id: '261'
+  code: '901'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Tennessee: Bartlett, Collierville, Germantown'
+  state: Tennessee
+phone_area_code_262:
+  id: '262'
+  code: '903'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Corsicana, Denison, Greenville'
+  state: Texas
+phone_area_code_263:
+  id: '263'
+  code: '904'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Jacksonville, Jacksonville Beach, Lakeside'
+  state: Florida
+phone_area_code_264:
+  id: '264'
+  code: '906'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Michigan
+  state: Michigan
+phone_area_code_265:
+  id: '265'
+  code: '907'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Alaska: Anchorage, College, Fairbanks'
+  state: Alaska
+phone_area_code_266:
+  id: '266'
+  code: '908'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Jersey: Cranford, Elizabeth, Hillside'
+  state: New Jersey
+phone_area_code_267:
+  id: '267'
+  code: '909'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Chino, Chino Hills, Claremont'
+  state: California
+phone_area_code_268:
+  id: '268'
+  code: '910'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'North Carolina: Fayetteville, Fort Bragg, Jacksonville'
+  state: North Carolina
+phone_area_code_269:
+  id: '269'
+  code: '912'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Georgia: Hinesville, Savannah, Statesboro'
+  state: Georgia
+phone_area_code_270:
+  id: '270'
+  code: '913'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Kansas: Kansas City, Leavenworth, Leawood'
+  state: Kansas
+phone_area_code_271:
+  id: '271'
+  code: '914'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Harrison, Mount Vernon, New Rochelle'
+  state: New York
+phone_area_code_272:
+  id: '272'
+  code: '915'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: El Paso, Socorro'
+  state: Texas
+phone_area_code_273:
+  id: '273'
+  code: '916'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Arden-arcade, Carmichael, Citrus Heights'
+  state: California
+phone_area_code_274:
+  id: '274'
+  code: '917'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Bronx, Brooklyn, Manhattan'
+  state: New York
+phone_area_code_275:
+  id: '275'
+  code: '918'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Oklahoma: Bartlesville, Broken Arrow, Muskogee'
+  state: Oklahoma
+phone_area_code_276:
+  id: '276'
+  code: '919'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'North Carolina: Apex, Cary, Chapel Hill'
+  state: North Carolina
+phone_area_code_277:
+  id: '277'
+  code: '920'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Wisconsin: Appleton, De Pere, Fond Du Lac'
+  state: Wisconsin
+phone_area_code_278:
+  id: '278'
+  code: '925'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Antioch, Bay Point, Brentwood'
+  state: California
+phone_area_code_279:
+  id: '279'
+  code: '928'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Arizona: Bullhead City, Flagstaff, Fortuna Foothills'
+  state: Arizona
+phone_area_code_280:
+  id: '280'
+  code: '929'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New York: Bronx, Brooklyn, New York City'
+  state: New York
+phone_area_code_281:
+  id: '281'
+  code: '931'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Tennessee: Clarksville, Columbia, Cookeville'
+  state: Tennessee
+phone_area_code_282:
+  id: '282'
+  code: '936'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Conroe, Huntsville, Lufkin'
+  state: Texas
+phone_area_code_283:
+  id: '283'
+  code: '937'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Ohio: Beavercreek, Centerville, Dayton'
+  state: Ohio
+phone_area_code_284:
+  id: '284'
+  code: '938'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Alabama
+  state: Alabama
+phone_area_code_285:
+  id: '285'
+  code: '939'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Puerto Rico: San Juan'
+  state: Puerto Rico
+phone_area_code_286:
+  id: '286'
+  code: '940'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Denton, Lewisville, Wichita Falls'
+  state: Texas
+phone_area_code_287:
+  id: '287'
+  code: '941'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Bradenton, North Port, Port Charlotte'
+  state: Florida
+phone_area_code_288:
+  id: '288'
+  code: '947'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Bloomfield, Farmington Hills, Ferndale'
+  state: Michigan
+phone_area_code_289:
+  id: '289'
+  code: '949'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Aliso Viejo, Costa Mesa, Dana Point'
+  state: California
+phone_area_code_290:
+  id: '290'
+  code: '951'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'California: Banning, Corona, Hemet'
+  state: California
+phone_area_code_291:
+  id: '291'
+  code: '952'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Minnesota: Bloomington, Burnsville, Chanhassen'
+  state: Minnesota
+phone_area_code_292:
+  id: '292'
+  code: '954'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Florida: Coconut Creek, Cooper City, Coral Springs'
+  state: Florida
+phone_area_code_293:
+  id: '293'
+  code: '956'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Brownsville, Edinburg, Harlingen'
+  state: Texas
+phone_area_code_294:
+  id: '294'
+  code: '970'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Colorado: Fort Collins, Grand Junction, Greeley'
+  state: Colorado
+phone_area_code_295:
+  id: '295'
+  code: '971'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Oregon: Aloha, Beaverton, Gresham'
+  state: Oregon
+phone_area_code_296:
+  id: '296'
+  code: '972'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Allen, Carrollton, Cedar Hill'
+  state: Texas
+phone_area_code_297:
+  id: '297'
+  code: '973'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'New Jersey: Belleville, Bloomfield, Clifton'
+  state: New Jersey
+phone_area_code_298:
+  id: '298'
+  code: '978'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Massachusetts: Beverly, Chelmsford, Danvers'
+  state: Massachusetts
+phone_area_code_299:
+  id: '299'
+  code: '979'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Texas: Bryan, College Station, Lake Jackson'
+  state: Texas
+phone_area_code_300:
+  id: '300'
+  code: '980'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'North Carolina: Charlotte, Concord, Gastonia'
+  state: North Carolina
+phone_area_code_301:
+  id: '301'
+  code: '984'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'North Carolina: Apex, Cary, Chapel Hill'
+  state: North Carolina
+phone_area_code_302:
+  id: '302'
+  code: '985'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Louisiana: Houma, Laplace, Slidell'
+  state: Louisiana
+phone_area_code_303:
+  id: '303'
+  code: '989'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: 'Michigan: Bay City, Harrison, Midland'
+  state: Michigan
+phone_area_code_304:
+  id: '304'
+  code: '204'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Manitoba
+  state: Manitoba
+phone_area_code_305:
+  id: '305'
+  code: '226'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_306:
+  id: '306'
+  code: '236'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: British Columbia
+  state: British Columbia
+phone_area_code_307:
+  id: '307'
+  code: '249'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_308:
+  id: '308'
+  code: '250'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: British Columbia
+  state: British Columbia
+phone_area_code_309:
+  id: '309'
+  code: '289'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_310:
+  id: '310'
+  code: '306'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Saskatchewan
+  state: Saskatchewan
+phone_area_code_311:
+  id: '311'
+  code: '343'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_312:
+  id: '312'
+  code: '365'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_313:
+  id: '313'
+  code: '403'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Alberta
+  state: Alberta
+phone_area_code_314:
+  id: '314'
+  code: '416'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_315:
+  id: '315'
+  code: '418'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Quebec
+  state: Quebec
+phone_area_code_316:
+  id: '316'
+  code: '431'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Manitoba
+  state: Manitoba
+phone_area_code_317:
+  id: '317'
+  code: '437'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_318:
+  id: '318'
+  code: '438'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Quebec
+  state: Quebec
+phone_area_code_319:
+  id: '319'
+  code: '450'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Quebec
+  state: Quebec
+phone_area_code_320:
+  id: '320'
+  code: '506'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: New Brunswick
+  state: New Brunswick
+phone_area_code_321:
+  id: '321'
+  code: '514'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Quebec
+  state: Quebec
+phone_area_code_322:
+  id: '322'
+  code: '519'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_323:
+  id: '323'
+  code: '579'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Quebec
+  state: Quebec
+phone_area_code_324:
+  id: '324'
+  code: '581'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Quebec
+  state: Quebec
+phone_area_code_325:
+  id: '325'
+  code: '587'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Alberta
+  state: Alberta
+phone_area_code_326:
+  id: '326'
+  code: '604'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: British Columbia
+  state: British Columbia
+phone_area_code_327:
+  id: '327'
+  code: '613'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_328:
+  id: '328'
+  code: '639'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Saskatchewan
+  state: Saskatchewan
+phone_area_code_329:
+  id: '329'
+  code: '647'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_330:
+  id: '330'
+  code: '705'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_331:
+  id: '331'
+  code: '709'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Newfoundland
+  state: Newfoundland
+phone_area_code_332:
+  id: '332'
+  code: '778'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: British Columbia
+  state: British Columbia
+phone_area_code_333:
+  id: '333'
+  code: '780'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Alberta
+  state: Alberta
+phone_area_code_334:
+  id: '334'
+  code: '807'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_335:
+  id: '335'
+  code: '819'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Quebec
+  state: Quebec
+phone_area_code_336:
+  id: '336'
+  code: '867'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Northwest Territories, Nunavut, Yukon
+  state: Northwest Territories, Nunavut, Yukon
+phone_area_code_337:
+  id: '337'
+  code: '873'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Quebec
+  state: Quebec
+phone_area_code_338:
+  id: '338'
+  code: '902'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Nova Scotia
+  state: Nova Scotia
+phone_area_code_339:
+  id: '339'
+  code: '905'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Ontario
+  state: Ontario
+phone_area_code_340:
+  id: '340'
+  code: '800'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Toll Free
+  state: Toll Free
+phone_area_code_341:
+  id: '341'
+  code: '844'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Toll Free
+  state: Toll Free
+phone_area_code_342:
+  id: '342'
+  code: '855'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Toll Free
+  state: Toll Free
+phone_area_code_343:
+  id: '343'
+  code: '866'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Toll Free
+  state: Toll Free
+phone_area_code_344:
+  id: '344'
+  code: '877'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Toll Free
+  state: Toll Free
+phone_area_code_345:
+  id: '345'
+  code: '888'
+  created_at: '2018-10-29 04:57:30.279209+00'
+  location: Toll Free
+  state: Toll Free

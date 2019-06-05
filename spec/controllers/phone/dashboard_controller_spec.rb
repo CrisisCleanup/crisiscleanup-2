@@ -60,6 +60,20 @@ RSpec.describe Phone::DashboardController, :type => :controller do
 			end
 		end	
 		
+		context "Test State Filter - Empty String" do
+			before do |example|
+				org = FactoryGirl.create(:legacy_organization, call_state_filter: '')
+				@user = User.create(name:'Gary', email:'Gary@aol.com', password:'blue32blue32', legacy_organization_id: org.id, admin: false)
+				@phone_outbound = PhoneOutbound.create()
+			end
+			
+			it "renders index view" do
+				allow(controller).to receive(:current_user).and_return(@user)
+				get :index
+				expect(should).to render_template :done		
+			end
+		end		
+		
 		context "Test State Filter - With specific state - no more available" do
 			before do |example|
 				org = FactoryGirl.create(:legacy_organization, call_state_filter: 'Oklahoma')
@@ -71,6 +85,31 @@ RSpec.describe Phone::DashboardController, :type => :controller do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get :index
 				expect(should).to render_template :done		
+			end
+		end	
+		
+		context "Verify PhoneAreaCode count" do
+			fixtures :phone_area_codes
+			
+			it "has the correct count" do
+				expect(PhoneAreaCode.count(:all)).to eq(345)
+			end
+			
+		end
+		
+		context "Test State Filter - With specific state" do
+			fixtures :phone_area_codes
+			
+			before do |example|
+				org = FactoryGirl.create(:legacy_organization, call_state_filter: 'Oklahoma')
+				@user = User.create(name:'Gary', email:'Gary@aol.com', password:'blue32blue32', legacy_organization_id: org.id, admin: false)
+				@phone_outbound = FactoryGirl.create(:phone_outbound_1)
+			end
+			
+			it "renders index view" do
+				allow(controller).to receive(:current_user).and_return(@user)
+				get :index
+				expect(should).to render_template :index		
 			end
 		end	
 		

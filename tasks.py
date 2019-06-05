@@ -201,6 +201,16 @@ def rspec(c, env='dev', rebuild_test_db=False):
     cmd = '{0} -f docker-compose.{1}.yml exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bundle exec rspec"'.format(BASE_COMPOSE_CMD, env)
     c.run(cmd, pty=True)      
     
+@task(help = {})
+def copy_test(c, env='dev'):
+    """
+    Run rspec tests
+    """
+    cmd1 = "docker cp ./phone_area_codes.sql crisiscleanup_postgres_1:/tmp"
+    cmd2 = 'docker-compose exec postgres bash -c "cat /tmp/phone_area_codes.sql | psql -U postgres -d crisiscleanup_test"'
+    c.run(cmd1, pty=True)         
+    c.run(cmd2, pty=True)         
+    
 @task(help = {
     'path': 'Path to spec - e.g. spec/controllers/phone'
 })

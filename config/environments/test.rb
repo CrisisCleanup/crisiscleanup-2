@@ -41,6 +41,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
+  # https://stackoverflow.com/questions/7759321/disable-rails-sql-logging-in-console
   config.logger = Logger.new(STDOUT)
   config.logger.level = Logger::WARN
   config.active_record.logger = nil
