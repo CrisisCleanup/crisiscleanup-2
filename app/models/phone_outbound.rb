@@ -59,8 +59,8 @@ class PhoneOutbound < ActiveRecord::Base
         phone_outbound.completion < 1 OR phone_outbound.completion IS NULL
         
       )")
-      .where("phone_outbound.dnis1_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter) 
-      OR phone_outbound.dnis2_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter)", {call_state_filter: call_state_filter})
+      .where("phone_outbound.dnis2_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter) 
+      OR phone_outbound.dnis1_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter)", {call_state_filter: call_state_filter})
       .order(:call_type, :inbound_at, :case_updated_at).first
   end
       

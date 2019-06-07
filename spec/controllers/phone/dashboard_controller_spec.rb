@@ -113,6 +113,22 @@ RSpec.describe Phone::DashboardController, :type => :controller do
 			end
 		end	
 		
+		context "Test State Filter - With specific state - dnis2 - returns record that is associated with state" do
+			fixtures :phone_area_codes
+			
+			before do |example|
+				org = FactoryGirl.create(:legacy_organization, call_state_filter: 'Oklahoma')
+				@user = User.create(name:'Gary', email:'Gary@aol.com', password:'blue32blue32', legacy_organization_id: org.id, admin: false)
+				@phone_outbound = FactoryGirl.create(:phone_outbound_2)
+			end
+			
+			it "renders index view" do
+				allow(controller).to receive(:current_user).and_return(@user)
+				get :index
+				expect(should).to render_template :index		
+			end
+		end	
+		
 	end
 
 end
