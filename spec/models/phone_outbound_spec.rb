@@ -49,6 +49,13 @@ RSpec.describe PhoneOutbound, type: :model do
   		  phone_outbound_record = PhoneOutbound.select_next_phone_outbound_for_user(@user.id)
   			expect(phone_outbound_record).to be_nil
   		end 		
+  		
+      it "will not return phone_outbound record if already in progress (phone_outbound_status)" do
+  			po = FactoryGirl.create(:phone_outbound_incomplete)
+  			pos = FactoryGirl.create(:phone_outbound_status_1, outbound_id: po.id)
+  		  phone_outbound_record = PhoneOutbound.select_next_phone_outbound_for_user(@user.id)
+  			expect(phone_outbound_record).to be_nil
+  		end 		
   	end	
   end
   
