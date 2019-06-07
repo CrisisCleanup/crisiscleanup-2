@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require File.expand_path("../../lib/mock_geocoder", __FILE__)
 require File.expand_path("../support/features/session_helpers", __FILE__)
 

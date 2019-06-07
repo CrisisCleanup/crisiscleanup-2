@@ -83,6 +83,8 @@ gem 'tinymce-rails'
 
 gem 'rqrcode'
 
+gem 'simplecov', require: false, group: :test
+
 group :production do
   gem 'rack-timeout'
   gem 'newrelic_rpm'
