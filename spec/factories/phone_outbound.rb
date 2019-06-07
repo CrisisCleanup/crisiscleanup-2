@@ -3,7 +3,6 @@ FactoryGirl.define do
     dnis1 4051234567
     dnis1_area_code 405 # Oklahoma
     inbound_at DateTime.now.to_date
-    # case_updated_at DateTime.now.to_date
     updated_at DateTime.now.to_date
     vm_link ''
     call_type 'A'
@@ -21,5 +20,10 @@ FactoryGirl.define do
     call_type 'A'
     completion 0
   end 
+  
+   factory :phone_outbound_incomplete, :class => PhoneOutbound do
+    vm_link ''
+    completion 0
+  end  
 end
 

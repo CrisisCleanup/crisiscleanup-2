@@ -31,6 +31,7 @@ RSpec.describe Phone::DashboardController, :type => :controller do
 		
 		
 	describe "State filters" do
+		fixtures :phone_area_codes
 		
 		context "Test State Filter - nil" do
 			before do |example|
@@ -89,7 +90,6 @@ RSpec.describe Phone::DashboardController, :type => :controller do
 		end	
 		
 		context "Verify PhoneAreaCode count" do
-			fixtures :phone_area_codes
 			
 			it "has the correct count" do
 				expect(PhoneAreaCode.count(:all)).to be > 300
@@ -98,7 +98,6 @@ RSpec.describe Phone::DashboardController, :type => :controller do
 		end
 		
 		context "Test State Filter - With specific state - returns record that is associated with state" do
-			fixtures :phone_area_codes
 			
 			before do |example|
 				org = FactoryGirl.create(:legacy_organization, call_state_filter: 'Oklahoma')
@@ -114,7 +113,6 @@ RSpec.describe Phone::DashboardController, :type => :controller do
 		end	
 		
 		context "Test State Filter - With specific state - dnis2 - returns record that is associated with state" do
-			fixtures :phone_area_codes
 			
 			before do |example|
 				org = FactoryGirl.create(:legacy_organization, call_state_filter: 'Oklahoma')
