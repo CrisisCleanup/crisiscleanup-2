@@ -1,5 +1,8 @@
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter "/spec/"
+  add_filter "/test/"
+end
 
 require File.expand_path("../../lib/mock_geocoder", __FILE__)
 require File.expand_path("../support/features/session_helpers", __FILE__)
