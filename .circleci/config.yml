@@ -10,10 +10,10 @@ jobs:
       environment:
         POSTGRES_DB: postgres
         POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: crisiscleanup       
+        POSTGRES_PASSWORD: crisiscleanup
     steps:
     - checkout
-    
+
     # Which version of bundler?
     - run:
         name: Which bundler?
@@ -24,12 +24,12 @@ jobs:
         keys:
           - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
           - rails-demo-bundle-v2-
-    
+
     # Install gem dependencies
     - run:
         name: Bundle Install
         command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
-        
+
     # Store bundle cache
     - save_cache:
         key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
@@ -50,11 +50,11 @@ jobs:
     - save_cache:
         key: rails-demo-yarn-{{ checksum "yarn.lock" }}
         paths:
-          - ~/.cache/yarn        
+          - ~/.cache/yarn
 
     # - run: bundle exec rake assets:precompile
-    
-    - run: 
+
+    - run:
         name: ESLint
         command: bin/webpack
 
@@ -67,7 +67,7 @@ jobs:
         environment:
           RAILS_ENV: test
           RACK_ENV: test
-          
+
     - run:
         name: Run rspec in parallel
         command: |
@@ -76,7 +76,7 @@ jobs:
                             --out test_results/rspec.xml \
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-                            
+
     # Save test results for timing analysis
     - store_test_results:
-        path: test_results                            
+        path: test_results
