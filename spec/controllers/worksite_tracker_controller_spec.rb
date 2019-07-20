@@ -12,7 +12,7 @@ RSpec.describe WorksiteTrackerController, :type => :controller do
 	describe "Get #index" do
 		
 		context 'invalid token' do
-			it "renders the errors not found view" do
+			it "renders the errors - not found view" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get(:index, token: '123456')
 				expect(should).to render_template 'errors/not_found'
@@ -28,7 +28,7 @@ RSpec.describe WorksiteTrackerController, :type => :controller do
 				@legacy_site = FactoryGirl.create(:legacy_site, data: data)
 				@print_token = PrintToken.create(token_expiration: DateTime.now.prev_day(2), legacy_site_id: @legacy_site.id)
 			end
-			it "renders the index view" do
+			it "renders the errors - not found view" do
 				allow(controller).to receive(:current_user).and_return(@user)
 				get(:index, token: @print_token.token)
 				expect(should).to render_template 'errors/not_found'
@@ -37,7 +37,7 @@ RSpec.describe WorksiteTrackerController, :type => :controller do
 		end		
 		
 		context 'valid token' do
-			before do |example2|
+			before do |example3|
 				data = {
 					status_notes: 'testnote'
 				}
