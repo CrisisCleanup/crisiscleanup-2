@@ -2,7 +2,7 @@
 
 # Crisis Cleanup [![Build Status](https://circleci.com/gh/CrisisCleanup/crisiscleanup.png?style=shield)](https://circleci.com/gh/crisiscleanup/crisiscleanup)
 
-Crisis Cleanup is a web platform that connects disaster recovery organization volunteers with people who need help after a disaster. The Crisis Cleanup platform has been used to connected 547,180 volunteers from 1,615 organizations with 78,034 households in 40 states and 128 disasters in 6 countries; a new disaster every two weeks.
+Crisis Cleanup is a web platform that connects disaster recovery organization volunteers with people who need help after a disaster. The Crisis Cleanup platform has been used to connected 547,180 volunteers from 1,615 organizations with 78,035 households in 40 states and 129 disasters in 6 countries; a new disaster every two weeks.
 
 Crisis Cleanup works best in a collaborative environment where multiple voluntary organizations and agencies work together and coordinate efforts. Because these organizations do not take orders from one another, Crisis Cleanup is designed to facilitate Collaborative Accountability models of inter-agency interaction, rather than command-and-control operations, or or heirarchical accountability models of interaction. 
 
@@ -23,7 +23,7 @@ Other Project Stats (As of 2019-07-22)
  - $505.3 Million: Minimum total market value of services to survivors.
  - $923: Value of each cleanup volunteer to his/her community.
  - $126.3 Million: Market value of services to survivors that would have otherwise been wasted in travel, management, overhead, and standing in lines.
- - $49,347: Money Crisis Cleanup has saved survivors every single day since July 18, 2012.
+ - $49,348: Money Crisis Cleanup has saved survivors every single day since July 18, 2012.
  - $9,474: Average commercial value of service to each homeowner.
  - $191: Return on investment to survivors, for every $1 invested in Crisis Cleanup.
 How we calculate these statistics: http://blog.crisiscleanup.org/2017/10/how-we-calculate-value-of-services.html
