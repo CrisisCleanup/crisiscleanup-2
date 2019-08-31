@@ -2,10 +2,8 @@ version: '3'
 services:
   postgres:
     image: postgres:9.6
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: crisiscleanup
+    env_file:
+      - .env.docker
     ports:
       - '5432:5432'
     volumes:
