@@ -135,6 +135,16 @@ module Phone
       @locked_call_current_phone_outbound_status = PhoneOutboundStatus.get_latest_for_outbound_id(@locked_call.id)
       logger.warn("5.1 - #{@locked_call_current_phone_outbound_status.inspect}")     
       
+      
+      puts "SESSION###### #{session['call_language_filter']}"
+      @available_language_filters = ['English', 'Spanish']
+      if session['call_language_filter'].nil?
+        @call_language_filter = 'English'
+      else
+        @call_language_filter = session[:call_language_filter] 
+      end
+      puts "call_language_filter###### #{@call_language_filter}"
+      
       @available_dnis = []
       @available_dnis << [@locked_call.dnis1, @locked_call.dnis1] if @locked_call.dnis1
       @available_dnis << [@locked_call.dnis2, @locked_call.dnis2] if @locked_call.dnis2
@@ -143,6 +153,16 @@ module Phone
         @site = Legacy::LegacySite.find_by_id(@locked_call.worksite_id)
       end
         
+    end
+    
+    def change_call_language
+      if params.has_key?(:phone_outbound_status_id)
+        PhoneOutboundStatus.find_by_id(params[:phone_outbound_status_id]).destroy();
+      end     
+      if params.has_key?(:call_language_filter)
+        session[:call_language_filter] = params[:call_language_filter]
+      end
+      return redirect_to phone_phone_dashboard_path
     end
     
     def cancel
