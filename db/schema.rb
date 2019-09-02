@@ -195,42 +195,6 @@ ActiveRecord::Schema.define(version: 20190901222437) do
   add_index "legacy_sites", ["legacy_event_id"], name: "index_legacy_sites_on_legacy_event_id", using: :btree
   add_index "legacy_sites", ["reported_by"], name: "index_legacy_sites_on_reported_by", using: :btree
 
-  create_table "legacy_sites_2016_09_05", force: :cascade do |t|
-    t.string   "address",                             null: false
-    t.float    "blurred_latitude",                    null: false
-    t.float    "blurred_longitude",                   null: false
-    t.string   "case_number",                         null: false
-    t.string   "city",                                null: false
-    t.integer  "claimed_by"
-    t.integer  "legacy_event_id",                     null: false
-    t.float    "latitude",                            null: false
-    t.float    "longitude",                           null: false
-    t.string   "name",                                null: false
-    t.string   "phone1"
-    t.integer  "reported_by"
-    t.date     "requested_at"
-    t.string   "state",                               null: false
-    t.string   "status",                              null: false
-    t.string   "work_type",         default: "Other", null: false
-    t.hstore   "data"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.date     "request_date"
-    t.string   "appengine_key"
-    t.string   "zip_code"
-    t.string   "county"
-    t.string   "phone2"
-    t.string   "work_requested"
-    t.string   "name_metaphone"
-    t.string   "city_metaphone"
-    t.string   "county_metaphone"
-    t.string   "address_metaphone"
-  end
-
-  add_index "legacy_sites_2016_09_05", ["claimed_by"], name: "legacy_sites_2016_09_05_claimed_by_idx", using: :btree
-  add_index "legacy_sites_2016_09_05", ["legacy_event_id"], name: "legacy_sites_2016_09_05_legacy_event_id_idx", using: :btree
-  add_index "legacy_sites_2016_09_05", ["reported_by"], name: "legacy_sites_2016_09_05_reported_by_idx", using: :btree
-
   create_table "phone_area_codes", primary_key: "code", force: :cascade do |t|
     t.integer  "id",         default: "nextval('phone_area_codes_id_seq'::regclass)", null: false
     t.datetime "created_at", default: "now()"
@@ -334,65 +298,6 @@ ActiveRecord::Schema.define(version: 20190901222437) do
     t.datetime "expires"
   end
 
-  create_table "tmp_sites", id: false, force: :cascade do |t|
-    t.text "case_number"
-    t.text "incident"
-    t.text "reporting_organization"
-    t.text "claiming_organization"
-    t.text "request_date"
-    t.text "name"
-    t.text "address"
-    t.text "city"
-    t.text "county"
-    t.text "state"
-    t.text "zip_code"
-    t.text "latitude"
-    t.text "longitude"
-    t.text "blurred_latitude"
-    t.text "blurred_longitude"
-    t.text "cross_street"
-    t.text "dwelling_type"
-    t.text "phone1"
-    t.text "phone2"
-    t.text "email"
-    t.text "time_to_call"
-    t.text "work_type"
-    t.text "rent_or_own"
-    t.text "work_without_resident"
-    t.text "member_of_assessing_organization"
-    t.text "first_responder"
-    t.text "older_than_60"
-    t.text "special_needs"
-    t.text "priority"
-    t.text "num_trees_down"
-    t.text "num_wide_trees"
-    t.text "work_requested"
-    t.text "notes"
-    t.text "house_affected"
-    t.text "outbuilding_affected"
-    t.text "exterior_property_affected"
-    t.text "destruction_level"
-    t.text "nonvegitative_debris_removal"
-    t.text "vegitative_debris_removal"
-    t.text "house_roof_damage"
-    t.text "outbuilding_roof_damage"
-    t.text "tarps_needed"
-    t.text "help_install_tarp"
-    t.text "habitable"
-    t.text "electricity"
-    t.text "electrical_lines"
-    t.text "unsafe_roof"
-    t.text "other_hazards"
-    t.text "status"
-    t.text "assigned_to"
-    t.text "total_volunteers"
-    t.text "hours_worked_per_volunteer"
-    t.text "initials_of_resident_present"
-    t.text "status_notes"
-    t.text "prepared_by"
-    t.text "do_not_work_before"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                    default: "",    null: false
     t.string   "encrypted_password",       default: "",    null: false
@@ -443,10 +348,6 @@ ActiveRecord::Schema.define(version: 20190901222437) do
   end
 
   add_index "worksite_work_types", ["work_type_key"], name: "worktype_name_unique", unique: true, using: :btree
-
-  create_table "zac", id: false, force: :cascade do |t|
-    t.text "a"
-  end
 
   add_foreign_key "phone_log", "phone_dnis", column: "dnis_id", name: "dnis_fkey"
   add_foreign_key "phone_outbound", "legacy_sites", column: "worksite_id", name: "worksite_id_fk"
