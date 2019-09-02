@@ -100,22 +100,29 @@ module Phone
       # check for incomplete calls by user
       @locked_call = PhoneOutbound.get_locked_call_for_user(current_user.id)
       logger.debug("5 - #{@locked_call.inspect}")
+      
+      @available_language_filters = ['English', 'Spanish']
+      if session['call_language_filter'].nil?
+        @call_language_filter = 'English'
+      else
+        @call_language_filter = session[:call_language_filter] 
+      end      
 
           
       #############################
       # Get a new call off the queue
       #############################
       if !@locked_call
-      
+        
         # Check for state filters
         current_state_filter = current_user.legacy_organization.call_state_filter
         logger.debug("6.1 - #{current_state_filter}")
         if !current_state_filter.nil? && current_state_filter != 'None'
-          phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user_with_state_filter(current_user.id, current_state_filter)
+          phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user_with_state_filter(current_user.id, current_state_filter, @call_language_filter)
           logger.debug("6.2 - New PhoneOutbound WITH state filter")
           logger.debug("6.2 - #{phone_outbound.inspect}")
         else
-          phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id)
+          phone_outbound = PhoneOutbound.select_next_phone_outbound_for_user(current_user.id, @call_language_filter)
           logger.debug("6.3 - New PhoneOutbound WITHOUT state filter")
         end
         logger.debug("6.4 - #{@locked_call.inspect}")
@@ -144,6 +151,16 @@ module Phone
         @site = Legacy::LegacySite.find_by_id(@locked_call.worksite_id)
       end
         
+    end
+    
+    def change_call_language
+      if params.has_key?(:phone_outbound_status_id)
+        PhoneOutboundStatus.find_by_id(params[:phone_outbound_status_id]).destroy();
+      end     
+      if params.has_key?(:call_language_filter)
+        session[:call_language_filter] = params[:call_language_filter]
+      end
+      return redirect_to phone_phone_dashboard_path
     end
     
     def cancel

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190601160913) do
+ActiveRecord::Schema.define(version: 20190901222437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -213,7 +213,7 @@ ActiveRecord::Schema.define(version: 20190601160913) do
     t.datetime "last_call"
   end
 
-  create_table "phone_logs", force: :cascade do |t|
+  create_table "phone_log", force: :cascade do |t|
     t.integer  "dnis_id"
     t.integer  "ani",          limit: 8
     t.datetime "time_call"
@@ -226,6 +226,8 @@ ActiveRecord::Schema.define(version: 20190601160913) do
     t.integer  "area_code"
     t.datetime "created_at",              default: "now()"
     t.datetime "updated_at",              default: "now()"
+    t.json     "incident_id"
+    t.integer  "language_id"
   end
 
   create_table "phone_outbound", force: :cascade do |t|
@@ -241,6 +243,7 @@ ActiveRecord::Schema.define(version: 20190601160913) do
     t.integer  "worksite_id"
     t.string   "call_type"
     t.float    "completion"
+    t.string   "language"
   end
 
   create_table "phone_outbound_status", force: :cascade do |t|
@@ -346,7 +349,7 @@ ActiveRecord::Schema.define(version: 20190601160913) do
 
   add_index "worksite_work_types", ["work_type_key"], name: "worktype_name_unique", unique: true, using: :btree
 
-  add_foreign_key "phone_logs", "phone_dnis", column: "dnis_id", name: "dnis_fkey"
+  add_foreign_key "phone_log", "phone_dnis", column: "dnis_id", name: "dnis_fkey"
   add_foreign_key "phone_outbound", "legacy_sites", column: "worksite_id", name: "worksite_id_fk"
   add_foreign_key "phone_outbound_status", "phone_outbound", column: "outbound_id", name: "outbound_id_fk"
   add_foreign_key "phone_outbound_status", "phone_status", column: "status_id", name: "status_id"

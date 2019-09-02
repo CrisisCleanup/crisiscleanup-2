@@ -222,3 +222,12 @@ def rspec_specific(c, path, env='dev', rebuild_test_db=False):
         rebuild_test_db(env)
     cmd = '{0} -f docker-compose.{1}.yml exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bundle exec rspec {2}"'.format(BASE_COMPOSE_CMD, env, path)
     c.run(cmd, pty=True)    
+
+@task(help = {
+})
+def psql(c, env='dev'):
+    """
+    Docker-compose - PSQL
+    """
+    cmd = "{0} -f docker-compose.{1}.yml exec postgres psql -U postgres postgres".format(BASE_COMPOSE_CMD, env)
+    c.run(cmd, pty=True)      
