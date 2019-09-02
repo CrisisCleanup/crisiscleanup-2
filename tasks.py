@@ -188,7 +188,9 @@ def rebuild_test_db(c, env='dev'):
     """
     Build test database
     """
-    cmd = '{0} -f docker-compose.{1}.yml exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:create"'.format(BASE_COMPOSE_CMD, env)
+    # cmd = '{0} -f docker-compose.{1}.yml exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:drop"'.format(BASE_COMPOSE_CMD, env)
+    # c.run(cmd, pty=True)      
+    cmd = '{0} -f docker-compose.{1}.yml exec web bash -c "RAILS_ENV=test POSTGRES_HOST=postgres bin/rake db:reset"'.format(BASE_COMPOSE_CMD, env)
     c.run(cmd, pty=True)      
     
 @task(help = {})
