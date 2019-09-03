@@ -170,3 +170,12 @@ def execute(c, name, env='dev'):
     """
     cmd = "{0} -f docker-compose.{1}.yml exec {2} bash".format(BASE_COMPOSE_CMD, env, name)
     c.run(cmd, pty=True)   
+
+@task(help = {
+})
+def psql(c, env='dev'):
+    """
+    Docker-compose - PSQL
+    """
+    cmd = "{0} -f docker-compose.{1}.yml exec postgres psql -U postgres postgres".format(BASE_COMPOSE_CMD, env)
+    c.run(cmd, pty=True)      

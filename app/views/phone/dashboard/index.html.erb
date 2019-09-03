@@ -3,24 +3,11 @@
 <% end %>
 
 <% content_for :subheader do %>
-    <div class="row">
-      <div class="large-12 columns">
-        <h2 class="center">Call Dashboard</h2>
-         <div align="center">
-            Remaining Callbacks: <%= @remaining_callbacks %>
-            Remaining Calldowns: <%= @remaining_calldowns %>
-        </div>       
-      </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <h2 class="center">Call Dashboard</h2>
     </div>
-    <div class="row">
-      <div class="small-12 large-5 large-centered columns">
-        <strong>Hurricane Dorian:</strong> The Hurricane Dorian hotline is scheduled to remain open through September 20, 2019. Calls may come in from the US mainland, Bahamas, or US Virgin Islands.<br/><br />
-        Sample opening script: <em>"This is [Your First Name] from the Crisis Cleanup hotline. We missed a call from this number [a day or two ago/ a few days ago], probably regarding damage due to the recent storms..."</em><br />
-        <em>Unfortunately there is no way we are able to estimate when or if someone will assist.</em> However, you may feel free to email local relief organizations if you feel that a particular case is in special need.<br />
-        
-        The closing date may extend, depending on the extent of damage. <a href="http://bit.ly/2MwP8eu" target="_blank">Policy for extending</a>. The Crisis Cleanup website will remain available indefinitely.
-      </div>
-    </div>
+  </div>
 <% end %>
 
 <% content_for :main do %>
@@ -61,6 +48,39 @@
     100% { background-color: transparent; }
 }
 </style>
+
+    <script type="text/javascript">
+      function change_call_language() {
+        var lang = $("#call_language_filter_select :selected").val();
+        var phone_outbound_status_id = '<%= @locked_call_current_phone_outbound_status.id %>';
+        var url = '/phone/change_call_language?call_language_filter=' + lang + '&phone_outbound_status_id=' + phone_outbound_status_id;
+        window.location = url;
+      }
+    </script>
+
+      <div class="row">
+          <div class="large-6 medium-6 columns">
+            <div class="row">
+              <div class="large-12 columns">
+                <h5 class="center">Remaining Callbacks: <%= @remaining_callbacks %> | Remaining Calldowns: <%= @remaining_calldowns %></h5>
+                <div class="panel">
+                  <strong>Hurricane Dorian:</strong> The Hurricane Dorian hotline is scheduled to remain open through September 20, 2019. Calls may come in from the US mainland, Bahamas, or US Virgin Islands.
+                </div>
+                <div class="panel">
+                <label><strong>Selected call language:</strong></label>
+                <%= select_tag(:call_language_filter,  options_for_select(@available_language_filters, @call_language_filter), :id => "call_language_filter_select", :onchange => "change_call_language()") %>           
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="large-6 medium-6 columns">
+              <h5 class="center">Sample opening script</h5>
+              "This is [Your First Name] from the Crisis Cleanup hotline. We missed a call from this number [a day or two ago/ a few days ago], probably regarding damage due to the recent storms..."</em><br />
+              <em>Unfortunately there is no way we are able to estimate when or if someone will assist.</em> However, you may feel free to email local relief organizations if you feel that a particular case is in special need.<br />
+              
+              The closing date may extend, depending on the extent of damage. <a href="http://bit.ly/2MwP8eu" target="_blank">Policy for extending</a>. The Crisis Cleanup website will remain available indefinitely.
+          </div>     
+      </div>
 
       <div class="large-6 medium-6 columns">
           <!--<h5 class="center" id="view-claimed-worksites">Next Individual to Call</h5>-->
