@@ -170,6 +170,15 @@ module Phone
       return redirect_to worker_dashboard_path
     end
     
+    def done
+      @available_language_filters = ['English', 'Spanish']
+      if session['call_language_filter'].nil?
+        @call_language_filter = 'English'
+      else
+        @call_language_filter = session[:call_language_filter] 
+      end   
+    end
+    
   end
   
 

@@ -18,6 +18,12 @@ $(document).ready(function() {
     }
   });     
   
+  $('#call_language_filter_select_done').on('change', function() {
+      var lang = $("#call_language_filter_select_done :selected").val();
+      var url = '/phone/change_call_language?call_language_filter=' + lang;
+      window.location = url;
+  });
+  
   new ClipBoard('#call-dashboard-phone1-btn');
   new ClipBoard('#call-dashboard-phone2-btn');
 });
