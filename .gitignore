@@ -41,4 +41,5 @@ Thumbs.db
 .env.docker
 Makefile
 /public/packs
-dev.dump
+dev.dumpcoverage
+coverage/

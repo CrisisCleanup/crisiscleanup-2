@@ -78,8 +78,8 @@ class PhoneOutbound < ActiveRecord::Base
       )")
     query = self.add_language_filter(query, call_language_filter)
       
-    return query.where("phone_outbound.dnis1_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter) 
-      OR phone_outbound.dnis2_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter)", {call_state_filter: call_state_filter})
+    return query.where("phone_outbound.dnis2_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter) 
+      OR phone_outbound.dnis1_area_code IN ( SELECT code FROM phone_area_codes WHERE state = :call_state_filter)", {call_state_filter: call_state_filter})
       .order(:call_type, :inbound_at, :case_updated_at).first
   end
       
