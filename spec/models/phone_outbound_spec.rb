@@ -112,4 +112,87 @@ RSpec.describe PhoneOutbound, type: :model do
   		end 		
   	end	
   end 
+  
+  describe 'remaining_callbacks' do
+  	fixtures :phone_area_codes
+
+  	context "remaining_callbacks" do
+  		
+   		it "will return 0 records" do
+  		  count = PhoneOutbound.remaining_callbacks('english')
+  			expect(count).to eq(0)
+  		end   		
+  		
+   		it "will return 0 records if outbound is already complete" do
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'callback', completion: 1)
+  		  count = PhoneOutbound.remaining_callbacks('english')
+  			expect(count).to eq(0)
+  		end   		
+  		
+  		it "will return 1 record" do
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'callback')
+  		  count = PhoneOutbound.remaining_callbacks('english')
+  			expect(count).to eq(1)
+  		end  
+  		
+  	  it "will not return spanish records" do
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'callback', language: 'english')
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'callback', language: 'spanish')
+  		  count = PhoneOutbound.remaining_callbacks('english')
+  			expect(count).to eq(1)
+  		end  	
+  		
+   	  it "will not return english records" do
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'callback', language: 'english')
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'callback', language: 'spanish')
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'callback', language: 'spanish')
+  		  count = PhoneOutbound.remaining_callbacks('spanish')
+  			expect(count).to eq(2)
+  		end  	 		
+  	end
+  end
+  
+  describe 'remaining_calldowns' do
+  	fixtures :phone_area_codes
+
+  	context "remaining_calldowns" do
+  		
+  		before do |example|
+  			@user = User.create(name:'Gary', email:'Gary@aol.com', password:'blue32blue32', admin: false)
+  			@state_filter = "Oklahoma"
+  		end
+  		
+  		it "will return 0 records" do
+  		  count = PhoneOutbound.remaining_calldowns('english')
+  			expect(count).to eq(0)
+  		end   		
+  		
+   		it "will return 0 records if outbound is already complete" do
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'calldown', completion: 1)
+  		  count = PhoneOutbound.remaining_calldowns('english')
+  			expect(count).to eq(0)
+  		end   		 		
+  		
+  		it "will return 1 record" do
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'calldown')
+  		  count = PhoneOutbound.remaining_calldowns('english')
+  			expect(count).to eq(1)
+  		end  
+  		
+  	  it "will not return spanish records" do
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'calldown', language: 'english')
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'calldown', language: 'spanish')
+  		  count = PhoneOutbound.remaining_calldowns('english')
+  			expect(count).to eq(1)
+  		end  	
+  		
+   	  it "will not return english records" do
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'calldown', language: 'english')
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'calldown', language: 'spanish')
+  			FactoryGirl.create(:phone_outbound_1, call_type: 'calldown', language: 'spanish')
+  		  count = PhoneOutbound.remaining_calldowns('spanish')
+  			expect(count).to eq(2)
+  		end  	  		
+  	end
+  end  
 end
