@@ -105,8 +105,7 @@ module Phone
         @call_language_filter = session[:call_language_filter] 
       end      
       
-      @remaining_callbacks = PhoneOutbound.remaining_callbacks(@call_language_filter)
-      @remaining_calldowns = PhoneOutbound.remaining_calldowns(@call_language_filter)      
+  
           
       #############################
       # Get a new call off the queue
@@ -145,6 +144,9 @@ module Phone
       @available_dnis = []
       @available_dnis << [@locked_call.dnis1, @locked_call.dnis1] if @locked_call.dnis1
       @available_dnis << [@locked_call.dnis2, @locked_call.dnis2] if @locked_call.dnis2
+      
+      @remaining_callbacks = PhoneOutbound.remaining_callbacks(@call_language_filter)
+      @remaining_calldowns = PhoneOutbound.remaining_calldowns(@call_language_filter)    
       
       if @locked_call.worksite_id
         @site = Legacy::LegacySite.find_by_id(@locked_call.worksite_id)
