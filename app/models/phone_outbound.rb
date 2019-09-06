@@ -83,8 +83,8 @@ class PhoneOutbound < ActiveRecord::Base
       .order(:call_type, :inbound_at, :case_updated_at).first
   end
       
-  def self.remaining_callbacks
-    return self.where("phone_outbound.id NOT IN (
+  def self.remaining_callbacks(call_language_filter)
+    query = self.where("phone_outbound.id NOT IN (
     SELECT outbound_id FROM phone_outbound_status
       WHERE user_id IS NOT NULL
       AND (do_not_call_before > NOW()
@@ -94,11 +94,13 @@ class PhoneOutbound < ActiveRecord::Base
       OR DATE_PART('day', NOW() - case_updated_at) IS NULL)
     AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)
     AND call_type = 'callback'  
-    ").count
+    ")
+    query = self.add_language_filter(query, call_language_filter)
+    return query.count
   end
   
-  def self.remaining_calldowns
-    return self.where("phone_outbound.id NOT IN (
+  def self.remaining_calldowns(call_language_filter)
+    query = self.where("phone_outbound.id NOT IN (
     SELECT outbound_id FROM phone_outbound_status
       WHERE user_id IS NOT NULL
       AND (do_not_call_before > NOW()
@@ -108,7 +110,9 @@ class PhoneOutbound < ActiveRecord::Base
       OR DATE_PART('day', NOW() - case_updated_at) IS NULL)
     AND (phone_outbound.completion < 1 OR phone_outbound.completion IS NULL)
     AND call_type = 'calldown'  
-    ").count
+    ")
+    query = self.add_language_filter(query, call_language_filter)
+    return query.count   
   end  
   
 end

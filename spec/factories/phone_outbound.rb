@@ -21,7 +21,7 @@ FactoryGirl.define do
     completion 0
   end 
   
-   factory :phone_outbound_incomplete, :class => PhoneOutbound do
+  factory :phone_outbound_incomplete, :class => PhoneOutbound do
     vm_link ''
     completion 0
   end  
