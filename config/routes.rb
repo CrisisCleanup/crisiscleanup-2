@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     post "/dashboard" => 'dashboard#index', as: "phone_dashboard_update"
     get "/cancel" => 'dashboard#cancel', as: "phone_dashboard_cancel"
     get "/change_call_language" => 'dashboard#change_call_language', as: "phone_dashboard_change_call_language"
+    get "/done" => 'dashboard#done', as: "phone_dashboard_done"
   end
   
   namespace :admin do

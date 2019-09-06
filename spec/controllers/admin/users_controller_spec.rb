@@ -41,6 +41,23 @@ RSpec.describe Admin::UsersController, :type => :controller do
         expect(should).to redirect_to "/login"
       end
     end
+    
+    context "json" do
+      it "basic" do
+        allow(controller).to receive(:current_user).and_return(@admin)
+        get :index, format: 'json'
+        json = JSON.parse(response.body)
+        expect(json['data'].length).to eq(2)
+      end
+      
+      it "with filter" do
+        allow(controller).to receive(:current_user).and_return(@admin)
+        get :index, format: 'json', filter: @user.name, sort: 'name'
+        json = JSON.parse(response.body)
+        expect(json['data'].length).to eq(1)
+      end     
+    end
+    
   end
 
   describe "Get #new" do
@@ -169,6 +186,14 @@ RSpec.describe Admin::UsersController, :type => :controller do
           expect(response).to redirect_to "/admin/users"
         end
       end
+      context "with incorrect attributes" do
+        it "changes the user's attributes" do
+          @user = FactoryGirl.create :user
+          allow(controller).to receive(:current_user).and_return(@admin)
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: 1234)
+          @user.reload
+        end
+      end     
     end
 
     context "without an admin user" do
