@@ -133,6 +133,16 @@ def rebuild_dev_env(c, nocache=False):
     cmd = 'docker-compose exec web bash -c "RAILS_ENV=docker bin/rake db:setup"'
     c.run(cmd, pty=True)
     c.run('./migrate_real_data.sh', pty=True)
+    
+@task(help = {
+})
+def up_dev_env(c):
+    """
+    Docker-compose - Up dev env
+    """
+    up_svc(c, 'redis', 'dev')    
+    up_svc(c, 'postgres', 'dev')    
+    up_svc(c, 'web', 'dev')    
 
 @task(help = {
     'name': NAME_ARG_HELP,
