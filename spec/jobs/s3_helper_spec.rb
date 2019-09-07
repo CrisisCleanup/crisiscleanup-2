@@ -11,7 +11,6 @@ RSpec.describe CsvGeneratorJob do
     end    
     
     it "initializes" do
-      # allow_any_instance_of().to receive(:new).and_return(nil)
       Aws::S3::Resource.stub(:new)
       S3Helper.new('test_bucket')
     end
@@ -20,7 +19,6 @@ RSpec.describe CsvGeneratorJob do
   describe "#retrieve_s3_obj_url" do
     
     it "retrieve_s3_obj_url" do
-      # allow_any_instance_of().to receive(:new).and_return(nil)
       dbl = double('s3')
       s3_helper = S3Helper.new('test_bucket')
       bucket_dbl = double('bucket_dbl')
@@ -34,13 +32,11 @@ RSpec.describe CsvGeneratorJob do
     end
     
     it "upload_to_s3" do
-      # allow_any_instance_of().to receive(:new).and_return(nil)
       dbl = double('s3_dbl')
       s3_helper = S3Helper.new('test_bucket')
       bucket_dbl = double('bucket_dbl')
       obj_dbl = double('obj_dbl')
       allow(obj_dbl).to receive(:upload_file)
-      # allow(obj_dbl).to receive(:presigned_url).and_return(true)
       allow(bucket_dbl).to receive(:object).and_return(obj_dbl)
       allow(dbl).to receive(:bucket).and_return(bucket_dbl)
       s3_helper.s3 = dbl
