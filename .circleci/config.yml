@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    parallelism: 2
+    parallelism: 4
     docker:
     - image: circleci/ruby:2.4.4-jessie-node
       environment:
