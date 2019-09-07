@@ -23,11 +23,28 @@ RSpec.describe CsvGeneratorJob do
       # allow_any_instance_of().to receive(:new).and_return(nil)
       dbl = double('s3')
       s3_helper = S3Helper.new('test_bucket')
-      bucket_dbl = double('bucket_double')
-      allow(bucket_dbl).to receive(:object).and_return(double('obj_double'))
-      allow(dbl).to receive(:bucket).and_return(bucket_double)
+      bucket_dbl = double('bucket_dbl')
+      obj_dbl = double('obj_dbl')
+      allow(obj_dbl).to receive(:exists?).and_return(true)
+      allow(obj_dbl).to receive(:presigned_url).and_return(true)
+      allow(bucket_dbl).to receive(:object).and_return(obj_dbl)
+      allow(dbl).to receive(:bucket).and_return(bucket_dbl)
       s3_helper.s3 = dbl
       s3_helper.retrieve_s3_obj_url('somefile')
     end
+    
+    it "upload_to_s3" do
+      # allow_any_instance_of().to receive(:new).and_return(nil)
+      dbl = double('s3_dbl')
+      s3_helper = S3Helper.new('test_bucket')
+      bucket_dbl = double('bucket_dbl')
+      obj_dbl = double('obj_dbl')
+      allow(obj_dbl).to receive(:upload_file)
+      # allow(obj_dbl).to receive(:presigned_url).and_return(true)
+      allow(bucket_dbl).to receive(:object).and_return(obj_dbl)
+      allow(dbl).to receive(:bucket).and_return(bucket_dbl)
+      s3_helper.s3 = dbl
+      s3_helper.upload_to_s3('filename.txt', 'downloadfilename.txt', 'path/to')
+    end    
   end  
 end
