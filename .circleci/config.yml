@@ -68,18 +68,21 @@ jobs:
           RAILS_ENV: test
           RACK_ENV: test
           
+    - run: mkdir ~/rspec          
+          
     - run:
         name: Run rspec in parallel
+        when: always
         command: |
           bundle exec rspec --profile 10 \
-                            --format RspecJunitFormatter \
-                            --out test_results/rspec.xml \
                             --format progress \
+                            --format RspecJunitFormatter \
+                            --out ~/rspec/rspec.xml \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
                             
     # Save test results for timing analysis
     - store_test_results:
-        path: test_results                            
+        path: ~/rspec                            
         
     - store_artifacts:
         path: coverage        
