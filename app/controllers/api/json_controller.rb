@@ -13,7 +13,8 @@ module Api
           limit = (Integer(params[:limit]) > 1000) ? 15000 : Integer(params[:limit])
           page = (Integer(params[:page]) < 1) ? 1 : Integer(params[:page])
         rescue ArgumentError
-          return
+          limit = 100
+          page = 1
         end
         offset = (page - 1) * limit
         @sites = Legacy::LegacySite.select("
@@ -33,13 +34,13 @@ module Api
           .limit(limit)
           .offset(offset)
           .order(:id)
-        render :json => @sites.to_json()
       end
+      render :json => @sites.to_json()
     end
 
     def site_history
 
-      if site = Legacy::LegacySite.find(params[:id])
+      if site = Legacy::LegacySite.find_by_id(params[:id])
         versions = site.versions
         m = Hash.new
         versions.reverse.each do |version|
@@ -102,56 +103,48 @@ module Api
     end
 
     def update_legacy_site_status
-      if params[:id]
-        # Guard status types
-        status = [ "Open, unassigned", "Open, assigned",
-          "Open, partially completed", "Open, needs follow-up",
-          "Closed, completed", "Closed, incomplete",
-          "Closed, out of scope", "Closed, done by others",
-          "Closed, no help wanted", "Closed, rejected",
-          "Closed, duplicate"]
-        if not status.include?(params[:status])
-          render json: { status: 'error', msg: 'Not a site status type' }, status: 400
-        else
-
-          if site = Legacy::LegacySite.find(params[:id])
-            if site.status == 'Open, unassigned' && site.claimed_by == nil
-              site.claimed_by = current_user.legacy_organization_id
-              site.user_id = current_user.id
-            end
-            site.status = params[:status] if params[:status]
-            site.save
-            render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
-          else
-            render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our system.' }
-          end
-        end
+      # Guard status types
+      status = [ "Open, unassigned", "Open, assigned",
+        "Open, partially completed", "Open, needs follow-up",
+        "Closed, completed", "Closed, incomplete",
+        "Closed, out of scope", "Closed, done by others",
+        "Closed, no help wanted", "Closed, rejected",
+        "Closed, duplicate"]
+      if not status.include?(params[:status])
+        render json: { status: 'error', msg: 'Not a site status type' }, status: 400
       else
-        render json: { status: 'error', msg: 'Site id is required.' }
+        begin
+          site = Legacy::LegacySite.find(params[:id])
+          if site.status == 'Open, unassigned' && site.claimed_by == nil
+            site.claimed_by = current_user.legacy_organization_id
+            site.user_id = current_user.id
+          end
+          site.status = params[:status] if params[:status]
+          site.save
+          render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
+        rescue ActiveRecord::RecordNotFound
+          render json: { status: 'error', msg: 'Site with id, ' + params[:id] + ', not found in our system.' }
+        end
       end
     end
 
     # claim/unclaim toggle
     # TODO: clean this up
     def claim_legacy_site
-      if params[:id]
-        if site = Legacy::LegacySite.find(params[:id])
-          if site.claimed_by == nil
-            site.claimed_by = current_user.legacy_organization_id
-            site.user = current_user
-            site.save
-            render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status, org_name: site.claimed_by_org.name }
-          elsif site.claimed_by == current_user.legacy_organization_id || current_user.admin
-            site.claimed_by = nil
-            site.user = nil
-            site.save
-            render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
-          else
-            render json: { status: 'error', msg: 'You do not have permission to do that.' }
-          end
+      if site = Legacy::LegacySite.find(params[:id])
+        if site.claimed_by == nil
+          site.claimed_by = current_user.legacy_organization_id
+          site.user = current_user
+          site.save
+          render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status, org_name: site.claimed_by_org.name }
+        elsif site.claimed_by == current_user.legacy_organization_id || current_user.admin
+          site.claimed_by = nil
+          site.user = nil
+          site.save
+          render json: { status: 'success', claimed_by: site.claimed_by, site_status: site.status }
+        else
+          render json: { status: 'error', msg: 'You do not have permission to do that.' }
         end
-      else
-        render json: { status: 'error', msg: 'Site id is required.' }
       end
     end
     
@@ -164,11 +157,13 @@ module Api
       worksiteId = params[:worksiteId]
       incidentId = params[:incidentId]
       
-      if site = Legacy::LegacySite.find(worksiteId)
-        if incident = Legacy::LegacyEvent.find(incidentId)
+      begin
+      site = Legacy::LegacySite.find(worksiteId)
+        begin
+          incident = Legacy::LegacyEvent.find(incidentId)
           # Verify it is not the same incident ID
-          if site.legacy_event_id != incidentId
-            site.legacy_event_id = incidentId
+          if site.legacy_event_id != incident.id
+            site.legacy_event_id = incident.id
             site.case_number = nil
             site.claimed_by = nil
             site.user_id = nil
@@ -177,8 +172,10 @@ module Api
           else
             return render json: { status: 'error', msg: 'Not allowed to to move this site to its current incident again.' }
           end
+        rescue ActiveRecord::RecordNotFound
+          return render json: { status: 'error', msg: 'Could not find event.' }
         end
-      else 
+      rescue ActiveRecord::RecordNotFound
         return render json: { status: 'error', msg: 'Could not find worksite.' }
       end
     end
@@ -190,21 +187,21 @@ module Api
       latitude = params[:latitude]
       zoomLevel = params[:zoomLevel]
       
-      if zoomLevel < 20
+      if zoomLevel.to_i < 20
         return render json: { status: 'error', msg: 'Zoom level must be 20 or greater.' }
       end
       
-      if site = Legacy::LegacySite.find(worksiteId)
+      begin
+        site = Legacy::LegacySite.find(worksiteId)
         site.latitude = latitude
         site.longitude = longitude
         site.blurred_latitude = nil
         site.blurred_longitude = nil
         site.save!
         return render json: { status: 'success', msg: 'Worksite pin relocated.' }
-      else
+      rescue ActiveRecord::RecordNotFound
         return render json: { status: 'error', msg: 'Could not find worksite.' }
       end
-      
     end
 
   end

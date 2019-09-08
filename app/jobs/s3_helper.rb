@@ -1,6 +1,8 @@
 require 'aws-sdk'
 
 class S3Helper
+  
+  public
 
   def initialize(bucket_name)
     if !defined?(bucket_name)
@@ -30,6 +32,10 @@ class S3Helper
       return obj.presigned_url(:get, :expires_in => 60 * 3)
     end
     return nil
+  end
+  
+  def s3=(obj)
+    @s3 = obj
   end
 
 end

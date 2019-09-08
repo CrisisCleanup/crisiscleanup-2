@@ -29,8 +29,6 @@ class CsvGeneratorJob < ActiveJob::Base
 
   end
 
-  private
-
   def generate_sites_csv(legacy_event_id, org_id)
     Enumerator.new do |y|
       y << Legacy::LegacySite.csv_header.to_s

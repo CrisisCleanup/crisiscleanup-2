@@ -85,11 +85,12 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			# 	}.to change(Legacy::LegacyOrganization, :count).by(1)
 			# end
 
-			# it "redirects to the organization index" do
-			# 	allow(controller).to receive(:current_user).and_return(@admin)
-			# 	post :create, legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email, accepted_terms: true)
-			# 	response.should redirect_to :admin_legacy_organizations
-			# end
+			it "redirects to the organization index" do
+				allow(controller).to receive(:current_user).and_return(@admin)
+				post :create, 
+					legacy_legacy_organization: FactoryGirl.attributes_for(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email, accepted_terms: true)
+				expect(should).to render_template :new
+			end
 		end
 
 		context "without an admin user" do
@@ -145,6 +146,7 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 		end
 
 	end
+	
 	describe "Put #update" do
 		context "with an admin user" do
 			it "locates the correct organization" do
@@ -189,5 +191,16 @@ RSpec.describe Admin::LegacyOrganizationsController, :type => :controller do
 			end
 		end
 	end
+	
+	describe "Get #verify" do
+		context "with an admin user" do
+			it "redirects to" do
+				allow(controller).to receive(:current_user).and_return(@admin)
+				organization = FactoryGirl.create(:legacy_organization, name: Faker::Name.name, email: Faker::Internet.email)
+				get :verify, id: organization.id
+				expect(should).to redirect_to admin_dashboard_index_path
+			end
+		end
+	end	
 
 end
