@@ -14,10 +14,11 @@ module Worker
           sort = store.split("|")
         end
 
+        # Search
         if params[:filter]
           @sites = Legacy::LegacySite
             .where("legacy_event_id = ?", params[:id])
-          @sites = @sites.where("user_id = ?", current_user.id) if is_mysite
+          @sites = @sites.where("claimed_by = ?", current_user.legacy_organization_id) if is_mysite
           @sites = @sites.where("lower(name) LIKE ? OR lower(address) LIKE ? OR lower(case_number) LIKE ? OR lower(city) LIKE ? OR lower(county) LIKE ? OR zip_code LIKE ?",
                                 "%#{params[:filter].downcase}%" , "%#{params[:filter].downcase}%",
                                 "%#{params[:filter].downcase}%", "%#{params[:filter].downcase}%",
@@ -26,10 +27,11 @@ module Worker
                       .order(params[:sort] ? "#{sort[0]} #{sort[1]}" : "case_number")
                        .paginate(:page => params["page"], :per_page => 15)
 
+        # Non-search
         else
           @sites = Legacy::LegacySite.where(legacy_event_id: params[:id])
              .where("legacy_event_id = ?", params[:id])
-          @sites = @sites.where("user_id = ?", current_user.id) if is_mysite
+          @sites = @sites.where("claimed_by = ?", current_user.legacy_organization_id) if is_mysite
           @sites = @sites.where("work_type NOT LIKE 'pda%'")
                        .order(params[:sort] ? "#{sort[0]} #{sort[1]}" : "case_number")
                        .paginate(:page => params["page"], :per_page => 15)
