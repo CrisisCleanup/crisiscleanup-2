@@ -3,14 +3,21 @@ require 'aws-sdk'
 class CsvGeneratorJob < ActiveJob::Base
   queue_as :default
 
-  def perform(generator_type, file_prefix, download_file_name, bucket_name, *args)
+  def perform(generator_type, file_prefix, download_file_name, bucket_name, is_govt, *args)
     path = "/tmp/#{file_prefix}-#{self.job_id}.csv"
     file_basename = File.basename(path)
     begin
       File.open(path, "w+") do |f|
-        case generator_type
-          when "generate_sites"
-            generate_sites_csv(args[0], args[1]).each {|element| f.puts(element)}
+        if is_govt
+          case generator_type
+            when "generate_sites"
+              govt_generate_sites_csv(args[0], args[1]).each {|element| f.puts(element)}
+          end         
+        else
+          case generator_type
+            when "generate_sites"
+              generate_sites_csv(args[0], args[1]).each {|element| f.puts(element)}
+          end
         end
       end
     rescue
@@ -43,4 +50,19 @@ class CsvGeneratorJob < ActiveJob::Base
 
     end
   end
+  
+  def govt_generate_sites_csv(legacy_event_id, org_id)
+    Enumerator.new do |y|
+      y << Legacy::LegacySite.csv_header.to_s
+
+      Legacy::LegacySite.find_in_batches_claimed_reported(["legacy_event_id = ? AND (claimed_by = ? OR reported_by = ?)", legacy_event_id, org_id, org_id], 300) {
+          |site| y << site.govt_redacted_to_csv_row.to_s
+      }
+
+      Legacy::LegacySite.find_in_batches_claimed_reported(["(legacy_event_id = ?) AND ((NOT claimed_by = ?) OR (NOT reported_by = ?))", legacy_event_id, org_id, org_id], 300) {
+          |site| y << site.govt_redacted_to_csv_row.to_s
+      }
+
+    end
+  end  
 end
