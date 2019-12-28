@@ -22,7 +22,7 @@
       <% end %>
       <% if current_user %>
         <% if current_user.legacy_organization.government || current_user.admin %>
-          <li><%= nav_link 'Reports', reports_reports_dashboard_path %></li>
+          <li><%= nav_link 'Reports', report_reports_index_path %></li>
         <% end %>     
       <% end %>     
       <li class="has-dropdown"><a href="#">Help</a>
