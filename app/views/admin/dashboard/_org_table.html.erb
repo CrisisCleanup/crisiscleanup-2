@@ -5,7 +5,7 @@
       <th width="150">Event</th>
       <th width="150">Created At</th>
       <th width="150">Primary Contact Name</th>
-      <th width="150">Primary Contact Email</th>
+      <th width="250">Primary Contact Email</th>
       <th width="150">Registration IP</th>
       <th width="50">Verify</th>
       <th width="50">Destroy</th>
@@ -33,9 +33,9 @@
         <td>
               <%= org.created_at %>
         </td>
-        <% if org.legacy_contacts.where(is_primary:true).count > 0 %>
-          <td> <%= org.legacy_contacts.where(is_primary: true).first.first_name %> <%= org.legacy_contacts.where(is_primary: true).first.last_name %> </td>
-          <td> <%= org.legacy_contacts.where(is_primary: true).first.email %> </td>
+        <% if org.legacy_contacts.count > 0 %>
+          <td> <%= org.legacy_contacts.first.first_name %> <%= org.legacy_contacts.first.last_name %> </td>
+          <td> <%= org.legacy_contacts.first.email %> </td>
         <% else %>
           <td>None</td>
           <td>None</td>
