@@ -6,6 +6,7 @@
       <th width="150">Created At</th>
       <th width="150">Primary Contact Name</th>
       <th width="150">Primary Contact Email</th>
+      <th width="150">Registration IP</th>
       <th width="50">Verify</th>
       <th width="50">Destroy</th>
     </tr>
@@ -38,6 +39,16 @@
         <% else %>
           <td>None</td>
           <td>None</td>
+        <% end %>
+
+        <% if org.registration_ip.present? %>
+        <td>
+          <a <%= "href=\"https://infosniper.net?ip_address=#{org.registration_ip}\"".html_safe %>>
+            <%= org.registration_ip %>
+          </a>
+        </td>
+        <% else %>
+        <td>None</td>
         <% end %>
 
 
