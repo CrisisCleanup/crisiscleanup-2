@@ -8,6 +8,7 @@
     <p>The following group has applied to participate on Crisis Cleanup.  To review and verify, visit: <%= link_to edit_admin_legacy_organization_url(@org.id), edit_admin_legacy_organization_url(@org.id) %>.</p>
     <p>Organization name: <strong><%= @org.name %></strong><br />
     Organization Website: <%= link_to @org.url, @org.url %><br />
+    Registration IP: <%= "https://www.infosniper.net?ip_address=#{@org.registration_ip}" %><br />
     Incident: <%= @org.legacy_events.last.name %><br />
     Working in: <%= @org.where_are_you_working %>
     </p>
