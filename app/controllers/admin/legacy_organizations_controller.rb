@@ -102,6 +102,7 @@
         :physical_presence,
         :publish,
         :reputable,
+        :registration_ip,
         :state,
         :terms_privacy,
         :timestamp_login,

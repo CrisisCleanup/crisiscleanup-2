@@ -31,6 +31,7 @@ class RegistrationsController < ApplicationController
 
     if @org.valid?
       @org.legacy_events << Legacy::LegacyEvent.find(params['legacy_legacy_organization']['legacy_events'])
+      @org.registration_ip = request.remote_ip
       @org.save
       User.where(admin:true).each do |u|
         AdminMailer.send_registration_alert(u,@org).deliver_now
@@ -99,6 +100,7 @@ class RegistrationsController < ApplicationController
       :publishable,
       :referral,
       :reputable,
+      :registration_ip,
       :review_other_organizations,
       :state,
       :terms_privacy,
