@@ -34,6 +34,7 @@ module Legacy
         field :does_only_sit_aware
         field :does_something_else
         field :does_other_activity
+        field :registration_ip
         field :government
       end
     end
