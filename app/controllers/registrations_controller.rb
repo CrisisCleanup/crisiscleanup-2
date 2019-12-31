@@ -22,6 +22,13 @@ class RegistrationsController < ApplicationController
         end
       end
     end
+    
+    unless verify_recaptcha(model:@org)
+      flash[:alert] = "reCAPTCHA Authentication failed. Please try again."
+      render :new
+      return
+    end
+
     unless check_user_emails(params, @org)
       flash[:alert] = "That email address is already being used. You may <a href='/login'>login</a> or <a href='/password/new'>request a new password</a>.".html_safe
       render :new
