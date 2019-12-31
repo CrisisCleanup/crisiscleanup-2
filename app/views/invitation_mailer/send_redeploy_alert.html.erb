@@ -2,11 +2,50 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+
+    <style type="text/css">
+      .spaced {
+        display: inline-block;
+        margin-top:30px;
+        margin-left: 50%
+      }
+
+      .spaced > td > a {
+        padding-left: 30px
+      }
+    </style>
+
   </head>
   <body>
-    <p>Org: <%= @user.legacy_organization.name %> </p>
-    <p>User: <%= @user.email %> </p>
-    <p>New event: <%= @event.name %> </p>
+
+    <table>
+      <tr>
+        <th width="200" align="left">Organization:</th>
+        <td><%= @user.legacy_organization.name %></td>
+      </tr>
+      <tr>
+        <th width="200" align="left">User:</th>
+        <td><%= @user.name %> (<%= @user.email %>)</td>
+      </tr>
+      <tr>
+        <th width="200" align="left">New Event:</th>
+        <td><%= @event.name %></td>
+      </tr>
+      <tr>
+        <th width="200" align="left">Origin IP:</th>
+        <td><%= @origin_ip %></td>
+      </tr>
+      <tr>
+        <th width="200" align="left">Previous Events:</th>
+        <td><%= @previous_events.join(', ') %></td>
+      </tr>
+      <tr class="spaced">
+        <td width="200" align="center"><a href="#">Reject</a></td>
+        <td width="200" align="left"><a href="#">Approve</a></td>
+      </tr>
+    </table>
+
+
 
     <hr />
     <a href="http://bit.ly/CCUPod" target="_blank"><img src="http://www.aarontitus.net/crisiscleanup/CCU_Two_Pins_75x75.png" height="75" alt="Crisis Cleanup Podcast" align="left" border="0"></a> Listen to the <em><a href="http://bit.ly/CCUPod" target="_blank">Crisis Cleanup Podcast</a></em>: Just-in-time training and thoughtful conversation about voluntary disaster relief. Also, consider supporting Crisis Cleanup with a small <a href="http://bit.ly/CCUPatreon" target="_blank">monthly donation</a>. We support a new disaster <em>every two weeks</em>, for the last seven years.</p>
