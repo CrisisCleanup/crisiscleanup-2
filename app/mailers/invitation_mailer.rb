@@ -26,9 +26,12 @@ class InvitationMailer < ActionMailer::Base
     mail(to: email, subject: "New Incident Request")
   end
 
-  def send_redeploy_alert(event, user, email)
+  def send_redeploy_alert(event, user, email, origin_ip)
     @event = event
     @user = user
+    @origin_ip = origin_ip
+    @previous_events = []
+    user.legacy_organization.legacy_events.order("created_at DESC").each { |event| @previous_events.push(event.name) }
     mail(to: email, subject: "New Redeploy Request")
   end
 
