@@ -33,7 +33,11 @@
       </tr>
       <tr>
         <th width="200" align="left">Origin IP:</th>
-        <td><%= @origin_ip %></td>
+        <td>
+          <a <%= "href=\"https://infosniper.net?ip_address=#{@origin_ip}\"".html_safe %>>
+            <%= @origin_ip %>
+          </a>
+        </td>
       </tr>
       <tr>
         <th width="200" align="left">Previous Events:</th>
