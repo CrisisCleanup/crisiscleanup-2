@@ -279,6 +279,16 @@ ActiveRecord::Schema.define(version: 20190901222437) do
     t.datetime "updated_at",         null: false
   end
 
+  create_table "redeploy_requests", force: :cascade do |t|
+    t.integer  "legacy_organization_id"
+    t.integer  "legacy_event_id"
+    t.string   "token"
+    t.integer  "accepted_by"
+    t.boolean  "accepted"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "request_invitations", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
