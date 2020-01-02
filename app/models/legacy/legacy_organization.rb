@@ -4,6 +4,7 @@ module Legacy
     has_paper_trail
     has_many :legacy_organization_events
     has_many :request_invitations
+    has_many :redeploy_requests
     has_many :legacy_events, through: :legacy_organization_events
     has_many :users,
       inverse_of: :legacy_organization
