@@ -10,10 +10,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
 
-    # container:
-    #   image: circleci/ruby:2.4.4-jessie-node
-
-    
     services:
       postgres:
         image: postgres:9.6.2
