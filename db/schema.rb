@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191230200515) do
+ActiveRecord::Schema.define(version: 20190901222437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -156,7 +156,6 @@ ActiveRecord::Schema.define(version: 20191230200515) do
     t.boolean  "does_something_else"
     t.boolean  "allow_caller_access"
     t.string   "call_state_filter"
-    t.string   "registration_ip"
   end
 
   create_table "legacy_sites", force: :cascade do |t|
@@ -197,8 +196,8 @@ ActiveRecord::Schema.define(version: 20191230200515) do
   add_index "legacy_sites", ["reported_by"], name: "index_legacy_sites_on_reported_by", using: :btree
 
   create_table "phone_area_codes", primary_key: "code", force: :cascade do |t|
-    t.integer  "id",         default: 0,                     null: false
-    t.datetime "created_at", default: '2019-12-30 20:00:22'
+    t.integer  "id",         default: "nextval('phone_area_codes_id_seq'::regclass)", null: false
+    t.datetime "created_at", default: "now()"
     t.string   "location"
     t.string   "state"
   end
@@ -209,8 +208,8 @@ ActiveRecord::Schema.define(version: 20191230200515) do
     t.integer  "num_calls"
     t.integer  "area_code"
     t.string   "state"
-    t.datetime "created_at",            default: '2019-12-30 20:00:22'
-    t.datetime "updated_at",            default: '2019-12-30 20:00:22'
+    t.datetime "created_at",            default: "now()"
+    t.datetime "updated_at",            default: "now()"
     t.datetime "last_call"
   end
 
@@ -225,8 +224,8 @@ ActiveRecord::Schema.define(version: 20191230200515) do
     t.string   "session_id",   limit: 32
     t.string   "ip"
     t.integer  "area_code"
-    t.datetime "created_at",              default: '2019-12-30 20:00:22'
-    t.datetime "updated_at",              default: '2019-12-30 20:00:22'
+    t.datetime "created_at",              default: "now()"
+    t.datetime "updated_at",              default: "now()"
     t.json     "incident_id"
     t.integer  "language_id"
   end
@@ -239,7 +238,7 @@ ActiveRecord::Schema.define(version: 20191230200515) do
     t.datetime "inbound_at"
     t.datetime "case_updated_at"
     t.datetime "updated_at"
-    t.datetime "created_at",                default: '2019-12-30 20:00:22'
+    t.datetime "created_at",                default: "now()"
     t.string   "vm_link"
     t.integer  "worksite_id"
     t.string   "call_type"
@@ -249,7 +248,7 @@ ActiveRecord::Schema.define(version: 20191230200515) do
 
   create_table "phone_outbound_status", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at",                   default: '2019-12-30 20:00:22'
+    t.datetime "created_at",                   default: "now()"
     t.integer  "outbound_id"
     t.integer  "status_id"
     t.integer  "dnis",               limit: 8
@@ -262,7 +261,7 @@ ActiveRecord::Schema.define(version: 20191230200515) do
     t.string   "status"
     t.float    "completion"
     t.integer  "try_again_delay"
-    t.datetime "created_at",      default: '2019-12-30 20:00:22'
+    t.datetime "created_at",      default: "now()"
   end
 
   create_table "print_tokens", force: :cascade do |t|
