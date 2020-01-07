@@ -5,16 +5,17 @@
       <th width="150">Event</th>
       <th width="150">Created At</th>
       <th width="150">Primary Contact Name</th>
-      <th width="150">Primary Contact Email</th>
-      <th width="150">Verify</th>
-      <th>Destroy</th>
+      <th width="250">Primary Contact Email</th>
+      <th width="150">Registration IP</th>
+      <th width="50">Verify</th>
+      <th width="50">Destroy</th>
     </tr>
   </thead>
   <tbody>
     <% @orgs.each do |org| %>
       <tr>
         <td>
-          <a href=<%=edit_admin_legacy_organization_path(org.id)%>> 
+          <a href=<%=edit_admin_legacy_organization_path(org.id)%>>
             <%= org.name %>
           </a>
         </td>
@@ -32,20 +33,27 @@
         <td>
               <%= org.created_at %>
         </td>
-        <td>
-            <%= org.name %>
-        </td>
-        <% if org.legacy_contacts.where(is_primary:true).count > 0 %>
-          <td> <%= org.legacy_contacts.where(is_primary: true).first.first_name %> <%= org.legacy_contacts.where(is_primary: true).first.last_name %> </td>
-          <td> <%= org.legacy_contacts.where(is_primary: true).first.email %> </td>
+        <% if org.legacy_contacts.count > 0 %>
+          <td> <%= org.legacy_contacts.first.first_name %> <%= org.legacy_contacts.first.last_name %> </td>
+          <td> <%= org.legacy_contacts.first.email %> </td>
         <% else %>
           <td>None</td>
           <td>None</td>
         <% end %>
-        
+
+        <% if org.has_attribute?('registration_ip') && org.registration_ip.present? %>
+        <td>
+          <a <%= "href=\"https://infosniper.net?ip_address=#{org.registration_ip}\"".html_safe %>>
+            <%= org.registration_ip %>
+          </a>
+        </td>
+        <% else %>
+        <td>None</td>
+        <% end %>
+
 
         <td>  <%= link_to "Verify", "/admin/legacy_organizations/verify?id=#{org.id}",method: :post %> </td>
-        <td><%= link_to 'Delete', admin_legacy_organization_path(org), method: :delete, :onclick => "return confirm('Are you sure you want to delete #{org.name}?')" %></td>   
+        <td><%= link_to 'Delete', admin_legacy_organization_path(org), method: :delete, :onclick => "return confirm('Are you sure you want to delete #{org.name}?')" %></td>
       </tr>
     <% end %>
   </tbody>
