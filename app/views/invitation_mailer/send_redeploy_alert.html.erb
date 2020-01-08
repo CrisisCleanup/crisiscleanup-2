@@ -47,11 +47,16 @@
         <th width="200" align="left">Previous Events:</th>
         <td><%= @previous_events.join(', ') %></td>
       </tr>
-      <tr class="spaced">
-        <td width="200" align="center"><a <%= "href=\"mailto:#{@user.email}\"".html_safe %>>Reject</a></td>
-        <td width="200" align="left"><%= @redeploy_request.accept  %></td>
-      </tr>
     </table>
+
+
+    <br />
+    <br />
+    <a <%= "href=\"mailto:#{@user.email}\"".html_safe %>>Reject</a>
+    <br />
+    <br />
+    <%= @redeploy_request.accept  %>
+
 
   </body>
 </html>
