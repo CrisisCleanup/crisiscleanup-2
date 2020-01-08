@@ -13,6 +13,7 @@ class RedeployRequest < ActiveRecord::Base
       end
       field :legacy_organization
       field :legacy_event
+      field :user
       field :accept_url
       field :accepted
       field :accepted_by do
