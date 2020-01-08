@@ -36,6 +36,14 @@ class InvitationMailer < ActionMailer::Base
     mail(to: email, subject: "New Redeploy Request")
   end
 
+  def send_redeploy_acceptance(redeploy_request, email, accepter)
+    @redeploy_request = redeploy_request
+    @org = redeploy_request.legacy_organization
+    @event = redeploy_request.legacy_event
+    @verified_by = accepter
+    mail(to: email, subject: "Redeploy Request Accepted")
+  end
+
   def send_registration_confirmation(email, org)
     @org = org
     mail(to: email, subject: "Crisis Cleanup Application Received")
