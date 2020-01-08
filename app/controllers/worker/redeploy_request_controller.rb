@@ -39,6 +39,9 @@ module Worker
       org.legacy_events << event
       org.save!
       redeploy_request.save!
+      org.legacy_contacts.each do |contact|
+        InvitationMailer.send_redeploy_acceptance(redeploy_request, contact.email, current_user).deliver_now
+      end
       flash[:notice] = "You accepted #{org.name}'s request to redeploy to #{event.name}."
       redirect_to '/dashboard'
     end
