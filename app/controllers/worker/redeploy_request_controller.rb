@@ -30,8 +30,14 @@ module Worker
     def accept
       if !current_user.present? or !current_user.admin?
         redirect_to '/login'
+        return
       end
       redeploy_request = RedeployRequest.where(token:params[:token]).first
+      if redeploy_request.accepted?
+        flash[:alert] = "Request has already been accepted!"
+        redirect_to "/dashboard"
+        return
+      end
       redeploy_request.accepted = true
       redeploy_request.accepted_by = current_user.id
       event = redeploy_request.legacy_event
