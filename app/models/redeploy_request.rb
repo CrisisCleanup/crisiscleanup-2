@@ -1,6 +1,7 @@
 class RedeployRequest < ActiveRecord::Base
   belongs_to :legacy_organization, :class_name => "Legacy::LegacyOrganization"
   belongs_to :legacy_event, :class_name => "Legacy::LegacyEvent"
+  belongs_to :user
   before_create :generate_token
 
   rails_admin do
@@ -13,7 +14,7 @@ class RedeployRequest < ActiveRecord::Base
       end
       field :legacy_organization
       field :legacy_event
-      field :user
+      field :user_id
       field :accept_url
       field :accepted
       field :accepted_by do
