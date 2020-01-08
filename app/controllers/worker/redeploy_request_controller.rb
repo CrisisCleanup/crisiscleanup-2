@@ -12,6 +12,7 @@ module Worker
       @event = Legacy::LegacyEvent.find(redeploy_request_params[:legacy_event_id])
       @redeploy_request.legacy_organization = current_user.legacy_organization
       @redeploy_request.legacy_event = @event
+      @redeploy_request.user = current_user
       # Check if the user's organization is already re-deployed to the requested incident.
       if current_user.legacy_organization.legacy_events.pluck(:id).include?(@event.id)
         flash[:alert] = "Your organization already has access to the #{@redeploy_request.legacy_event.name} incident. You do not need to redeploy. Please use the drop-down to the right to select the incident you want to view."
