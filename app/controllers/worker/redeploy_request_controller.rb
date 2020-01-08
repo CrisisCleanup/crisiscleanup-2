@@ -45,7 +45,9 @@ module Worker
       org = redeploy_request.legacy_organization
       org.legacy_events << event
       org.save!
+      user = redeploy_request.user
       redeploy_request.save!
+      InvitationMailer.send_redeploy_acceptance(redeploy_request, user.email, current_user).deliver_now
       org.legacy_contacts.each do |contact|
         InvitationMailer.send_redeploy_acceptance(redeploy_request, contact.email, current_user).deliver_now
       end
