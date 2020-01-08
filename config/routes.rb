@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   get "/get-started" => 'worker/dashboard#get_started', as:"get_started"
   get "/redeploy_form" => 'worker/dashboard#redeploy_form', as: "redeploy_form"
   post "/redeploy_request" => 'worker/redeploy_request#create'
+  get "/redeploy_request/accept" => 'worker/redeploy_request#accept'
 
   namespace :worker do
     get "/incident-chooser" => "dashboard#incident_chooser", as: "incident_chooser"

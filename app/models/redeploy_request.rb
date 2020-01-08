@@ -1,6 +1,4 @@
 class RedeployRequest < ActiveRecord::Base
-  include Legacy
-
   belongs_to :legacy_organization, :class_name => "Legacy::LegacyOrganization"
   belongs_to :legacy_event, :class_name => "Legacy::LegacyEvent"
   before_create :generate_token
@@ -15,10 +13,25 @@ class RedeployRequest < ActiveRecord::Base
       end
       field :legacy_organization
       field :legacy_event
+      field :accept_url
       field :accepted
-      field :accepted_by
+      field :accepted_by do
+        formatted_value do
+          path = bindings[:view].show_path(model_name: 'User', id: bindings[:object].accepted_by)
+          bindings[:view].link_to(bindings[:object].accepted_by, path)
+        end
       end
     end
+  end
+
+  def accept_url
+    return "https://www.crisiscleanup.org/redeploy_request/accept?token=#{self.token}"
+  end
+
+
+  def accept
+    return "<a href='#{self.accept_url}'>Approve</a>".html_safe
+  end
 
   protected
   def generate_token
