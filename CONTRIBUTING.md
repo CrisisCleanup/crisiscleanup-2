@@ -27,6 +27,7 @@
 	- Create your own `.env.docker` in the repository base, based on `.env.development.sample`.
 	    - i.e. `cp .env.docker.sample .env.docker` and replace the values in `.env.docker`
 	- (Required) You will need your own [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
+	- (Optional) You will also need to use your own [Google reCAPTCHAv2 Site/Secret key](https://developers.google.com/recaptcha/intro) if you need to develop user forms.
 	- (Optional) You will also need to use your own AWS API key if you need to develop SNS or S3 features.
 1. `docker-compose build`
 1. `docker-compose up -d`

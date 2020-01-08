@@ -4,17 +4,46 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Org: <%= @user.legacy_organization.name %> </p>
-    <p>User: <%= @user.email %> </p>
-    <p>New event: <%= @event.name %> </p>
 
-    <hr />
-    <a href="http://bit.ly/CCUPod" target="_blank"><img src="http://www.aarontitus.net/crisiscleanup/CCU_Two_Pins_75x75.png" height="75" alt="Crisis Cleanup Podcast" align="left" border="0"></a> Listen to the <em><a href="http://bit.ly/CCUPod" target="_blank">Crisis Cleanup Podcast</a></em>: Just-in-time training and thoughtful conversation about voluntary disaster relief. Also, consider supporting Crisis Cleanup with a small <a href="http://bit.ly/CCUPatreon" target="_blank">monthly donation</a>. We support a new disaster <em>every two weeks</em>, for the last seven years.</p>
-<!--
-    <p><a href="http://h2prep.me/emailfooter" target="_blank"><img src="http://aarontitus.net/crisiscleanup/h2prep_logo.jpg" height="75" alt="How to Prepare for Everything" align="left" border="0"></a> Hey, down here! Disaster relief volunteers receive 20% off <a href="http://h2prep.me/emailfooter" target="_blank"><em>How to Prepare for Everything</em></a>. Prepare with one simple change: Prepare for <em>disruptions</em>, not disasters. It doesn't matter what caused the power outage, just prepare for the power outage! Preparing for a few disruptions will prepare you for any disaster. Use coupon code, <u>volunteer17</u>.</p>
-    <p><strong>Prepare for disruptions.<br />
-    Prepare together.<br />
-    Prepare for everything.</strong></p>
--->
+    <table>
+      <tr>
+        <th width="200" align="left">Organization:</th>
+        <td><%= @user.legacy_organization.name %></td>
+      </tr>
+      <tr>
+        <th width="200" align="left">User:</th>
+        <td><%= @user.name %> (<%= @user.email %>)</td>
+      </tr>
+      <tr>
+        <th width="200" align="left">User Phone #:</th>
+        <td><%= @user.mobile %></td>
+      </tr>
+      <tr>
+        <th width="200" align="left">New Event:</th>
+        <td><%= @event.name %></td>
+      </tr>
+      <tr>
+        <th width="200" align="left">Origin IP:</th>
+        <td>
+          <a <%= "href=\"https://infosniper.net?ip_address=#{@origin_ip}\"".html_safe %>>
+            <%= @origin_ip %>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <th width="200" align="left">Previous Events:</th>
+        <td><%= @previous_events.join(', ') %></td>
+      </tr>
+    </table>
+
+
+    <br />
+    <br />
+    <a <%= "href=\"mailto:#{@user.email}\"".html_safe %>>Reject</a>
+    <br />
+    <br />
+    <%= @redeploy_request.accept  %>
+
+
   </body>
 </html>

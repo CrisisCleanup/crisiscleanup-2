@@ -26,10 +26,22 @@ class InvitationMailer < ActionMailer::Base
     mail(to: email, subject: "New Incident Request")
   end
 
-  def send_redeploy_alert(event, user, email)
-    @event = event
+  def send_redeploy_alert(redeploy_request, user, email, origin_ip)
+    @redeploy_request = redeploy_request
+    @event = @redeploy_request.legacy_event
     @user = user
+    @origin_ip = origin_ip
+    @previous_events = []
+    user.legacy_organization.legacy_events.order("created_at DESC").each { |event| @previous_events.push(event.name) }
     mail(to: email, subject: "New Redeploy Request")
+  end
+
+  def send_redeploy_acceptance(redeploy_request, email, accepter)
+    @redeploy_request = redeploy_request
+    @org = redeploy_request.legacy_organization
+    @event = redeploy_request.legacy_event
+    @verified_by = accepter
+    mail(to: email, subject: "Redeploy Request Accepted")
   end
 
   def send_registration_confirmation(email, org)

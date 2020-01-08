@@ -118,3 +118,5 @@ end
 # gem 'capistrano-rails', group: :development
 
 
+
+gem "recaptcha", "~> 5.2"

@@ -22,6 +22,13 @@ class RegistrationsController < ApplicationController
         end
       end
     end
+    
+    unless verify_recaptcha(model:@org)
+      flash[:alert] = "reCAPTCHA Authentication failed. Please try again."
+      render :new
+      return
+    end
+
     unless check_user_emails(params, @org)
       flash[:alert] = "That email address is already being used. You may <a href='/login'>login</a> or <a href='/password/new'>request a new password</a>.".html_safe
       render :new
@@ -31,6 +38,7 @@ class RegistrationsController < ApplicationController
 
     if @org.valid?
       @org.legacy_events << Legacy::LegacyEvent.find(params['legacy_legacy_organization']['legacy_events'])
+      @org.registration_ip = request.remote_ip
       @org.save
       User.where(admin:true).each do |u|
         AdminMailer.send_registration_alert(u,@org).deliver_now
@@ -99,6 +107,7 @@ class RegistrationsController < ApplicationController
       :publishable,
       :referral,
       :reputable,
+      :registration_ip,
       :review_other_organizations,
       :state,
       :terms_privacy,

@@ -4,6 +4,7 @@ module Legacy
     has_paper_trail
     has_many :legacy_organization_events
     has_many :request_invitations
+    has_many :redeploy_requests
     has_many :legacy_events, through: :legacy_organization_events
     has_many :users,
       inverse_of: :legacy_organization
@@ -34,6 +35,7 @@ module Legacy
         field :does_only_sit_aware
         field :does_something_else
         field :does_other_activity
+        field :registration_ip
         field :government
       end
     end

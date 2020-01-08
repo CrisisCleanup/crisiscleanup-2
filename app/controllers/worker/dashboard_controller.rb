@@ -29,20 +29,5 @@ module Worker
     def redeploy_form
     end
 
-    def redeploy_request
-      event_id = params["Event"]
-      @event = Legacy::LegacyEvent.find(event_id)
-      
-      # Check if the user's organization is already re-deployed to the requested incident.
-      if current_user.legacy_organization.legacy_events.pluck(:id).include?(event_id.to_i)
-        flash[:alert] = "Your organization already has access to the #{@event.name} incident. You do not need to redeploy. Please use the drop-down to the right to select the incident you want to view."
-      else
-        User.where(admin:true).each do |user|
-          InvitationMailer.send_redeploy_alert(@event, current_user, user.email).deliver_now
-        end
-        flash[:notice] = "Request to redeploy your organization for #{@event.name} sent."
-      end
-      redirect_to worker_dashboard_path 
-    end
   end
 end
