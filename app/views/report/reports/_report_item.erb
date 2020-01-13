@@ -1,30 +1,34 @@
-<div class="small-2 large-3 columns reports-item">
-  <h5>Teammates Invited and Active</h5>
+<div class="small-3 columns reports-item">
+  <div class="reports--container">
 
-  <div class="reports--image">
-    <div class="icon-pie-chart"></div>
-  </div>
+    <h5><%= title %></h5>
 
-  <div class="reports--details">
-    <div class="details">
-      <p><strong>Type(s):</strong></p>
-      <p>Numbers that link to a table report showing details; Stacked Line or Bar Chart</p>
+    <div class="reports--image">
+      <div class="<%= icon %>"></div>
     </div>
 
-    <div class="details">
-      <p><strong>Variables:</strong></p>
-      <p>X: Days. Y: Number of worksites. On Y axis, a stacked running total of open versus closed claimed worksites.</p>
+    <div class="reports--details">
+      <div class="details">
+        <p><strong>Type(s):</strong></p>
+        <p><%= types %></p>
+      </div>
+
+      <div class="details">
+        <p><strong>Variables:</strong></p>
+        <p><%= variables %></p>
+      </div>
     </div>
 
-  </div>
 
+    <div class="reports--actions">
+      <div class="action">
+        <a href="#" id="download-sample-button">Preview Sample</a>
+      </div>
 
-  <div class="reports--actions">
-    <div class="action">
-      <a href="#" id="download-sample-button">Preview Sample</a>
+      <div class="action">
+        <a href="#" class="button small" id="download-report-button">Download</a>
+      </div>
     </div>
-    <div class="action">
-      <a href="#" class="button small" id="download-report-button">Download</a>
-    </div>
+
   </div>
 </div>

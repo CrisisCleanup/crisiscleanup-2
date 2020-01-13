@@ -27,9 +27,15 @@
           <div class="panel">
             <div class="row reports">
 
-            <%= render 'report_item' %>
-            <%= render 'report_item' %>
-            <%= render 'report_item' %>
+            <% @reports.each do |r| %>
+              <%= render 'report_item',
+              title: r[:title],
+              icon: r[:icon],
+              types: r[:types],
+              variables: r[:variables]
+              %>
+            <% end %>
+
 
             </div>
           </div>
