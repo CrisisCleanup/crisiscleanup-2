@@ -3,6 +3,13 @@ class Report::ReportsController < ApplicationController
   before_filter :check_user
   helper_method :reports
 
+  def download_alert
+    report_title = params["report_title"]
+    user = current_user
+    org = user.legacy_organization
+    AdminMailer.send_download_report_alert(user, org, report_title).deliver_now
+  end
+
   def index
   end
 
@@ -58,4 +65,5 @@ class Report::ReportsController < ApplicationController
       }
     ]
   end
+
 end

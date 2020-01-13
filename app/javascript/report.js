@@ -6,21 +6,34 @@ import modal from "./components/modal";
 if (document.getElementById("reports-panel")) {
   new Vue({
     el: "#reports-panel",
-    propsData: {},
+    propsData: {
+      reportTitle: null
+    },
     components: {
       modal,
       SiteStatusDropdown,
       SiteIcon
     },
     data: {
-      showModal: false
+      showModal: false,
+      reportTitle: null
     },
     methods: {
-      fireModal() {
+      fireModal(reportTitle) {
+        this.reportTitle = reportTitle;
         this.showModal = true;
       },
       closeModal() {
         this.showModal = false;
+        this.$http.post(
+          "/report/report/download_alert",
+          JSON.stringify({
+            report_title: this.reportTitle
+          }),
+          {
+            headers: { "content-type": "application/json" }
+          }
+        );
       }
     }
   });

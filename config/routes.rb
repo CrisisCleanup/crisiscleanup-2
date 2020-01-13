@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   namespace :report do
     get "/report" => 'reports#index', as: "reports_index"
+    post "/report/download_alert" => 'reports#download_alert', as: "reports_download_alert"
   end
 
   namespace :phone do
