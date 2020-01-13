@@ -220,6 +220,10 @@
 
 // Reports Page
 .reports {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
   &-item {
     display: inline-block;
     float: none !important;
