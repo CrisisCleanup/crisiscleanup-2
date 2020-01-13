@@ -8,7 +8,9 @@
     </div>
   </div>
 <% end %>
+
 <% content_for :main do %>
+
   <div class="row">
     <div class="large-12 medium-12 columns">
       <div class="row">
@@ -24,20 +26,21 @@
       <div class="row">
         <div class="large-12 columns">
           <h5 class="center">Premium Reports</h5>
-          <div class="panel">
+          <div class="panel" id="reports-panel">
             <div class="row reports">
 
-            <% @reports.each do |r| %>
+            <% reports.each do |r| %>
               <%= render 'report_item',
               title: r[:title],
               icon: r[:icon],
               types: r[:types],
-              variables: r[:variables]
+              variables: r[:variables],
               %>
             <% end %>
-
-
             </div>
+
+            <%= render 'modal' %>
+
           </div>
         </div>
       </div>

@@ -1,9 +1,13 @@
 class Report::ReportsController < ApplicationController
   include ApplicationHelper
   before_filter :check_user
+  helper_method :reports
 
   def index
-    @reports = [
+  end
+
+  def reports
+    return [
       {
         title: 'Teammates Invited & Active',
         types: 'Numbers that link to a table report showing details; Stacked Line or Bar Chart',

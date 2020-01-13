@@ -41,7 +41,8 @@ export default {
 }
 
 .modal-container {
-  width: 300px;
+  min-width: 300px;
+  max-width: 40rem;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -58,7 +59,7 @@ export default {
 
 .modal-body {
   margin: 10px 0;
-  /*margin-bottom: 40px;*/
+  display: inline-block;
 }
 
 .modal-default-button {
