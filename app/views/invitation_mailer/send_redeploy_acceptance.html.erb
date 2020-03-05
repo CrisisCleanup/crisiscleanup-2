@@ -4,8 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p><%= @org.name %>,</p>
-    <p>Congratulations! <%= @verified_by.name %> (<%= @verified_by.email %>) from <%= @verified_by.legacy_organization.name %> has reviewed and accepted your request to redeploy to the <strong><%= @event.name %></strong> incident. <br/><br/> Thank you for your contributions!</p>
+    <%= @message.html_safe %>
     <br />
     <p><strong>-Crisis Cleanup Support Services</strong></p>
     <p>Twitter: <a href="https://twitter.com/CrisisCleanup">@CrisisCleanup</a><br />

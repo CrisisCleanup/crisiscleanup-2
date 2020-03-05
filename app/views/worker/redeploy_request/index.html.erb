@@ -1,0 +1,67 @@
+<% content_for :title do %>
+    Crisis Cleanup - Confirm Redeploy
+<% end %>
+
+<% content_for :subheader do %>
+    <div class="row">
+      <h2 class="center">Confirm Redeploy Request</h2>
+    </div>
+<% end %>
+
+<% content_for :main do %>
+
+<style>
+
+.redeploy-table {
+  margin-left: auto;
+  margin-right: auto
+}
+
+</style>
+
+<div class="row">
+
+
+  <div class="large-7 medium-7 columns">
+    <div class="panel" id="confirm-panel">
+      <h5 class="center">Confirm Redeploy for <%= @org.name %></h5>
+      <%= render 'confirm_form' %>
+    </div>
+  </div>
+
+
+  <div class="large-5 medium-5 columns">
+    <div class="panel" id="info-panel">
+      <h5 class="center">Redeploy Request</h5>
+        <table class="redeploy-table">
+          <tr>
+            <th width="200" align="left">Organization:</th>
+            <td><%= @user.legacy_organization.name %></td>
+          </tr>
+          <tr>
+            <th width="200" align="left">User:</th>
+            <td><%= @user.name %> (<%= @user.email %>)</td>
+          </tr>
+          <tr>
+            <th width="200" align="left">User Phone #:</th>
+            <td><%= @user.mobile %></td>
+          </tr>
+          <tr>
+            <th width="200" align="left">New Event:</th>
+            <td><%= @event.name %></td>
+          </tr>
+          <tr>
+            <th width="200" align="left">Previous Events:</th>
+            <td><%= @previous_events.join(', ') %></td>
+          </tr>
+          <tr>
+            <th width="200" align="left">Status:</th>
+            <td><strong><%= @redeploy_request.accepted ? 'ACCEPTED' : 'PENDING' %></strong></td>
+          </tr>
+        </table>
+    </div>
+  </div>
+
+</div>
+
+<%end%>

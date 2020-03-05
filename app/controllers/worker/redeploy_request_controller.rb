@@ -28,6 +28,28 @@ module Worker
       redirect_to worker_dashboard_path
     end
 
+    def confirm_redeploy
+      if !current_user.present? or !current_user.admin?
+        redirect_to '/login'
+        return
+      end
+      redeploy_request = RedeployRequest.where(token:params[:token]).first
+      if redeploy_request.accepted?
+        flash[:alert] = "Request has already been accepted!"
+        redirect_to "/dashboard"
+        return
+      end
+      @redeploy_request = redeploy_request
+      @org = redeploy_request.legacy_organization
+      @event = redeploy_request.legacy_event
+      @user = redeploy_request.user
+      @token = params[:token]
+      @previous_events = []
+      @user.legacy_organization.legacy_events.order("created_at DESC").each { |event| @previous_events.push(event.name) }
+      @message = redeploy_request.accept_message(current_user)
+      render :index
+    end
+
     def accept
       if !current_user.present? or !current_user.admin?
         redirect_to '/login'
@@ -47,9 +69,11 @@ module Worker
       org.save!
       user = redeploy_request.user
       redeploy_request.save!
-      InvitationMailer.send_redeploy_acceptance(redeploy_request, user.email, current_user).deliver_now
+      email_from = params[:from]
+      email_body = params[:body]
+      InvitationMailer.send_redeploy_acceptance(user.email, email_from, email_body, current_user.email).deliver_now
       org.legacy_contacts.each do |contact|
-        InvitationMailer.send_redeploy_acceptance(redeploy_request, contact.email, current_user).deliver_now
+        InvitationMailer.send_redeploy_acceptance(contact.email, email_from, email_body).deliver_now
       end
       flash[:notice] = "You accepted #{org.name}'s request to redeploy to #{event.name}."
       redirect_to '/dashboard'

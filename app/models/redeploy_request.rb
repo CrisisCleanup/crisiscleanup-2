@@ -26,14 +26,25 @@ class RedeployRequest < ActiveRecord::Base
     end
   end
 
+  def confirm_url
+    return "https://www.crisiscleanup.org/redeploy_request/confirm?token=#{self.token}"
+  end
+
   def accept_url
     return "https://www.crisiscleanup.org/redeploy_request/accept?token=#{self.token}"
   end
 
-
   def accept
-    return "<a href='#{self.accept_url}'>Approve</a>".html_safe
+    return "<a href='#{self.confirm_url}'>Approve</a>".html_safe
   end
+
+  def accept_message(accepter)
+    @org = self.legacy_organization
+    @event = self.legacy_event
+    @verified_by = accepter
+    return "<p>#{@org.name},</p><p>Congratulations! #{@verified_by.name} (#{@verified_by.email}) from #{@verified_by.legacy_organization.name} has reviewed and accepted your request to redeploy to the <strong>#{@event.name}</strong> incident. <br/><br/> Thank you for your contributions!</p>"
+  end
+
 
   protected
   def generate_token
