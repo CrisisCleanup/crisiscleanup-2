@@ -28,6 +28,28 @@ module Worker
       redirect_to worker_dashboard_path
     end
 
+    def confirm_redeploy
+      if !current_user.present? or !current_user.admin?
+        redirect_to '/login'
+        return
+      end
+      redeploy_request = RedeployRequest.where(token:params[:token]).first
+      if redeploy_request.accepted?
+        flash[:alert] = "Request has already been accepted!"
+        redirect_to "/dashboard"
+        return
+      end
+      @redeploy_request = redeploy_request
+      @org = redeploy_request.legacy_organization
+      @event = redeploy_request.legacy_event
+      @user = redeploy_request.user
+      @token = params[:token]
+      @previous_events = []
+      @user.legacy_organization.legacy_events.order("created_at DESC").each { |event| @previous_events.push(event.name) }
+      @message = redeploy_request.accept_message(current_user)
+      render :index
+    end
+
     def accept
       if !current_user.present? or !current_user.admin?
         redirect_to '/login'

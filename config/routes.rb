@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get "/change_call_language" => 'dashboard#change_call_language', as: "phone_dashboard_change_call_language"
     get "/done" => 'dashboard#done', as: "phone_dashboard_done"
   end
-  
+
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :legacy_events do
@@ -61,7 +61,8 @@ Rails.application.routes.draw do
   get "/get-started" => 'worker/dashboard#get_started', as:"get_started"
   get "/redeploy_form" => 'worker/dashboard#redeploy_form', as: "redeploy_form"
   post "/redeploy_request" => 'worker/redeploy_request#create'
-  get "/redeploy_request/accept" => 'worker/redeploy_request#accept'
+  get "/redeploy_request/confirm" => 'worker/redeploy_request#confirm_redeploy'
+  post "/redeploy_request/accept" => 'worker/redeploy_request#accept'
 
   namespace :worker do
     get "/incident-chooser" => "dashboard#incident_chooser", as: "incident_chooser"
@@ -83,7 +84,7 @@ Rails.application.routes.draw do
       post "/:id/organizations/:org_id" => "legacy_organizations#show", as: "legacy_organization_caller"
       get "/:id/contacts" => "legacy_contacts#index", as: "legacy_contacts"
       get "/:id/contacts/edit" => "legacy_contacts#edit", as: "legacy_contact_edit"
-      post "/:id/contacts/edit" => "legacy_contacts#edit", as: "legacy_contact_update"     
+      post "/:id/contacts/edit" => "legacy_contacts#edit", as: "legacy_contact_update"
       get "/:id/contacts/:contact_id" => "legacy_contacts#show", as: "legacy_contact"
       get "/:id/map" => "legacy_sites#map", as: "legacy_map"
       get "/:id/form" => "legacy_sites#form", as: "legacy_form"
