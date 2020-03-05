@@ -43,7 +43,7 @@ class RedeployRequest < ActiveRecord::Base
     @event = self.legacy_event
     @user = self.user
     @verified_by = accepter
-    return "<p>Hey #{@user.name},</p><p>I just added <strong>#{@event.name}</strong> to your organization. You should be good to go now!</p></br><p>THANK YOU for all you do!</p></br></br><p>Ross Arroyo</p><p>ross@crisiscleanup.org</p>"
+    return "<p>Hey #{@user.name},</p><p>I just added <strong>#{@event.name}</strong> to your organization. You should be good to go now!</p></br><p>THANK YOU for all you do!</p><br/><p>Ross Arroyo</p><p>ross@crisiscleanup.org</p>"
   end
 
 

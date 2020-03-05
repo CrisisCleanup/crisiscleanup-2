@@ -36,9 +36,10 @@ class InvitationMailer < ActionMailer::Base
     mail(to: email, subject: "New Redeploy Request")
   end
 
-  def send_redeploy_acceptance(email, from, body, bcc)
+  def send_redeploy_acceptance(email, from, body, is_admin=false)
     @message = body
-    mail(to: email, from: from, subject: "Redeploy Request Accepted", bcc: bcc)
+    @admin_copy = is_admin
+    mail(to: email, from: from, subject: "Redeploy Request Accepted")
   end
 
   def send_registration_confirmation(email, org)

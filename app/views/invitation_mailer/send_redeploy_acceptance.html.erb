@@ -4,6 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <% if @admin_copy %>
+    <p>
+    <i>NOTE: </strong> This is a copy of the automated reply sent upon your acceptance. This is for reference only.</i>
+    </p>
+    <br/>
+    <% end %>
     <%= @message.html_safe %>
     <br />
     <p><strong>-Crisis Cleanup Support Services</strong></p>
