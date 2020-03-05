@@ -1,0 +1,26 @@
+<%= form_tag('/redeploy_request/accept', method: "post") do |f| %>
+
+<div class="margin-top row">
+  <div class="medium-10 columns">
+    <label>From Email:</label>
+    <%= text_field_tag(:from, "help@crisiscleanup.org") %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-10 columns">
+    <label>Message Preview:</label>
+  		<%= text_area_tag :body, @message.html_safe, :class => "tinymce", :rows => 10, :cols => 20 %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="medium-6 columns">
+    <%= submit_tag("Send", class: "button") %>
+  </div>
+</div>
+<%= hidden_field_tag :token, @token %>
+<%= tinymce %>
+
+<% end %>
