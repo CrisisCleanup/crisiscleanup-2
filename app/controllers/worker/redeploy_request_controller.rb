@@ -69,9 +69,11 @@ module Worker
       org.save!
       user = redeploy_request.user
       redeploy_request.save!
-      InvitationMailer.send_redeploy_acceptance(redeploy_request, user.email, current_user).deliver_now
+      email_from = params[:from]
+      email_body = params[:body]
+      InvitationMailer.send_redeploy_acceptance(user.email, email_from, email_body, current_user.email).deliver_now
       org.legacy_contacts.each do |contact|
-        InvitationMailer.send_redeploy_acceptance(redeploy_request, contact.email, current_user).deliver_now
+        InvitationMailer.send_redeploy_acceptance(contact.email, email_from, email_body).deliver_now
       end
       flash[:notice] = "You accepted #{org.name}'s request to redeploy to #{event.name}."
       redirect_to '/dashboard'
