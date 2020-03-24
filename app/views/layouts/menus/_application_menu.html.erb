@@ -48,7 +48,7 @@
         <% end %>     
       <% end %>
       <% unless current_user %>
-      <li><%= nav_link t('nav_7'), signup_path %></li> <!-- hide for verified user / admin -->
+      <!--<li><%= nav_link t('nav_7'), signup_path %></li>--> <!-- hide for verified user / admin -->
       <% end %>
       <% if current_user %> <!-- user verified only -->
         <li class="has-dropdown"><%= link_to t('nav_8'), worker_dashboard_path %>
