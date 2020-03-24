@@ -5,7 +5,7 @@
 <% content_for :main do %>
 <h2><%= t('login_1') %></h2>
 <p><%= t('login_2') %></p>
-
+<!--
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email, label: t('login_3'), required: false, autofocus: true %>
@@ -23,8 +23,8 @@
     <li><a href="/volunteer"><%= t('login_9') %></a> <%= t('login_10') %></li>
     <li><a href="/password/new"><%= t('login_11') %></a> <%= t('login_12') %></li>
     <li><a href="https://crisiscleanup.zendesk.com/hc/en-us/requests/new"><%= t('login_13') %></a> <%= t('login_14') %></li>
-    <!--<li><a href="/worker/temporary_passwords/new">Use your Temporary Password</a> (if you have one)</li>-->
-  </ul>
+    <li><a href="/worker/temporary_passwords/new">Use your Temporary Password</a> (if you have one)</li>
+  </ul>-->
 <p>
 
 <%= render "devise/shared/links" %>
