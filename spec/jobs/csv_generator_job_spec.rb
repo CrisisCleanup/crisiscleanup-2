@@ -19,7 +19,7 @@ RSpec.describe CsvGeneratorJob, type: :job do
       allow_any_instance_of(S3Helper).to(
         receive(:upload_to_s3).with(expected_file_basename, 'somefile.txt', expected_path).and_return(nil)
       )
-      CsvGeneratorJob.perform_now('generate_sites', 'TEST', 'somefile.txt', 'test-bucket')
+      CsvGeneratorJob.perform_now('generate_sites', 'TEST', 'somefile.txt', 'test-bucket', false)
     end
     
     it "will catch S3Helper exception" do
@@ -30,7 +30,7 @@ RSpec.describe CsvGeneratorJob, type: :job do
       allow_any_instance_of(S3Helper).to(
         receive(:upload_to_s3).with(expected_file_basename, 'somefile.txt', expected_path).and_raise('No S3 upload')
       )
-      CsvGeneratorJob.perform_now('generate_sites', 'TEST', 'somefile.txt', 'test-bucket')
+      CsvGeneratorJob.perform_now('generate_sites', 'TEST', 'somefile.txt', 'test-bucket', false)
     end   
   end
   

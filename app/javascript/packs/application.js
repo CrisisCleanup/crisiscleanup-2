@@ -16,6 +16,7 @@ Raven.config('https://10c81ccdb4ca40d39a1fafa02154e6c7@sentry.io/212434').addPlu
 Vue.use(VueResource);
 
 import 'dashboard'
+import 'report'
 import 'history'
 import 'datatable'
 import 'worksite'

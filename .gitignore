@@ -43,3 +43,4 @@ Makefile
 /public/packs
 dev.dumpcoverage
 coverage/
+*.code-workspace

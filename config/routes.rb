@@ -28,6 +28,11 @@ Rails.application.routes.draw do
   #get "/users/:id/edit" => 'users#edit'
     #get "/users/:id" => 'users#show'
 
+  namespace :report do
+    get "/report" => 'reports#index', as: "reports_index"
+    post "/report/download_alert" => 'reports#download_alert', as: "reports_download_alert"
+  end
+
   namespace :phone do
     get "/dashboard" => 'dashboard#index', as: "phone_dashboard"
     post "/dashboard" => 'dashboard#index', as: "phone_dashboard_update"

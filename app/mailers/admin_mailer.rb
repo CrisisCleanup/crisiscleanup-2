@@ -20,4 +20,13 @@ class AdminMailer < ActionMailer::Base
     mail(to: @user.email, subject: "#{@user.name} has registered for Crisis Cleanup with #{@name}")
   end
   # TODO - do we need comment alerts? also an in-app mail or alert system, ala social network messages
+
+  def send_download_report_alert(user, org, report_title)
+    @user = user
+    @org = org
+    @report_title = report_title
+
+    mail(to: @user.email, subject: "#{@org.name} requested to download a report.")
+  end
+
 end

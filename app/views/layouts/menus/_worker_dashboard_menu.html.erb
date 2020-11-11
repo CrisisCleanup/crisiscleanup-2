@@ -20,6 +20,11 @@
           <% end %>
       </li>
       <% end %>
+      <% if current_user %>
+        <% if current_user.legacy_organization.government || current_user.admin %>
+          <li><%= nav_link 'Reports', report_reports_index_path %></li>
+        <% end %>     
+      <% end %>     
       <li class="has-dropdown"><a href="#">Help</a>
         <ul class="dropdown">
           <li class="has-dropdown"><a href="https://crisiscleanup.zendesk.com/hc/en-us/sections/200166636-Policies" target="_blank">Policies</a>

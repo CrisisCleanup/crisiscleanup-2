@@ -403,6 +403,44 @@ module Legacy
           ]
       )
     end
+    
+    def govt_redacted_to_csv_row
+      CSV::Row.new(
+          [
+              :event,
+              :case_number,
+              :address,
+              :city,
+              :county,
+              :state,
+              :zip_code,
+              :latitude,
+              :longitude,
+              :reported_by,
+              :claimed_by,
+              :request_date,
+              :updated_at,
+              :status,
+              :work_type
+          ],[
+              legacy_event.name,
+              case_number,
+              address,
+              city,
+              county,
+              state,
+              zip_code,
+              latitude,
+              longitude,
+              reporting_org.try(:name),
+              legacy_organization.try(:name),
+              request_date,
+              updated_at,
+              status,
+              work_type
+          ]
+      )
+    end    
 
     def format_details
       blacklist = [

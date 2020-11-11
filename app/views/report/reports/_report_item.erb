@@ -1,0 +1,34 @@
+<div class="small-3 columns reports-item">
+  <div class="reports--container">
+
+    <h5><%= title %></h5>
+
+    <div class="reports--image">
+      <div class="<%= icon %>"></div>
+    </div>
+
+    <div class="reports--details">
+      <div class="details">
+        <p><strong>Type(s):</strong></p>
+        <p><%= types %></p>
+      </div>
+
+      <div class="details">
+        <p><strong>Variables:</strong></p>
+        <p><%= variables %></p>
+      </div>
+    </div>
+
+
+    <div class="reports--actions">
+      <div class="action">
+        <a href="#" id="download-sample-button">Preview Sample</a>
+      </div>
+
+      <div class="action">
+        <a id="show-modal" @click="fireModal('<%= title %>')" class="button small" id="download-report-button">Download</a>
+      </div>
+    </div>
+
+  </div>
+</div>
