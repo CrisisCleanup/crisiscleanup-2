@@ -36,7 +36,9 @@ class RegistrationsController < ApplicationController
     end
 
 
-    if @org.valid?
+    legacy_events = params['legacy_legacy_organization']['legacy_events']
+
+    if legacy_events.present? and @org.valid?
       @org.legacy_events << Legacy::LegacyEvent.find(params['legacy_legacy_organization']['legacy_events'])
       @org.registration_ip = request.remote_ip
       @org.save
@@ -50,9 +52,15 @@ class RegistrationsController < ApplicationController
 
       redirect_to "/welcome"
     else
-      # with errors
-      flash[:alert] = "The organization name #{@org.name} or email #{@org.email} or contact email has already been taken. Click for <a href='https://crisiscleanup.zendesk.com/hc/en-us/articles/221158507'>Details and Fixes</a>."
-      render :new
+      legacy_events = params['legacy_legacy_organization']['legacy_events']
+      if not legacy_events.present?
+        flash[:alert] = "Please select a Disaster."
+        render :new
+      else
+        # with errors
+        flash[:alert] = "The organization name #{@org.name} or email #{@org.email} or contact email has already been taken. Click for <a href='https://crisiscleanup.zendesk.com/hc/en-us/articles/221158507'>Details and Fixes</a>."
+        render :new
+      end
     end
   end
   private
